@@ -1,0 +1,43 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – 监控告警配置</title>
+    <link>/docs/cloud-monitor/</link>
+    <description>Recent content in 监控告警配置 on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="/docs/cloud-monitor/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: 预设指标</title>
+      <link>/docs/cloud-monitor/preset-metrics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/cloud-monitor/preset-metrics/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 告警规则</title>
+      <link>/docs/cloud-monitor/alert-rules/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/cloud-monitor/alert-rules/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

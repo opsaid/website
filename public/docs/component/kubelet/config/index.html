@@ -1,0 +1,3341 @@
+<!doctype html>
+<html lang="zh-cn" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.102.3" />
+<meta name="robots" content="index, follow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>参数配置 | OPSaid</title>
+<meta name="description" content="简要概述
+参数解析
+命令行参数
+
+外部组建参数
+
+
+
+
+名称
+默认值
+来自组件
+说明
+
+
+
+
+add-dir-header
+false
+TODO;
+在输出日志时，是否把代码文件所在目录一起提供，如：state/state_mem.go:36，否则仅输出：state_mem.go:36 …">
+<meta property="og:title" content="参数配置" />
+<meta property="og:description" content="简要概述 参数解析 命令行参数 外部组建参数 名称 默认值 来自组件 说明 add-dir-header false TODO; 在输出日志时，是否把代码文件所在目录一起提供，如：state/state_mem.go:36，否则仅输出：state_mem.go:36 alsologtostderr - klog 已弃用 application-metrics-count-limit - cadvisor 已废弃 azure-container-registry-config - azure 包含 Azure 容器镜像库配置信息的文件的路径 boot-id-file - cadvisor 默认来自：/proc/sys/kernel/random/boot_id cloud-config - kubelet 已弃用 cloud-provider - kubelet 已弃用 cni-bin-dir /opt/cni/bin dockershim 已弃用 cni 的相关二进制地址 cni-cache-dir /var/lib/cni/cache dockershim 已弃用 cni-conf-dir /etc/cni/net.d dockershim 已弃用 container-hints /etc/cadvisor/container_hints.json cadvisor 已废弃 container-runtime remote kubelet 已废弃，目前支持 docker、remote，以后仅支持 remote containerd - cadvisor 已废弃 containerd-namespace - cadvisor 已废弃 docker - cadvisor 已废弃 docker-endpoint - dockershim 已弃用 docker-env-metadata-whitelist - cadvisor 已废弃 docker-only - cadvisor 已废弃 docker-root - cadvisor 已废弃 docker-tls - cadvisor 已废弃 docker-tls-ca - cadvisor 已废弃 docker-tls-cert - cadvisor 已废弃 docker-tls-key - cadvisor 已废弃 dynamic-config-dir - kubelet 已废弃 enable-load-reader - cadvisor 已废弃 event-storage-age-limit - cadvisor 已废弃 event-storage-event-limit - cadvisor 已废弃 experimental-allocatable-ignore-eviction false kubelet 设置为 true 表示在计算节点可分配资源数量时忽略硬性逐出阈值设置 experimental-bootstrap-kubeconfig - kubelet Use &ndash;bootstrap-kubeconfig experimental-check-node-capabilities-before-mount - kubelet 已废弃 experimental-kernel-memcg-notification - kubelet 已废弃 experimental-mounter-path - kubelet 已废弃 global-housekeeping-interval - cadvisor 已废弃 image-pull-progress-deadline - dockershim 已弃用 keep-terminated-pod-volumes - kubelet 已废弃 log-backtrace-at 0 klog 已弃用 log-dir - klog 已弃用，如果此值为非空，则在所指定的目录中写入日志文件 log-file - klog 已弃用，如果此值非空，使用所给字符串作为日志文件名 log-file-max-size 1800 klog 已弃用，设置日志文件的最大值。单位为兆字节（M）。如果值为 0，则表示文件大小无限制 log-flush-frequency 5s klog 两次日志刷新之间的最大秒数 logtostderr true klog 日志输出到 stderr 而不是文件 machine-id-file - cadvisor /etc/machine-id,/var/lib/dbus/machine-id master-service-namespace - kubelet 已弃用，kubelet 向 Pod 注入 Kubernetes 主控服务信息时使用的命名空间 maximum-dead-containers -1 kubelet 已弃用，使用 eviction 代替 maximum-dead-containers-per-container 1 kubelet 已弃用，使用 eviction 代替 minimum-container-ttl-duration - kubelet 已弃用，使用 eviction 代替 network-plugin - dockershim 已弃用 network-plugin-mtu - dockershim 已弃用 non-masquerade-cidr - kubelet 已弃用 one-output - kubelet 已弃用 port 10250 kubelet 已弃用，kubelet 服务监听的本机端口号 really-crash-for-testing - kubelet 已弃用 register-schedulable true kubelet 已弃用 seccomp-profile-root - kubelet 已弃用 skip-headers - klog 已弃用 skip-log-headers - klog 已弃用 stderrthreshold - klog 已弃用 storage-driver-buffer-duration - cadvisor storage-driver-db - cadvisor 已废弃 storage-driver-host - cadvisor 已废弃 storage-driver-password - cadvisor 已废弃 storage-driver-secure - cadvisor 已废弃 storage-driver-table - cadvisor 已废弃 storage-driver-user - cadvisor 已废弃 v - klog 日志级别详细程度的数值 组建内置参数 名称 默认值 KubeletConfiguration 说明 address 0." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/docs/component/kubelet/config/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2022-12-19T11:34:43+08:00" />
+<meta property="article:modified_time" content="2023-02-08T23:17:58+08:00" /><meta property="og:site_name" content="OPSaid" />
+
+<meta itemprop="name" content="参数配置">
+<meta itemprop="description" content="简要概述 参数解析 命令行参数 外部组建参数 名称 默认值 来自组件 说明 add-dir-header false TODO; 在输出日志时，是否把代码文件所在目录一起提供，如：state/state_mem.go:36，否则仅输出：state_mem.go:36 alsologtostderr - klog 已弃用 application-metrics-count-limit - cadvisor 已废弃 azure-container-registry-config - azure 包含 Azure 容器镜像库配置信息的文件的路径 boot-id-file - cadvisor 默认来自：/proc/sys/kernel/random/boot_id cloud-config - kubelet 已弃用 cloud-provider - kubelet 已弃用 cni-bin-dir /opt/cni/bin dockershim 已弃用 cni 的相关二进制地址 cni-cache-dir /var/lib/cni/cache dockershim 已弃用 cni-conf-dir /etc/cni/net.d dockershim 已弃用 container-hints /etc/cadvisor/container_hints.json cadvisor 已废弃 container-runtime remote kubelet 已废弃，目前支持 docker、remote，以后仅支持 remote containerd - cadvisor 已废弃 containerd-namespace - cadvisor 已废弃 docker - cadvisor 已废弃 docker-endpoint - dockershim 已弃用 docker-env-metadata-whitelist - cadvisor 已废弃 docker-only - cadvisor 已废弃 docker-root - cadvisor 已废弃 docker-tls - cadvisor 已废弃 docker-tls-ca - cadvisor 已废弃 docker-tls-cert - cadvisor 已废弃 docker-tls-key - cadvisor 已废弃 dynamic-config-dir - kubelet 已废弃 enable-load-reader - cadvisor 已废弃 event-storage-age-limit - cadvisor 已废弃 event-storage-event-limit - cadvisor 已废弃 experimental-allocatable-ignore-eviction false kubelet 设置为 true 表示在计算节点可分配资源数量时忽略硬性逐出阈值设置 experimental-bootstrap-kubeconfig - kubelet Use &ndash;bootstrap-kubeconfig experimental-check-node-capabilities-before-mount - kubelet 已废弃 experimental-kernel-memcg-notification - kubelet 已废弃 experimental-mounter-path - kubelet 已废弃 global-housekeeping-interval - cadvisor 已废弃 image-pull-progress-deadline - dockershim 已弃用 keep-terminated-pod-volumes - kubelet 已废弃 log-backtrace-at 0 klog 已弃用 log-dir - klog 已弃用，如果此值为非空，则在所指定的目录中写入日志文件 log-file - klog 已弃用，如果此值非空，使用所给字符串作为日志文件名 log-file-max-size 1800 klog 已弃用，设置日志文件的最大值。单位为兆字节（M）。如果值为 0，则表示文件大小无限制 log-flush-frequency 5s klog 两次日志刷新之间的最大秒数 logtostderr true klog 日志输出到 stderr 而不是文件 machine-id-file - cadvisor /etc/machine-id,/var/lib/dbus/machine-id master-service-namespace - kubelet 已弃用，kubelet 向 Pod 注入 Kubernetes 主控服务信息时使用的命名空间 maximum-dead-containers -1 kubelet 已弃用，使用 eviction 代替 maximum-dead-containers-per-container 1 kubelet 已弃用，使用 eviction 代替 minimum-container-ttl-duration - kubelet 已弃用，使用 eviction 代替 network-plugin - dockershim 已弃用 network-plugin-mtu - dockershim 已弃用 non-masquerade-cidr - kubelet 已弃用 one-output - kubelet 已弃用 port 10250 kubelet 已弃用，kubelet 服务监听的本机端口号 really-crash-for-testing - kubelet 已弃用 register-schedulable true kubelet 已弃用 seccomp-profile-root - kubelet 已弃用 skip-headers - klog 已弃用 skip-log-headers - klog 已弃用 stderrthreshold - klog 已弃用 storage-driver-buffer-duration - cadvisor storage-driver-db - cadvisor 已废弃 storage-driver-host - cadvisor 已废弃 storage-driver-password - cadvisor 已废弃 storage-driver-secure - cadvisor 已废弃 storage-driver-table - cadvisor 已废弃 storage-driver-user - cadvisor 已废弃 v - klog 日志级别详细程度的数值 组建内置参数 名称 默认值 KubeletConfiguration 说明 address 0."><meta itemprop="datePublished" content="2022-12-19T11:34:43+08:00" />
+<meta itemprop="dateModified" content="2023-02-08T23:17:58+08:00" />
+<meta itemprop="wordCount" content="3938">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="参数配置"/>
+<meta name="twitter:description" content="简要概述 参数解析 命令行参数 外部组建参数 名称 默认值 来自组件 说明 add-dir-header false TODO; 在输出日志时，是否把代码文件所在目录一起提供，如：state/state_mem.go:36，否则仅输出：state_mem.go:36 alsologtostderr - klog 已弃用 application-metrics-count-limit - cadvisor 已废弃 azure-container-registry-config - azure 包含 Azure 容器镜像库配置信息的文件的路径 boot-id-file - cadvisor 默认来自：/proc/sys/kernel/random/boot_id cloud-config - kubelet 已弃用 cloud-provider - kubelet 已弃用 cni-bin-dir /opt/cni/bin dockershim 已弃用 cni 的相关二进制地址 cni-cache-dir /var/lib/cni/cache dockershim 已弃用 cni-conf-dir /etc/cni/net.d dockershim 已弃用 container-hints /etc/cadvisor/container_hints.json cadvisor 已废弃 container-runtime remote kubelet 已废弃，目前支持 docker、remote，以后仅支持 remote containerd - cadvisor 已废弃 containerd-namespace - cadvisor 已废弃 docker - cadvisor 已废弃 docker-endpoint - dockershim 已弃用 docker-env-metadata-whitelist - cadvisor 已废弃 docker-only - cadvisor 已废弃 docker-root - cadvisor 已废弃 docker-tls - cadvisor 已废弃 docker-tls-ca - cadvisor 已废弃 docker-tls-cert - cadvisor 已废弃 docker-tls-key - cadvisor 已废弃 dynamic-config-dir - kubelet 已废弃 enable-load-reader - cadvisor 已废弃 event-storage-age-limit - cadvisor 已废弃 event-storage-event-limit - cadvisor 已废弃 experimental-allocatable-ignore-eviction false kubelet 设置为 true 表示在计算节点可分配资源数量时忽略硬性逐出阈值设置 experimental-bootstrap-kubeconfig - kubelet Use &ndash;bootstrap-kubeconfig experimental-check-node-capabilities-before-mount - kubelet 已废弃 experimental-kernel-memcg-notification - kubelet 已废弃 experimental-mounter-path - kubelet 已废弃 global-housekeeping-interval - cadvisor 已废弃 image-pull-progress-deadline - dockershim 已弃用 keep-terminated-pod-volumes - kubelet 已废弃 log-backtrace-at 0 klog 已弃用 log-dir - klog 已弃用，如果此值为非空，则在所指定的目录中写入日志文件 log-file - klog 已弃用，如果此值非空，使用所给字符串作为日志文件名 log-file-max-size 1800 klog 已弃用，设置日志文件的最大值。单位为兆字节（M）。如果值为 0，则表示文件大小无限制 log-flush-frequency 5s klog 两次日志刷新之间的最大秒数 logtostderr true klog 日志输出到 stderr 而不是文件 machine-id-file - cadvisor /etc/machine-id,/var/lib/dbus/machine-id master-service-namespace - kubelet 已弃用，kubelet 向 Pod 注入 Kubernetes 主控服务信息时使用的命名空间 maximum-dead-containers -1 kubelet 已弃用，使用 eviction 代替 maximum-dead-containers-per-container 1 kubelet 已弃用，使用 eviction 代替 minimum-container-ttl-duration - kubelet 已弃用，使用 eviction 代替 network-plugin - dockershim 已弃用 network-plugin-mtu - dockershim 已弃用 non-masquerade-cidr - kubelet 已弃用 one-output - kubelet 已弃用 port 10250 kubelet 已弃用，kubelet 服务监听的本机端口号 really-crash-for-testing - kubelet 已弃用 register-schedulable true kubelet 已弃用 seccomp-profile-root - kubelet 已弃用 skip-headers - klog 已弃用 skip-log-headers - klog 已弃用 stderrthreshold - klog 已弃用 storage-driver-buffer-duration - cadvisor storage-driver-db - cadvisor 已废弃 storage-driver-host - cadvisor 已废弃 storage-driver-password - cadvisor 已废弃 storage-driver-secure - cadvisor 已废弃 storage-driver-table - cadvisor 已废弃 storage-driver-user - cadvisor 已废弃 v - klog 日志级别详细程度的数值 组建内置参数 名称 默认值 KubeletConfiguration 说明 address 0."/>
+
+
+
+
+<link rel="preload" href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" as="style">
+<link href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" rel="stylesheet" integrity="">
+
+<script
+  src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
+  integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+  crossorigin="anonymous"></script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-168659370-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/">
+		<span class="navbar-logo"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><g><path style="fill:#fff" d="M116.8525 421.9722c-5.7041.0-10.3442-4.3127-10.3442-9.6129V88.183c0-5.3002 4.6401-9.6117 10.3442-9.6117H320.858c3.0347.0 9.3959.5498 11.7506 2.6302l.3545.3442 58.905 63.2912c2.3101 2.491 2.9202 8.4928 2.9202 11.3184v256.2039c0 5.3002-4.6407 9.6129-10.3436 9.6129H116.8525z"/><g><g><g><path style="fill:#767676" d="M384.4445 423.2066H116.852c-6.3839.0-11.5786-4.8658-11.5786-10.8474V88.1831c0-5.9804 5.1947-10.8461 11.5786-10.8461h204.0062c.377.0 9.2786.0329 12.568 2.9389l.3947.3833 58.9508 63.337c3.2135 3.4652 3.2514 11.7924 3.2514 12.1593v256.2036C396.0231 418.3408 390.8284 423.2066 384.4445 423.2066zM116.5079 411.9189c.0848.0278.1999.0531.3441.0531h267.5925c.1442.0.2581-.0253.3441-.0531V156.1556c-.0076-.9033-.3593-3.7347-.7034-5.0037l-57.6527-61.9416c-1.4651-.3176-4.4533-.6389-5.5742-.6389H116.852c-.143.0-.2594.024-.3441.0531V411.9189zm267.4533-261.149zM327.0321 89.371v.0013V89.371z"/></g></g></g><g><g><path style="fill:#5b7fc0" d="M189.0874 210.1754l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4473C177.5953 212.627 183.0601 210.1742 189.0874 210.1754zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 234.1722 197.0804 232.033z"/><path style="opacity:.3;fill:#fff" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/><g><defs><path id="SVGID_1_" d="M194.7376 237.6875c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 234.2399 196.1861 236.239 194.7376 237.6875z"/></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_2_);fill:#fff" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/><path style="opacity:.13;clip-path:url(#SVGID_2_);fill:#020202" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/></g><g><defs><path id="SVGID_3_" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_4_);fill:#5b7fc0" d="M172.6595 215.6045c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8475-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 209.1953 176.6171 211.647 172.6595 215.6045z"/></g></g><rect x="198.8952" y="225.1043" style="fill:#5b7fc0" width="122.6266" height="13.8671"/></g><g><path style="fill:#d95140" d="M189.0874 155.7611l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.0249 2.454-11.4897 6.4116-15.4473C177.5953 158.2128 183.0601 155.7599 189.0874 155.7611zm7.993 21.8577c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.2508 181.7667 197.0816 179.758 197.0804 177.6188z"/><path style="opacity:.3;fill:#fff" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/><g><defs><path id="SVGID_5_" d="M194.7376 183.2733c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 179.8256 196.1861 181.8248 194.7376 183.2733z"/></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_6_);fill:#fff" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/><path style="opacity:.13;clip-path:url(#SVGID_6_);fill:#020202" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/></g><g><defs><path id="SVGID_7_" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_8_);fill:#d95140" d="M172.6595 161.1903c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 154.7811 176.6171 157.2327 172.6595 161.1903z"/></g><rect x="198.8952" y="170.69" style="fill:#d95140" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#56a55c" d="M189.5379 264.6147l.0012-.0012c7.7751.0012 15.0294 4.1862 18.932 10.9235 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032-5.8394.0-11.3281-2.2733-15.458-6.4032-4.13-4.13-6.4032-9.6186-6.4056-15.4628.0012-6.0249 2.454-11.4897 6.4116-15.4472C178.0458 267.0663 183.5105 264.6135 189.5379 264.6147zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6538 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.7013 290.6202 197.5321 288.6115 197.5309 286.4723z"/><path style="opacity:.3;fill:#fff" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/><g><defs><path id="SVGID_9_" d="M195.1881 292.1268c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9941 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.5344 288.6792 196.6366 290.6783 195.1881 292.1268z"/></defs><clipPath id="SVGID_10_"><use xlink:href="#SVGID_9_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_10_);fill:#fff" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/><path style="opacity:.13;clip-path:url(#SVGID_10_);fill:#020202" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/></g><g><defs><path id="SVGID_11_" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/></defs><clipPath id="SVGID_12_"><use xlink:href="#SVGID_11_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_12_);fill:#56a55c" d="M173.11 270.0439c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7325-11.1497-10.9151-18.926-10.9151C182.5311 263.6346 177.0676 266.0863 173.11 270.0439z"/></g></g><rect x="199.3456" y="279.5436" style="fill:#56a55c" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#f1bc42" d="M189.0874 318.7208l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3305-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4472C177.5953 321.1724 183.0601 318.7196 189.0874 318.7208zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 342.7176 197.0804 340.5784z"/><path style="opacity:.3;fill:#fff" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/><g><defs><path id="SVGID_13_" d="M194.7376 346.2329c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 342.7853 196.1861 344.7844 194.7376 346.2329z"/></defs><clipPath id="SVGID_14_"><use xlink:href="#SVGID_13_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_14_);fill:#fff" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/><path style="opacity:.13;clip-path:url(#SVGID_14_);fill:#020202" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/></g><g><defs><path id="SVGID_15_" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/></defs><clipPath id="SVGID_16_"><use xlink:href="#SVGID_15_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_16_);fill:#f1bc42" d="M172.6595 324.15c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8474-1.0151-7.6327-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 317.7407 176.6171 320.1924 172.6595 324.15z"/></g></g><rect x="198.8952" y="333.6497" style="fill:#f1bc42" width="122.6266" height="13.8671"/></g></g></svg></span><span class="text-uppercase font-weight-bold">OPSaid</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+        <a  class="nav-link" href="/docs/" ><span>Documentation</span></a>
+				
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+        <a  class="nav-link" href="https://github.com/opsaid" target="_blank" ><span>GitHub</span></a>
+				
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block"></div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+  
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+
+  <nav class="collapse td-sidebar-nav foldable-menu" id="td-section-nav">
+    
+    
+    
+    
+    
+
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib active-path" id="docs">
+      <input type="checkbox" id="docs-check" checked/>
+      <label for="docs-check" ><a href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section tree-root">Documentation</a></label>
+      
+        
+        
+      
+      <ul class="ul-1">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdeploy-k8s">
+      <input type="checkbox" id="docsdeploy-k8s-check"/>
+      <label for="docsdeploy-k8s-check" ><a href="/docs/deploy-k8s/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">K8S集群部署</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdeploy-k8squickstart">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdeploy-k8squickstart-a" href="/docs/deploy-k8s/quickstart/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdeploy-k8sbinary">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdeploy-k8sbinary-a" href="/docs/deploy-k8s/binary/">官方镜像</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsconcepts">
+      <input type="checkbox" id="docsconcepts-check"/>
+      <label for="docsconcepts-check" ><a href="/docs/concepts/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">K8S数据结构</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsconceptsworkloads">
+      <input type="checkbox" id="docsconceptsworkloads-check"/>
+      <label for="docsconceptsworkloads-check" ><a href="/docs/concepts/workloads/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">工作负载</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptsworkloadspods">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsworkloadspods-a" href="/docs/concepts/workloads/pods/">Pods</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsconceptsnetwork">
+      <input type="checkbox" id="docsconceptsnetwork-check"/>
+      <label for="docsconceptsnetwork-check" ><a href="/docs/concepts/network/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">网络资源</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptsnetworkingress">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsnetworkingress-a" href="/docs/concepts/network/ingress/">Ingress</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptsnetworkservice">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsnetworkservice-a" href="/docs/concepts/network/service/">Service</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptsnetworkendpoints">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsnetworkendpoints-a" href="/docs/concepts/network/endpoints/">Endpoints</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptsnetworkendpoint-slice">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsnetworkendpoint-slice-a" href="/docs/concepts/network/endpoint-slice/">EndpointSlice</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsconceptskubeadm">
+      <input type="checkbox" id="docsconceptskubeadm-check"/>
+      <label for="docsconceptskubeadm-check" ><a href="/docs/concepts/kubeadm/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Kubeadm</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadminit">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadminit-a" href="/docs/concepts/kubeadm/init/">Init</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmcluster">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmcluster-a" href="/docs/concepts/kubeadm/cluster/">Cluster</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmjoin">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmjoin-a" href="/docs/concepts/kubeadm/join/">Join</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubelet">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubelet-a" href="/docs/concepts/kubeadm/kubelet/">Kubelet</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkube-proxy">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib active-path" id="docscomponent">
+      <input type="checkbox" id="docscomponent-check" checked/>
+      <label for="docscomponent-check" ><a href="/docs/component/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">K8S基础组件</a></label>
+      
+        
+        
+      
+      <ul class="ul-2">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentkube-apiserver">
+      <input type="checkbox" id="docscomponentkube-apiserver-check"/>
+      <label for="docscomponentkube-apiserver-check" ><a href="/docs/component/kube-apiserver/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">kube-apiserver</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscomponentkube-apiserverconfig">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentkube-apiserverconfig-a" href="/docs/component/kube-apiserver/config/">参数配置</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentkube-controller-manager">
+      <input type="checkbox" id="docscomponentkube-controller-manager-check"/>
+      <label for="docscomponentkube-controller-manager-check" ><a href="/docs/component/kube-controller-manager/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">kube-controller-manager</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscomponentkube-controller-managerconfig">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentkube-controller-managerconfig-a" href="/docs/component/kube-controller-manager/config/">参数配置</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentkube-scheduler">
+      <input type="checkbox" id="docscomponentkube-scheduler-check"/>
+      <label for="docscomponentkube-scheduler-check" ><a href="/docs/component/kube-scheduler/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">kube-scheduler</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscomponentkube-schedulerconfig">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentkube-schedulerconfig-a" href="/docs/component/kube-scheduler/config/">参数配置</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib active-path" id="docscomponentkubelet">
+      <input type="checkbox" id="docscomponentkubelet-check" checked/>
+      <label for="docscomponentkubelet-check" ><a href="/docs/component/kubelet/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">kubelet</a></label>
+      
+        
+        
+      
+      <ul class="ul-3">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib active-path" id="m-docscomponentkubeletconfig">
+                  <span  id="td-sidebar-nav-active-item" >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docscomponentkubeletconfig-a" href="/docs/component/kubelet/config/">参数配置</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentkube-proxy">
+      <input type="checkbox" id="docscomponentkube-proxy-check"/>
+      <label for="docscomponentkube-proxy-check" ><a href="/docs/component/kube-proxy/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">kube-proxy</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscomponentkube-proxyconfig">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentkube-proxyconfig-a" href="/docs/component/kube-proxy/config/">参数配置</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentcontainers">
+      <input type="checkbox" id="docscomponentcontainers-check"/>
+      <label for="docscomponentcontainers-check" ><a href="/docs/component/containers/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">containers</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscomponentcontainerscontainerd">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentcontainerscontainerd-a" href="/docs/component/containers/containerd/">Containerd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentoauth2-proxy">
+      <input type="checkbox" id="docscomponentoauth2-proxy-check"/>
+      <label for="docscomponentoauth2-proxy-check" ><a href="/docs/component/oauth2-proxy/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">oauth2 proxy</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscomponentoauth2-proxyconfig">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentoauth2-proxyconfig-a" href="/docs/component/oauth2-proxy/config/">参数配置</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentthanos">
+      <input type="checkbox" id="docscomponentthanos-check"/>
+      <label for="docscomponentthanos-check" ><a href="/docs/component/thanos/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Thanos</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscomponentthanosquery-frontend">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentthanosquery-frontend-a" href="/docs/component/thanos/query-frontend/">Query Frontend</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscomponentthanosquery">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentthanosquery-a" href="/docs/component/thanos/query/">Query</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscomponentthanosreceiver">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentthanosreceiver-a" href="/docs/component/thanos/receiver/">Receiver</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscomponentthanosconfig">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentthanosconfig-a" href="/docs/component/thanos/config/">Config</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscomponentthanosrule">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentthanosrule-a" href="/docs/component/thanos/rule/">Rule</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentingress-nginx">
+      <input type="checkbox" id="docscomponentingress-nginx-check"/>
+      <label for="docscomponentingress-nginx-check" ><a href="/docs/component/ingress-nginx/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Ingress Nginx</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscomponentingress-nginxuser-guide">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentingress-nginxuser-guide-a" href="/docs/component/ingress-nginx/user-guide/">User guide</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscomponentingress-nginxnginx-template">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentingress-nginxnginx-template-a" href="/docs/component/ingress-nginx/nginx-template/">Nginx Template</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscloud-monitor">
+      <input type="checkbox" id="docscloud-monitor-check"/>
+      <label for="docscloud-monitor-check" ><a href="/docs/cloud-monitor/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">监控告警配置</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscloud-monitorpreset-metrics">
+      <input type="checkbox" id="docscloud-monitorpreset-metrics-check"/>
+      <label for="docscloud-monitorpreset-metrics-check" ><a href="/docs/cloud-monitor/preset-metrics/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">预设指标</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscloud-monitorpreset-metricsnode-exporter">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscloud-monitorpreset-metricsnode-exporter-a" href="/docs/cloud-monitor/preset-metrics/node-exporter/">Node Exporter</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscloud-monitorpreset-metricsingress-nginx">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscloud-monitorpreset-metricsingress-nginx-a" href="/docs/cloud-monitor/preset-metrics/ingress-nginx/">Ingress Nginx</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscloud-monitorpreset-metricsburrow-exporter">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscloud-monitorpreset-metricsburrow-exporter-a" href="/docs/cloud-monitor/preset-metrics/burrow-exporter/">Kafka consumer lag</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscloud-monitorpreset-metricskafka-exporter">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscloud-monitorpreset-metricskafka-exporter-a" href="/docs/cloud-monitor/preset-metrics/kafka-exporter/">Kafka Exporter</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscloud-monitorpreset-metricszookeeper-exporter">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscloud-monitorpreset-metricszookeeper-exporter-a" href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/">ZooKeeper Exporter</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscloud-monitorpreset-metricsetcd-exporter">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscloud-monitorpreset-metricsetcd-exporter-a" href="/docs/cloud-monitor/preset-metrics/etcd-exporter/">Etcd Exporter</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscloud-monitorpreset-metricskube-metrics-server">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscloud-monitorpreset-metricskube-metrics-server-a" href="/docs/cloud-monitor/preset-metrics/kube-metrics-server/">Kube Metrics Server</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscloud-monitorpreset-metricskube-state-metrics">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscloud-monitorpreset-metricskube-state-metrics-a" href="/docs/cloud-monitor/preset-metrics/kube-state-metrics/">Kube State Metrics</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscloud-monitoralert-rules">
+      <input type="checkbox" id="docscloud-monitoralert-rules-check"/>
+      <label for="docscloud-monitoralert-rules-check" ><a href="/docs/cloud-monitor/alert-rules/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">告警规则</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscloud-monitoralert-rulesnode-exporter">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscloud-monitoralert-rulesnode-exporter-a" href="/docs/cloud-monitor/alert-rules/node-exporter/">Node Exporter</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscloud-monitoralert-rulesetcd">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscloud-monitoralert-rulesetcd-a" href="/docs/cloud-monitor/alert-rules/etcd/">Etcd Exporter</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docscloud-monitoralert-ruleskube-state-metrics">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscloud-monitoralert-ruleskube-state-metrics-a" href="/docs/cloud-monitor/alert-rules/kube-state-metrics/">Kube State Metrics</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+    </ul>
+  </nav>
+</div>
+
+
+
+<script>
+  var activeElement = document.getElementById('td-sidebar-nav-active-item');
+  var topPos = activeElement.offsetTop;
+  var scrollElement = document.getElementById('td-section-nav');
+  var topCor = scrollElement.offsetTop;
+  var heightCor = scrollElement.clientHeight;
+  var scrollValue = topPos-topCor-heightCor/2;
+  scrollElement.scrollTop = scrollValue;
+</script>
+
+
+
+          </aside>
+
+
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+            
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+
+
+
+
+</div>
+
+            
+
+
+<h5>目录</h5>
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#简要概述">简要概述</a></li>
+    <li><a href="#参数解析">参数解析</a>
+      <ul>
+        <li><a href="#命令行参数">命令行参数</a></li>
+      </ul>
+    </li>
+    <li><a href="#数据结构">数据结构</a>
+      <ul>
+        <li><a href="#kubeletconfiguration">KubeletConfiguration</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+
+
+
+
+            
+
+	
+		
+			
+		
+		
+
+
+
+  
+  
+
+	
+		
+			
+		
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/docs/">Documentation</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="/docs/component/">K8S基础组件</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="/docs/component/kubelet/">kubelet</a>
+  </li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <a href="/docs/component/kubelet/config/">参数配置</a>
+  </li>
+  </ol>
+</nav>
+            
+<div class="td-content">
+	<h1>参数配置</h1>
+	
+	<header class="article-meta">
+		
+		
+			
+				
+
+
+			
+				
+
+
+			
+		
+		
+			<p class="reading-time"><i class="fa fa-clock" aria-hidden="true"></i>&nbsp; 19 分钟阅读 &nbsp;</p>
+
+		
+	</header>    
+	<h2 id="简要概述">简要概述</h2>
+<h2 id="参数解析">参数解析</h2>
+<h3 id="命令行参数">命令行参数</h3>
+<ul>
+<li>外部组建参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>默认值</th>
+<th>来自组件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>add-dir-header</td>
+<td>false</td>
+<td>TODO;</td>
+<td>在输出日志时，是否把代码文件所在目录一起提供，如：state/state_mem.go:36，否则仅输出：state_mem.go:36</td>
+</tr>
+<tr>
+<td>alsologtostderr</td>
+<td>-</td>
+<td>klog</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>application-metrics-count-limit</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>azure-container-registry-config</td>
+<td>-</td>
+<td>azure</td>
+<td>包含 Azure 容器镜像库配置信息的文件的路径</td>
+</tr>
+<tr>
+<td>boot-id-file</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>默认来自：/proc/sys/kernel/random/boot_id</td>
+</tr>
+<tr>
+<td>cloud-config</td>
+<td>-</td>
+<td>kubelet</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>cloud-provider</td>
+<td>-</td>
+<td>kubelet</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>cni-bin-dir</td>
+<td>/opt/cni/bin</td>
+<td>dockershim</td>
+<td>已弃用 cni 的相关二进制地址</td>
+</tr>
+<tr>
+<td>cni-cache-dir</td>
+<td>/var/lib/cni/cache</td>
+<td>dockershim</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>cni-conf-dir</td>
+<td>/etc/cni/net.d</td>
+<td>dockershim</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>container-hints</td>
+<td>/etc/cadvisor/container_hints.json</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>container-runtime</td>
+<td>remote</td>
+<td>kubelet</td>
+<td>已废弃，目前支持 docker、remote，以后仅支持 remote</td>
+</tr>
+<tr>
+<td>containerd</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>containerd-namespace</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>docker</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>docker-endpoint</td>
+<td>-</td>
+<td>dockershim</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>docker-env-metadata-whitelist</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>docker-only</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>docker-root</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>docker-tls</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>docker-tls-ca</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>docker-tls-cert</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>docker-tls-key</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>dynamic-config-dir</td>
+<td>-</td>
+<td>kubelet</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>enable-load-reader</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>event-storage-age-limit</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>event-storage-event-limit</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>experimental-allocatable-ignore-eviction</td>
+<td>false</td>
+<td>kubelet</td>
+<td>设置为 true 表示在计算节点可分配资源数量时忽略硬性逐出阈值设置</td>
+</tr>
+<tr>
+<td>experimental-bootstrap-kubeconfig</td>
+<td>-</td>
+<td>kubelet</td>
+<td>Use &ndash;bootstrap-kubeconfig</td>
+</tr>
+<tr>
+<td>experimental-check-node-capabilities-before-mount</td>
+<td>-</td>
+<td>kubelet</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>experimental-kernel-memcg-notification</td>
+<td>-</td>
+<td>kubelet</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>experimental-mounter-path</td>
+<td>-</td>
+<td>kubelet</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>global-housekeeping-interval</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>image-pull-progress-deadline</td>
+<td>-</td>
+<td>dockershim</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>keep-terminated-pod-volumes</td>
+<td>-</td>
+<td>kubelet</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>log-backtrace-at</td>
+<td>0</td>
+<td>klog</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>log-dir</td>
+<td>-</td>
+<td>klog</td>
+<td>已弃用，如果此值为非空，则在所指定的目录中写入日志文件</td>
+</tr>
+<tr>
+<td>log-file</td>
+<td>-</td>
+<td>klog</td>
+<td>已弃用，如果此值非空，使用所给字符串作为日志文件名</td>
+</tr>
+<tr>
+<td>log-file-max-size</td>
+<td>1800</td>
+<td>klog</td>
+<td>已弃用，设置日志文件的最大值。单位为兆字节（M）。如果值为 0，则表示文件大小无限制</td>
+</tr>
+<tr>
+<td>log-flush-frequency</td>
+<td>5s</td>
+<td>klog</td>
+<td>两次日志刷新之间的最大秒数</td>
+</tr>
+<tr>
+<td>logtostderr</td>
+<td>true</td>
+<td>klog</td>
+<td>日志输出到 stderr 而不是文件</td>
+</tr>
+<tr>
+<td>machine-id-file</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>/etc/machine-id,/var/lib/dbus/machine-id</td>
+</tr>
+<tr>
+<td>master-service-namespace</td>
+<td>-</td>
+<td>kubelet</td>
+<td>已弃用，kubelet 向 Pod 注入 Kubernetes 主控服务信息时使用的命名空间</td>
+</tr>
+<tr>
+<td>maximum-dead-containers</td>
+<td>-1</td>
+<td>kubelet</td>
+<td>已弃用，使用 eviction 代替</td>
+</tr>
+<tr>
+<td>maximum-dead-containers-per-container</td>
+<td>1</td>
+<td>kubelet</td>
+<td>已弃用，使用 eviction 代替</td>
+</tr>
+<tr>
+<td>minimum-container-ttl-duration</td>
+<td>-</td>
+<td>kubelet</td>
+<td>已弃用，使用 eviction 代替</td>
+</tr>
+<tr>
+<td>network-plugin</td>
+<td>-</td>
+<td>dockershim</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>network-plugin-mtu</td>
+<td>-</td>
+<td>dockershim</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>non-masquerade-cidr</td>
+<td>-</td>
+<td>kubelet</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>one-output</td>
+<td>-</td>
+<td>kubelet</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>port</td>
+<td>10250</td>
+<td>kubelet</td>
+<td>已弃用，kubelet 服务监听的本机端口号</td>
+</tr>
+<tr>
+<td>really-crash-for-testing</td>
+<td>-</td>
+<td>kubelet</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>register-schedulable</td>
+<td>true</td>
+<td>kubelet</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>seccomp-profile-root</td>
+<td>-</td>
+<td>kubelet</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>skip-headers</td>
+<td>-</td>
+<td>klog</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>skip-log-headers</td>
+<td>-</td>
+<td>klog</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>stderrthreshold</td>
+<td>-</td>
+<td>klog</td>
+<td>已弃用</td>
+</tr>
+<tr>
+<td>storage-driver-buffer-duration</td>
+<td></td>
+<td>-</td>
+<td>cadvisor</td>
+</tr>
+<tr>
+<td>storage-driver-db</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>storage-driver-host</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>storage-driver-password</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>storage-driver-secure</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>storage-driver-table</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>storage-driver-user</td>
+<td>-</td>
+<td>cadvisor</td>
+<td>已废弃</td>
+</tr>
+<tr>
+<td>v</td>
+<td>-</td>
+<td>klog</td>
+<td>日志级别详细程度的数值</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>组建内置参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>默认值</th>
+<th>KubeletConfiguration</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address</td>
+<td>0.0.0.0</td>
+<td>address</td>
+<td>kubelet api 服务监听的地址</td>
+</tr>
+<tr>
+<td>allowed-unsafe-sysctls</td>
+<td>-</td>
+<td>TODO;</td>
+<td>允许不安全的 sysctl 设置</td>
+</tr>
+<tr>
+<td>anonymous-auth</td>
+<td>true</td>
+<td>TODO;</td>
+<td>是否可接受匿名请求，用户名为 system:anonymous，用户组为 system:unauthenticated</td>
+</tr>
+<tr>
+<td>authentication-token-webhook</td>
+<td>TODO</td>
+<td>authentication.webhook.enabled</td>
+<td>TODO；使用 TokenReview API 对持有者令牌进行身份认证</td>
+</tr>
+<tr>
+<td>authentication-token-webhook-cache-ttl</td>
+<td>2m0s</td>
+<td>authentication.webhook.cacheTTL</td>
+<td>对 Webhook 令牌认证组件所返回的响应的缓存时间</td>
+</tr>
+<tr>
+<td>authorization-mode</td>
+<td>AlwaysAllow 或 Webhook</td>
+<td>authorization.mode</td>
+<td>服务端鉴权模式，可选值：AlwaysAllow、Webhook，当设置 &ndash;config 时默认值为 Webhook</td>
+</tr>
+<tr>
+<td>authorization-webhook-cache-authorized-ttl</td>
+<td>5m0s</td>
+<td>authorization.webhook.cacheAuthorizedTTL</td>
+<td>对 Webhook 认证组件所返回的 “Authorized（已授权）” 应答的缓存时间</td>
+</tr>
+<tr>
+<td>authorization-webhook-cache-unauthorized-ttl</td>
+<td>30s</td>
+<td>authorization.webhook.cacheUnauthorizedTTL</td>
+<td>对 Webhook 认证组件所返回的 “Unauthorized（未授权）” 应答的缓存时间</td>
+</tr>
+<tr>
+<td>bootstrap-kubeconfig</td>
+<td>-</td>
+<td>-</td>
+<td>包含 apiserver 上配置的 known_tokens.csv 里面 token，用于获取 kubelet-client-current.pem 证书</td>
+</tr>
+<tr>
+<td>cert-dir</td>
+<td>/var/lib/kubelet/pki</td>
+<td>-</td>
+<td>kubelet.crt 与 kubelet.key 证书路径, 优先级低于 tls-cert-file 与 tls-private-key-file</td>
+</tr>
+<tr>
+<td>cgroup-driver</td>
+<td>cgroupfs</td>
+<td>cgroupDriver</td>
+<td>用来操作本机 cgroup 时使用的驱动程序。支持的选项包括 cgroupfs 和 systemd</td>
+</tr>
+<tr>
+<td>cgroup-root</td>
+<td>&quot;&quot;</td>
+<td>TODO</td>
+<td>为 Pod 设置根 cgroup 默认将使用容器运行时的默认设置</td>
+</tr>
+<tr>
+<td>cgroups-per-qos</td>
+<td>true</td>
+<td>TODO</td>
+<td>启用创建 QoS cgroup 层次结构。此值为 true 时 kubelet 为 QoS 和 Pod 创建顶级的 cgroup</td>
+</tr>
+<tr>
+<td>client-ca-file</td>
+<td>-</td>
+<td>authentication.x509.clientCAFile</td>
+<td>TODO; 检查客户端证书，如 kube-apiserver 请求 kubelet ??</td>
+</tr>
+<tr>
+<td>cluster-dns</td>
+<td>-</td>
+<td>clusterDNS</td>
+<td>用于 Pod 中设置了 &ldquo;dnsPolicy=ClusterFirst&rdquo; 时为容器提供 DNS 服务</td>
+</tr>
+<tr>
+<td>cluster-domain</td>
+<td>cluster.local</td>
+<td>clusterDomain</td>
+<td>集群域名，如果设置了此值，kubelet 除了将主机的搜索域配置到所有容器之外，还会为其配置这里指定的域名</td>
+</tr>
+<tr>
+<td>config</td>
+<td>-</td>
+<td>-</td>
+<td>指向 KubeletConfiguration 配置文件，命令行参数会覆盖此文件中的配置</td>
+</tr>
+<tr>
+<td>container-log-max-files</td>
+<td>5</td>
+<td>containerLogMaxFiles</td>
+<td>设置容器的日志文件个数上限，必须不小于2且只能与 &ndash;container-runtime=remote 一起使用</td>
+</tr>
+<tr>
+<td>container-log-max-size</td>
+<td>10Mi</td>
+<td>containerLogMaxSize</td>
+<td>设置容器日志文件在轮换生成新文件时之前的最大值</td>
+</tr>
+<tr>
+<td>container-runtime-endpoint</td>
+<td>&quot;&quot;</td>
+<td>-</td>
+<td>如：unix:///var/run/containerd/containerd.sock</td>
+</tr>
+<tr>
+<td>contention-profiling</td>
+<td>-</td>
+<td>-</td>
+<td>TODO; 启用锁竞争分析，前提是开启 pprof</td>
+</tr>
+<tr>
+<td>cpu-cfs-quota</td>
+<td>true</td>
+<td>TODO</td>
+<td>TODO; 为设置了 CPU 限制的容器启用 CPU CFS 配额保障</td>
+</tr>
+<tr>
+<td>cpu-cfs-quota-period</td>
+<td>100ms</td>
+<td>TODO</td>
+<td>TODO; 设置 CPU CFS 配额周期 cpu.cfs_period_us。默认使用 Linux 内核所设置的默认值</td>
+</tr>
+<tr>
+<td>cpu-manager-policy</td>
+<td>none</td>
+<td>TODO</td>
+<td>TODO; 要使用的 CPU 管理器策略。可选值包括：none 和 static</td>
+</tr>
+<tr>
+<td>cpu-manager-policy-options</td>
+<td>-</td>
+<td>TODO</td>
+<td>TODO; 一组用于微调其行为的 key=value CPU 管理器策略选项</td>
+</tr>
+<tr>
+<td>cpu-manager-reconcile-period</td>
+<td>10s</td>
+<td>TODO</td>
+<td>TODO; 设置 CPU 管理器的调和时间</td>
+</tr>
+<tr>
+<td>enable-controller-attach-detach</td>
+<td>true</td>
+<td>TODO ｜ 启用 Attach/Detach 控制器来挂接和摘除调度到该节点的卷，同时禁用 kubelet 执行挂接和摘除操作</td>
+<td></td>
+</tr>
+<tr>
+<td>enable-debugging-handlers</td>
+<td>true</td>
+<td>TODO</td>
+<td>启用服务器上用于日志收集和在本地运行容器和命令的端点</td>
+</tr>
+<tr>
+<td>enable-server</td>
+<td>true</td>
+<td>TODO</td>
+<td>启用 kubelet 服务器</td>
+</tr>
+<tr>
+<td>enforce-node-allocatable</td>
+<td>pods</td>
+<td>TODO</td>
+<td>用逗号分隔的列表，包含由 kubelet 强制执行的节点可分配资源级别</td>
+</tr>
+<tr>
+<td>event-burst</td>
+<td>10</td>
+<td>TODO</td>
+<td>事件记录的个数的突发峰值上限</td>
+</tr>
+<tr>
+<td>event-qps</td>
+<td>5</td>
+<td>TODO</td>
+<td>设置大于 0 的值表示限制每秒可生成的事件数量。设置为 0 表示不限制</td>
+</tr>
+<tr>
+<td>eviction-hard</td>
+<td>imagefs.available&lt;15%,memory.available&lt;100Mi,nodefs.available&lt;10%</td>
+<td>TODO</td>
+<td>触发 Pod 驱逐操作的一组硬性门限</td>
+</tr>
+<tr>
+<td>eviction-max-pod-grace-period</td>
+<td>-</td>
+<td>TODO</td>
+<td>响应满足软性驱逐阈值（Soft Eviction Threshold）而终止 Pod 时使用的最长宽限期（以秒为单位</td>
+</tr>
+<tr>
+<td>eviction-minimum-reclaim</td>
+<td>-</td>
+<td>TODO</td>
+<td>当某资源压力过大时，kubelet 将执行 Pod 驱逐操作</td>
+</tr>
+<tr>
+<td>eviction-pressure-transition-period</td>
+<td>5m0s</td>
+<td>TODO</td>
+<td>在驱逐压力状况解除之前的最长等待时间</td>
+</tr>
+<tr>
+<td>eviction-soft</td>
+<td>-</td>
+<td>TODO</td>
+<td>设置一组驱逐阈值（例如：memory.available&lt;1.5Gi）。 如果在相应的宽限期内达到该阈值，则会触发 Pod 驱逐操作</td>
+</tr>
+<tr>
+<td>eviction-soft-grace-period</td>
+<td>-</td>
+<td>TODO</td>
+<td>设置一组驱逐宽限期（例如，memory.available=1m30s），对应于触发软性 Pod 驱逐操作之前软性驱逐阈值所需持续的时间长短</td>
+</tr>
+<tr>
+<td>exit-on-lock-contention</td>
+<td>-</td>
+<td>-</td>
+<td>设置为 true 表示当发生锁文件竞争时 kubelet 可以退出</td>
+</tr>
+<tr>
+<td>experimental-logging-sanitization</td>
+<td>-</td>
+<td>TODO</td>
+<td>对一些日志敏感字段做特殊处理</td>
+</tr>
+<tr>
+<td>fail-swap-on</td>
+<td>true</td>
+<td>failSwapOn</td>
+<td>设置为 true 表示如果主机启用了交换分区，kubelet 将直接失败</td>
+</tr>
+<tr>
+<td>file-check-frequency</td>
+<td>20s</td>
+<td>TODO</td>
+<td>检查配置文件中新数据的时间间隔</td>
+</tr>
+<tr>
+<td>hairpin-mode</td>
+<td>promiscuous-bridge</td>
+<td>hairpinMode</td>
+<td>设置 kubelet 执行 hairpin 网络地址转译的方式，该模式允许后端端点对其自身服务的访问能够再次经由负载均衡转发回自身，可选项包括 promiscuous-bridge、hairpin-veth 和 none</td>
+</tr>
+<tr>
+<td>healthz-bind-address</td>
+<td>127.0.0.1</td>
+<td>healthzBindAddress</td>
+<td>用于运行 healthz 服务器的 IP 地址</td>
+</tr>
+<tr>
+<td>healthz-port</td>
+<td>10248</td>
+<td>healthzPort</td>
+<td>本地 healthz 端点使用的端口（设置为 0 表示禁用）</td>
+</tr>
+<tr>
+<td>hostname-override</td>
+<td>-</td>
+<td>-</td>
+<td>将使用此字符串而不是实际的主机名作为节点标识</td>
+</tr>
+<tr>
+<td>housekeeping-interval</td>
+<td>10s</td>
+<td>TODO</td>
+<td>TODO</td>
+</tr>
+<tr>
+<td>http-check-frequency</td>
+<td>20s</td>
+<td>TODO</td>
+<td>HTTP 服务以获取新数据的时间间隔</td>
+</tr>
+<tr>
+<td>image-credential-provider-bin-dir</td>
+<td>-</td>
+<td>-</td>
+<td>TODO; 指向凭据提供组件可执行文件所在目录的路径</td>
+</tr>
+<tr>
+<td>image-credential-provider-config</td>
+<td>-</td>
+<td>-</td>
+<td>TODO; 指向凭据提供插件配置文件所在目录的路径</td>
+</tr>
+<tr>
+<td>image-gc-high-threshold</td>
+<td>85</td>
+<td>TODO</td>
+<td>镜像垃圾回收上限。磁盘使用空间达到该百分比时，镜像垃圾回收将持续工作。 值必须在 [0，100] 范围内。要禁用镜像垃圾回收，请设置为 100</td>
+</tr>
+<tr>
+<td>image-gc-low-threshold</td>
+<td>80</td>
+<td>TODO</td>
+<td>镜像垃圾回收下限。磁盘使用空间在达到该百分比之前，镜像垃圾回收操作不会运行。 值必须在 [0，100] 范围内，并且不得大于 high-threshold的值</td>
+</tr>
+<tr>
+<td>image-service-endpoint</td>
+<td>-</td>
+<td>-</td>
+<td>远程镜像服务的端点，未设置则同 container-runtime-endpoint</td>
+</tr>
+<tr>
+<td>iptables-drop-bit</td>
+<td>15</td>
+<td>TODO</td>
+<td>标记数据包将被丢弃的 fwmark 位设置。必须在 [0，31] 范围内</td>
+</tr>
+<tr>
+<td>iptables-masquerade-bit</td>
+<td>14</td>
+<td>TODO</td>
+<td>标记数据包将进行 SNAT 的 fwmark 空间位设置。必须在 [0，31] 范围内</td>
+</tr>
+<tr>
+<td>kernel-memcg-notification</td>
+<td>-</td>
+<td>TODO</td>
+<td>若启用，则 kubelet 将与内核中的 memcg 通知机制集成，不再使用轮询的方式来判定 是否 Pod 达到内存驱逐阈值</td>
+</tr>
+<tr>
+<td>kube-api-burst</td>
+<td>10</td>
+<td>TODO</td>
+<td>每秒发送到 apiserver 的突发请求数量上限</td>
+</tr>
+<tr>
+<td>kube-api-content-type</td>
+<td>application/vnd.kubernetes.protobuf</td>
+<td>TODO</td>
+<td>发送到 apiserver 的请求的内容类型</td>
+</tr>
+<tr>
+<td>kube-api-qps</td>
+<td>5</td>
+<td>TODO</td>
+<td>与 apiserver 通信的每秒查询个数QPS，此值必须&gt;=0，如果为0，则使用默认5。不包含事件和节点心跳 api，它们的速率限制是由一组不同的标志所控制</td>
+</tr>
+<tr>
+<td>kube-reserved</td>
+<td>-</td>
+<td>kubeReserved</td>
+<td>系统预留的资源配置，以一组 &lt;资源名称&gt;=&lt;资源数量&gt; 格式表示，支持：cpu、memory、ephemeral-storage</td>
+</tr>
+<tr>
+<td>kube-reserved-cgroup</td>
+<td>&quot;&quot;</td>
+<td>TODO</td>
+<td>给出某个顶层 cgroup 绝对名称，该 cgroup 用于管理通过标志 &ndash;kube-reserved 为 kubernetes 组件所预留的计算资源</td>
+</tr>
+<tr>
+<td>kubeconfig</td>
+<td>-</td>
+<td>-</td>
+<td>指定如何连接到 API 服务器</td>
+</tr>
+<tr>
+<td>kubelet-cgroups</td>
+<td>-</td>
+<td>TODO</td>
+<td>用于创建和运行 kubelet 的 cgroup 的绝对名称</td>
+</tr>
+<tr>
+<td>lock-file</td>
+<td>-</td>
+<td>-</td>
+<td>kubelet 使用的锁文件的路径</td>
+</tr>
+<tr>
+<td>log-json-info-buffer-size</td>
+<td>0</td>
+<td>TODO</td>
+<td>实验性特性</td>
+</tr>
+<tr>
+<td>log-json-split-stream</td>
+<td>-</td>
+<td>TODO</td>
+<td>实验性特性</td>
+</tr>
+<tr>
+<td>logging-format</td>
+<td>text</td>
+<td>TODO</td>
+<td>设置日志文件格式。可以设置的格式有：&ldquo;text&rdquo;、&ldquo;json&rdquo;</td>
+</tr>
+<tr>
+<td>make-iptables-util-chains</td>
+<td>true</td>
+<td>TODO</td>
+<td>设置为 true 表示 kubelet 将确保 iptables 规则在主机上存在</td>
+</tr>
+<tr>
+<td>manifest-url</td>
+<td>-</td>
+<td>TODO</td>
+<td>用于访问要运行的其他 Pod 规范的 URL</td>
+</tr>
+<tr>
+<td>manifest-url-header</td>
+<td>-</td>
+<td>TODO</td>
+<td>请求 manifest-url 自定义的头</td>
+</tr>
+<tr>
+<td>max-open-files</td>
+<td>1000000</td>
+<td>TODO</td>
+<td>kubelet 进程可以打开的最大文件数量</td>
+</tr>
+<tr>
+<td>max-pods</td>
+<td>110</td>
+<td>maxPods</td>
+<td>此 kubelet 能运行的 Pod 最大数量</td>
+</tr>
+<tr>
+<td>memory-manager-policy</td>
+<td>None</td>
+<td>TODO</td>
+<td>内存管理器策略使用。可选值：&lsquo;None&rsquo;、&lsquo;Static&rsquo;</td>
+</tr>
+<tr>
+<td>minimum-image-ttl-duration</td>
+<td>2m0s</td>
+<td>TODO</td>
+<td>已结束的容器在被垃圾回收清理之前的最少存活时间。 例如：&lsquo;300ms&rsquo;、&rsquo;10s&rsquo; 或者 &lsquo;2h45m&rsquo;</td>
+</tr>
+<tr>
+<td>node-ip</td>
+<td>-</td>
+<td>-</td>
+<td>节点的 IP 地址</td>
+</tr>
+<tr>
+<td>node-labels</td>
+<td>-</td>
+<td>-</td>
+<td>kubelet 在集群中注册本节点时设置的标签</td>
+</tr>
+<tr>
+<td>node-status-max-images</td>
+<td>50</td>
+<td>TODO</td>
+<td>在 node.status.images 中可以报告的最大镜像数量。如果指定为 -1，则不设上限</td>
+</tr>
+<tr>
+<td>node-status-update-frequency</td>
+<td>10s</td>
+<td>TODO</td>
+<td>指定 kubelet 向主控节点汇报节点状态的时间间隔。注意：更改此常量时请务必谨慎， 它必须与节点控制器中的 nodeMonitorGracePeriod 一起使用</td>
+</tr>
+<tr>
+<td>oom-score-adj</td>
+<td>-999</td>
+<td>oomScoreAdj</td>
+<td>kubelet 进程的 oom-score-adj 参数值。有效范围为 [-1000，1000]</td>
+</tr>
+<tr>
+<td>pod-cidr</td>
+<td>-</td>
+<td>TODO</td>
+<td>用于给 Pod 分配 IP 地址的 CIDR 地址池，仅在独立运行模式下使用</td>
+</tr>
+<tr>
+<td>pod-infra-container-image</td>
+<td>k8s.gcr.io/pause:3.5</td>
+<td>-</td>
+<td>所指定的镜像不会被镜像垃圾收集器删除，依赖CRI</td>
+</tr>
+<tr>
+<td>pod-manifest-path</td>
+<td>-</td>
+<td>staticPodPath</td>
+<td>设置包含要运行的静态 Pod 的文件的路径</td>
+</tr>
+<tr>
+<td>pod-max-pids</td>
+<td>-1</td>
+<td>TODO</td>
+<td>设置每个 Pod 中的最大进程数目。如果为 -1，则 kubelet 使用节点可分配的 PID 容量作为默认值</td>
+</tr>
+<tr>
+<td>pods-per-core</td>
+<td>-</td>
+<td>TODO</td>
+<td>在每个处理器核上可运行的 Pod 数量</td>
+</tr>
+<tr>
+<td>protect-kernel-defaults</td>
+<td>-</td>
+<td>TODO</td>
+<td>TODO</td>
+</tr>
+<tr>
+<td>provider-id</td>
+<td>-</td>
+<td>TODO</td>
+<td>设置主机数据库中用来标识节点的唯一标识</td>
+</tr>
+<tr>
+<td>qos-reserved</td>
+<td>-</td>
+<td>TODO</td>
+<td>TODO</td>
+</tr>
+<tr>
+<td>read-only-port</td>
+<td>10255</td>
+<td>TODO</td>
+<td>kubelet 可以在没有身份验证/鉴权的情况下提供只读服务的端口（设置为 0 表示禁用）</td>
+</tr>
+<tr>
+<td>register-node</td>
+<td>true</td>
+<td>TODO</td>
+<td>向 API 服务器注册节点</td>
+</tr>
+<tr>
+<td>register-with-taints</td>
+<td>-</td>
+<td>TODO</td>
+<td>设置本节点的污点标记，格式为 <key>=<value>:<effect>， 以逗号分隔</td>
+</tr>
+<tr>
+<td>registry-burst</td>
+<td>10</td>
+<td>TODO</td>
+<td>设置突发性镜像拉取的个数上限</td>
+</tr>
+<tr>
+<td>registry-qps</td>
+<td>5</td>
+<td>TODO</td>
+<td>如此值大于 0，可用来限制镜像仓库的 QPS 上限。设置为 0，表示不受限制</td>
+</tr>
+<tr>
+<td>reserved-cpus</td>
+<td>-</td>
+<td>TODO</td>
+<td>为系统和 Kubernetes 保留使用的 CPU，优先级高于 system-reserved 和 &ndash;kube-reskube-reserved</td>
+</tr>
+<tr>
+<td>reserved-memory</td>
+<td>-</td>
+<td>TODO</td>
+<td>TODO; 以逗号分隔的 NUMA 节点内存预留列表</td>
+</tr>
+<tr>
+<td>resolv-conf</td>
+<td>/etc/resolv.conf</td>
+<td>TODO</td>
+<td>名字解析服务的配置文件名，用作容器 DNS 解析配置的基础</td>
+</tr>
+<tr>
+<td>root-dir</td>
+<td>/var/lib/kubelet</td>
+<td>-</td>
+<td>设置用于管理 kubelet 文件的根目录</td>
+</tr>
+<tr>
+<td>rotate-certificates</td>
+<td>-</td>
+<td>TODO</td>
+<td>当客户端证书即将过期时 kubelet 自动从 kube-apiserver 请求新的证书进行轮换</td>
+</tr>
+<tr>
+<td>rotate-server-certificates</td>
+<td>-</td>
+<td>TODO</td>
+<td>当 kubelet 的服务证书即将过期时自动从 kube-apiserver 请求新的证书进行轮换</td>
+</tr>
+<tr>
+<td>runonce</td>
+<td>-</td>
+<td>-</td>
+<td>表示从本地清单或远程 URL 创建完 Pod 后立即退出 kubelet 进程</td>
+</tr>
+<tr>
+<td>runtime-cgroups</td>
+<td>-</td>
+<td>-</td>
+<td>TODO; 设置用于创建和运行容器运行时的 cgroup 的绝对名称</td>
+</tr>
+<tr>
+<td>runtime-request-timeout</td>
+<td>2m0s</td>
+<td>TODO</td>
+<td>设置除了长时间运行的请求（包括 pull、logs、exec 和 attach 等操作）之外的其他运行时请求的超时时间</td>
+</tr>
+<tr>
+<td>seccomp-default</td>
+<td>-</td>
+<td>-</td>
+<td>TODO; 启用 RuntimeDefault 作为所有工作负载的默认 seccomp 配置文件</td>
+</tr>
+<tr>
+<td>serialize-image-pulls</td>
+<td>true</td>
+<td>serializeImagePulls</td>
+<td>逐一拉取镜像</td>
+</tr>
+<tr>
+<td>streaming-connection-idle-timeout</td>
+<td>4h0m0s</td>
+<td>TODO; 设置流连接在自动关闭之前可以空闲的最长时间。0 表示没有超时限制，与 kubelet 服务器的所有连接最长持续时间为 4 小时</td>
+<td></td>
+</tr>
+<tr>
+<td>sync-frequency</td>
+<td>1m0s</td>
+<td>TODO</td>
+<td>在运行中的容器与其配置之间执行同步操作的最长时间间隔</td>
+</tr>
+<tr>
+<td>system-cgroups</td>
+<td>-</td>
+<td>TODO</td>
+<td>TODO</td>
+</tr>
+<tr>
+<td>system-reserved</td>
+<td>-</td>
+<td>systemReserved</td>
+<td>系统预留的资源配置，以一组 资源名称=资源数量 的格式表示</td>
+</tr>
+<tr>
+<td>system-reserved-cgroup</td>
+<td>&quot;&quot;</td>
+<td>TODO</td>
+<td>TODO; 此标志给出一个顶层 cgroup 绝对名称，该 cgroup 用于管理非 kubernetes 组件</td>
+</tr>
+<tr>
+<td>tls-cert-file</td>
+<td>-</td>
+<td>TODO</td>
+<td>用于 HTTPS 认证，如未提供，则 kubelet 生成自签名证书和密钥，并将其保存到通过 &ndash;cert-dir 指定的目录</td>
+</tr>
+<tr>
+<td>tls-cipher-suites</td>
+<td>-</td>
+<td>TODO</td>
+<td>服务器端加密算法列表，以逗号分隔</td>
+</tr>
+<tr>
+<td>tls-min-version</td>
+<td>-</td>
+<td>TODO</td>
+<td>设置支持的最小 TLS 版本号，可选的版本号包括：VersionTLS10、 VersionTLS11、VersionTLS12 和 VersionTLS13</td>
+</tr>
+<tr>
+<td>tls-private-key-file</td>
+<td>-</td>
+<td>TODO</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>topology-manager-policy</td>
+<td>none</td>
+<td>TODO</td>
+<td>设置拓扑管理策略（Topology Manager policy）。可选值包括：none、 best-effort、restricted 和 single-numa-node</td>
+</tr>
+<tr>
+<td>topology-manager-scope</td>
+<td>container</td>
+<td>TODO</td>
+<td>TODO; 拓扑提示信息使用范围</td>
+</tr>
+<tr>
+<td>volume-plugin-dir</td>
+<td>-</td>
+<td>TODO</td>
+<td>用来搜索第三方存储卷插件的目录</td>
+</tr>
+<tr>
+<td>volume-stats-agg-period</td>
+<td>1m0s</td>
+<td>TODO</td>
+<td>指定 kubelet 计算和缓存所有 Pod 和卷的磁盘用量总值的时间间隔。要禁用磁盘用量计算， 请设置为 0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="数据结构">数据结构</h2>
+<h3 id="kubeletconfiguration">KubeletConfiguration</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// KubeletConfiguration contains the configuration for the Kubelet
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">KubeletConfiguration</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">TypeMeta</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// enableServer enables Kubelet&#39;s secured server.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Note: Kubelet&#39;s insecure port is controlled by the readOnlyPort option.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EnableServer</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// staticPodPath is the path to the directory containing local (static) pods to
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// run, or the path to a single static pod file.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">StaticPodPath</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// syncFrequency is the max period between synchronizing running
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// containers and config
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SyncFrequency</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// fileCheckFrequency is the duration between checking config files for
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// new data
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">FileCheckFrequency</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// httpCheckFrequency is the duration between checking http for new data
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">HTTPCheckFrequency</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// staticPodURL is the URL for accessing static pods to run
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">StaticPodURL</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// staticPodURLHeader is a map of slices with HTTP headers to use when accessing the podURL
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">StaticPodURLHeader</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">][]</span><span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// address is the IP address for the Kubelet to serve on (set to 0.0.0.0
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// for all interfaces)
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Address</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// port is the port for the Kubelet to serve on.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Port</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// readOnlyPort is the read-only port for the Kubelet to serve on with
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// no authentication/authorization (set to 0 to disable)
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ReadOnlyPort</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// volumePluginDir is the full path of the directory in which to search
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// for additional third party volume plugins.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">VolumePluginDir</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// providerID, if set, sets the unique id of the instance that an external provider (i.e. cloudprovider)
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// can use to identify a specific node
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ProviderID</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// tlsCertFile is the file containing x509 Certificate for HTTPS.  (CA cert,
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// if any, concatenated after server cert). If tlsCertFile and
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// tlsPrivateKeyFile are not provided, a self-signed certificate
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// and key are generated for the public address and saved to the directory
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// passed to the Kubelet&#39;s --cert-dir flag.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">TLSCertFile</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// tlsPrivateKeyFile is the file containing x509 private key matching tlsCertFile
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">TLSPrivateKeyFile</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// TLSCipherSuites is the list of allowed cipher suites for the server.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Values are from tls package constants (https://golang.org/pkg/crypto/tls/#pkg-constants).
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">TLSCipherSuites</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// TLSMinVersion is the minimum TLS version supported.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Values are from tls package constants (https://golang.org/pkg/crypto/tls/#pkg-constants).
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">TLSMinVersion</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// rotateCertificates enables client certificate rotation. The Kubelet will request a
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// new certificate from the certificates.k8s.io API. This requires an approver to approve the
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// certificate signing requests.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">RotateCertificates</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// serverTLSBootstrap enables server certificate bootstrap. Instead of self
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// signing a serving certificate, the Kubelet will request a certificate from
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// the certificates.k8s.io API. This requires an approver to approve the
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// certificate signing requests. The RotateKubeletServerCertificate feature
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// must be enabled.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ServerTLSBootstrap</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// authentication specifies how requests to the Kubelet&#39;s server are authenticated
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Authentication</span> <span style="color:#000">KubeletAuthentication</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// authorization specifies how requests to the Kubelet&#39;s server are authorized
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Authorization</span> <span style="color:#000">KubeletAuthorization</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// registryPullQPS is the limit of registry pulls per second.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Set to 0 for no limit.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">RegistryPullQPS</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// registryBurst is the maximum size of bursty pulls, temporarily allows
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// pulls to burst to this number, while still not exceeding registryPullQPS.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Only used if registryPullQPS &gt; 0.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">RegistryBurst</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// eventRecordQPS is the maximum event creations per second. If 0, there
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// is no limit enforced.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EventRecordQPS</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// eventBurst is the maximum size of a burst of event creations, temporarily
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// allows event creations to burst to this number, while still not exceeding
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// eventRecordQPS. Only used if eventRecordQPS &gt; 0.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EventBurst</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// enableDebuggingHandlers enables server endpoints for log collection
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// and local running of containers and commands
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EnableDebuggingHandlers</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// enableContentionProfiling enables lock contention profiling, if enableDebuggingHandlers is true.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EnableContentionProfiling</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// healthzPort is the port of the localhost healthz endpoint (set to 0 to disable)
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">HealthzPort</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// healthzBindAddress is the IP address for the healthz server to serve on
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">HealthzBindAddress</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// oomScoreAdj is The oom-score-adj value for kubelet process. Values
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// must be within the range [-1000, 1000].
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">OOMScoreAdj</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// clusterDomain is the DNS domain for this cluster. If set, kubelet will
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// configure all containers to search this domain in addition to the
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// host&#39;s search domains.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ClusterDomain</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// clusterDNS is a list of IP addresses for a cluster DNS server. If set,
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// kubelet will configure all containers to use this for DNS resolution
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// instead of the host&#39;s DNS servers.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ClusterDNS</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// streamingConnectionIdleTimeout is the maximum time a streaming connection
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// can be idle before the connection is automatically closed.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">StreamingConnectionIdleTimeout</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// nodeStatusUpdateFrequency is the frequency that kubelet computes node
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// status. If node lease feature is not enabled, it is also the frequency that
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// kubelet posts node status to master. In that case, be cautious when
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// changing the constant, it must work with nodeMonitorGracePeriod in nodecontroller.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">NodeStatusUpdateFrequency</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// nodeStatusReportFrequency is the frequency that kubelet posts node
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// status to master if node status does not change. Kubelet will ignore this
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// frequency and post node status immediately if any change is detected. It is
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// only used when node lease feature is enabled.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">NodeStatusReportFrequency</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// nodeLeaseDurationSeconds is the duration the Kubelet will set on its corresponding Lease.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">NodeLeaseDurationSeconds</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// imageMinimumGCAge is the minimum age for an unused image before it is
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// garbage collected.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ImageMinimumGCAge</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// imageGCHighThresholdPercent is the percent of disk usage after which
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// image garbage collection is always run. The percent is calculated as
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// this field value out of 100.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ImageGCHighThresholdPercent</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// imageGCLowThresholdPercent is the percent of disk usage before which
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// image garbage collection is never run. Lowest disk usage to garbage
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// collect to. The percent is calculated as this field value out of 100.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ImageGCLowThresholdPercent</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// How frequently to calculate and cache volume disk usage for all pods
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">VolumeStatsAggPeriod</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// KubeletCgroups is the absolute name of cgroups to isolate the kubelet in
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">KubeletCgroups</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// SystemCgroups is absolute name of cgroups in which to place
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// all non-kernel processes that are not already in a container. Empty
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// for no container. Rolling back the flag requires a reboot.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SystemCgroups</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// CgroupRoot is the root cgroup to use for pods.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// If CgroupsPerQOS is enabled, this is the root of the QoS cgroup hierarchy.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">CgroupRoot</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Enable QoS based Cgroup hierarchy: top level cgroups for QoS Classes
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// And all Burstable and BestEffort pods are brought up under their
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// specific top level QoS cgroup.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">CgroupsPerQOS</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// driver that the kubelet uses to manipulate cgroups on the host (cgroupfs or systemd)
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">CgroupDriver</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// CPUManagerPolicy is the name of the policy to use.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Requires the CPUManager feature gate to be enabled.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">CPUManagerPolicy</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// CPUManagerPolicyOptions is a set of key=value which  allows to set extra options
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// to fine tune the behaviour of the cpu manager policies.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Requires  both the &#34;CPUManager&#34; and &#34;CPUManagerPolicyOptions&#34; feature gates to be enabled.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">CPUManagerPolicyOptions</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">]</span><span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// CPU Manager reconciliation period.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Requires the CPUManager feature gate to be enabled.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">CPUManagerReconcilePeriod</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// MemoryManagerPolicy is the name of the policy to use.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Requires the MemoryManager feature gate to be enabled.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">MemoryManagerPolicy</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// TopologyManagerPolicy is the name of the policy to use.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Policies other than &#34;none&#34; require the TopologyManager feature gate to be enabled.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">TopologyManagerPolicy</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// TopologyManagerScope represents the scope of topology hint generation
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// that topology manager requests and hint providers generate.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// &#34;pod&#34; scope requires the TopologyManager feature gate to be enabled.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Default: &#34;container&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">TopologyManagerScope</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Map of QoS resource reservation percentages (memory only for now).
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Requires the QOSReserved feature gate to be enabled.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">QOSReserved</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">]</span><span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// runtimeRequestTimeout is the timeout for all runtime requests except long running
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// requests - pull, logs, exec and attach.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">RuntimeRequestTimeout</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// hairpinMode specifies how the Kubelet should configure the container
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// bridge for hairpin packets.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Setting this flag allows endpoints in a Service to loadbalance back to
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// themselves if they should try to access their own Service. Values:
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">//   &#34;promiscuous-bridge&#34;: make the container bridge promiscuous.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">//   &#34;hairpin-veth&#34;:       set the hairpin flag on container veth interfaces.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">//   &#34;none&#34;:               do nothing.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Generally, one must set --hairpin-mode=hairpin-veth to achieve hairpin NAT,
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// because promiscuous-bridge assumes the existence of a container bridge named cbr0.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">HairpinMode</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// maxPods is the number of pods that can run on this Kubelet.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">MaxPods</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// The CIDR to use for pod IP addresses, only used in standalone mode.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// In cluster mode, this is obtained from the master.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">PodCIDR</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// The maximum number of processes per pod.  If -1, the kubelet defaults to the node allocatable pid capacity.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">PodPidsLimit</span> <span style="color:#204a87;font-weight:bold">int64</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// ResolverConfig is the resolver configuration file used as the basis
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// for the container DNS resolution configuration.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ResolverConfig</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// RunOnce causes the Kubelet to check the API server once for pods,
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// run those in addition to the pods specified by static pod files, and exit.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">RunOnce</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// cpuCFSQuota enables CPU CFS quota enforcement for containers that
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// specify CPU limits
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">CPUCFSQuota</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// CPUCFSQuotaPeriod sets the CPU CFS quota period value, cpu.cfs_period_us, defaults to 100ms
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">CPUCFSQuotaPeriod</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// maxOpenFiles is Number of files that can be opened by Kubelet process.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">MaxOpenFiles</span> <span style="color:#204a87;font-weight:bold">int64</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// nodeStatusMaxImages caps the number of images reported in Node.Status.Images.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">NodeStatusMaxImages</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// contentType is contentType of requests sent to apiserver.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ContentType</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// kubeAPIQPS is the QPS to use while talking with kubernetes apiserver
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">KubeAPIQPS</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// kubeAPIBurst is the burst to allow while talking with kubernetes
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// apiserver
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">KubeAPIBurst</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// serializeImagePulls when enabled, tells the Kubelet to pull images one at a time.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SerializeImagePulls</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Map of signal names to quantities that defines hard eviction thresholds. For example: {&#34;memory.available&#34;: &#34;300Mi&#34;}.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EvictionHard</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">]</span><span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Map of signal names to quantities that defines soft eviction thresholds.  For example: {&#34;memory.available&#34;: &#34;300Mi&#34;}.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EvictionSoft</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">]</span><span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Map of signal names to quantities that defines grace periods for each soft eviction signal. For example: {&#34;memory.available&#34;: &#34;30s&#34;}.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EvictionSoftGracePeriod</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">]</span><span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Duration for which the kubelet has to wait before transitioning out of an eviction pressure condition.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EvictionPressureTransitionPeriod</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EvictionMaxPodGracePeriod</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Map of signal names to quantities that defines minimum reclaims, which describe the minimum
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// amount of a given resource the kubelet will reclaim when performing a pod eviction while
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// that resource is under pressure. For example: {&#34;imagefs.available&#34;: &#34;2Gi&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EvictionMinimumReclaim</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">]</span><span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// podsPerCore is the maximum number of pods per core. Cannot exceed MaxPods.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// If 0, this field is ignored.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">PodsPerCore</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// enableControllerAttachDetach enables the Attach/Detach controller to
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// manage attachment/detachment of volumes scheduled to this node, and
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// disables kubelet from executing any attach/detach operations
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EnableControllerAttachDetach</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// protectKernelDefaults, if true, causes the Kubelet to error if kernel
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// flags are not as it expects. Otherwise the Kubelet will attempt to modify
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// kernel flags to match its expectation.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ProtectKernelDefaults</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// If true, Kubelet ensures a set of iptables rules are present on host.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// These rules will serve as utility for various components, e.g. kube-proxy.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// The rules will be created based on IPTablesMasqueradeBit and IPTablesDropBit.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">MakeIPTablesUtilChains</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// iptablesMasqueradeBit is the bit of the iptables fwmark space to mark for SNAT
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Values must be within the range [0, 31]. Must be different from other mark bits.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Warning: Please match the value of the corresponding parameter in kube-proxy.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// TODO: clean up IPTablesMasqueradeBit in kube-proxy
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">IPTablesMasqueradeBit</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// iptablesDropBit is the bit of the iptables fwmark space to mark for dropping packets.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Values must be within the range [0, 31]. Must be different from other mark bits.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">IPTablesDropBit</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// featureGates is a map of feature names to bools that enable or disable alpha/experimental
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// features. This field modifies piecemeal the built-in default values from
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// &#34;k8s.io/kubernetes/pkg/features/kube_features.go&#34;.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">FeatureGates</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">]</span><span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Tells the Kubelet to fail to start if swap is enabled on the node.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">FailSwapOn</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// memorySwap configures swap memory available to container workloads.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +featureGate=NodeSwap
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">MemorySwap</span> <span style="color:#000">MemorySwapConfiguration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// A quantity defines the maximum size of the container log file before it is rotated. For example: &#34;5Mi&#34; or &#34;256Ki&#34;.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ContainerLogMaxSize</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Maximum number of container log files that can be present for a container.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ContainerLogMaxFiles</span> <span style="color:#204a87;font-weight:bold">int32</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// ConfigMapAndSecretChangeDetectionStrategy is a mode in which config map and secret managers are running.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ConfigMapAndSecretChangeDetectionStrategy</span> <span style="color:#000">ResourceChangeDetectionStrategy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// A comma separated whitelist of unsafe sysctls or sysctl patterns (ending in *).
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Unsafe sysctl groups are kernel.shm*, kernel.msg*, kernel.sem, fs.mqueue.*, and net.*.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// These sysctls are namespaced but not allowed by default.  For example: &#34;kernel.msg*,net.ipv4.route.min_pmtu&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">AllowedUnsafeSysctls</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// kernelMemcgNotification if enabled, the kubelet will integrate with the kernel memcg
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// notification to determine if memory eviction thresholds are crossed rather than polling.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">KernelMemcgNotification</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">/* the following fields are meant for Node Allocatable */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// A set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G,pid=100) pairs
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// that describe resources reserved for non-kubernetes components.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Currently only cpu and memory are supported.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// See http://kubernetes.io/docs/user-guide/compute-resources for more detail.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SystemReserved</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">]</span><span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// A set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G,pid=100) pairs
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// that describe resources reserved for kubernetes system components.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Currently cpu, memory and local ephemeral storage for root file system are supported.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// See http://kubernetes.io/docs/user-guide/compute-resources for more detail.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">KubeReserved</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">]</span><span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// This flag helps kubelet identify absolute name of top level cgroup used to enforce `SystemReserved` compute resource reservation for OS system daemons.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Refer to [Node Allocatable](https://git.k8s.io/community/contributors/design-proposals/node/node-allocatable.md) doc for more information.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SystemReservedCgroup</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// This flag helps kubelet identify absolute name of top level cgroup used to enforce `KubeReserved` compute resource reservation for Kubernetes node system daemons.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Refer to [Node Allocatable](https://git.k8s.io/community/contributors/design-proposals/node/node-allocatable.md) doc for more information.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">KubeReservedCgroup</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// This flag specifies the various Node Allocatable enforcements that Kubelet needs to perform.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// This flag accepts a list of options. Acceptable options are `pods`, `system-reserved` &amp; `kube-reserved`.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Refer to [Node Allocatable](https://git.k8s.io/community/contributors/design-proposals/node/node-allocatable.md) doc for more information.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EnforceNodeAllocatable</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// This option specifies the cpu list reserved for the host level system threads and kubernetes related threads.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// This provide a &#34;static&#34; CPU list rather than the &#34;dynamic&#34; list by system-reserved and kube-reserved.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// This option overwrites CPUs provided by system-reserved and kube-reserved.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ReservedSystemCPUs</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// The previous version for which you want to show hidden metrics.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Only the previous minor version is meaningful, other values will not be allowed.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// The format is &lt;major&gt;.&lt;minor&gt;, e.g.: &#39;1.16&#39;.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// The purpose of this format is make sure you have the opportunity to notice if the next release hides additional metrics,
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// rather than being surprised when they are permanently removed in the release after that.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ShowHiddenMetricsForVersion</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Logging specifies the options of logging.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Refer [Logs Options](https://github.com/kubernetes/component-base/blob/master/logs/options.go) for more information.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Logging</span> <span style="color:#000">componentbaseconfig</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">LoggingConfiguration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// EnableSystemLogHandler enables /logs handler.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EnableSystemLogHandler</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// ShutdownGracePeriod specifies the total duration that the node should delay the shutdown and total grace period for pod termination during a node shutdown.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Defaults to 0 seconds.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +featureGate=GracefulNodeShutdown
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ShutdownGracePeriod</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// ShutdownGracePeriodCriticalPods specifies the duration used to terminate critical pods during a node shutdown. This should be less than ShutdownGracePeriod.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Defaults to 0 seconds.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// For example, if ShutdownGracePeriod=30s, and ShutdownGracePeriodCriticalPods=10s, during a node shutdown the first 20 seconds would be reserved for gracefully terminating normal pods, and the last 10 seconds would be reserved for terminating critical pods.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +featureGate=GracefulNodeShutdown
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ShutdownGracePeriodCriticalPods</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// ReservedMemory specifies a comma-separated list of memory reservations for NUMA nodes.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// The parameter makes sense only in the context of the memory manager feature. The memory manager will not allocate reserved memory for container workloads.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// For example, if you have a NUMA0 with 10Gi of memory and the ReservedMemory was specified to reserve 1Gi of memory at NUMA0,
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// the memory manager will assume that only 9Gi is available for allocation.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// You can specify a different amount of NUMA node and memory types.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// You can omit this parameter at all, but you should be aware that the amount of reserved memory from all NUMA nodes
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// should be equal to the amount of memory specified by the node allocatable features(https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable).
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// If at least one node allocatable parameter has a non-zero value, you will need to specify at least one NUMA node.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Also, avoid specifying:
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// 1. Duplicates, the same NUMA node, and memory type, but with a different value.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// 2. zero limits for any memory type.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// 3. NUMAs nodes IDs that do not exist under the machine.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// 4. memory types except for memory and hugepages-&lt;size&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ReservedMemory</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#000">MemoryReservation</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// EnableProfiling enables /debug/pprof handler.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EnableProfilingHandler</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// EnableDebugFlagsHandler enables/debug/flags/v handler.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EnableDebugFlagsHandler</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// SeccompDefault enables the use of `RuntimeDefault` as the default seccomp profile for all workloads.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SeccompDefault</span> <span style="color:#204a87;font-weight:bold">bool</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// MemoryThrottlingFactor specifies the factor multiplied by the memory limit or node allocatable memory
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// when setting the cgroupv2 memory.high value to enforce MemoryQoS.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Decreasing this factor will set lower high limit for container cgroups and put heavier reclaim pressure
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// while increasing will put less reclaim pressure.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// See http://kep.k8s.io/2570 for more details.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Default: 0.8
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +featureGate=MemoryQoS
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">MemoryThrottlingFactor</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">float64</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div>
+	
+		<br /><hr />
+		<style>
+  .feedback--answer {
+    display: inline-block;
+  }
+  .feedback--answer-no {
+    margin-left: 1em;
+  }
+  .feedback--response {
+    display: none;
+    margin-top: 1em;
+  }
+  .feedback--response__visible {
+    display: block;
+  }
+</style>
+
+<div class="d-print-none">
+  <h4 class="feedback--title">希望您的反馈</h4>
+  <p class="feedback--question">该页面的内容对您有帮助吗?</p>
+  <button class="btn btn-primary mb-4 feedback--answer feedback--answer-yes">是的</button>
+  <button class="btn btn-danger mb-4 feedback--answer feedback--answer-no">没有</button>
+  <p class="feedback--response feedback--response-yes">
+    感谢您的支持! 如有其他建议，<a href="https://github.com/opsaid/website/issues/new">请告诉我们！</a>
+  </p>
+  <p class="feedback--response feedback--response-no">
+    非常抱歉，您有什么改进建议？<a href="https://github.com/opsaid/website/issues/new">请告诉我们！</a>
+  </p>
+</div>
+
+<script>
+  const yesButton = document.querySelector('.feedback--answer-yes');
+  const noButton = document.querySelector('.feedback--answer-no');
+  const yesResponse = document.querySelector('.feedback--response-yes');
+  const noResponse = document.querySelector('.feedback--response-no');
+  const disableButtons = () => {
+    yesButton.disabled = true;
+    noButton.disabled = true;
+  };
+  const sendFeedback = (value) => {
+    if (typeof ga !== 'function') return;
+    const args = {
+      command: 'send',
+      hitType: 'event',
+      category: 'Helpful',
+      action: 'click',
+      label: window.location.pathname,
+      value: value
+    };
+    ga(args.command, args.hitType, args.category, args.action, args.label, args.value);
+  };
+  yesButton.addEventListener('click', () => {
+    yesResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(1);
+  });
+  noButton.addEventListener('click', () => {
+    noResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(0);
+  });
+</script>
+
+		<br />
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+  最后修改 2023.02.08: <a href="https://github.com/opsaid/website/commit/fadf0dccc4cc72ff48e4de108f0437e03d274120">feat: 更新k8s基础组件结构 (fadf0dc)</a>
+</div>
+
+</div>
+
+
+          </main>
+
+
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-0 col-sm-0 text-xs-center order-sm-2">
+        
+      </div>
+      <div class="col-0 col-sm-0 text-right text-xs-center order-sm-3">
+        
+      </div>
+      <div class="col- col-sm-12 text-center py-2 order-sm-2">
+        <p class="mt-2">
+          <small class="text-white">&copy; 2023 The OPSaid Authors. 保留所有权利</small>
+          <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
+
+	
+		
+	
+
+          <small>|</small>
+
+          
+          <small>
+            <img style="width:16px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKTWlDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVN3WJP3Fj7f92UPVkLY8LGXbIEAIiOsCMgQWaIQkgBhhBASQMWFiApWFBURnEhVxILVCkidiOKgKLhnQYqIWotVXDjuH9yntX167+3t+9f7vOec5/zOec8PgBESJpHmomoAOVKFPDrYH49PSMTJvYACFUjgBCAQ5svCZwXFAADwA3l4fnSwP/wBr28AAgBw1S4kEsfh/4O6UCZXACCRAOAiEucLAZBSAMguVMgUAMgYALBTs2QKAJQAAGx5fEIiAKoNAOz0ST4FANipk9wXANiiHKkIAI0BAJkoRyQCQLsAYFWBUiwCwMIAoKxAIi4EwK4BgFm2MkcCgL0FAHaOWJAPQGAAgJlCLMwAIDgCAEMeE80DIEwDoDDSv+CpX3CFuEgBAMDLlc2XS9IzFLiV0Bp38vDg4iHiwmyxQmEXKRBmCeQinJebIxNI5wNMzgwAABr50cH+OD+Q5+bk4eZm52zv9MWi/mvwbyI+IfHf/ryMAgQAEE7P79pf5eXWA3DHAbB1v2upWwDaVgBo3/ldM9sJoFoK0Hr5i3k4/EAenqFQyDwdHAoLC+0lYqG9MOOLPv8z4W/gi372/EAe/tt68ABxmkCZrcCjg/1xYW52rlKO58sEQjFu9+cj/seFf/2OKdHiNLFcLBWK8ViJuFAiTcd5uVKRRCHJleIS6X8y8R+W/QmTdw0ArIZPwE62B7XLbMB+7gECiw5Y0nYAQH7zLYwaC5EAEGc0Mnn3AACTv/mPQCsBAM2XpOMAALzoGFyolBdMxggAAESggSqwQQcMwRSswA6cwR28wBcCYQZEQAwkwDwQQgbkgBwKoRiWQRlUwDrYBLWwAxqgEZrhELTBMTgN5+ASXIHrcBcGYBiewhi8hgkEQcgIE2EhOogRYo7YIs4IF5mOBCJhSDSSgKQg6YgUUSLFyHKkAqlCapFdSCPyLXIUOY1cQPqQ28ggMor8irxHMZSBslED1AJ1QLmoHxqKxqBz0XQ0D12AlqJr0Rq0Hj2AtqKn0UvodXQAfYqOY4DRMQ5mjNlhXIyHRWCJWBomxxZj5Vg1Vo81Yx1YN3YVG8CeYe8IJAKLgBPsCF6EEMJsgpCQR1hMWEOoJewjtBK6CFcJg4Qxwicik6hPtCV6EvnEeGI6sZBYRqwm7iEeIZ4lXicOE1+TSCQOyZLkTgohJZAySQtJa0jbSC2kU6Q+0hBpnEwm65Btyd7kCLKArCCXkbeQD5BPkvvJw+S3FDrFiOJMCaIkUqSUEko1ZT/lBKWfMkKZoKpRzame1AiqiDqfWkltoHZQL1OHqRM0dZolzZsWQ8ukLaPV0JppZ2n3aC/pdLoJ3YMeRZfQl9Jr6Afp5+mD9HcMDYYNg8dIYigZaxl7GacYtxkvmUymBdOXmchUMNcyG5lnmA+Yb1VYKvYqfBWRyhKVOpVWlX6V56pUVXNVP9V5qgtUq1UPq15WfaZGVbNQ46kJ1Bar1akdVbupNq7OUndSj1DPUV+jvl/9gvpjDbKGhUaghkijVGO3xhmNIRbGMmXxWELWclYD6yxrmE1iW7L57Ex2Bfsbdi97TFNDc6pmrGaRZp3mcc0BDsax4PA52ZxKziHODc57LQMtPy2x1mqtZq1+rTfaetq+2mLtcu0W7eva73VwnUCdLJ31Om0693UJuja6UbqFutt1z+o+02PreekJ9cr1Dund0Uf1bfSj9Rfq79bv0R83MDQINpAZbDE4Y/DMkGPoa5hpuNHwhOGoEctoupHEaKPRSaMnuCbuh2fjNXgXPmasbxxirDTeZdxrPGFiaTLbpMSkxeS+Kc2Ua5pmutG003TMzMgs3KzYrMnsjjnVnGueYb7ZvNv8jYWlRZzFSos2i8eW2pZ8ywWWTZb3rJhWPlZ5VvVW16xJ1lzrLOtt1ldsUBtXmwybOpvLtqitm63Edptt3xTiFI8p0in1U27aMez87ArsmuwG7Tn2YfYl9m32zx3MHBId1jt0O3xydHXMdmxwvOuk4TTDqcSpw+lXZxtnoXOd8zUXpkuQyxKXdpcXU22niqdun3rLleUa7rrStdP1o5u7m9yt2W3U3cw9xX2r+00umxvJXcM970H08PdY4nHM452nm6fC85DnL152Xlle+70eT7OcJp7WMG3I28Rb4L3Le2A6Pj1l+s7pAz7GPgKfep+Hvqa+It89viN+1n6Zfgf8nvs7+sv9j/i/4XnyFvFOBWABwQHlAb2BGoGzA2sDHwSZBKUHNQWNBbsGLww+FUIMCQ1ZH3KTb8AX8hv5YzPcZyya0RXKCJ0VWhv6MMwmTB7WEY6GzwjfEH5vpvlM6cy2CIjgR2yIuB9pGZkX+X0UKSoyqi7qUbRTdHF09yzWrORZ+2e9jvGPqYy5O9tqtnJ2Z6xqbFJsY+ybuIC4qriBeIf4RfGXEnQTJAntieTE2MQ9ieNzAudsmjOc5JpUlnRjruXcorkX5unOy553PFk1WZB8OIWYEpeyP+WDIEJQLxhP5aduTR0T8oSbhU9FvqKNolGxt7hKPJLmnVaV9jjdO31D+miGT0Z1xjMJT1IreZEZkrkj801WRNberM/ZcdktOZSclJyjUg1plrQr1zC3KLdPZisrkw3keeZtyhuTh8r35CP5c/PbFWyFTNGjtFKuUA4WTC+oK3hbGFt4uEi9SFrUM99m/ur5IwuCFny9kLBQuLCz2Lh4WfHgIr9FuxYji1MXdy4xXVK6ZHhp8NJ9y2jLspb9UOJYUlXyannc8o5Sg9KlpUMrglc0lamUycturvRauWMVYZVkVe9ql9VbVn8qF5VfrHCsqK74sEa45uJXTl/VfPV5bdra3kq3yu3rSOuk626s91m/r0q9akHV0IbwDa0b8Y3lG19tSt50oXpq9Y7NtM3KzQM1YTXtW8y2rNvyoTaj9nqdf13LVv2tq7e+2Sba1r/dd3vzDoMdFTve75TsvLUreFdrvUV99W7S7oLdjxpiG7q/5n7duEd3T8Wej3ulewf2Re/ranRvbNyvv7+yCW1SNo0eSDpw5ZuAb9qb7Zp3tXBaKg7CQeXBJ9+mfHvjUOihzsPcw83fmX+39QjrSHkr0jq/dawto22gPaG97+iMo50dXh1Hvrf/fu8x42N1xzWPV56gnSg98fnkgpPjp2Snnp1OPz3Umdx590z8mWtdUV29Z0PPnj8XdO5Mt1/3yfPe549d8Lxw9CL3Ytslt0utPa49R35w/eFIr1tv62X3y+1XPK509E3rO9Hv03/6asDVc9f41y5dn3m978bsG7duJt0cuCW69fh29u0XdwruTNxdeo94r/y+2v3qB/oP6n+0/rFlwG3g+GDAYM/DWQ/vDgmHnv6U/9OH4dJHzEfVI0YjjY+dHx8bDRq98mTOk+GnsqcTz8p+Vv9563Or59/94vtLz1j82PAL+YvPv655qfNy76uprzrHI8cfvM55PfGm/K3O233vuO+638e9H5ko/ED+UPPR+mPHp9BP9z7nfP78L/eE8/sl0p8zAAA7SGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS41LWMwMjEgNzkuMTU1NzcyLCAyMDE0LzAxLzEzLTE5OjQ0OjAwICAgICAgICAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgICAgICAgICB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIgogICAgICAgICAgICB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD5BZG9iZSBQaG90b3Nob3AgQ0MgMjAxNCAoV2luZG93cyk8L3htcDpDcmVhdG9yVG9vbD4KICAgICAgICAgPHhtcDpDcmVhdGVEYXRlPjIwMTUtMTEtMTBUMTQ6MDQ6NTArMDg6MDA8L3htcDpDcmVhdGVEYXRlPgogICAgICAgICA8eG1wOk1ldGFkYXRhRGF0ZT4yMDE1LTExLTEwVDE0OjA0OjUwKzA4OjAwPC94bXA6TWV0YWRhdGFEYXRlPgogICAgICAgICA8eG1wOk1vZGlmeURhdGU+MjAxNS0xMS0xMFQxNDowNDo1MCswODowMDwveG1wOk1vZGlmeURhdGU+CiAgICAgICAgIDx4bXBNTTpJbnN0YW5jZUlEPnhtcC5paWQ6ODBiY2E5ODUtNGY5Yi02ZTRkLTlmYzktZThmNDkyNjdkZjRlPC94bXBNTTpJbnN0YW5jZUlEPgogICAgICAgICA8eG1wTU06RG9jdW1lbnRJRD5hZG9iZTpkb2NpZDpwaG90b3Nob3A6ZWRkYWU4MGMtODc3MC0xMWU1LTg0OWEtYmNmZGE2MDI4ZjJlPC94bXBNTTpEb2N1bWVudElEPgogICAgICAgICA8eG1wTU06T3JpZ2luYWxEb2N1bWVudElEPnhtcC5kaWQ6ZDAxN2I5NGUtOTRiZC0yNjQxLThmZjktYmY3YTBhMzY3N2IxPC94bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ+CiAgICAgICAgIDx4bXBNTTpIaXN0b3J5PgogICAgICAgICAgICA8cmRmOlNlcT4KICAgICAgICAgICAgICAgPHJkZjpsaSByZGY6cGFyc2VUeXBlPSJSZXNvdXJjZSI+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDphY3Rpb24+Y3JlYXRlZDwvc3RFdnQ6YWN0aW9uPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6aW5zdGFuY2VJRD54bXAuaWlkOmQwMTdiOTRlLTk0YmQtMjY0MS04ZmY5LWJmN2EwYTM2NzdiMTwvc3RFdnQ6aW5zdGFuY2VJRD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OndoZW4+MjAxNS0xMS0xMFQxNDowNDo1MCswODowMDwvc3RFdnQ6d2hlbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OnNvZnR3YXJlQWdlbnQ+QWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpPC9zdEV2dDpzb2Z0d2FyZUFnZW50PgogICAgICAgICAgICAgICA8L3JkZjpsaT4KICAgICAgICAgICAgICAgPHJkZjpsaSByZGY6cGFyc2VUeXBlPSJSZXNvdXJjZSI+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDphY3Rpb24+c2F2ZWQ8L3N0RXZ0OmFjdGlvbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0Omluc3RhbmNlSUQ+eG1wLmlpZDo4MGJjYTk4NS00ZjliLTZlNGQtOWZjOS1lOGY0OTI2N2RmNGU8L3N0RXZ0Omluc3RhbmNlSUQ+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDp3aGVuPjIwMTUtMTEtMTBUMTQ6MDQ6NTArMDg6MDA8L3N0RXZ0OndoZW4+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDpzb2Z0d2FyZUFnZW50PkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE0IChXaW5kb3dzKTwvc3RFdnQ6c29mdHdhcmVBZ2VudD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmNoYW5nZWQ+Lzwvc3RFdnQ6Y2hhbmdlZD4KICAgICAgICAgICAgICAgPC9yZGY6bGk+CiAgICAgICAgICAgIDwvcmRmOlNlcT4KICAgICAgICAgPC94bXBNTTpIaXN0b3J5PgogICAgICAgICA8cGhvdG9zaG9wOkRvY3VtZW50QW5jZXN0b3JzPgogICAgICAgICAgICA8cmRmOkJhZz4KICAgICAgICAgICAgICAgPHJkZjpsaT4zQ0I4RkVFOEMyRUJFNkU1QTREQTk3MzI4MzU0MTI0RTwvcmRmOmxpPgogICAgICAgICAgICAgICA8cmRmOmxpPmFkb2JlOmRvY2lkOnBob3Rvc2hvcDpiZGRmY2Y2Zi04NzcwLTExZTUtODQ5YS1iY2ZkYTYwMjhmMmU8L3JkZjpsaT4KICAgICAgICAgICAgPC9yZGY6QmFnPgogICAgICAgICA8L3Bob3Rvc2hvcDpEb2N1bWVudEFuY2VzdG9ycz4KICAgICAgICAgPHBob3Rvc2hvcDpDb2xvck1vZGU+MzwvcGhvdG9zaG9wOkNvbG9yTW9kZT4KICAgICAgICAgPHBob3Rvc2hvcDpJQ0NQcm9maWxlPnNSR0IgSUVDNjE5NjYtMi4xPC9waG90b3Nob3A6SUNDUHJvZmlsZT4KICAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9wbmc8L2RjOmZvcm1hdD4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHRpZmY6WFJlc29sdXRpb24+NzIwMDAwLzEwMDAwPC90aWZmOlhSZXNvbHV0aW9uPgogICAgICAgICA8dGlmZjpZUmVzb2x1dGlvbj43MjAwMDAvMTAwMDA8L3RpZmY6WVJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOlJlc29sdXRpb25Vbml0PjI8L3RpZmY6UmVzb2x1dGlvblVuaXQ+CiAgICAgICAgIDxleGlmOkNvbG9yU3BhY2U+MTwvZXhpZjpDb2xvclNwYWNlPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNpb24+MjA8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpQaXhlbFlEaW1lbnNpb24+MjA8L2V4aWY6UGl4ZWxZRGltZW5zaW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAKPD94cGFja2V0IGVuZD0idyI/Pu6JurQAAAAgY0hSTQAAeiUAAICDAAD5/wAAgOkAAHUwAADqYAAAOpgAABdvkl/FRgAABRFJREFUeNpE1OtvW/Udx/H3ufj4+Ph2nDh2vLgrTSPaFNqGtd0Gy9LRTVymNoNM6ihCaEwdQ5sYAo0HTOwBYg/Yk0pDiG3qmLSiPtjGJERbdZSQaUArykXt1la9hDRNY6dpYsexj30uPj7ntwcVyT/w0ucrfT5fSQgBdguAEBlZhDhaiVikF2j22lfPjP77+Kc/9ZyO9p37th7s2rLlbegveZ4g6jggS4AMAKkkkhAC366DJJADgaJlgA/unTx+4qmT/7oyKpxJfdYzUDIma7M6TsXoDH+3/8jgnrG/iOC2o8JrIiQJECjpvlt0Q7JoimWEkQHN1Sf+8MbE40+O7226M/rtCYX9+k2e0me55+48XXfn1f1PvvfwiVdfOSLFlKitSbh8hq9+DitZFRlZSaHK1aJ35uV3f3+4zr79/fy42CD9pwtULwdUpwLqu//ID4JzPHPoEQ7+00dc/vM/Eoary3oCPR5dBROeRTxaH7x+9MWpkd3nRsyBPL/InmP6cAN5jUlgtcELkXpMTj19kr3GGfLfuovv7T62Z/GjN67aM2c3XHz/nVUw6jmo7ruJI5eT2idz23lwu0XzbAP5eh3JjBJdCnBP3iSyrhu96VD562nG7m8z8cUm3vwwKCSkVgx5aBWsL1aK4cfvHwilGKg2KWuOxjxEAh+WXKT1Bto2E/lGC42QyrRDX5cHkkStKRPtUQ9sHB5btwLOXHrvh+1yeTiT0KATRRQKZId7aSKw7ukm2Fck8dIQxjNbkHsMctuytOw2CEEhZ0Dp7L1Ls6d+sgIaicxgw/Lp73FB7+bEaQN1V4rqnrUEZQvpfy3sYzfxp5fRnh+m69mtvHWoBsQZ2qzSmlrALU0VV8BwaW5Po6ZyZ9Gi+HWN19+M859XSgztKJA2ktgXaoQLHu65GsnyMudfvsKrh6Lkh0w299WplD38pUvDK6CstkyrIZNavMLe+wM6fgL/6Dzdf/scuS9Cu0chzKlkdxUoTFylcvA8rbbC2GiEZHUSq6GiJuUIgAoQM746Lm+4Nhrk+3jiGxYH+np4vTyIP3uB7uokcjqGc6GGNZCjnCnwdzkGKZMnvrlAJ1nEvEPCyKw5tgKCnBMNwdyUxZ2D0/z2V9t48fkRjlqboeEzalfpMmXeOpakiQFkeO7nOjsGJpmbBFybsGNtXQFVs729k8zjz/uUFi7yy+EoY+NxJo7bXJK38MCmLyjEKnSO9NGuOazZaPDrB65x89Q1bF9Hz2qoprYRuPUcvOYnj1ZP/+6wM9/Gq/hQmmH9Q0NE8zoEVYKqSnPBIb2uC9Z2Q6nC9NuXcZJZEv0JYr0G6YF9O7XM9z+QhBAAdFr/fWzp/IHXAtdJVz6cR40LencOEiw5+HYL2dDRu+JIWoTqqSk6gUp6+3p8l2p6w8gjcTM1Lmn33TrZd2ZwFp2yOx9z9HyYzu8aIKi3CKwGGBqKZqLFoL3cpFWqoa/tRi/m8ZZt3LIlYmuaKKkUsS9rI9pXUfjohdzXkr2RTAGvHhIGKmGg4C5aIELa1TrNyUUkJQKShHujQiQmk/92IasZ1s9Ch9Uta0qKaPeOhyw7/ZpdKrU0ZZlUrkNEstEkH8VbRjgOyY1ZUgMpZK2JmtaQMr3XO+pdv1GN23+kaIus1kb4SBHVblTjTzsX8y859cUHPX9251c29WwKLSmhm3KXGkti3eB6rMe01dzI2aWphXFnpnaib2culBQFEbgA/H8ALiI3EysggNoAAAAASUVORK5CYII="></img>
+            <a href="http://www.beian.gov.cn">闽公网安备 35092202000170号</a>
+          </small>
+          <small>|</small>
+          <small>
+            <a href="https://beian.miit.gov.cn/#/Integrated/recordQuery" target="_blank" rel="noopener">闽ICP备2022001029号</a>
+          </small>
+          
+        </p>
+
+        
+        <p class="mt-2">
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+            <img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+          </a>
+          <small>本作品采用 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a> 进行许可。</small>
+        </p>
+        
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA=="
+    crossorigin="anonymous"></script>
+
+
+
+
+
+<script src='/js/tabpane-persist.js'></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.aa9f4c5dae6a98b2c46277f4c56f1673a2b000d1756ce4ffae93784cab25e6d5.js" integrity="sha256-qp9MXa5qmLLEYnf0xW8Wc6KwANF1bOT/rpN4TKsl5tU=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>

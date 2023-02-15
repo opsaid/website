@@ -1,0 +1,208 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – kube-scheduler</title>
+    <link>/docs/component/kube-scheduler/</link>
+    <description>Recent content in kube-scheduler on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="/docs/component/kube-scheduler/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: 参数配置</title>
+      <link>/docs/component/kube-scheduler/config/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/component/kube-scheduler/config/</guid>
+      <description>
+        
+        
+        &lt;h1 id=&#34;kube-scheduler&#34;&gt;kube-scheduler&lt;/h1&gt;
+&lt;h2 id=&#34;默认scheduler配置&#34;&gt;默认scheduler配置&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;配置生成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kube-scheduler --write-config-to=/var/log/kubernetes/scheduler.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;示例文件：scheduler.yaml&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;apiVersion: kubescheduler.config.k8s.io/v1beta2
+kind: KubeSchedulerConfiguration
+clientConnection:
+  acceptContentTypes: &amp;#34;&amp;#34;
+  burst: 100
+  contentType: application/vnd.kubernetes.protobuf
+  kubeconfig: /etc/kubernetes/scheduler.conf
+  qps: 50
+enableContentionProfiling: true
+enableProfiling: true
+healthzBindAddress: 127.0.0.1:10251
+leaderElection:
+  leaderElect: true
+  leaseDuration: 15s
+  renewDeadline: 10s
+  resourceLock: leases
+  resourceName: kube-scheduler
+  resourceNamespace: kube-system
+  retryPeriod: 2s
+metricsBindAddress: 127.0.0.1:10251
+parallelism: 16
+percentageOfNodesToScore: 0
+podInitialBackoffSeconds: 1
+podMaxBackoffSeconds: 10
+profiles:
+- pluginConfig:
+  - args:
+      apiVersion: kubescheduler.config.k8s.io/v1beta2
+      kind: DefaultPreemptionArgs
+      minCandidateNodesAbsolute: 100
+      minCandidateNodesPercentage: 10
+    name: DefaultPreemption
+  - args:
+      apiVersion: kubescheduler.config.k8s.io/v1beta2
+      hardPodAffinityWeight: 1
+      kind: InterPodAffinityArgs
+    name: InterPodAffinity
+  - args:
+      apiVersion: kubescheduler.config.k8s.io/v1beta2
+      kind: NodeAffinityArgs
+    name: NodeAffinity
+  - args:
+      apiVersion: kubescheduler.config.k8s.io/v1beta2
+      kind: NodeResourcesBalancedAllocationArgs
+      resources:
+      - name: cpu
+        weight: 1
+      - name: memory
+        weight: 1
+    name: NodeResourcesBalancedAllocation
+  - args:
+      apiVersion: kubescheduler.config.k8s.io/v1beta2
+      kind: NodeResourcesFitArgs
+      scoringStrategy:
+        resources:
+        - name: cpu
+          weight: 1
+        - name: memory
+          weight: 1
+        type: LeastAllocated
+    name: NodeResourcesFit
+  - args:
+      apiVersion: kubescheduler.config.k8s.io/v1beta2
+      defaultingType: System
+      kind: PodTopologySpreadArgs
+    name: PodTopologySpread
+  - args:
+      apiVersion: kubescheduler.config.k8s.io/v1beta2
+      bindTimeoutSeconds: 600
+      kind: VolumeBindingArgs
+    name: VolumeBinding
+  plugins:
+    bind:
+      enabled:
+      - name: DefaultBinder
+        weight: 0
+    filter:
+      enabled:
+      - name: NodeUnschedulable
+        weight: 0
+      - name: NodeName
+        weight: 0
+      - name: TaintToleration
+        weight: 0
+      - name: NodeAffinity
+        weight: 0
+      - name: NodePorts
+        weight: 0
+      - name: NodeResourcesFit
+        weight: 0
+      - name: VolumeRestrictions
+        weight: 0
+      - name: EBSLimits
+        weight: 0
+      - name: GCEPDLimits
+        weight: 0
+      - name: NodeVolumeLimits
+        weight: 0
+      - name: AzureDiskLimits
+        weight: 0
+      - name: VolumeBinding
+        weight: 0
+      - name: VolumeZone
+        weight: 0
+      - name: PodTopologySpread
+        weight: 0
+      - name: InterPodAffinity
+        weight: 0
+    permit: {}
+    postBind: {}
+    postFilter:
+      enabled:
+      - name: DefaultPreemption
+        weight: 0
+    preBind:
+      enabled:
+      - name: VolumeBinding
+        weight: 0
+    preFilter:
+      enabled:
+      - name: NodeResourcesFit
+        weight: 0
+      - name: NodePorts
+        weight: 0
+      - name: VolumeRestrictions
+        weight: 0
+      - name: PodTopologySpread
+        weight: 0
+      - name: InterPodAffinity
+        weight: 0
+      - name: VolumeBinding
+        weight: 0
+      - name: NodeAffinity
+        weight: 0
+    preScore:
+      enabled:
+      - name: InterPodAffinity
+        weight: 0
+      - name: PodTopologySpread
+        weight: 0
+      - name: TaintToleration
+        weight: 0
+      - name: NodeAffinity
+        weight: 0
+    queueSort:
+      enabled:
+      - name: PrioritySort
+        weight: 0
+    reserve:
+      enabled:
+      - name: VolumeBinding
+        weight: 0
+    score:
+      enabled:
+      - name: NodeResourcesBalancedAllocation
+        weight: 1
+      - name: ImageLocality
+        weight: 1
+      - name: InterPodAffinity
+        weight: 1
+      - name: NodeResourcesFit
+        weight: 1
+      - name: NodeAffinity
+        weight: 1
+      - name: PodTopologySpread
+        weight: 2
+      - name: TaintToleration
+        weight: 1
+  schedulerName: default-scheduler
+&lt;/code&gt;&lt;/pre&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>
