@@ -1,0 +1,35 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – 服务部署</title>
+    <link>/docs/case-studies/app-deploy/</link>
+    <description>Recent content in 服务部署 on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 15 Feb 2023 15:08:31 +0800</lastBuildDate>
+    
+	  <atom:link href="/docs/case-studies/app-deploy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: PHP 在 K8S 上</title>
+      <link>/docs/case-studies/app-deploy/php-on-k8s/</link>
+      <pubDate>Wed, 15 Feb 2023 15:21:55 +0800</pubDate>
+      
+      <guid>/docs/case-studies/app-deploy/php-on-k8s/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;简要概述&#34;&gt;简要概述&lt;/h2&gt;
+&lt;p&gt;描述 php 应用在 k8s 上的编排。&lt;/p&gt;
+&lt;h2 id=&#34;基础镜像&#34;&gt;基础镜像&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;服务编排&#34;&gt;服务编排&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>

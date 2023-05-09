@@ -1,0 +1,31 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – 应用案例研究</title>
+    <link>/docs/case-studies/</link>
+    <description>Recent content in 应用案例研究 on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 15 Feb 2023 15:10:45 +0800</lastBuildDate>
+    
+	  <atom:link href="/docs/case-studies/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: 服务部署</title>
+      <link>/docs/case-studies/app-deploy/</link>
+      <pubDate>Wed, 15 Feb 2023 15:08:31 +0800</pubDate>
+      
+      <guid>/docs/case-studies/app-deploy/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
