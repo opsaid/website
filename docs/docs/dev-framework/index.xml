@@ -1,0 +1,31 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – 应用开发框架</title>
+    <link>/docs/dev-framework/</link>
+    <description>Recent content in 应用开发框架 on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 16 May 2023 10:50:49 +0800</lastBuildDate>
+    
+	  <atom:link href="/docs/dev-framework/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Go 语言</title>
+      <link>/docs/dev-framework/go/</link>
+      <pubDate>Tue, 16 May 2023 10:50:32 +0800</pubDate>
+      
+      <guid>/docs/dev-framework/go/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,57 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – 流程与自动化</title>
+    <link>/docs/devops/</link>
+    <description>Recent content in 流程与自动化 on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 06 Oct 2022 10:54:17 +0800</lastBuildDate>
+    
+	  <atom:link href="/docs/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Gitlab</title>
+      <link>/docs/devops/gitlab/</link>
+      <pubDate>Fri, 09 Dec 2022 15:52:32 +0800</pubDate>
+      
+      <guid>/docs/devops/gitlab/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Kubeadm</title>
+      <link>/docs/devops/kubeadm/</link>
+      <pubDate>Wed, 10 May 2023 23:51:27 +0800</pubDate>
+      
+      <guid>/docs/devops/kubeadm/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 应用打包</title>
+      <link>/docs/devops/packages/</link>
+      <pubDate>Wed, 22 Mar 2023 11:09:25 +0800</pubDate>
+      
+      <guid>/docs/devops/packages/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
