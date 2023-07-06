@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/docs/component/cortex/config/</loc>
+    <lastmod>2023-07-06T22:38:07+08:00</lastmod>
+  </url><url>
     <loc>/docs/dev-framework/go/</loc>
     <lastmod>2023-05-16T10:59:01+08:00</lastmod>
   </url><url>
@@ -12,7 +15,7 @@
     <lastmod>2023-05-12T14:56:40+08:00</lastmod>
   </url><url>
     <loc>/docs/devops/packages/kaniko/</loc>
-    <lastmod>2023-05-11T15:53:45+08:00</lastmod>
+    <lastmod>2023-05-24T10:47:00+08:00</lastmod>
   </url><url>
     <loc>/docs/case-studies/app-deploy/php-on-k8s/</loc>
     <lastmod>2023-02-27T11:26:46+08:00</lastmod>
@@ -86,6 +89,9 @@
     <loc>/docs/concepts/workloads/pods-affinity/</loc>
     <lastmod>2023-05-08T18:41:22+08:00</lastmod>
   </url><url>
+    <loc>/docs/component/cortex/server/</loc>
+    <lastmod>2023-06-18T12:08:32+08:00</lastmod>
+  </url><url>
     <loc>/docs/concepts/configuration/secrets/</loc>
     <lastmod>2023-05-12T14:56:40+08:00</lastmod>
   </url><url>
@@ -134,6 +140,12 @@
     <loc>/docs/concepts/kubeadm/join/</loc>
     <lastmod>2023-01-28T23:55:24+08:00</lastmod>
   </url><url>
+    <loc>/docs/component/cortex/storage/</loc>
+    <lastmod>2023-07-06T22:38:07+08:00</lastmod>
+  </url><url>
+    <loc>/docs/component/cortex/distributor/</loc>
+    <lastmod>2023-07-06T22:38:07+08:00</lastmod>
+  </url><url>
     <loc>/docs/concepts/configuration/</loc>
     <lastmod>2023-05-12T14:56:40+08:00</lastmod>
   </url><url>
@@ -167,6 +179,12 @@
     <loc>/docs/cloud-monitor/alert-rules/</loc>
     <lastmod>2022-02-13T14:37:36+08:00</lastmod>
   </url><url>
+    <loc>/docs/component/cortex/querier/</loc>
+    <lastmod>2023-07-06T22:38:07+08:00</lastmod>
+  </url><url>
+    <loc>/docs/component/cortex/ingester/</loc>
+    <lastmod>2023-06-19T10:30:12+08:00</lastmod>
+  </url><url>
     <loc>/docs/concepts/workloads/statefulsets/</loc>
     <lastmod>2023-05-08T11:44:33+08:00</lastmod>
   </url><url>
@@ -185,6 +203,9 @@
     <loc>/docs/component/kube-scheduler/</loc>
     <lastmod>2023-02-08T23:17:58+08:00</lastmod>
   </url><url>
+    <loc>/docs/component/cortex/compactor/</loc>
+    <lastmod>2023-07-06T22:38:07+08:00</lastmod>
+  </url><url>
     <loc>/docs/dev-framework/</loc>
     <lastmod>2023-05-16T10:59:01+08:00</lastmod>
   </url><url>
@@ -197,11 +218,17 @@
     <loc>/docs/component/kubelet/</loc>
     <lastmod>2023-02-08T23:17:58+08:00</lastmod>
   </url><url>
+    <loc>/docs/component/cortex/store-gateway/</loc>
+    <lastmod>2023-07-06T22:38:07+08:00</lastmod>
+  </url><url>
     <loc>/docs/concepts/workloads/jobs/</loc>
     <lastmod>2023-05-07T23:48:21+08:00</lastmod>
   </url><url>
     <loc>/docs/component/kube-proxy/</loc>
     <lastmod>2023-02-08T23:17:58+08:00</lastmod>
+  </url><url>
+    <loc>/docs/component/cortex/frontend/</loc>
+    <lastmod>2023-07-06T22:38:07+08:00</lastmod>
   </url><url>
     <loc>/docs/concepts/workloads/cronjobs/</loc>
     <lastmod>2023-05-08T11:44:33+08:00</lastmod>
@@ -221,8 +248,20 @@
     <loc>/docs/case-studies/</loc>
     <lastmod>2023-02-27T11:26:46+08:00</lastmod>
   </url><url>
+    <loc>/docs/component/cortex/ruler/</loc>
+    <lastmod>2023-07-06T22:38:07+08:00</lastmod>
+  </url><url>
+    <loc>/docs/component/cortex/alertmanager/</loc>
+    <lastmod>2023-07-06T22:38:07+08:00</lastmod>
+  </url><url>
     <loc>/docs/component/oauth2-proxy/</loc>
     <lastmod>2023-02-13T16:48:32+08:00</lastmod>
+  </url><url>
+    <loc>/docs/component/cortex/limits/</loc>
+    <lastmod>2023-07-06T22:38:07+08:00</lastmod>
+  </url><url>
+    <loc>/docs/component/cortex/</loc>
+    <lastmod>2023-07-06T22:38:07+08:00</lastmod>
   </url><url>
     <loc>/docs/concepts/kubeadm/</loc>
     <lastmod>2023-01-28T23:55:24+08:00</lastmod>
