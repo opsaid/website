@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.102.3" />
+<meta name="generator" content="Hugo 0.110.0">
 <meta name="robots" content="index, follow">
 
 
@@ -21,34 +21,38 @@
 <title>Pod Volume | OPSaid</title>
 <meta name="description" content="简要概述
 TODO;
+关键站点：
+
+https://kubernetes-csi.github.io/docs/
+
 数据结构
 Volume
-// Volume represents a named volume in a pod that may be accessed by any container in the pod.
-type Volume struct {
-    // …">
+// Volume represents a named volume in a pod that may be accessed by any …">
 <meta property="og:title" content="Pod Volume" />
 <meta property="og:description" content="简要概述 TODO;
-数据结构 Volume // Volume represents a named volume in a pod that may be accessed by any container in the pod. type Volume struct { // Volume&#39;s name. // Must be a DNS_LABEL and unique within the pod. // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names Name string `json:&#34;name&#34; protobuf:&#34;bytes,1,opt,name=name&#34;` // VolumeSource represents the location and type of the mounted volume. // If not specified, the Volume is implied to be an EmptyDir." />
+关键站点：
+https://kubernetes-csi.github.io/docs/ 数据结构 Volume // Volume represents a named volume in a pod that may be accessed by any container in the pod. type Volume struct { // Volume&#39;s name. // Must be a DNS_LABEL and unique within the pod. // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names Name string `json:&#34;name&#34; protobuf:&#34;bytes,1,opt,name=name&#34;` // VolumeSource represents the location and type of the mounted volume. // If not specified, the Volume is implied to be an EmptyDir." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/concepts/workloads/pods-volume/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2023-05-08T16:56:42+08:00" />
-<meta property="article:modified_time" content="2023-05-08T18:41:22+08:00" /><meta property="og:site_name" content="OPSaid" />
-
+<meta property="article:modified_time" content="2023-09-24T22:58:05+08:00" /><meta property="og:site_name" content="OPSaid" />
 <meta itemprop="name" content="Pod Volume">
 <meta itemprop="description" content="简要概述 TODO;
-数据结构 Volume // Volume represents a named volume in a pod that may be accessed by any container in the pod. type Volume struct { // Volume&#39;s name. // Must be a DNS_LABEL and unique within the pod. // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names Name string `json:&#34;name&#34; protobuf:&#34;bytes,1,opt,name=name&#34;` // VolumeSource represents the location and type of the mounted volume. // If not specified, the Volume is implied to be an EmptyDir."><meta itemprop="datePublished" content="2023-05-08T16:56:42+08:00" />
-<meta itemprop="dateModified" content="2023-05-08T18:41:22+08:00" />
-<meta itemprop="wordCount" content="3947">
+关键站点：
+https://kubernetes-csi.github.io/docs/ 数据结构 Volume // Volume represents a named volume in a pod that may be accessed by any container in the pod. type Volume struct { // Volume&#39;s name. // Must be a DNS_LABEL and unique within the pod. // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names Name string `json:&#34;name&#34; protobuf:&#34;bytes,1,opt,name=name&#34;` // VolumeSource represents the location and type of the mounted volume. // If not specified, the Volume is implied to be an EmptyDir."><meta itemprop="datePublished" content="2023-05-08T16:56:42+08:00" />
+<meta itemprop="dateModified" content="2023-09-24T22:58:05+08:00" />
+<meta itemprop="wordCount" content="3690">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Pod Volume"/>
 <meta name="twitter:description" content="简要概述 TODO;
-数据结构 Volume // Volume represents a named volume in a pod that may be accessed by any container in the pod. type Volume struct { // Volume&#39;s name. // Must be a DNS_LABEL and unique within the pod. // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names Name string `json:&#34;name&#34; protobuf:&#34;bytes,1,opt,name=name&#34;` // VolumeSource represents the location and type of the mounted volume. // If not specified, the Volume is implied to be an EmptyDir."/>
+关键站点：
+https://kubernetes-csi.github.io/docs/ 数据结构 Volume // Volume represents a named volume in a pod that may be accessed by any container in the pod. type Volume struct { // Volume&#39;s name. // Must be a DNS_LABEL and unique within the pod. // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names Name string `json:&#34;name&#34; protobuf:&#34;bytes,1,opt,name=name&#34;` // VolumeSource represents the location and type of the mounted volume. // If not specified, the Volume is implied to be an EmptyDir."/>
 
 
 
 
-<link rel="preload" href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" as="style">
-<link href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
+<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
@@ -239,6 +243,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdeploy-k8sbinary-a" href="/docs/deploy-k8s/binary/">官方镜像</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdeploy-k8sfaqs">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdeploy-k8sfaqs-a" href="/docs/deploy-k8s/faqs/">常见问题</a>
                     
                   </span>
                   
@@ -1311,7 +1332,7 @@ if (!doNotTrack) {
   
     <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentcortex">
       <input type="checkbox" id="docscomponentcortex-check"/>
-      <label for="docscomponentcortex-check" ><a href="/docs/component/cortex/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Cortex</a></label>
+      <label for="docscomponentcortex-check" ><a href="/docs/component/cortex/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">cortex</a></label>
       
         
         
@@ -1766,6 +1787,141 @@ if (!doNotTrack) {
 
 
   
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecurity">
+      <input type="checkbox" id="docssecurity-check"/>
+      <label for="docssecurity-check" ><a href="/docs/security/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">K8S 集群安全</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecuritycis-benchmark">
+      <input type="checkbox" id="docssecuritycis-benchmark-check"/>
+      <label for="docssecuritycis-benchmark-check" ><a href="/docs/security/cis-benchmark/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">CIS 基准</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkcontrol-plane">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkcontrol-plane-a" href="/docs/security/cis-benchmark/control-plane/">控制平面</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarketcd">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarketcd-a" href="/docs/security/cis-benchmark/etcd/">Etcd集群</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkauth-audit">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkauth-audit-a" href="/docs/security/cis-benchmark/auth-audit/">认证审计</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevops">
       <input type="checkbox" id="docsdevops-check"/>
       <label for="docsdevops-check" ><a href="/docs/devops/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">流程与自动化</a></label>
@@ -2073,6 +2229,362 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdev-frameworkgogrpc-kit-a" href="/docs/dev-framework/go/grpc-kit/">gRPC Kit</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdata-store">
+      <input type="checkbox" id="docsdata-store-check"/>
+      <label for="docsdata-store-check" ><a href="/docs/data-store/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">存储与数据库</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdata-storeobject-storage">
+      <input type="checkbox" id="docsdata-storeobject-storage-check"/>
+      <label for="docsdata-storeobject-storage-check" ><a href="/docs/data-store/object-storage/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">对象存储</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagekey-terms">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagekey-terms-a" href="/docs/data-store/object-storage/key-terms/">关键术语</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storageproviders">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storageproviders-a" href="/docs/data-store/object-storage/providers/">云提供商</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagecreate-bucket">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagecreate-bucket-a" href="/docs/data-store/object-storage/create-bucket/">接口：CreateBucket</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storageget-bucket-location">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storageget-bucket-location-a" href="/docs/data-store/object-storage/get-bucket-location/">接口：GetBucketLocation</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagehead-bucket">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagehead-bucket-a" href="/docs/data-store/object-storage/head-bucket/">接口：HeadBucket</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagedelete-bucket">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagedelete-bucket-a" href="/docs/data-store/object-storage/delete-bucket/">接口：DeleteBucket</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagelist-buckets">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagelist-buckets-a" href="/docs/data-store/object-storage/list-buckets/">接口：ListBuckets</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagecopy-object">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagecopy-object-a" href="/docs/data-store/object-storage/copy-object/">接口：CopyObject</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagedelete-object">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagedelete-object-a" href="/docs/data-store/object-storage/delete-object/">接口：DeleteObject</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagedelete-objects">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagedelete-objects-a" href="/docs/data-store/object-storage/delete-objects/">接口：DeleteObjects</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storageget-object">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storageget-object-a" href="/docs/data-store/object-storage/get-object/">接口：GetObject</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagehead-object">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagehead-object-a" href="/docs/data-store/object-storage/head-object/">接口：HeadObject</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagelist-objects">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagelist-objects-a" href="/docs/data-store/object-storage/list-objects/">接口：ListObjects</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagelist-objects-v2">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagelist-objects-v2-a" href="/docs/data-store/object-storage/list-objects-v2/">接口：ListObjectsV2</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storageput-object">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storageput-object-a" href="/docs/data-store/object-storage/put-object/">接口：PUTObject</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagerclone">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagerclone-a" href="/docs/data-store/object-storage/rclone/">工具：Rclone</a>
                     
                   </span>
                   
@@ -2558,45 +3070,30 @@ if (!doNotTrack) {
         <li><a href="#volumesource">VolumeSource</a></li>
       </ul>
     </li>
-    <li><a href="#常用类型">常用类型</a>
+    <li><a href="#常见存储卷">常见存储卷</a>
       <ul>
         <li><a href="#hostpathvolumesource">HostPathVolumeSource</a></li>
         <li><a href="#emptydirvolumesource">EmptyDirVolumeSource</a></li>
         <li><a href="#secretvolumesource">SecretVolumeSource</a></li>
         <li><a href="#nfsvolumesource">NFSVolumeSource</a></li>
+        <li><a href="#iscsivolumesource">ISCSIVolumeSource</a></li>
         <li><a href="#persistentvolumeclaimvolumesource">PersistentVolumeClaimVolumeSource</a></li>
-        <li><a href="#configmapvolumesource">ConfigMapVolumeSource</a></li>
         <li><a href="#downwardapivolumesource">DownwardAPIVolumeSource</a></li>
+        <li><a href="#fcvolumesource">FCVolumeSource</a></li>
+        <li><a href="#configmapvolumesource">ConfigMapVolumeSource</a></li>
+        <li><a href="#projectedvolumesource">ProjectedVolumeSource</a></li>
         <li><a href="#localvolumesource">LocalVolumeSource</a></li>
         <li><a href="#csivolumesource">CSIVolumeSource</a></li>
+        <li><a href="#ephemeralvolumesource">EphemeralVolumeSource</a></li>
+      </ul>
+    </li>
+    <li><a href="#存储卷属性">存储卷属性</a>
+      <ul>
         <li><a href="#hostpathtype">HostPathType</a></li>
         <li><a href="#storagemedium">StorageMedium</a></li>
         <li><a href="#resourcequantity">resource.Quantity</a></li>
-      </ul>
-    </li>
-    <li><a href="#不常用类型">不常用类型</a>
-      <ul>
-        <li><a href="#gcepersistentdiskvolumesource">GCEPersistentDiskVolumeSource</a></li>
-        <li><a href="#awselasticblockstorevolumesource">AWSElasticBlockStoreVolumeSource</a></li>
-        <li><a href="#gitrepovolumesource">GitRepoVolumeSource</a></li>
-        <li><a href="#iscsivolumesource">ISCSIVolumeSource</a></li>
-        <li><a href="#glusterfsvolumesource">GlusterfsVolumeSource</a></li>
-        <li><a href="#rbdvolumesource">RBDVolumeSource</a></li>
-        <li><a href="#flexvolumesource">FlexVolumeSource</a></li>
-        <li><a href="#cindervolumesource">CinderVolumeSource</a></li>
-        <li><a href="#cephfsvolumesource">CephFSVolumeSource</a></li>
-        <li><a href="#flockervolumesource">FlockerVolumeSource</a></li>
-        <li><a href="#fcvolumesource">FCVolumeSource</a></li>
-        <li><a href="#azurefilevolumesource">AzureFileVolumeSource</a></li>
-        <li><a href="#vspherevirtualdiskvolumesource">VsphereVirtualDiskVolumeSource</a></li>
-        <li><a href="#quobytevolumesource">QuobyteVolumeSource</a></li>
-        <li><a href="#azurediskvolumesource">AzureDiskVolumeSource</a></li>
-        <li><a href="#photonpersistentdiskvolumesource">PhotonPersistentDiskVolumeSource</a></li>
-        <li><a href="#projectedvolumesource">ProjectedVolumeSource</a></li>
-        <li><a href="#portworxvolumesource">PortworxVolumeSource</a></li>
-        <li><a href="#scaleiovolumesource">ScaleIOVolumeSource</a></li>
-        <li><a href="#storageosvolumesource">StorageOSVolumeSource</a></li>
-        <li><a href="#ephemeralvolumesource">EphemeralVolumeSource</a></li>
+        <li><a href="#persistentvolumeclaimtemplate">PersistentVolumeClaimTemplate</a></li>
+        <li><a href="#persistentvolumeclaimspec">PersistentVolumeClaimSpec</a></li>
       </ul>
     </li>
   </ul>
@@ -2670,12 +3167,16 @@ if (!doNotTrack) {
 			
 		
 		
-			<p class="reading-time"><i class="fa fa-clock" aria-hidden="true"></i>&nbsp; 19 分钟阅读 &nbsp;</p>
+			<p class="reading-time"><i class="fa fa-clock" aria-hidden="true"></i>&nbsp; 18 分钟阅读 &nbsp;</p>
 
 		
 	</header>    
 	<h2 id="简要概述">简要概述</h2>
 <p>TODO;</p>
+<p>关键站点：</p>
+<ol>
+<li><a href="https://kubernetes-csi.github.io/docs/">https://kubernetes-csi.github.io/docs/</a></li>
+</ol>
 <h2 id="数据结构">数据结构</h2>
 <h3 id="volume">Volume</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Volume represents a named volume in a pod that may be accessed by any container in the pod.
@@ -2703,106 +3204,57 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// mount host directories as read/write.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">HostPath</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">HostPathVolumeSource</span> <span style="color:#4e9a06">`json:&#34;hostPath,omitempty&#34; protobuf:&#34;bytes,1,opt,name=hostPath&#34;`</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// EmptyDir represents a temporary directory that shares a pod&#39;s lifetime.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EmptyDir</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">EmptyDirVolumeSource</span> <span style="color:#4e9a06">`json:&#34;emptyDir,omitempty&#34; protobuf:&#34;bytes,2,opt,name=emptyDir&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// GCEPersistentDisk represents a GCE Disk resource that is attached to a
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// kubelet&#39;s host machine and then exposed to the pod.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">GCEPersistentDisk</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">GCEPersistentDiskVolumeSource</span> <span style="color:#4e9a06">`json:&#34;gcePersistentDisk,omitempty&#34; protobuf:&#34;bytes,3,opt,name=gcePersistentDisk&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// AWSElasticBlockStore represents an AWS Disk resource that is attached to a
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// kubelet&#39;s host machine and then exposed to the pod.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">AWSElasticBlockStore</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">AWSElasticBlockStoreVolumeSource</span> <span style="color:#4e9a06">`json:&#34;awsElasticBlockStore,omitempty&#34; protobuf:&#34;bytes,4,opt,name=awsElasticBlockStore&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// GitRepo represents a git repository at a particular revision.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// into the Pod&#39;s container.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">GitRepo</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">GitRepoVolumeSource</span> <span style="color:#4e9a06">`json:&#34;gitRepo,omitempty&#34; protobuf:&#34;bytes,5,opt,name=gitRepo&#34;`</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Secret represents a secret that should populate this volume.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Secret</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">SecretVolumeSource</span> <span style="color:#4e9a06">`json:&#34;secret,omitempty&#34; protobuf:&#34;bytes,6,opt,name=secret&#34;`</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// NFS represents an NFS mount on the host that shares a pod&#39;s lifetime
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">NFS</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">NFSVolumeSource</span> <span style="color:#4e9a06">`json:&#34;nfs,omitempty&#34; protobuf:&#34;bytes,7,opt,name=nfs&#34;`</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// ISCSI represents an ISCSI Disk resource that is attached to a
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// kubelet&#39;s host machine and then exposed to the pod.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://examples.k8s.io/volumes/iscsi/README.md
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ISCSI</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">ISCSIVolumeSource</span> <span style="color:#4e9a06">`json:&#34;iscsi,omitempty&#34; protobuf:&#34;bytes,8,opt,name=iscsi&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Glusterfs represents a Glusterfs mount on the host that shares a pod&#39;s lifetime.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://examples.k8s.io/volumes/glusterfs/README.md
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Glusterfs</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">GlusterfsVolumeSource</span> <span style="color:#4e9a06">`json:&#34;glusterfs,omitempty&#34; protobuf:&#34;bytes,9,opt,name=glusterfs&#34;`</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// PersistentVolumeClaimVolumeSource represents a reference to a
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// PersistentVolumeClaim in the same namespace.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">PersistentVolumeClaim</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">PersistentVolumeClaimVolumeSource</span> <span style="color:#4e9a06">`json:&#34;persistentVolumeClaim,omitempty&#34; protobuf:&#34;bytes,10,opt,name=persistentVolumeClaim&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// RBD represents a Rados Block Device mount on the host that shares a pod&#39;s lifetime.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://examples.k8s.io/volumes/rbd/README.md
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">RBD</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">RBDVolumeSource</span> <span style="color:#4e9a06">`json:&#34;rbd,omitempty&#34; protobuf:&#34;bytes,11,opt,name=rbd&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// FlexVolume represents a generic volume resource that is
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// provisioned/attached using an exec based plugin.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">FlexVolume</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">FlexVolumeSource</span> <span style="color:#4e9a06">`json:&#34;flexVolume,omitempty&#34; protobuf:&#34;bytes,12,opt,name=flexVolume&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Cinder represents a cinder volume attached and mounted on kubelets host machine.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://examples.k8s.io/mysql-cinder-pd/README.md
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Cinder</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">CinderVolumeSource</span> <span style="color:#4e9a06">`json:&#34;cinder,omitempty&#34; protobuf:&#34;bytes,13,opt,name=cinder&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// CephFS represents a Ceph FS mount on the host that shares a pod&#39;s lifetime
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">CephFS</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">CephFSVolumeSource</span> <span style="color:#4e9a06">`json:&#34;cephfs,omitempty&#34; protobuf:&#34;bytes,14,opt,name=cephfs&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Flocker represents a Flocker volume attached to a kubelet&#39;s host machine. This depends on the Flocker control service being running
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Flocker</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">FlockerVolumeSource</span> <span style="color:#4e9a06">`json:&#34;flocker,omitempty&#34; protobuf:&#34;bytes,15,opt,name=flocker&#34;`</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// DownwardAPI represents downward API about the pod that should populate this volume
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">DownwardAPI</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">DownwardAPIVolumeSource</span> <span style="color:#4e9a06">`json:&#34;downwardAPI,omitempty&#34; protobuf:&#34;bytes,16,opt,name=downwardAPI&#34;`</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// FC represents a Fibre Channel resource that is attached to a kubelet&#39;s host machine and then exposed to the pod.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">FC</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">FCVolumeSource</span> <span style="color:#4e9a06">`json:&#34;fc,omitempty&#34; protobuf:&#34;bytes,17,opt,name=fc&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">AzureFile</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">AzureFileVolumeSource</span> <span style="color:#4e9a06">`json:&#34;azureFile,omitempty&#34; protobuf:&#34;bytes,18,opt,name=azureFile&#34;`</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// ConfigMap represents a configMap that should populate this volume
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ConfigMap</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">ConfigMapVolumeSource</span> <span style="color:#4e9a06">`json:&#34;configMap,omitempty&#34; protobuf:&#34;bytes,19,opt,name=configMap&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">VsphereVolume</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">VsphereVirtualDiskVolumeSource</span> <span style="color:#4e9a06">`json:&#34;vsphereVolume,omitempty&#34; protobuf:&#34;bytes,20,opt,name=vsphereVolume&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Quobyte represents a Quobyte mount on the host that shares a pod&#39;s lifetime
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Quobyte</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">QuobyteVolumeSource</span> <span style="color:#4e9a06">`json:&#34;quobyte,omitempty&#34; protobuf:&#34;bytes,21,opt,name=quobyte&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">AzureDisk</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">AzureDiskVolumeSource</span> <span style="color:#4e9a06">`json:&#34;azureDisk,omitempty&#34; protobuf:&#34;bytes,22,opt,name=azureDisk&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">PhotonPersistentDisk</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">PhotonPersistentDiskVolumeSource</span> <span style="color:#4e9a06">`json:&#34;photonPersistentDisk,omitempty&#34; protobuf:&#34;bytes,23,opt,name=photonPersistentDisk&#34;`</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Items for all in one resources secrets, configmaps, and downward API
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Projected</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">ProjectedVolumeSource</span> <span style="color:#4e9a06">`json:&#34;projected,omitempty&#34; protobuf:&#34;bytes,26,opt,name=projected&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// PortworxVolume represents a portworx volume attached and mounted on kubelets host machine
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">PortworxVolume</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">PortworxVolumeSource</span> <span style="color:#4e9a06">`json:&#34;portworxVolume,omitempty&#34; protobuf:&#34;bytes,24,opt,name=portworxVolume&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ScaleIO</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">ScaleIOVolumeSource</span> <span style="color:#4e9a06">`json:&#34;scaleIO,omitempty&#34; protobuf:&#34;bytes,25,opt,name=scaleIO&#34;`</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Local represents directly-attached storage with node affinity
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Local</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">LocalVolumeSource</span> <span style="color:#4e9a06">`json:&#34;local,omitempty&#34; protobuf:&#34;bytes,20,opt,name=local&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// StorageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">StorageOS</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">StorageOSVolumeSource</span> <span style="color:#4e9a06">`json:&#34;storageos,omitempty&#34; protobuf:&#34;bytes,27,opt,name=storageos&#34;`</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// CSI (Container Storage Interface) represents ephemeral storage that is handled by certain external CSI drivers (Beta feature).
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">CSI</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">CSIVolumeSource</span> <span style="color:#4e9a06">`json:&#34;csi,omitempty&#34; protobuf:&#34;bytes,28,opt,name=csi&#34;`</span>
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Ephemeral represents a volume that is handled by a cluster storage driver.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// The volume&#39;s lifecycle is tied to the pod that defines it - it will be created before the pod starts,
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// and deleted when the pod is removed.
@@ -2833,8 +3285,32 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">//
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Ephemeral</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">EphemeralVolumeSource</span> <span style="color:#4e9a06">`json:&#34;ephemeral,omitempty&#34; protobuf:&#34;bytes,29,opt,name=ephemeral&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// 以下类型建议使用对应的 csi 插件实现
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">GCEPersistentDisk</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">GCEPersistentDiskVolumeSource</span> <span style="color:#4e9a06">`json:&#34;gcePersistentDisk,omitempty&#34; protobuf:&#34;bytes,3,opt,name=gcePersistentDisk&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">AWSElasticBlockStore</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">AWSElasticBlockStoreVolumeSource</span> <span style="color:#4e9a06">`json:&#34;awsElasticBlockStore,omitempty&#34; protobuf:&#34;bytes,4,opt,name=awsElasticBlockStore&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">GitRepo</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">GitRepoVolumeSource</span> <span style="color:#4e9a06">`json:&#34;gitRepo,omitempty&#34; protobuf:&#34;bytes,5,opt,name=gitRepo&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Glusterfs</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">GlusterfsVolumeSource</span> <span style="color:#4e9a06">`json:&#34;glusterfs,omitempty&#34; protobuf:&#34;bytes,9,opt,name=glusterfs&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">RBD</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">RBDVolumeSource</span> <span style="color:#4e9a06">`json:&#34;rbd,omitempty&#34; protobuf:&#34;bytes,11,opt,name=rbd&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Cinder</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">CinderVolumeSource</span> <span style="color:#4e9a06">`json:&#34;cinder,omitempty&#34; protobuf:&#34;bytes,13,opt,name=cinder&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">CephFS</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">CephFSVolumeSource</span> <span style="color:#4e9a06">`json:&#34;cephfs,omitempty&#34; protobuf:&#34;bytes,14,opt,name=cephfs&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">AzureFile</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">AzureFileVolumeSource</span> <span style="color:#4e9a06">`json:&#34;azureFile,omitempty&#34; protobuf:&#34;bytes,18,opt,name=azureFile&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">VsphereVolume</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">VsphereVirtualDiskVolumeSource</span> <span style="color:#4e9a06">`json:&#34;vsphereVolume,omitempty&#34; protobuf:&#34;bytes,20,opt,name=vsphereVolume&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">AzureDisk</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">AzureDiskVolumeSource</span> <span style="color:#4e9a06">`json:&#34;azureDisk,omitempty&#34; protobuf:&#34;bytes,22,opt,name=azureDisk&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">PortworxVolume</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">PortworxVolumeSource</span> <span style="color:#4e9a06">`json:&#34;portworxVolume,omitempty&#34; protobuf:&#34;bytes,24,opt,name=portworxVolume&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">Quobyte</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">QuobyteVolumeSource</span> <span style="color:#4e9a06">`json:&#34;quobyte,omitempty&#34; protobuf:&#34;bytes,21,opt,name=quobyte&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">ScaleIO</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">ScaleIOVolumeSource</span> <span style="color:#4e9a06">`json:&#34;scaleIO,omitempty&#34; protobuf:&#34;bytes,25,opt,name=scaleIO&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">StorageOS</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">StorageOSVolumeSource</span> <span style="color:#4e9a06">`json:&#34;storageos,omitempty&#34; protobuf:&#34;bytes,27,opt,name=storageos&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">PhotonPersistentDisk</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">PhotonPersistentDiskVolumeSource</span> <span style="color:#4e9a06">`json:&#34;photonPersistentDisk,omitempty&#34; protobuf:&#34;bytes,23,opt,name=photonPersistentDisk&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// 旧版外部存储插件，建议使用 csi 插件实现
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">FlexVolume</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">FlexVolumeSource</span> <span style="color:#4e9a06">`json:&#34;flexVolume,omitempty&#34; protobuf:&#34;bytes,12,opt,name=flexVolume&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// 已终止的开源项目
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// https://github.com/ClusterHQ/flocker/issues/3017
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Flocker</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">FlockerVolumeSource</span> <span style="color:#4e9a06">`json:&#34;flocker,omitempty&#34; protobuf:&#34;bytes,15,opt,name=flocker&#34;`</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><h2 id="常用类型">常用类型</h2>
+</span></span></code></pre></div><h2 id="常见存储卷">常见存储卷</h2>
 <h3 id="hostpathvolumesource">HostPathVolumeSource</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Represents a host path mapped into a pod.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Host path volumes do not support ownership management or SELinux relabeling.
@@ -2920,6 +3396,52 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ReadOnly</span> <span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#4e9a06">`json:&#34;readOnly,omitempty&#34; protobuf:&#34;varint,3,opt,name=readOnly&#34;`</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="iscsivolumesource">ISCSIVolumeSource</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Represents an ISCSI disk.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// ISCSI volumes can only be mounted as read/write once.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// ISCSI volumes support ownership management and SELinux relabeling.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">ISCSIVolumeSource</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// is other than default (typically TCP ports 860 and 3260).
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">TargetPortal</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;targetPortal&#34; protobuf:&#34;bytes,1,opt,name=targetPortal&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Target iSCSI Qualified Name.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">IQN</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;iqn&#34; protobuf:&#34;bytes,2,opt,name=iqn&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// iSCSI Target Lun number.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Lun</span> <span style="color:#204a87;font-weight:bold">int32</span> <span style="color:#4e9a06">`json:&#34;lun&#34; protobuf:&#34;varint,3,opt,name=lun&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// iSCSI Interface Name that uses an iSCSI transport.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Defaults to &#39;default&#39; (tcp).
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ISCSIInterface</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;iscsiInterface,omitempty&#34; protobuf:&#34;bytes,4,opt,name=iscsiInterface&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Filesystem type of the volume that you want to mount.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Tip: Ensure that the filesystem type is supported by the host operating system.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Examples: &#34;ext4&#34;, &#34;xfs&#34;, &#34;ntfs&#34;. Implicitly inferred to be &#34;ext4&#34; if unspecified.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// TODO: how do we prevent errors in the filesystem from compromising the machine
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">FSType</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;fsType,omitempty&#34; protobuf:&#34;bytes,5,opt,name=fsType&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// ReadOnly here will force the ReadOnly setting in VolumeMounts.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Defaults to false.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ReadOnly</span> <span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#4e9a06">`json:&#34;readOnly,omitempty&#34; protobuf:&#34;varint,6,opt,name=readOnly&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// iSCSI Target Portal List. The portal is either an IP or ip_addr:port if the port
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// is other than default (typically TCP ports 860 and 3260).
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Portals</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;portals,omitempty&#34; protobuf:&#34;bytes,7,opt,name=portals&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// whether support iSCSI Discovery CHAP authentication
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">DiscoveryCHAPAuth</span> <span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#4e9a06">`json:&#34;chapAuthDiscovery,omitempty&#34; protobuf:&#34;varint,8,opt,name=chapAuthDiscovery&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// whether support iSCSI Session CHAP authentication
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SessionCHAPAuth</span> <span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#4e9a06">`json:&#34;chapAuthSession,omitempty&#34; protobuf:&#34;varint,11,opt,name=chapAuthSession&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// CHAP Secret for iSCSI target and initiator authentication
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SecretRef</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">LocalObjectReference</span> <span style="color:#4e9a06">`json:&#34;secretRef,omitempty&#34; protobuf:&#34;bytes,10,opt,name=secretRef&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Custom iSCSI Initiator Name.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// &lt;target portal&gt;:&lt;volume name&gt; will be created for the connection.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">InitiatorName</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;initiatorName,omitempty&#34; protobuf:&#34;bytes,12,opt,name=initiatorName&#34;`</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
 </span></span></code></pre></div><h3 id="persistentvolumeclaimvolumesource">PersistentVolumeClaimVolumeSource</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// PersistentVolumeClaimVolumeSource references the user&#39;s PVC in the same namespace.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// This volume finds the bound PV and mounts that volume for the pod. A
@@ -2933,6 +3455,50 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Default false.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ReadOnly</span> <span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#4e9a06">`json:&#34;readOnly,omitempty&#34; protobuf:&#34;varint,2,opt,name=readOnly&#34;`</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="downwardapivolumesource">DownwardAPIVolumeSource</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// DownwardAPIVolumeSource represents a volume containing downward API info.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Downward API volumes support ownership management and SELinux relabeling.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">DownwardAPIVolumeSource</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Items is a list of downward API volume file
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Items</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#000">DownwardAPIVolumeFile</span> <span style="color:#4e9a06">`json:&#34;items,omitempty&#34; protobuf:&#34;bytes,1,rep,name=items&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Optional: mode bits to use on created files by default. Must be a
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Optional: mode bits used to set permissions on created files by default.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// YAML accepts both octal and decimal values, JSON requires decimal values for mode bits.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Defaults to 0644.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Directories within the path are not affected by this setting.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// This might be in conflict with other options that affect the file
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// mode, like fsGroup, and the result can be other mode bits set.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">DefaultMode</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">int32</span> <span style="color:#4e9a06">`json:&#34;defaultMode,omitempty&#34; protobuf:&#34;varint,2,opt,name=defaultMode&#34;`</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="fcvolumesource">FCVolumeSource</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Represents a Fibre Channel volume.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Fibre Channel volumes can only be mounted as read/write once.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Fibre Channel volumes support ownership management and SELinux relabeling.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">FCVolumeSource</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Optional: FC target worldwide names (WWNs)
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">TargetWWNs</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;targetWWNs,omitempty&#34; protobuf:&#34;bytes,1,rep,name=targetWWNs&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Optional: FC target lun number
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Lun</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">int32</span> <span style="color:#4e9a06">`json:&#34;lun,omitempty&#34; protobuf:&#34;varint,2,opt,name=lun&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Filesystem type to mount.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Must be a filesystem type supported by the host operating system.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Ex. &#34;ext4&#34;, &#34;xfs&#34;, &#34;ntfs&#34;. Implicitly inferred to be &#34;ext4&#34; if unspecified.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// TODO: how do we prevent errors in the filesystem from compromising the machine
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">FSType</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;fsType,omitempty&#34; protobuf:&#34;bytes,3,opt,name=fsType&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Optional: Defaults to false (read/write). ReadOnly here will force
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// the ReadOnly setting in VolumeMounts.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ReadOnly</span> <span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#4e9a06">`json:&#34;readOnly,omitempty&#34; protobuf:&#34;varint,4,opt,name=readOnly&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Optional: FC volume world wide identifiers (wwids)
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">WWIDs</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;wwids,omitempty&#34; protobuf:&#34;bytes,5,rep,name=wwids&#34;`</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
 </span></span></code></pre></div><h3 id="configmapvolumesource">ConfigMapVolumeSource</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Adapts a ConfigMap into a volume.
@@ -2965,18 +3531,15 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Optional</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#4e9a06">`json:&#34;optional,omitempty&#34; protobuf:&#34;varint,4,opt,name=optional&#34;`</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><h3 id="downwardapivolumesource">DownwardAPIVolumeSource</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// DownwardAPIVolumeSource represents a volume containing downward API info.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Downward API volumes support ownership management and SELinux relabeling.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">DownwardAPIVolumeSource</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Items is a list of downward API volume file
+</span></span></code></pre></div><h3 id="projectedvolumesource">ProjectedVolumeSource</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Represents a projected volume source
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">ProjectedVolumeSource</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// list of volume projections
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Items</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#000">DownwardAPIVolumeFile</span> <span style="color:#4e9a06">`json:&#34;items,omitempty&#34; protobuf:&#34;bytes,1,rep,name=items&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Optional: mode bits to use on created files by default. Must be a
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Optional: mode bits used to set permissions on created files by default.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Sources</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#000">VolumeProjection</span> <span style="color:#4e9a06">`json:&#34;sources&#34; protobuf:&#34;bytes,1,rep,name=sources&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Mode bits used to set permissions on created files by default.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// YAML accepts both octal and decimal values, JSON requires decimal values for mode bits.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Defaults to 0644.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Directories within the path are not affected by this setting.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// This might be in conflict with other options that affect the file
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// mode, like fsGroup, and the result can be other mode bits set.
@@ -3028,7 +3591,37 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">NodePublishSecretRef</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">LocalObjectReference</span> <span style="color:#4e9a06">`json:&#34;nodePublishSecretRef,omitempty&#34; protobuf:&#34;bytes,5,opt,name=nodePublishSecretRef&#34;`</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><h3 id="hostpathtype">HostPathType</h3>
+</span></span></code></pre></div><h3 id="ephemeralvolumesource">EphemeralVolumeSource</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Represents an ephemeral volume that is handled by a normal storage driver.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">EphemeralVolumeSource</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Will be used to create a stand-alone PVC to provision the volume.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// The pod in which this EphemeralVolumeSource is embedded will be the
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// owner of the PVC, i.e. the PVC will be deleted together with the
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// pod.  The name of the PVC will be `&lt;pod name&gt;-&lt;volume name&gt;` where
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// `&lt;volume name&gt;` is the name from the `PodSpec.Volumes` array
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// entry. Pod validation will reject the pod if the concatenated name
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// is not valid for a PVC (for example, too long).
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">//
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// An existing PVC with that name that is not owned by the pod
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// will *not* be used for the pod to avoid using an unrelated
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// volume by mistake. Starting the pod is then blocked until
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// the unrelated PVC is removed. If such a pre-created PVC is
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// meant to be used by the pod, the PVC has to updated with an
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// owner reference to the pod once the pod exists. Normally
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// this should not be necessary, but it may be useful when
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// manually reconstructing a broken cluster.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">//
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// This field is read-only and no changes will be made by Kubernetes
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// to the PVC after it has been created.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">//
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Required, must not be nil.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">VolumeClaimTemplate</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">PersistentVolumeClaimTemplate</span> <span style="color:#4e9a06">`json:&#34;volumeClaimTemplate,omitempty&#34; protobuf:&#34;bytes,1,opt,name=volumeClaimTemplate&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// ReadOnly is tombstoned to show why 2 is a reserved protobuf tag.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// ReadOnly bool `json:&#34;readOnly,omitempty&#34; protobuf:&#34;varint,2,opt,name=readOnly&#34;`
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h2 id="存储卷属性">存储卷属性</h2>
+<h3 id="hostpathtype">HostPathType</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">HostPathType</span> <span style="color:#204a87;font-weight:bold">string</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">const</span> <span style="color:#000;font-weight:bold">(</span>
@@ -3063,228 +3656,79 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000;font-weight:bold">)</span>
 </span></span></code></pre></div><h3 id="resourcequantity">resource.Quantity</h3>
 <p>TODO;</p>
-<h2 id="不常用类型">不常用类型</h2>
-<h3 id="gcepersistentdiskvolumesource">GCEPersistentDiskVolumeSource</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Represents a Persistent Disk resource in Google Compute Engine.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">//
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// A GCE PD must exist before mounting to a container. The disk must
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// also be in the same GCE project and zone as the kubelet. A GCE PD
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// can only be mounted as read/write once or read-only many times. GCE
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// PDs support ownership management and SELinux relabeling.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">GCEPersistentDiskVolumeSource</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Unique name of the PD resource in GCE. Used to identify the disk in GCE.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">PDName</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;pdName&#34; protobuf:&#34;bytes,1,opt,name=pdName&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Filesystem type of the volume that you want to mount.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Tip: Ensure that the filesystem type is supported by the host operating system.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Examples: &#34;ext4&#34;, &#34;xfs&#34;, &#34;ntfs&#34;. Implicitly inferred to be &#34;ext4&#34; if unspecified.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// TODO: how do we prevent errors in the filesystem from compromising the machine
+<h3 id="persistentvolumeclaimtemplate">PersistentVolumeClaimTemplate</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// PersistentVolumeClaimTemplate is used to produce
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// PersistentVolumeClaim objects as part of an EphemeralVolumeSource.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">PersistentVolumeClaimTemplate</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// May contain labels and annotations that will be copied into the PVC
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// when creating it. No other fields are allowed and will be rejected during
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// validation.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">//
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">FSType</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;fsType,omitempty&#34; protobuf:&#34;bytes,2,opt,name=fsType&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// The partition in the volume that you want to mount.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// If omitted, the default is to mount by volume name.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Examples: For volume /dev/sda1, you specify the partition as &#34;1&#34;.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Similarly, the volume partition for /dev/sda is &#34;0&#34; (or you can leave the property empty).
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Partition</span> <span style="color:#204a87;font-weight:bold">int32</span> <span style="color:#4e9a06">`json:&#34;partition,omitempty&#34; protobuf:&#34;varint,3,opt,name=partition&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// ReadOnly here will force the ReadOnly setting in VolumeMounts.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Defaults to false.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ReadOnly</span> <span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#4e9a06">`json:&#34;readOnly,omitempty&#34; protobuf:&#34;varint,4,opt,name=readOnly&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><h3 id="awselasticblockstorevolumesource">AWSElasticBlockStoreVolumeSource</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Represents a Persistent Disk resource in AWS.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">//
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// An AWS EBS disk must exist before mounting to a container. The disk
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// must also be in the same AWS zone as the kubelet. An AWS EBS disk
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// can only be mounted as read/write once. AWS EBS volumes support
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// ownership management and SELinux relabeling.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">AWSElasticBlockStoreVolumeSource</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Unique ID of the persistent disk resource in AWS (Amazon EBS volume).
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">VolumeID</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;volumeID&#34; protobuf:&#34;bytes,1,opt,name=volumeID&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Filesystem type of the volume that you want to mount.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Tip: Ensure that the filesystem type is supported by the host operating system.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Examples: &#34;ext4&#34;, &#34;xfs&#34;, &#34;ntfs&#34;. Implicitly inferred to be &#34;ext4&#34; if unspecified.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// TODO: how do we prevent errors in the filesystem from compromising the machine
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">FSType</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;fsType,omitempty&#34; protobuf:&#34;bytes,2,opt,name=fsType&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// The partition in the volume that you want to mount.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// If omitted, the default is to mount by volume name.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Examples: For volume /dev/sda1, you specify the partition as &#34;1&#34;.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Similarly, the volume partition for /dev/sda is &#34;0&#34; (or you can leave the property empty).
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Partition</span> <span style="color:#204a87;font-weight:bold">int32</span> <span style="color:#4e9a06">`json:&#34;partition,omitempty&#34; protobuf:&#34;varint,3,opt,name=partition&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Specify &#34;true&#34; to force and set the ReadOnly property in VolumeMounts to &#34;true&#34;.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// If omitted, the default is &#34;false&#34;.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ReadOnly</span> <span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#4e9a06">`json:&#34;readOnly,omitempty&#34; protobuf:&#34;varint,4,opt,name=readOnly&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><h3 id="gitrepovolumesource">GitRepoVolumeSource</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Represents a volume that is populated with the contents of a git repository.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Git repo volumes do not support ownership management.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Git repo volumes support SELinux relabeling.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">//
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// into the Pod&#39;s container.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">GitRepoVolumeSource</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Repository URL
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Repository</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;repository&#34; protobuf:&#34;bytes,1,opt,name=repository&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Commit hash for the specified revision.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Revision</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;revision,omitempty&#34; protobuf:&#34;bytes,2,opt,name=revision&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Target directory name.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Must not contain or start with &#39;..&#39;.  If &#39;.&#39; is supplied, the volume directory will be the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// git repository.  Otherwise, if specified, the volume will contain the git repository in
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// the subdirectory with the given name.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Directory</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;directory,omitempty&#34; protobuf:&#34;bytes,3,opt,name=directory&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><h3 id="iscsivolumesource">ISCSIVolumeSource</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Represents an ISCSI disk.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// ISCSI volumes can only be mounted as read/write once.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// ISCSI volumes support ownership management and SELinux relabeling.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">ISCSIVolumeSource</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// is other than default (typically TCP ports 860 and 3260).
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">TargetPortal</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;targetPortal&#34; protobuf:&#34;bytes,1,opt,name=targetPortal&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Target iSCSI Qualified Name.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">IQN</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;iqn&#34; protobuf:&#34;bytes,2,opt,name=iqn&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// iSCSI Target Lun number.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Lun</span> <span style="color:#204a87;font-weight:bold">int32</span> <span style="color:#4e9a06">`json:&#34;lun&#34; protobuf:&#34;varint,3,opt,name=lun&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// iSCSI Interface Name that uses an iSCSI transport.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Defaults to &#39;default&#39; (tcp).
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ISCSIInterface</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;iscsiInterface,omitempty&#34; protobuf:&#34;bytes,4,opt,name=iscsiInterface&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Filesystem type of the volume that you want to mount.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Tip: Ensure that the filesystem type is supported by the host operating system.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Examples: &#34;ext4&#34;, &#34;xfs&#34;, &#34;ntfs&#34;. Implicitly inferred to be &#34;ext4&#34; if unspecified.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// TODO: how do we prevent errors in the filesystem from compromising the machine
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">FSType</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;fsType,omitempty&#34; protobuf:&#34;bytes,5,opt,name=fsType&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// ReadOnly here will force the ReadOnly setting in VolumeMounts.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Defaults to false.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ReadOnly</span> <span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#4e9a06">`json:&#34;readOnly,omitempty&#34; protobuf:&#34;varint,6,opt,name=readOnly&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// iSCSI Target Portal List. The portal is either an IP or ip_addr:port if the port
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// is other than default (typically TCP ports 860 and 3260).
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Portals</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;portals,omitempty&#34; protobuf:&#34;bytes,7,opt,name=portals&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// whether support iSCSI Discovery CHAP authentication
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">DiscoveryCHAPAuth</span> <span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#4e9a06">`json:&#34;chapAuthDiscovery,omitempty&#34; protobuf:&#34;varint,8,opt,name=chapAuthDiscovery&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// whether support iSCSI Session CHAP authentication
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SessionCHAPAuth</span> <span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#4e9a06">`json:&#34;chapAuthSession,omitempty&#34; protobuf:&#34;varint,11,opt,name=chapAuthSession&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// CHAP Secret for iSCSI target and initiator authentication
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SecretRef</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">LocalObjectReference</span> <span style="color:#4e9a06">`json:&#34;secretRef,omitempty&#34; protobuf:&#34;bytes,10,opt,name=secretRef&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Custom iSCSI Initiator Name.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// &lt;target portal&gt;:&lt;volume name&gt; will be created for the connection.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">InitiatorName</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;initiatorName,omitempty&#34; protobuf:&#34;bytes,12,opt,name=initiatorName&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><h3 id="glusterfsvolumesource">GlusterfsVolumeSource</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Represents a Glusterfs mount that lasts the lifetime of a pod.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Glusterfs volumes do not support ownership management or SELinux relabeling.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">GlusterfsVolumeSource</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// EndpointsName is the endpoint name that details Glusterfs topology.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">EndpointsName</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;endpoints&#34; protobuf:&#34;bytes,1,opt,name=endpoints&#34;`</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">ObjectMeta</span> <span style="color:#4e9a06">`json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;`</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Path is the Glusterfs volume path.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Path</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;path&#34; protobuf:&#34;bytes,2,opt,name=path&#34;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Defaults to false.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ReadOnly</span> <span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#4e9a06">`json:&#34;readOnly,omitempty&#34; protobuf:&#34;varint,3,opt,name=readOnly&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// The specification for the PersistentVolumeClaim. The entire content is
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// copied unchanged into the PVC that gets created from this
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// template. The same fields as in a PersistentVolumeClaim
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// are also valid here.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Spec</span> <span style="color:#000">PersistentVolumeClaimSpec</span> <span style="color:#4e9a06">`json:&#34;spec&#34; protobuf:&#34;bytes,2,name=spec&#34;`</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><h3 id="rbdvolumesource">RBDVolumeSource</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Represents a Rados Block Device mount that lasts the lifetime of a pod.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// RBD volumes support ownership management and SELinux relabeling.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">RBDVolumeSource</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// A collection of Ceph monitors.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">CephMonitors</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;monitors&#34; protobuf:&#34;bytes,1,rep,name=monitors&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// The rados image name.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">RBDImage</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;image&#34; protobuf:&#34;bytes,2,opt,name=image&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Filesystem type of the volume that you want to mount.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Tip: Ensure that the filesystem type is supported by the host operating system.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Examples: &#34;ext4&#34;, &#34;xfs&#34;, &#34;ntfs&#34;. Implicitly inferred to be &#34;ext4&#34; if unspecified.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// TODO: how do we prevent errors in the filesystem from compromising the machine
+</span></span></code></pre></div><h3 id="persistentvolumeclaimspec">PersistentVolumeClaimSpec</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// PersistentVolumeClaimSpec describes the common attributes of storage devices
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// and allows a Source for provider-specific attributes
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">PersistentVolumeClaimSpec</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// AccessModes contains the desired access modes the volume should have.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">FSType</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;fsType,omitempty&#34; protobuf:&#34;bytes,3,opt,name=fsType&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// The rados pool name.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Default is rbd.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">AccessModes</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#000">PersistentVolumeAccessMode</span> <span style="color:#4e9a06">`json:&#34;accessModes,omitempty&#34; protobuf:&#34;bytes,1,rep,name=accessModes,casttype=PersistentVolumeAccessMode&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// A label query over volumes to consider for binding.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">RBDPool</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;pool,omitempty&#34; protobuf:&#34;bytes,4,opt,name=pool&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// The rados user name.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Default is admin.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Selector</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">LabelSelector</span> <span style="color:#4e9a06">`json:&#34;selector,omitempty&#34; protobuf:&#34;bytes,4,opt,name=selector&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Resources represents the minimum resources the volume should have.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">RadosUser</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;user,omitempty&#34; protobuf:&#34;bytes,5,opt,name=user&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Keyring is the path to key ring for RBDUser.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Default is /etc/ceph/keyring.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Resources</span> <span style="color:#000">ResourceRequirements</span> <span style="color:#4e9a06">`json:&#34;resources,omitempty&#34; protobuf:&#34;bytes,2,opt,name=resources&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// VolumeName is the binding reference to the PersistentVolume backing this claim.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Keyring</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;keyring,omitempty&#34; protobuf:&#34;bytes,6,opt,name=keyring&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// SecretRef is name of the authentication secret for RBDUser. If provided
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// overrides keyring.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Default is nil.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">VolumeName</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;volumeName,omitempty&#34; protobuf:&#34;bytes,3,opt,name=volumeName&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Name of the StorageClass required by the claim.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SecretRef</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">LocalObjectReference</span> <span style="color:#4e9a06">`json:&#34;secretRef,omitempty&#34; protobuf:&#34;bytes,7,opt,name=secretRef&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// ReadOnly here will force the ReadOnly setting in VolumeMounts.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Defaults to false.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">StorageClassName</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;storageClassName,omitempty&#34; protobuf:&#34;bytes,5,opt,name=storageClassName&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// volumeMode defines what type of volume is required by the claim.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Value of Filesystem is implied when not included in claim spec.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ReadOnly</span> <span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#4e9a06">`json:&#34;readOnly,omitempty&#34; protobuf:&#34;varint,8,opt,name=readOnly&#34;`</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">VolumeMode</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">PersistentVolumeMode</span> <span style="color:#4e9a06">`json:&#34;volumeMode,omitempty&#34; protobuf:&#34;bytes,6,opt,name=volumeMode,casttype=PersistentVolumeMode&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// This field can be used to specify either:
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot)
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// * An existing PVC (PersistentVolumeClaim)
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// If the provisioner or an external controller can support the specified data source,
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// it will create a new volume based on the contents of the specified data source.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// If the AnyVolumeDataSource feature gate is enabled, this field will always have
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// the same contents as the DataSourceRef field.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">DataSource</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">TypedLocalObjectReference</span> <span style="color:#4e9a06">`json:&#34;dataSource,omitempty&#34; protobuf:&#34;bytes,7,opt,name=dataSource&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Specifies the object from which to populate the volume with data, if a non-empty
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// volume is desired. This may be any local object from a non-empty API group (non
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// core object) or a PersistentVolumeClaim object.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// When this field is specified, volume binding will only succeed if the type of
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// the specified object matches some installed volume populator or dynamic
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// provisioner.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// This field will replace the functionality of the DataSource field and as such
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// if both fields are non-empty, they must have the same value. For backwards
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// compatibility, both fields (DataSource and DataSourceRef) will be set to the same
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// value automatically if one of them is empty and the other is non-empty.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// There are two important differences between DataSource and DataSourceRef:
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// * While DataSource only allows two specific types of objects, DataSourceRef
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">//   allows any non-core object, as well as PersistentVolumeClaim objects.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// * While DataSource ignores disallowed values (dropping them), DataSourceRef
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">//   preserves all values, and generates an error if a disallowed value is
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">//   specified.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// (Alpha) Using this field requires the AnyVolumeDataSource feature gate to be enabled.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">DataSourceRef</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">TypedLocalObjectReference</span> <span style="color:#4e9a06">`json:&#34;dataSourceRef,omitempty&#34; protobuf:&#34;bytes,8,opt,name=dataSourceRef&#34;`</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><h3 id="flexvolumesource">FlexVolumeSource</h3>
-<p>TODO;</p>
-<h3 id="cindervolumesource">CinderVolumeSource</h3>
-<p>TODO;</p>
-<h3 id="cephfsvolumesource">CephFSVolumeSource</h3>
-<p>TODO;</p>
-<h3 id="flockervolumesource">FlockerVolumeSource</h3>
-<p>TODO;</p>
-<h3 id="fcvolumesource">FCVolumeSource</h3>
-<p>TODO;</p>
-<h3 id="azurefilevolumesource">AzureFileVolumeSource</h3>
-<p>TODO;</p>
-<h3 id="vspherevirtualdiskvolumesource">VsphereVirtualDiskVolumeSource</h3>
-<p>TODO;</p>
-<h3 id="quobytevolumesource">QuobyteVolumeSource</h3>
-<p>TODO;</p>
-<h3 id="azurediskvolumesource">AzureDiskVolumeSource</h3>
-<p>TODO;</p>
-<h3 id="photonpersistentdiskvolumesource">PhotonPersistentDiskVolumeSource</h3>
-<p>TODO;</p>
-<h3 id="projectedvolumesource">ProjectedVolumeSource</h3>
-<p>TODO;</p>
-<h3 id="portworxvolumesource">PortworxVolumeSource</h3>
-<p>TODO;</p>
-<h3 id="scaleiovolumesource">ScaleIOVolumeSource</h3>
-<p>TODO;</p>
-<h3 id="storageosvolumesource">StorageOSVolumeSource</h3>
-<p>TODO;</p>
-<h3 id="ephemeralvolumesource">EphemeralVolumeSource</h3>
-<p>TODO;</p>
-
+</span></span></code></pre></div>
 	
 		<br /><hr />
 		<style>
@@ -3353,7 +3797,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  最后修改 2023.05.08: <a href="https://github.com/opsaid/website/commit/aef1e3a0a8d27bcc30f88a46733e43cafd6449aa">refactor: 拆分 Pod 数据结构 (aef1e3a)</a>
+  最后修改 2023.09.24: <a href="https://github.com/opsaid/website/commit/9167cf7f1226e364728bcfa140f2e04d1c29cb9e">refactor: update pod volume (9167cf7)</a>
 </div>
 
 </div>

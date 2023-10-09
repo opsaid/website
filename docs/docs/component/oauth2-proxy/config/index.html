@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.102.3" />
+<meta name="generator" content="Hugo 0.110.0">
 <meta name="robots" content="index, follow">
 
 
@@ -52,7 +52,6 @@ false
 <meta property="og:url" content="/docs/component/oauth2-proxy/config/" /><meta property="article:section" content="docs" />
 
 <meta property="article:modified_time" content="2023-02-08T23:17:58+08:00" /><meta property="og:site_name" content="OPSaid" />
-
 <meta itemprop="name" content="参数配置">
 <meta itemprop="description" content="认证代理 用于代理OIDC认证
 启动参数 名称 默认值 说明 alpha-config - 使用 alpha 版本的配置数据结构 config - 配置文件 convert-config-to-alpha false 如果开启，则会自动转换配置为 alpha 版本格式 acr-values - TODO; allowed-group - 限制只有该组用户才可以登录，可配置多次 allowed-role - 配合 keycloak 使用，限制只有该角色可登录，可配置多次 api-route - TODO; approval-prompt force TODO; OAuth approval_prompt auth-logging true 认证日志 auth-logging-format - 认证日志格式：{{.Client}} - {{.RequestID}} - {{.Username}} [{{.Timestamp}}] [{{.Status}}] {{.Message}} authenticated-emails-file - TODO; 允许登录的邮件文件列表，每行一个 azure-graph-group-field - TODO; 配合 azure azure-tenant - TODO; 配合 azure banner &quot;&quot; TODO; 自定义显示框，使用 &ldquo;-&rdquo; 则关闭默认值 basic-auth-password - 传递的认证头 bitbucket-repository - TODO; bitbucket-team - TODO; client-id - OAuth Client ID client-secret - OAuth Client Secret client-secret-file - OAuth Client Secret code-challenge-method - 使用指定方法的PKCE代码质询，仅支持 &lsquo;plain&rsquo; 或 &lsquo;S256&rsquo; cookie-csrf-expire 15m0s CSRF cookie 的有效期 cookie-csrf-per-request - 如果开启则CSRF的cookie名每请求均不一样，关闭则使用同一个 cookie-domain - TODO; cookie-expire 168h0m0s cookie的有效期 cookie-httponly true cookie httponly cookie-name _oauth2_proxy cookie name cookie-path &ldquo;/&rdquo; cookie path cookie-refresh - 刷新cookie的时间，设置&#39;0&rsquo;则禁用 cookie-samesite - SameSite cookie attribute (ie: &ldquo;lax&rdquo;, &ldquo;strict&rdquo;, &ldquo;none&rdquo;, or &ldquo;&rdquo;) cookie-secret - 用于 secure cookies cookie-secure true secure cookie flag custom-sign-in-logo - 自定义登录logo，设置&quot;-&ldquo;则禁用默认图，支持：https 与本地文件 custom-templates-dir - 自定义html模版路径 display-htpasswd-form true 如果htpasswd file文件提供了，则是否显示登录认证 email-domain - 允许登录认证的邮件后缀，如果设置为&rsquo;*&lsquo;则允许所有 errors-to-info-log - 输出错误日志至 /dev/stdout 而不是 /dev/stderr exclude-logging-path - 排除记录日志的路径，如：/path1,/path2,/path3 extra-jwt-issuers - TODO; flush-interval 1s TODO; footer &quot;&rdquo; 自定义页脚，设置&quot;-&ldquo;则关闭 force-code-challenge-method - 废弃，由 &lsquo;code-challenge-method&rsquo; 代替 force-https - 强制HTTPS force-json-errors - TODO; gcp-healthchecks - 开启 GCP/GKE 健康探测 github-org - github github-repo - github github-team - github github-token - github github-user - github gitlab-group - gitlab gitlab-project - gitlab google-admin-email - google google-group - google google-service-account-json - google htpasswd-file - htpasswd htpasswd-user-group - htpasswd http-address - HTTP监听端口 https-address - HTTPS监听端口 insecure-oidc-allow-unverified-email - 如果在 id_token 中的email未验证则是否失败 insecure-oidc-skip-issuer-verification - 是否验证 OIDC discovery URL insecure-oidc-skip-nonce true 跳过验证OIDC中的 nonce 属性 jwt-key - TODO; jwt-key-file - TODO; keycloak-group - keycloak logging-compress - 是否启用GZIP压缩日志 logging-filename - 日志文件路径，未设置则输出到终端 logging-local-time true 记录日志是否使用本地时间 logging-max-age 7 最大的天数用于保留旧日志文件 logging-max-backups 最大的保留旧日志数量 login-url - 认证的端点 metrics-address 9100 开启&rdquo;/metrics&quot;性能指标地址 metrics-secure-address 9100 以HTTPS协议开启&quot;/metrics&quot;性能指标地址 metrics-tls-cert-file - HTTPS证书地址 metrics-tls-key-file - HTTPS证书地址 oidc-audience-claim aud 验证OIDC中 audience 属性 oidc-email-claim email oidc token 中对应 email 的属性名 oidc-extra-audience - 对应token中aud属性，允许通过认证的值，该参数可配置多个 oidc-groups-claim groups 同上 oidc-issuer-url - OpenID Connect issuer URL (ie: https://accounts.">
@@ -66,8 +65,8 @@ false
 
 
 
-<link rel="preload" href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" as="style">
-<link href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
+<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
@@ -258,6 +257,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdeploy-k8sbinary-a" href="/docs/deploy-k8s/binary/">官方镜像</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdeploy-k8sfaqs">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdeploy-k8sfaqs-a" href="/docs/deploy-k8s/faqs/">常见问题</a>
                     
                   </span>
                   
@@ -1330,7 +1346,7 @@ if (!doNotTrack) {
   
     <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentcortex">
       <input type="checkbox" id="docscomponentcortex-check"/>
-      <label for="docscomponentcortex-check" ><a href="/docs/component/cortex/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Cortex</a></label>
+      <label for="docscomponentcortex-check" ><a href="/docs/component/cortex/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">cortex</a></label>
       
         
         
@@ -1785,6 +1801,141 @@ if (!doNotTrack) {
 
 
   
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecurity">
+      <input type="checkbox" id="docssecurity-check"/>
+      <label for="docssecurity-check" ><a href="/docs/security/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">K8S 集群安全</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecuritycis-benchmark">
+      <input type="checkbox" id="docssecuritycis-benchmark-check"/>
+      <label for="docssecuritycis-benchmark-check" ><a href="/docs/security/cis-benchmark/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">CIS 基准</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkcontrol-plane">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkcontrol-plane-a" href="/docs/security/cis-benchmark/control-plane/">控制平面</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarketcd">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarketcd-a" href="/docs/security/cis-benchmark/etcd/">Etcd集群</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkauth-audit">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkauth-audit-a" href="/docs/security/cis-benchmark/auth-audit/">认证审计</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevops">
       <input type="checkbox" id="docsdevops-check"/>
       <label for="docsdevops-check" ><a href="/docs/devops/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">流程与自动化</a></label>
@@ -2092,6 +2243,362 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdev-frameworkgogrpc-kit-a" href="/docs/dev-framework/go/grpc-kit/">gRPC Kit</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdata-store">
+      <input type="checkbox" id="docsdata-store-check"/>
+      <label for="docsdata-store-check" ><a href="/docs/data-store/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">存储与数据库</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdata-storeobject-storage">
+      <input type="checkbox" id="docsdata-storeobject-storage-check"/>
+      <label for="docsdata-storeobject-storage-check" ><a href="/docs/data-store/object-storage/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">对象存储</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagekey-terms">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagekey-terms-a" href="/docs/data-store/object-storage/key-terms/">关键术语</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storageproviders">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storageproviders-a" href="/docs/data-store/object-storage/providers/">云提供商</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagecreate-bucket">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagecreate-bucket-a" href="/docs/data-store/object-storage/create-bucket/">接口：CreateBucket</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storageget-bucket-location">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storageget-bucket-location-a" href="/docs/data-store/object-storage/get-bucket-location/">接口：GetBucketLocation</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagehead-bucket">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagehead-bucket-a" href="/docs/data-store/object-storage/head-bucket/">接口：HeadBucket</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagedelete-bucket">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagedelete-bucket-a" href="/docs/data-store/object-storage/delete-bucket/">接口：DeleteBucket</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagelist-buckets">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagelist-buckets-a" href="/docs/data-store/object-storage/list-buckets/">接口：ListBuckets</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagecopy-object">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagecopy-object-a" href="/docs/data-store/object-storage/copy-object/">接口：CopyObject</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagedelete-object">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagedelete-object-a" href="/docs/data-store/object-storage/delete-object/">接口：DeleteObject</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagedelete-objects">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagedelete-objects-a" href="/docs/data-store/object-storage/delete-objects/">接口：DeleteObjects</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storageget-object">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storageget-object-a" href="/docs/data-store/object-storage/get-object/">接口：GetObject</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagehead-object">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagehead-object-a" href="/docs/data-store/object-storage/head-object/">接口：HeadObject</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagelist-objects">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagelist-objects-a" href="/docs/data-store/object-storage/list-objects/">接口：ListObjects</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagelist-objects-v2">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagelist-objects-v2-a" href="/docs/data-store/object-storage/list-objects-v2/">接口：ListObjectsV2</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storageput-object">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storageput-object-a" href="/docs/data-store/object-storage/put-object/">接口：PUTObject</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagerclone">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagerclone-a" href="/docs/data-store/object-storage/rclone/">工具：Rclone</a>
                     
                   </span>
                   

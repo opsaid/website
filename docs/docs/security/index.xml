@@ -1,0 +1,31 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – K8S 集群安全</title>
+    <link>/docs/security/</link>
+    <description>Recent content in K8S 集群安全 on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 05 Oct 2023 11:50:00 +0800</lastBuildDate>
+    
+	  <atom:link href="/docs/security/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: CIS 基准</title>
+      <link>/docs/security/cis-benchmark/</link>
+      <pubDate>Fri, 06 Oct 2023 10:57:39 +0800</pubDate>
+      
+      <guid>/docs/security/cis-benchmark/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

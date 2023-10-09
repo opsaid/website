@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.102.3" />
+<meta name="generator" content="Hugo 0.110.0">
 <meta name="robots" content="index, follow">
 
 
@@ -35,13 +35,11 @@
 通过将多天的查询拆分为单天的查询并并行执行，查询前端可以更好地处理大型查询，减少内存压力，并提高查询速度。这有助于保持系统的稳定性和性能，并提供更好的用户体验。
 缓存数据 查询前端支持缓存查询结果，并在后续查询中重复使用这些结果。如果缓存的结果不完整，查询前端会计算所需的子查询，并在下游的查询器上并行执行它们。查询前端还可以选择将查询与其步长参数对齐，以改善查询结果的可缓存性。结果缓存与任何Cortex缓存后端兼容（目前支持memcached、redis和内存缓存）。
 通过查询结果的缓存和重用，查询前端可以提高查询性能和响应时间，特别是对于重复查询或具有相同参数的查询。缓存查询结果可以减少对下游查询器的负载，并提供更快速的查询体验。同时，通过对查询进行步长对齐，可以进一步提高缓存的有效性，增加查询结果的可重用性。这些功能有助于提高系统的性能和可伸缩性，并降低查询成本。
-配置示例 query_frontend_config 官方文档
-frontend: log_queries_longer_than: 0s max_body_size: 10485760 query_stats_enabled: false max_outstanding_per_tenant: 100 querier_forget_delay: 0s scheduler_address: &#34;&#34; scheduler_dns_lookup_period: 10s scheduler_worker_concurrency: 5 grpc_client_config: max_recv_msg_size: 104857600 max_send_msg_size: 16777216 grpc_compression: &#34;&#34; rate_limit: 0 rate_limit_burst: 0 backoff_on_ratelimits: false backoff_config: min_period: 100ms max_period: 10s max_retries: 10 tls_enabled: false tls_cert_path: &#34;&#34; tls_key_path: &#34;&#34; tls_ca_path: &#34;&#34; tls_server_name: &#34;&#34; tls_insecure_skip_verify: false instance_interface_names: - eth0 - en0 address: &#34;&#34; port: 0 downstream_url: &#34;&#34; query_range_config 官方文档" />
+配置示例 导出默认参数 frontend: log_queries_longer_than: 0s max_body_size: 10485760 query_stats_enabled: false max_outstanding_per_tenant: 100 querier_forget_delay: 0s scheduler_address: &#34;&#34; scheduler_dns_lookup_period: 10s scheduler_worker_concurrency: 5 grpc_client_config: max_recv_msg_size: 104857600 max_send_msg_size: 16777216 grpc_compression: &#34;&#34; rate_limit: 0 rate_limit_burst: 0 backoff_on_ratelimits: false backoff_config: min_period: 100ms max_period: 10s max_retries: 10 tls_enabled: false tls_cert_path: &#34;&#34; tls_key_path: &#34;&#34; tls_ca_path: &#34;&#34; tls_server_name: &#34;&#34; tls_insecure_skip_verify: false instance_interface_names: - eth0 - en0 address: &#34;&#34; port: 0 downstream_url: &#34;&#34; query_range: split_queries_by_interval: 0s align_queries_with_step: false results_cache: cache: enable_fifocache: false default_validity: 0s background: writeback_goroutines: 10 writeback_buffer: 10000 redis: endpoint: &#34;&#34; master_name: &#34;&#34; timeout: 500ms expiration: 0s db: 0 pool_size: 0 password: &#34;&#34; tls_enabled: false tls_insecure_skip_verify: false idle_timeout: 0s max_connection_age: 0s fifocache: max_size_bytes: &#34;&#34; max_size_items: 0 validity: 0s size: 0 prefix: frontend." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/component/cortex/frontend/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2023-05-30T14:27:52+08:00" />
-<meta property="article:modified_time" content="2023-07-06T22:38:07+08:00" /><meta property="og:site_name" content="OPSaid" />
-
+<meta property="article:modified_time" content="2023-09-24T22:57:49+08:00" /><meta property="og:site_name" content="OPSaid" />
 <meta itemprop="name" content="Frontend">
 <meta itemprop="description" content="简要概述 这是可选的服务，提供查询器的API端点，并可以用于加速读取路径。
 当使用查询前端时，应将传入的查询请求定向到查询前端而不是查询器，在集群中仍然需要查询器服务，以执行实际的查询操作。
@@ -54,10 +52,9 @@ frontend: log_queries_longer_than: 0s max_body_size: 10485760 query_stats_enable
 通过将多天的查询拆分为单天的查询并并行执行，查询前端可以更好地处理大型查询，减少内存压力，并提高查询速度。这有助于保持系统的稳定性和性能，并提供更好的用户体验。
 缓存数据 查询前端支持缓存查询结果，并在后续查询中重复使用这些结果。如果缓存的结果不完整，查询前端会计算所需的子查询，并在下游的查询器上并行执行它们。查询前端还可以选择将查询与其步长参数对齐，以改善查询结果的可缓存性。结果缓存与任何Cortex缓存后端兼容（目前支持memcached、redis和内存缓存）。
 通过查询结果的缓存和重用，查询前端可以提高查询性能和响应时间，特别是对于重复查询或具有相同参数的查询。缓存查询结果可以减少对下游查询器的负载，并提供更快速的查询体验。同时，通过对查询进行步长对齐，可以进一步提高缓存的有效性，增加查询结果的可重用性。这些功能有助于提高系统的性能和可伸缩性，并降低查询成本。
-配置示例 query_frontend_config 官方文档
-frontend: log_queries_longer_than: 0s max_body_size: 10485760 query_stats_enabled: false max_outstanding_per_tenant: 100 querier_forget_delay: 0s scheduler_address: &#34;&#34; scheduler_dns_lookup_period: 10s scheduler_worker_concurrency: 5 grpc_client_config: max_recv_msg_size: 104857600 max_send_msg_size: 16777216 grpc_compression: &#34;&#34; rate_limit: 0 rate_limit_burst: 0 backoff_on_ratelimits: false backoff_config: min_period: 100ms max_period: 10s max_retries: 10 tls_enabled: false tls_cert_path: &#34;&#34; tls_key_path: &#34;&#34; tls_ca_path: &#34;&#34; tls_server_name: &#34;&#34; tls_insecure_skip_verify: false instance_interface_names: - eth0 - en0 address: &#34;&#34; port: 0 downstream_url: &#34;&#34; query_range_config 官方文档"><meta itemprop="datePublished" content="2023-05-30T14:27:52+08:00" />
-<meta itemprop="dateModified" content="2023-07-06T22:38:07+08:00" />
-<meta itemprop="wordCount" content="453">
+配置示例 导出默认参数 frontend: log_queries_longer_than: 0s max_body_size: 10485760 query_stats_enabled: false max_outstanding_per_tenant: 100 querier_forget_delay: 0s scheduler_address: &#34;&#34; scheduler_dns_lookup_period: 10s scheduler_worker_concurrency: 5 grpc_client_config: max_recv_msg_size: 104857600 max_send_msg_size: 16777216 grpc_compression: &#34;&#34; rate_limit: 0 rate_limit_burst: 0 backoff_on_ratelimits: false backoff_config: min_period: 100ms max_period: 10s max_retries: 10 tls_enabled: false tls_cert_path: &#34;&#34; tls_key_path: &#34;&#34; tls_ca_path: &#34;&#34; tls_server_name: &#34;&#34; tls_insecure_skip_verify: false instance_interface_names: - eth0 - en0 address: &#34;&#34; port: 0 downstream_url: &#34;&#34; query_range: split_queries_by_interval: 0s align_queries_with_step: false results_cache: cache: enable_fifocache: false default_validity: 0s background: writeback_goroutines: 10 writeback_buffer: 10000 redis: endpoint: &#34;&#34; master_name: &#34;&#34; timeout: 500ms expiration: 0s db: 0 pool_size: 0 password: &#34;&#34; tls_enabled: false tls_insecure_skip_verify: false idle_timeout: 0s max_connection_age: 0s fifocache: max_size_bytes: &#34;&#34; max_size_items: 0 validity: 0s size: 0 prefix: frontend."><meta itemprop="datePublished" content="2023-05-30T14:27:52+08:00" />
+<meta itemprop="dateModified" content="2023-09-24T22:57:49+08:00" />
+<meta itemprop="wordCount" content="509">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Frontend"/>
 <meta name="twitter:description" content="简要概述 这是可选的服务，提供查询器的API端点，并可以用于加速读取路径。
@@ -71,14 +68,13 @@ frontend: log_queries_longer_than: 0s max_body_size: 10485760 query_stats_enable
 通过将多天的查询拆分为单天的查询并并行执行，查询前端可以更好地处理大型查询，减少内存压力，并提高查询速度。这有助于保持系统的稳定性和性能，并提供更好的用户体验。
 缓存数据 查询前端支持缓存查询结果，并在后续查询中重复使用这些结果。如果缓存的结果不完整，查询前端会计算所需的子查询，并在下游的查询器上并行执行它们。查询前端还可以选择将查询与其步长参数对齐，以改善查询结果的可缓存性。结果缓存与任何Cortex缓存后端兼容（目前支持memcached、redis和内存缓存）。
 通过查询结果的缓存和重用，查询前端可以提高查询性能和响应时间，特别是对于重复查询或具有相同参数的查询。缓存查询结果可以减少对下游查询器的负载，并提供更快速的查询体验。同时，通过对查询进行步长对齐，可以进一步提高缓存的有效性，增加查询结果的可重用性。这些功能有助于提高系统的性能和可伸缩性，并降低查询成本。
-配置示例 query_frontend_config 官方文档
-frontend: log_queries_longer_than: 0s max_body_size: 10485760 query_stats_enabled: false max_outstanding_per_tenant: 100 querier_forget_delay: 0s scheduler_address: &#34;&#34; scheduler_dns_lookup_period: 10s scheduler_worker_concurrency: 5 grpc_client_config: max_recv_msg_size: 104857600 max_send_msg_size: 16777216 grpc_compression: &#34;&#34; rate_limit: 0 rate_limit_burst: 0 backoff_on_ratelimits: false backoff_config: min_period: 100ms max_period: 10s max_retries: 10 tls_enabled: false tls_cert_path: &#34;&#34; tls_key_path: &#34;&#34; tls_ca_path: &#34;&#34; tls_server_name: &#34;&#34; tls_insecure_skip_verify: false instance_interface_names: - eth0 - en0 address: &#34;&#34; port: 0 downstream_url: &#34;&#34; query_range_config 官方文档"/>
+配置示例 导出默认参数 frontend: log_queries_longer_than: 0s max_body_size: 10485760 query_stats_enabled: false max_outstanding_per_tenant: 100 querier_forget_delay: 0s scheduler_address: &#34;&#34; scheduler_dns_lookup_period: 10s scheduler_worker_concurrency: 5 grpc_client_config: max_recv_msg_size: 104857600 max_send_msg_size: 16777216 grpc_compression: &#34;&#34; rate_limit: 0 rate_limit_burst: 0 backoff_on_ratelimits: false backoff_config: min_period: 100ms max_period: 10s max_retries: 10 tls_enabled: false tls_cert_path: &#34;&#34; tls_key_path: &#34;&#34; tls_ca_path: &#34;&#34; tls_server_name: &#34;&#34; tls_insecure_skip_verify: false instance_interface_names: - eth0 - en0 address: &#34;&#34; port: 0 downstream_url: &#34;&#34; query_range: split_queries_by_interval: 0s align_queries_with_step: false results_cache: cache: enable_fifocache: false default_validity: 0s background: writeback_goroutines: 10 writeback_buffer: 10000 redis: endpoint: &#34;&#34; master_name: &#34;&#34; timeout: 500ms expiration: 0s db: 0 pool_size: 0 password: &#34;&#34; tls_enabled: false tls_insecure_skip_verify: false idle_timeout: 0s max_connection_age: 0s fifocache: max_size_bytes: &#34;&#34; max_size_items: 0 validity: 0s size: 0 prefix: frontend."/>
 
 
 
 
-<link rel="preload" href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" as="style">
-<link href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
+<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
@@ -269,6 +265,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdeploy-k8sbinary-a" href="/docs/deploy-k8s/binary/">官方镜像</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdeploy-k8sfaqs">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdeploy-k8sfaqs-a" href="/docs/deploy-k8s/faqs/">常见问题</a>
                     
                   </span>
                   
@@ -1341,7 +1354,7 @@ if (!doNotTrack) {
   
     <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib active-path" id="docscomponentcortex">
       <input type="checkbox" id="docscomponentcortex-check" checked/>
-      <label for="docscomponentcortex-check" ><a href="/docs/component/cortex/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Cortex</a></label>
+      <label for="docscomponentcortex-check" ><a href="/docs/component/cortex/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">cortex</a></label>
       
         
         
@@ -1796,6 +1809,141 @@ if (!doNotTrack) {
 
 
   
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecurity">
+      <input type="checkbox" id="docssecurity-check"/>
+      <label for="docssecurity-check" ><a href="/docs/security/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">K8S 集群安全</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecuritycis-benchmark">
+      <input type="checkbox" id="docssecuritycis-benchmark-check"/>
+      <label for="docssecuritycis-benchmark-check" ><a href="/docs/security/cis-benchmark/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">CIS 基准</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkcontrol-plane">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkcontrol-plane-a" href="/docs/security/cis-benchmark/control-plane/">控制平面</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarketcd">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarketcd-a" href="/docs/security/cis-benchmark/etcd/">Etcd集群</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkauth-audit">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkauth-audit-a" href="/docs/security/cis-benchmark/auth-audit/">认证审计</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevops">
       <input type="checkbox" id="docsdevops-check"/>
       <label for="docsdevops-check" ><a href="/docs/devops/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">流程与自动化</a></label>
@@ -2103,6 +2251,362 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdev-frameworkgogrpc-kit-a" href="/docs/dev-framework/go/grpc-kit/">gRPC Kit</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdata-store">
+      <input type="checkbox" id="docsdata-store-check"/>
+      <label for="docsdata-store-check" ><a href="/docs/data-store/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">存储与数据库</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdata-storeobject-storage">
+      <input type="checkbox" id="docsdata-storeobject-storage-check"/>
+      <label for="docsdata-storeobject-storage-check" ><a href="/docs/data-store/object-storage/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">对象存储</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagekey-terms">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagekey-terms-a" href="/docs/data-store/object-storage/key-terms/">关键术语</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storageproviders">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storageproviders-a" href="/docs/data-store/object-storage/providers/">云提供商</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagecreate-bucket">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagecreate-bucket-a" href="/docs/data-store/object-storage/create-bucket/">接口：CreateBucket</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storageget-bucket-location">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storageget-bucket-location-a" href="/docs/data-store/object-storage/get-bucket-location/">接口：GetBucketLocation</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagehead-bucket">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagehead-bucket-a" href="/docs/data-store/object-storage/head-bucket/">接口：HeadBucket</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagedelete-bucket">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagedelete-bucket-a" href="/docs/data-store/object-storage/delete-bucket/">接口：DeleteBucket</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagelist-buckets">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagelist-buckets-a" href="/docs/data-store/object-storage/list-buckets/">接口：ListBuckets</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagecopy-object">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagecopy-object-a" href="/docs/data-store/object-storage/copy-object/">接口：CopyObject</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagedelete-object">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagedelete-object-a" href="/docs/data-store/object-storage/delete-object/">接口：DeleteObject</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagedelete-objects">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagedelete-objects-a" href="/docs/data-store/object-storage/delete-objects/">接口：DeleteObjects</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storageget-object">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storageget-object-a" href="/docs/data-store/object-storage/get-object/">接口：GetObject</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagehead-object">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagehead-object-a" href="/docs/data-store/object-storage/head-object/">接口：HeadObject</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagelist-objects">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagelist-objects-a" href="/docs/data-store/object-storage/list-objects/">接口：ListObjects</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagelist-objects-v2">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagelist-objects-v2-a" href="/docs/data-store/object-storage/list-objects-v2/">接口：ListObjectsV2</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storageput-object">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storageput-object-a" href="/docs/data-store/object-storage/put-object/">接口：PUTObject</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdata-storeobject-storagerclone">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdata-storeobject-storagerclone-a" href="/docs/data-store/object-storage/rclone/">工具：Rclone</a>
                     
                   </span>
                   
@@ -2587,8 +3091,8 @@ if (!doNotTrack) {
     <li><a href="#缓存数据">缓存数据</a></li>
     <li><a href="#配置示例">配置示例</a>
       <ul>
-        <li><a href="#query_frontend_config">query_frontend_config</a></li>
-        <li><a href="#query_range_config">query_range_config</a></li>
+        <li><a href="#导出默认参数">导出默认参数</a></li>
+        <li><a href="#使用-redis-缓存">使用 redis 缓存</a></li>
       </ul>
     </li>
     <li><a href="#数据结构">数据结构</a>
@@ -2649,7 +3153,7 @@ if (!doNotTrack) {
     <a href="/docs/component/">K8S 基础组件</a>
   </li>
   <li class="breadcrumb-item">
-    <a href="/docs/component/cortex/">Cortex</a>
+    <a href="/docs/component/cortex/">cortex</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">
     <a href="/docs/component/cortex/frontend/">Frontend</a>
@@ -2700,8 +3204,7 @@ if (!doNotTrack) {
 <p>查询前端支持缓存查询结果，并在后续查询中重复使用这些结果。如果缓存的结果不完整，查询前端会计算所需的子查询，并在下游的查询器上并行执行它们。查询前端还可以选择将查询与其步长参数对齐，以改善查询结果的可缓存性。结果缓存与任何Cortex缓存后端兼容（目前支持memcached、redis和内存缓存）。</p>
 <p>通过查询结果的缓存和重用，查询前端可以提高查询性能和响应时间，特别是对于重复查询或具有相同参数的查询。缓存查询结果可以减少对下游查询器的负载，并提供更快速的查询体验。同时，通过对查询进行步长对齐，可以进一步提高缓存的有效性，增加查询结果的可重用性。这些功能有助于提高系统的性能和可伸缩性，并降低查询成本。</p>
 <h2 id="配置示例">配置示例</h2>
-<h3 id="query_frontend_config">query_frontend_config</h3>
-<p><a href="https://cortexmetrics.io/docs/configuration/configuration-file/#query_frontend_config">官方文档</a></p>
+<h3 id="导出默认参数">导出默认参数</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">frontend</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">log_queries_longer_than</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0s</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">max_body_size</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">10485760</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -2734,9 +3237,8 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">address</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">downstream_url</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><h3 id="query_range_config">query_range_config</h3>
-<p><a href="https://cortexmetrics.io/docs/configuration/configuration-file/#query_range_config">官方文档</a></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">query_range</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">query_range</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">split_queries_by_interval</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">0s</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">align_queries_with_step</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">results_cache</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -2769,6 +3271,29 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">cache_results</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">max_retries</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">forward_headers_list</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">[]</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><h3 id="使用-redis-缓存">使用 redis 缓存</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">frontend</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">downstream_url</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">http://192.168.31.201:9009</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">log_queries_longer_than</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">3s</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">http_prefix</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">query_range</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">align_queries_with_step</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">cache_results</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">max_retries</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">results_cache</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">cache</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">redis</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">db</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">endpoint</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">192.168.30.125</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">6379</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">password</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;********&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">split_queries_by_interval</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">24h0m0s</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">server</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">http_listen_port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">9091</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">target</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">query-frontend</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><h2 id="数据结构">数据结构</h2>
 <h3 id="frontendcombinedfrontendconfig">frontend.CombinedFrontendConfig</h3>
 <blockquote>
@@ -2777,20 +3302,34 @@ if (!doNotTrack) {
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// This struct combines several configuration options together to preserve backwards compatibility.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">CombinedFrontendConfig</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#000">Handler</span>    <span style="color:#000">transport</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">HandlerConfig</span> <span style="color:#4e9a06">`yaml:&#34;,inline&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// 以下三个均各配置为兼容 prometheus 的后端地址，如组件：Querier
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// 三个同时设置，仅其中一个有效，优先级：DownstreamURL &gt; FrontendV2 &gt; FrontendV1
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>
 </span></span><span style="display:flex;"><span>    <span style="color:#000">FrontendV1</span> <span style="color:#000">v1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Config</span>               <span style="color:#4e9a06">`yaml:&#34;,inline&#34;`</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#000">FrontendV2</span> <span style="color:#000">v2</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Config</span>               <span style="color:#4e9a06">`yaml:&#34;,inline&#34;`</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#000">DownstreamURL</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`yaml:&#34;downstream_url&#34;`</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>InitFrontend
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>github.com/cortexproject/cortex/pkg/frontend/config.go
 </span></span></code></pre></div><h3 id="transporthandlerconfig">transport.HandlerConfig</h3>
 <blockquote>
 <p>github.com/cortexproject/cortex/pkg/frontend/transport/handler.go</p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Config for a Handler.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">HandlerConfig</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">LogQueriesLongerThan</span> <span style="color:#000">time</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span> <span style="color:#4e9a06">`yaml:&#34;log_queries_longer_than&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">MaxBodySize</span>          <span style="color:#204a87;font-weight:bold">int64</span>         <span style="color:#4e9a06">`yaml:&#34;max_body_size&#34;`</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000">QueryStatsEnabled</span>    <span style="color:#204a87;font-weight:bold">bool</span>          <span style="color:#4e9a06">`yaml:&#34;query_stats_enabled&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// 记录慢查询日志，设置为0s关闭记录，设置小于0则记录所有，如：&#34;3s&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">LogQueriesLongerThan</span> <span style="color:#000">time</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Duration</span> <span style="color:#4e9a06">`yaml:&#34;log_queries_longer_than&#34;`</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// 允许客户端请求内容的最大字节
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">MaxBodySize</span>          <span style="color:#204a87;font-weight:bold">int64</span>         <span style="color:#4e9a06">`yaml:&#34;max_body_size&#34;`</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// 开启查询统计会新增以下四个指标
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// cortex_query_seconds_total
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// cortex_query_fetched_series_total
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// cortex_query_fetched_chunks_bytes_total
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// cortex_query_fetched_data_bytes_total
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">QueryStatsEnabled</span>    <span style="color:#204a87;font-weight:bold">bool</span>          <span style="color:#4e9a06">`yaml:&#34;query_stats_enabled&#34;`</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
 </span></span></code></pre></div><h3 id="v1config">v1.Config</h3>
 <blockquote>
@@ -2949,7 +3488,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  最后修改 2023.07.06: <a href="https://github.com/opsaid/website/commit/5fe4b3851111132209a7e62bb31ccbab0043d48c">refactor: update some (5fe4b38)</a>
+  最后修改 2023.09.24: <a href="https://github.com/opsaid/website/commit/ba4ddf9ffb9a9b71fdeb357ffba188325142041d">refactor: update cortex (ba4ddf9)</a>
 </div>
 
 </div>
