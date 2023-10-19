@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/docs/security/cis-benchmark/control-plane/</loc>
-    <lastmod>2023-10-09T17:19:05+08:00</lastmod>
+    <lastmod>2023-10-10T18:26:20+08:00</lastmod>
   </url><url>
     <loc>/docs/security/cis-benchmark/</loc>
     <lastmod>2023-10-06T23:06:50+08:00</lastmod>
@@ -63,7 +63,7 @@
     <lastmod>2023-03-06T14:08:00+08:00</lastmod>
   </url><url>
     <loc>/docs/component/containers/containerd/</loc>
-    <lastmod>2023-07-28T11:12:11+08:00</lastmod>
+    <lastmod>2023-10-09T17:54:36+08:00</lastmod>
   </url><url>
     <loc>/docs/cloud-monitor/alert-rules/node-exporter/</loc>
     <lastmod>2023-02-15T11:51:03+08:00</lastmod>
@@ -200,8 +200,11 @@
     <loc>/docs/cloud-monitor/alert-rules/</loc>
     <lastmod>2022-02-13T14:37:36+08:00</lastmod>
   </url><url>
+    <loc>/docs/security/cis-benchmark/worker-nodes/</loc>
+    <lastmod>2023-10-12T17:55:48+08:00</lastmod>
+  </url><url>
     <loc>/docs/security/</loc>
-    <lastmod>2023-10-06T23:06:50+08:00</lastmod>
+    <lastmod>2023-10-16T10:58:54+08:00</lastmod>
   </url><url>
     <loc>/docs/component/cortex/querier/</loc>
     <lastmod>2023-07-06T22:38:07+08:00</lastmod>
@@ -226,6 +229,9 @@
   </url><url>
     <loc>/docs/component/kube-scheduler/</loc>
     <lastmod>2023-02-08T23:17:58+08:00</lastmod>
+  </url><url>
+    <loc>/docs/security/cis-benchmark/policies/</loc>
+    <lastmod>2023-10-19T16:54:51+08:00</lastmod>
   </url><url>
     <loc>/docs/data-store/object-storage/create-bucket/</loc>
     <lastmod>2023-07-06T22:38:07+08:00</lastmod>
@@ -277,6 +283,9 @@
   </url><url>
     <loc>/docs/data-store/object-storage/list-objects-v2/</loc>
     <lastmod>2023-07-06T22:38:07+08:00</lastmod>
+  </url><url>
+    <loc>/docs/security/cis-benchmark/kube-bench/</loc>
+    <lastmod>2023-10-19T16:54:51+08:00</lastmod>
   </url><url>
     <loc>/docs/data-store/object-storage/put-object/</loc>
     <lastmod>2023-07-06T22:38:07+08:00</lastmod>

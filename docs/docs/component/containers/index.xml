@@ -673,6 +673,8 @@ type PluginConfig struct {
     StatsCollectPeriod int `toml:&amp;#34;stats_collect_period&amp;#34; json:&amp;#34;statsCollectPeriod&amp;#34;`
 
     // 开启systemd的cgroup支持，仅使用&amp;#34;io.containerd.runtime.v1.linux&amp;#34;下有效，已被废弃
+    // 是在：plugins.&amp;#34;io.containerd.grpc.v1.cri&amp;#34; 下的 &amp;#34;systemd_cgroup&amp;#34;
+    // 由：plugins.&amp;#34;io.containerd.grpc.v1.cri&amp;#34;.containerd.runtimes.runc.options 下的 SystemdCgroup 代替
     SystemdCgroup bool `toml:&amp;#34;systemd_cgroup&amp;#34; json:&amp;#34;systemdCgroup&amp;#34;`
 
     // 是否为&amp;#34;StreamServerAddress&amp;#34;配置tls证实，以使用https

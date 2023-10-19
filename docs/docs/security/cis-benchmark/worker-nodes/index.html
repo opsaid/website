@@ -18,36 +18,37 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Ingress | OPSaid</title>
+<title>工作节点 | OPSaid</title>
 <meta name="description" content="简要概述
-Ingress 是对集群中服务的外部访问进行管理的 API 对象，典型的访问方式是 HTTP。
-它不会公开任意端口或协议，一般只将 HTTP 和 HTTPS 以外的服务公开到网络时，如果是其他协议服务，使用 Service.Type=NodePort …">
-<meta property="og:title" content="Ingress" />
-<meta property="og:description" content="简要概述 Ingress 是对集群中服务的外部访问进行管理的 API 对象，典型的访问方式是 HTTP。
-它不会公开任意端口或协议，一般只将 HTTP 和 HTTPS 以外的服务公开到网络时，如果是其他协议服务，使用 Service.Type=NodePort 或 Service.Type=LoadBalancer 类型的 Service
-这里基于 k8s-1.22 版本，数据结构代码路径：
-staging/src/k8s.io/api/extensions/v1beta1/types.go staging/src/k8s.io/api/networking/v1/types.go staging/src/k8s.io/api/networking/v1beta1/types.go 所以该版本 Ingress 资源可使用三种 apiVersion 风格：
-接口版本1 apiVersion: extensions/v1beta1 kind: Ingress 接口版本2 apiVersion: networking.k8s.io/v1beta1 kind: Ingress 接口版本3 apiVersion: networking.k8s.io/v1 kind: Ingress 配置示例 接口版本1 apiVersion: extensions/v1beta1 kind: Ingress metadata: name: demo-test-v1 spec: rules: - host: &#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34; http: paths: - backend: serviceName: demo-test-v1 servicePort: 10080 path: / pathType: Prefix 接口版本2 apiVersion: networking." />
+关于在工作节点上组件的安全配置建议。
+配置文件
+确保 kubelet 配置文件权限
+文件权限必须小于等于 &ldquo;644&rdquo;
+stat -c %a /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+stat -c …">
+<meta property="og:title" content="工作节点" />
+<meta property="og:description" content="简要概述 关于在工作节点上组件的安全配置建议。
+配置文件 确保 kubelet 配置文件权限 文件权限必须小于等于 &ldquo;644&rdquo;
+stat -c %a /etc/systemd/system/kubelet.service.d/10-kubeadm.conf stat -c %a /etc/systemd/system/kubelet.service stat -c %a /etc/default/kubelet stat -c %a /etc/kubernetes/kubelet.conf stat -c %a /var/lib/kubelet/config.yaml 文件归属用户必须为 &ldquo;root:root&rdquo;
+stat -c %U:%G /etc/systemd/system/kubelet.service.d/10-kubeadm.conf stat -c %U:%G /etc/systemd/system/kubelet.service stat -c %U:%G /etc/default/kubelet stat -c %U:%G /etc/kubernetes/kubelet.conf stat -c %U:%G /var/lib/kubelet/config.yaml 确保未开启匿名访问 kind: KubeletConfiguration apiVersion: kubelet.config.k8s.io/v1beta1 staticPodPath: /etc/kubernetes/manifests address: 192.168.0.2 port: 10250 readOnlyPort: 0 authentication: anonymous: enabled: false webhook: enabled: true cacheTTL: 2m0s x509: clientCAFile: /etc/kubernetes/pki/ca." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/concepts/network/ingress/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-11-17T15:36:12+08:00" />
-<meta property="article:modified_time" content="2023-01-28T23:55:24+08:00" /><meta property="og:site_name" content="OPSaid" />
+<meta property="og:url" content="/docs/security/cis-benchmark/worker-nodes/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2023-10-10T18:08:58+08:00" />
+<meta property="article:modified_time" content="2023-10-12T17:55:48+08:00" /><meta property="og:site_name" content="OPSaid" />
 
-<meta itemprop="name" content="Ingress">
-<meta itemprop="description" content="简要概述 Ingress 是对集群中服务的外部访问进行管理的 API 对象，典型的访问方式是 HTTP。
-它不会公开任意端口或协议，一般只将 HTTP 和 HTTPS 以外的服务公开到网络时，如果是其他协议服务，使用 Service.Type=NodePort 或 Service.Type=LoadBalancer 类型的 Service
-这里基于 k8s-1.22 版本，数据结构代码路径：
-staging/src/k8s.io/api/extensions/v1beta1/types.go staging/src/k8s.io/api/networking/v1/types.go staging/src/k8s.io/api/networking/v1beta1/types.go 所以该版本 Ingress 资源可使用三种 apiVersion 风格：
-接口版本1 apiVersion: extensions/v1beta1 kind: Ingress 接口版本2 apiVersion: networking.k8s.io/v1beta1 kind: Ingress 接口版本3 apiVersion: networking.k8s.io/v1 kind: Ingress 配置示例 接口版本1 apiVersion: extensions/v1beta1 kind: Ingress metadata: name: demo-test-v1 spec: rules: - host: &#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34; http: paths: - backend: serviceName: demo-test-v1 servicePort: 10080 path: / pathType: Prefix 接口版本2 apiVersion: networking."><meta itemprop="datePublished" content="2022-11-17T15:36:12+08:00" />
-<meta itemprop="dateModified" content="2023-01-28T23:55:24+08:00" />
-<meta itemprop="wordCount" content="2599">
+<meta itemprop="name" content="工作节点">
+<meta itemprop="description" content="简要概述 关于在工作节点上组件的安全配置建议。
+配置文件 确保 kubelet 配置文件权限 文件权限必须小于等于 &ldquo;644&rdquo;
+stat -c %a /etc/systemd/system/kubelet.service.d/10-kubeadm.conf stat -c %a /etc/systemd/system/kubelet.service stat -c %a /etc/default/kubelet stat -c %a /etc/kubernetes/kubelet.conf stat -c %a /var/lib/kubelet/config.yaml 文件归属用户必须为 &ldquo;root:root&rdquo;
+stat -c %U:%G /etc/systemd/system/kubelet.service.d/10-kubeadm.conf stat -c %U:%G /etc/systemd/system/kubelet.service stat -c %U:%G /etc/default/kubelet stat -c %U:%G /etc/kubernetes/kubelet.conf stat -c %U:%G /var/lib/kubelet/config.yaml 确保未开启匿名访问 kind: KubeletConfiguration apiVersion: kubelet.config.k8s.io/v1beta1 staticPodPath: /etc/kubernetes/manifests address: 192.168.0.2 port: 10250 readOnlyPort: 0 authentication: anonymous: enabled: false webhook: enabled: true cacheTTL: 2m0s x509: clientCAFile: /etc/kubernetes/pki/ca."><meta itemprop="datePublished" content="2023-10-10T18:08:58+08:00" />
+<meta itemprop="dateModified" content="2023-10-12T17:55:48+08:00" />
+<meta itemprop="wordCount" content="386">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Ingress"/>
-<meta name="twitter:description" content="简要概述 Ingress 是对集群中服务的外部访问进行管理的 API 对象，典型的访问方式是 HTTP。
-它不会公开任意端口或协议，一般只将 HTTP 和 HTTPS 以外的服务公开到网络时，如果是其他协议服务，使用 Service.Type=NodePort 或 Service.Type=LoadBalancer 类型的 Service
-这里基于 k8s-1.22 版本，数据结构代码路径：
-staging/src/k8s.io/api/extensions/v1beta1/types.go staging/src/k8s.io/api/networking/v1/types.go staging/src/k8s.io/api/networking/v1beta1/types.go 所以该版本 Ingress 资源可使用三种 apiVersion 风格：
-接口版本1 apiVersion: extensions/v1beta1 kind: Ingress 接口版本2 apiVersion: networking.k8s.io/v1beta1 kind: Ingress 接口版本3 apiVersion: networking.k8s.io/v1 kind: Ingress 配置示例 接口版本1 apiVersion: extensions/v1beta1 kind: Ingress metadata: name: demo-test-v1 spec: rules: - host: &#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34; http: paths: - backend: serviceName: demo-test-v1 servicePort: 10080 path: / pathType: Prefix 接口版本2 apiVersion: networking."/>
+<meta name="twitter:title" content="工作节点"/>
+<meta name="twitter:description" content="简要概述 关于在工作节点上组件的安全配置建议。
+配置文件 确保 kubelet 配置文件权限 文件权限必须小于等于 &ldquo;644&rdquo;
+stat -c %a /etc/systemd/system/kubelet.service.d/10-kubeadm.conf stat -c %a /etc/systemd/system/kubelet.service stat -c %a /etc/default/kubelet stat -c %a /etc/kubernetes/kubelet.conf stat -c %a /var/lib/kubelet/config.yaml 文件归属用户必须为 &ldquo;root:root&rdquo;
+stat -c %U:%G /etc/systemd/system/kubelet.service.d/10-kubeadm.conf stat -c %U:%G /etc/systemd/system/kubelet.service stat -c %U:%G /etc/default/kubelet stat -c %U:%G /etc/kubernetes/kubelet.conf stat -c %U:%G /var/lib/kubelet/config.yaml 确保未开启匿名访问 kind: KubeletConfiguration apiVersion: kubelet.config.k8s.io/v1beta1 staticPodPath: /etc/kubernetes/manifests address: 192.168.0.2 port: 10250 readOnlyPort: 0 authentication: anonymous: enabled: false webhook: enabled: true cacheTTL: 2m0s x509: clientCAFile: /etc/kubernetes/pki/ca."/>
 
 
 
@@ -300,14 +301,14 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib active-path" id="docsconcepts">
-      <input type="checkbox" id="docsconcepts-check" checked/>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsconcepts">
+      <input type="checkbox" id="docsconcepts-check"/>
       <label for="docsconcepts-check" ><a href="/docs/concepts/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">K8S 数据结构</a></label>
       
         
         
       
-      <ul class="ul-2">
+      <ul class="ul-2 collapsed">
 
         
           
@@ -563,14 +564,14 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib active-path" id="docsconceptsnetwork">
-      <input type="checkbox" id="docsconceptsnetwork-check" checked/>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsconceptsnetwork">
+      <input type="checkbox" id="docsconceptsnetwork-check"/>
       <label for="docsconceptsnetwork-check" ><a href="/docs/concepts/network/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">网络资源</a></label>
       
         
         
       
-      <ul class="ul-3">
+      <ul class="ul-3 collapsed">
 
         
           
@@ -579,10 +580,10 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib active-path" id="m-docsconceptsnetworkingress">
-                  <span  id="td-sidebar-nav-active-item" >
+                <li class="without-sib collapsed" id="m-docsconceptsnetworkingress">
+                  <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsconceptsnetworkingress-a" href="/docs/concepts/network/ingress/">Ingress</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsnetworkingress-a" href="/docs/concepts/network/ingress/">Ingress</a>
                     
                   </span>
                   
@@ -596,7 +597,7 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib" id="m-docsconceptsnetworkservice">
+                <li class="without-sib collapsed" id="m-docsconceptsnetworkservice">
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsnetworkservice-a" href="/docs/concepts/network/service/">Service</a>
@@ -613,7 +614,7 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib" id="m-docsconceptsnetworkendpoints">
+                <li class="without-sib collapsed" id="m-docsconceptsnetworkendpoints">
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsnetworkendpoints-a" href="/docs/concepts/network/endpoints/">Endpoints</a>
@@ -630,7 +631,7 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib" id="m-docsconceptsnetworkendpoint-slice">
+                <li class="without-sib collapsed" id="m-docsconceptsnetworkendpoint-slice">
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsnetworkendpoint-slice-a" href="/docs/concepts/network/endpoint-slice/">EndpointSlice</a>
@@ -1788,14 +1789,14 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecurity">
-      <input type="checkbox" id="docssecurity-check"/>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib active-path" id="docssecurity">
+      <input type="checkbox" id="docssecurity-check" checked/>
       <label for="docssecurity-check" ><a href="/docs/security/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">K8S 集群安全</a></label>
       
         
         
       
-      <ul class="ul-2 collapsed">
+      <ul class="ul-2">
 
         
           
@@ -1822,14 +1823,14 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecuritycis-benchmark">
-      <input type="checkbox" id="docssecuritycis-benchmark-check"/>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib active-path" id="docssecuritycis-benchmark">
+      <input type="checkbox" id="docssecuritycis-benchmark-check" checked/>
       <label for="docssecuritycis-benchmark-check" ><a href="/docs/security/cis-benchmark/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">CIS 基准</a></label>
       
         
         
       
-      <ul class="ul-3 collapsed">
+      <ul class="ul-3">
 
         
           
@@ -1838,7 +1839,7 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkcontrol-plane">
+                <li class="without-sib" id="m-docssecuritycis-benchmarkcontrol-plane">
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkcontrol-plane-a" href="/docs/security/cis-benchmark/control-plane/">控制平面</a>
@@ -1855,7 +1856,7 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarketcd">
+                <li class="without-sib" id="m-docssecuritycis-benchmarketcd">
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarketcd-a" href="/docs/security/cis-benchmark/etcd/">Etcd集群</a>
@@ -1872,7 +1873,7 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkauth-audit">
+                <li class="without-sib" id="m-docssecuritycis-benchmarkauth-audit">
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkauth-audit-a" href="/docs/security/cis-benchmark/auth-audit/">认证审计</a>
@@ -1889,10 +1890,10 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkworker-nodes">
-                  <span >
+                <li class="without-sib active-path" id="m-docssecuritycis-benchmarkworker-nodes">
+                  <span  id="td-sidebar-nav-active-item" >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkworker-nodes-a" href="/docs/security/cis-benchmark/worker-nodes/">工作节点</a>
+                      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docssecuritycis-benchmarkworker-nodes-a" href="/docs/security/cis-benchmark/worker-nodes/">工作节点</a>
                     
                   </span>
                   
@@ -1906,7 +1907,7 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkpolicies">
+                <li class="without-sib" id="m-docssecuritycis-benchmarkpolicies">
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkpolicies-a" href="/docs/security/cis-benchmark/policies/">安全策略</a>
@@ -1923,7 +1924,7 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkkube-bench">
+                <li class="without-sib" id="m-docssecuritycis-benchmarkkube-bench">
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkkube-bench-a" href="/docs/security/cis-benchmark/kube-bench/">检测工具</a>
@@ -3116,12 +3117,20 @@ if (!doNotTrack) {
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
     <li><a href="#简要概述">简要概述</a></li>
-    <li><a href="#配置示例">配置示例</a></li>
-    <li><a href="#数据结构">数据结构</a>
+    <li><a href="#配置文件">配置文件</a>
       <ul>
-        <li><a href="#extensionsv1beta1">extensions/v1beta1</a></li>
-        <li><a href="#networkingk8siov1beta1">networking.k8s.io/v1beta1</a></li>
-        <li><a href="#networkingk8siov1">networking.k8s.io/v1</a></li>
+        <li><a href="#确保-kubelet-配置文件权限">确保 kubelet 配置文件权限</a></li>
+        <li><a href="#确保未开启匿名访问">确保未开启匿名访问</a></li>
+        <li><a href="#确保鉴权模式非允许所有">确保鉴权模式非允许所有</a></li>
+        <li><a href="#确保开启-kubelet-验证来自-kube-apiserver-请求">确保开启 kubelet 验证来自 kube-apiserver 请求</a></li>
+        <li><a href="#确保关闭只读端口配置">确保关闭只读端口配置</a></li>
+        <li><a href="#确保长连接配置最大超时时间">确保长连接配置最大超时时间</a></li>
+        <li><a href="#确保内核参数符合预期否则禁止启动">确保内核参数符合预期否则禁止启动</a></li>
+        <li><a href="#确保允许-kubelet-管理-iptables-规则">确保允许 Kubelet 管理 iptables 规则</a></li>
+        <li><a href="#确保未覆盖主机节点名称">确保未覆盖主机节点名称</a></li>
+        <li><a href="#确保-kubelet-开启-https-链接">确保 kubelet 开启 https 链接</a></li>
+        <li><a href="#确保-kubelet-自动更新证书">确保 kubelet 自动更新证书</a></li>
+        <li><a href="#确保-kubelet-上报事件速率无限制">确保 kubelet 上报事件速率无限制</a></li>
       </ul>
     </li>
   </ul>
@@ -3167,19 +3176,19 @@ if (!doNotTrack) {
     <a href="/docs/">Documentation</a>
   </li>
   <li class="breadcrumb-item">
-    <a href="/docs/concepts/">K8S 数据结构</a>
+    <a href="/docs/security/">K8S 集群安全</a>
   </li>
   <li class="breadcrumb-item">
-    <a href="/docs/concepts/network/">网络资源</a>
+    <a href="/docs/security/cis-benchmark/">CIS 基准</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="/docs/concepts/network/ingress/">Ingress</a>
+    <a href="/docs/security/cis-benchmark/worker-nodes/">工作节点</a>
   </li>
   </ol>
 </nav>
             
 <div class="td-content">
-	<h1>Ingress</h1>
+	<h1>工作节点</h1>
 	
 	<header class="article-meta">
 		
@@ -3195,450 +3204,125 @@ if (!doNotTrack) {
 			
 		
 		
-			<p class="reading-time"><i class="fa fa-clock" aria-hidden="true"></i>&nbsp; 13 分钟阅读 &nbsp;</p>
+			<p class="reading-time"><i class="fa fa-clock" aria-hidden="true"></i>&nbsp; 2 分钟阅读 &nbsp;</p>
 
 		
 	</header>    
 	<h2 id="简要概述">简要概述</h2>
-<p>Ingress 是对集群中服务的外部访问进行管理的 API 对象，典型的访问方式是 HTTP。</p>
-<p>它不会公开任意端口或协议，一般只将 HTTP 和 HTTPS 以外的服务公开到网络时，如果是其他协议服务，使用 Service.Type=NodePort 或 Service.Type=LoadBalancer 类型的 Service</p>
-<p>这里基于 k8s-1.22 版本，数据结构代码路径：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>staging/src/k8s.io/api/extensions/v1beta1/types.go
-</span></span><span style="display:flex;"><span>staging/src/k8s.io/api/networking/v1/types.go
-</span></span><span style="display:flex;"><span>staging/src/k8s.io/api/networking/v1beta1/types.go
-</span></span></code></pre></div><p>所以该版本 Ingress 资源可使用三种 apiVersion 风格：</p>
-<ul>
-<li>接口版本1</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apiVersion: extensions/v1beta1
-</span></span><span style="display:flex;"><span>kind: Ingress
-</span></span></code></pre></div><ul>
-<li>接口版本2</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apiVersion: networking.k8s.io/v1beta1
-</span></span><span style="display:flex;"><span>kind: Ingress
-</span></span></code></pre></div><ul>
-<li>接口版本3</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apiVersion: networking.k8s.io/v1
-</span></span><span style="display:flex;"><span>kind: Ingress
-</span></span></code></pre></div><h2 id="配置示例">配置示例</h2>
-<ul>
-<li>接口版本1</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apiVersion: extensions/v1beta1
-</span></span><span style="display:flex;"><span>kind: Ingress
-</span></span><span style="display:flex;"><span>metadata:
-</span></span><span style="display:flex;"><span>  name: demo-test-v1
-</span></span><span style="display:flex;"><span>spec:
-</span></span><span style="display:flex;"><span>  rules:
-</span></span><span style="display:flex;"><span>  - host: <span style="color:#4e9a06">&#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34;</span>
-</span></span><span style="display:flex;"><span>    http:
-</span></span><span style="display:flex;"><span>      paths:
-</span></span><span style="display:flex;"><span>      - backend:
-</span></span><span style="display:flex;"><span>          serviceName: demo-test-v1
-</span></span><span style="display:flex;"><span>          servicePort: <span style="color:#0000cf;font-weight:bold">10080</span>
-</span></span><span style="display:flex;"><span>        path: /
-</span></span><span style="display:flex;"><span>        pathType: Prefix
-</span></span></code></pre></div><ul>
-<li>接口版本2</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apiVersion: networking.k8s.io/v1beta1
-</span></span><span style="display:flex;"><span>kind: Ingress
-</span></span><span style="display:flex;"><span>metadata:
-</span></span><span style="display:flex;"><span>  name: demo-test-v1
-</span></span><span style="display:flex;"><span>spec:
-</span></span><span style="display:flex;"><span>  rules:
-</span></span><span style="display:flex;"><span>  - host: <span style="color:#4e9a06">&#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34;</span>
-</span></span><span style="display:flex;"><span>    http:
-</span></span><span style="display:flex;"><span>      paths:
-</span></span><span style="display:flex;"><span>      - backend:
-</span></span><span style="display:flex;"><span>          serviceName: demo-test-v1
-</span></span><span style="display:flex;"><span>          servicePort: <span style="color:#0000cf;font-weight:bold">10080</span>
-</span></span><span style="display:flex;"><span>        path: /
-</span></span><span style="display:flex;"><span>        pathType: Prefix
-</span></span></code></pre></div><ul>
-<li>接口版本3</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apiVersion: networking.k8s.io/v1
-</span></span><span style="display:flex;"><span>kind: Ingress
-</span></span><span style="display:flex;"><span>metadata:
-</span></span><span style="display:flex;"><span>  name: demo-test-v1
-</span></span><span style="display:flex;"><span>spec:
-</span></span><span style="display:flex;"><span>  rules:
-</span></span><span style="display:flex;"><span>  - host: <span style="color:#4e9a06">&#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34;</span>
-</span></span><span style="display:flex;"><span>    http:
-</span></span><span style="display:flex;"><span>      paths:
-</span></span><span style="display:flex;"><span>      - backend:
-</span></span><span style="display:flex;"><span>          service:
-</span></span><span style="display:flex;"><span>            name: demo-test-v1
-</span></span><span style="display:flex;"><span>            port:
-</span></span><span style="display:flex;"><span>              number: <span style="color:#0000cf;font-weight:bold">10080</span>
-</span></span><span style="display:flex;"><span>        path: /
-</span></span><span style="display:flex;"><span>        pathType: Prefix
-</span></span></code></pre></div><p>接口版本 networking.k8s.io/v1beta1 相比 extensions/v1beta1 新增以下类型：IngressClassSpec、IngressClassParametersReference、IngressClassNamespacedParams、IngressClassList；而 networking.k8s.io/v1 中的 IngressBackend 类型发生了变化。</p>
-<h2 id="数据结构">数据结构</h2>
-<h3 id="extensionsv1beta1">extensions/v1beta1</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Ingress is a collection of rules that allow inbound connections to reach the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// endpoints defined by a backend. An Ingress can be configured to give services
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// externally-reachable urls, load balance traffic, terminate SSL, offer name
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// based virtual hosting etc.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// DEPRECATED - This group version of Ingress is deprecated by networking.k8s.io/v1beta1 Ingress. See the release notes for more information.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">Ingress</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">TypeMeta</span> <span style="color:#4e9a06">`json:&#34;,inline&#34;`</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Standard object&#39;s metadata.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">ObjectMeta</span> <span style="color:#4e9a06">`json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;`</span>
+<p>关于在工作节点上组件的安全配置建议。</p>
+<h2 id="配置文件">配置文件</h2>
+<h3 id="确保-kubelet-配置文件权限">确保 kubelet 配置文件权限</h3>
+<p>文件权限必须小于等于 &ldquo;644&rdquo;</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>stat -c %a /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+</span></span><span style="display:flex;"><span>stat -c %a /etc/systemd/system/kubelet.service
+</span></span><span style="display:flex;"><span>stat -c %a /etc/default/kubelet
+</span></span><span style="display:flex;"><span>stat -c %a /etc/kubernetes/kubelet.conf
+</span></span><span style="display:flex;"><span>stat -c %a /var/lib/kubelet/config.yaml
+</span></span></code></pre></div><p>文件归属用户必须为 &ldquo;root:root&rdquo;</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>stat -c %U:%G /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+</span></span><span style="display:flex;"><span>stat -c %U:%G /etc/systemd/system/kubelet.service
+</span></span><span style="display:flex;"><span>stat -c %U:%G /etc/default/kubelet
+</span></span><span style="display:flex;"><span>stat -c %U:%G /etc/kubernetes/kubelet.conf
+</span></span><span style="display:flex;"><span>stat -c %U:%G /var/lib/kubelet/config.yaml
+</span></span></code></pre></div><h3 id="确保未开启匿名访问">确保未开启匿名访问</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">KubeletConfiguration</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubelet.config.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">staticPodPath</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/etc/kubernetes/manifests</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">address</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">192.168.0.2</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">10250</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">readOnlyPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">authentication</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">anonymous</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">enabled</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">false</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">webhook</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">enabled</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">cacheTTL</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">2m0s</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">x509</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">clientCAFile</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/etc/kubernetes/pki/ca.crt</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>以上配置 &ldquo;authentication.anonymous.enabled&rdquo; 设置为 &ldquo;false&rdquo;</p>
+<h3 id="确保鉴权模式非允许所有">确保鉴权模式非允许所有</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">KubeletConfiguration</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubelet.config.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">authorization</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">mode</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Webhook</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">webhook</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">cacheAuthorizedTTL</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">5m0s</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">cacheUnauthorizedTTL</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">30s</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>以上配置 &ldquo;authorization.mode&rdquo; 非设置为 &ldquo;AlwaysAllow&rdquo;，避免敏感数据 &ldquo;kubelet:10250/configz&rdquo; 等被非法获取。</p>
+<h3 id="确保开启-kubelet-验证来自-kube-apiserver-请求">确保开启 kubelet 验证来自 kube-apiserver 请求</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">KubeletConfiguration</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubelet.config.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">authentication</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">x509</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">clientCAFile</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/etc/kubernetes/pki/ca.crt</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>从 kube-apiserver 到 kubelet 的连接在以下三个地址会使用到：</p>
+<ol>
+<li>用于获取 pod 日志；</li>
+<li>连接到正在运行的 pod；</li>
+<li>使用 kubelet 端口转发功能。</li>
+</ol>
+<p>默认情况下 kube-apiserver 不会验证 kubelet 的服务证书，这会使连接受到中间人攻击，并且在不受信任的网络上运行。</p>
+<p>通过设置 &ldquo;authentication.x509.clientCAFile&rdquo; 启用 kubelet 证书身份验证同时需保证 <a href="/docs/security/cis-benchmark/control-plane/#%E7%A1%AE%E4%BF%9D%E4%B8%8E-kubelet-%E9%80%9A%E8%AE%AF%E5%AE%89%E5%85%A8">kube-apiserver 配置的地址</a> 配置了以下参数：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>--<span style="color:#000">kubelet-client-certificate=/etc/kubernetes/pki/apiserver-kubelet-client.crt</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>--<span style="color:#000">kubelet-client-key=/etc/kubernetes/pki/apiserver-kubelet-client.key</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>如果证书不匹配时，从 kube-apiserver 至 kubelet 会出现以下错误日志：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl <span style="color:#204a87">exec</span> -i -t default-ingress-nginx-controller-7gb62 /bin/bash -n kube-system
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>journalctl -f /usr/bin/kubelet
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Spec is the desired state of the Ingress.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Spec</span> <span style="color:#000">IngressSpec</span> <span style="color:#4e9a06">`json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Status is the current state of the Ingress.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Status</span> <span style="color:#000">IngressStatus</span> <span style="color:#4e9a06">`json:&#34;status,omitempty&#34; protobuf:&#34;bytes,3,opt,name=status&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// IngressSpec describes the Ingress the user wishes to exist.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">IngressSpec</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// IngressClassName is the name of the IngressClass cluster resource. The
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// associated IngressClass defines which controller will implement the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// resource. This replaces the deprecated `kubernetes.io/ingress.class`
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// annotation. For backwards compatibility, when that annotation is set, it
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// must be given precedence over this field. The controller may emit a
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// warning if the field and annotation have different values.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// Implementations of this API should ignore Ingresses without a class
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// specified. An IngressClass resource may be marked as default, which can
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// be used to set a default value for this field. For more information,
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// refer to the IngressClass documentation.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">IngressClassName</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;ingressClassName,omitempty&#34; protobuf:&#34;bytes,4,opt,name=ingressClassName&#34;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// A default backend capable of servicing requests that don&#39;t match any
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// rule. At least one of &#39;backend&#39; or &#39;rules&#39; must be specified. This field
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// is optional to allow the loadbalancer controller or defaulting logic to
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// specify a global default.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Backend</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">IngressBackend</span> <span style="color:#4e9a06">`json:&#34;backend,omitempty&#34; protobuf:&#34;bytes,1,opt,name=backend&#34;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// TLS configuration. Currently the Ingress only supports a single TLS
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// port, 443. If multiple members of this list specify different hosts, they
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// will be multiplexed on the same port according to the hostname specified
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// through the SNI TLS extension, if the ingress controller fulfilling the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// ingress supports SNI.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">TLS</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#000">IngressTLS</span> <span style="color:#4e9a06">`json:&#34;tls,omitempty&#34; protobuf:&#34;bytes,2,rep,name=tls&#34;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// A list of host rules used to configure the Ingress. If unspecified, or
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// no rule matches, all traffic is sent to the default backend.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Rules</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#000">IngressRule</span> <span style="color:#4e9a06">`json:&#34;rules,omitempty&#34; protobuf:&#34;bytes,3,rep,name=rules&#34;`</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// TODO: Add the ability to specify load-balancer IP through claims
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// IngressTLS describes the transport layer security associated with an Ingress.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">IngressTLS</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Hosts are a list of hosts included in the TLS certificate. The values in
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// this list must match the name/s used in the tlsSecret. Defaults to the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// wildcard host setting for the loadbalancer controller fulfilling this
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// Ingress, if left unspecified.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Hosts</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;hosts,omitempty&#34; protobuf:&#34;bytes,1,rep,name=hosts&#34;`</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// SecretName is the name of the secret used to terminate SSL traffic on 443.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// Field is left optional to allow SSL routing based on SNI hostname alone.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// If the SNI host in a listener conflicts with the &#34;Host&#34; header field used
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// by an IngressRule, the SNI host is used for termination and value of the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// Host header is used for routing.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">SecretName</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;secretName,omitempty&#34; protobuf:&#34;bytes,2,opt,name=secretName&#34;`</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// TODO: Consider specifying different modes of termination, protocols etc.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// IngressRule represents the rules mapping the paths under a specified host to
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// the related backend services. Incoming requests are first evaluated for a host
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// match, then routed to the backend associated with the matching IngressRuleValue.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">IngressRule</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Host is the fully qualified domain name of a network host, as defined by RFC 3986.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// Note the following deviations from the &#34;host&#34; part of the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// URI as defined in RFC 3986:
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// 1. IPs are not allowed. Currently an IngressRuleValue can only apply to
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">//    the IP in the Spec of the parent Ingress.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// 2. The `:` delimiter is not respected because ports are not allowed.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">//	  Currently the port of an Ingress is implicitly :80 for http and
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">//	  :443 for https.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// Both these may change in the future.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// Incoming requests are matched against the host before the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// IngressRuleValue. If the host is unspecified, the Ingress routes all
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// traffic based on the specified IngressRuleValue.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">//
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// Host can be &#34;precise&#34; which is a domain name without the terminating dot of
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// a network host (e.g. &#34;foo.bar.com&#34;) or &#34;wildcard&#34;, which is a domain name
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// prefixed with a single wildcard label (e.g. &#34;*.foo.com&#34;).
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// The wildcard character &#39;*&#39; must appear by itself as the first DNS label and
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// matches only a single label. You cannot have a wildcard label by itself (e.g. Host == &#34;*&#34;).
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// Requests will be matched against the Host field in the following way:
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// 1. If Host is precise, the request matches this rule if the http host header is equal to Host.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// 2. If Host is a wildcard, then the request matches this rule if the http host header
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// is to equal to the suffix (removing the first label) of the wildcard rule.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Host</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;host,omitempty&#34; protobuf:&#34;bytes,1,opt,name=host&#34;`</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// IngressRuleValue represents a rule to route requests for this IngressRule.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// If unspecified, the rule defaults to a http catch-all. Whether that sends
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// just traffic matching the host to the default backend or all traffic to the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// default backend, is left to the controller fulfilling the Ingress. Http is
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// currently the only supported IngressRuleValue.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">IngressRuleValue</span> <span style="color:#4e9a06">`json:&#34;,inline,omitempty&#34; protobuf:&#34;bytes,2,opt,name=ingressRuleValue&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// IngressRuleValue represents a rule to apply against incoming requests. If the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// rule is satisfied, the request is routed to the specified backend. Currently
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// mixing different types of rules in a single Ingress is disallowed, so exactly
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// one of the following must be set.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">IngressRuleValue</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">//TODO:
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// 1. Consider renaming this resource and the associated rules so they
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// aren&#39;t tied to Ingress. They can be used to route intra-cluster traffic.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// 2. Consider adding fields for ingress-type specific global options
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// usable by a loadbalancer, like http keep-alive.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// http is a list of http selectors pointing to backends.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// A path is matched against the path of an incoming request. Currently it can
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// contain characters disallowed from the conventional &#34;path&#34; part of a URL
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// as defined by RFC 3986. Paths must begin with a &#39;/&#39;.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// A backend defines the referenced service endpoint to which the traffic
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// will be forwarded to.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">HTTP</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">HTTPIngressRuleValue</span> <span style="color:#4e9a06">`json:&#34;http,omitempty&#34; protobuf:&#34;bytes,1,opt,name=http&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// HTTPIngressRuleValue is a list of http selectors pointing to backends.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// In the example: http://&lt;host&gt;/&lt;path&gt;?&lt;searchpart&gt; -&gt; backend where
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// where parts of the url correspond to RFC 3986, this resource will be used
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// to match against everything after the last &#39;/&#39; and before the first &#39;?&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// or &#39;#&#39;.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">HTTPIngressRuleValue</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// A collection of paths that map requests to backends.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Paths</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#000">HTTPIngressPath</span> <span style="color:#4e9a06">`json:&#34;paths&#34; protobuf:&#34;bytes,1,rep,name=paths&#34;`</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// TODO: Consider adding fields for ingress-type specific global
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// options usable by a loadbalancer, like http keep-alive.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// PathType represents the type of path referred to by a HTTPIngressPath.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">PathType</span> <span style="color:#204a87;font-weight:bold">string</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">const</span> <span style="color:#000;font-weight:bold">(</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// PathTypeExact matches the URL path exactly and with case sensitivity.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PathTypeExact</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000">PathType</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Exact&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// PathTypePrefix matches based on a URL path prefix split by &#39;/&#39;. Matching
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// is case sensitive and done on a path element by element basis. A path
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// element refers to the list of labels in the path split by the &#39;/&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// separator. A request is a match for path p if every p is an element-wise
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// prefix of p of the request path. Note that if the last element of the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// path is a substring of the last element in request path, it is not a
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// match (e.g. /foo/bar matches /foo/bar/baz, but does not match
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// /foo/barbaz). If multiple matching paths exist in an Ingress spec, the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// longest matching path is given priority.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// Examples:
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// - /foo/bar does not match requests to /foo/barbaz
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// - /foo/bar matches request to /foo/bar and /foo/bar/baz
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// - /foo and /foo/ both match requests to /foo and /foo/. If both paths are
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">//   present in an Ingress spec, the longest matching path (/foo/) is given
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">//   priority.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PathTypePrefix</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000">PathType</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;Prefix&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// PathTypeImplementationSpecific matching is up to the IngressClass.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// Implementations can treat this as a separate PathType or treat it
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// identically to Prefix or Exact path types.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PathTypeImplementationSpecific</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000">PathType</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;ImplementationSpecific&#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// HTTPIngressPath associates a path with a backend. Incoming urls matching the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// path are forwarded to the backend.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">HTTPIngressPath</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Path is matched against the path of an incoming request. Currently it can
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// contain characters disallowed from the conventional &#34;path&#34; part of a URL
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// as defined by RFC 3986. Paths must begin with a &#39;/&#39;. When unspecified,
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// all paths from incoming requests are matched.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Path</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;path,omitempty&#34; protobuf:&#34;bytes,1,opt,name=path&#34;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// PathType determines the interpretation of the Path matching. PathType can
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// be one of the following values:
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// * Exact: Matches the URL path exactly.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// * Prefix: Matches based on a URL path prefix split by &#39;/&#39;. Matching is
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">//   done on a path element by element basis. A path element refers is the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">//   list of labels in the path split by the &#39;/&#39; separator. A request is a
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">//   match for path p if every p is an element-wise prefix of p of the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">//   request path. Note that if the last element of the path is a substring
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">//   of the last element in request path, it is not a match (e.g. /foo/bar
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">//   matches /foo/bar/baz, but does not match /foo/barbaz).
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// * ImplementationSpecific: Interpretation of the Path matching is up to
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">//   the IngressClass. Implementations can treat this as a separate PathType
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">//   or treat it identically to Prefix or Exact path types.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// Implementations are required to support all path types.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// Defaults to ImplementationSpecific.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">PathType</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">PathType</span> <span style="color:#4e9a06">`json:&#34;pathType,omitempty&#34; protobuf:&#34;bytes,3,opt,name=pathType&#34;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Backend defines the referenced service endpoint to which the traffic
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// will be forwarded to.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Backend</span> <span style="color:#000">IngressBackend</span> <span style="color:#4e9a06">`json:&#34;backend&#34; protobuf:&#34;bytes,2,opt,name=backend&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// IngressStatus describe the current state of the Ingress.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">IngressStatus</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// LoadBalancer contains the current status of the load-balancer.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">LoadBalancer</span> <span style="color:#000">v1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">LoadBalancerStatus</span> <span style="color:#4e9a06">`json:&#34;loadBalancer,omitempty&#34; protobuf:&#34;bytes,1,opt,name=loadBalancer&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// IngressBackend describes all endpoints for a given service and port.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">IngressBackend</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Specifies the name of the referenced service.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">ServiceName</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;serviceName,omitempty&#34; protobuf:&#34;bytes,1,opt,name=serviceName&#34;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Specifies the port of the referenced service.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">ServicePort</span> <span style="color:#000">intstr</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">IntOrString</span> <span style="color:#4e9a06">`json:&#34;servicePort,omitempty&#34; protobuf:&#34;bytes,2,opt,name=servicePort&#34;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Resource is an ObjectRef to another Kubernetes resource in the namespace
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// of the Ingress object. If resource is specified, serviceName and servicePort
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// must not be specified.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Resource</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">v1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">TypedLocalObjectReference</span> <span style="color:#4e9a06">`json:&#34;resource,omitempty&#34; protobuf:&#34;bytes,3,opt,name=resource&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><h3 id="networkingk8siov1beta1">networking.k8s.io/v1beta1</h3>
-<p>相比 extensions/v1beta1 新增以下类型</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// IngressClass represents the class of the Ingress, referenced by the Ingress
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Spec. The `ingressclass.kubernetes.io/is-default-class` annotation can be
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// used to indicate that an IngressClass should be considered default. When a
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// single IngressClass resource has this annotation set to true, new Ingress
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// resources without a class specified will be assigned this default class.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">IngressClass</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">TypeMeta</span> <span style="color:#4e9a06">`json:&#34;,inline&#34;`</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Standard object&#39;s metadata.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">ObjectMeta</span> <span style="color:#4e9a06">`json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Spec is the desired state of the IngressClass.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Spec</span> <span style="color:#000">IngressClassSpec</span> <span style="color:#4e9a06">`json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// IngressClassSpec provides information about the class of an Ingress.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">IngressClassSpec</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Controller refers to the name of the controller that should handle this
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// class. This allows for different &#34;flavors&#34; that are controlled by the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// same controller. For example, you may have different Parameters for the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// same implementing controller. This should be specified as a
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// domain-prefixed path no more than 250 characters in length, e.g.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// &#34;acme.io/ingress-controller&#34;. This field is immutable.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Controller</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;controller,omitempty&#34; protobuf:&#34;bytes,1,opt,name=controller&#34;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Parameters is a link to a custom resource containing additional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// configuration for the controller. This is optional if the controller does
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// not require extra parameters.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Parameters</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">IngressClassParametersReference</span> <span style="color:#4e9a06">`json:&#34;parameters,omitempty&#34; protobuf:&#34;bytes,2,opt,name=parameters&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">const</span> <span style="color:#000;font-weight:bold">(</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// IngressClassParametersReferenceScopeNamespace indicates that the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// referenced Parameters resource is namespace-scoped.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">IngressClassParametersReferenceScopeNamespace</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Namespace&#34;</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// IngressClassParametersReferenceScopeNamespace indicates that the
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// referenced Parameters resource is cluster-scoped.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">IngressClassParametersReferenceScopeCluster</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Cluster&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// IngressClassParametersReference identifies an API object. This can be used
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// to specify a cluster or namespace-scoped resource.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">IngressClassParametersReference</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// APIGroup is the group for the resource being referenced. If APIGroup is
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// not specified, the specified Kind must be in the core API group. For any
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// other third-party types, APIGroup is required.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">APIGroup</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;apiGroup,omitempty&#34; protobuf:&#34;bytes,1,opt,name=aPIGroup&#34;`</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Kind is the type of resource being referenced.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Kind</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;kind&#34; protobuf:&#34;bytes,2,opt,name=kind&#34;`</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Name is the name of resource being referenced.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Name</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;name&#34; protobuf:&#34;bytes,3,opt,name=name&#34;`</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Scope represents if this refers to a cluster or namespace scoped resource.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// This may be set to &#34;Cluster&#34; (default) or &#34;Namespace&#34;.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// Field can be enabled with IngressClassNamespacedParams feature gate.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +featureGate=IngressClassNamespacedParams
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Scope</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;scope&#34; protobuf:&#34;bytes,4,opt,name=scope&#34;`</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Namespace is the namespace of the resource being referenced. This field is
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// required when scope is set to &#34;Namespace&#34; and must be unset when scope is set to
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// &#34;Cluster&#34;.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +featureGate=IngressClassNamespacedParams
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Namespace</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;namespace,omitempty&#34; protobuf:&#34;bytes,5,opt,name=namespace&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// +k8s:prerelease-lifecycle-gen:introduced=1.18
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// +k8s:prerelease-lifecycle-gen:deprecated=1.19
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// +k8s:prerelease-lifecycle-gen:replacement=networking.k8s.io,v1,IngressClassList
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// IngressClassList is a collection of IngressClasses.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">IngressClassList</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">TypeMeta</span> <span style="color:#4e9a06">`json:&#34;,inline&#34;`</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Standard list metadata.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">ListMeta</span> <span style="color:#4e9a06">`json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Items is the list of IngressClasses.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Items</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#000">IngressClass</span> <span style="color:#4e9a06">`json:&#34;items&#34; protobuf:&#34;bytes,2,rep,name=items&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><h3 id="networkingk8siov1">networking.k8s.io/v1</h3>
-<p>数据结构相比 networking.k8s.io/v1beta1 接口版本没有变化，但是其中 IngressBackend 类型与 extensions/v1beta1、networking.k8s.io/v1beta1 接口版本做了变更。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// IngressBackend describes all endpoints for a given service and port.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">IngressBackend</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Service references a Service as a Backend.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// This is a mutually exclusive setting with &#34;Resource&#34;.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Service</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">IngressServiceBackend</span> <span style="color:#4e9a06">`json:&#34;service,omitempty&#34; protobuf:&#34;bytes,4,opt,name=service&#34;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Resource is an ObjectRef to another Kubernetes resource in the namespace
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// of the Ingress object. If resource is specified, a service.Name and
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// service.Port must not be specified.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// This is a mutually exclusive setting with &#34;Service&#34;.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Resource</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">v1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">TypedLocalObjectReference</span> <span style="color:#4e9a06">`json:&#34;resource,omitempty&#34; protobuf:&#34;bytes,3,opt,name=resource&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// IngressServiceBackend references a Kubernetes Service as a Backend.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">IngressServiceBackend</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Name is the referenced service. The service must exist in
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// the same namespace as the Ingress object.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Name</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;name&#34; protobuf:&#34;bytes,1,opt,name=name&#34;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Port of the referenced service. A port name or port number
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// is required for a IngressServiceBackend.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Port</span> <span style="color:#000">ServiceBackendPort</span> <span style="color:#4e9a06">`json:&#34;port,omitempty&#34; protobuf:&#34;bytes,2,opt,name=port&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// ServiceBackendPort is the service port being referenced.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">ServiceBackendPort</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Name is the name of the port on the Service.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// This is a mutually exclusive setting with &#34;Number&#34;.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Name</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;name,omitempty&#34; protobuf:&#34;bytes,1,opt,name=name&#34;`</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#8f5902;font-style:italic">// Number is the numerical port number (e.g. 80) on the Service.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// This is a mutually exclusive setting with &#34;Name&#34;.
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#8f5902;font-style:italic">// +optional
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000">Number</span> <span style="color:#204a87;font-weight:bold">int32</span> <span style="color:#4e9a06">`json:&#34;number,omitempty&#34; protobuf:&#34;bytes,2,opt,name=number&#34;`</span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>Oct 12 14:06:07 limiqi-dell-01 kubelet[1967008]: E1012 14:06:07.419980 1967008 server.go:273] &#34;Unable to authenticate the request due to an error&#34; err=&#34;verifying certificate SN=13890730310367349504, SKID=, AKID= failed: x509: certificate signed by unknown authority&#34;
+</span></span></code></pre></div><h3 id="确保关闭只读端口配置">确保关闭只读端口配置</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">KubeletConfiguration</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubelet.config.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">staticPodPath</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/etc/kubernetes/manifests</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">address</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">192.168.0.2</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">10250</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">readOnlyPort</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>Kubelet 除了提供 &ldquo;https 10250&rdquo; 端口外，还提供了只读的 &ldquo;http 10255&rdquo; 协议端口，对该只读接口提供未经身份验证的访问，该访问可能会检索到有关群集的潜在敏感信息，通过设置 &ldquo;readOnlyPort=0&rdquo; 关闭。</p>
+<h3 id="确保长连接配置最大超时时间">确保长连接配置最大超时时间</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">KubeletConfiguration</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubelet.config.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">streamingConnectionIdleTimeout</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">4h</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl port-forward pod/coredns-c66bbd748-b9tfw --address 0.0.0.0 <span style="color:#0000cf;font-weight:bold">9153</span> -n kube-system
+</span></span></code></pre></div><p>TODO;</p>
+<h3 id="确保内核参数符合预期否则禁止启动">确保内核参数符合预期否则禁止启动</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">KubeletConfiguration</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubelet.config.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">protectKernelDefaults</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>设置为 true 时，会令 kubelet 在发现内核参数与预期不符时出错退出。</p>
+<p>若此字段设置为 false，则 kubelet 会尝试更改内核参数以满足其预期。</p>
+<p>以下示例更改 <code>vm.overcommit_memory</code> 值为 0 测试不符合预期，则导致 &ldquo;kubelet&rdquo; 无法启动。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sysctl -w vm.overcommit_memory<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Oct 12 15:58:45 limiqi-dell-01 kubelet[2004079]: E1012 15:58:45.018694 2004079 kubelet.go:1423] &#34;Failed to start ContainerManager&#34; err=&#34;invalid kernel flag: vm/overcommit_memory, expected value: 1, actual value: 0&#34;
+</span></span></code></pre></div><p>内核参数通常由系统管理员在将系统投入生产之前进行调整和强化。这些参数保护内核和系统。依赖于这些参数的kubelet内核默认值应该适当设置，以匹配所需的安全系统状态。忽略这一点可能会导致运行带有不希望的内核行为的pod。</p>
+<h3 id="确保允许-kubelet-管理-iptables-规则">确保允许 Kubelet 管理 iptables 规则</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">KubeletConfiguration</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubelet.config.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">makeIPTablesUtilChains</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>可以根据设置的网络模式自动管理 iptables 所需的更改，建议让 kubelet 来进行管理。这确保了 iptables 配置与 pods 网络配置保持同步，通过动态 pod 网络配置更改手动配置 iptables 可能会阻碍 pod 与容器之间以及与外部世界的通信。您的 iptables 规则可能过于严格或过于开放。</p>
+<p>但不要在使用其他 iptables 管理工具，可能会存在冲突。</p>
+<h3 id="确保未覆盖主机节点名称">确保未覆盖主机节点名称</h3>
+<p>TODO;</p>
+<h3 id="确保-kubelet-开启-https-链接">确保 kubelet 开启 https 链接</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">KubeletConfiguration</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubelet.config.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">tlsCertFile</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/data/kubelet/pki/kubelet.crt</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">tlsPrivateKeyFile</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/data/kubelet/pki/kubelet.key</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>从 kube-apiserver 到 kubelet 的这些连接，在默认情况下，kube-apiserver 不会验证 kubelet 的服务端证书，这会使连接受到中间人攻击，并且在不受信任和/或公共网络上运行不安全。</p>
+<p>这个区别于<a href="/docs/security/cis-benchmark/worker-nodes/#%E7%A1%AE%E4%BF%9D%E5%BC%80%E5%90%AF-kubelet-%E9%AA%8C%E8%AF%81%E6%9D%A5%E8%87%AA-kube-apiserver-%E8%AF%B7%E6%B1%82">确保开启 kubelet 验证来自 kube-apiserver 请求</a>，这个是 kubelet 验证 kube-apiserver 的证书是否有效。</p>
+<p>同时还需在 kube-apiserver 上配置启用 kubelet 的 ca 证书，才可以生效：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>--<span style="color:#000">kubelet-certificate-authority</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>所有在 kube-apiserver 与 kubelet 通讯过程中，两个方向均存在证书验证，但 kubelet 的 https 一般自动生成，所以我们在使用过程中仅开启 kubelet 验证 kube-apiserver 的请求。</p>
+<h3 id="确保-kubelet-自动更新证书">确保 kubelet 自动更新证书</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">KubeletConfiguration</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubelet.config.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">rotateCertificates</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>同步不可禁用 &ldquo;RotateKubeletServerCertificate&rdquo; 特性，当 kubelet 证书快过期时，会自动更新。</p>
+<h3 id="确保-kubelet-上报事件速率无限制">确保 kubelet 上报事件速率无限制</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">KubeletConfiguration</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kubelet.config.k8s.io/v1beta1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">eventRecordQPS</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>用于限制收集事件的速率，默认为 5 设置得太低可能会导致相关事件不被记录，但是 0 的无限设置可能会导致kubelet上的拒绝服务，重要的是要捕获所有事件，而不是限制事件的创建。事件是安全信息和分析的重要来源，可确保使用事件数据持续监控您的环境。</p>
+
 	
 		<br /><hr />
 		<style>
@@ -3707,7 +3391,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  最后修改 2023.01.28: <a href="https://github.com/opsaid/website/commit/e5691ead06a815a7b0f5bcf17dde8b4cac368a2c">feat: 整理下目录顺序 (e5691ea)</a>
+  最后修改 2023.10.12: <a href="https://github.com/opsaid/website/commit/093a91fb20c992d05ee2a11b62a8fad5c11b99b9">refactor: 添加 kubelet 事件上报速率 (093a91f)</a>
 </div>
 
 </div>

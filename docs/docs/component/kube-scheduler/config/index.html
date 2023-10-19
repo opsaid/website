@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.102.3" />
 <meta name="robots" content="index, follow">
 
 
@@ -35,6 +35,7 @@ apiVersion: …">
 <meta property="og:url" content="/docs/component/kube-scheduler/config/" /><meta property="article:section" content="docs" />
 
 <meta property="article:modified_time" content="2023-02-08T23:17:58+08:00" /><meta property="og:site_name" content="OPSaid" />
+
 <meta itemprop="name" content="参数配置">
 <meta itemprop="description" content="kube-scheduler 默认scheduler配置 配置生成 kube-scheduler --write-config-to=/var/log/kubernetes/scheduler.yaml 示例文件：scheduler.yaml apiVersion: kubescheduler.config.k8s.io/v1beta2 kind: KubeSchedulerConfiguration clientConnection: acceptContentTypes: &#34;&#34; burst: 100 contentType: application/vnd.kubernetes.protobuf kubeconfig: /etc/kubernetes/scheduler.conf qps: 50 enableContentionProfiling: true enableProfiling: true healthzBindAddress: 127.0.0.1:10251 leaderElection: leaderElect: true leaseDuration: 15s renewDeadline: 10s resourceLock: leases resourceName: kube-scheduler resourceNamespace: kube-system retryPeriod: 2s metricsBindAddress: 127.0.0.1:10251 parallelism: 16 percentageOfNodesToScore: 0 podInitialBackoffSeconds: 1 podMaxBackoffSeconds: 10 profiles: - pluginConfig: - args: apiVersion: kubescheduler.config.k8s.io/v1beta2 kind: DefaultPreemptionArgs minCandidateNodesAbsolute: 100 minCandidateNodesPercentage: 10 name: DefaultPreemption - args: apiVersion: kubescheduler.">
 <meta itemprop="dateModified" content="2023-02-08T23:17:58+08:00" />
@@ -46,8 +47,8 @@ apiVersion: …">
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" as="style">
+<link href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
@@ -1870,6 +1871,57 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkauth-audit-a" href="/docs/security/cis-benchmark/auth-audit/">认证审计</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkworker-nodes">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkworker-nodes-a" href="/docs/security/cis-benchmark/worker-nodes/">工作节点</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkpolicies">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkpolicies-a" href="/docs/security/cis-benchmark/policies/">安全策略</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkkube-bench">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkkube-bench-a" href="/docs/security/cis-benchmark/kube-bench/">检测工具</a>
                     
                   </span>
                   

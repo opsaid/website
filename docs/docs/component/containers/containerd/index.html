@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.102.3" />
 <meta name="robots" content="index, follow">
 
 
@@ -33,7 +33,8 @@ etc/ etc/cni/ etc/cni/net.d/ etc/cni/net.d/10-containerd-net.conflist etc/system
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/component/containers/containerd/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2022-05-22T15:05:21+08:00" />
-<meta property="article:modified_time" content="2023-07-28T11:12:11+08:00" /><meta property="og:site_name" content="OPSaid" />
+<meta property="article:modified_time" content="2023-10-09T17:54:36+08:00" /><meta property="og:site_name" content="OPSaid" />
+
 <meta itemprop="name" content="Containerd">
 <meta itemprop="description" content="安装部署 在githbub官方地址：https://github.com/containerd/containerd/releases，选择需要的版本下载。
 containerd-{{ containerd_version }}、cri-containerd-{{ containerd_version }} 有以上两种二进制包，&ldquo;cri_containerd&quot;区别于&quot;containerd-&quot;，在于它集合了&quot;runc&quot;等工具。 &rdquo;{{ containerd_version }}&ldquo;是containerd版本，以下均以&quot;1.5.11&quot;为示例。
@@ -41,8 +42,8 @@ containerd-{{ containerd_version }}、cri-containerd-{{ containerd_version }} �
 &ldquo;containerd-&ldquo;与&quot;cri-containerd-&ldquo;安装包内容 &ldquo;containerd-*&rdquo;
 bin/ bin/containerd-shim-runc-v2 bin/containerd-shim bin/ctr bin/containerd-shim-runc-v1 bin/containerd &ldquo;cri-containerd-*&rdquo;
 etc/ etc/cni/ etc/cni/net.d/ etc/cni/net.d/10-containerd-net.conflist etc/systemd/ etc/systemd/system/ etc/systemd/system/containerd.service etc/crictl.yaml usr/ usr/local/ usr/local/bin/ usr/local/bin/containerd-shim-runc-v2 usr/local/bin/containerd-shim usr/local/bin/crictl usr/local/bin/ctr usr/local/bin/containerd-shim-runc-v1 usr/local/bin/containerd usr/local/bin/ctd-decoder usr/local/bin/critest usr/local/bin/containerd-stress usr/local/sbin/ usr/local/sbin/runc opt/ opt/cni/ opt/cni/bin/ opt/cni/bin/tuning opt/cni/bin/vrf opt/cni/bin/flannel opt/cni/bin/loopback opt/cni/bin/portmap opt/cni/bin/ptp opt/cni/bin/ipvlan opt/cni/bin/host-device opt/cni/bin/macvlan opt/cni/bin/host-local opt/cni/bin/firewall opt/cni/bin/bandwidth opt/cni/bin/sbr opt/cni/bin/vlan opt/cni/bin/static opt/cni/bin/bridge opt/cni/bin/dhcp opt/containerd/ opt/containerd/cluster/ opt/containerd/cluster/version opt/containerd/cluster/gce/ opt/containerd/cluster/gce/cni."><meta itemprop="datePublished" content="2022-05-22T15:05:21+08:00" />
-<meta itemprop="dateModified" content="2023-07-28T11:12:11+08:00" />
-<meta itemprop="wordCount" content="2779">
+<meta itemprop="dateModified" content="2023-10-09T17:54:36+08:00" />
+<meta itemprop="wordCount" content="2788">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Containerd"/>
 <meta name="twitter:description" content="安装部署 在githbub官方地址：https://github.com/containerd/containerd/releases，选择需要的版本下载。
@@ -55,8 +56,8 @@ etc/ etc/cni/ etc/cni/net.d/ etc/cni/net.d/10-containerd-net.conflist etc/system
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" as="style">
+<link href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
@@ -1879,6 +1880,57 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkauth-audit-a" href="/docs/security/cis-benchmark/auth-audit/">认证审计</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkworker-nodes">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkworker-nodes-a" href="/docs/security/cis-benchmark/worker-nodes/">工作节点</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkpolicies">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkpolicies-a" href="/docs/security/cis-benchmark/policies/">安全策略</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkkube-bench">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkkube-bench-a" href="/docs/security/cis-benchmark/kube-bench/">检测工具</a>
                     
                   </span>
                   
@@ -3819,6 +3871,8 @@ type PluginConfig struct {
     StatsCollectPeriod int `toml:&#34;stats_collect_period&#34; json:&#34;statsCollectPeriod&#34;`
 
     // 开启systemd的cgroup支持，仅使用&#34;io.containerd.runtime.v1.linux&#34;下有效，已被废弃
+    // 是在：plugins.&#34;io.containerd.grpc.v1.cri&#34; 下的 &#34;systemd_cgroup&#34;
+    // 由：plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd.runtimes.runc.options 下的 SystemdCgroup 代替
     SystemdCgroup bool `toml:&#34;systemd_cgroup&#34; json:&#34;systemdCgroup&#34;`
 
     // 是否为&#34;StreamServerAddress&#34;配置tls证实，以使用https
@@ -4258,7 +4312,7 @@ type Config struct {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  最后修改 2023.07.28: <a href="https://github.com/opsaid/website/commit/4ba9b160e73c05c6bef125269dbcf7b9f542db0a">fix: 修复 containerd 默认使用 systemd 的 cgroup 配置 (4ba9b16)</a>
+  最后修改 2023.10.09: <a href="https://github.com/opsaid/website/commit/42a01a4fd9d7f5929731174323fc92d6419e3aba">docs: update containerd (42a01a4)</a>
 </div>
 
 </div>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.102.3" />
 <meta name="robots" content="index, follow">
 
 
@@ -23,8 +23,6 @@
 主要关于控制平面相关的安全配置建议。
 配置文件
 确保静态 POD 文件权限
-
-
 检查文件权限，必须小于等于 &ldquo;644&rdquo;
 stat -c %a /etc/kubernetes/manifests/kube-apiserver.yaml
 stat -c %a …">
@@ -38,7 +36,8 @@ stat -c %a /data/etcd/ stat -c %U:%G /data/etcd/ 权限需小于等于 &ldquo;70
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/security/cis-benchmark/control-plane/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2023-10-06T11:02:45+08:00" />
-<meta property="article:modified_time" content="2023-10-09T17:19:05+08:00" /><meta property="og:site_name" content="OPSaid" />
+<meta property="article:modified_time" content="2023-10-10T18:26:20+08:00" /><meta property="og:site_name" content="OPSaid" />
+
 <meta itemprop="name" content="控制平面">
 <meta itemprop="description" content="简要概述 主要关于控制平面相关的安全配置建议。
 配置文件 确保静态 POD 文件权限 检查文件权限，必须小于等于 &ldquo;644&rdquo;
@@ -46,7 +45,7 @@ stat -c %a /etc/kubernetes/manifests/kube-apiserver.yaml stat -c %a /etc/kuberne
 stat -c %U:%G /etc/kubernetes/manifests/kube-apiserver.yaml stat -c %U:%G /etc/kubernetes/manifests/kube-controller-manager.yaml stat -c %U:%G /etc/kubernetes/manifests/kube-scheduler.yaml stat -c %U:%G /etc/kubernetes/manifests/etcd.yaml CNI 文件配置路径，默认为 &ldquo;/etc/cni/net.d/&rdquo; 通过 kubelet &ldquo;&ndash;cni-conf-dir&rdquo; 参数修改。
 stat -c %a /etc/cni/net.d/10-containerd-net.conflist stat -c %U:%G /etc/cni/net.d/10-containerd-net.conflist 确保 etcd 数据目录安全 通过查询 &ldquo;&ndash;data-dir&rdquo; 或 &ldquo;$DATA_DIR&rdquo; 定位数据目录，如：&quot;/data/etcd/&quot;。
 stat -c %a /data/etcd/ stat -c %U:%G /data/etcd/ 权限需小于等于 &ldquo;700&rdquo; 且用户归宿为 &ldquo;etcd:etcd&rdquo;。"><meta itemprop="datePublished" content="2023-10-06T11:02:45+08:00" />
-<meta itemprop="dateModified" content="2023-10-09T17:19:05+08:00" />
+<meta itemprop="dateModified" content="2023-10-10T18:26:20+08:00" />
 <meta itemprop="wordCount" content="403">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="控制平面"/>
@@ -60,8 +59,8 @@ stat -c %a /data/etcd/ stat -c %U:%G /data/etcd/ 权限需小于等于 &ldquo;70
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" as="style">
+<link href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
@@ -1891,6 +1890,57 @@ if (!doNotTrack) {
             
           
         
+          
+            
+              
+              
+              
+              
+                <li class="without-sib" id="m-docssecuritycis-benchmarkworker-nodes">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkworker-nodes-a" href="/docs/security/cis-benchmark/worker-nodes/">工作节点</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib" id="m-docssecuritycis-benchmarkpolicies">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkpolicies-a" href="/docs/security/cis-benchmark/policies/">安全策略</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib" id="m-docssecuritycis-benchmarkkube-bench">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkkube-bench-a" href="/docs/security/cis-benchmark/kube-bench/">检测工具</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
 
       </ul>
     </li>
@@ -3184,23 +3234,17 @@ if (!doNotTrack) {
 <p>主要关于控制平面相关的安全配置建议。</p>
 <h2 id="配置文件">配置文件</h2>
 <h3 id="确保静态-pod-文件权限">确保静态 POD 文件权限</h3>
-<ul>
-<li>
 <p>检查文件权限，必须小于等于 &ldquo;644&rdquo;</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>stat -c %a /etc/kubernetes/manifests/kube-apiserver.yaml
 </span></span><span style="display:flex;"><span>stat -c %a /etc/kubernetes/manifests/kube-controller-manager.yaml
 </span></span><span style="display:flex;"><span>stat -c %a /etc/kubernetes/manifests/kube-scheduler.yaml
 </span></span><span style="display:flex;"><span>stat -c %a /etc/kubernetes/manifests/etcd.yaml
-</span></span></code></pre></div></li>
-<li>
-<p>检查文件归属，用户组必须为 &ldquo;root:root&rdquo;</p>
+</span></span></code></pre></div><p>检查文件归属，用户组必须为 &ldquo;root:root&rdquo;</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>stat -c %U:%G /etc/kubernetes/manifests/kube-apiserver.yaml
 </span></span><span style="display:flex;"><span>stat -c %U:%G /etc/kubernetes/manifests/kube-controller-manager.yaml
 </span></span><span style="display:flex;"><span>stat -c %U:%G /etc/kubernetes/manifests/kube-scheduler.yaml
 </span></span><span style="display:flex;"><span>stat -c %U:%G /etc/kubernetes/manifests/etcd.yaml
-</span></span></code></pre></div></li>
-</ul>
-<p>CNI 文件配置路径，默认为 &ldquo;/etc/cni/net.d/&rdquo; 通过 kubelet &ldquo;&ndash;cni-conf-dir&rdquo; 参数修改。</p>
+</span></span></code></pre></div><p>CNI 文件配置路径，默认为 &ldquo;/etc/cni/net.d/&rdquo; 通过 kubelet &ldquo;&ndash;cni-conf-dir&rdquo; 参数修改。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>stat -c %a /etc/cni/net.d/10-containerd-net.conflist
 </span></span><span style="display:flex;"><span>stat -c %U:%G /etc/cni/net.d/10-containerd-net.conflist
 </span></span></code></pre></div><h3 id="确保-etcd-数据目录安全">确保 etcd 数据目录安全</h3>
@@ -3429,7 +3473,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  最后修改 2023.10.09: <a href="https://github.com/opsaid/website/commit/1559d7c6a6eecacb234891552c6df1f092a74029">docs: update cis (1559d7c)</a>
+  最后修改 2023.10.10: <a href="https://github.com/opsaid/website/commit/6fdb1564695b92914cc9f6fedb79035fc662ba37">refactor: add worker nodes (6fdb156)</a>
 </div>
 
 </div>

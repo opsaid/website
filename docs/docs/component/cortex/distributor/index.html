@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.102.3" />
 <meta name="robots" content="index, follow">
 
 
@@ -52,6 +52,7 @@ consul etcd Gossip memberlist 这里均以 etcd 为标准。
 <meta property="og:url" content="/docs/component/cortex/distributor/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2023-05-30T10:11:51+08:00" />
 <meta property="article:modified_time" content="2023-07-06T22:38:07+08:00" /><meta property="og:site_name" content="OPSaid" />
+
 <meta itemprop="name" content="Distributor">
 <meta itemprop="description" content="简要概述 分发器（Distributor）服务负责处理来自Prometheus的样本，它是无状态服务，可弹性扩缩容。
 它是性能指标写入路径的第一站。一旦分发器接收到来自Prometheus的样本，每个样本都会被验证其正确性，并确保它在配置的租户限制范围内，如果特定租户没有覆盖限制，则回退到默认限制。通过验证的样本然后被分割成批次，并并行地发送到多个摄取器。
@@ -111,8 +112,8 @@ consul etcd Gossip memberlist 这里均以 etcd 为标准。
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" as="style">
+<link href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
@@ -1935,6 +1936,57 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkauth-audit-a" href="/docs/security/cis-benchmark/auth-audit/">认证审计</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkworker-nodes">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkworker-nodes-a" href="/docs/security/cis-benchmark/worker-nodes/">工作节点</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkpolicies">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkpolicies-a" href="/docs/security/cis-benchmark/policies/">安全策略</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkkube-bench">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkkube-bench-a" href="/docs/security/cis-benchmark/kube-bench/">检测工具</a>
                     
                   </span>
                   

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.102.3" />
 <meta name="robots" content="index, follow">
 
 
@@ -34,6 +34,7 @@ ${KUBERNETES_RELEASE_URL}/${KUBE_VERSION}/kubernetes-server-${KUBERNETES_CLIENT_
 <meta property="og:url" content="/docs/deploy-k8s/binary/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2022-01-22T12:08:39+08:00" />
 <meta property="article:modified_time" content="2023-02-01T23:22:56+08:00" /><meta property="og:site_name" content="OPSaid" />
+
 <meta itemprop="name" content="官方镜像">
 <meta itemprop="description" content="简要概述 这里将会说明如何创建k8s依赖的默认镜像与相关的二进制文件，这些都是来自官方
 ansible/roles/binary/files kubeadm config images list k8s.gcr.io/kube-apiserver:v1.22.6 k8s.gcr.io/kube-controller-manager:v1.22.6 k8s.gcr.io/kube-scheduler:v1.22.6 k8s.gcr.io/kube-proxy:v1.22.6 k8s.gcr.io/pause:3.5 k8s.gcr.io/etcd:3.5.0-0 k8s.gcr.io/coredns/coredns:v1.8.4 基本术语 变量 取值范围 说明 KUBE_VERSION 见版本历史 安装k8s的版本，默认获取根目录下&quot;version&quot;文件内容 KUBERNETES_SERVER_ARCH [amd64, arm, arm64, ppc64le, s390x] 服务端cpu架构，默认为amd64 KUBERNETES_CLIENT_OS [linux, darwin, windows] 客户端的操作系统类型，默认为当前系统类型 KUBERNETES_CLIENT_ARCH [amd64, arm, arm64, ppc64le, s390x, windows] 客户的cpu架构，默认为当前系统类型 KUBERNETES_SKIP_CONFIRM 任意值 如果存在该变量，下载则无需确认 KUBERNETES_RELEASE_URL [https://dl.k8s.io] 下载的地址，格式如下 KUBERNETES_DOWNLOAD_TESTS 任意值 如果存在该变量，则下载测试用例 KUBERNETES_RELEASE_URL地址格式：
@@ -51,8 +52,8 @@ ${KUBERNETES_RELEASE_URL}/${KUBE_VERSION}/kubernetes-server-${KUBERNETES_CLIENT_
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" as="style">
+<link href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
@@ -1875,6 +1876,57 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkauth-audit-a" href="/docs/security/cis-benchmark/auth-audit/">认证审计</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkworker-nodes">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkworker-nodes-a" href="/docs/security/cis-benchmark/worker-nodes/">工作节点</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkpolicies">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkpolicies-a" href="/docs/security/cis-benchmark/policies/">安全策略</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkkube-bench">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkkube-bench-a" href="/docs/security/cis-benchmark/kube-bench/">检测工具</a>
                     
                   </span>
                   

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.102.3" />
 <meta name="robots" content="index, follow">
 
 
@@ -36,6 +36,7 @@
 <meta property="og:url" content="/docs/deploy-k8s/faqs/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2023-08-03T09:42:05+08:00" />
 <meta property="article:modified_time" content="2023-08-08T15:39:13+08:00" /><meta property="og:site_name" content="OPSaid" />
+
 <meta itemprop="name" content="常见问题">
 <meta itemprop="description" content="简要概述 记录部署 k8s 相关的场景问题。
 组件 etcd 相关 &ldquo;received signal; shutting down&rdquo; 关键日志 {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:31:34.277Z&#34;,&#34;caller&#34;:&#34;rafthttp/stream.go:274&#34;,&#34;msg&#34;:&#34;established TCP streaming connection with remote peer&#34;,&#34;stream-writer-type&#34;:&#34;stream MsgApp v2&#34;,&#34;local-member-id&#34;:&#34;edacac26a3fb24b3&#34;,&#34;remote-peer-id&#34;:&#34;2c8b55a3459bb7ff&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;osutil/interrupt_unix.go:64&#34;,&#34;msg&#34;:&#34;received signal; shutting down&#34;,&#34;signal&#34;:&#34;terminated&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;embed/etcd.go:367&#34;,&#34;msg&#34;:&#34;closing etcd server&#34;,&#34;name&#34;:&#34;node3&#34;,&#34;data-dir&#34;:&#34;/data/etcd/&#34;,&#34;advertise-peer-urls&#34;:[&#34;https://10.49.2.36:2380&#34;],&#34;advertise-client-urls&#34;:[&#34;https://10.49.2.36:2379&#34;]} 问题原因 在文件 /etc/containerd/config.toml 中的 SystemdCgroup 配置为 false 了，与 kubelet 中不同。
@@ -53,8 +54,8 @@
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" as="style">
+<link href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
@@ -1877,6 +1878,57 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkauth-audit-a" href="/docs/security/cis-benchmark/auth-audit/">认证审计</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkworker-nodes">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkworker-nodes-a" href="/docs/security/cis-benchmark/worker-nodes/">工作节点</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkpolicies">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkpolicies-a" href="/docs/security/cis-benchmark/policies/">安全策略</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritycis-benchmarkkube-bench">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkkube-bench-a" href="/docs/security/cis-benchmark/kube-bench/">检测工具</a>
                     
                   </span>
                   
