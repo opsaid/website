@@ -119,6 +119,19 @@
     </item>
     
     <item>
+      <title>Docs: OpenTelemetry</title>
+      <link>/docs/component/open-telemetry/</link>
+      <pubDate>Sun, 14 May 2023 11:32:08 +0800</pubDate>
+      
+      <guid>/docs/component/open-telemetry/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: Thanos</title>
       <link>/docs/component/thanos/</link>
       <pubDate>Tue, 27 Sep 2022 10:11:43 +0800</pubDate>

@@ -20,6 +20,9 @@
     <loc>/docs/dev-framework/go/grpc-kit/</loc>
     <lastmod>2023-05-16T10:59:01+08:00</lastmod>
   </url><url>
+    <loc>/docs/component/open-telemetry/collector/</loc>
+    <lastmod>2023-11-02T14:23:01+08:00</lastmod>
+  </url><url>
     <loc>/docs/concepts/configuration/configmaps/</loc>
     <lastmod>2023-05-12T14:56:40+08:00</lastmod>
   </url><url>
@@ -98,6 +101,9 @@
     <loc>/docs/concepts/workloads/pods-affinity/</loc>
     <lastmod>2023-05-08T18:41:22+08:00</lastmod>
   </url><url>
+    <loc>/docs/component/open-telemetry/sampling/</loc>
+    <lastmod>2023-10-23T18:15:47+08:00</lastmod>
+  </url><url>
     <loc>/docs/security/cis-benchmark/etcd/</loc>
     <lastmod>2023-10-09T17:19:05+08:00</lastmod>
   </url><url>
@@ -155,6 +161,9 @@
     <loc>/docs/concepts/kubeadm/join/</loc>
     <lastmod>2023-01-28T23:55:24+08:00</lastmod>
   </url><url>
+    <loc>/docs/component/open-telemetry/semantic-conventions/</loc>
+    <lastmod>2023-11-02T14:23:01+08:00</lastmod>
+  </url><url>
     <loc>/docs/security/cis-benchmark/auth-audit/</loc>
     <lastmod>2023-10-09T17:19:05+08:00</lastmod>
   </url><url>
@@ -199,6 +208,9 @@
   </url><url>
     <loc>/docs/cloud-monitor/alert-rules/</loc>
     <lastmod>2022-02-13T14:37:36+08:00</lastmod>
+  </url><url>
+    <loc>/docs/component/open-telemetry/metric-data-model/</loc>
+    <lastmod>2023-11-03T17:00:11+08:00</lastmod>
   </url><url>
     <loc>/docs/security/cis-benchmark/worker-nodes/</loc>
     <lastmod>2023-10-12T17:55:48+08:00</lastmod>
@@ -343,6 +355,9 @@
   </url><url>
     <loc>/docs/data-store/object-storage/</loc>
     <lastmod>2023-07-06T22:38:07+08:00</lastmod>
+  </url><url>
+    <loc>/docs/component/open-telemetry/</loc>
+    <lastmod>2023-11-03T17:12:21+08:00</lastmod>
   </url><url>
     <loc>/docs/concepts/kubeadm/</loc>
     <lastmod>2023-01-28T23:55:24+08:00</lastmod>
