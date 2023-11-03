@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>OPSaid – K8S 集群安全</title>
+    <title>OPSaid – K8S 原生安全</title>
     <link>/docs/security/</link>
-    <description>Recent content in K8S 集群安全 on OPSaid</description>
+    <description>Recent content in K8S 原生安全 on OPSaid</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 05 Oct 2023 11:50:00 +0800</lastBuildDate>
     
