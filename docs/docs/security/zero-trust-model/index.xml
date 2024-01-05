@@ -1,0 +1,144 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – 零信任模型</title>
+    <link>/docs/security/zero-trust-model/</link>
+    <description>Recent content in 零信任模型 on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 14 Nov 2023 10:51:28 +0800</lastBuildDate>
+    
+	  <atom:link href="/docs/security/zero-trust-model/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: SPIFFE</title>
+      <link>/docs/security/zero-trust-model/spiffe/</link>
+      <pubDate>Tue, 14 Nov 2023 10:53:54 +0800</pubDate>
+      
+      <guid>/docs/security/zero-trust-model/spiffe/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;简要概述&#34;&gt;简要概述&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://spiffe.io/docs/latest/spiffe-about/spiffe-concepts/&#34;&gt;SPIFFE&lt;/a&gt;（Secure Production Identity Framework for Everyone），是一个软件身份标识的开源标准，以组织和平台无关的方式实现身份标识，是云原生身份认证的“基础设施”。&lt;/p&gt;
+&lt;p&gt;它定义了以全自动方式获取和验证加密身份所需的接口，是语言、技术栈无关的，为构建分布式系统的通用身份的控制平面提供了标准的支撑。&lt;/p&gt;
+&lt;p&gt;在实施 SPIFFE 模型必须满足以下前提：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;网络通信是不可信的，可能被攻破；&lt;/li&gt;
+&lt;li&gt;运行 SPIFFE 实现的组件的硬件及其运维人员是可靠的。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;关键术语&#34;&gt;关键术语&lt;/h2&gt;
+&lt;h3 id=&#34;workload&#34;&gt;Workload&lt;/h3&gt;
+&lt;p&gt;工作负载是一个单一的软件组件，使用特定配置为了特定的目的而部署，它可以包括多个运行中的软件实例，都执行相同的任务，如：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;一个 MySQL 数据库实例；&lt;/li&gt;
+&lt;li&gt;处理队列中的应用程序；&lt;/li&gt;
+&lt;li&gt;运行 Web 应用程序的服务部署在虚机集群上，前面有一个负载均衡器；&lt;/li&gt;
+&lt;li&gt;独立部署的系统集合，它们共同工作，比如一个使用数据库服务的 Web 应用程序，Web 应用程序和数据库也可以分别被视为单独的工作负载。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对于 SPIFFE 而言，工作负载往往比物理或虚拟节点更精细，通常到节点上的单个进程。这对于在容器编排中托管的工作负载至关重要，其中多个工作负载可以共存（但相互隔离）在单个节点上，也可能跨越多个节点，比如在多台节点上同时运行的弹性扩展的 Web 服务器。&lt;/p&gt;
+&lt;p&gt;虽然工作负载的粒度会根据上下文而变化，但在使用 SPIFFE 前提下，必须保证一个工作负载与其他之间足够隔离，以防恶意工作负载在颁发后窃取另一个工作负载的凭证，这种隔离的强度和实现方式不在 SPIFFE 的范围之内。&lt;/p&gt;
+&lt;h3 id=&#34;spiffe-id&#34;&gt;SPIFFE ID&lt;/h3&gt;
+&lt;p&gt;格式为一个统一资源标识符（URI），由字符串组成，用于唯一明确定义一个工作负载，如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;spiffe://信任域(trust_domain)/工作负载标志(workload identifier)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;工作负载标识符唯一标识信任域内的特定工作负载。也可以分配给工作负载运行的中间系统，如一组虚拟机。例如，&lt;code&gt;spiffe://acme.com/billing/payments&lt;/code&gt; 是一个有效的 SPIFFE ID。&lt;/p&gt;
+&lt;h3 id=&#34;trust-domain&#34;&gt;Trust Domain&lt;/h3&gt;
+&lt;p&gt;信任域对应于系统的信任根（域名格式）可以代表一个人、组织、环境或部门，它们部署运行着独立的 SPIFFE 基础设施，如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dev.example.com
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;prod.example.com
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在同一信任域中识别的所有工作负载都会被分配身份文件，这些文件可以根据信任域的根密钥进行验证。它用于组织和隔离不同部门的身份和信任，不同信任域之间的工作负载具有不同的信任关系，这有助于确保在多个组织或环境之间建立安全的身份验证和授权机制。&lt;/p&gt;
+&lt;p&gt;这种模型使得 SPIFFE 能够处理分布式系统中的身份验证和授权需求，特别是在云原生环境中，其中不同实体需要进行身份验证和授权，一般建立信任域按照以下建议执行：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将位于不同物理位置，如不同数据中心或云区域&lt;/li&gt;
+&lt;li&gt;将不同安全实践环境，如开发、测试、或生产环境&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这是为了确保在不同的环境中，工作负载具有适当的隔离和信任，不同的信任域之间可能会有不同的信任关系和安全政策，因此将它们分开有助于更好地管理和维护身份验证和授权的机制，有助于提高安全性和降低潜在的风险。&lt;/p&gt;
+&lt;h3 id=&#34;spiffe-verifiable-identity-document-svid&#34;&gt;SPIFFE Verifiable Identity Document (SVID)&lt;/h3&gt;
+&lt;p&gt;SVID（SPIFFE Verifiable Identity Document）是工作负载向资源或调用方证明其身份的文件。&lt;/p&gt;
+&lt;p&gt;一个有效的 SVID 必须被信任域内的授权机构签名，它包含一个单一的 SPIFFE ID，代表服务身份。它在一份加密可验证的文件中编码 SPIFFE ID，目前支持两种格式：X.509 证书或 JWT 令牌。&lt;/p&gt;
+&lt;p&gt;由于 JWT 令牌容易受到重放攻击的影响，即攻击者在传输中获得令牌后可以使用它来冒充工作负载，因此建议在可能的情况下使用X.509-SVID。但在某些情况下，JWT令牌格式可能是唯一的选择，例如，当您的架构在两个工作负载之间有一个L7代理或负载均衡器时。&lt;/p&gt;
+&lt;h3 id=&#34;spiffe-workload-api&#34;&gt;SPIFFE Workload API&lt;/h3&gt;
+&lt;p&gt;提供 X.509 格式的身份证件（X.509-SVID）接口：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;身份信息：以 SPIFFE ID 形式描述的身份；&lt;/li&gt;
+&lt;li&gt;私钥：与 SPIFFE ID 关联的私钥，可用于代表工作负载对数据进行签名。相应的短期X.509证书也被创建，即X.509-SVID。这可以用于建立TLS或以其他方式对其他工作负载进行身份验证。&lt;/li&gt;
+&lt;li&gt;证书集：称为信任捆绑（trust bundle）的一组证书，工作负载可以使用它来验证另一个工作负载呈现的X.509-SVID。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;提供 JWT 格式的身份文件（JWT-SVID）接口：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;身份信息：以 SPIFFE ID 形式描述的身份；&lt;/li&gt;
+&lt;li&gt;JWT 令牌：身份文件中包含的 JWT 令牌；&lt;/li&gt;
+&lt;li&gt;证书集：称为信任捆绑（trust bundle）的一组证书，工作负载可以使用它来验证其他工作负载的身份。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以上两种 API 不要求调用工作负载具有对自身身份的任何了解，也不要求在调用 API 时具有任何身份验证令牌，这意味着您的应用程序不需要与工作负载一起部署任何身份验证密钥。这个与 &lt;a href=&#34;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html&#34;&gt;AWS EC2 实例元数据 API&lt;/a&gt; 和 &lt;a href=&#34;https://cloud.google.com/compute/docs/storing-retrieving-metadata&#34;&gt;Google GCE 实例元数据 API&lt;/a&gt; 类似。&lt;/p&gt;
+&lt;p&gt;为了保证密钥泄漏导致风险的最小化，所有私钥（及相应的证书）都是短暂的且经常轮换，并在过期之前由工作负载自动刷新（工作负载可以在相应的密钥过期之前从工作负载API请求新的密钥和信任捆绑），这种自动轮换和刷新的机制有助于提高安全性，防止潜在的长时间持有同一密钥的风险。&lt;/p&gt;
+&lt;p&gt;为 grpc 接口，定义见 &lt;a href=&#34;https://github.com/spiffe/spiffe/blob/main/standards/workloadapi.proto&#34;&gt;workloadapi.proto&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;trust-bundle&#34;&gt;Trust Bundle&lt;/h3&gt;
+&lt;p&gt;当使用 X.509-SVID 时，目标工作负载使用信任捆绑来验证源工作负载的身份，信任捆绑是一组一个或多个证书颁发机构（CA）根证书，工作负载应该将其视为可信任的，它包含 X.509 和 JWT-SVID 的公钥材料。&lt;/p&gt;
+&lt;p&gt;用于验证 X.509 SVID 的公钥材料是一组证书，用于验证 JWT 的公钥材料是原始公钥，信任捆绑的内容经常进行轮换，当工作负载调用工作负载 API 时，它会检索信任捆绑。&lt;/p&gt;
+&lt;p&gt;信任包中不会包含除公钥以外的其他敏感内容，可以被随意传播。&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: SPIRE</title>
+      <link>/docs/security/zero-trust-model/spire/</link>
+      <pubDate>Tue, 14 Nov 2023 17:23:45 +0800</pubDate>
+      
+      <guid>/docs/security/zero-trust-model/spire/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;简要概述&#34;&gt;简要概述&lt;/h2&gt;
+&lt;p&gt;SPIRE 是 SPIFFE API 规范下的实现，可用于生产环境，执行节点和工作负载认证，以安全地向工作负载发布SVID，并基于预定义的一组条件验证其他工作负载的SVID。&lt;/p&gt;
+&lt;p&gt;SPIRE 旨在提供一个可靠的解决方案，用于在云原生环境中实现安全的身份验证和授权。&lt;/p&gt;
+&lt;h2 id=&#34;架构组件&#34;&gt;架构组件&lt;/h2&gt;
+&lt;h3 id=&#34;架构图&#34;&gt;架构图&lt;/h3&gt;
+&lt;p&gt;SPIRE 由 &lt;code&gt;spire-server&lt;/code&gt; 和一个或多个 &lt;code&gt;spire-agent&lt;/code&gt; 组成，服务端充当身份签发机构，通过 agent 向一组工作负载颁发身份，同时还维护一个工作负载身份的注册表以及必须验证的条件，以便颁发这些身份。代理在本地向工作负载公开 SPIFFE Sorkload API 并且必须安装在每个运行工作负载的节点上。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://spiffe.io/img/server_and_agent.png&#34; alt=&#34;jpg&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;spire-server&#34;&gt;spire-server&lt;/h3&gt;
+&lt;p&gt;负责管理和颁发其配置的 SPIFFE 信任域中的所有身份，它存储注册条目（指定确定特定 SPIFFE ID 应在其下颁发的条件的选择器）和签名密钥，使用节点认证自动验证代理的身份，并在经过身份验证的代理请求时为工作负载创建 SVID。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://spiffe.io/img/server.png&#34; alt=&#34;jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;服务端的行为是通过一系列插件确定的，默认内置了一些插件，但可以通过编写自定义插件以扩展 SPIRE 适应特定的用例，插件的类型包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Node Attestor Plugins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;用于执行节点证明的插件。节点证明是通过验证节点的身份，确保其可信，并为其颁发身份的过程。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Node resolver plugins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;节点解析插件扩展了服务器用于通过验证节点的附加属性来识别节点的选择器集。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Datastore Plugins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用数据存储插件来存储、查询和更新各种信息，例如注册条目、哪些节点已经进行了认证以及这些节点的选择器是什么。&lt;/p&gt;
+&lt;p&gt;内置了一个数据存储插件，可以使用 MySQL、SQLite 3 或 PostgresSQL 来存储必要的数据。&lt;/p&gt;
+&lt;p&gt;默认情况下，它使用SQLite。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Key manager Plugins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;控制服务端存储用于签署 X.509-SVID 和 JWT-SVID 私钥的方式。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Upstream authority Plugins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;默认情况下，SPIRE 服务器充当自己的证书颁发机构。然而，您可以使用上游颁发机构插件来使用来自不同 PKI 系统的不同 CA。&lt;/p&gt;
+&lt;h3 id=&#34;spire-agent&#34;&gt;spire-agent&lt;/h3&gt;
+&lt;p&gt;运行已识别工作负载的每个节点上运行。该代理：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;从服务器请求SVID，并将其缓存，直到工作负载请求其SVID。&lt;/li&gt;
+&lt;li&gt;向节点上的工作负载公开SPIFFE工作负载API，并对调用它的工作负载进行认证。&lt;/li&gt;
+&lt;li&gt;为已识别的工作负载提供其SVID。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;SPIRE代理在工作负载的生命周期中充当关键的中介，协助在节点上颁发和管理SVID，并确保工作负载可以有效地获取其身份信息。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://spiffe.io/img/agent.png&#34; alt=&#34;jpg&#34;&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

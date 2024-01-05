@@ -35,14 +35,14 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/deploy-k8s/faqs/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2023-08-03T09:42:05+08:00" />
-<meta property="article:modified_time" content="2023-08-08T15:39:13+08:00" /><meta property="og:site_name" content="OPSaid" />
+<meta property="article:modified_time" content="2023-12-01T11:41:21+08:00" /><meta property="og:site_name" content="OPSaid" />
 
 <meta itemprop="name" content="常见问题">
 <meta itemprop="description" content="简要概述 记录部署 k8s 相关的场景问题。
 组件 etcd 相关 &ldquo;received signal; shutting down&rdquo; 关键日志 {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:31:34.277Z&#34;,&#34;caller&#34;:&#34;rafthttp/stream.go:274&#34;,&#34;msg&#34;:&#34;established TCP streaming connection with remote peer&#34;,&#34;stream-writer-type&#34;:&#34;stream MsgApp v2&#34;,&#34;local-member-id&#34;:&#34;edacac26a3fb24b3&#34;,&#34;remote-peer-id&#34;:&#34;2c8b55a3459bb7ff&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;osutil/interrupt_unix.go:64&#34;,&#34;msg&#34;:&#34;received signal; shutting down&#34;,&#34;signal&#34;:&#34;terminated&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;embed/etcd.go:367&#34;,&#34;msg&#34;:&#34;closing etcd server&#34;,&#34;name&#34;:&#34;node3&#34;,&#34;data-dir&#34;:&#34;/data/etcd/&#34;,&#34;advertise-peer-urls&#34;:[&#34;https://10.49.2.36:2380&#34;],&#34;advertise-client-urls&#34;:[&#34;https://10.49.2.36:2379&#34;]} 问题原因 在文件 /etc/containerd/config.toml 中的 SystemdCgroup 配置为 false 了，与 kubelet 中不同。
 解决步骤 更改配置，使用同 &ldquo;kubelet&rdquo; 一样的 cgroup 为 systemd
 [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd.runtimes.runc.options] SystemdCgroup = true 组件 kube-apiserver 相关 &ldquo;dial tcp 127.0.0.1:8080: connect: connection refused&rdquo; 关键日志 root@k8s/etc/kubernetes/manifests# kubectl get nodes E0803 10:01:41.668372 300010 memcache.go:265] couldn&#39;t get current server API group list: Get &#34;http://localhost:8080/api?"><meta itemprop="datePublished" content="2023-08-03T09:42:05+08:00" />
-<meta itemprop="dateModified" content="2023-08-08T15:39:13+08:00" />
+<meta itemprop="dateModified" content="2023-12-01T11:41:21+08:00" />
 <meta itemprop="wordCount" content="349">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="常见问题"/>
@@ -311,6 +311,65 @@ if (!doNotTrack) {
       
       <ul class="ul-2 collapsed">
 
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsconceptscommons">
+      <input type="checkbox" id="docsconceptscommons-check"/>
+      <label for="docsconceptscommons-check" ><a href="/docs/concepts/commons/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">基础数据</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptscommonsmetadata">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptscommonsmetadata-a" href="/docs/concepts/commons/metadata/">Metadata</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
         
           
             
@@ -751,6 +810,116 @@ if (!doNotTrack) {
 
 
   
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsconceptspolicies">
+      <input type="checkbox" id="docsconceptspolicies-check"/>
+      <label for="docsconceptspolicies-check" ><a href="/docs/concepts/policies/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">安全策略</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptspoliciesrbac">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspoliciesrbac-a" href="/docs/concepts/policies/rbac/">访问控制</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptspoliciesaudit">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspoliciesaudit-a" href="/docs/concepts/policies/audit/">审计日志</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptspoliciesnetwork">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspoliciesnetwork-a" href="/docs/concepts/policies/network/">网络策略</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptspoliciesadmission">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspoliciesadmission-a" href="/docs/concepts/policies/admission/">准入控制器</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsconceptskubeadm">
       <input type="checkbox" id="docsconceptskubeadm-check"/>
       <label for="docsconceptskubeadm-check" ><a href="/docs/concepts/kubeadm/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Kubeadm</a></label>
@@ -920,9 +1089,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentkube-apiserver">
-      <input type="checkbox" id="docscomponentkube-apiserver-check"/>
-      <label for="docscomponentkube-apiserver-check" ><a href="/docs/component/kube-apiserver/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">kube-apiserver</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentcontrol-plane">
+      <input type="checkbox" id="docscomponentcontrol-plane-check"/>
+      <label for="docscomponentcontrol-plane-check" ><a href="/docs/component/control-plane/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">控制平面</a></label>
       
         
         
@@ -936,10 +1105,10 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docscomponentkube-apiserverconfig">
+                <li class="without-sib collapsed" id="m-docscomponentcontrol-planekube-apiserver-config">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentkube-apiserverconfig-a" href="/docs/component/kube-apiserver/config/">参数配置</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentcontrol-planekube-apiserver-config-a" href="/docs/component/control-plane/kube-apiserver-config/">kube-apiserver 配置</a>
                     
                   </span>
                   
@@ -947,58 +1116,16 @@ if (!doNotTrack) {
             
           
         
-
-      </ul>
-    </li>
-  
-
-            
-          
-        
-          
-            
-              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentkube-controller-manager">
-      <input type="checkbox" id="docscomponentkube-controller-manager-check"/>
-      <label for="docscomponentkube-controller-manager-check" ><a href="/docs/component/kube-controller-manager/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">kube-controller-manager</a></label>
-      
-        
-        
-      
-      <ul class="ul-3 collapsed">
-
-        
           
             
               
               
               
               
-                <li class="without-sib collapsed" id="m-docscomponentkube-controller-managerconfig">
+                <li class="without-sib collapsed" id="m-docscomponentcontrol-planekube-controller-manager-config">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentkube-controller-managerconfig-a" href="/docs/component/kube-controller-manager/config/">参数配置</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentcontrol-planekube-controller-manager-config-a" href="/docs/component/control-plane/kube-controller-manager-config/">kube-controller-manager 配置</a>
                     
                   </span>
                   
@@ -1006,58 +1133,16 @@ if (!doNotTrack) {
             
           
         
-
-      </ul>
-    </li>
-  
-
-            
-          
-        
-          
-            
-              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentkube-scheduler">
-      <input type="checkbox" id="docscomponentkube-scheduler-check"/>
-      <label for="docscomponentkube-scheduler-check" ><a href="/docs/component/kube-scheduler/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">kube-scheduler</a></label>
-      
-        
-        
-      
-      <ul class="ul-3 collapsed">
-
-        
           
             
               
               
               
               
-                <li class="without-sib collapsed" id="m-docscomponentkube-schedulerconfig">
+                <li class="without-sib collapsed" id="m-docscomponentcontrol-planekube-scheduler-config">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentkube-schedulerconfig-a" href="/docs/component/kube-scheduler/config/">参数配置</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentcontrol-planekube-scheduler-config-a" href="/docs/component/control-plane/kube-scheduler-config/">kube-scheduler 配置</a>
                     
                   </span>
                   
@@ -1934,6 +2019,158 @@ if (!doNotTrack) {
 
 
   
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecuritykernel-monitor">
+      <input type="checkbox" id="docssecuritykernel-monitor-check"/>
+      <label for="docssecuritykernel-monitor-check" ><a href="/docs/security/kernel-monitor/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">内核安全</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritykernel-monitorapparmor">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritykernel-monitorapparmor-a" href="/docs/security/kernel-monitor/apparmor/">AppArmor</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritykernel-monitorseccomp">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritykernel-monitorseccomp-a" href="/docs/security/kernel-monitor/seccomp/">Seccomp</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecurityscanning">
+      <input type="checkbox" id="docssecurityscanning-check"/>
+      <label for="docssecurityscanning-check" ><a href="/docs/security/scanning/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">安全扫描</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecurityscanningvulnerability">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecurityscanningvulnerability-a" href="/docs/security/scanning/vulnerability/">漏洞数据</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecurityscanningscanner">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecurityscanningscanner-a" href="/docs/security/scanning/scanner/">漏洞扫描</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecuritycis-benchmark">
       <input type="checkbox" id="docssecuritycis-benchmark-check"/>
       <label for="docssecuritycis-benchmark-check" ><a href="/docs/security/cis-benchmark/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">CIS 基准</a></label>
@@ -2039,6 +2276,208 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkkube-bench-a" href="/docs/security/cis-benchmark/kube-bench/">检测工具</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecuritypolicies">
+      <input type="checkbox" id="docssecuritypolicies-check"/>
+      <label for="docssecuritypolicies-check" ><a href="/docs/security/policies/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">策略代理</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritypoliciesnetwork">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritypoliciesnetwork-a" href="/docs/security/policies/network/">网络策略</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritypoliciesrego">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritypoliciesrego-a" href="/docs/security/policies/rego/">Rego 语言</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritypoliciesgatekeeper">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritypoliciesgatekeeper-a" href="/docs/security/policies/gatekeeper/">Gatekeeper</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-sib collapsed" id="docssecurityruntime">
+      <span > <a  href="/docs/security/runtime/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">运行时安全</a></span>
+      
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecurityzero-trust-model">
+      <input type="checkbox" id="docssecurityzero-trust-model-check"/>
+      <label for="docssecurityzero-trust-model-check" ><a href="/docs/security/zero-trust-model/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">零信任模型</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecurityzero-trust-modelspiffe">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecurityzero-trust-modelspiffe-a" href="/docs/security/zero-trust-model/spiffe/">SPIFFE</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecurityzero-trust-modelspire">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecurityzero-trust-modelspire-a" href="/docs/security/zero-trust-model/spire/">SPIRE</a>
                     
                   </span>
                   
@@ -3437,7 +3876,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  最后修改 2023.08.08: <a href="https://github.com/opsaid/website/commit/d0772df742cc36a36d9b1489b96145f194fc609d">docs: 更新对象存储文档 (d0772df)</a>
+  最后修改 2023.12.01: <a href="https://github.com/opsaid/website/commit/72506820bf6cd3c33e4b526ff2079b0c4607074b">feat: 调整控制平面文档结构 (7250682)</a>
 </div>
 
 </div>
@@ -3460,7 +3899,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2023 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

@@ -26,11 +26,7 @@
 &lt;p&gt;k8s生态组件过多，对新人入门并不友好，本项目在于结合当前生产集群维护经验，总结一套标准的部署模版，接入内部gitlab ci实现集群基础设施的自动化管理，同时也会不断迭代优化，以实现快速搭建一套生产可用的环境。&lt;/p&gt;
 &lt;h2 id=&#34;前置说明&#34;&gt;前置说明&lt;/h2&gt;
 &lt;h3 id=&#34;操作系统&#34;&gt;操作系统&lt;/h3&gt;
-&lt;p&gt;操作系统支持：centos 7 或者 ubuntu 20.04&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;centos 7&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;通过&amp;quot;CentOS-7-x86_64-Minimal-2009.iso&amp;quot;镜像做最小化安装&lt;/p&gt;
+&lt;p&gt;操作系统支持：ubuntu 20.04 或 debian11&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;ubuntu 20.04&lt;/li&gt;
 &lt;/ul&gt;
@@ -79,10 +75,7 @@
 &lt;ul&gt;
 &lt;li&gt;安装基础软件&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;centos7&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;yum install -y epel-release
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;yum install -y git ansible
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ubuntu20.04&lt;/p&gt;
+&lt;p&gt;ubuntu20.04&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;apt install -y git ansible
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;获取部署代码&lt;/li&gt;
@@ -173,7 +166,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;存储 kubelet 配置至集群 ConfigMap&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;其中 kubelet 配置取 KubeletConfiguration 同步至 &amp;ldquo;kube-system&amp;rdquo; 下 ConfigMap &amp;ldquo;kubelet-config-1.22&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;其中 kubelet 配置取 KubeletConfiguration 同步至 &amp;ldquo;kube-system&amp;rdquo; 下 ConfigMap &amp;ldquo;kubelet-config&amp;rdquo;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase upload-config kubelet --config /usr/local/src/kubeadm/config.yaml
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;存储证书至空间 &amp;ldquo;kube-system&amp;rdquo; 下 Secret 资源&lt;/li&gt;
@@ -240,11 +233,23 @@
         
         
         &lt;h2 id=&#34;简要概述&#34;&gt;简要概述&lt;/h2&gt;
-&lt;p&gt;这里将会说明如何创建k8s依赖的默认镜像与相关的二进制文件，这些都是来自官方&lt;/p&gt;
+&lt;p&gt;这里说明所用到 k8s 官方镜像与相关的组件地址。&lt;/p&gt;
+&lt;p&gt;当在部署时，可以从外部获取依赖文件至以下路径：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ansible/roles/binary/files
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm config images list
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;k8s.gcr.io/kube-apiserver:v1.22.6
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;控制平面&#34;&gt;控制平面&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm config images list --kubernetes-version stable-1.22
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm config images list --kubernetes-version stable-1.26
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;https://cdn.dl.k8s.io/release/stable-1.26.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;k8s-126-版本&#34;&gt;k8s 1.26 版本&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;registry.k8s.io/kube-apiserver:v1.26.11
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;registry.k8s.io/kube-controller-manager:v1.26.11
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;registry.k8s.io/kube-scheduler:v1.26.11
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;registry.k8s.io/kube-proxy:v1.26.11
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;registry.k8s.io/pause:3.9
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;registry.k8s.io/etcd:3.5.9-0
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;registry.k8s.io/coredns/coredns:v1.9.3
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;k8s-122-版本&#34;&gt;k8s 1.22 版本&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;k8s.gcr.io/kube-apiserver:v1.22.6
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;k8s.gcr.io/kube-controller-manager:v1.22.6
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;k8s.gcr.io/kube-scheduler:v1.22.6
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;k8s.gcr.io/kube-proxy:v1.22.6

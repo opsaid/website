@@ -31,13 +31,13 @@ PodSecurityContext
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/concepts/workloads/pods-security/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2023-05-08T18:19:18+08:00" />
-<meta property="article:modified_time" content="2023-05-08T18:41:22+08:00" /><meta property="og:site_name" content="OPSaid" />
+<meta property="article:modified_time" content="2023-12-05T10:55:16+08:00" /><meta property="og:site_name" content="OPSaid" />
 
 <meta itemprop="name" content="Pod Security">
 <meta itemprop="description" content="简要概述 TODO;
 数据结构 PodSecurityContext // PodSecurityContext holds pod-level security attributes and common container settings. // Some fields are also present in container.securityContext. Field values of // container.securityContext take precedence over field values of PodSecurityContext. type PodSecurityContext struct { // The SELinux context to be applied to all containers. // If unspecified, the container runtime will allocate a random SELinux context for each // container. May also be set in SecurityContext. If set in // both SecurityContext and PodSecurityContext, the value specified in SecurityContext // takes precedence for that container."><meta itemprop="datePublished" content="2023-05-08T18:19:18+08:00" />
-<meta itemprop="dateModified" content="2023-05-08T18:41:22+08:00" />
-<meta itemprop="wordCount" content="572">
+<meta itemprop="dateModified" content="2023-12-05T10:55:16+08:00" />
+<meta itemprop="wordCount" content="1233">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Pod Security"/>
 <meta name="twitter:description" content="简要概述 TODO;
@@ -303,6 +303,65 @@ if (!doNotTrack) {
       
       <ul class="ul-2">
 
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsconceptscommons">
+      <input type="checkbox" id="docsconceptscommons-check"/>
+      <label for="docsconceptscommons-check" ><a href="/docs/concepts/commons/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">基础数据</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptscommonsmetadata">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptscommonsmetadata-a" href="/docs/concepts/commons/metadata/">Metadata</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
         
           
             
@@ -743,6 +802,116 @@ if (!doNotTrack) {
 
 
   
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsconceptspolicies">
+      <input type="checkbox" id="docsconceptspolicies-check"/>
+      <label for="docsconceptspolicies-check" ><a href="/docs/concepts/policies/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">安全策略</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptspoliciesrbac">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspoliciesrbac-a" href="/docs/concepts/policies/rbac/">访问控制</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptspoliciesaudit">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspoliciesaudit-a" href="/docs/concepts/policies/audit/">审计日志</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptspoliciesnetwork">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspoliciesnetwork-a" href="/docs/concepts/policies/network/">网络策略</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptspoliciesadmission">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspoliciesadmission-a" href="/docs/concepts/policies/admission/">准入控制器</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsconceptskubeadm">
       <input type="checkbox" id="docsconceptskubeadm-check"/>
       <label for="docsconceptskubeadm-check" ><a href="/docs/concepts/kubeadm/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Kubeadm</a></label>
@@ -912,9 +1081,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentkube-apiserver">
-      <input type="checkbox" id="docscomponentkube-apiserver-check"/>
-      <label for="docscomponentkube-apiserver-check" ><a href="/docs/component/kube-apiserver/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">kube-apiserver</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentcontrol-plane">
+      <input type="checkbox" id="docscomponentcontrol-plane-check"/>
+      <label for="docscomponentcontrol-plane-check" ><a href="/docs/component/control-plane/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">控制平面</a></label>
       
         
         
@@ -928,10 +1097,10 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docscomponentkube-apiserverconfig">
+                <li class="without-sib collapsed" id="m-docscomponentcontrol-planekube-apiserver-config">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentkube-apiserverconfig-a" href="/docs/component/kube-apiserver/config/">参数配置</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentcontrol-planekube-apiserver-config-a" href="/docs/component/control-plane/kube-apiserver-config/">kube-apiserver 配置</a>
                     
                   </span>
                   
@@ -939,58 +1108,16 @@ if (!doNotTrack) {
             
           
         
-
-      </ul>
-    </li>
-  
-
-            
-          
-        
-          
-            
-              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentkube-controller-manager">
-      <input type="checkbox" id="docscomponentkube-controller-manager-check"/>
-      <label for="docscomponentkube-controller-manager-check" ><a href="/docs/component/kube-controller-manager/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">kube-controller-manager</a></label>
-      
-        
-        
-      
-      <ul class="ul-3 collapsed">
-
-        
           
             
               
               
               
               
-                <li class="without-sib collapsed" id="m-docscomponentkube-controller-managerconfig">
+                <li class="without-sib collapsed" id="m-docscomponentcontrol-planekube-controller-manager-config">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentkube-controller-managerconfig-a" href="/docs/component/kube-controller-manager/config/">参数配置</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentcontrol-planekube-controller-manager-config-a" href="/docs/component/control-plane/kube-controller-manager-config/">kube-controller-manager 配置</a>
                     
                   </span>
                   
@@ -998,58 +1125,16 @@ if (!doNotTrack) {
             
           
         
-
-      </ul>
-    </li>
-  
-
-            
-          
-        
-          
-            
-              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docscomponentkube-scheduler">
-      <input type="checkbox" id="docscomponentkube-scheduler-check"/>
-      <label for="docscomponentkube-scheduler-check" ><a href="/docs/component/kube-scheduler/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">kube-scheduler</a></label>
-      
-        
-        
-      
-      <ul class="ul-3 collapsed">
-
-        
           
             
               
               
               
               
-                <li class="without-sib collapsed" id="m-docscomponentkube-schedulerconfig">
+                <li class="without-sib collapsed" id="m-docscomponentcontrol-planekube-scheduler-config">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentkube-schedulerconfig-a" href="/docs/component/kube-scheduler/config/">参数配置</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docscomponentcontrol-planekube-scheduler-config-a" href="/docs/component/control-plane/kube-scheduler-config/">kube-scheduler 配置</a>
                     
                   </span>
                   
@@ -1926,6 +2011,158 @@ if (!doNotTrack) {
 
 
   
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecuritykernel-monitor">
+      <input type="checkbox" id="docssecuritykernel-monitor-check"/>
+      <label for="docssecuritykernel-monitor-check" ><a href="/docs/security/kernel-monitor/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">内核安全</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritykernel-monitorapparmor">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritykernel-monitorapparmor-a" href="/docs/security/kernel-monitor/apparmor/">AppArmor</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritykernel-monitorseccomp">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritykernel-monitorseccomp-a" href="/docs/security/kernel-monitor/seccomp/">Seccomp</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecurityscanning">
+      <input type="checkbox" id="docssecurityscanning-check"/>
+      <label for="docssecurityscanning-check" ><a href="/docs/security/scanning/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">安全扫描</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecurityscanningvulnerability">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecurityscanningvulnerability-a" href="/docs/security/scanning/vulnerability/">漏洞数据</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecurityscanningscanner">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecurityscanningscanner-a" href="/docs/security/scanning/scanner/">漏洞扫描</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecuritycis-benchmark">
       <input type="checkbox" id="docssecuritycis-benchmark-check"/>
       <label for="docssecuritycis-benchmark-check" ><a href="/docs/security/cis-benchmark/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">CIS 基准</a></label>
@@ -2031,6 +2268,208 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritycis-benchmarkkube-bench-a" href="/docs/security/cis-benchmark/kube-bench/">检测工具</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecuritypolicies">
+      <input type="checkbox" id="docssecuritypolicies-check"/>
+      <label for="docssecuritypolicies-check" ><a href="/docs/security/policies/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">策略代理</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritypoliciesnetwork">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritypoliciesnetwork-a" href="/docs/security/policies/network/">网络策略</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritypoliciesrego">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritypoliciesrego-a" href="/docs/security/policies/rego/">Rego 语言</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecuritypoliciesgatekeeper">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecuritypoliciesgatekeeper-a" href="/docs/security/policies/gatekeeper/">Gatekeeper</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-sib collapsed" id="docssecurityruntime">
+      <span > <a  href="/docs/security/runtime/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">运行时安全</a></span>
+      
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecurityzero-trust-model">
+      <input type="checkbox" id="docssecurityzero-trust-model-check"/>
+      <label for="docssecurityzero-trust-model-check" ><a href="/docs/security/zero-trust-model/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">零信任模型</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecurityzero-trust-modelspiffe">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecurityzero-trust-modelspiffe-a" href="/docs/security/zero-trust-model/spiffe/">SPIFFE</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docssecurityzero-trust-modelspire">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssecurityzero-trust-modelspire-a" href="/docs/security/zero-trust-model/spire/">SPIRE</a>
                     
                   </span>
                   
@@ -3223,6 +3662,11 @@ if (!doNotTrack) {
     <li><a href="#数据结构">数据结构</a>
       <ul>
         <li><a href="#podsecuritycontext">PodSecurityContext</a></li>
+        <li><a href="#selinuxoptions">SELinuxOptions</a></li>
+        <li><a href="#windowssecuritycontextoptions">WindowsSecurityContextOptions</a></li>
+        <li><a href="#sysctl">Sysctl</a></li>
+        <li><a href="#podfsgroupchangepolicy">PodFSGroupChangePolicy</a></li>
+        <li><a href="#seccompprofile">SeccompProfile</a></li>
       </ul>
     </li>
   </ul>
@@ -3296,7 +3740,7 @@ if (!doNotTrack) {
 			
 		
 		
-			<p class="reading-time"><i class="fa fa-clock" aria-hidden="true"></i>&nbsp; 3 分钟阅读 &nbsp;</p>
+			<p class="reading-time"><i class="fa fa-clock" aria-hidden="true"></i>&nbsp; 6 分钟阅读 &nbsp;</p>
 
 		
 	</header>    
@@ -3374,6 +3818,110 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SeccompProfile</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">SeccompProfile</span> <span style="color:#4e9a06">`json:&#34;seccompProfile,omitempty&#34; protobuf:&#34;bytes,10,opt,name=seccompProfile&#34;`</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="selinuxoptions">SELinuxOptions</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// SELinuxOptions are the labels to be applied to the container
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">SELinuxOptions</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// User is a SELinux user label that applies to the container.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">User</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;user,omitempty&#34; protobuf:&#34;bytes,1,opt,name=user&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Role is a SELinux role label that applies to the container.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Role</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;role,omitempty&#34; protobuf:&#34;bytes,2,opt,name=role&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Type is a SELinux type label that applies to the container.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Type</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;type,omitempty&#34; protobuf:&#34;bytes,3,opt,name=type&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Level is SELinux level label that applies to the container.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Level</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;level,omitempty&#34; protobuf:&#34;bytes,4,opt,name=level&#34;`</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="windowssecuritycontextoptions">WindowsSecurityContextOptions</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// WindowsSecurityContextOptions contain Windows-specific options and credentials.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">WindowsSecurityContextOptions</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// GMSACredentialSpecName is the name of the GMSA credential spec to use.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">GMSACredentialSpecName</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;gmsaCredentialSpecName,omitempty&#34; protobuf:&#34;bytes,1,opt,name=gmsaCredentialSpecName&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// GMSACredentialSpec is where the GMSA admission webhook
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// GMSA credential spec named by the GMSACredentialSpecName field.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">GMSACredentialSpec</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;gmsaCredentialSpec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=gmsaCredentialSpec&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// The UserName in Windows to run the entrypoint of the container process.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Defaults to the user specified in image metadata if unspecified.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// May also be set in PodSecurityContext. If set in both SecurityContext and
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// PodSecurityContext, the value specified in SecurityContext takes precedence.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">RunAsUserName</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;runAsUserName,omitempty&#34; protobuf:&#34;bytes,3,opt,name=runAsUserName&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// HostProcess determines if a container should be run as a &#39;Host Process&#39; container.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// This field is alpha-level and will only be honored by components that enable the
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// WindowsHostProcessContainers feature flag. Setting this field without the feature
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// flag will result in errors when validating the Pod. All of a Pod&#39;s containers must
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// have the same effective HostProcess value (it is not allowed to have a mix of HostProcess
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// containers and non-HostProcess containers).  In addition, if HostProcess is true
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// then HostNetwork must also be set to true.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">HostProcess</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">bool</span> <span style="color:#4e9a06">`json:&#34;hostProcess,omitempty&#34; protobuf:&#34;bytes,4,opt,name=hostProcess&#34;`</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="sysctl">Sysctl</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Sysctl defines a kernel parameter to be set
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">Sysctl</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Name of a property to set
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Name</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;name&#34; protobuf:&#34;bytes,1,opt,name=name&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Value of a property to set
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Value</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;value&#34; protobuf:&#34;bytes,2,opt,name=value&#34;`</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="podfsgroupchangepolicy">PodFSGroupChangePolicy</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// PodFSGroupChangePolicy holds policies that will be used for applying fsGroup to a volume
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// when volume is mounted.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">PodFSGroupChangePolicy</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">const</span> <span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// FSGroupChangeOnRootMismatch indicates that volume&#39;s ownership and permissions will be changed
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// only when permission and ownership of root directory does not match with expected
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// permissions on the volume. This can help shorten the time it takes to change
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// ownership and permissions of a volume.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">FSGroupChangeOnRootMismatch</span> <span style="color:#000">PodFSGroupChangePolicy</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;OnRootMismatch&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// FSGroupChangeAlways indicates that volume&#39;s ownership and permissions
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// should always be changed whenever volume is mounted inside a Pod. This the default
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// behavior.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">FSGroupChangeAlways</span> <span style="color:#000">PodFSGroupChangePolicy</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Always&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><h3 id="seccompprofile">SeccompProfile</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// SeccompProfile defines a pod/container&#39;s seccomp profile settings.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Only one profile source may be set.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// +union
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">SeccompProfile</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// type indicates which kind of seccomp profile will be applied.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Valid options are:
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">//
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Localhost - a profile defined in a file on the node should be used.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// RuntimeDefault - the container runtime default profile should be used.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Unconfined - no profile should be applied.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +unionDiscriminator
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Type</span> <span style="color:#000">SeccompProfileType</span> <span style="color:#4e9a06">`json:&#34;type&#34; protobuf:&#34;bytes,1,opt,name=type,casttype=SeccompProfileType&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// localhostProfile indicates a profile defined in a file on the node should be used.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// The profile must be preconfigured on the node to work.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Must be a descending path, relative to the kubelet&#39;s configured seccomp profile location.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Must only be set if type is &#34;Localhost&#34;.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">LocalhostProfile</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;localhostProfile,omitempty&#34; protobuf:&#34;bytes,2,opt,name=localhostProfile&#34;`</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// SeccompProfileType defines the supported seccomp profile types.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">SeccompProfileType</span> <span style="color:#204a87;font-weight:bold">string</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">const</span> <span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// SeccompProfileTypeUnconfined indicates no seccomp profile is applied (A.K.A. unconfined).
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SeccompProfileTypeUnconfined</span> <span style="color:#000">SeccompProfileType</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Unconfined&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// SeccompProfileTypeRuntimeDefault represents the default container runtime seccomp profile.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SeccompProfileTypeRuntimeDefault</span> <span style="color:#000">SeccompProfileType</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;RuntimeDefault&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// SeccompProfileTypeLocalhost indicates a profile defined in a file on the node should be used.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// The file&#39;s location is based off the kubelet&#39;s deprecated flag --seccomp-profile-root.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Once the flag support is removed the location will be &lt;kubelet-root-dir&gt;/seccomp.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SeccompProfileTypeLocalhost</span> <span style="color:#000">SeccompProfileType</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;Localhost&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">)</span>
 </span></span></code></pre></div>
 	
 		<br /><hr />
@@ -3443,7 +3991,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  最后修改 2023.05.08: <a href="https://github.com/opsaid/website/commit/aef1e3a0a8d27bcc30f88a46733e43cafd6449aa">refactor: 拆分 Pod 数据结构 (aef1e3a)</a>
+  最后修改 2023.12.05: <a href="https://github.com/opsaid/website/commit/27df049c6a80e3f8dab1d857d8faef669b527abd">docs: add pod security go struct (27df049)</a>
 </div>
 
 </div>
@@ -3466,7 +4014,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2023 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

@@ -1,0 +1,719 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – 安全扫描</title>
+    <link>/docs/security/scanning/</link>
+    <description>Recent content in 安全扫描 on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 15 Dec 2023 10:39:12 +0800</lastBuildDate>
+    
+	  <atom:link href="/docs/security/scanning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: 漏洞数据</title>
+      <link>/docs/security/scanning/vulnerability/</link>
+      <pubDate>Mon, 18 Dec 2023 11:23:23 +0800</pubDate>
+      
+      <guid>/docs/security/scanning/vulnerability/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;简要概述&#34;&gt;简要概述&lt;/h2&gt;
+&lt;p&gt;漏洞数据的来源，数据库的下载与制作。&lt;/p&gt;
+&lt;h2 id=&#34;数据库下载&#34;&gt;数据库下载&lt;/h2&gt;
+&lt;h3 id=&#34;通过-trivy-下载漏洞库&#34;&gt;通过 trivy 下载漏洞库&lt;/h3&gt;
+&lt;p&gt;各组件安全漏洞列表已由工具 &lt;a href=&#34;https://github.com/aquasecurity/trivy-db&#34;&gt;trivy-db&lt;/a&gt; 通过 GitHub Action 每 6 小时聚合并更新漏洞库，上传至 &lt;a href=&#34;https://github.com/aquasecurity/trivy-db/pkgs/container/trivy-db&#34;&gt;GHCR&lt;/a&gt;（&lt;a href=&#34;https://github.com/features/packages&#34;&gt;为 GitHub 镜像中心服务&lt;/a&gt;），我们可同步该漏洞库用于离线扫描镜像、K8S 集群、本地文件系统等。&lt;/p&gt;
+&lt;p&gt;通过 &lt;a href=&#34;https://github.com/aquasecurity/trivy&#34;&gt;trivy&lt;/a&gt; 工具下载至本地缓存，取保网络连接可达：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 线路加速，根据事情情况是否开启&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#export HTTPS_PROXY=http://127.0.0.1:1087&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy --cache-dir ./cache image --download-db-only
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;制作私有漏洞库&#34;&gt;制作私有漏洞库&lt;/h3&gt;
+&lt;p&gt;TODO;&lt;/p&gt;
+&lt;p&gt;思路：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;获取仓库 &lt;a href=&#34;https://github.com/aquasecurity/trivy-db.git&#34;&gt;https://github.com/aquasecurity/trivy-db.git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;更改流水线 .github/workflows/cron.yml&lt;/li&gt;
+&lt;li&gt;生成漏洞库上传至内部存储中心&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;漏洞数据来源&#34;&gt;漏洞数据来源&lt;/h2&gt;
+&lt;h3 id=&#34;操作系统&#34;&gt;操作系统&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;漏洞库&lt;/th&gt;
+&lt;th&gt;地址&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Alpine Linux&lt;/td&gt;
+&lt;td&gt;secdb&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://secdb.alpinelinux.org/&#34;&gt;https://secdb.alpinelinux.org/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;aquasecurity&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/aquasecurity/vuln-list&#34;&gt;https://github.com/aquasecurity/vuln-list&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Debian&lt;/td&gt;
+&lt;td&gt;Security Bug Tracker&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://security-tracker.debian.org/tracker/&#34;&gt;https://security-tracker.debian.org/tracker/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;OVAL&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.debian.org/security/oval/&#34;&gt;https://www.debian.org/security/oval/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;aquasecurity&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/aquasecurity/vuln-list-debian&#34;&gt;https://github.com/aquasecurity/vuln-list-debian&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ubuntu&lt;/td&gt;
+&lt;td&gt;Ubuntu CVE Tracker&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://ubuntu.com/security/cve&#34;&gt;https://ubuntu.com/security/cve&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;aquasecurity&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/aquasecurity/vuln-list&#34;&gt;https://github.com/aquasecurity/vuln-list&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RHEL/CentOS&lt;/td&gt;
+&lt;td&gt;OVAL&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.redhat.com/security/data/oval/v2/&#34;&gt;https://www.redhat.com/security/data/oval/v2/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Security Data&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.redhat.com/security/data/metrics/&#34;&gt;https://www.redhat.com/security/data/metrics/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;aquasecurity&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/aquasecurity/vuln-list-redhat&#34;&gt;https://github.com/aquasecurity/vuln-list-redhat&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Arch Linux&lt;/td&gt;
+&lt;td&gt;Vulnerable Issues&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://security.archlinux.org/&#34;&gt;https://security.archlinux.org/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Wolfi Linux&lt;/td&gt;
+&lt;td&gt;secdb&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://secdb.alpinelinux.org/&#34;&gt;https://secdb.alpinelinux.org/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Chainguard&lt;/td&gt;
+&lt;td&gt;secdb&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://secdb.alpinelinux.org/&#34;&gt;https://secdb.alpinelinux.org/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Amazon Linux&lt;/td&gt;
+&lt;td&gt;Amazon Linux Security Center&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://alas.aws.amazon.com/&#34;&gt;https://alas.aws.amazon.com/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AlmaLinux&lt;/td&gt;
+&lt;td&gt;AlmaLinux Product Errata&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://errata.almalinux.org/&#34;&gt;https://errata.almalinux.org/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Rocky Linux&lt;/td&gt;
+&lt;td&gt;Rocky Linux UpdateInfo&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://download.rockylinux.org/pub/rocky/&#34;&gt;https://download.rockylinux.org/pub/rocky/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Oracle Linux&lt;/td&gt;
+&lt;td&gt;OVAL&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://linux.oracle.com/security/oval/&#34;&gt;https://linux.oracle.com/security/oval/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CBL-Mariner&lt;/td&gt;
+&lt;td&gt;OVAL&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/microsoft/CBL-MarinerVulnerabilityData/&#34;&gt;https://github.com/microsoft/CBL-MarinerVulnerabilityData/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;OpenSUSE/SLES&lt;/td&gt;
+&lt;td&gt;CVRF&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;http://ftp.suse.com/pub/projects/security/cvrf/&#34;&gt;http://ftp.suse.com/pub/projects/security/cvrf/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Photon OS&lt;/td&gt;
+&lt;td&gt;Photon Security Advisory&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://packages.vmware.com/photon/photon_cve_metadata/&#34;&gt;https://packages.vmware.com/photon/photon_cve_metadata/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;语言框架&#34;&gt;语言框架&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;漏洞库&lt;/th&gt;
+&lt;th&gt;地址&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PHP&lt;/td&gt;
+&lt;td&gt;PHP Security Advisories Database&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/FriendsOfPHP/security-advisories&#34;&gt;https://github.com/FriendsOfPHP/security-advisories&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;GitHub Advisory Database (Composer)&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/advisories?query=ecosystem%3Acomposer&#34;&gt;https://github.com/advisories?query=ecosystem%3Acomposer&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Python&lt;/td&gt;
+&lt;td&gt;GitHub Advisory Database (pip)&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/advisories?query=ecosystem%3Apip&#34;&gt;https://github.com/advisories?query=ecosystem%3Apip&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Open Source Vulnerabilities (PyPI)&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://osv.dev/list?q=&amp;amp;ecosystem=PyPI&#34;&gt;https://osv.dev/list?q=&amp;amp;ecosystem=PyPI&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ruby&lt;/td&gt;
+&lt;td&gt;Ruby Advisory Database&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/rubysec/ruby-advisory-db&#34;&gt;https://github.com/rubysec/ruby-advisory-db&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;GitHub Advisory Database (RubyGems)&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/advisories?query=ecosystem%3Arubygems&#34;&gt;https://github.com/advisories?query=ecosystem%3Arubygems&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Node.js&lt;/td&gt;
+&lt;td&gt;Ecosystem Security Working Group&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/nodejs/security-wg&#34;&gt;https://github.com/nodejs/security-wg&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;GitHub Advisory Database (npm)&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/advisories?query=ecosystem%3Anpm&#34;&gt;https://github.com/advisories?query=ecosystem%3Anpm&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Java&lt;/td&gt;
+&lt;td&gt;GitHub Advisory Database (Maven)&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/advisories?query=ecosystem%3Amaven&#34;&gt;https://github.com/advisories?query=ecosystem%3Amaven&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Go&lt;/td&gt;
+&lt;td&gt;GitHub Advisory Database (Go)&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/advisories?query=ecosystem%3Ago&#34;&gt;https://github.com/advisories?query=ecosystem%3Ago&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Rust&lt;/td&gt;
+&lt;td&gt;Open Source Vulnerabilities (crates.io)&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://osv.dev/list?q=&amp;amp;ecosystem=crates.io&#34;&gt;https://osv.dev/list?q=&amp;amp;ecosystem=crates.io&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;.NET&lt;/td&gt;
+&lt;td&gt;GitHub Advisory Database (NuGet)&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/advisories?query=ecosystem%3Anuget&#34;&gt;https://github.com/advisories?query=ecosystem%3Anuget&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C/C++&lt;/td&gt;
+&lt;td&gt;GitLab Advisories Community&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://gitlab.com/gitlab-org/advisories-community&#34;&gt;https://gitlab.com/gitlab-org/advisories-community&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Dart&lt;/td&gt;
+&lt;td&gt;GitHub Advisory Database (Pub)&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/advisories?query=ecosystem%3Apub&#34;&gt;https://github.com/advisories?query=ecosystem%3Apub&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Elixir&lt;/td&gt;
+&lt;td&gt;GitHub Advisory Database (Erlang)&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/advisories?query=ecosystem%3Aerlang&#34;&gt;https://github.com/advisories?query=ecosystem%3Aerlang&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Swift&lt;/td&gt;
+&lt;td&gt;GitHub Advisory Database (Swift)&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/advisories?query=ecosystem%3Aswift&#34;&gt;https://github.com/advisories?query=ecosystem%3Aswift&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;漏洞库&lt;/th&gt;
+&lt;th&gt;地址&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Bitnami&lt;/td&gt;
+&lt;td&gt;bitnami&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/bitnami/vulndb&#34;&gt;https://github.com/bitnami/vulndb&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Kubernetes&lt;/td&gt;
+&lt;td&gt;CVE feed&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://kubernetes.io/docs/reference/issues-security/official-cve-feed/&#34;&gt;https://kubernetes.io/docs/reference/issues-security/official-cve-feed/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;aquasecurity&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/aquasecurity/vuln-list-k8s&#34;&gt;https://github.com/aquasecurity/vuln-list-k8s&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;其他来源&#34;&gt;其他来源&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名称&lt;/th&gt;
+&lt;th&gt;漏洞库&lt;/th&gt;
+&lt;th&gt;地址&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;GitHub&lt;/td&gt;
+&lt;td&gt;GitHub&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/github/advisory-database&#34;&gt;https://github.com/github/advisory-database&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;NVD&lt;/td&gt;
+&lt;td&gt;NVD&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://nvd.nist.gov/&#34;&gt;https://nvd.nist.gov/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;aquasecurity&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/aquasecurity/vuln-list-nvd&#34;&gt;https://github.com/aquasecurity/vuln-list-nvd&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CocoaPods&lt;/td&gt;
+&lt;td&gt;CocoaPods&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/CocoaPods/Specs&#34;&gt;https://github.com/CocoaPods/Specs&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;使用-bbolt-存储的数据结构&#34;&gt;使用 bbolt 存储的数据结构&lt;/h2&gt;
+&lt;h3 id=&#34;获取-buckets-列表&#34;&gt;获取 buckets 列表&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bbolt buckets assets/trivy.db
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pub::GitHub Security Advisory Pub
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rocky &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rocky &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;9&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rubygems::GitHub Security Advisory RubyGems
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ubuntu 22.04
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vulnerability
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wolfi
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;查找-buckets-下的-keys&#34;&gt;查找 buckets 下的 keys&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bbolt keys assets/trivy.db vulnerability
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;CVE-1234-0007
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;CVE-1234-1234
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;CVE-1999-0150
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;CVE-1999-0163
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;CVE-1999-0199
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;CVE-1999-0236
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openSUSE-SU-2023:0396-1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openSUSE-SU-2023:0397-1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openSUSE-SU-2023:0404-1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openSUSE-SU-2023:0405-1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;获取-buckets-下-key-内容&#34;&gt;获取 buckets 下 key 内容&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bbolt get assets/trivy.db vulnerability CVE-1999-0150
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;Title&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;CVE-1999-0150 affecting package finger 0.17-4&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;Description&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;The Perl fingerd program allows arbitrary command execution from remote users.&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;Severity&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;HIGH&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;VendorSeverity&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;cbl-mariner&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;nvd&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;CVSS&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;nvd&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;V2Vector&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;AV:N/AC:L/Au:N/C:P/I:P/A:P&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;V2Score&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;7.5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;References&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://exchange.xforce.ibmcloud.com/vulnerabilities/CVE-1999-0150&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://nvd.nist.gov/vuln/detail/CVE-1999-0150&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;PublishedDate&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1997-07-01T04:00:00Z&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;LastModifiedDate&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2022-08-17T07:15:00Z&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;几个关键的-buckets&#34;&gt;几个关键的 buckets&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;漏洞官方数据来源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;data-source
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ bbolt get assets/trivy.db data-source &amp;#34;k8s::Official Kubernetes CVE Feed&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;ID&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;k8s&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;Name&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Official Kubernetes CVE Feed&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;URL&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://kubernetes.io/docs/reference/issues-security/official-cve-feed/index.json&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 漏洞扫描</title>
+      <link>/docs/security/scanning/scanner/</link>
+      <pubDate>Fri, 15 Dec 2023 10:40:52 +0800</pubDate>
+      
+      <guid>/docs/security/scanning/scanner/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;简要概述&#34;&gt;简要概述&lt;/h2&gt;
+&lt;p&gt;通过开源漏洞库，实现对镜像、文件系统、代码仓库、K8S 配置清单等进行扫描以提前发现问题。&lt;/p&gt;
+&lt;h2 id=&#34;配置参数&#34;&gt;配置参数&lt;/h2&gt;
+&lt;p&gt;工具 trivy 支持在 cli 直接跟参数或通过 &lt;code&gt;trivy --cofnig trivy.yaml &lt;/code&gt; 使用配置文件，内容如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 同 cli 参数 &amp;#39;--cache-dir&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 存放漏洞库等缓存数据，首次初始化会自动从 github 下载&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;cache&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;dir&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;./cache/&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;db&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 同 cli 参数 &amp;#39;--skip-db-update&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 本地漏洞库存在有效期，超过后会重新下载，这里忽略时间检测&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;skip-update&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 仅列出 &amp;#34;UNKNOWN&amp;#34; &amp;#34;HIGH&amp;#34; &amp;#34;CRITICAL&amp;#34; 三个级别事件&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;severity&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;- &lt;span style=&#34;color:#000&#34;&gt;UNKNOWN&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;- &lt;span style=&#34;color:#000&#34;&gt;HIGH&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;- &lt;span style=&#34;color:#000&#34;&gt;CRITICAL&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;scan&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 默认开启 &amp;#34;漏洞扫描“ 与 &amp;#34;密钥扫描&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;scanners&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- &lt;span style=&#34;color:#000&#34;&gt;vuln&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#- misconfig&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- &lt;span style=&#34;color:#000&#34;&gt;secret&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#- license&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以上等同于 cli 模式：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;	--cache-dir ./cache/ &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;	--skip-policy-update &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;	--skip-db-update &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;	--skip-java-db-update &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以下实验均使用配置文件模式，更多内容可参考&lt;a href=&#34;https://aquasecurity.github.io/trivy/latest/docs/references/configuration/config-file/&#34;&gt;官方文档&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;支持的功能&#34;&gt;支持的功能&lt;/h2&gt;
+&lt;h3 id=&#34;漏洞扫描&#34;&gt;漏洞扫描&lt;/h3&gt;
+&lt;p&gt;仅支持以上这些系统的安装包检测，如果是自编译或者第三方安装包则不被支持，因为漏洞源中没有相关数据。&lt;/p&gt;
+&lt;p&gt;安全评估等级&lt;/p&gt;
+&lt;p&gt;如果相同的漏洞，多家给予不通的评分，则一般以供应商的评估等级更加准确，比如 &lt;a href=&#34;https://access.redhat.com/security/cve/cve-2023-0464&#34;&gt;cve-2023-0464&lt;/a&gt; 上 Redhat 与 NVD 不同。因为安全评估的严重性取决于编译选项、默认配置等，NVD 不知道供应商如何分发软件，而厂商可以更准确地评估。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;分数范围&lt;/th&gt;
+&lt;th&gt;等级&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;-&lt;/td&gt;
+&lt;td&gt;UNKNOWN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;0.1 - 3.9&lt;/td&gt;
+&lt;td&gt;Low&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4.0 - 6.9&lt;/td&gt;
+&lt;td&gt;Medium&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7.0 - 8.9&lt;/td&gt;
+&lt;td&gt;High&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;9.0 - 10.0&lt;/td&gt;
+&lt;td&gt;Critical&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;评估等级优先级：系统厂商 &amp;gt; NVD。如果 NVD 未找到则标志等级为 &amp;ldquo;UNKNOWN&amp;rdquo;&lt;/p&gt;
+&lt;h3 id=&#34;错误配置扫描&#34;&gt;错误配置扫描&lt;/h3&gt;
+&lt;p&gt;TODO;&lt;/p&gt;
+&lt;h3 id=&#34;密钥扫描&#34;&gt;密钥扫描&lt;/h3&gt;
+&lt;p&gt;TODO;&lt;/p&gt;
+&lt;h3 id=&#34;许可证扫描&#34;&gt;许可证扫描&lt;/h3&gt;
+&lt;p&gt;TODO;&lt;/p&gt;
+&lt;h2 id=&#34;扫描的目标&#34;&gt;扫描的目标&lt;/h2&gt;
+&lt;h3 id=&#34;容器镜像&#34;&gt;容器镜像&lt;/h3&gt;
+&lt;p&gt;默认开关的扫描功能：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;启动参数&lt;/th&gt;
+&lt;th&gt;默认启用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;漏洞扫描&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;trivy image --scanners vuln&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;错误配置扫描&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;trivy image --scanners config&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;密钥扫描&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;trivy image --scanners secret&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;许可证扫描&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;trivy image --scanners license&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;通过对镜像 &lt;code&gt;docker.io/bitnami/redis:7.2.3-debian-11-r2&lt;/code&gt; 进行扫描：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy --config trivy.yaml image docker.io/bitnami/redis:7.2.3-debian-11-r2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;代码仓库&#34;&gt;代码仓库&lt;/h3&gt;
+&lt;p&gt;默认开关的扫描功能：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;启动参数&lt;/th&gt;
+&lt;th&gt;默认启用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;漏洞扫描&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;trivy repo --scanners vuln&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;错误配置扫描&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;trivy repo --scanners config&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;密钥扫描&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;trivy repo --scanners secret&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;许可证扫描&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;trivy repo --scanners license&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;实现原理是通过扫描各语言依赖关系的锁定文件，部分如下列表：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;语言&lt;/th&gt;
+&lt;th&gt;扫描文件&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;go&lt;/td&gt;
+&lt;td&gt;go.mod&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;node&lt;/td&gt;
+&lt;td&gt;package-lock.json&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ruby&lt;/td&gt;
+&lt;td&gt;Gemfile.lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;支持扫描本地或者远程代码仓库，这里针对代码仓库 &lt;code&gt;github.com/grpc-kit/cli&lt;/code&gt; 进行在线扫描：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy --config trivy.yaml repo https://github.com/grpc-kit/cli.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后生成如下报告：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Library&lt;/th&gt;
+&lt;th&gt;Vulnerability&lt;/th&gt;
+&lt;th&gt;Severity&lt;/th&gt;
+&lt;th&gt;Status&lt;/th&gt;
+&lt;th&gt;Installed Version&lt;/th&gt;
+&lt;th&gt;Fixed Version&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;golang.org/x/net&lt;/td&gt;
+&lt;td&gt;CVE-2022-41723&lt;/td&gt;
+&lt;td&gt;HIGH&lt;/td&gt;
+&lt;td&gt;fixed&lt;/td&gt;
+&lt;td&gt;0.6.0&lt;/td&gt;
+&lt;td&gt;0.7.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;golang.org/x/net&lt;/td&gt;
+&lt;td&gt;CVE-2023-39325&lt;/td&gt;
+&lt;td&gt;HIGH&lt;/td&gt;
+&lt;td&gt;fixed&lt;/td&gt;
+&lt;td&gt;0.6.0&lt;/td&gt;
+&lt;td&gt;0.17.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;github.com/emicklei/go-restful&lt;/td&gt;
+&lt;td&gt;CVE-2022-1996&lt;/td&gt;
+&lt;td&gt;CRITICAL&lt;/td&gt;
+&lt;td&gt;fixed&lt;/td&gt;
+&lt;td&gt;2.9.5+incompatible&lt;/td&gt;
+&lt;td&gt;2.16.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;本地文件&#34;&gt;本地文件&lt;/h3&gt;
+&lt;p&gt;默认开关的扫描功能：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;启动参数&lt;/th&gt;
+&lt;th&gt;默认启用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;漏洞扫描&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;trivy fs --scanners vuln&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;错误配置扫描&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;trivy fs --scanners config&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;密钥扫描&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;trivy fs --scanners secret&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;是&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;许可证扫描&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;trivy fs --scanners license&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;否&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;本地扫描文件存在两种不通的工作模式：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;th&gt;场景&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;trivy fs&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;针对镜像、语言依赖库扫描&lt;/td&gt;
+&lt;td&gt;一般用于 CICD 场景&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;trivy rootfs&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;针对文件系统上二进制文件等&lt;/td&gt;
+&lt;td&gt;操作系统扫描&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;如果代码仓库、容器镜像等均在本地，也可以通过该方式扫描，如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy --config trivy.yaml fs test/go.mod
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;针对系统目录下 &lt;code&gt;/usr/local/bin&lt;/code&gt; 二进制文件扫描，当然这些二进制文件必须是公开漏洞库中已有的数据，不能是内部自己编译应用：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy --config trivy.yaml rootfs /usr/local/bin/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h3&gt;
+&lt;p&gt;需要能访问到 k8s 集群，trivy 默认是通过读取 &amp;ldquo;$HOME/.kube/config&amp;rdquo; 连接集群。&lt;/p&gt;
+&lt;p&gt;可扫描以下内容：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy --config trivy.yaml k8s all
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy --config trivy.yaml k8s pods
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy --config trivy.yaml k8s deploy myapp
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy --config trivy.yaml k8s pod/mypod
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy --config trivy.yaml k8s pods,deploy
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy --config trivy.yaml k8s cluster
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;支持针对以下几个合规进行扫描：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;规则&lt;/th&gt;
+&lt;th&gt;指令参数&lt;/th&gt;
+&lt;th&gt;规范地址&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;NSA, CISA Kubernetes Hardening Guidance v1.2&lt;/td&gt;
+&lt;td&gt;k8s-nsa&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://media.defense.gov/2022/Aug/29/2003066362/-1/-1/0/CTR_KUBERNETES_HARDENING_GUIDANCE_1.2_20220829.PDF&#34;&gt;url&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CIS Benchmark for Kubernetes v1.23&lt;/td&gt;
+&lt;td&gt;k8s-cis&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.cisecurity.org/benchmark/kubernetes&#34;&gt;url&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Pod Security Standards, Baseline&lt;/td&gt;
+&lt;td&gt;k8s-pss-baseline&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://kubernetes.io/docs/concepts/security/pod-security-standards/#baseline&#34;&gt;url&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Pod Security Standards, Restricted&lt;/td&gt;
+&lt;td&gt;k8s-pss-restricted&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted&#34;&gt;url&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;这里使用 k8s cis 规范进行检查，同 &lt;code&gt;kube-beach&lt;/code&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy k8s cluster &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;	--config trivy.yaml &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;	--scanners vuln &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;	--report summary &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;	--compliance&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;k8s-cis
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;java&#34;&gt;Java&lt;/h3&gt;
+&lt;p&gt;TODO;&lt;/p&gt;
+&lt;h2 id=&#34;应用案例实践&#34;&gt;应用案例实践&lt;/h2&gt;
+&lt;h3 id=&#34;容器镜像扫描&#34;&gt;容器镜像扫描&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy --cache-dir ./cache/ image docker.io/bitnami/redis:7.2.3-debian-11-r2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;预先下载漏洞库至本地目录 &amp;ldquo;./cache&amp;rdquo;，否则会在线下载。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy --cache-dir ./cache/ image docker.io/bitnami/redis:7.2.3-debian-11-r2 --report summary --severity UNKNOWN,HIGH,CRITICAL
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;仅列出 &amp;ldquo;HIGH&amp;rdquo; 与 &amp;ldquo;CRITICAL&amp;rdquo; 级别漏洞。&lt;/p&gt;
+&lt;h3 id=&#34;k8s-集群扫描&#34;&gt;K8S 集群扫描&lt;/h3&gt;
+&lt;p&gt;使用本地病毒库&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;trivy --cache-dir ./cache/ k8s -n kube-system --report summary all
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;业务开发代码仓库&#34;&gt;业务开发代码仓库&lt;/h3&gt;
+&lt;p&gt;TODO;&lt;/p&gt;
+&lt;h3 id=&#34;基础设施既代码&#34;&gt;基础设施既代码&lt;/h3&gt;
+&lt;p&gt;TODO;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -14,6 +14,19 @@
     
     
     <item>
+      <title>Docs: 基础数据</title>
+      <link>/docs/concepts/commons/</link>
+      <pubDate>Tue, 12 Dec 2023 11:38:15 +0800</pubDate>
+      
+      <guid>/docs/concepts/commons/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: 工作负载</title>
       <link>/docs/concepts/workloads/</link>
       <pubDate>Mon, 05 Dec 2022 18:55:11 +0800</pubDate>
@@ -45,6 +58,19 @@
       <pubDate>Fri, 12 May 2023 10:09:38 +0800</pubDate>
       
       <guid>/docs/concepts/configuration/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 安全策略</title>
+      <link>/docs/concepts/policies/</link>
+      <pubDate>Mon, 11 Dec 2023 13:40:59 +0800</pubDate>
+      
+      <guid>/docs/concepts/policies/</guid>
       <description>
         
         

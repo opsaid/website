@@ -804,13 +804,12 @@
         
         
         &lt;h2 id=&#34;简要概述&#34;&gt;简要概述&lt;/h2&gt;
-&lt;p&gt;使用 OTLP 模型传输数据，然后导出到现有系统中，数据模型可以明确地转换为 Prometheus Remote Write 协议，而不会导致数据丢失。&lt;/p&gt;
-&lt;p&gt;主要有三种保留语义指标数据转换，它们在构建指标收集系统时非常有用，可以控制成本、可靠性和资源分配。&lt;/p&gt;
-&lt;p&gt;数据模型设计用于在数据产生时在 SDK 内支持转换，或在 OTEL 收集器内处理这些转换，这三种转换分别为：&lt;/p&gt;
+&lt;p&gt;使用 OTLP 模型传输数据，然后导出到现有系统中，数据模型可以明确转换为 Prometheus Remote Write 协议，而不会丢失数据。&lt;/p&gt;
+&lt;p&gt;主要有三种保留语义的数据转换，它们在构建指标收集系统时非常有用，可以控制成本、可靠性和资源分配。该模型在数据产生时可选择在 SDK 内转换，或在 OTEL 收集器内处理数据转换，这三种转换分别为：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;时间重新聚合&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;可以将高频收集的指标重新聚合为更长的间隔，从而可预先计算或使用低分辨率时间序列来代替原始指标数据。&lt;/p&gt;
+&lt;p&gt;将高频收集的指标重新聚合为更长的间隔，从而可预先计算或使用低分辨率时间序列来代替原始指标数据。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;空间重新聚合&lt;/li&gt;
 &lt;/ul&gt;
@@ -818,17 +817,17 @@
 &lt;ul&gt;
 &lt;li&gt;累积或计算增量&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;具有增量时间性的输入和输出指标减轻了客户端保持高基数状态的负担。增量的使用允许下游服务承担转换为累积时间序列的成本，或者放弃成本并直接计算费率。&lt;/p&gt;
+&lt;p&gt;具有增量时间性的输入和输出指标减轻了客户端保持高基数状态的负担。&lt;/p&gt;
+&lt;p&gt;增量的使用允许下游服务承担转换为累积时间序列的成本，或者放弃成本并直接计算费率。&lt;/p&gt;
 &lt;h2 id=&#34;模型详情&#34;&gt;模型详情&lt;/h2&gt;
-&lt;p&gt;OTLP 将指标分解为三个交互模型：&lt;/p&gt;
-&lt;h3 id=&#34;事件模型&#34;&gt;事件模型&lt;/h3&gt;
+&lt;h3 id=&#34;事件&#34;&gt;事件&lt;/h3&gt;
 &lt;p&gt;是记录数据的地方，它的基础是仪器（Instruments），主要数据是指标数据点（时间戳+值），用于通过事件记录观测数据，然后将这些原始事件发送到其他系统之前以某种方式进行转换。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://opentelemetry.io/docs/specs/otel/metrics/img/model-event-layer.png&#34; alt=&#34;jpg&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;上图显示了仪器（Instruments）如何将事件转换为多种类型的指标流。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;尽管观测事件数据可以直接报告给后端，但在生产环境中这是不建议的，因为可观测性系统中使用的数据量太大，但可用于遥测收集的网络等资源有限，所以在上报数据前最后要想办法降低指标基数，如采用直方图指标类型压缩指标等。&lt;/p&gt;
-&lt;h3 id=&#34;时间序列模型&#34;&gt;时间序列模型&lt;/h3&gt;
+&lt;h3 id=&#34;时间序列&#34;&gt;时间序列&lt;/h3&gt;
 &lt;p&gt;表示后端如何存储指标数据。&lt;/p&gt;
 &lt;p&gt;时间序列由几个元数据属性组成的实体定义：&lt;/p&gt;
 &lt;ol&gt;
@@ -845,7 +844,7 @@
 &lt;li&gt;指数直方图：Exponential Histogram&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;这个模型类似 Prometheus Remote Write 协议，但它并不是 OTLP 映射的唯一时间序列模型。&lt;/p&gt;
-&lt;h3 id=&#34;otlp-模型&#34;&gt;OTLP 模型&lt;/h3&gt;
+&lt;h3 id=&#34;数据传输&#34;&gt;数据传输&lt;/h3&gt;
 &lt;p&gt;OpenTelemetry Protocol（OTLP）数据模型由指标数据流组成（由多个指标数据点组成）。指标数据流可以直接转换为时间序列。&lt;/p&gt;
 &lt;p&gt;指标流被分组为各个度量对象，由以下各项标识：&lt;/p&gt;
 &lt;ol&gt;
@@ -925,7 +924,50 @@
 &lt;p&gt;TODO;&lt;/p&gt;
 &lt;h3 id=&#34;summary已废弃&#34;&gt;Summary（已废弃）&lt;/h3&gt;
 &lt;p&gt;概要统计，不建议使用已被废弃。&lt;/p&gt;
-
+&lt;h2 id=&#34;在-go-语言中使用&#34;&gt;在 Go 语言中使用&lt;/h2&gt;
+&lt;h3 id=&#34;同步或异步&#34;&gt;同步或异步&lt;/h3&gt;
+&lt;p&gt;仪器（Instruments）支持同步或异步导出指标值，且值类型为 int64 或 float64 两个类型。&lt;/p&gt;
+&lt;p&gt;同步行为&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;是在被调用时进行测量，测量在程序执行期间作为另一个调用来完成，就像执行其他业务函数一样。
+这些测量值的聚合由配置的导出器定期导出。由于测量与导出值解耦，因此导出周期可能包含零个或多个聚合测量。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;异步行为&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;是在 SDK 导出时才会调用创建提供给仪器（Instruments）的回调函数。
+此回调为 SDK 提供了一个立即导出的指标值，异步仪器上的所有测量在每个输出周期执行一次。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;异步主要在以下几种场景使用：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;当更新指标值在函数内代价较高，并且不希望当前执行线程等待测量函数；&lt;/li&gt;
+&lt;li&gt;导出指标需要以与程序执行无关的频率发生（即当与请求生命周期联系在一起时，无法准确测量）；&lt;/li&gt;
+&lt;li&gt;测量值没有已知的时间戳。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;计数器-counter&#34;&gt;计数器 Counter&lt;/h3&gt;
+&lt;p&gt;累积计数器，支持非负增量的仪器，也就是这些值永远不会减少（服务重启时重置为0），运行期间逐渐累加：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-golang&#34; data-lang=&#34;golang&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;Int64Counter&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;Int64ObservableCounter&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;Float64Counter&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;Float64ObservableCounter&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;导出为 prometheus 格式时自动添加 &amp;ldquo;_count&amp;rdquo; 后缀。&lt;/p&gt;
+&lt;h3 id=&#34;计数器-updown&#34;&gt;计数器 UpDown&lt;/h3&gt;
+&lt;p&gt;递增或者递减计数器，允许您观察递增或递减的累积值：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-golang&#34; data-lang=&#34;golang&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;Int64UpDownCounter&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;Int64ObservableUpDownCounter&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;Float64UpDownCounter&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;Float64ObservableUpDownCounter&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;导出为 prometheus 格式时同 Gauge 类型。&lt;/p&gt;
+&lt;h3 id=&#34;测量-gauge&#34;&gt;测量 Gauge&lt;/h3&gt;
+&lt;p&gt;比较随机值非累加，当只需要传达关于异步测量的最新数据时使用：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-golang&#34; data-lang=&#34;golang&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;Int64ObservableGauge&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;Float64ObservableGauge&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;直方图-histogram&#34;&gt;直方图 Histogram&lt;/h3&gt;
+&lt;p&gt;当需要传达更多关于采集周期内进行的所有同步测量的信息时，应使用直方图：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-golang&#34; data-lang=&#34;golang&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;Int64Histogram&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;Float64Histogram&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
