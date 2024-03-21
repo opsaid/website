@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.102.3" />
+<meta name="generator" content="Hugo 0.110.0">
 <meta name="robots" content="index, follow">
 
 
@@ -21,27 +21,38 @@
 <title>Falco | OPSaid</title>
 <meta name="description" content="简要概述
 TODO;
-">
+规则
+falco rules 使用 yaml 格式编写，有 &ldquo;Rules&rdquo;、&ldquo;Lists&rdquo;、&ldquo;Macros&rdquo; 三种类型：
+Rules
+在什么条件下会生成一个警报。一条规则通常伴随着一个描述性的输出字符串，该 …">
 <meta property="og:title" content="Falco" />
-<meta property="og:description" content="简要概述 TODO;" />
+<meta property="og:description" content="简要概述 TODO;
+规则 falco rules 使用 yaml 格式编写，有 &ldquo;Rules&rdquo;、&ldquo;Lists&rdquo;、&ldquo;Macros&rdquo; 三种类型：
+Rules 在什么条件下会生成一个警报。一条规则通常伴随着一个描述性的输出字符串，该字符串会随着警报一起发送，示例规则如下：
+- rule: shell_in_container desc: notice shell activity within a container condition: &gt; evt.type = execve and evt.dir = &lt; and container.id != host and (proc.name = bash or proc.name = ksh) output: &gt; shell in a container (user=%user.name container_id=%container.id container_name=%container.name shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline) priority: WARNING 参数 必须 默认值 描述 rule 是 - 规则名称，全局唯一 condition 是 - 应用于事件的过滤表达式，用于检查它们是否与规则匹配 desc 是 - 这个规则用途描述 output 是 - 如果匹配到该规则，则对外输出内容 priority 是 - 告警级别取值：emergency, alert, critical, error, warning, notice, informational, debug exceptions 否 - TODO; enabled 否 true 是否启用规则，默认启用 tags 否 - 关联到该规则的标签 warn_evttypes 否 true 如果设置为 false 将抑制与规则没有事件类型相关的警告 skip-if-unknown-filter 否 false 如果设置为true，如果规则条件包含一个过滤检查，例如fd." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/security/runtime/falco/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2024-01-05T10:35:12+08:00" />
-<meta property="article:modified_time" content="2024-01-05T14:47:23+08:00" /><meta property="og:site_name" content="OPSaid" />
-
+<meta property="article:modified_time" content="2024-01-05T18:02:59+08:00" /><meta property="og:site_name" content="OPSaid" />
 <meta itemprop="name" content="Falco">
-<meta itemprop="description" content="简要概述 TODO;"><meta itemprop="datePublished" content="2024-01-05T10:35:12+08:00" />
-<meta itemprop="dateModified" content="2024-01-05T14:47:23+08:00" />
-<meta itemprop="wordCount" content="2">
+<meta itemprop="description" content="简要概述 TODO;
+规则 falco rules 使用 yaml 格式编写，有 &ldquo;Rules&rdquo;、&ldquo;Lists&rdquo;、&ldquo;Macros&rdquo; 三种类型：
+Rules 在什么条件下会生成一个警报。一条规则通常伴随着一个描述性的输出字符串，该字符串会随着警报一起发送，示例规则如下：
+- rule: shell_in_container desc: notice shell activity within a container condition: &gt; evt.type = execve and evt.dir = &lt; and container.id != host and (proc.name = bash or proc.name = ksh) output: &gt; shell in a container (user=%user.name container_id=%container.id container_name=%container.name shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline) priority: WARNING 参数 必须 默认值 描述 rule 是 - 规则名称，全局唯一 condition 是 - 应用于事件的过滤表达式，用于检查它们是否与规则匹配 desc 是 - 这个规则用途描述 output 是 - 如果匹配到该规则，则对外输出内容 priority 是 - 告警级别取值：emergency, alert, critical, error, warning, notice, informational, debug exceptions 否 - TODO; enabled 否 true 是否启用规则，默认启用 tags 否 - 关联到该规则的标签 warn_evttypes 否 true 如果设置为 false 将抑制与规则没有事件类型相关的警告 skip-if-unknown-filter 否 false 如果设置为true，如果规则条件包含一个过滤检查，例如fd."><meta itemprop="datePublished" content="2024-01-05T10:35:12+08:00" />
+<meta itemprop="dateModified" content="2024-01-05T18:02:59+08:00" />
+<meta itemprop="wordCount" content="240">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Falco"/>
-<meta name="twitter:description" content="简要概述 TODO;"/>
+<meta name="twitter:description" content="简要概述 TODO;
+规则 falco rules 使用 yaml 格式编写，有 &ldquo;Rules&rdquo;、&ldquo;Lists&rdquo;、&ldquo;Macros&rdquo; 三种类型：
+Rules 在什么条件下会生成一个警报。一条规则通常伴随着一个描述性的输出字符串，该字符串会随着警报一起发送，示例规则如下：
+- rule: shell_in_container desc: notice shell activity within a container condition: &gt; evt.type = execve and evt.dir = &lt; and container.id != host and (proc.name = bash or proc.name = ksh) output: &gt; shell in a container (user=%user.name container_id=%container.id container_name=%container.name shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline) priority: WARNING 参数 必须 默认值 描述 rule 是 - 规则名称，全局唯一 condition 是 - 应用于事件的过滤表达式，用于检查它们是否与规则匹配 desc 是 - 这个规则用途描述 output 是 - 如果匹配到该规则，则对外输出内容 priority 是 - 告警级别取值：emergency, alert, critical, error, warning, notice, informational, debug exceptions 否 - TODO; enabled 否 true 是否启用规则，默认启用 tags 否 - 关联到该规则的标签 warn_evttypes 否 true 如果设置为 false 将抑制与规则没有事件类型相关的警告 skip-if-unknown-filter 否 false 如果设置为true，如果规则条件包含一个过滤检查，例如fd."/>
 
 
 
 
-<link rel="preload" href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" as="style">
-<link href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
+<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
@@ -1971,6 +1982,285 @@ if (!doNotTrack) {
 
 
   
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsnetworks">
+      <input type="checkbox" id="docsnetworks-check"/>
+      <label for="docsnetworks-check" ><a href="/docs/networks/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">K8S 网络架构</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsnetworkscilium">
+      <input type="checkbox" id="docsnetworkscilium-check"/>
+      <label for="docsnetworkscilium-check" ><a href="/docs/networks/cilium/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Cilium</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksciliumoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksciliumoverview-a" href="/docs/networks/cilium/overview/">Overview</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsnetworksenvoy">
+      <input type="checkbox" id="docsnetworksenvoy-check"/>
+      <label for="docsnetworksenvoy-check" ><a href="/docs/networks/envoy/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Envoy</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoyoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoyoverview-a" href="/docs/networks/envoy/overview/">架构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoybootstrap">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoybootstrap-a" href="/docs/networks/envoy/bootstrap/">Bootstrap</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoylisteners">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoylisteners-a" href="/docs/networks/envoy/listeners/">监听器</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoyhttp">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoyhttp-a" href="/docs/networks/envoy/http/">HTTP</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoyupstream">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoyupstream-a" href="/docs/networks/envoy/upstream/">上游集群</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoyobservability">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoyobservability-a" href="/docs/networks/envoy/observability/">可观测性</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoyxds-api">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoyxds-api-a" href="/docs/networks/envoy/xds-api/">xDS 接口</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoysecurity">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoysecurity-a" href="/docs/networks/envoy/security/">安全认证</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib active-path" id="docssecurity">
       <input type="checkbox" id="docssecurity-check" checked/>
       <label for="docssecurity-check" ><a href="/docs/security/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">K8S 原生安全</a></label>
@@ -2537,6 +2827,107 @@ if (!doNotTrack) {
 
 
   
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdev-framework">
+      <input type="checkbox" id="docsdev-framework-check"/>
+      <label for="docsdev-framework-check" ><a href="/docs/dev-framework/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">应用开发框架</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdev-frameworkgo">
+      <input type="checkbox" id="docsdev-frameworkgo-check"/>
+      <label for="docsdev-frameworkgo-check" ><a href="/docs/dev-framework/go/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Go 语言</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdev-frameworkgogrpc-kit">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdev-frameworkgogrpc-kit-a" href="/docs/dev-framework/go/grpc-kit/">gRPC Kit</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevops">
       <input type="checkbox" id="docsdevops-check"/>
       <label for="docsdevops-check" ><a href="/docs/devops/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">流程与自动化</a></label>
@@ -2743,107 +3134,6 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopspackagesfpm-a" href="/docs/devops/packages/fpm/">Fpm</a>
-                    
-                  </span>
-                  
-                </li>
-            
-          
-        
-
-      </ul>
-    </li>
-  
-
-            
-          
-        
-
-      </ul>
-    </li>
-  
-
-            
-          
-        
-          
-            
-              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdev-framework">
-      <input type="checkbox" id="docsdev-framework-check"/>
-      <label for="docsdev-framework-check" ><a href="/docs/dev-framework/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">应用开发框架</a></label>
-      
-        
-        
-      
-      <ul class="ul-2 collapsed">
-
-        
-          
-            
-              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdev-frameworkgo">
-      <input type="checkbox" id="docsdev-frameworkgo-check"/>
-      <label for="docsdev-frameworkgo-check" ><a href="/docs/dev-framework/go/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Go 语言</a></label>
-      
-        
-        
-      
-      <ul class="ul-3 collapsed">
-
-        
-          
-            
-              
-              
-              
-              
-                <li class="without-sib collapsed" id="m-docsdev-frameworkgogrpc-kit">
-                  <span >
-                    
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdev-frameworkgogrpc-kit-a" href="/docs/dev-framework/go/grpc-kit/">gRPC Kit</a>
                     
                   </span>
                   
@@ -3675,6 +3965,20 @@ if (!doNotTrack) {
             
 
 
+<h5>目录</h5>
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#简要概述">简要概述</a></li>
+    <li><a href="#规则">规则</a>
+      <ul>
+        <li><a href="#rules">Rules</a></li>
+        <li><a href="#macros">Macros</a></li>
+        <li><a href="#lists">Lists</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+
 
 
 
@@ -3743,13 +4047,193 @@ if (!doNotTrack) {
 			
 		
 		
-			<p class="reading-time"><i class="fa fa-clock" aria-hidden="true"></i>&nbsp; 少于1分钟 &nbsp;</p>
+			<p class="reading-time"><i class="fa fa-clock" aria-hidden="true"></i>&nbsp; 2 分钟阅读 &nbsp;</p>
 
 		
 	</header>    
 	<h2 id="简要概述">简要概述</h2>
 <p>TODO;</p>
-
+<h2 id="规则">规则</h2>
+<p>falco rules 使用 yaml 格式编写，有 &ldquo;Rules&rdquo;、&ldquo;Lists&rdquo;、&ldquo;Macros&rdquo; 三种类型：</p>
+<h3 id="rules">Rules</h3>
+<p>在什么条件下会生成一个警报。一条规则通常伴随着一个描述性的输出字符串，该字符串会随着警报一起发送，示例规则如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#204a87;font-weight:bold">rule</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">shell_in_container</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">desc</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">notice shell activity within a container</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">condition</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">    evt.type = execve and 
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">    evt.dir = &lt; and 
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">    container.id != host and 
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">    (proc.name = bash or
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">     proc.name = ksh)    </span><span style="color:#f8f8f8;text-decoration:underline">    
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">output</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">    shell in a container
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">    (user=%user.name container_id=%container.id container_name=%container.name 
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">    shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline)    </span><span style="color:#f8f8f8;text-decoration:underline">    
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">priority</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">WARNING</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必须</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rule</td>
+<td>是</td>
+<td>-</td>
+<td>规则名称，全局唯一</td>
+</tr>
+<tr>
+<td>condition</td>
+<td>是</td>
+<td>-</td>
+<td>应用于事件的过滤表达式，用于检查它们是否与规则匹配</td>
+</tr>
+<tr>
+<td>desc</td>
+<td>是</td>
+<td>-</td>
+<td>这个规则用途描述</td>
+</tr>
+<tr>
+<td>output</td>
+<td>是</td>
+<td>-</td>
+<td>如果匹配到该规则，则对外输出内容</td>
+</tr>
+<tr>
+<td>priority</td>
+<td>是</td>
+<td>-</td>
+<td>告警级别取值：emergency, alert, critical, error, warning, notice, informational, debug</td>
+</tr>
+<tr>
+<td>exceptions</td>
+<td>否</td>
+<td>-</td>
+<td>TODO;</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>否</td>
+<td>true</td>
+<td>是否启用规则，默认启用</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>否</td>
+<td>-</td>
+<td>关联到该规则的标签</td>
+</tr>
+<tr>
+<td>warn_evttypes</td>
+<td>否</td>
+<td>true</td>
+<td>如果设置为 false 将抑制与规则没有事件类型相关的警告</td>
+</tr>
+<tr>
+<td>skip-if-unknown-filter</td>
+<td>否</td>
+<td>false</td>
+<td>如果设置为true，如果规则条件包含一个过滤检查，例如fd.some_new_field，而该版本的Falco不知道这个字段，Falco会默默接受这条规则但不执行它；如果设置为false，Falco在发现未知的过滤检查时会报告错误并退出。</td>
+</tr>
+<tr>
+<td>source</td>
+<td>否</td>
+<td>syscall</td>
+<td>这个规则应该被评估的事件来源。典型的值包括syscall、k8s_audit，或者由源插件提供的来源。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="macros">Macros</h3>
+<p>宏提供了一种以可重用的方式定义规则常见子部分的方法，可以在规则内部甚至其他宏中重复使用。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必须</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macro</td>
+<td>是</td>
+<td>-</td>
+<td>规则名称，全局唯一</td>
+</tr>
+<tr>
+<td>condition</td>
+<td>是</td>
+<td>-</td>
+<td>应用于事件的过滤表达式，用于检查它们是否与规则匹配</td>
+</tr>
+</tbody>
+</table>
+<p>如上 &ldquo;Rules&rdquo; 的 &ldquo;condition&rdquo; 示例中以下两个语句，被大量使用：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>evt.type = execve and evt.dir = &lt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>container.id != host
+</span></span></code></pre></div><p>这两个条件将被许多其他规则频繁使用，因此为了简化工作，我们可以为它们分别定义宏：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#204a87;font-weight:bold">macro</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">container</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">condition</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">container.id != host</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">macro</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">spawned_process</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">condition</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">evt.type = execve and evt.dir = &lt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>此时更改后的规则如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#204a87;font-weight:bold">rule</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">shell_in_container</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">desc</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">notice shell activity within a container</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">condition</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">    spawned_process and 
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">    container and 
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">    proc.name = bash    </span><span style="color:#f8f8f8;text-decoration:underline">    
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">output</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#8f5902;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">    shell in a container
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">    (user=%user.name container_id=%container.id container_name=%container.name 
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">    shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline)    </span><span style="color:#f8f8f8;text-decoration:underline">    
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">priority</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">WARNING</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><h3 id="lists">Lists</h3>
+<p>列表是命名的项目集合，你可以在规则、宏，甚至其他列表中使用这些项目，与规则和宏不同，列表不能被解析为过滤表达式。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必须</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list</td>
+<td>是</td>
+<td>-</td>
+<td>规则名称，全局唯一</td>
+</tr>
+<tr>
+<td>items</td>
+<td>是</td>
+<td>-</td>
+<td>数组格式，列表的值</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#204a87;font-weight:bold">list</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">shell_binaries</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">items</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">bash, csh, ksh, sh, tcsh, zsh, dash]</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">list</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">userexec_binaries</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">items</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">sudo, su]</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">list</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">known_binaries</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">items</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">shell_binaries, userexec_binaries]</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">macro</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">safe_procs</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">condition</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">proc.name in (known_binaries)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div>
 	
 		<br /><hr />
 		<style>
@@ -3818,7 +4302,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  最后修改 2024.01.05: <a href="https://github.com/opsaid/website/commit/b30533265fcbbb732e15d032daba13a03767a513">docs: add falco (b305332)</a>
+  最后修改 2024.01.05: <a href="https://github.com/opsaid/website/commit/74e143aa33440d33bb1b8efbbba7608f48e93919">docs: add falco (74e143a)</a>
 </div>
 
 </div>

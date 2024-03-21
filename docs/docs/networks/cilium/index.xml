@@ -1,0 +1,274 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – Cilium</title>
+    <link>/docs/networks/cilium/</link>
+    <description>Recent content in Cilium on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 08 Jan 2024 09:51:49 +0800</lastBuildDate>
+    
+	  <atom:link href="/docs/networks/cilium/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Overview</title>
+      <link>/docs/networks/cilium/overview/</link>
+      <pubDate>Mon, 08 Jan 2024 09:52:32 +0800</pubDate>
+      
+      <guid>/docs/networks/cilium/overview/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;简要概述&#34;&gt;简要概述&lt;/h2&gt;
+&lt;p&gt;Cilium 的基础是一种名为 eBPF 的新 Linux 内核技术，它使得在 Linux 内核内部动态插入强大的安全可见性和控制逻辑成为可能。由于 eBPF 运行在 Linux 内核内部，因此可以在不修改应用程序代码或容器配置的情况下应用和更新 Cilium 安全策略。&lt;/p&gt;
+&lt;p&gt;Hubble 是一个完全分布式的网络和安全可观察性平台，它构建在 Cilium 和 eBPF 之上，以实现对服务通信和行为以及网络基础设施的深度可见性，完全透明地实现这一目标。&lt;/p&gt;
+&lt;p&gt;通过构建在 Cilium 之上，Hubble 可以利用 eBPF 来实现可见性。通过依赖 eBPF，所有的可见性都是可编程的，这使得可以采用一种动态的方法，最小化开销同时提供用户所需的深度和详细的可见性。Hubble 已经被创建并专门设计，以充分发挥这些新的 eBPF 功能。&lt;/p&gt;
+&lt;h3 id=&#34;为什么需要它&#34;&gt;为什么需要它&lt;/h3&gt;
+&lt;p&gt;Cilium 通过 eBPF（Extended Berkeley Packet Filter）技术使得以前无法实现的对系统和应用程序进行细粒度和高效的可见性和控制成为可能。&lt;/p&gt;
+&lt;p&gt;它在完全透明的情况下实现这一点，无需对应用程序进行任何更改。eBPF 同样适用于处理现代容器化工作负载以及更传统的工作负载，如虚拟机和标准的Linux进程。&lt;/p&gt;
+&lt;p&gt;在面向高度动态的微服务的转变中，连接微服务之间的安全性既是挑战也是机遇。传统的Linux网络安全方法（例如，iptables）基于IP地址和TCP/UDP端口进行过滤，但在动态微服务环境中，IP地址经常变动。容器的高度不稳定的生命周期导致这些方法难以与应用程序一起进行横向扩展，因为负载均衡表和携带数十万规则的访问控制列表需要以不断增长的频率进行更新。协议端口（例如，用于HTTP流量的TCP端口80）不再能够用于安全目的来区分应用程序流量，因为该端口用于跨服务的广泛消息范围。&lt;/p&gt;
+&lt;h2 id=&#34;存在哪些功能&#34;&gt;存在哪些功能&lt;/h2&gt;
+&lt;h3 id=&#34;透明地保护应用&#34;&gt;透明地保护应用&lt;/h3&gt;
+&lt;p&gt;相比传统防火墙保护在第3、4层协议，要求在特定端口上运行的协议要么完全受信任，要么被完全阻止，而 cilium 可同时具备保护应用层协议的能力，如 HTTP、gRPC、Kafka，提供了过滤单个应用程序协议请求的能力，例如：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;允许所有使用 GET 方法且路径为 /public/.* 的 HTTP 请求，拒绝所有其他请求；&lt;/li&gt;
+&lt;li&gt;允许 service1 在 Kafka 主题 topic1 上生成，允许 service2 在 topic1 上消费，拒绝所有其他 Kafka 消息；&lt;/li&gt;
+&lt;li&gt;要求所有 REST 调用中必须存在 HTTP 头 X-Token: [0-9]+。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;其他参考官方&lt;a href=&#34;https://docs.cilium.io/en/stable/security/policy/language/#layer-7-examples&#34;&gt;示例&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;基于身份进行安全的服务间通信&#34;&gt;基于身份进行安全的服务间通信&lt;/h3&gt;
+&lt;p&gt;现代分布式应用程序依赖于诸如应用容器等技术，以促进在部署时的灵活性和按需的扩展。这导致在短时间内启动大量应用容器。典型的容器防火墙通过过滤源IP地址和目标端口来保护工作负载。这一概念要求在集群中的任何地方启动容器时，所有服务器上的防火墙都要进行操作。&lt;/p&gt;
+&lt;p&gt;为了避免这种限制规模的情况，Cilium为共享相同安全策略的应用容器组分配了安全身份。然后，该身份与应用容器发出的所有网络数据包关联，允许在接收节点验证身份。安全身份管理是通过键值存储来执行的。&lt;/p&gt;
+&lt;h3 id=&#34;安全访问和从外部服务中获取数据&#34;&gt;安全访问和从外部服务中获取数据&lt;/h3&gt;
+&lt;p&gt;基于标签的安全性是集群内部访问控制的首选工具。&lt;/p&gt;
+&lt;p&gt;为了保护对外部服务的访问，传统的 CIDR 基于的安全策略在入口和出口方向都得到支持。这允许限制对应用容器的访问，以及从特定IP范围进行访问。&lt;/p&gt;
+&lt;h3 id=&#34;简单的组网&#34;&gt;简单的组网&lt;/h3&gt;
+&lt;p&gt;简单的扁平3层网络，具有跨多个集群的能力，连接了所有应用容器。&lt;/p&gt;
+&lt;p&gt;通过使用主机范围分配器，IP分配保持简单。这意味着每个主机都可以在主机之间无需协调地分配IP地址。&lt;/p&gt;
+&lt;p&gt;多节点支持以下网络模型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Overlay&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;基于封装的虚拟网络，覆盖所有主机。目前内置支持 VXLAN 和 Geneve，但所有 Linux 支持的封装格式都可以启用。&lt;/p&gt;
+&lt;p&gt;何时使用这种模式：这种模式具有最小的基础设施和集成要求。它在几乎任何网络基础设施上都可以工作，因为唯一的要求是主机之间通常已经存在IP连接。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Native Routing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;本地路由，使用 Linux 主机的常规路由表，网络需要能够路由应用容器的IP地址。&lt;/p&gt;
+&lt;p&gt;何时使用这种模式：这种模式适用于高级用户，并需要对底层网络基础设施有一定的了解。这种模式与以下情况配合良好：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;本地IPv6网络&lt;/li&gt;
+&lt;li&gt;与云网络路由器一起使用&lt;/li&gt;
+&lt;li&gt;如果已经在运行路由守护程序&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;负载均衡&#34;&gt;负载均衡&lt;/h3&gt;
+&lt;p&gt;可完全替代 kube-proxy 组件，支持应用容器之间以及与外部服务之间的负载均衡，它是通过使用高效的哈希表在 eBPF 中实现的，允许几乎无限的扩展。&lt;/p&gt;
+&lt;p&gt;对于南北向负载均衡（集群内流量），Cilium 的 eBPF 实现被优化以实现最大性能，可以附加到 XDP（eXpress Data Path），并且当不在源主机上执行负载均衡操作时，可支持直接由该服务器返回（DSR）以及 Maglev 一致性哈希。&lt;/p&gt;
+&lt;p&gt;对于东西向负载均衡（集群外流量），Cilium 在Linux 内核的套接字层（例如在TCP连接时）执行高效的服务到后端的转换，从而避免在更低层中执行每数据包 NAT 操作的开销。&lt;/p&gt;
+&lt;h3 id=&#34;带宽管理&#34;&gt;带宽管理&lt;/h3&gt;
+&lt;p&gt;通过使用 eBPF 实现高效的 EDT（Earliest Departure Time）用于速率限制，对从节点出口的容器流量进行带宽管理。&lt;/p&gt;
+&lt;p&gt;与传统方法，如在带宽 CNI 插件中使用的 HTB（Hierarchy Token Bucket）或 TBF（Token Bucket Filter）相比，可以显著降低应用程序的传输延迟，并避免在多队列网卡下出现锁定问题。&lt;/p&gt;
+&lt;h3 id=&#34;监控和故障排查&#34;&gt;监控和故障排查&lt;/h3&gt;
+&lt;p&gt;提供原生可观测性数据，这对于运行在集群上的分布式应用故障时，对排障定位至关重要。&lt;/p&gt;
+&lt;p&gt;包括以下技术要点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;事件监控与元数据&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;当数据包被丢弃时，工具不仅报告数据包的源和目标IP，还提供发送方和接收方的完整标签信息等信息。&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;通过 Prometheus 导出指标&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;关键指标通过 Prometheus 标准导出，以与现有的仪表板集成。&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Hubble&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;专为 Cilium 编写的可观察性平台，它提供服务依赖图、操作监控和警报、基于流日志的应用程序和安全可见性。&lt;/p&gt;
+&lt;h2 id=&#34;包含哪些组件&#34;&gt;包含哪些组件&lt;/h2&gt;
+&lt;h3 id=&#34;cilium-agent&#34;&gt;cilium-agent&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cilium-agent
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以 &amp;ldquo;DaemonSet&amp;rdquo; 资源名 &amp;ldquo;cilium&amp;rdquo; 在集群中的每个节点上运行：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/usr/bin/cilium-agent --config-dir=/tmp/cilium/config-map
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;监听来自 Kubernetes 的事件，以了解容器或工作负载何时启动和停止，它管理 eBPF 程序，这些程序由 Linux 内核用于控制这些容器的所有网络访问。&lt;/p&gt;
+&lt;h3 id=&#34;cilium-cli&#34;&gt;cilium cli&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cilium
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;客户端工具 &lt;code&gt;cilium&lt;/code&gt; 是与运行在同一节点上的 &lt;code&gt;cilium-agent&lt;/code&gt; 进行交互，命令行界面允许检查本地代理的状态，它还提供工具来直接访问 eBPF 映射以验证其状态。&lt;/p&gt;
+&lt;p&gt;注意在 &lt;code&gt;cilium-agent&lt;/code&gt; 容器内也存在一个命名为 &lt;code&gt;cilium&lt;/code&gt; 的二进制文件，二者不要混淆。&lt;/p&gt;
+&lt;h3 id=&#34;cilium-operator&#34;&gt;cilium-operator&lt;/h3&gt;
+&lt;p&gt;负责管理在集群中一次性处理的任务，而不是在集群中的每个节点上都进行处理，它不转发任何网络数据包，如果暂时不可用，集群仍然会正常运行。&lt;/p&gt;
+&lt;p&gt;根据不通的配置，服务不可用时，以下操作可能会失败：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;IP 地址管理（IPAM）不可用，可能导致新工作负载的调度延迟，尤其是 Pod 需要分配新的 IP 地址；&lt;/li&gt;
+&lt;li&gt;无法更新 kvstore 心跳键可能导致代理宣告 kvstore 不健康并重新启动。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;cni-plugin&#34;&gt;CNI Plugin&lt;/h3&gt;
+&lt;p&gt;当 Pod 被调度或从宿主上移除时，&lt;code&gt;cilium-cni&lt;/code&gt; 将会被 k8s 启动，它跟 cilium api 交互，以便更新网络、负载均衡、安全策略等。&lt;/p&gt;
+&lt;h3 id=&#34;hubble-server&#34;&gt;hubble server&lt;/h3&gt;
+&lt;p&gt;Hubble 服务端已内嵌到 &lt;a href=&#34;/docs/networks/cilium/install/#cilium-agent&#34;&gt;cilium-agent&lt;/a&gt; 以实现高性能和低开销，它对 eBPF 提供可见性，并提供了 gRPC 服务用于检索数据流跟 Prometheus 标准的性能数据，相关配置如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# An additional address for Hubble server to listen to (e.g. &amp;#34;:4244&amp;#34;).&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;hubble-listen-address&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;:4244&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;hubble-disable-tls&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#hubble-tls-cert-file: /var/lib/cilium/tls/hubble/server.crt&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#hubble-tls-key-file: /var/lib/cilium/tls/hubble/server.key&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#hubble-tls-client-ca-files: /var/lib/cilium/tls/hubble/client-ca.crt&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;hubble-relay&#34;&gt;hubble-relay&lt;/h3&gt;
+&lt;p&gt;hubble-relay 是一个独立的组件，它知道所有运行中的 hubble 服务器，并通过连接到它们各自的 gRPC API 并提供代表集群中所有服务器的API，提供了集群范围的可见性。&lt;/p&gt;
+&lt;h3 id=&#34;hubble-cli&#34;&gt;hubble cli&lt;/h3&gt;
+&lt;p&gt;Hubble CLI（hubble）是一个命令行工具，能够连接到hubble-relay的gRPC API或本地服务器以检索流事件。&lt;/p&gt;
+&lt;h3 id=&#34;hubble-ui&#34;&gt;hubble-ui&lt;/h3&gt;
+&lt;p&gt;图形用户界面（hubble-ui）利用基于 relay 的可见性，提供了图形化的服务依赖和连接图。&lt;/p&gt;
+&lt;h3 id=&#34;ebpf&#34;&gt;eBPF&lt;/h3&gt;
+&lt;p&gt;eBPF 是一个最初引入用于过滤网络数据包的 Linux 内核字节码解释器，例如用于 tcpdump 和套接字过滤。&lt;/p&gt;
+&lt;p&gt;后来，它通过添加额外的数据结构，如哈希表和数组，以及支持数据包篡改、转发、封装等的附加操作而得到扩展。&lt;/p&gt;
+&lt;p&gt;内核中的验证器确保 eBPF 程序在运行时是安全的，并且即时编译器将字节码转换为特定CPU架构的指令，以实现本机执行效率。&lt;/p&gt;
+&lt;p&gt;eBPF 程序可以在内核的各种挂钩点上运行，例如用于处理传入和传出的数据包。&lt;/p&gt;
+&lt;h3 id=&#34;kubernetes-crd&#34;&gt;Kubernetes CRD&lt;/h3&gt;
+&lt;p&gt;在 cilium 也需要持久化保存一些状态数据，默认是通过 k8s crd 实现，有以下类型：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ciliumcidrgroups.cilium.io
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ciliumclusterwidenetworkpolicies.cilium.io
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ciliumendpoints.cilium.io
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ciliumexternalworkloads.cilium.io
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ciliumidentities.cilium.io
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ciliuml2announcementpolicies.cilium.io
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ciliumloadbalancerippools.cilium.io
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ciliumnetworkpolicies.cilium.io
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ciliumnodeconfigs.cilium.io
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ciliumnodes.cilium.io
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ciliumpodippools.cilium.io
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;key-value-store&#34;&gt;Key-Value Store&lt;/h3&gt;
+&lt;p&gt;在 cilium 默认持久化状态是通过使用 Kubernetes CRD 来实现。&lt;/p&gt;
+&lt;p&gt;作为一种优化，可以选择使用键值存储来提高集群的可伸缩性，因为直接使用键值存储可以更高效地处理变更通知和存储需求。&lt;/p&gt;
+&lt;p&gt;当前仅支持 &lt;a href=&#34;https://github.com/etcd-io/etcd&#34;&gt;etcd&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;关键术语&#34;&gt;关键术语&lt;/h2&gt;
+&lt;h3 id=&#34;label&#34;&gt;Label&lt;/h3&gt;
+&lt;p&gt;标签是由键和值组成的一对字符串。&lt;/p&gt;
+&lt;p&gt;标签可以格式化为一个带有 &amp;ldquo;key=value&amp;rdquo; 格式的字符串，键部分是必需且唯一的，一般使用反向域名的概念来实现，例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;io.cilium.mykey=myvalue
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;值部分是可选的，可以省略，例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;io.cilium.mykey
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;键名通常应由字符集 &amp;ldquo;[a-z0-9-.]&amp;rdquo; 组成，在使用标签选择资源时，键和值都必须匹配，例如当一个策略应用于所有带有标签 my.corp.foo 的端点时，标签 my.corp.foo=bar 将不匹配选择器。&lt;/p&gt;
+&lt;h3 id=&#34;label-source&#34;&gt;Label Source&lt;/h3&gt;
+&lt;p&gt;标签可以从各种来源派生。&lt;/p&gt;
+&lt;p&gt;例如，一个端点将通过本地容器运行时派生与容器关联的标签，以及由 Kubernetes 提供的与 Pod 关联的标签。&lt;/p&gt;
+&lt;p&gt;由于这两个标签命名空间不知道对方的存在，这可能导致标签键的冲突。&lt;/p&gt;
+&lt;p&gt;为解决这种潜在的冲突，cilium 在导入标签时给所有标签键添加了前缀 &amp;ldquo;source:&amp;rdquo; 以指示标签的来源，例如&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;k8s:app.kubernetes.io/name=metrics-server
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;k8s:io.cilium.k8s.namespace.labels.kubernetes.io/metadata.name=kube-system
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;k8s:io.cilium.k8s.policy.cluster=fake
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;k8s:io.cilium.k8s.policy.serviceaccount=metrics-server
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;k8s:io.kubernetes.pod.namespace=kube-system
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;reserved:health
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;为每个标签来源固定分配唯一的名称，目前支持以下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&amp;ldquo;container&amp;rdquo;: 用于从本地容器运行时派生的标签；&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;k8s&amp;rdquo;: 用于从 Kubernetes 派生的标签；&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;reserved&amp;rdquo;: 用于特殊保留标签，见以下特殊标识表；&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;unspec&amp;rdquo;: 用于未指定来源的标签；&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;any&amp;rdquo;: 表示匹配所有标签，不考虑以上来源。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;当使用标签标识其他资源时，可以包含源以限制标签匹配到特定类型。&lt;/p&gt;
+&lt;p&gt;如果未提供源，则标签源默认为 any:，这将匹配所有标签，如果提供了源，则选择和匹配标签的源需要匹配。&lt;/p&gt;
+&lt;p&gt;特殊标识：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;编号&lt;/th&gt;
+&lt;th&gt;标识&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;reserved:unknown&lt;/td&gt;
+&lt;td&gt;x&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;reserved:host&lt;/td&gt;
+&lt;td&gt;本地主机。任何源自或指定给本地主机IP的流量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;reserved:world&lt;/td&gt;
+&lt;td&gt;集群外的任何网络端点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;reserved:unmanaged&lt;/td&gt;
+&lt;td&gt;未由Cilium管理的端点，例如在安装Cilium之前启动的Kubernetes Pod&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;reserved:health&lt;/td&gt;
+&lt;td&gt;由 cilium-agent 生成的ip, 用于健康检查&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;reserved:init&lt;/td&gt;
+&lt;td&gt;尚未解析身份的端点被分配init身份。表示端点处于某种阶段&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;reserved:remote-node&lt;/td&gt;
+&lt;td&gt;集群排除本节点，其他远程主机集合&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;reserved:kube-apiserver&lt;/td&gt;
+&lt;td&gt;运行 kube-apiserver 后端服务的节点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;reserved:ingress&lt;/td&gt;
+&lt;td&gt;用作 ingress 代理连接的源地址的IP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;endpoint&#34;&gt;Endpoint&lt;/h3&gt;
+&lt;p&gt;Cilium 为容器分配 IP 地址，而同一个 Pod 内多个容器共享同一个地址，他们则称为一个端点（Endpoint），如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ kubectl get ciliumendpoints.cilium.io -n kube-system
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;NAME                              ENDPOINT ID   IDENTITY ID   INGRESS ENFORCEMENT   EGRESS ENFORCEMENT   VISIBILITY POLICY   ENDPOINT STATE   IPV4             IPV6
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hubble-relay-69dc7ffc7c-nbd94     &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1339&lt;/span&gt;          &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;46722&lt;/span&gt;         &amp;lt;status disabled&amp;gt;     &amp;lt;status disabled&amp;gt;    &amp;lt;status disabled&amp;gt;   ready            192.168.201.6
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hubble-ui-56969ff7db-4kkbx        &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;646&lt;/span&gt;           &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;10752&lt;/span&gt;         &amp;lt;status disabled&amp;gt;     &amp;lt;status disabled&amp;gt;    &amp;lt;status disabled&amp;gt;   ready            192.168.201.4
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;metrics-server-844d95488f-8whf6   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1464&lt;/span&gt;          &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;14083&lt;/span&gt;         &amp;lt;status disabled&amp;gt;     &amp;lt;status disabled&amp;gt;    &amp;lt;status disabled&amp;gt;   ready            192.168.201.35
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;metrics-server-844d95488f-9ctrp   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1083&lt;/span&gt;          &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;59399&lt;/span&gt;         &amp;lt;status disabled&amp;gt;     &amp;lt;status disabled&amp;gt;    &amp;lt;status disabled&amp;gt;   ready            192.168.201.14
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;metrics-server-844d95488f-mcjkl   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;6&lt;/span&gt;             &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;59399&lt;/span&gt;         &amp;lt;status disabled&amp;gt;     &amp;lt;status disabled&amp;gt;    &amp;lt;status disabled&amp;gt;   ready            192.168.201.24
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;分配独立的 IP 地址使得每个端点可以使用独立的网络协议栈，默认行为是为每个端点分配 IPv4 和 IPv6 地址，可以通过配置单独开启或关闭。&lt;/p&gt;
+&lt;p&gt;同时为了标识目的，cilium 为每个集群节点上的所有端点分配一个内部端点ID，且 ID 在单个集群节点的上下文中是唯一的。&lt;/p&gt;
+&lt;p&gt;端点会自动从与其关联的容器拉取标签作为元数据，然后使用这些元数据来标识端点，以用于安全策略、负载均衡和路由等目的。这些元数据的来源取决于正在使用的编排系统，目前支持以下元数据检索机制：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;编排系统&lt;/th&gt;
+&lt;th&gt;获取方式&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Kubernetes&lt;/td&gt;
+&lt;td&gt;Pod labels (via k8s API)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Docker&lt;/td&gt;
+&lt;td&gt;Container labels (via Docker API)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;identity&#34;&gt;Identity&lt;/h3&gt;
+&lt;p&gt;所有端点（Endpoint）都被分配一个身份（Identity），用于强制执行端点之间的基本连接。在传统的网络术语中，这相当于第3层的强制执行。&lt;/p&gt;
+&lt;p&gt;身份通过标签进行识别，并被赋予一个在整个集群中唯一的标识符。端点被分配与其安全相关标签匹配的身份，即所有共享相同安全相关标签集的端点将共享相同的身份。这个概念允许将策略执行扩展到大量的端点，因为许多个体端点通常会共享与应用程序扩展相同的安全标签集。&lt;/p&gt;
+&lt;p&gt;端点的身份是根据派生到端点的Pod或容器的标签来推导的。当启动Pod或容器时，Cilium将根据容器运行时接收到的事件创建一个端点，以在网络上表示Pod或容器。然后，Cilium将解析创建的端点的身份。每当Pod或容器的标签发生变化时，身份将被重新确认，并根据需要自动修改。&lt;/p&gt;
+&lt;p&gt;与容器或 Pod 相关联的并非所有标签在推导身份时都是有意义的。标签可能用于存储元数据，例如容器启动的时间戳。Cilium 需要知道哪些标签是有意义的，并在推导身份时将其考虑在内。为此，用户需要指定一个有意义的标签字符串前缀列表。标准行为是包括所有以 id. 前缀开头的标签，例如 id.service1、id.service2、id.groupA.service44。在启动代理时可以指定有意义的标签前缀列表。&lt;/p&gt;
+&lt;p&gt;TODO;&lt;/p&gt;
+&lt;h3 id=&#34;node&#34;&gt;Node&lt;/h3&gt;
+&lt;p&gt;Cilium 将节点称为集群的一个个体成员，每个节点必须运行 &lt;code&gt;cilium-agent&lt;/code&gt;，并且将以大多数自治的方式运行。为了简化和提高可伸缩性，不同节点上运行的 cilium-agent 之间的状态同步被保持到最小。它仅通过键值存储或数据包元数据进行。&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

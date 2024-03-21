@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.102.3" />
+<meta name="generator" content="Hugo 0.110.0">
 <meta name="robots" content="index, follow">
 
 
@@ -33,7 +33,6 @@
 <meta property="og:url" content="/docs/component/cortex/store-gateway/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2023-05-30T14:34:38+08:00" />
 <meta property="article:modified_time" content="2023-07-06T22:38:07+08:00" /><meta property="og:site_name" content="OPSaid" />
-
 <meta itemprop="name" content="Store Gateway">
 <meta itemprop="description" content="简要概述 存储网关（store gateway）是Cortex中负责从数据块中查询时间序列的服务，它需要对存储桶具有几乎实时的视图，以便发现属于其分片的数据块。为了保持对存储桶的视图更新，存储网关可以通过以下两种不同的方式来实现：
 定期扫描存储桶（默认方式）：存储网关定期扫描存储桶，以发现新的数据块并更新视图。 定期下载存储桶索引：存储网关可以定期下载存储桶的索引，从而快速获取最新的视图信息。 通过这两种方式，存储网关能够保持对存储桶的准确视图，以便有效地进行时间序列查询操作。
@@ -53,8 +52,8 @@
 
 
 
-<link rel="preload" href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" as="style">
-<link href="/scss/main.min.3a569f361d0fc9e237d549f271b0c5c6ac0bb47fe57679fb670a9178c0cec1fb.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
+<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
@@ -1984,6 +1983,285 @@ if (!doNotTrack) {
 
 
   
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsnetworks">
+      <input type="checkbox" id="docsnetworks-check"/>
+      <label for="docsnetworks-check" ><a href="/docs/networks/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">K8S 网络架构</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsnetworkscilium">
+      <input type="checkbox" id="docsnetworkscilium-check"/>
+      <label for="docsnetworkscilium-check" ><a href="/docs/networks/cilium/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Cilium</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksciliumoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksciliumoverview-a" href="/docs/networks/cilium/overview/">Overview</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsnetworksenvoy">
+      <input type="checkbox" id="docsnetworksenvoy-check"/>
+      <label for="docsnetworksenvoy-check" ><a href="/docs/networks/envoy/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Envoy</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoyoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoyoverview-a" href="/docs/networks/envoy/overview/">架构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoybootstrap">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoybootstrap-a" href="/docs/networks/envoy/bootstrap/">Bootstrap</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoylisteners">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoylisteners-a" href="/docs/networks/envoy/listeners/">监听器</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoyhttp">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoyhttp-a" href="/docs/networks/envoy/http/">HTTP</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoyupstream">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoyupstream-a" href="/docs/networks/envoy/upstream/">上游集群</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoyobservability">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoyobservability-a" href="/docs/networks/envoy/observability/">可观测性</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoyxds-api">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoyxds-api-a" href="/docs/networks/envoy/xds-api/">xDS 接口</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksenvoysecurity">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksenvoysecurity-a" href="/docs/networks/envoy/security/">安全认证</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docssecurity">
       <input type="checkbox" id="docssecurity-check"/>
       <label for="docssecurity-check" ><a href="/docs/security/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">K8S 原生安全</a></label>
@@ -2550,6 +2828,107 @@ if (!doNotTrack) {
 
 
   
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdev-framework">
+      <input type="checkbox" id="docsdev-framework-check"/>
+      <label for="docsdev-framework-check" ><a href="/docs/dev-framework/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">应用开发框架</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdev-frameworkgo">
+      <input type="checkbox" id="docsdev-frameworkgo-check"/>
+      <label for="docsdev-frameworkgo-check" ><a href="/docs/dev-framework/go/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Go 语言</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdev-frameworkgogrpc-kit">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdev-frameworkgogrpc-kit-a" href="/docs/dev-framework/go/grpc-kit/">gRPC Kit</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevops">
       <input type="checkbox" id="docsdevops-check"/>
       <label for="docsdevops-check" ><a href="/docs/devops/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">流程与自动化</a></label>
@@ -2756,107 +3135,6 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopspackagesfpm-a" href="/docs/devops/packages/fpm/">Fpm</a>
-                    
-                  </span>
-                  
-                </li>
-            
-          
-        
-
-      </ul>
-    </li>
-  
-
-            
-          
-        
-
-      </ul>
-    </li>
-  
-
-            
-          
-        
-          
-            
-              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdev-framework">
-      <input type="checkbox" id="docsdev-framework-check"/>
-      <label for="docsdev-framework-check" ><a href="/docs/dev-framework/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">应用开发框架</a></label>
-      
-        
-        
-      
-      <ul class="ul-2 collapsed">
-
-        
-          
-            
-              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdev-frameworkgo">
-      <input type="checkbox" id="docsdev-frameworkgo-check"/>
-      <label for="docsdev-frameworkgo-check" ><a href="/docs/dev-framework/go/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Go 语言</a></label>
-      
-        
-        
-      
-      <ul class="ul-3 collapsed">
-
-        
-          
-            
-              
-              
-              
-              
-                <li class="without-sib collapsed" id="m-docsdev-frameworkgogrpc-kit">
-                  <span >
-                    
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdev-frameworkgogrpc-kit-a" href="/docs/dev-framework/go/grpc-kit/">gRPC Kit</a>
                     
                   </span>
                   
