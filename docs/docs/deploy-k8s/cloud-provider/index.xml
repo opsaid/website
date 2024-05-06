@@ -1,0 +1,158 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – 云提供商</title>
+    <link>/docs/deploy-k8s/cloud-provider/</link>
+    <description>Recent content in 云提供商 on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 16 Apr 2024 10:17:57 +0800</lastBuildDate>
+    
+	  <atom:link href="/docs/deploy-k8s/cloud-provider/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: 阿里云</title>
+      <link>/docs/deploy-k8s/cloud-provider/alibaba-cloud/</link>
+      <pubDate>Tue, 16 Apr 2024 10:20:22 +0800</pubDate>
+      
+      <guid>/docs/deploy-k8s/cloud-provider/alibaba-cloud/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;简要概述&#34;&gt;简要概述&lt;/h2&gt;
+&lt;p&gt;本文主要介绍如何使用&lt;a href=&#34;https://www.aliyun.com/product/ecs&#34;&gt;云服务器ECS&lt;/a&gt; 自建 K8S 集群，相比&lt;a href=&#34;https://help.aliyun.com/zh/ack/&#34;&gt;官方 ACK 产品&lt;/a&gt;有以下优势：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;控制更加灵活。&lt;/li&gt;
+&lt;li&gt;没有机型限制，如 ENI 等。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如非特殊情况，线上业务均建议直接购买官方 ACK 产品。&lt;/p&gt;
+&lt;p&gt;注意：请确保安全组允许以下端口访问，如果其他请自行开通。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;协议&lt;/th&gt;
+&lt;th&gt;端口&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;TCP&lt;/td&gt;
+&lt;td&gt;6443&lt;/td&gt;
+&lt;td&gt;kube-apiserver&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TCP&lt;/td&gt;
+&lt;td&gt;10250&lt;/td&gt;
+&lt;td&gt;metric-server&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;云控制器&#34;&gt;云控制器&lt;/h2&gt;
+&lt;p&gt;用于将你的集群连接到云提供商的 API 之上，可以同步路由、Service、Ingress 等创建对应云平台上资源。&lt;/p&gt;
+&lt;p&gt;通过分离 Kubernetes 和底层云基础设置之间的互操作性逻辑，cloud-controller-manager 组件使云提供商能够以不同于 Kubernetes 主项目的步调发布新特征：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://kubernetes.io/zh-cn/docs/images/components-of-kubernetes.svg&#34; alt=&#34;components-of-kubernetes&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;集群网络模式&#34;&gt;集群网络模式&lt;/h2&gt;
+&lt;h3 id=&#34;方案一在-vpc-添加路由&#34;&gt;方案一：在 VPC 添加路由&lt;/h3&gt;
+&lt;p&gt;假设以下配置：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;节点名&lt;/th&gt;
+&lt;th&gt;归属 VPC&lt;/th&gt;
+&lt;th&gt;归属交换机&lt;/th&gt;
+&lt;th&gt;宿主 IP&lt;/th&gt;
+&lt;th&gt;cluster_cidr&lt;/th&gt;
+&lt;th&gt;pod cidr&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;node1&lt;/td&gt;
+&lt;td&gt;10.0.0.0/8&lt;/td&gt;
+&lt;td&gt;10.100.197.0/24&lt;/td&gt;
+&lt;td&gt;10.100.197.203&lt;/td&gt;
+&lt;td&gt;192.168.201.0/24&lt;/td&gt;
+&lt;td&gt;192.168.201.0/28&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;node2&lt;/td&gt;
+&lt;td&gt;10.0.0.0/8&lt;/td&gt;
+&lt;td&gt;10.100.197.0/24&lt;/td&gt;
+&lt;td&gt;10.100.197.204&lt;/td&gt;
+&lt;td&gt;192.168.201.0/24&lt;/td&gt;
+&lt;td&gt;192.168.201.16/28&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;node3&lt;/td&gt;
+&lt;td&gt;10.0.0.0/8&lt;/td&gt;
+&lt;td&gt;10.100.197.0/24&lt;/td&gt;
+&lt;td&gt;10.100.197.205&lt;/td&gt;
+&lt;td&gt;192.168.201.0/24&lt;/td&gt;
+&lt;td&gt;192.168.201.32/28&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;node4&lt;/td&gt;
+&lt;td&gt;10.0.0.0/8&lt;/td&gt;
+&lt;td&gt;10.100.197.0/24&lt;/td&gt;
+&lt;td&gt;10.100.197.206&lt;/td&gt;
+&lt;td&gt;192.168.201.0/24&lt;/td&gt;
+&lt;td&gt;192.168.201.48/28&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;这样需要在 VPC 上添加路由：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;192.168.201.0/28 via node1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;192.168.201.16/28 via node2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;192.168.201.32/28 via node3
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;192.168.201.48/28 via node4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在 VPC 上添加路由有以下两种方式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;规划后集群大小后，在阿里云后台 &amp;ldquo;专有网络/路由表&amp;rdquo; 中手动添加；&lt;/li&gt;
+&lt;li&gt;配合&lt;a href=&#34;/docs/deploy-k8s/cloud-provider/alibaba-cloud/#%E4%BA%91%E6%8E%A7%E5%88%B6%E5%99%A8&#34;&gt;云控制器&lt;/a&gt; 阿里云 &lt;a href=&#34;https://help.aliyun.com/zh/ack/product-overview/cloud-controller-manager&#34;&gt;CCM 组件&lt;/a&gt;自动添加发布主机路由至 VPC。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;方案二独立-vpc-子网&#34;&gt;方案二：独立 VPC 子网&lt;/h3&gt;
+&lt;p&gt;既在阿里云上创建单独的 VPC 字网用于 POD 网段。&lt;/p&gt;
+&lt;p&gt;该方式依赖主机规格以及可支持的弹性网卡 ENI 数量限制，如需使用建议直接购买 ACK 产品。&lt;/p&gt;
+&lt;h3 id=&#34;方案三使用封装形式&#34;&gt;方案三：使用封装形式&lt;/h3&gt;
+&lt;p&gt;这种性能低，暂不考虑。&lt;/p&gt;
+&lt;h2 id=&#34;注意事项&#34;&gt;注意事项&lt;/h2&gt;
+&lt;h3 id=&#34;组件-ccm-正常但污点未移除&#34;&gt;组件 CCM 正常但污点未移除&lt;/h3&gt;
+&lt;p&gt;根据 &lt;a href=&#34;https://kubernetes.io/zh-cn/docs/tasks/administer-cluster/running-cloud-controller/#%E8%BF%90%E8%A1%8C%E4%BA%91%E7%AE%A1%E7%90%86%E6%8E%A7%E5%88%B6%E5%99%A8&#34;&gt;Kubernetes 运行云管理控制器&lt;/a&gt; 约定，当 kubelet 配置了 &amp;ldquo;&amp;ndash;cloud-provider=external&amp;rdquo; 则在节点启动时会自动添加 &amp;ldquo;node.cloudprovider.kubernetes.io/uninitialized&amp;rdquo; 污点，当且仅当 CCM 组件运行成功后，会自动移除且设置节点可调度。&lt;/p&gt;
+&lt;p&gt;如果出现 CCM 组件正常，但各节点污点均未被移除，在排除权限等问题后，可检查配置 &amp;ldquo;&amp;ndash;controllers&amp;rdquo; 是否有开启 &amp;ldquo;node&amp;rdquo; 控制器功能，否则即使 ccm 组件正常运行，节点的污点也是无法被组件移除的。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;apiVersion: apps/v1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kind: DaemonSet
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;metadata:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  name: cloud-controller-manager
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  namespace: kube-system
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;spec:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  template:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    spec:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;......
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      containers:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        - command:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          - /cloud-controller-manager
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          - --kubeconfig=/etc/kubernetes/cloud-controller-manager.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          - --cloud-config=/etc/kubernetes/config/cloud-config.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          # 支持 node,route,service,ingress
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          - --controllers=node,route
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;......
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;同时以下几个&lt;a href=&#34;https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/api/core/v1/well_known_labels.go&#34;&gt;公知标签&lt;/a&gt;也不能被自动添加：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;beta.kubernetes.io/instance-type
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node.kubernetes.io/instance-type
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;failure-domain.beta.kubernetes.io/region
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;failure-domain.beta.kubernetes.io/zone
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;topology.kubernetes.io/zone
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;topology.kubernetes.io/region
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>

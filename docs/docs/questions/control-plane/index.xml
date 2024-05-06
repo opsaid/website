@@ -1,0 +1,162 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – 控制平面</title>
+    <link>/docs/questions/control-plane/</link>
+    <description>Recent content in 控制平面 on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 16 Apr 2024 10:21:22 +0800</lastBuildDate>
+    
+	  <atom:link href="/docs/questions/control-plane/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: etcd</title>
+      <link>/docs/questions/control-plane/etcd/</link>
+      <pubDate>Thu, 03 Aug 2023 09:42:05 +0800</pubDate>
+      
+      <guid>/docs/questions/control-plane/etcd/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;简要概述&#34;&gt;简要概述&lt;/h2&gt;
+&lt;p&gt;记录 etcd 相关的场景问题。&lt;/p&gt;
+&lt;h2 id=&#34;无法启动类&#34;&gt;无法启动类&lt;/h2&gt;
+&lt;h3 id=&#34;received-signal-shutting-down&#34;&gt;&amp;ldquo;received signal; shutting down&amp;rdquo;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;关键日志&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;level&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;info&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ts&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2023-07-27T13:31:34.277Z&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;caller&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;rafthttp/stream.go:274&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;msg&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;established TCP streaming connection with remote peer&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;stream-writer-type&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;stream MsgApp v2&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;local-member-id&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;edacac26a3fb24b3&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;remote-peer-id&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2c8b55a3459bb7ff&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;level&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;info&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ts&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2023-07-27T13:33:03.898Z&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;caller&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;osutil/interrupt_unix.go:64&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;msg&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;received signal; shutting down&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;signal&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;terminated&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;level&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;info&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ts&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2023-07-27T13:33:03.898Z&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;caller&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;embed/etcd.go:367&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;msg&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;closing etcd server&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;node3&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;data-dir&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/data/etcd/&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;advertise-peer-urls&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://10.49.2.36:2380&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;advertise-client-urls&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://10.49.2.36:2379&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;问题原因&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在文件 &lt;code&gt;/etc/containerd/config.toml&lt;/code&gt; 中的 &lt;code&gt;SystemdCgroup&lt;/code&gt; 配置为 &lt;code&gt;false&lt;/code&gt; 了，与 &lt;code&gt;kubelet&lt;/code&gt; 中不同。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;解决步骤&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;更改配置，使用同 &amp;ldquo;kubelet&amp;rdquo; 一样的 cgroup 为 systemd&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;plugins.&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;io.containerd.grpc.v1.cri&amp;#34;&lt;/span&gt;.containerd.runtimes.runc.options&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;SystemdCgroup&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;备份恢复类&#34;&gt;备份恢复类&lt;/h2&gt;
+&lt;h3 id=&#34;控制节点-etcd-数据恢复&#34;&gt;控制节点 etcd 数据恢复&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;登录故障节点，移除 etcd 静态 POD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; /etc/kubernetes/manifests/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mv etcd.yaml /usr/local/src/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;登录另外正常的 etcd 集群节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;查看成员列表&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ctr --namespace k8s.io run &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --rm &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --net-host &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --mount &lt;span style=&#34;color:#000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;bind,src&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/etc/kubernetes,dst&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/etc/kubernetes,options&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;rbind:ro &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;	registry.cn-hangzhou.aliyuncs.com/kube-image-repo/etcd:v3.5.10 etcd-health &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    etcdctl --cert /etc/kubernetes/pki/etcd/peer.crt &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;        --key /etc/kubernetes/pki/etcd/peer.key &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;        --cacert /etc/kubernetes/pki/etcd/ca.crt &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;        --endpoints https://127.0.0.1:2379 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;	member list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;移除异常的成员&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ctr --namespace k8s.io run &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --rm &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --net-host &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --mount &lt;span style=&#34;color:#000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;bind,src&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/etc/kubernetes,dst&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/etc/kubernetes,options&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;rbind:ro &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;	registry.cn-hangzhou.aliyuncs.com/kube-image-repo/etcd:v3.5.10 etcd-health &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    etcdctl --cert /etc/kubernetes/pki/etcd/peer.crt &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;        --key /etc/kubernetes/pki/etcd/peer.key &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;        --cacert /etc/kubernetes/pki/etcd/ca.crt &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;        --endpoints https://127.0.0.1:2379 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;	member remove 63e2da0114a7b9b7
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;更改故障节点 etcd 作为新成员加入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ctr --namespace k8s.io run &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --rm &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --net-host &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --mount &lt;span style=&#34;color:#000&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;bind,src&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/etc/kubernetes,dst&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/etc/kubernetes,options&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;rbind:ro &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;	registry.cn-hangzhou.aliyuncs.com/kube-image-repo/etcd:v3.5.10 etcd-health &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    etcdctl --cert /etc/kubernetes/pki/etcd/peer.crt &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;        --key /etc/kubernetes/pki/etcd/peer.key &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;        --cacert /etc/kubernetes/pki/etcd/ca.crt &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;        --endpoints https://127.0.0.1:2379 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;        member add node2 --peer-urls&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://192.168.201.122:2380&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;ETCD_NAME&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;node2&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;ETCD_INITIAL_CLUSTER&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;node3=https://192.168.201.123:2380,node2=https://192.168.201.122:2380,node1=https://192.168.201.121:2380&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;ETCD_INITIAL_ADVERTISE_PEER_URLS&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://192.168.201.122:2380&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000&#34;&gt;ETCD_INITIAL_CLUSTER_STATE&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;existing&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;启动故障节点的 etcd 服务&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;--initial-cluster-state&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;new
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;更改为
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;--initial-cluster-state&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;existing
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: kube-apiserver</title>
+      <link>/docs/questions/control-plane/kube-apiserver/</link>
+      <pubDate>Mon, 06 May 2024 14:05:48 +0800</pubDate>
+      
+      <guid>/docs/questions/control-plane/kube-apiserver/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;简要概述&#34;&gt;简要概述&lt;/h2&gt;
+&lt;p&gt;记录 kube-apiserver 相关问题。&lt;/p&gt;
+&lt;h2 id=&#34;无法启动类&#34;&gt;无法启动类&lt;/h2&gt;
+&lt;h3 id=&#34;dial-tcp-1270018080-connect-connection-refused&#34;&gt;&amp;ldquo;dial tcp 127.0.0.1:8080: connect: connection refused&amp;rdquo;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;关键日志&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;root@k8s/etc/kubernetes/manifests# kubectl get nodes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;E0803 10:01:41.668372  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;300010&lt;/span&gt; memcache.go:265&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; couldn&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;t get current server API group list: Get &amp;#34;http://localhost:8080/api?timeout=32s&amp;#34;: dial tcp 127.0.0.1:8080: connect: connection refused
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;E0803 10:01:41.669287  300010 memcache.go:265] couldn&amp;#39;&lt;/span&gt;t get current server API group list: Get &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;http://localhost:8080/api?timeout=32s&amp;#34;&lt;/span&gt;: dial tcp 127.0.0.1:8080: connect: connection refused
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;E0803 10:01:41.671326  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;300010&lt;/span&gt; memcache.go:265&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; couldn&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;t get current server API group list: Get &amp;#34;http://localhost:8080/api?timeout=32s&amp;#34;: dial tcp 127.0.0.1:8080: connect: connection refused
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;E0803 10:01:41.672078  300010 memcache.go:265] couldn&amp;#39;&lt;/span&gt;t get current server API group list: Get &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;http://localhost:8080/api?timeout=32s&amp;#34;&lt;/span&gt;: dial tcp 127.0.0.1:8080: connect: connection refused
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;E0803 10:01:41.674043  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;300010&lt;/span&gt; memcache.go:265&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; couldn&lt;span style=&#34;color:#a40000&#34;&gt;&amp;#39;&lt;/span&gt;t get current server API group list: Get &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;http://localhost:8080/api?timeout=32s&amp;#34;&lt;/span&gt;: dial tcp 127.0.0.1:8080: connect: connection refused
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The connection to the server localhost:8080 was refused - did you specify the right host or port?
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;root@k8s/etc/kubernetes/manifests#
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;问题原因&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;新版不在开放本地的 &amp;ldquo;127.0.0.1:8080&amp;rdquo; 端口，需配置下 kubeconfig 路径，如：$HOME/.kube/config&lt;/p&gt;
+&lt;h3 id=&#34;failed-to-verify-certificate-x509&#34;&gt;&amp;ldquo;failed to verify certificate: x509&amp;rdquo;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;关键日志&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;root@k8s/etc/kubernetes/manifests# kubectl get nodes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;E0803 10:27:46.079494  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;300470&lt;/span&gt; memcache.go:265&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; couldn&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;t get current server API group list: Get &amp;#34;https://10.49.2.108:6443/api?timeout=32s&amp;#34;: tls: failed to verify certificate: x509: certificate signed by unknown authority
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;E0803 10:27:46.094227  300470 memcache.go:265] couldn&amp;#39;&lt;/span&gt;t get current server API group list: Get &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://10.49.2.108:6443/api?timeout=32s&amp;#34;&lt;/span&gt;: tls: failed to verify certificate: x509: certificate signed by unknown authority
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;E0803 10:27:46.105654  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;300470&lt;/span&gt; memcache.go:265&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; couldn&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;t get current server API group list: Get &amp;#34;https://10.49.2.108:6443/api?timeout=32s&amp;#34;: tls: failed to verify certificate: x509: certificate signed by unknown authority
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;E0803 10:27:46.117784  300470 memcache.go:265] couldn&amp;#39;&lt;/span&gt;t get current server API group list: Get &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://10.49.2.108:6443/api?timeout=32s&amp;#34;&lt;/span&gt;: tls: failed to verify certificate: x509: certificate signed by unknown authority
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;E0803 10:27:46.127952  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;300470&lt;/span&gt; memcache.go:265&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; couldn&lt;span style=&#34;color:#a40000&#34;&gt;&amp;#39;&lt;/span&gt;t get current server API group list: Get &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://10.49.2.108:6443/api?timeout=32s&amp;#34;&lt;/span&gt;: tls: failed to verify certificate: x509: certificate signed by unknown authority
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Unable to connect to the server: tls: failed to verify certificate: x509: certificate signed by unknown authority
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;root@k8s/etc/kubernetes/manifests#
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;问题原因&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在 &amp;ldquo;$HOME/.kube/config&amp;rdquo; 中内嵌的 ca 证书不对，检查方式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;获取 &amp;ldquo;$HOME/.kube/config&amp;rdquo; 中 &amp;ldquo;certificate-authority-data&amp;rdquo; 内容，使用 &lt;code&gt;base64&lt;/code&gt; 反解：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt; -n &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;${certificate-authority-data}&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; base64 -d
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -88,9 +88,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;负载均衡器&#34;&gt;负载均衡器&lt;/h3&gt;
 &lt;p&gt;TODO&lt;/p&gt;
 &lt;h2 id=&#34;部署控制平面&#34;&gt;部署控制平面&lt;/h2&gt;
-&lt;h3 id=&#34;步骤1首次初始化配置修改&#34;&gt;步骤1：首次初始化配置修改&lt;/h3&gt;
+&lt;h3 id=&#34;步骤1首次初始化前配置&#34;&gt;步骤1：首次初始化前配置&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;必须更改的文件&lt;/li&gt;
+&lt;li&gt;必要更改的文件&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ansible/hosts.ini
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ansible/group_vars/all.yaml
@@ -98,15 +98,21 @@
 &lt;li&gt;可选更改的文件&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ansible/group_vars/default.yaml
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ansible/group_vars/component-v1.18.yaml
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ansible/group_vars/component-v1.22.yaml
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;选择component-v1.18或compoent-v1.22是由选择部署的k8s版本所决定&lt;/p&gt;
-&lt;h3 id=&#34;步骤2下载依赖的二进制文件&#34;&gt;步骤2：下载依赖的二进制文件&lt;/h3&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ansible/group_vars/component-v1.26.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;选择 component-v1.22 或 compoent-v1.26 是由部署的 k8s 版本所决定。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;云提供商个性参数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ansible/group_vars/cloud-provider/private.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ansible/group_vars/cloud-provider/alibaba-cloud.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;根据目标主机&lt;a href=&#34;/docs/deploy-k8s/cloud-provider/&#34;&gt;提供商&lt;/a&gt;上，按需更改相应参数。&lt;/p&gt;
+&lt;h3 id=&#34;步骤2下载依赖的镜像包&#34;&gt;步骤2：下载依赖的镜像包&lt;/h3&gt;
 &lt;p&gt;方式1：预先下载安装包（推荐）&lt;/p&gt;
 &lt;p&gt;二进制文件包与镜像包&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;https://github.com/opsaid/deploy-k8s/releases
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;方式2：在线下载构建&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 由于网络原因，需要代理HTTPS可以配置下加速通道传输（127.0.0.1:1087仅为示例）&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 由于网络原因，需要代理 HTTPS 配置用于加速通道传输（127.0.0.1:1087仅为示例）&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#export HTTPS_PROXY=http://127.0.0.1:1087&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;yum install -y docker
@@ -122,14 +128,14 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ansible-playbook -i hosts.ini deploy.yaml -t common
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;确保主机节点已在&lt;code&gt;host.ini&lt;/code&gt;配置项&lt;code&gt;[kube_control_plane]&lt;/code&gt;中&lt;/p&gt;
+&lt;p&gt;确保主机节点已在 &lt;code&gt;host.ini&lt;/code&gt; 配置项 &lt;code&gt;[kube_control_plane]&lt;/code&gt; 中&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;步骤5部署控制平面节点&#34;&gt;步骤5：部署控制平面节点&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ansible-playbook -i hosts.ini deploy.yaml -t control
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;确保主机节点已在&lt;code&gt;host.ini&lt;/code&gt;配置项&lt;code&gt;[kube_control_plane]&lt;/code&gt;中&lt;/p&gt;
+&lt;p&gt;确保主机节点已在 &lt;code&gt;host.ini&lt;/code&gt; 配置项 &lt;code&gt;[kube_control_plane]&lt;/code&gt; 中&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;步骤6验证控制平面组件&#34;&gt;步骤6：验证控制平面组件&lt;/h3&gt;
@@ -144,17 +150,39 @@
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubectl get pods -n kube-system
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中&amp;quot;kube-apiserver&amp;rdquo;、&amp;ldquo;kube-controller-manager&amp;rdquo;、&amp;ldquo;etcd&amp;rdquo;、&amp;ldquo;kube-scheduler&amp;quot;组件，在各节点必须是&amp;quot;Running&amp;quot;状态。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过 &lt;code&gt;kubectl&lt;/code&gt; 为节点添加标签&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当控制平面 Pod 均正常运行时，为控制平面节点添加特殊标签：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; i in &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/span&gt;kubectl get node -o&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;template --template&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;{{ range .items }} {{ .metadata.name }} {{end }}&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  kubectl label node &lt;span style=&#34;color:#000&#34;&gt;$i&lt;/span&gt; node-role.kubernetes.io/master&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  kubectl label node &lt;span style=&#34;color:#000&#34;&gt;$i&lt;/span&gt; node-role.kubernetes.io/control-plane&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;通过 &lt;code&gt;kubectl&lt;/code&gt; 查看节点状态&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubectl get nodes
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;确认节点列表 &amp;ldquo;ROLES&amp;rdquo; 中均包含 &amp;ldquo;control-plane,master&amp;rdquo; 内容。&lt;/p&gt;
 &lt;h3 id=&#34;步骤7部署集群基础组件&#34;&gt;步骤7：部署集群基础组件&lt;/h3&gt;
-&lt;p&gt;登录任意一个控制平面节点，部署addons&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kustomize build /usr/local/src/addons/calico/ &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; kubectl apply -f -
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kustomize build /usr/local/src/addons/coredns/ &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; kubectl apply -f -
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kustomize build /usr/local/src/addons/kube-proxy/ &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; kubectl apply -f -
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kustomize build /usr/local/src/addons/kube-system/ &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; kubectl apply -f -
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kustomize build /usr/local/src/addons/metrics-server/ &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; kubectl apply -f -
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kustomize build /usr/local/src/addons/ingress-nginx/ &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; kubectl apply -f -
+&lt;p&gt;在 k8s 1.26 及之后使用 &amp;ldquo;cilium&amp;rdquo; 作为 CNI 并替换 &amp;ldquo;calico&amp;rdquo;、&amp;ldquo;kube-proxy&amp;rdquo;、&amp;ldquo;ingress-nginx&amp;rdquo; 组件功能。&lt;/p&gt;
+&lt;p&gt;登录任意一个控制平面节点，部署 addons&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;部署 CNI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubectl apply -k /etc/kubernetes/addons/cilium/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;部署 kube-system 权限等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubectl apply -k /etc/kubernetes/addons/kube-system/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;部署 CoreDNS 等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubectl apply -k /etc/kubernetes/addons/coredns/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubectl apply -k /etc/kubernetes/addons/metrics-server/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;如在使用k8s v1.22也可直接使用&lt;code&gt;kubectl apply -k&lt;/code&gt;代替&lt;code&gt;kustomize&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;也可使用 &lt;code&gt;kustomize&lt;/code&gt; 替代 &lt;code&gt;kubectl apply -k&lt;/code&gt;，如：&lt;code&gt;kustomize build /etc/kubernetes/addons/coredns | kubectl apply -f -&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;步骤8本地配置存储集群&#34;&gt;步骤8：本地配置存储集群&lt;/h3&gt;
@@ -162,16 +190,16 @@
 &lt;li&gt;存储 kubeadm 配置至集群 ConfigMap&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;其中配置取 &amp;ldquo;ClusterConfiguration&amp;rdquo; 类型 同步至 &amp;ldquo;kube-system&amp;rdquo; 下 ConfigMap &amp;ldquo;kubeadm-config&amp;rdquo;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase upload-config kubeadm --config /usr/local/src/kubeadm/config.yaml
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase upload-config kubeadm --config /etc/kubernetes/kubeadm/config.yaml
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;存储 kubelet 配置至集群 ConfigMap&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;其中 kubelet 配置取 KubeletConfiguration 同步至 &amp;ldquo;kube-system&amp;rdquo; 下 ConfigMap &amp;ldquo;kubelet-config&amp;rdquo;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase upload-config kubelet --config /usr/local/src/kubeadm/config.yaml
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase upload-config kubelet --config /etc/kubernetes/kubeadm/config.yaml
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;存储证书至空间 &amp;ldquo;kube-system&amp;rdquo; 下 Secret 资源&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase upload-certs --upload-certs --config /usr/local/src/kubeadm/config.yaml
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase upload-certs --upload-certs --config /etc/kubernetes/kubeadm/config.yaml
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中 &amp;ldquo;kubeadm-certs&amp;rdquo; 包含以下几个证书文件：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;etcd-ca.crt
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;etcd-ca.key
@@ -182,7 +210,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ca.crt
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ca.key
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;步骤9控制平面相关维护&#34;&gt;步骤9：控制平面相关维护&lt;/h3&gt;
-&lt;p&gt;TODO&lt;/p&gt;
+&lt;p&gt;见&lt;a href=&#34;/docs/questions/control-plane/&#34;&gt;常见问题&lt;/a&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;新增工作节点&#34;&gt;新增工作节点&lt;/h2&gt;
 &lt;h3 id=&#34;步骤1在ansible的hostini中添加节点&#34;&gt;步骤1：在ansible的&lt;code&gt;host.ini&lt;/code&gt;中添加节点&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;all&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
@@ -219,7 +247,14 @@
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;完成验收与后续&#34;&gt;完成验收与后续&lt;/h2&gt;
 &lt;p&gt;TODO&lt;/p&gt;
-
+&lt;h2 id=&#34;使用-calico-作为-cni&#34;&gt;使用 calico 作为 CNI&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kustomize build /etc/kubernetes/addons/calico/ &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; kubectl apply -f -
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;其他可选&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kustomize build /etc/kubernetes/addons/ingress-nginx/ &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; kubectl apply -f -
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kustomize build /etc/kubernetes/addons/kube-proxy/ &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; kubectl apply -f -
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
@@ -432,72 +467,15 @@
     </item>
     
     <item>
-      <title>Docs: 常见问题</title>
-      <link>/docs/deploy-k8s/faqs/</link>
-      <pubDate>Thu, 03 Aug 2023 09:42:05 +0800</pubDate>
+      <title>Docs: 云提供商</title>
+      <link>/docs/deploy-k8s/cloud-provider/</link>
+      <pubDate>Tue, 16 Apr 2024 10:17:57 +0800</pubDate>
       
-      <guid>/docs/deploy-k8s/faqs/</guid>
+      <guid>/docs/deploy-k8s/cloud-provider/</guid>
       <description>
         
         
-        &lt;h2 id=&#34;简要概述&#34;&gt;简要概述&lt;/h2&gt;
-&lt;p&gt;记录部署 k8s 相关的场景问题。&lt;/p&gt;
-&lt;h2 id=&#34;组件-etcd-相关&#34;&gt;组件 etcd 相关&lt;/h2&gt;
-&lt;h3 id=&#34;received-signal-shutting-down&#34;&gt;&amp;ldquo;received signal; shutting down&amp;rdquo;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;关键日志&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;level&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;info&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ts&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2023-07-27T13:31:34.277Z&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;caller&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;rafthttp/stream.go:274&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;msg&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;established TCP streaming connection with remote peer&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;stream-writer-type&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;stream MsgApp v2&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;local-member-id&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;edacac26a3fb24b3&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;remote-peer-id&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2c8b55a3459bb7ff&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;level&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;info&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ts&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2023-07-27T13:33:03.898Z&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;caller&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;osutil/interrupt_unix.go:64&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;msg&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;received signal; shutting down&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;signal&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;terminated&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;level&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;info&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ts&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2023-07-27T13:33:03.898Z&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;caller&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;embed/etcd.go:367&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;msg&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;closing etcd server&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;node3&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;data-dir&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/data/etcd/&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;advertise-peer-urls&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://10.49.2.36:2380&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;,&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;advertise-client-urls&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://10.49.2.36:2379&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;问题原因&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;在文件 &lt;code&gt;/etc/containerd/config.toml&lt;/code&gt; 中的 &lt;code&gt;SystemdCgroup&lt;/code&gt; 配置为 &lt;code&gt;false&lt;/code&gt; 了，与 &lt;code&gt;kubelet&lt;/code&gt; 中不同。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;解决步骤&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;更改配置，使用同 &amp;ldquo;kubelet&amp;rdquo; 一样的 cgroup 为 systemd&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;plugins.&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;io.containerd.grpc.v1.cri&amp;#34;&lt;/span&gt;.containerd.runtimes.runc.options&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#000&#34;&gt;SystemdCgroup&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;组件-kube-apiserver-相关&#34;&gt;组件 kube-apiserver 相关&lt;/h2&gt;
-&lt;h3 id=&#34;dial-tcp-1270018080-connect-connection-refused&#34;&gt;&amp;ldquo;dial tcp 127.0.0.1:8080: connect: connection refused&amp;rdquo;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;关键日志&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;root@k8s/etc/kubernetes/manifests# kubectl get nodes
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;E0803 10:01:41.668372  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;300010&lt;/span&gt; memcache.go:265&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; couldn&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;t get current server API group list: Get &amp;#34;http://localhost:8080/api?timeout=32s&amp;#34;: dial tcp 127.0.0.1:8080: connect: connection refused
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;E0803 10:01:41.669287  300010 memcache.go:265] couldn&amp;#39;&lt;/span&gt;t get current server API group list: Get &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;http://localhost:8080/api?timeout=32s&amp;#34;&lt;/span&gt;: dial tcp 127.0.0.1:8080: connect: connection refused
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;E0803 10:01:41.671326  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;300010&lt;/span&gt; memcache.go:265&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; couldn&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;t get current server API group list: Get &amp;#34;http://localhost:8080/api?timeout=32s&amp;#34;: dial tcp 127.0.0.1:8080: connect: connection refused
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;E0803 10:01:41.672078  300010 memcache.go:265] couldn&amp;#39;&lt;/span&gt;t get current server API group list: Get &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;http://localhost:8080/api?timeout=32s&amp;#34;&lt;/span&gt;: dial tcp 127.0.0.1:8080: connect: connection refused
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;E0803 10:01:41.674043  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;300010&lt;/span&gt; memcache.go:265&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; couldn&lt;span style=&#34;color:#a40000&#34;&gt;&amp;#39;&lt;/span&gt;t get current server API group list: Get &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;http://localhost:8080/api?timeout=32s&amp;#34;&lt;/span&gt;: dial tcp 127.0.0.1:8080: connect: connection refused
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;The connection to the server localhost:8080 was refused - did you specify the right host or port?
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;root@k8s/etc/kubernetes/manifests#
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;问题原因&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;新版不在开放本地的 &amp;ldquo;127.0.0.1:8080&amp;rdquo; 端口，需配置下 kubeconfig 路径，如：$HOME/.kube/config&lt;/p&gt;
-&lt;h3 id=&#34;failed-to-verify-certificate-x509&#34;&gt;&amp;ldquo;failed to verify certificate: x509&amp;rdquo;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;关键日志&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;root@k8s/etc/kubernetes/manifests# kubectl get nodes
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;E0803 10:27:46.079494  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;300470&lt;/span&gt; memcache.go:265&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; couldn&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;t get current server API group list: Get &amp;#34;https://10.49.2.108:6443/api?timeout=32s&amp;#34;: tls: failed to verify certificate: x509: certificate signed by unknown authority
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;E0803 10:27:46.094227  300470 memcache.go:265] couldn&amp;#39;&lt;/span&gt;t get current server API group list: Get &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://10.49.2.108:6443/api?timeout=32s&amp;#34;&lt;/span&gt;: tls: failed to verify certificate: x509: certificate signed by unknown authority
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;E0803 10:27:46.105654  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;300470&lt;/span&gt; memcache.go:265&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; couldn&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;t get current server API group list: Get &amp;#34;https://10.49.2.108:6443/api?timeout=32s&amp;#34;: tls: failed to verify certificate: x509: certificate signed by unknown authority
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;E0803 10:27:46.117784  300470 memcache.go:265] couldn&amp;#39;&lt;/span&gt;t get current server API group list: Get &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://10.49.2.108:6443/api?timeout=32s&amp;#34;&lt;/span&gt;: tls: failed to verify certificate: x509: certificate signed by unknown authority
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;E0803 10:27:46.127952  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;300470&lt;/span&gt; memcache.go:265&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; couldn&lt;span style=&#34;color:#a40000&#34;&gt;&amp;#39;&lt;/span&gt;t get current server API group list: Get &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;https://10.49.2.108:6443/api?timeout=32s&amp;#34;&lt;/span&gt;: tls: failed to verify certificate: x509: certificate signed by unknown authority
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Unable to connect to the server: tls: failed to verify certificate: x509: certificate signed by unknown authority
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;root@k8s/etc/kubernetes/manifests#
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;问题原因&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;在 &amp;ldquo;$HOME/.kube/config&amp;rdquo; 中内嵌的 ca 证书不对，检查方式：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;获取 &amp;ldquo;$HOME/.kube/config&amp;rdquo; 中 &amp;ldquo;certificate-authority-data&amp;rdquo; 内容，使用 &lt;code&gt;base64&lt;/code&gt; 反解：&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt; -n &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;${certificate-authority-data}&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; base64 -d
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        
       </description>
     </item>
     

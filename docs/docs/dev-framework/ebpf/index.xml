@@ -1,0 +1,78 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – eBPF 技术</title>
+    <link>/docs/dev-framework/ebpf/</link>
+    <description>Recent content in eBPF 技术 on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 02 Apr 2024 11:37:27 +0800</lastBuildDate>
+    
+	  <atom:link href="/docs/dev-framework/ebpf/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: 程序类型</title>
+      <link>/docs/dev-framework/ebpf/program-types/</link>
+      <pubDate>Tue, 02 Apr 2024 11:38:14 +0800</pubDate>
+      
+      <guid>/docs/dev-framework/ebpf/program-types/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;简要概述&#34;&gt;简要概述&lt;/h2&gt;
+&lt;p&gt;eBPF 程序类型大体上被分为两类：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;性能追踪类型；&lt;/li&gt;
+&lt;li&gt;网络相关类型。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;程序类型决定了它可以附加到哪些事件上，这反过来又定义了它能接收的上下文信息的类型，以及可调用的 helper 函数和 kfuncs 集合。&lt;/p&gt;
+&lt;h3 id=&#34;helper-函数&#34;&gt;helper 函数&lt;/h3&gt;
+&lt;p&gt;helper 函数是在内核中定义的 UAPI 稳定接口，如 &lt;a href=&#34;https://github.com/torvalds/linux/blob/master/include/uapi/linux/bpf.h&#34;&gt;uapi/linux/bpf.h&lt;/a&gt;，这些接口定义发布后就不会更改了，尽管内部函数或数据结构在将来的版本会发生变更。可使用 &lt;code&gt;bpftool feature&lt;/code&gt; 查看当前内核支持的 helper 函数。&lt;/p&gt;
+&lt;h3 id=&#34;kfuncs-集合&#34;&gt;kfuncs 集合&lt;/h3&gt;
+&lt;p&gt;与 helper 函数不同，&lt;a href=&#34;https://docs.kernel.org/bpf/kfuncs.html#core-kfuncs&#34;&gt;kfuncs&lt;/a&gt; 不提供兼容性保证，因此开发者必须考虑到内核版本之间可能发生的变化。它允许内核函数在 BPF 子系统中注册，以便验证器允许它们被 eBPF 程序调用。&lt;/p&gt;
+&lt;h2 id=&#34;性能追踪类型&#34;&gt;性能追踪类型&lt;/h2&gt;
+&lt;h3 id=&#34;tracepoints&#34;&gt;Tracepoints&lt;/h3&gt;
+&lt;p&gt;它们绝不仅限于eBPF，并且长期以来一直被用来生成内核追踪输出，以及像SystemTap这样的工具。&lt;/p&gt;
+&lt;p&gt;当前内核支持的事件：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat /sys/kernel/tracing/available_events
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;网络相关类型&#34;&gt;网络相关类型&lt;/h2&gt;
+&lt;h3 id=&#34;所需运行权限&#34;&gt;所需运行权限&lt;/h3&gt;
+&lt;p&gt;需要有 &lt;code&gt;CAP_NET_ADMIN&lt;/code&gt; 与 &lt;code&gt;CAP_BPF&lt;/code&gt; 能力，或者 &lt;code&gt;CAP_SYS_ADMIN&lt;/code&gt; 能力。&lt;/p&gt;
+&lt;p&gt;下图是 BPF 程序类型在网络堆栈的各个点上钩子：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.opsaid.net/dochub/dev-framework/ebpf/5e6b76e1-0642-4a92-b61d-52b19823b4d7.png&#34; alt=&#34;test&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;特性socket&#34;&gt;特性：Socket&lt;/h3&gt;
+&lt;p&gt;TODO;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;BPF_PROG_TYPE_SOCKET_FILTER
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;BPF_PROG_TYPE_SOCK_OPS
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;BPF_PROG_TYPE_SK_SKB
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;特性traffic-control&#34;&gt;特性：Traffic Control&lt;/h3&gt;
+&lt;p&gt;TODO;&lt;/p&gt;
+&lt;p&gt;TC 子系统用于控制网络流量的调度，同时也拥有操控、丢弃或重定向数据包的能力，附加在 TC 中的 eBPF 程序也可以作为复杂网络行为的构建基础。&lt;/p&gt;
+&lt;p&gt;在 TC 子系统中附加的 ebpf 程序会使用存储在内核网络堆栈中的 [sk_buff] 数据结构的指针作为上下文参数。&lt;/p&gt;
+&lt;p&gt;网络数据栈中的一部分数据流动有两个方向：入口（从网络接口传入）或出口（向网络接口传出）。eBPF程序可以在任何一个方向上进行附加，并且只会影响那个方向的流量。不同于XDP，可以附加多个序列处理的eBPF程序。&lt;/p&gt;
+&lt;h3 id=&#34;特性xdp&#34;&gt;特性：XDP&lt;/h3&gt;
+&lt;p&gt;通过 XDP（eXpress Data Path）可以把特定的程序附加到指定的网卡上。如通过 &lt;code&gt;bpftool&lt;/code&gt; 挂载 &amp;ldquo;hello.bpf.o&amp;rdquo; 程序：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bpftool prog load hello.bpf.o /sys/fs/bpf/hello
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bpftool net attach xdp id &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;540&lt;/span&gt; dev eth0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;或者通过 &lt;code&gt;ip&lt;/code&gt; 进行挂载：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ip link &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; dev eth0 xdp obj hello.bpf.o sec xdp
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;卸载：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ip link &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; dev eth0 xdp off
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;特性flow-dissector&#34;&gt;特性：Flow Dissector&lt;/h3&gt;
+&lt;p&gt;TODO;&lt;/p&gt;
+&lt;h3 id=&#34;特性lightweight-tunnels&#34;&gt;特性：Lightweight Tunnels&lt;/h3&gt;
+&lt;p&gt;TODO;&lt;/p&gt;
+&lt;h3 id=&#34;特性cgroups&#34;&gt;特性：Cgroups&lt;/h3&gt;
+&lt;p&gt;TODO;&lt;/p&gt;
+&lt;h3 id=&#34;特性infrared-controllers&#34;&gt;特性：Infrared Controllers&lt;/h3&gt;
+&lt;p&gt;TODO;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -32,11 +32,11 @@ type Service struct {
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/concepts/network/service/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2022-11-18T17:46:05+08:00" />
-<meta property="article:modified_time" content="2023-01-31T11:46:40+08:00" /><meta property="og:site_name" content="OPSaid" />
+<meta property="article:modified_time" content="2024-05-06T14:15:46+08:00" /><meta property="og:site_name" content="OPSaid" />
 <meta itemprop="name" content="Service">
 <meta itemprop="description" content="简要概述 staging/src/k8s.io/api/core/v1/types.go 配置示例 数据结构 Service // 一个抽象的服务组，配合coredns做服务发现，提供负载均衡与VIP，当仅可在集群内通讯 type Service struct { // 公共基础结构 metav1.TypeMeta `json:&#34;,inline&#34;` metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // 服务规范定义 Spec ServiceSpec `json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;` // 服务实际配置 Status ServiceStatus `json:&#34;status,omitempty&#34; protobuf:&#34;bytes,3,opt,name=status&#34;` } ServiceSpec // 用户声明期望的服务配置 type ServiceSpec struct { // 服务对外暴露的端口 Ports []ServicePort `json:&#34;ports,omitempty&#34; patchStrategy:&#34;merge&#34; patchMergeKey:&#34;port&#34; protobuf:&#34;bytes,1,rep,name=ports&#34;` // 根据这里配置的标签来决定具体路由流量至后端POD // 如果类型是：ExternalName 则会被忽略，仅为：ClusterIP, NodePort, and LoadBalancer 类型有效； Selector map[string]string `json:&#34;selector,omitempty&#34; protobuf:&#34;bytes,2,rep,name=selector&#34;` // 一个虚拟IP地址，如果未手工配置则自动生成，手工配置必须未被使用且在有效范围内 // 如果设置为 &#34;None&#34; 则不分配IP，也就是 &#34;headless service&#34;，一般配合有状态应用使用 // 如果 type=&#34;ExternalName&#34; 则不生效 // 仅当 type 为 ClusterIP, NodePort, and LoadBalancer 生效 ClusterIP string `json:&#34;clusterIP,omitempty&#34; protobuf:&#34;bytes,3,opt,name=clusterIP&#34;` // 功能同 ClusterIP，支持多个虚拟IP，如果同时配置了 ClusterIP，则必须与 ClusterIPs[0] 值相同 ClusterIPs []string `json:&#34;clusterIPs,omitempty&#34; protobuf:&#34;bytes,18,opt,name=clusterIPs&#34;` // 默认类型为：ClusterIP，支持类型：ExternalName, ClusterIP, NodePort, and LoadBalancer Type ServiceType `json:&#34;type,omitempty&#34; protobuf:&#34;bytes,4,opt,name=type,casttype=ServiceType&#34;` // TODO; 具体实现待验证 // 非K8S管理的外部IP，但用于接收这个服务的流量 ExternalIPs []string `json:&#34;externalIPs,omitempty&#34; protobuf:&#34;bytes,5,rep,name=externalIPs&#34;` // 会话的亲和性，支持：&#34;ClientIP&#34; and &#34;None&#34;，默认为 &#34;None&#34; SessionAffinity ServiceAffinity `json:&#34;sessionAffinity,omitempty&#34; protobuf:&#34;bytes,7,opt,name=sessionAffinity,casttype=ServiceAffinity&#34;` // 仅当服务类型为 &#34;LoadBalancer&#34; 生效，不支持双栈网络，依赖云服务提供商 LoadBalancerIP string `json:&#34;loadBalancerIP,omitempty&#34; protobuf:&#34;bytes,8,opt,name=loadBalancerIP&#34;` // TODO; https://kubernetes."><meta itemprop="datePublished" content="2022-11-18T17:46:05+08:00" />
-<meta itemprop="dateModified" content="2023-01-31T11:46:40+08:00" />
-<meta itemprop="wordCount" content="888">
+<meta itemprop="dateModified" content="2024-05-06T14:15:46+08:00" />
+<meta itemprop="wordCount" content="902">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Service"/>
 <meta name="twitter:description" content="简要概述 staging/src/k8s.io/api/core/v1/types.go 配置示例 数据结构 Service // 一个抽象的服务组，配合coredns做服务发现，提供负载均衡与VIP，当仅可在集群内通讯 type Service struct { // 公共基础结构 metav1.TypeMeta `json:&#34;,inline&#34;` metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // 服务规范定义 Spec ServiceSpec `json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;` // 服务实际配置 Status ServiceStatus `json:&#34;status,omitempty&#34; protobuf:&#34;bytes,3,opt,name=status&#34;` } ServiceSpec // 用户声明期望的服务配置 type ServiceSpec struct { // 服务对外暴露的端口 Ports []ServicePort `json:&#34;ports,omitempty&#34; patchStrategy:&#34;merge&#34; patchMergeKey:&#34;port&#34; protobuf:&#34;bytes,1,rep,name=ports&#34;` // 根据这里配置的标签来决定具体路由流量至后端POD // 如果类型是：ExternalName 则会被忽略，仅为：ClusterIP, NodePort, and LoadBalancer 类型有效； Selector map[string]string `json:&#34;selector,omitempty&#34; protobuf:&#34;bytes,2,rep,name=selector&#34;` // 一个虚拟IP地址，如果未手工配置则自动生成，手工配置必须未被使用且在有效范围内 // 如果设置为 &#34;None&#34; 则不分配IP，也就是 &#34;headless service&#34;，一般配合有状态应用使用 // 如果 type=&#34;ExternalName&#34; 则不生效 // 仅当 type 为 ClusterIP, NodePort, and LoadBalancer 生效 ClusterIP string `json:&#34;clusterIP,omitempty&#34; protobuf:&#34;bytes,3,opt,name=clusterIP&#34;` // 功能同 ClusterIP，支持多个虚拟IP，如果同时配置了 ClusterIP，则必须与 ClusterIPs[0] 值相同 ClusterIPs []string `json:&#34;clusterIPs,omitempty&#34; protobuf:&#34;bytes,18,opt,name=clusterIPs&#34;` // 默认类型为：ClusterIP，支持类型：ExternalName, ClusterIP, NodePort, and LoadBalancer Type ServiceType `json:&#34;type,omitempty&#34; protobuf:&#34;bytes,4,opt,name=type,casttype=ServiceType&#34;` // TODO; 具体实现待验证 // 非K8S管理的外部IP，但用于接收这个服务的流量 ExternalIPs []string `json:&#34;externalIPs,omitempty&#34; protobuf:&#34;bytes,5,rep,name=externalIPs&#34;` // 会话的亲和性，支持：&#34;ClientIP&#34; and &#34;None&#34;，默认为 &#34;None&#34; SessionAffinity ServiceAffinity `json:&#34;sessionAffinity,omitempty&#34; protobuf:&#34;bytes,7,opt,name=sessionAffinity,casttype=ServiceAffinity&#34;` // 仅当服务类型为 &#34;LoadBalancer&#34; 生效，不支持双栈网络，依赖云服务提供商 LoadBalancerIP string `json:&#34;loadBalancerIP,omitempty&#34; protobuf:&#34;bytes,8,opt,name=loadBalancerIP&#34;` // TODO; https://kubernetes."/>
@@ -246,17 +246,59 @@ if (!doNotTrack) {
           
             
               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdeploy-k8scloud-provider">
+      <input type="checkbox" id="docsdeploy-k8scloud-provider-check"/>
+      <label for="docsdeploy-k8scloud-provider-check" ><a href="/docs/deploy-k8s/cloud-provider/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">云提供商</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
               
               
               
-                <li class="without-sib collapsed" id="m-docsdeploy-k8sfaqs">
+              
+                <li class="without-sib collapsed" id="m-docsdeploy-k8scloud-provideralibaba-cloud">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdeploy-k8sfaqs-a" href="/docs/deploy-k8s/faqs/">常见问题</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdeploy-k8scloud-provideralibaba-cloud-a" href="/docs/deploy-k8s/cloud-provider/alibaba-cloud/">阿里云</a>
                     
                   </span>
                   
                 </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
             
           
         
@@ -2036,6 +2078,23 @@ if (!doNotTrack) {
             
           
         
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksciliumkube-proxy">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksciliumkube-proxy-a" href="/docs/networks/cilium/kube-proxy/">kube-proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
 
       </ul>
     </li>
@@ -2874,6 +2933,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdev-frameworkgogrpc-kit-a" href="/docs/dev-framework/go/grpc-kit/">gRPC Kit</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdev-frameworkebpf">
+      <input type="checkbox" id="docsdev-frameworkebpf-check"/>
+      <label for="docsdev-frameworkebpf-check" ><a href="/docs/dev-framework/ebpf/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">eBPF 技术</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdev-frameworkebpfprogram-types">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdev-frameworkebpfprogram-types-a" href="/docs/dev-framework/ebpf/program-types/">程序类型</a>
                     
                   </span>
                   
@@ -3920,6 +4038,124 @@ if (!doNotTrack) {
             
           
         
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsquestions">
+      <input type="checkbox" id="docsquestions-check"/>
+      <label for="docsquestions-check" ><a href="/docs/questions/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">常见问题解决</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsquestionscontrol-plane">
+      <input type="checkbox" id="docsquestionscontrol-plane-check"/>
+      <label for="docsquestionscontrol-plane-check" ><a href="/docs/questions/control-plane/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">控制平面</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsquestionscontrol-planeetcd">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsquestionscontrol-planeetcd-a" href="/docs/questions/control-plane/etcd/">etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsquestionscontrol-planekube-apiserver">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsquestionscontrol-planekube-apiserver-a" href="/docs/questions/control-plane/kube-apiserver/">kube-apiserver</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
 
       </ul>
     </li>
@@ -4106,8 +4342,9 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// 设置为一个DNS地址，用于作为该服务的别名，同时 &#34;type&#34; 必须设置为 &#34;ExternalName&#34;
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ExternalName</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;externalName,omitempty&#34; protobuf:&#34;bytes,10,opt,name=externalName&#34;`</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// 外部的流量路由规则，如果设置为 &#34;Local&#34; 则会保留源客户端IP，不会去转发下一条
-</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// 如果设置为 &#34;Cluster&#34; 
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// 用于控制外部流量进入集群后如何路由到后端 Pod，影响 &#34;NodePort&#34; 或 &#34;LoadBalancer&#34; 类型服务
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// 如果设置为 &#34;Local&#34;，当该节点上没有匹配的 Pod，则流量不会被转发到集群中的其他节点，这样则会保留源客户端源 IP
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// 如果设置为 &#34;Cluster&#34;，将采用集群内部的负载均衡机制，无论外部流量来自哪个节点，都可被路由到对应 Pod
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ExternalTrafficPolicy</span> <span style="color:#000">ServiceExternalTrafficPolicyType</span> <span style="color:#4e9a06">`json:&#34;externalTrafficPolicy,omitempty&#34; protobuf:&#34;bytes,11,opt,name=externalTrafficPolicy&#34;`</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// 用于健康检测，仅当类型为 &#34;LoadBalancer&#34; 且 &#34;externalTrafficPolicy=Local&#34; 时有效；
@@ -4139,6 +4376,7 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// The default value is &#34;Cluster&#34;.
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +featureGate=ServiceInternalTrafficPolicy
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// 类似 externalTrafficPolicy 用于控制内部流量在集群内如何路由到后端 Pod
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">InternalTrafficPolicy</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">ServiceInternalTrafficPolicyType</span> <span style="color:#4e9a06">`json:&#34;internalTrafficPolicy,omitempty&#34; protobuf:&#34;bytes,22,opt,name=internalTrafficPolicy&#34;`</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
 </span></span></code></pre></div><h3 id="serviceport">ServicePort</h3>
@@ -4338,7 +4576,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  最后修改 2023.01.31: <a href="https://github.com/opsaid/website/commit/bc029edeff6439e68c54488fda9994e6e297b71c">refactor: 添加 k8s 文档说明 (bc029ed)</a>
+  最后修改 2024.05.06: <a href="https://github.com/opsaid/website/commit/96c43093048b4be20283f690509ab207080b4ace">docs: 独立常见问题处理 (96c4309)</a>
 </div>
 
 </div>

@@ -26,36 +26,24 @@ Hubble 是 …">
 <meta property="og:description" content="简要概述 Cilium 的基础是一种名为 eBPF 的新 Linux 内核技术，它使得在 Linux 内核内部动态插入强大的安全可见性和控制逻辑成为可能。由于 eBPF 运行在 Linux 内核内部，因此可以在不修改应用程序代码或容器配置的情况下应用和更新 Cilium 安全策略。
 Hubble 是一个完全分布式的网络和安全可观察性平台，它构建在 Cilium 和 eBPF 之上，以实现对服务通信和行为以及网络基础设施的深度可见性，完全透明地实现这一目标。
 通过构建在 Cilium 之上，Hubble 可以利用 eBPF 来实现可见性。通过依赖 eBPF，所有的可见性都是可编程的，这使得可以采用一种动态的方法，最小化开销同时提供用户所需的深度和详细的可见性。Hubble 已经被创建并专门设计，以充分发挥这些新的 eBPF 功能。
-为什么需要它 Cilium 通过 eBPF（Extended Berkeley Packet Filter）技术使得以前无法实现的对系统和应用程序进行细粒度和高效的可见性和控制成为可能。
-它在完全透明的情况下实现这一点，无需对应用程序进行任何更改。eBPF 同样适用于处理现代容器化工作负载以及更传统的工作负载，如虚拟机和标准的Linux进程。
-在面向高度动态的微服务的转变中，连接微服务之间的安全性既是挑战也是机遇。传统的Linux网络安全方法（例如，iptables）基于IP地址和TCP/UDP端口进行过滤，但在动态微服务环境中，IP地址经常变动。容器的高度不稳定的生命周期导致这些方法难以与应用程序一起进行横向扩展，因为负载均衡表和携带数十万规则的访问控制列表需要以不断增长的频率进行更新。协议端口（例如，用于HTTP流量的TCP端口80）不再能够用于安全目的来区分应用程序流量，因为该端口用于跨服务的广泛消息范围。
-存在哪些功能 透明地保护应用 相比传统防火墙保护在第3、4层协议，要求在特定端口上运行的协议要么完全受信任，要么被完全阻止，而 cilium 可同时具备保护应用层协议的能力，如 HTTP、gRPC、Kafka，提供了过滤单个应用程序协议请求的能力，例如：
-允许所有使用 GET 方法且路径为 /public/.* 的 HTTP 请求，拒绝所有其他请求； 允许 service1 在 Kafka 主题 topic1 上生成，允许 service2 在 topic1 上消费，拒绝所有其他 Kafka 消息； 要求所有 REST 调用中必须存在 HTTP 头 X-Token: [0-9]&#43;。 其他参考官方示例。" />
+主要特性成熟度 eBPF Networking 功能 状态 Kubernetes CNI 稳定 Load Balancing 稳定 Network Policy 稳定 Kube-proxy Replacement 稳定 Egress Gateway 稳定 Transparent Encryption (IPSec and WireGuard) 稳定 Bandwidth Manager 稳定 Cilium Mesh 功能 状态 Multi-Cluster (ClusterMesh) 稳定 External Workloads Beta Hubble Observability 功能 状态 Hubble CLI 稳定 Service Map &amp; Hubble UI 稳定 Prometheus metrics 稳定 Cilium Service Mesh 功能 状态 Kubernetes Ingress Support 稳定 Gateway API Support Beta L7-Aware Traffic Management Beta Mutual Authentication (Beta) Beta SPIFFE integration Beta 详见 cilium roadmap。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/networks/cilium/overview/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2024-01-08T09:52:32+08:00" />
-<meta property="article:modified_time" content="2024-01-16T16:33:23+08:00" /><meta property="og:site_name" content="OPSaid" />
+<meta property="article:modified_time" content="2024-04-26T17:33:59+08:00" /><meta property="og:site_name" content="OPSaid" />
 <meta itemprop="name" content="Overview">
 <meta itemprop="description" content="简要概述 Cilium 的基础是一种名为 eBPF 的新 Linux 内核技术，它使得在 Linux 内核内部动态插入强大的安全可见性和控制逻辑成为可能。由于 eBPF 运行在 Linux 内核内部，因此可以在不修改应用程序代码或容器配置的情况下应用和更新 Cilium 安全策略。
 Hubble 是一个完全分布式的网络和安全可观察性平台，它构建在 Cilium 和 eBPF 之上，以实现对服务通信和行为以及网络基础设施的深度可见性，完全透明地实现这一目标。
 通过构建在 Cilium 之上，Hubble 可以利用 eBPF 来实现可见性。通过依赖 eBPF，所有的可见性都是可编程的，这使得可以采用一种动态的方法，最小化开销同时提供用户所需的深度和详细的可见性。Hubble 已经被创建并专门设计，以充分发挥这些新的 eBPF 功能。
-为什么需要它 Cilium 通过 eBPF（Extended Berkeley Packet Filter）技术使得以前无法实现的对系统和应用程序进行细粒度和高效的可见性和控制成为可能。
-它在完全透明的情况下实现这一点，无需对应用程序进行任何更改。eBPF 同样适用于处理现代容器化工作负载以及更传统的工作负载，如虚拟机和标准的Linux进程。
-在面向高度动态的微服务的转变中，连接微服务之间的安全性既是挑战也是机遇。传统的Linux网络安全方法（例如，iptables）基于IP地址和TCP/UDP端口进行过滤，但在动态微服务环境中，IP地址经常变动。容器的高度不稳定的生命周期导致这些方法难以与应用程序一起进行横向扩展，因为负载均衡表和携带数十万规则的访问控制列表需要以不断增长的频率进行更新。协议端口（例如，用于HTTP流量的TCP端口80）不再能够用于安全目的来区分应用程序流量，因为该端口用于跨服务的广泛消息范围。
-存在哪些功能 透明地保护应用 相比传统防火墙保护在第3、4层协议，要求在特定端口上运行的协议要么完全受信任，要么被完全阻止，而 cilium 可同时具备保护应用层协议的能力，如 HTTP、gRPC、Kafka，提供了过滤单个应用程序协议请求的能力，例如：
-允许所有使用 GET 方法且路径为 /public/.* 的 HTTP 请求，拒绝所有其他请求； 允许 service1 在 Kafka 主题 topic1 上生成，允许 service2 在 topic1 上消费，拒绝所有其他 Kafka 消息； 要求所有 REST 调用中必须存在 HTTP 头 X-Token: [0-9]&#43;。 其他参考官方示例。"><meta itemprop="datePublished" content="2024-01-08T09:52:32+08:00" />
-<meta itemprop="dateModified" content="2024-01-16T16:33:23+08:00" />
-<meta itemprop="wordCount" content="523">
+主要特性成熟度 eBPF Networking 功能 状态 Kubernetes CNI 稳定 Load Balancing 稳定 Network Policy 稳定 Kube-proxy Replacement 稳定 Egress Gateway 稳定 Transparent Encryption (IPSec and WireGuard) 稳定 Bandwidth Manager 稳定 Cilium Mesh 功能 状态 Multi-Cluster (ClusterMesh) 稳定 External Workloads Beta Hubble Observability 功能 状态 Hubble CLI 稳定 Service Map &amp; Hubble UI 稳定 Prometheus metrics 稳定 Cilium Service Mesh 功能 状态 Kubernetes Ingress Support 稳定 Gateway API Support Beta L7-Aware Traffic Management Beta Mutual Authentication (Beta) Beta SPIFFE integration Beta 详见 cilium roadmap。"><meta itemprop="datePublished" content="2024-01-08T09:52:32+08:00" />
+<meta itemprop="dateModified" content="2024-04-26T17:33:59+08:00" />
+<meta itemprop="wordCount" content="605">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Overview"/>
 <meta name="twitter:description" content="简要概述 Cilium 的基础是一种名为 eBPF 的新 Linux 内核技术，它使得在 Linux 内核内部动态插入强大的安全可见性和控制逻辑成为可能。由于 eBPF 运行在 Linux 内核内部，因此可以在不修改应用程序代码或容器配置的情况下应用和更新 Cilium 安全策略。
 Hubble 是一个完全分布式的网络和安全可观察性平台，它构建在 Cilium 和 eBPF 之上，以实现对服务通信和行为以及网络基础设施的深度可见性，完全透明地实现这一目标。
 通过构建在 Cilium 之上，Hubble 可以利用 eBPF 来实现可见性。通过依赖 eBPF，所有的可见性都是可编程的，这使得可以采用一种动态的方法，最小化开销同时提供用户所需的深度和详细的可见性。Hubble 已经被创建并专门设计，以充分发挥这些新的 eBPF 功能。
-为什么需要它 Cilium 通过 eBPF（Extended Berkeley Packet Filter）技术使得以前无法实现的对系统和应用程序进行细粒度和高效的可见性和控制成为可能。
-它在完全透明的情况下实现这一点，无需对应用程序进行任何更改。eBPF 同样适用于处理现代容器化工作负载以及更传统的工作负载，如虚拟机和标准的Linux进程。
-在面向高度动态的微服务的转变中，连接微服务之间的安全性既是挑战也是机遇。传统的Linux网络安全方法（例如，iptables）基于IP地址和TCP/UDP端口进行过滤，但在动态微服务环境中，IP地址经常变动。容器的高度不稳定的生命周期导致这些方法难以与应用程序一起进行横向扩展，因为负载均衡表和携带数十万规则的访问控制列表需要以不断增长的频率进行更新。协议端口（例如，用于HTTP流量的TCP端口80）不再能够用于安全目的来区分应用程序流量，因为该端口用于跨服务的广泛消息范围。
-存在哪些功能 透明地保护应用 相比传统防火墙保护在第3、4层协议，要求在特定端口上运行的协议要么完全受信任，要么被完全阻止，而 cilium 可同时具备保护应用层协议的能力，如 HTTP、gRPC、Kafka，提供了过滤单个应用程序协议请求的能力，例如：
-允许所有使用 GET 方法且路径为 /public/.* 的 HTTP 请求，拒绝所有其他请求； 允许 service1 在 Kafka 主题 topic1 上生成，允许 service2 在 topic1 上消费，拒绝所有其他 Kafka 消息； 要求所有 REST 调用中必须存在 HTTP 头 X-Token: [0-9]&#43;。 其他参考官方示例。"/>
+主要特性成熟度 eBPF Networking 功能 状态 Kubernetes CNI 稳定 Load Balancing 稳定 Network Policy 稳定 Kube-proxy Replacement 稳定 Egress Gateway 稳定 Transparent Encryption (IPSec and WireGuard) 稳定 Bandwidth Manager 稳定 Cilium Mesh 功能 状态 Multi-Cluster (ClusterMesh) 稳定 External Workloads Beta Hubble Observability 功能 状态 Hubble CLI 稳定 Service Map &amp; Hubble UI 稳定 Prometheus metrics 稳定 Cilium Service Mesh 功能 状态 Kubernetes Ingress Support 稳定 Gateway API Support Beta L7-Aware Traffic Management Beta Mutual Authentication (Beta) Beta SPIFFE integration Beta 详见 cilium roadmap。"/>
 
 
 
@@ -262,17 +250,59 @@ if (!doNotTrack) {
           
             
               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdeploy-k8scloud-provider">
+      <input type="checkbox" id="docsdeploy-k8scloud-provider-check"/>
+      <label for="docsdeploy-k8scloud-provider-check" ><a href="/docs/deploy-k8s/cloud-provider/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">云提供商</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
               
               
               
-                <li class="without-sib collapsed" id="m-docsdeploy-k8sfaqs">
+              
+                <li class="without-sib collapsed" id="m-docsdeploy-k8scloud-provideralibaba-cloud">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdeploy-k8sfaqs-a" href="/docs/deploy-k8s/faqs/">常见问题</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdeploy-k8scloud-provideralibaba-cloud-a" href="/docs/deploy-k8s/cloud-provider/alibaba-cloud/">阿里云</a>
                     
                   </span>
                   
                 </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
             
           
         
@@ -2052,6 +2082,23 @@ if (!doNotTrack) {
             
           
         
+          
+            
+              
+              
+              
+              
+                <li class="without-sib" id="m-docsnetworksciliumkube-proxy">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksciliumkube-proxy-a" href="/docs/networks/cilium/kube-proxy/">kube-proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
 
       </ul>
     </li>
@@ -2890,6 +2937,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdev-frameworkgogrpc-kit-a" href="/docs/dev-framework/go/grpc-kit/">gRPC Kit</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdev-frameworkebpf">
+      <input type="checkbox" id="docsdev-frameworkebpf-check"/>
+      <label for="docsdev-frameworkebpf-check" ><a href="/docs/dev-framework/ebpf/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">eBPF 技术</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdev-frameworkebpfprogram-types">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdev-frameworkebpfprogram-types-a" href="/docs/dev-framework/ebpf/program-types/">程序类型</a>
                     
                   </span>
                   
@@ -3936,6 +4042,124 @@ if (!doNotTrack) {
             
           
         
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsquestions">
+      <input type="checkbox" id="docsquestions-check"/>
+      <label for="docsquestions-check" ><a href="/docs/questions/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">常见问题解决</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsquestionscontrol-plane">
+      <input type="checkbox" id="docsquestionscontrol-plane-check"/>
+      <label for="docsquestionscontrol-plane-check" ><a href="/docs/questions/control-plane/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">控制平面</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsquestionscontrol-planeetcd">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsquestionscontrol-planeetcd-a" href="/docs/questions/control-plane/etcd/">etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsquestionscontrol-planekube-apiserver">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsquestionscontrol-planekube-apiserver-a" href="/docs/questions/control-plane/kube-apiserver/">kube-apiserver</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
 
       </ul>
     </li>
@@ -3979,6 +4203,7 @@ if (!doNotTrack) {
   <ul>
     <li><a href="#简要概述">简要概述</a>
       <ul>
+        <li><a href="#主要特性成熟度">主要特性成熟度</a></li>
         <li><a href="#为什么需要它">为什么需要它</a></li>
       </ul>
     </li>
@@ -4096,6 +4321,128 @@ if (!doNotTrack) {
 <p>Cilium 的基础是一种名为 eBPF 的新 Linux 内核技术，它使得在 Linux 内核内部动态插入强大的安全可见性和控制逻辑成为可能。由于 eBPF 运行在 Linux 内核内部，因此可以在不修改应用程序代码或容器配置的情况下应用和更新 Cilium 安全策略。</p>
 <p>Hubble 是一个完全分布式的网络和安全可观察性平台，它构建在 Cilium 和 eBPF 之上，以实现对服务通信和行为以及网络基础设施的深度可见性，完全透明地实现这一目标。</p>
 <p>通过构建在 Cilium 之上，Hubble 可以利用 eBPF 来实现可见性。通过依赖 eBPF，所有的可见性都是可编程的，这使得可以采用一种动态的方法，最小化开销同时提供用户所需的深度和详细的可见性。Hubble 已经被创建并专门设计，以充分发挥这些新的 eBPF 功能。</p>
+<h3 id="主要特性成熟度">主要特性成熟度</h3>
+<ul>
+<li>eBPF Networking</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kubernetes CNI</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>Load Balancing</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>Network Policy</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>Kube-proxy Replacement</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>Egress Gateway</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>Transparent Encryption (IPSec and WireGuard)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>Bandwidth Manager</td>
+<td>稳定</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Cilium Mesh</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Multi-Cluster (ClusterMesh)</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>External Workloads</td>
+<td>Beta</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Hubble Observability</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hubble CLI</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>Service Map &amp; Hubble UI</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>Prometheus metrics</td>
+<td>稳定</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Cilium Service Mesh</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kubernetes Ingress Support</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td>Gateway API Support</td>
+<td>Beta</td>
+</tr>
+<tr>
+<td>L7-Aware Traffic Management</td>
+<td>Beta</td>
+</tr>
+<tr>
+<td>Mutual Authentication (Beta)</td>
+<td>Beta</td>
+</tr>
+<tr>
+<td>SPIFFE integration</td>
+<td>Beta</td>
+</tr>
+</tbody>
+</table>
+<p>详见 <a href="https://docs.cilium.io/en/stable/community/roadmap/#major-feature-status">cilium roadmap</a>。</p>
 <h3 id="为什么需要它">为什么需要它</h3>
 <p>Cilium 通过 eBPF（Extended Berkeley Packet Filter）技术使得以前无法实现的对系统和应用程序进行细粒度和高效的可见性和控制成为可能。</p>
 <p>它在完全透明的情况下实现这一点，无需对应用程序进行任何更改。eBPF 同样适用于处理现代容器化工作负载以及更传统的工作负载，如虚拟机和标准的Linux进程。</p>
@@ -4404,7 +4751,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  最后修改 2024.01.16: <a href="https://github.com/opsaid/website/commit/a864648fb55ea1cec24d161571b2113ad3780f3b">docs: 更新 cilium 描述 (a864648)</a>
+  最后修改 2024.04.26: <a href="https://github.com/opsaid/website/commit/8eebe2d8cd4c0e17bf1d049bfa9e2743a2eb0c4a">docs[networks]: cilium kube-proxy case (8eebe2d)</a>
 </div>
 
 </div>

@@ -32,14 +32,11 @@ ubuntu 20.04 选择最小化，同时安装sshd服务
 环境部署 ansible中控 在中控执行以下步骤：
 安装基础软件 ubuntu20.04
 apt install -y git ansible 获取部署代码 git clone https://github.com/opsaid/deploy-k8s.git 配置ssh免密登录 ssh-copy-id -p 22 root@192.168.31.20X 负载均衡器 TODO
-部署控制平面 步骤1：首次初始化配置修改 必须更改的文件 ansible/hosts.ini ansible/group_vars/all.yaml 可选更改的文件 ansible/group_vars/default.yaml ansible/group_vars/component-v1.18.yaml ansible/group_vars/component-v1.22.yaml 选择component-v1.18或compoent-v1.22是由选择部署的k8s版本所决定
-步骤2：下载依赖的二进制文件 方式1：预先下载安装包（推荐）
-二进制文件包与镜像包
-https://github.com/opsaid/deploy-k8s/releases 方式2：在线下载构建" />
+部署控制平面 步骤1：首次初始化前配置 必要更改的文件 ansible/hosts.ini ansible/group_vars/all.yaml 可选更改的文件 ansible/group_vars/default.yaml ansible/group_vars/component-v1.22.yaml ansible/group_vars/component-v1.26.yaml 选择 component-v1.22 或 compoent-v1.26 是由部署的 k8s 版本所决定。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/docs/deploy-k8s/quickstart/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2021-12-22T16:46:49+08:00" />
-<meta property="article:modified_time" content="2023-12-11T15:30:52+08:00" /><meta property="og:site_name" content="OPSaid" />
+<meta property="article:modified_time" content="2024-04-26T17:33:59+08:00" /><meta property="og:site_name" content="OPSaid" />
 <meta itemprop="name" content="快速开始">
 <meta itemprop="description" content="简要概述 k8s生态组件过多，对新人入门并不友好，本项目在于结合当前生产集群维护经验，总结一套标准的部署模版，接入内部gitlab ci实现集群基础设施的自动化管理，同时也会不断迭代优化，以实现快速搭建一套生产可用的环境。
 前置说明 操作系统 操作系统支持：ubuntu 20.04 或 debian11
@@ -48,12 +45,9 @@ ubuntu 20.04 选择最小化，同时安装sshd服务
 环境部署 ansible中控 在中控执行以下步骤：
 安装基础软件 ubuntu20.04
 apt install -y git ansible 获取部署代码 git clone https://github.com/opsaid/deploy-k8s.git 配置ssh免密登录 ssh-copy-id -p 22 root@192.168.31.20X 负载均衡器 TODO
-部署控制平面 步骤1：首次初始化配置修改 必须更改的文件 ansible/hosts.ini ansible/group_vars/all.yaml 可选更改的文件 ansible/group_vars/default.yaml ansible/group_vars/component-v1.18.yaml ansible/group_vars/component-v1.22.yaml 选择component-v1.18或compoent-v1.22是由选择部署的k8s版本所决定
-步骤2：下载依赖的二进制文件 方式1：预先下载安装包（推荐）
-二进制文件包与镜像包
-https://github.com/opsaid/deploy-k8s/releases 方式2：在线下载构建"><meta itemprop="datePublished" content="2021-12-22T16:46:49+08:00" />
-<meta itemprop="dateModified" content="2023-12-11T15:30:52+08:00" />
-<meta itemprop="wordCount" content="300">
+部署控制平面 步骤1：首次初始化前配置 必要更改的文件 ansible/hosts.ini ansible/group_vars/all.yaml 可选更改的文件 ansible/group_vars/default.yaml ansible/group_vars/component-v1.22.yaml ansible/group_vars/component-v1.26.yaml 选择 component-v1.22 或 compoent-v1.26 是由部署的 k8s 版本所决定。"><meta itemprop="datePublished" content="2021-12-22T16:46:49+08:00" />
+<meta itemprop="dateModified" content="2024-04-26T17:33:59+08:00" />
+<meta itemprop="wordCount" content="390">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="快速开始"/>
 <meta name="twitter:description" content="简要概述 k8s生态组件过多，对新人入门并不友好，本项目在于结合当前生产集群维护经验，总结一套标准的部署模版，接入内部gitlab ci实现集群基础设施的自动化管理，同时也会不断迭代优化，以实现快速搭建一套生产可用的环境。
@@ -63,10 +57,7 @@ ubuntu 20.04 选择最小化，同时安装sshd服务
 环境部署 ansible中控 在中控执行以下步骤：
 安装基础软件 ubuntu20.04
 apt install -y git ansible 获取部署代码 git clone https://github.com/opsaid/deploy-k8s.git 配置ssh免密登录 ssh-copy-id -p 22 root@192.168.31.20X 负载均衡器 TODO
-部署控制平面 步骤1：首次初始化配置修改 必须更改的文件 ansible/hosts.ini ansible/group_vars/all.yaml 可选更改的文件 ansible/group_vars/default.yaml ansible/group_vars/component-v1.18.yaml ansible/group_vars/component-v1.22.yaml 选择component-v1.18或compoent-v1.22是由选择部署的k8s版本所决定
-步骤2：下载依赖的二进制文件 方式1：预先下载安装包（推荐）
-二进制文件包与镜像包
-https://github.com/opsaid/deploy-k8s/releases 方式2：在线下载构建"/>
+部署控制平面 步骤1：首次初始化前配置 必要更改的文件 ansible/hosts.ini ansible/group_vars/all.yaml 可选更改的文件 ansible/group_vars/default.yaml ansible/group_vars/component-v1.22.yaml ansible/group_vars/component-v1.26.yaml 选择 component-v1.22 或 compoent-v1.26 是由部署的 k8s 版本所决定。"/>
 
 
 
@@ -273,17 +264,59 @@ if (!doNotTrack) {
           
             
               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdeploy-k8scloud-provider">
+      <input type="checkbox" id="docsdeploy-k8scloud-provider-check"/>
+      <label for="docsdeploy-k8scloud-provider-check" ><a href="/docs/deploy-k8s/cloud-provider/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">云提供商</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
               
               
               
-                <li class="without-sib" id="m-docsdeploy-k8sfaqs">
+              
+                <li class="without-sib collapsed" id="m-docsdeploy-k8scloud-provideralibaba-cloud">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdeploy-k8sfaqs-a" href="/docs/deploy-k8s/faqs/">常见问题</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdeploy-k8scloud-provideralibaba-cloud-a" href="/docs/deploy-k8s/cloud-provider/alibaba-cloud/">阿里云</a>
                     
                   </span>
                   
                 </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
             
           
         
@@ -2063,6 +2096,23 @@ if (!doNotTrack) {
             
           
         
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsnetworksciliumkube-proxy">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsnetworksciliumkube-proxy-a" href="/docs/networks/cilium/kube-proxy/">kube-proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
 
       </ul>
     </li>
@@ -2901,6 +2951,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdev-frameworkgogrpc-kit-a" href="/docs/dev-framework/go/grpc-kit/">gRPC Kit</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdev-frameworkebpf">
+      <input type="checkbox" id="docsdev-frameworkebpf-check"/>
+      <label for="docsdev-frameworkebpf-check" ><a href="/docs/dev-framework/ebpf/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">eBPF 技术</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdev-frameworkebpfprogram-types">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdev-frameworkebpfprogram-types-a" href="/docs/dev-framework/ebpf/program-types/">程序类型</a>
                     
                   </span>
                   
@@ -3947,6 +4056,124 @@ if (!doNotTrack) {
             
           
         
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsquestions">
+      <input type="checkbox" id="docsquestions-check"/>
+      <label for="docsquestions-check" ><a href="/docs/questions/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">常见问题解决</a></label>
+      
+        
+        
+      
+      <ul class="ul-2 collapsed">
+
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsquestionscontrol-plane">
+      <input type="checkbox" id="docsquestionscontrol-plane-check"/>
+      <label for="docsquestionscontrol-plane-check" ><a href="/docs/questions/control-plane/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">控制平面</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsquestionscontrol-planeetcd">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsquestionscontrol-planeetcd-a" href="/docs/questions/control-plane/etcd/">etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsquestionscontrol-planekube-apiserver">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsquestionscontrol-planekube-apiserver-a" href="/docs/questions/control-plane/kube-apiserver/">kube-apiserver</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
 
       </ul>
     </li>
@@ -4003,8 +4230,8 @@ if (!doNotTrack) {
     </li>
     <li><a href="#部署控制平面">部署控制平面</a>
       <ul>
-        <li><a href="#步骤1首次初始化配置修改">步骤1：首次初始化配置修改</a></li>
-        <li><a href="#步骤2下载依赖的二进制文件">步骤2：下载依赖的二进制文件</a></li>
+        <li><a href="#步骤1首次初始化前配置">步骤1：首次初始化前配置</a></li>
+        <li><a href="#步骤2下载依赖的镜像包">步骤2：下载依赖的镜像包</a></li>
         <li><a href="#步骤3生成集群依赖证书">步骤3：生成集群依赖证书</a></li>
         <li><a href="#步骤4系统公共组件安装">步骤4：系统公共组件安装</a></li>
         <li><a href="#步骤5部署控制平面节点">步骤5：部署控制平面节点</a></li>
@@ -4024,6 +4251,7 @@ if (!doNotTrack) {
       </ul>
     </li>
     <li><a href="#完成验收与后续">完成验收与后续</a></li>
+    <li><a href="#使用-calico-作为-cni">使用 calico 作为 CNI</a></li>
   </ul>
 </nav></div>
 
@@ -4162,9 +4390,9 @@ if (!doNotTrack) {
 </span></span></code></pre></div><h3 id="负载均衡器">负载均衡器</h3>
 <p>TODO</p>
 <h2 id="部署控制平面">部署控制平面</h2>
-<h3 id="步骤1首次初始化配置修改">步骤1：首次初始化配置修改</h3>
+<h3 id="步骤1首次初始化前配置">步骤1：首次初始化前配置</h3>
 <ul>
-<li>必须更改的文件</li>
+<li>必要更改的文件</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ansible/hosts.ini
 </span></span><span style="display:flex;"><span>ansible/group_vars/all.yaml
@@ -4172,15 +4400,21 @@ if (!doNotTrack) {
 <li>可选更改的文件</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ansible/group_vars/default.yaml
-</span></span><span style="display:flex;"><span>ansible/group_vars/component-v1.18.yaml
 </span></span><span style="display:flex;"><span>ansible/group_vars/component-v1.22.yaml
-</span></span></code></pre></div><p>选择component-v1.18或compoent-v1.22是由选择部署的k8s版本所决定</p>
-<h3 id="步骤2下载依赖的二进制文件">步骤2：下载依赖的二进制文件</h3>
+</span></span><span style="display:flex;"><span>ansible/group_vars/component-v1.26.yaml
+</span></span></code></pre></div><p>选择 component-v1.22 或 compoent-v1.26 是由部署的 k8s 版本所决定。</p>
+<ul>
+<li>云提供商个性参数</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ansible/group_vars/cloud-provider/private.yaml
+</span></span><span style="display:flex;"><span>ansible/group_vars/cloud-provider/alibaba-cloud.yaml
+</span></span></code></pre></div><p>根据目标主机<a href="/docs/deploy-k8s/cloud-provider/">提供商</a>上，按需更改相应参数。</p>
+<h3 id="步骤2下载依赖的镜像包">步骤2：下载依赖的镜像包</h3>
 <p>方式1：预先下载安装包（推荐）</p>
 <p>二进制文件包与镜像包</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>https://github.com/opsaid/deploy-k8s/releases
 </span></span></code></pre></div><p>方式2：在线下载构建</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># 由于网络原因，需要代理HTTPS可以配置下加速通道传输（127.0.0.1:1087仅为示例）</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># 由于网络原因，需要代理 HTTPS 配置用于加速通道传输（127.0.0.1:1087仅为示例）</span>
 </span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#export HTTPS_PROXY=http://127.0.0.1:1087</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>yum install -y docker
@@ -4196,14 +4430,14 @@ if (!doNotTrack) {
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ansible-playbook -i hosts.ini deploy.yaml -t common
 </span></span></code></pre></div><blockquote>
 <blockquote>
-<p>确保主机节点已在<code>host.ini</code>配置项<code>[kube_control_plane]</code>中</p>
+<p>确保主机节点已在 <code>host.ini</code> 配置项 <code>[kube_control_plane]</code> 中</p>
 </blockquote>
 </blockquote>
 <h3 id="步骤5部署控制平面节点">步骤5：部署控制平面节点</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ansible-playbook -i hosts.ini deploy.yaml -t control
 </span></span></code></pre></div><blockquote>
 <blockquote>
-<p>确保主机节点已在<code>host.ini</code>配置项<code>[kube_control_plane]</code>中</p>
+<p>确保主机节点已在 <code>host.ini</code> 配置项 <code>[kube_control_plane]</code> 中</p>
 </blockquote>
 </blockquote>
 <h3 id="步骤6验证控制平面组件">步骤6：验证控制平面组件</h3>
@@ -4218,17 +4452,39 @@ if (!doNotTrack) {
 </ul>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl get pods -n kube-system
 </span></span></code></pre></div><p>其中&quot;kube-apiserver&rdquo;、&ldquo;kube-controller-manager&rdquo;、&ldquo;etcd&rdquo;、&ldquo;kube-scheduler&quot;组件，在各节点必须是&quot;Running&quot;状态。</p>
+<ul>
+<li>通过 <code>kubectl</code> 为节点添加标签</li>
+</ul>
+<p>当控制平面 Pod 均正常运行时，为控制平面节点添加特殊标签：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">for</span> i in <span style="color:#204a87;font-weight:bold">$(</span>kubectl get node -o<span style="color:#ce5c00;font-weight:bold">=</span>template --template<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;{{ range .items }} {{ .metadata.name }} {{end }}&#39;</span><span style="color:#204a87;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>  kubectl label node <span style="color:#000">$i</span> node-role.kubernetes.io/master<span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span>  kubectl label node <span style="color:#000">$i</span> node-role.kubernetes.io/control-plane<span style="color:#ce5c00;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">done</span>
+</span></span></code></pre></div><ul>
+<li>通过 <code>kubectl</code> 查看节点状态</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl get nodes
+</span></span></code></pre></div><p>确认节点列表 &ldquo;ROLES&rdquo; 中均包含 &ldquo;control-plane,master&rdquo; 内容。</p>
 <h3 id="步骤7部署集群基础组件">步骤7：部署集群基础组件</h3>
-<p>登录任意一个控制平面节点，部署addons</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kustomize build /usr/local/src/addons/calico/ <span style="color:#000;font-weight:bold">|</span> kubectl apply -f -
-</span></span><span style="display:flex;"><span>kustomize build /usr/local/src/addons/coredns/ <span style="color:#000;font-weight:bold">|</span> kubectl apply -f -
-</span></span><span style="display:flex;"><span>kustomize build /usr/local/src/addons/kube-proxy/ <span style="color:#000;font-weight:bold">|</span> kubectl apply -f -
-</span></span><span style="display:flex;"><span>kustomize build /usr/local/src/addons/kube-system/ <span style="color:#000;font-weight:bold">|</span> kubectl apply -f -
-</span></span><span style="display:flex;"><span>kustomize build /usr/local/src/addons/metrics-server/ <span style="color:#000;font-weight:bold">|</span> kubectl apply -f -
-</span></span><span style="display:flex;"><span>kustomize build /usr/local/src/addons/ingress-nginx/ <span style="color:#000;font-weight:bold">|</span> kubectl apply -f -
+<p>在 k8s 1.26 及之后使用 &ldquo;cilium&rdquo; 作为 CNI 并替换 &ldquo;calico&rdquo;、&ldquo;kube-proxy&rdquo;、&ldquo;ingress-nginx&rdquo; 组件功能。</p>
+<p>登录任意一个控制平面节点，部署 addons</p>
+<ul>
+<li>部署 CNI</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl apply -k /etc/kubernetes/addons/cilium/
+</span></span></code></pre></div><ul>
+<li>部署 kube-system 权限等</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl apply -k /etc/kubernetes/addons/kube-system/
+</span></span></code></pre></div><ul>
+<li>部署 CoreDNS 等</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl apply -k /etc/kubernetes/addons/coredns/
+</span></span><span style="display:flex;"><span>kubectl apply -k /etc/kubernetes/addons/metrics-server/
 </span></span></code></pre></div><blockquote>
 <blockquote>
-<p>如在使用k8s v1.22也可直接使用<code>kubectl apply -k</code>代替<code>kustomize</code></p>
+<p>也可使用 <code>kustomize</code> 替代 <code>kubectl apply -k</code>，如：<code>kustomize build /etc/kubernetes/addons/coredns | kubectl apply -f -</code></p>
 </blockquote>
 </blockquote>
 <h3 id="步骤8本地配置存储集群">步骤8：本地配置存储集群</h3>
@@ -4236,16 +4492,16 @@ if (!doNotTrack) {
 <li>存储 kubeadm 配置至集群 ConfigMap</li>
 </ul>
 <p>其中配置取 &ldquo;ClusterConfiguration&rdquo; 类型 同步至 &ldquo;kube-system&rdquo; 下 ConfigMap &ldquo;kubeadm-config&rdquo;</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubeadm init phase upload-config kubeadm --config /usr/local/src/kubeadm/config.yaml
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubeadm init phase upload-config kubeadm --config /etc/kubernetes/kubeadm/config.yaml
 </span></span></code></pre></div><ul>
 <li>存储 kubelet 配置至集群 ConfigMap</li>
 </ul>
 <p>其中 kubelet 配置取 KubeletConfiguration 同步至 &ldquo;kube-system&rdquo; 下 ConfigMap &ldquo;kubelet-config&rdquo;</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubeadm init phase upload-config kubelet --config /usr/local/src/kubeadm/config.yaml
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubeadm init phase upload-config kubelet --config /etc/kubernetes/kubeadm/config.yaml
 </span></span></code></pre></div><ul>
 <li>存储证书至空间 &ldquo;kube-system&rdquo; 下 Secret 资源</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubeadm init phase upload-certs --upload-certs --config /usr/local/src/kubeadm/config.yaml
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubeadm init phase upload-certs --upload-certs --config /etc/kubernetes/kubeadm/config.yaml
 </span></span></code></pre></div><p>其中 &ldquo;kubeadm-certs&rdquo; 包含以下几个证书文件：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>etcd-ca.crt
 </span></span><span style="display:flex;"><span>etcd-ca.key
@@ -4256,7 +4512,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>ca.crt
 </span></span><span style="display:flex;"><span>ca.key
 </span></span></code></pre></div><h3 id="步骤9控制平面相关维护">步骤9：控制平面相关维护</h3>
-<p>TODO</p>
+<p>见<a href="/docs/questions/control-plane/">常见问题</a>。</p>
 <h2 id="新增工作节点">新增工作节点</h2>
 <h3 id="步骤1在ansible的hostini中添加节点">步骤1：在ansible的<code>host.ini</code>中添加节点</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ce5c00;font-weight:bold">[</span>all<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -4293,7 +4549,14 @@ if (!doNotTrack) {
 </blockquote>
 <h2 id="完成验收与后续">完成验收与后续</h2>
 <p>TODO</p>
-
+<h2 id="使用-calico-作为-cni">使用 calico 作为 CNI</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kustomize build /etc/kubernetes/addons/calico/ <span style="color:#000;font-weight:bold">|</span> kubectl apply -f -
+</span></span></code></pre></div><ul>
+<li>其他可选</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kustomize build /etc/kubernetes/addons/ingress-nginx/ <span style="color:#000;font-weight:bold">|</span> kubectl apply -f -
+</span></span><span style="display:flex;"><span>kustomize build /etc/kubernetes/addons/kube-proxy/ <span style="color:#000;font-weight:bold">|</span> kubectl apply -f -
+</span></span></code></pre></div>
 	
 		<br /><hr />
 		<style>
@@ -4362,7 +4625,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  最后修改 2023.12.11: <a href="https://github.com/opsaid/website/commit/7355ca551a5070c5f49aa62e8f78e7ddcf124952">docs: 更新准入控制器 (7355ca5)</a>
+  最后修改 2024.04.26: <a href="https://github.com/opsaid/website/commit/8eebe2d8cd4c0e17bf1d049bfa9e2743a2eb0c4a">docs[networks]: cilium kube-proxy case (8eebe2d)</a>
 </div>
 
 </div>
