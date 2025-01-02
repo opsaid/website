@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -22,66 +22,66 @@
 <meta name="description" content="简要概述
 Envoy 具有一个内置的网络层过滤器，称为 HTTP 连接管理器，它实现了大量的 HTTP 特定功能，接口定义在文件 http_connection_manager.proto 中。
 因为是网络层过滤器，所以使用上是配置在 &ldquo;filter_chains&rdquo; 且类型名 …">
-<meta property="og:title" content="HTTP" />
-<meta property="og:description" content="简要概述 Envoy 具有一个内置的网络层过滤器，称为 HTTP 连接管理器，它实现了大量的 HTTP 特定功能，接口定义在文件 http_connection_manager.proto 中。
-因为是网络层过滤器，所以使用上是配置在 &ldquo;filter_chains&rdquo; 且类型名称为：
-- name: envoy.filters.network.http_connection_manager typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager 示例配置 static_resources: listeners: - name: listener_0 address: ... # 监听器过滤器 listener_filters: ... # 网络层过滤器 filter_chains: - filters: - name: envoy.filters.network.http_connection_manager typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager stat_prefix: ingress_http ... clusters: ... 功能特点 HTTP 协议原生支持：HTTP/1.1, HTTP/2 and HTTP/3 HTTP 头清理：为安全原因，会自动修正一些请求头 HTTP 路由表配置：支持静态或者动态 RDS 接口 HTTP 重试插件配置：多种充实机制可供选择 功能定义在：
-github.com/envoyproxy/envoy/api/envoy/extensions/retry HTTP 内部重定向 HTTP 超时处理 HTTP 过滤器 过滤器类型 类似网络层过滤器链（filter_chains），在 HTTP 连接管理器内，还支持专门处理该层协议的过滤器链配置（http_filters）。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/networks/envoy/http/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2024-01-22T14:15:41+08:00" />
-<meta property="article:modified_time" content="2024-01-30T18:02:54+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="HTTP">
-<meta itemprop="description" content="简要概述 Envoy 具有一个内置的网络层过滤器，称为 HTTP 连接管理器，它实现了大量的 HTTP 特定功能，接口定义在文件 http_connection_manager.proto 中。
-因为是网络层过滤器，所以使用上是配置在 &ldquo;filter_chains&rdquo; 且类型名称为：
-- name: envoy.filters.network.http_connection_manager typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager 示例配置 static_resources: listeners: - name: listener_0 address: ... # 监听器过滤器 listener_filters: ... # 网络层过滤器 filter_chains: - filters: - name: envoy.filters.network.http_connection_manager typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager stat_prefix: ingress_http ... clusters: ... 功能特点 HTTP 协议原生支持：HTTP/1.1, HTTP/2 and HTTP/3 HTTP 头清理：为安全原因，会自动修正一些请求头 HTTP 路由表配置：支持静态或者动态 RDS 接口 HTTP 重试插件配置：多种充实机制可供选择 功能定义在：
-github.com/envoyproxy/envoy/api/envoy/extensions/retry HTTP 内部重定向 HTTP 超时处理 HTTP 过滤器 过滤器类型 类似网络层过滤器链（filter_chains），在 HTTP 连接管理器内，还支持专门处理该层协议的过滤器链配置（http_filters）。"><meta itemprop="datePublished" content="2024-01-22T14:15:41+08:00" />
-<meta itemprop="dateModified" content="2024-01-30T18:02:54+08:00" />
-<meta itemprop="wordCount" content="961">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="HTTP"/>
-<meta name="twitter:description" content="简要概述 Envoy 具有一个内置的网络层过滤器，称为 HTTP 连接管理器，它实现了大量的 HTTP 特定功能，接口定义在文件 http_connection_manager.proto 中。
-因为是网络层过滤器，所以使用上是配置在 &ldquo;filter_chains&rdquo; 且类型名称为：
-- name: envoy.filters.network.http_connection_manager typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager 示例配置 static_resources: listeners: - name: listener_0 address: ... # 监听器过滤器 listener_filters: ... # 网络层过滤器 filter_chains: - filters: - name: envoy.filters.network.http_connection_manager typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager stat_prefix: ingress_http ... clusters: ... 功能特点 HTTP 协议原生支持：HTTP/1.1, HTTP/2 and HTTP/3 HTTP 头清理：为安全原因，会自动修正一些请求头 HTTP 路由表配置：支持静态或者动态 RDS 接口 HTTP 重试插件配置：多种充实机制可供选择 功能定义在：
-github.com/envoyproxy/envoy/api/envoy/extensions/retry HTTP 内部重定向 HTTP 超时处理 HTTP 过滤器 过滤器类型 类似网络层过滤器链（filter_chains），在 HTTP 连接管理器内，还支持专门处理该层协议的过滤器链配置（http_filters）。"/>
+<meta property="og:url" content="/docs/networks/envoy/http/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="HTTP">
+  <meta property="og:description" content="简要概述 Envoy 具有一个内置的网络层过滤器，称为 HTTP 连接管理器，它实现了大量的 HTTP 特定功能，接口定义在文件 http_connection_manager.proto 中。
+因为是网络层过滤器，所以使用上是配置在 “filter_chains” 且类型名称为：
+- name: envoy.filters.network.http_connection_manager typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager 示例配置 static_resources: listeners: - name: listener_0 address: ... # 监听器过滤器 listener_filters: ... # 网络层过滤器 filter_chains: - filters: - name: envoy.filters.network.http_connection_manager typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager stat_prefix: ingress_http ... clusters: ... 功能特点 HTTP 协议原生支持：HTTP/1.1, HTTP/2 and HTTP/3 HTTP 头清理：为安全原因，会自动修正一些请求头 HTTP 路由表配置：支持静态或者动态 RDS 接口 HTTP 重试插件配置：多种充实机制可供选择 功能定义在：">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-01-22T14:15:41+08:00">
+    <meta property="article:modified_time" content="2024-01-30T18:02:54+08:00">
+
+  <meta itemprop="name" content="HTTP">
+  <meta itemprop="description" content="简要概述 Envoy 具有一个内置的网络层过滤器，称为 HTTP 连接管理器，它实现了大量的 HTTP 特定功能，接口定义在文件 http_connection_manager.proto 中。
+因为是网络层过滤器，所以使用上是配置在 “filter_chains” 且类型名称为：
+- name: envoy.filters.network.http_connection_manager typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager 示例配置 static_resources: listeners: - name: listener_0 address: ... # 监听器过滤器 listener_filters: ... # 网络层过滤器 filter_chains: - filters: - name: envoy.filters.network.http_connection_manager typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager stat_prefix: ingress_http ... clusters: ... 功能特点 HTTP 协议原生支持：HTTP/1.1, HTTP/2 and HTTP/3 HTTP 头清理：为安全原因，会自动修正一些请求头 HTTP 路由表配置：支持静态或者动态 RDS 接口 HTTP 重试插件配置：多种充实机制可供选择 功能定义在：">
+  <meta itemprop="datePublished" content="2024-01-22T14:15:41+08:00">
+  <meta itemprop="dateModified" content="2024-01-30T18:02:54+08:00">
+  <meta itemprop="wordCount" content="961">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HTTP">
+  <meta name="twitter:description" content="简要概述 Envoy 具有一个内置的网络层过滤器，称为 HTTP 连接管理器，它实现了大量的 HTTP 特定功能，接口定义在文件 http_connection_manager.proto 中。
+因为是网络层过滤器，所以使用上是配置在 “filter_chains” 且类型名称为：
+- name: envoy.filters.network.http_connection_manager typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager 示例配置 static_resources: listeners: - name: listener_0 address: ... # 监听器过滤器 listener_filters: ... # 网络层过滤器 filter_chains: - filters: - name: envoy.filters.network.http_connection_manager typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager stat_prefix: ingress_http ... clusters: ... 功能特点 HTTP 协议原生支持：HTTP/1.1, HTTP/2 and HTTP/3 HTTP 头清理：为安全原因，会自动修正一些请求头 HTTP 路由表配置：支持静态或者动态 RDS 接口 HTTP 重试插件配置：多种充实机制可供选择 功能定义在：">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1044,6 +1044,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3077,9 +3094,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3093,10 +3110,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3156,6 +3376,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4915,7 +5194,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

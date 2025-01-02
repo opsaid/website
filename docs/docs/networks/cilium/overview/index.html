@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -22,66 +22,69 @@
 <meta name="description" content="简要概述
 Cilium 的基础是一种名为 eBPF 的新 Linux 内核技术，它使得在 Linux 内核内部动态插入强大的安全可见性和控制逻辑成为可能。由于 eBPF 运行在 Linux 内核内部，因此可以在不修改应用程序代码或容器配置的情况下应用和更新 Cilium 安全策略。
 Hubble 是 …">
-<meta property="og:title" content="Overview" />
-<meta property="og:description" content="简要概述 Cilium 的基础是一种名为 eBPF 的新 Linux 内核技术，它使得在 Linux 内核内部动态插入强大的安全可见性和控制逻辑成为可能。由于 eBPF 运行在 Linux 内核内部，因此可以在不修改应用程序代码或容器配置的情况下应用和更新 Cilium 安全策略。
+<meta property="og:url" content="/docs/networks/cilium/overview/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Overview">
+  <meta property="og:description" content="简要概述 Cilium 的基础是一种名为 eBPF 的新 Linux 内核技术，它使得在 Linux 内核内部动态插入强大的安全可见性和控制逻辑成为可能。由于 eBPF 运行在 Linux 内核内部，因此可以在不修改应用程序代码或容器配置的情况下应用和更新 Cilium 安全策略。
 Hubble 是一个完全分布式的网络和安全可观察性平台，它构建在 Cilium 和 eBPF 之上，以实现对服务通信和行为以及网络基础设施的深度可见性，完全透明地实现这一目标。
 通过构建在 Cilium 之上，Hubble 可以利用 eBPF 来实现可见性。通过依赖 eBPF，所有的可见性都是可编程的，这使得可以采用一种动态的方法，最小化开销同时提供用户所需的深度和详细的可见性。Hubble 已经被创建并专门设计，以充分发挥这些新的 eBPF 功能。
-主要特性成熟度 eBPF Networking 功能 状态 Kubernetes CNI 稳定 Load Balancing 稳定 Network Policy 稳定 Kube-proxy Replacement 稳定 Egress Gateway 稳定 Transparent Encryption (IPSec and WireGuard) 稳定 Bandwidth Manager 稳定 Cilium Mesh 功能 状态 Multi-Cluster (ClusterMesh) 稳定 External Workloads Beta Hubble Observability 功能 状态 Hubble CLI 稳定 Service Map &amp; Hubble UI 稳定 Prometheus metrics 稳定 Cilium Service Mesh 功能 状态 Kubernetes Ingress Support 稳定 Gateway API Support Beta L7-Aware Traffic Management Beta Mutual Authentication (Beta) Beta SPIFFE integration Beta 详见 cilium roadmap。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/networks/cilium/overview/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2024-01-08T09:52:32+08:00" />
-<meta property="article:modified_time" content="2024-04-26T17:33:59+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Overview">
-<meta itemprop="description" content="简要概述 Cilium 的基础是一种名为 eBPF 的新 Linux 内核技术，它使得在 Linux 内核内部动态插入强大的安全可见性和控制逻辑成为可能。由于 eBPF 运行在 Linux 内核内部，因此可以在不修改应用程序代码或容器配置的情况下应用和更新 Cilium 安全策略。
+主要特性成熟度 eBPF Networking 功能 状态 Kubernetes CNI 稳定 Load Balancing 稳定 Network Policy 稳定 Kube-proxy Replacement 稳定 Egress Gateway 稳定 Transparent Encryption (IPSec and WireGuard) 稳定 Bandwidth Manager 稳定 Cilium Mesh 功能 状态 Multi-Cluster (ClusterMesh) 稳定 External Workloads Beta Hubble Observability 功能 状态 Hubble CLI 稳定 Service Map &amp; Hubble UI 稳定 Prometheus metrics 稳定 Cilium Service Mesh 功能 状态 Kubernetes Ingress Support 稳定 Gateway API Support Beta L7-Aware Traffic Management Beta Mutual Authentication (Beta) Beta SPIFFE integration Beta 详见 cilium roadmap。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-01-08T09:52:32+08:00">
+    <meta property="article:modified_time" content="2024-04-26T17:33:59+08:00">
+
+  <meta itemprop="name" content="Overview">
+  <meta itemprop="description" content="简要概述 Cilium 的基础是一种名为 eBPF 的新 Linux 内核技术，它使得在 Linux 内核内部动态插入强大的安全可见性和控制逻辑成为可能。由于 eBPF 运行在 Linux 内核内部，因此可以在不修改应用程序代码或容器配置的情况下应用和更新 Cilium 安全策略。
 Hubble 是一个完全分布式的网络和安全可观察性平台，它构建在 Cilium 和 eBPF 之上，以实现对服务通信和行为以及网络基础设施的深度可见性，完全透明地实现这一目标。
 通过构建在 Cilium 之上，Hubble 可以利用 eBPF 来实现可见性。通过依赖 eBPF，所有的可见性都是可编程的，这使得可以采用一种动态的方法，最小化开销同时提供用户所需的深度和详细的可见性。Hubble 已经被创建并专门设计，以充分发挥这些新的 eBPF 功能。
-主要特性成熟度 eBPF Networking 功能 状态 Kubernetes CNI 稳定 Load Balancing 稳定 Network Policy 稳定 Kube-proxy Replacement 稳定 Egress Gateway 稳定 Transparent Encryption (IPSec and WireGuard) 稳定 Bandwidth Manager 稳定 Cilium Mesh 功能 状态 Multi-Cluster (ClusterMesh) 稳定 External Workloads Beta Hubble Observability 功能 状态 Hubble CLI 稳定 Service Map &amp; Hubble UI 稳定 Prometheus metrics 稳定 Cilium Service Mesh 功能 状态 Kubernetes Ingress Support 稳定 Gateway API Support Beta L7-Aware Traffic Management Beta Mutual Authentication (Beta) Beta SPIFFE integration Beta 详见 cilium roadmap。"><meta itemprop="datePublished" content="2024-01-08T09:52:32+08:00" />
-<meta itemprop="dateModified" content="2024-04-26T17:33:59+08:00" />
-<meta itemprop="wordCount" content="605">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Overview"/>
-<meta name="twitter:description" content="简要概述 Cilium 的基础是一种名为 eBPF 的新 Linux 内核技术，它使得在 Linux 内核内部动态插入强大的安全可见性和控制逻辑成为可能。由于 eBPF 运行在 Linux 内核内部，因此可以在不修改应用程序代码或容器配置的情况下应用和更新 Cilium 安全策略。
+主要特性成熟度 eBPF Networking 功能 状态 Kubernetes CNI 稳定 Load Balancing 稳定 Network Policy 稳定 Kube-proxy Replacement 稳定 Egress Gateway 稳定 Transparent Encryption (IPSec and WireGuard) 稳定 Bandwidth Manager 稳定 Cilium Mesh 功能 状态 Multi-Cluster (ClusterMesh) 稳定 External Workloads Beta Hubble Observability 功能 状态 Hubble CLI 稳定 Service Map &amp; Hubble UI 稳定 Prometheus metrics 稳定 Cilium Service Mesh 功能 状态 Kubernetes Ingress Support 稳定 Gateway API Support Beta L7-Aware Traffic Management Beta Mutual Authentication (Beta) Beta SPIFFE integration Beta 详见 cilium roadmap。">
+  <meta itemprop="datePublished" content="2024-01-08T09:52:32+08:00">
+  <meta itemprop="dateModified" content="2024-04-26T17:33:59+08:00">
+  <meta itemprop="wordCount" content="605">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Overview">
+  <meta name="twitter:description" content="简要概述 Cilium 的基础是一种名为 eBPF 的新 Linux 内核技术，它使得在 Linux 内核内部动态插入强大的安全可见性和控制逻辑成为可能。由于 eBPF 运行在 Linux 内核内部，因此可以在不修改应用程序代码或容器配置的情况下应用和更新 Cilium 安全策略。
 Hubble 是一个完全分布式的网络和安全可观察性平台，它构建在 Cilium 和 eBPF 之上，以实现对服务通信和行为以及网络基础设施的深度可见性，完全透明地实现这一目标。
 通过构建在 Cilium 之上，Hubble 可以利用 eBPF 来实现可见性。通过依赖 eBPF，所有的可见性都是可编程的，这使得可以采用一种动态的方法，最小化开销同时提供用户所需的深度和详细的可见性。Hubble 已经被创建并专门设计，以充分发挥这些新的 eBPF 功能。
-主要特性成熟度 eBPF Networking 功能 状态 Kubernetes CNI 稳定 Load Balancing 稳定 Network Policy 稳定 Kube-proxy Replacement 稳定 Egress Gateway 稳定 Transparent Encryption (IPSec and WireGuard) 稳定 Bandwidth Manager 稳定 Cilium Mesh 功能 状态 Multi-Cluster (ClusterMesh) 稳定 External Workloads Beta Hubble Observability 功能 状态 Hubble CLI 稳定 Service Map &amp; Hubble UI 稳定 Prometheus metrics 稳定 Cilium Service Mesh 功能 状态 Kubernetes Ingress Support 稳定 Gateway API Support Beta L7-Aware Traffic Management Beta Mutual Authentication (Beta) Beta SPIFFE integration Beta 详见 cilium roadmap。"/>
+主要特性成熟度 eBPF Networking 功能 状态 Kubernetes CNI 稳定 Load Balancing 稳定 Network Policy 稳定 Kube-proxy Replacement 稳定 Egress Gateway 稳定 Transparent Encryption (IPSec and WireGuard) 稳定 Bandwidth Manager 稳定 Cilium Mesh 功能 状态 Multi-Cluster (ClusterMesh) 稳定 External Workloads Beta Hubble Observability 功能 状态 Hubble CLI 稳定 Service Map &amp; Hubble UI 稳定 Prometheus metrics 稳定 Cilium Service Mesh 功能 状态 Kubernetes Ingress Support 稳定 Gateway API Support Beta L7-Aware Traffic Management Beta Mutual Authentication (Beta) Beta SPIFFE integration Beta 详见 cilium roadmap。">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1044,6 +1047,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3077,9 +3097,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3093,10 +3113,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3156,6 +3379,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4326,121 +4608,121 @@ if (!doNotTrack) {
 <li>eBPF Networking</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>功能</th>
-<th>状态</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Kubernetes CNI</td>
-<td>稳定</td>
-</tr>
-<tr>
-<td>Load Balancing</td>
-<td>稳定</td>
-</tr>
-<tr>
-<td>Network Policy</td>
-<td>稳定</td>
-</tr>
-<tr>
-<td>Kube-proxy Replacement</td>
-<td>稳定</td>
-</tr>
-<tr>
-<td>Egress Gateway</td>
-<td>稳定</td>
-</tr>
-<tr>
-<td>Transparent Encryption (IPSec and WireGuard)</td>
-<td>稳定</td>
-</tr>
-<tr>
-<td>Bandwidth Manager</td>
-<td>稳定</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>功能</th>
+          <th>状态</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Kubernetes CNI</td>
+          <td>稳定</td>
+      </tr>
+      <tr>
+          <td>Load Balancing</td>
+          <td>稳定</td>
+      </tr>
+      <tr>
+          <td>Network Policy</td>
+          <td>稳定</td>
+      </tr>
+      <tr>
+          <td>Kube-proxy Replacement</td>
+          <td>稳定</td>
+      </tr>
+      <tr>
+          <td>Egress Gateway</td>
+          <td>稳定</td>
+      </tr>
+      <tr>
+          <td>Transparent Encryption (IPSec and WireGuard)</td>
+          <td>稳定</td>
+      </tr>
+      <tr>
+          <td>Bandwidth Manager</td>
+          <td>稳定</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li>Cilium Mesh</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>功能</th>
-<th>状态</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Multi-Cluster (ClusterMesh)</td>
-<td>稳定</td>
-</tr>
-<tr>
-<td>External Workloads</td>
-<td>Beta</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>功能</th>
+          <th>状态</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Multi-Cluster (ClusterMesh)</td>
+          <td>稳定</td>
+      </tr>
+      <tr>
+          <td>External Workloads</td>
+          <td>Beta</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li>Hubble Observability</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>功能</th>
-<th>状态</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Hubble CLI</td>
-<td>稳定</td>
-</tr>
-<tr>
-<td>Service Map &amp; Hubble UI</td>
-<td>稳定</td>
-</tr>
-<tr>
-<td>Prometheus metrics</td>
-<td>稳定</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>功能</th>
+          <th>状态</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Hubble CLI</td>
+          <td>稳定</td>
+      </tr>
+      <tr>
+          <td>Service Map &amp; Hubble UI</td>
+          <td>稳定</td>
+      </tr>
+      <tr>
+          <td>Prometheus metrics</td>
+          <td>稳定</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li>Cilium Service Mesh</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>功能</th>
-<th>状态</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Kubernetes Ingress Support</td>
-<td>稳定</td>
-</tr>
-<tr>
-<td>Gateway API Support</td>
-<td>Beta</td>
-</tr>
-<tr>
-<td>L7-Aware Traffic Management</td>
-<td>Beta</td>
-</tr>
-<tr>
-<td>Mutual Authentication (Beta)</td>
-<td>Beta</td>
-</tr>
-<tr>
-<td>SPIFFE integration</td>
-<td>Beta</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>功能</th>
+          <th>状态</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Kubernetes Ingress Support</td>
+          <td>稳定</td>
+      </tr>
+      <tr>
+          <td>Gateway API Support</td>
+          <td>Beta</td>
+      </tr>
+      <tr>
+          <td>L7-Aware Traffic Management</td>
+          <td>Beta</td>
+      </tr>
+      <tr>
+          <td>Mutual Authentication (Beta)</td>
+          <td>Beta</td>
+      </tr>
+      <tr>
+          <td>SPIFFE integration</td>
+          <td>Beta</td>
+      </tr>
+  </tbody>
 </table>
 <p>详见 <a href="https://docs.cilium.io/en/stable/community/roadmap/#major-feature-status">cilium roadmap</a>。</p>
 <h3 id="为什么需要它">为什么需要它</h3>
@@ -4589,60 +4871,60 @@ if (!doNotTrack) {
 <p>如果未提供源，则标签源默认为 any:，这将匹配所有标签，如果提供了源，则选择和匹配标签的源需要匹配。</p>
 <p>特殊标识：</p>
 <table>
-<thead>
-<tr>
-<th>编号</th>
-<th>标识</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>reserved:unknown</td>
-<td>x</td>
-</tr>
-<tr>
-<td>1</td>
-<td>reserved:host</td>
-<td>本地主机。任何源自或指定给本地主机IP的流量</td>
-</tr>
-<tr>
-<td>2</td>
-<td>reserved:world</td>
-<td>集群外的任何网络端点</td>
-</tr>
-<tr>
-<td>3</td>
-<td>reserved:unmanaged</td>
-<td>未由Cilium管理的端点，例如在安装Cilium之前启动的Kubernetes Pod</td>
-</tr>
-<tr>
-<td>4</td>
-<td>reserved:health</td>
-<td>由 cilium-agent 生成的ip, 用于健康检查</td>
-</tr>
-<tr>
-<td>5</td>
-<td>reserved:init</td>
-<td>尚未解析身份的端点被分配init身份。表示端点处于某种阶段</td>
-</tr>
-<tr>
-<td>6</td>
-<td>reserved:remote-node</td>
-<td>集群排除本节点，其他远程主机集合</td>
-</tr>
-<tr>
-<td>7</td>
-<td>reserved:kube-apiserver</td>
-<td>运行 kube-apiserver 后端服务的节点</td>
-</tr>
-<tr>
-<td>8</td>
-<td>reserved:ingress</td>
-<td>用作 ingress 代理连接的源地址的IP</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>编号</th>
+          <th>标识</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0</td>
+          <td>reserved:unknown</td>
+          <td>x</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>reserved:host</td>
+          <td>本地主机。任何源自或指定给本地主机IP的流量</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>reserved:world</td>
+          <td>集群外的任何网络端点</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>reserved:unmanaged</td>
+          <td>未由Cilium管理的端点，例如在安装Cilium之前启动的Kubernetes Pod</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>reserved:health</td>
+          <td>由 cilium-agent 生成的ip, 用于健康检查</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td>reserved:init</td>
+          <td>尚未解析身份的端点被分配init身份。表示端点处于某种阶段</td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td>reserved:remote-node</td>
+          <td>集群排除本节点，其他远程主机集合</td>
+      </tr>
+      <tr>
+          <td>7</td>
+          <td>reserved:kube-apiserver</td>
+          <td>运行 kube-apiserver 后端服务的节点</td>
+      </tr>
+      <tr>
+          <td>8</td>
+          <td>reserved:ingress</td>
+          <td>用作 ingress 代理连接的源地址的IP</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="endpoint">Endpoint</h3>
 <p>Cilium 为容器分配 IP 地址，而同一个 Pod 内多个容器共享同一个地址，他们则称为一个端点（Endpoint），如：</p>
@@ -4657,22 +4939,22 @@ if (!doNotTrack) {
 <p>同时为了标识目的，cilium 为每个集群节点上的所有端点分配一个内部端点ID，且 ID 在单个集群节点的上下文中是唯一的。</p>
 <p>端点会自动从与其关联的容器拉取标签作为元数据，然后使用这些元数据来标识端点，以用于安全策略、负载均衡和路由等目的。这些元数据的来源取决于正在使用的编排系统，目前支持以下元数据检索机制：</p>
 <table>
-<thead>
-<tr>
-<th>编排系统</th>
-<th>获取方式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Kubernetes</td>
-<td>Pod labels (via k8s API)</td>
-</tr>
-<tr>
-<td>Docker</td>
-<td>Container labels (via Docker API)</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>编排系统</th>
+          <th>获取方式</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Kubernetes</td>
+          <td>Pod labels (via k8s API)</td>
+      </tr>
+      <tr>
+          <td>Docker</td>
+          <td>Container labels (via Docker API)</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="identity">Identity</h3>
 <p>所有端点（Endpoint）都被分配一个身份（Identity），用于强制执行端点之间的基本连接。在传统的网络术语中，这相当于第3层的强制执行。</p>
@@ -4774,7 +5056,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

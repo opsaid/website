@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -26,69 +26,72 @@
 https://opentelemetry.io/docs/collector/getting-started/#linux-packaging
 源码包编译安装
 export GOOS= …">
-<meta property="og:title" content="Collector" />
-<meta property="og:description" content="简要概述 说明 OpenTelemetry Collector 组件安装部署。
+<meta property="og:url" content="/docs/component/open-telemetry/collector/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Collector">
+  <meta property="og:description" content="简要概述 说明 OpenTelemetry Collector 组件安装部署。
 简单部署 预先编译安装包 https://opentelemetry.io/docs/collector/getting-started/#linux-packaging
 源码包编译安装 export GOOS=linux export GOARCH=amd64 git clone https://github.com/open-telemetry/opentelemetry-collector.git cd opentelemetry-collector make install-tools make otelcorecol ./bin/otelcorecol_* --config ./examples/local/otel-config.yaml 配置示列 TODO;
 配置结构 Config github.com/open-telemetry/opentelemetry-collector/otelcol/config.go
-// Config defines the configuration for the various elements of collector or agent. type Config struct { // Receivers is a map of ComponentID to Receivers. Receivers map[component.ID]component.Config // Exporters is a map of ComponentID to Exporters. Exporters map[component.ID]component.Config // Processors is a map of ComponentID to Processors." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/component/open-telemetry/collector/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-05-14T11:33:11+08:00" />
-<meta property="article:modified_time" content="2023-11-02T14:23:01+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Collector">
-<meta itemprop="description" content="简要概述 说明 OpenTelemetry Collector 组件安装部署。
+// Config defines the configuration for the various elements of collector or agent. type Config struct { // Receivers is a map of ComponentID to Receivers. Receivers map[component.ID]component.Config // Exporters is a map of ComponentID to Exporters. Exporters map[component.ID]component.Config // Processors is a map of ComponentID to Processors. Processors map[component.ID]component.Config // Connectors is a map of ComponentID to connectors. Connectors map[component.ID]component.Config // Extensions is a map of ComponentID to extensions. Extensions map[component.ID]component.Config Service service.Config } Receivers github.com/open-telemetry/opentelemetry-collector/receiver">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-05-14T11:33:11+08:00">
+    <meta property="article:modified_time" content="2023-11-02T14:23:01+08:00">
+
+  <meta itemprop="name" content="Collector">
+  <meta itemprop="description" content="简要概述 说明 OpenTelemetry Collector 组件安装部署。
 简单部署 预先编译安装包 https://opentelemetry.io/docs/collector/getting-started/#linux-packaging
 源码包编译安装 export GOOS=linux export GOARCH=amd64 git clone https://github.com/open-telemetry/opentelemetry-collector.git cd opentelemetry-collector make install-tools make otelcorecol ./bin/otelcorecol_* --config ./examples/local/otel-config.yaml 配置示列 TODO;
 配置结构 Config github.com/open-telemetry/opentelemetry-collector/otelcol/config.go
-// Config defines the configuration for the various elements of collector or agent. type Config struct { // Receivers is a map of ComponentID to Receivers. Receivers map[component.ID]component.Config // Exporters is a map of ComponentID to Exporters. Exporters map[component.ID]component.Config // Processors is a map of ComponentID to Processors."><meta itemprop="datePublished" content="2023-05-14T11:33:11+08:00" />
-<meta itemprop="dateModified" content="2023-11-02T14:23:01+08:00" />
-<meta itemprop="wordCount" content="2873">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Collector"/>
-<meta name="twitter:description" content="简要概述 说明 OpenTelemetry Collector 组件安装部署。
+// Config defines the configuration for the various elements of collector or agent. type Config struct { // Receivers is a map of ComponentID to Receivers. Receivers map[component.ID]component.Config // Exporters is a map of ComponentID to Exporters. Exporters map[component.ID]component.Config // Processors is a map of ComponentID to Processors. Processors map[component.ID]component.Config // Connectors is a map of ComponentID to connectors. Connectors map[component.ID]component.Config // Extensions is a map of ComponentID to extensions. Extensions map[component.ID]component.Config Service service.Config } Receivers github.com/open-telemetry/opentelemetry-collector/receiver">
+  <meta itemprop="datePublished" content="2023-05-14T11:33:11+08:00">
+  <meta itemprop="dateModified" content="2023-11-02T14:23:01+08:00">
+  <meta itemprop="wordCount" content="2873">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Collector">
+  <meta name="twitter:description" content="简要概述 说明 OpenTelemetry Collector 组件安装部署。
 简单部署 预先编译安装包 https://opentelemetry.io/docs/collector/getting-started/#linux-packaging
 源码包编译安装 export GOOS=linux export GOARCH=amd64 git clone https://github.com/open-telemetry/opentelemetry-collector.git cd opentelemetry-collector make install-tools make otelcorecol ./bin/otelcorecol_* --config ./examples/local/otel-config.yaml 配置示列 TODO;
 配置结构 Config github.com/open-telemetry/opentelemetry-collector/otelcol/config.go
-// Config defines the configuration for the various elements of collector or agent. type Config struct { // Receivers is a map of ComponentID to Receivers. Receivers map[component.ID]component.Config // Exporters is a map of ComponentID to Exporters. Exporters map[component.ID]component.Config // Processors is a map of ComponentID to Processors."/>
+// Config defines the configuration for the various elements of collector or agent. type Config struct { // Receivers is a map of ComponentID to Receivers. Receivers map[component.ID]component.Config // Exporters is a map of ComponentID to Exporters. Exporters map[component.ID]component.Config // Processors is a map of ComponentID to Processors. Processors map[component.ID]component.Config // Connectors is a map of ComponentID to connectors. Connectors map[component.ID]component.Config // Extensions is a map of ComponentID to extensions. Extensions map[component.ID]component.Config Service service.Config } Receivers github.com/open-telemetry/opentelemetry-collector/receiver">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1051,6 +1054,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3084,9 +3104,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3100,10 +3120,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3163,6 +3386,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4538,7 +4820,7 @@ if (!doNotTrack) {
 <blockquote>
 <p>github.com/open-telemetry/opentelemetry-collector/connector</p>
 </blockquote>
-<p>用于连接 <a href="">Receivers</a> 与 <a href="">Exporters</a> 两个组件且作为其中的管道，起点用于接收 <a href="">Receivers</a> 数据，终点用于 <a href="">Exporters</a> 导出数据。</p>
+<p>用于连接 <a href="/">Receivers</a> 与 <a href="/">Exporters</a> 两个组件且作为其中的管道，起点用于接收 <a href="/">Receivers</a> 数据，终点用于 <a href="/">Exporters</a> 导出数据。</p>
 <p>它可以消费和发出相同数据类型或不同数据类型的数据，连接器可以生成并发送数据来汇总消耗的数据，也可以简单地复制或路由数据。</p>
 <p>根据 <a href="/docs/component/open-telemetry/collector/#config">Config</a> 转换 yaml 配置如下：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">connectors</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -4591,7 +4873,7 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
 </span></span></code></pre></div><h3 id="service">Service</h3>
 <p>由 telemetry、extensions、pipelines 三部分组成。</p>
-<p>其中 telemetry 用于自身进程的遥感配置，而 extensions、pipelines 用于根据 <a href="/docs/component/open-telemetry/collector/#receivers">Receivers</a>、<a href="">Processors</a>、<a href="/docs/component/open-telemetry/collector/#exporters">Exporters</a>、<a href="">Extensions</a> 部分中的配置启用的组件，如果组件已配置，但未在这里定义，则不会启用该组件。</p>
+<p>其中 telemetry 用于自身进程的遥感配置，而 extensions、pipelines 用于根据 <a href="/docs/component/open-telemetry/collector/#receivers">Receivers</a>、<a href="/">Processors</a>、<a href="/docs/component/open-telemetry/collector/#exporters">Exporters</a>、<a href="/">Extensions</a> 部分中的配置启用的组件，如果组件已配置，但未在这里定义，则不会启用该组件。</p>
 <p>配置示例：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">service</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">telemetry</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -5085,7 +5367,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

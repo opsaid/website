@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -27,69 +27,72 @@
 关键日志
 
 {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;: …">
-<meta property="og:title" content="etcd" />
-<meta property="og:description" content="简要概述 记录 etcd 相关的场景问题。
-无法启动类 &ldquo;received signal; shutting down&rdquo; 关键日志 {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:31:34.277Z&#34;,&#34;caller&#34;:&#34;rafthttp/stream.go:274&#34;,&#34;msg&#34;:&#34;established TCP streaming connection with remote peer&#34;,&#34;stream-writer-type&#34;:&#34;stream MsgApp v2&#34;,&#34;local-member-id&#34;:&#34;edacac26a3fb24b3&#34;,&#34;remote-peer-id&#34;:&#34;2c8b55a3459bb7ff&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;osutil/interrupt_unix.go:64&#34;,&#34;msg&#34;:&#34;received signal; shutting down&#34;,&#34;signal&#34;:&#34;terminated&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;embed/etcd.go:367&#34;,&#34;msg&#34;:&#34;closing etcd server&#34;,&#34;name&#34;:&#34;node3&#34;,&#34;data-dir&#34;:&#34;/data/etcd/&#34;,&#34;advertise-peer-urls&#34;:[&#34;https://10.49.2.36:2380&#34;],&#34;advertise-client-urls&#34;:[&#34;https://10.49.2.36:2379&#34;]} 问题原因 在文件 /etc/containerd/config.toml 中的 SystemdCgroup 配置为 false 了，与 kubelet 中不同。
-解决步骤 更改配置，使用同 &ldquo;kubelet&rdquo; 一样的 cgroup 为 systemd
+<meta property="og:url" content="/docs/questions/control-plane/etcd/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="etcd">
+  <meta property="og:description" content="简要概述 记录 etcd 相关的场景问题。
+无法启动类 “received signal; shutting down” 关键日志 {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:31:34.277Z&#34;,&#34;caller&#34;:&#34;rafthttp/stream.go:274&#34;,&#34;msg&#34;:&#34;established TCP streaming connection with remote peer&#34;,&#34;stream-writer-type&#34;:&#34;stream MsgApp v2&#34;,&#34;local-member-id&#34;:&#34;edacac26a3fb24b3&#34;,&#34;remote-peer-id&#34;:&#34;2c8b55a3459bb7ff&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;osutil/interrupt_unix.go:64&#34;,&#34;msg&#34;:&#34;received signal; shutting down&#34;,&#34;signal&#34;:&#34;terminated&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;embed/etcd.go:367&#34;,&#34;msg&#34;:&#34;closing etcd server&#34;,&#34;name&#34;:&#34;node3&#34;,&#34;data-dir&#34;:&#34;/data/etcd/&#34;,&#34;advertise-peer-urls&#34;:[&#34;https://10.49.2.36:2380&#34;],&#34;advertise-client-urls&#34;:[&#34;https://10.49.2.36:2379&#34;]} 问题原因 在文件 /etc/containerd/config.toml 中的 SystemdCgroup 配置为 false 了，与 kubelet 中不同。
+解决步骤 更改配置，使用同 “kubelet” 一样的 cgroup 为 systemd
 [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd.runtimes.runc.options] SystemdCgroup = true 备份恢复类 控制节点 etcd 数据恢复 登录故障节点，移除 etcd 静态 POD cd /etc/kubernetes/manifests/ mv etcd.yaml /usr/local/src/ 登录另外正常的 etcd 集群节点 查看成员列表
-ctr --namespace k8s.io run \ --rm \ --net-host \ --mount type=bind,src=/etc/kubernetes,dst=/etc/kubernetes,options=rbind:ro \ registry." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/questions/control-plane/etcd/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-08-03T09:42:05+08:00" />
-<meta property="article:modified_time" content="2024-05-06T14:15:46+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="etcd">
-<meta itemprop="description" content="简要概述 记录 etcd 相关的场景问题。
-无法启动类 &ldquo;received signal; shutting down&rdquo; 关键日志 {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:31:34.277Z&#34;,&#34;caller&#34;:&#34;rafthttp/stream.go:274&#34;,&#34;msg&#34;:&#34;established TCP streaming connection with remote peer&#34;,&#34;stream-writer-type&#34;:&#34;stream MsgApp v2&#34;,&#34;local-member-id&#34;:&#34;edacac26a3fb24b3&#34;,&#34;remote-peer-id&#34;:&#34;2c8b55a3459bb7ff&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;osutil/interrupt_unix.go:64&#34;,&#34;msg&#34;:&#34;received signal; shutting down&#34;,&#34;signal&#34;:&#34;terminated&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;embed/etcd.go:367&#34;,&#34;msg&#34;:&#34;closing etcd server&#34;,&#34;name&#34;:&#34;node3&#34;,&#34;data-dir&#34;:&#34;/data/etcd/&#34;,&#34;advertise-peer-urls&#34;:[&#34;https://10.49.2.36:2380&#34;],&#34;advertise-client-urls&#34;:[&#34;https://10.49.2.36:2379&#34;]} 问题原因 在文件 /etc/containerd/config.toml 中的 SystemdCgroup 配置为 false 了，与 kubelet 中不同。
-解决步骤 更改配置，使用同 &ldquo;kubelet&rdquo; 一样的 cgroup 为 systemd
+ctr --namespace k8s.io run \ --rm \ --net-host \ --mount type=bind,src=/etc/kubernetes,dst=/etc/kubernetes,options=rbind:ro \ registry.cn-hangzhou.aliyuncs.com/kube-image-repo/etcd:v3.5.10 etcd-health \ etcdctl --cert /etc/kubernetes/pki/etcd/peer.crt \ --key /etc/kubernetes/pki/etcd/peer.key \ --cacert /etc/kubernetes/pki/etcd/ca.crt \ --endpoints https://127.0.0.1:2379 \ member list 移除异常的成员 ctr --namespace k8s.io run \ --rm \ --net-host \ --mount type=bind,src=/etc/kubernetes,dst=/etc/kubernetes,options=rbind:ro \ registry.cn-hangzhou.aliyuncs.com/kube-image-repo/etcd:v3.5.10 etcd-health \ etcdctl --cert /etc/kubernetes/pki/etcd/peer.crt \ --key /etc/kubernetes/pki/etcd/peer.key \ --cacert /etc/kubernetes/pki/etcd/ca.crt \ --endpoints https://127.0.0.1:2379 \ member remove 63e2da0114a7b9b7 更改故障节点 etcd 作为新成员加入 ctr --namespace k8s.io run \ --rm \ --net-host \ --mount type=bind,src=/etc/kubernetes,dst=/etc/kubernetes,options=rbind:ro \ registry.cn-hangzhou.aliyuncs.com/kube-image-repo/etcd:v3.5.10 etcd-health \ etcdctl --cert /etc/kubernetes/pki/etcd/peer.crt \ --key /etc/kubernetes/pki/etcd/peer.key \ --cacert /etc/kubernetes/pki/etcd/ca.crt \ --endpoints https://127.0.0.1:2379 \ member add node2 --peer-urls=&#34;https://192.168.201.122:2380&#34; ETCD_NAME=&#34;node2&#34; ETCD_INITIAL_CLUSTER=&#34;node3=https://192.168.201.123:2380,node2=https://192.168.201.122:2380,node1=https://192.168.201.121:2380&#34; ETCD_INITIAL_ADVERTISE_PEER_URLS=&#34;https://192.168.201.122:2380&#34; ETCD_INITIAL_CLUSTER_STATE=&#34;existing&#34; 启动故障节点的 etcd 服务 --initial-cluster-state=new 更改为 --initial-cluster-state=existing">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-08-03T09:42:05+08:00">
+    <meta property="article:modified_time" content="2024-05-06T14:15:46+08:00">
+
+  <meta itemprop="name" content="etcd">
+  <meta itemprop="description" content="简要概述 记录 etcd 相关的场景问题。
+无法启动类 “received signal; shutting down” 关键日志 {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:31:34.277Z&#34;,&#34;caller&#34;:&#34;rafthttp/stream.go:274&#34;,&#34;msg&#34;:&#34;established TCP streaming connection with remote peer&#34;,&#34;stream-writer-type&#34;:&#34;stream MsgApp v2&#34;,&#34;local-member-id&#34;:&#34;edacac26a3fb24b3&#34;,&#34;remote-peer-id&#34;:&#34;2c8b55a3459bb7ff&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;osutil/interrupt_unix.go:64&#34;,&#34;msg&#34;:&#34;received signal; shutting down&#34;,&#34;signal&#34;:&#34;terminated&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;embed/etcd.go:367&#34;,&#34;msg&#34;:&#34;closing etcd server&#34;,&#34;name&#34;:&#34;node3&#34;,&#34;data-dir&#34;:&#34;/data/etcd/&#34;,&#34;advertise-peer-urls&#34;:[&#34;https://10.49.2.36:2380&#34;],&#34;advertise-client-urls&#34;:[&#34;https://10.49.2.36:2379&#34;]} 问题原因 在文件 /etc/containerd/config.toml 中的 SystemdCgroup 配置为 false 了，与 kubelet 中不同。
+解决步骤 更改配置，使用同 “kubelet” 一样的 cgroup 为 systemd
 [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd.runtimes.runc.options] SystemdCgroup = true 备份恢复类 控制节点 etcd 数据恢复 登录故障节点，移除 etcd 静态 POD cd /etc/kubernetes/manifests/ mv etcd.yaml /usr/local/src/ 登录另外正常的 etcd 集群节点 查看成员列表
-ctr --namespace k8s.io run \ --rm \ --net-host \ --mount type=bind,src=/etc/kubernetes,dst=/etc/kubernetes,options=rbind:ro \ registry."><meta itemprop="datePublished" content="2023-08-03T09:42:05+08:00" />
-<meta itemprop="dateModified" content="2024-05-06T14:15:46+08:00" />
-<meta itemprop="wordCount" content="171">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="etcd"/>
-<meta name="twitter:description" content="简要概述 记录 etcd 相关的场景问题。
-无法启动类 &ldquo;received signal; shutting down&rdquo; 关键日志 {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:31:34.277Z&#34;,&#34;caller&#34;:&#34;rafthttp/stream.go:274&#34;,&#34;msg&#34;:&#34;established TCP streaming connection with remote peer&#34;,&#34;stream-writer-type&#34;:&#34;stream MsgApp v2&#34;,&#34;local-member-id&#34;:&#34;edacac26a3fb24b3&#34;,&#34;remote-peer-id&#34;:&#34;2c8b55a3459bb7ff&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;osutil/interrupt_unix.go:64&#34;,&#34;msg&#34;:&#34;received signal; shutting down&#34;,&#34;signal&#34;:&#34;terminated&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;embed/etcd.go:367&#34;,&#34;msg&#34;:&#34;closing etcd server&#34;,&#34;name&#34;:&#34;node3&#34;,&#34;data-dir&#34;:&#34;/data/etcd/&#34;,&#34;advertise-peer-urls&#34;:[&#34;https://10.49.2.36:2380&#34;],&#34;advertise-client-urls&#34;:[&#34;https://10.49.2.36:2379&#34;]} 问题原因 在文件 /etc/containerd/config.toml 中的 SystemdCgroup 配置为 false 了，与 kubelet 中不同。
-解决步骤 更改配置，使用同 &ldquo;kubelet&rdquo; 一样的 cgroup 为 systemd
+ctr --namespace k8s.io run \ --rm \ --net-host \ --mount type=bind,src=/etc/kubernetes,dst=/etc/kubernetes,options=rbind:ro \ registry.cn-hangzhou.aliyuncs.com/kube-image-repo/etcd:v3.5.10 etcd-health \ etcdctl --cert /etc/kubernetes/pki/etcd/peer.crt \ --key /etc/kubernetes/pki/etcd/peer.key \ --cacert /etc/kubernetes/pki/etcd/ca.crt \ --endpoints https://127.0.0.1:2379 \ member list 移除异常的成员 ctr --namespace k8s.io run \ --rm \ --net-host \ --mount type=bind,src=/etc/kubernetes,dst=/etc/kubernetes,options=rbind:ro \ registry.cn-hangzhou.aliyuncs.com/kube-image-repo/etcd:v3.5.10 etcd-health \ etcdctl --cert /etc/kubernetes/pki/etcd/peer.crt \ --key /etc/kubernetes/pki/etcd/peer.key \ --cacert /etc/kubernetes/pki/etcd/ca.crt \ --endpoints https://127.0.0.1:2379 \ member remove 63e2da0114a7b9b7 更改故障节点 etcd 作为新成员加入 ctr --namespace k8s.io run \ --rm \ --net-host \ --mount type=bind,src=/etc/kubernetes,dst=/etc/kubernetes,options=rbind:ro \ registry.cn-hangzhou.aliyuncs.com/kube-image-repo/etcd:v3.5.10 etcd-health \ etcdctl --cert /etc/kubernetes/pki/etcd/peer.crt \ --key /etc/kubernetes/pki/etcd/peer.key \ --cacert /etc/kubernetes/pki/etcd/ca.crt \ --endpoints https://127.0.0.1:2379 \ member add node2 --peer-urls=&#34;https://192.168.201.122:2380&#34; ETCD_NAME=&#34;node2&#34; ETCD_INITIAL_CLUSTER=&#34;node3=https://192.168.201.123:2380,node2=https://192.168.201.122:2380,node1=https://192.168.201.121:2380&#34; ETCD_INITIAL_ADVERTISE_PEER_URLS=&#34;https://192.168.201.122:2380&#34; ETCD_INITIAL_CLUSTER_STATE=&#34;existing&#34; 启动故障节点的 etcd 服务 --initial-cluster-state=new 更改为 --initial-cluster-state=existing">
+  <meta itemprop="datePublished" content="2023-08-03T09:42:05+08:00">
+  <meta itemprop="dateModified" content="2024-05-06T14:15:46+08:00">
+  <meta itemprop="wordCount" content="171">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="etcd">
+  <meta name="twitter:description" content="简要概述 记录 etcd 相关的场景问题。
+无法启动类 “received signal; shutting down” 关键日志 {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:31:34.277Z&#34;,&#34;caller&#34;:&#34;rafthttp/stream.go:274&#34;,&#34;msg&#34;:&#34;established TCP streaming connection with remote peer&#34;,&#34;stream-writer-type&#34;:&#34;stream MsgApp v2&#34;,&#34;local-member-id&#34;:&#34;edacac26a3fb24b3&#34;,&#34;remote-peer-id&#34;:&#34;2c8b55a3459bb7ff&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;osutil/interrupt_unix.go:64&#34;,&#34;msg&#34;:&#34;received signal; shutting down&#34;,&#34;signal&#34;:&#34;terminated&#34;} {&#34;level&#34;:&#34;info&#34;,&#34;ts&#34;:&#34;2023-07-27T13:33:03.898Z&#34;,&#34;caller&#34;:&#34;embed/etcd.go:367&#34;,&#34;msg&#34;:&#34;closing etcd server&#34;,&#34;name&#34;:&#34;node3&#34;,&#34;data-dir&#34;:&#34;/data/etcd/&#34;,&#34;advertise-peer-urls&#34;:[&#34;https://10.49.2.36:2380&#34;],&#34;advertise-client-urls&#34;:[&#34;https://10.49.2.36:2379&#34;]} 问题原因 在文件 /etc/containerd/config.toml 中的 SystemdCgroup 配置为 false 了，与 kubelet 中不同。
+解决步骤 更改配置，使用同 “kubelet” 一样的 cgroup 为 systemd
 [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd.runtimes.runc.options] SystemdCgroup = true 备份恢复类 控制节点 etcd 数据恢复 登录故障节点，移除 etcd 静态 POD cd /etc/kubernetes/manifests/ mv etcd.yaml /usr/local/src/ 登录另外正常的 etcd 集群节点 查看成员列表
-ctr --namespace k8s.io run \ --rm \ --net-host \ --mount type=bind,src=/etc/kubernetes,dst=/etc/kubernetes,options=rbind:ro \ registry."/>
+ctr --namespace k8s.io run \ --rm \ --net-host \ --mount type=bind,src=/etc/kubernetes,dst=/etc/kubernetes,options=rbind:ro \ registry.cn-hangzhou.aliyuncs.com/kube-image-repo/etcd:v3.5.10 etcd-health \ etcdctl --cert /etc/kubernetes/pki/etcd/peer.crt \ --key /etc/kubernetes/pki/etcd/peer.key \ --cacert /etc/kubernetes/pki/etcd/ca.crt \ --endpoints https://127.0.0.1:2379 \ member list 移除异常的成员 ctr --namespace k8s.io run \ --rm \ --net-host \ --mount type=bind,src=/etc/kubernetes,dst=/etc/kubernetes,options=rbind:ro \ registry.cn-hangzhou.aliyuncs.com/kube-image-repo/etcd:v3.5.10 etcd-health \ etcdctl --cert /etc/kubernetes/pki/etcd/peer.crt \ --key /etc/kubernetes/pki/etcd/peer.key \ --cacert /etc/kubernetes/pki/etcd/ca.crt \ --endpoints https://127.0.0.1:2379 \ member remove 63e2da0114a7b9b7 更改故障节点 etcd 作为新成员加入 ctr --namespace k8s.io run \ --rm \ --net-host \ --mount type=bind,src=/etc/kubernetes,dst=/etc/kubernetes,options=rbind:ro \ registry.cn-hangzhou.aliyuncs.com/kube-image-repo/etcd:v3.5.10 etcd-health \ etcdctl --cert /etc/kubernetes/pki/etcd/peer.crt \ --key /etc/kubernetes/pki/etcd/peer.key \ --cacert /etc/kubernetes/pki/etcd/ca.crt \ --endpoints https://127.0.0.1:2379 \ member add node2 --peer-urls=&#34;https://192.168.201.122:2380&#34; ETCD_NAME=&#34;node2&#34; ETCD_INITIAL_CLUSTER=&#34;node3=https://192.168.201.123:2380,node2=https://192.168.201.122:2380,node1=https://192.168.201.121:2380&#34; ETCD_INITIAL_ADVERTISE_PEER_URLS=&#34;https://192.168.201.122:2380&#34; ETCD_INITIAL_CLUSTER_STATE=&#34;existing&#34; 启动故障节点的 etcd 服务 --initial-cluster-state=new 更改为 --initial-cluster-state=existing">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1052,6 +1055,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3085,9 +3105,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3101,10 +3121,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3164,6 +3387,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4466,7 +4748,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

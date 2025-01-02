@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -26,60 +26,63 @@ Affinity
 // Affinity is a group of affinity scheduling rules.
 type Affinity struct {
     // Describes node affinity scheduling rules …">
-<meta property="og:title" content="Pod Affinity" />
-<meta property="og:description" content="简要概述 TODO;
-数据结构 Affinity // Affinity is a group of affinity scheduling rules. type Affinity struct { // Describes node affinity scheduling rules for the pod. // &#43;optional NodeAffinity *NodeAffinity `json:&#34;nodeAffinity,omitempty&#34; protobuf:&#34;bytes,1,opt,name=nodeAffinity&#34;` // Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)). // &#43;optional PodAffinity *PodAffinity `json:&#34;podAffinity,omitempty&#34; protobuf:&#34;bytes,2,opt,name=podAffinity&#34;` // Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/concepts/workloads/pods-affinity/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-05-08T18:19:26+08:00" />
-<meta property="article:modified_time" content="2023-05-08T18:41:22+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Pod Affinity">
-<meta itemprop="description" content="简要概述 TODO;
-数据结构 Affinity // Affinity is a group of affinity scheduling rules. type Affinity struct { // Describes node affinity scheduling rules for the pod. // &#43;optional NodeAffinity *NodeAffinity `json:&#34;nodeAffinity,omitempty&#34; protobuf:&#34;bytes,1,opt,name=nodeAffinity&#34;` // Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)). // &#43;optional PodAffinity *PodAffinity `json:&#34;podAffinity,omitempty&#34; protobuf:&#34;bytes,2,opt,name=podAffinity&#34;` // Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc."><meta itemprop="datePublished" content="2023-05-08T18:19:26+08:00" />
-<meta itemprop="dateModified" content="2023-05-08T18:41:22+08:00" />
-<meta itemprop="wordCount" content="1312">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Pod Affinity"/>
-<meta name="twitter:description" content="简要概述 TODO;
-数据结构 Affinity // Affinity is a group of affinity scheduling rules. type Affinity struct { // Describes node affinity scheduling rules for the pod. // &#43;optional NodeAffinity *NodeAffinity `json:&#34;nodeAffinity,omitempty&#34; protobuf:&#34;bytes,1,opt,name=nodeAffinity&#34;` // Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)). // &#43;optional PodAffinity *PodAffinity `json:&#34;podAffinity,omitempty&#34; protobuf:&#34;bytes,2,opt,name=podAffinity&#34;` // Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc."/>
+<meta property="og:url" content="/docs/concepts/workloads/pods-affinity/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Pod Affinity">
+  <meta property="og:description" content="简要概述 TODO;
+数据结构 Affinity // Affinity is a group of affinity scheduling rules. type Affinity struct { // Describes node affinity scheduling rules for the pod. // &#43;optional NodeAffinity *NodeAffinity `json:&#34;nodeAffinity,omitempty&#34; protobuf:&#34;bytes,1,opt,name=nodeAffinity&#34;` // Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)). // &#43;optional PodAffinity *PodAffinity `json:&#34;podAffinity,omitempty&#34; protobuf:&#34;bytes,2,opt,name=podAffinity&#34;` // Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)). // &#43;optional PodAntiAffinity *PodAntiAffinity `json:&#34;podAntiAffinity,omitempty&#34; protobuf:&#34;bytes,3,opt,name=podAntiAffinity&#34;` } NodeAffinity // Node affinity is a group of node affinity scheduling rules. type NodeAffinity struct { // NOT YET IMPLEMENTED. TODO: Uncomment field once it is implemented. // If the affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to an update), the system // will try to eventually evict the pod from its node. // &#43;optional // RequiredDuringSchedulingRequiredDuringExecution *NodeSelector `json:&#34;requiredDuringSchedulingRequiredDuringExecution,omitempty&#34;` // If the affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to an update), the system // may or may not try to eventually evict the pod from its node. // &#43;optional RequiredDuringSchedulingIgnoredDuringExecution *NodeSelector `json:&#34;requiredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,1,opt,name=requiredDuringSchedulingIgnoredDuringExecution&#34;` // The scheduler will prefer to schedule pods to nodes that satisfy // the affinity expressions specified by this field, but it may choose // a node that violates one or more of the expressions. The node that is // most preferred is the one with the greatest sum of weights, i.e. // for each node that meets all of the scheduling requirements (resource // request, requiredDuringScheduling affinity expressions, etc.), // compute a sum by iterating through the elements of this field and adding // &#34;weight&#34; to the sum if the node matches the corresponding matchExpressions; the // node(s) with the highest sum are the most preferred. // &#43;optional PreferredDuringSchedulingIgnoredDuringExecution []PreferredSchedulingTerm `json:&#34;preferredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,2,rep,name=preferredDuringSchedulingIgnoredDuringExecution&#34;` } PodAffinity // Pod affinity is a group of inter pod affinity scheduling rules. type PodAffinity struct { // NOT YET IMPLEMENTED. TODO: Uncomment field once it is implemented. // If the affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to a pod label update), the // system will try to eventually evict the pod from its node. // When there are multiple elements, the lists of nodes corresponding to each // podAffinityTerm are intersected, i.e. all terms must be satisfied. // &#43;optional // RequiredDuringSchedulingRequiredDuringExecution []PodAffinityTerm `json:&#34;requiredDuringSchedulingRequiredDuringExecution,omitempty&#34;` // If the affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to a pod label update), the // system may or may not try to eventually evict the pod from its node. // When there are multiple elements, the lists of nodes corresponding to each // podAffinityTerm are intersected, i.e. all terms must be satisfied. // &#43;optional RequiredDuringSchedulingIgnoredDuringExecution []PodAffinityTerm `json:&#34;requiredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,1,rep,name=requiredDuringSchedulingIgnoredDuringExecution&#34;` // The scheduler will prefer to schedule pods to nodes that satisfy // the affinity expressions specified by this field, but it may choose // a node that violates one or more of the expressions. The node that is // most preferred is the one with the greatest sum of weights, i.e. // for each node that meets all of the scheduling requirements (resource // request, requiredDuringScheduling affinity expressions, etc.), // compute a sum by iterating through the elements of this field and adding // &#34;weight&#34; to the sum if the node has pods which matches the corresponding podAffinityTerm; the // node(s) with the highest sum are the most preferred. // &#43;optional PreferredDuringSchedulingIgnoredDuringExecution []WeightedPodAffinityTerm `json:&#34;preferredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,2,rep,name=preferredDuringSchedulingIgnoredDuringExecution&#34;` } PodAntiAffinity // Pod anti affinity is a group of inter pod anti affinity scheduling rules. type PodAntiAffinity struct { // NOT YET IMPLEMENTED. TODO: Uncomment field once it is implemented. // If the anti-affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the anti-affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to a pod label update), the // system will try to eventually evict the pod from its node. // When there are multiple elements, the lists of nodes corresponding to each // podAffinityTerm are intersected, i.e. all terms must be satisfied. // &#43;optional // RequiredDuringSchedulingRequiredDuringExecution []PodAffinityTerm `json:&#34;requiredDuringSchedulingRequiredDuringExecution,omitempty&#34;` // If the anti-affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the anti-affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to a pod label update), the // system may or may not try to eventually evict the pod from its node. // When there are multiple elements, the lists of nodes corresponding to each // podAffinityTerm are intersected, i.e. all terms must be satisfied. // &#43;optional RequiredDuringSchedulingIgnoredDuringExecution []PodAffinityTerm `json:&#34;requiredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,1,rep,name=requiredDuringSchedulingIgnoredDuringExecution&#34;` // The scheduler will prefer to schedule pods to nodes that satisfy // the anti-affinity expressions specified by this field, but it may choose // a node that violates one or more of the expressions. The node that is // most preferred is the one with the greatest sum of weights, i.e. // for each node that meets all of the scheduling requirements (resource // request, requiredDuringScheduling anti-affinity expressions, etc.), // compute a sum by iterating through the elements of this field and adding // &#34;weight&#34; to the sum if the node has pods which matches the corresponding podAffinityTerm; the // node(s) with the highest sum are the most preferred. // &#43;optional PreferredDuringSchedulingIgnoredDuringExecution []WeightedPodAffinityTerm `json:&#34;preferredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,2,rep,name=preferredDuringSchedulingIgnoredDuringExecution&#34;` } Toleration // The pod this Toleration is attached to tolerates any taint that matches // the triple &lt;key,value,effect&gt; using the matching operator &lt;operator&gt;. type Toleration struct { // Key is the taint key that the toleration applies to. Empty means match all taint keys. // If the key is empty, operator must be Exists; this combination means to match all values and all keys. // &#43;optional Key string `json:&#34;key,omitempty&#34; protobuf:&#34;bytes,1,opt,name=key&#34;` // Operator represents a key&#39;s relationship to the value. // Valid operators are Exists and Equal. Defaults to Equal. // Exists is equivalent to wildcard for value, so that a pod can // tolerate all taints of a particular category. // &#43;optional Operator TolerationOperator `json:&#34;operator,omitempty&#34; protobuf:&#34;bytes,2,opt,name=operator,casttype=TolerationOperator&#34;` // Value is the taint value the toleration matches to. // If the operator is Exists, the value should be empty, otherwise just a regular string. // &#43;optional Value string `json:&#34;value,omitempty&#34; protobuf:&#34;bytes,3,opt,name=value&#34;` // Effect indicates the taint effect to match. Empty means match all taint effects. // When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute. // &#43;optional Effect TaintEffect `json:&#34;effect,omitempty&#34; protobuf:&#34;bytes,4,opt,name=effect,casttype=TaintEffect&#34;` // TolerationSeconds represents the period of time the toleration (which must be // of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, // it is not set, which means tolerate the taint forever (do not evict). Zero and // negative values will be treated as 0 (evict immediately) by the system. // &#43;optional TolerationSeconds *int64 `json:&#34;tolerationSeconds,omitempty&#34; protobuf:&#34;varint,5,opt,name=tolerationSeconds&#34;` } // A toleration operator is the set of operators that can be used in a toleration. type TolerationOperator string const ( TolerationOpExists TolerationOperator = &#34;Exists&#34; TolerationOpEqual TolerationOperator = &#34;Equal&#34; )">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-05-08T18:19:26+08:00">
+    <meta property="article:modified_time" content="2023-05-08T18:41:22+08:00">
+
+  <meta itemprop="name" content="Pod Affinity">
+  <meta itemprop="description" content="简要概述 TODO;
+数据结构 Affinity // Affinity is a group of affinity scheduling rules. type Affinity struct { // Describes node affinity scheduling rules for the pod. // &#43;optional NodeAffinity *NodeAffinity `json:&#34;nodeAffinity,omitempty&#34; protobuf:&#34;bytes,1,opt,name=nodeAffinity&#34;` // Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)). // &#43;optional PodAffinity *PodAffinity `json:&#34;podAffinity,omitempty&#34; protobuf:&#34;bytes,2,opt,name=podAffinity&#34;` // Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)). // &#43;optional PodAntiAffinity *PodAntiAffinity `json:&#34;podAntiAffinity,omitempty&#34; protobuf:&#34;bytes,3,opt,name=podAntiAffinity&#34;` } NodeAffinity // Node affinity is a group of node affinity scheduling rules. type NodeAffinity struct { // NOT YET IMPLEMENTED. TODO: Uncomment field once it is implemented. // If the affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to an update), the system // will try to eventually evict the pod from its node. // &#43;optional // RequiredDuringSchedulingRequiredDuringExecution *NodeSelector `json:&#34;requiredDuringSchedulingRequiredDuringExecution,omitempty&#34;` // If the affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to an update), the system // may or may not try to eventually evict the pod from its node. // &#43;optional RequiredDuringSchedulingIgnoredDuringExecution *NodeSelector `json:&#34;requiredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,1,opt,name=requiredDuringSchedulingIgnoredDuringExecution&#34;` // The scheduler will prefer to schedule pods to nodes that satisfy // the affinity expressions specified by this field, but it may choose // a node that violates one or more of the expressions. The node that is // most preferred is the one with the greatest sum of weights, i.e. // for each node that meets all of the scheduling requirements (resource // request, requiredDuringScheduling affinity expressions, etc.), // compute a sum by iterating through the elements of this field and adding // &#34;weight&#34; to the sum if the node matches the corresponding matchExpressions; the // node(s) with the highest sum are the most preferred. // &#43;optional PreferredDuringSchedulingIgnoredDuringExecution []PreferredSchedulingTerm `json:&#34;preferredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,2,rep,name=preferredDuringSchedulingIgnoredDuringExecution&#34;` } PodAffinity // Pod affinity is a group of inter pod affinity scheduling rules. type PodAffinity struct { // NOT YET IMPLEMENTED. TODO: Uncomment field once it is implemented. // If the affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to a pod label update), the // system will try to eventually evict the pod from its node. // When there are multiple elements, the lists of nodes corresponding to each // podAffinityTerm are intersected, i.e. all terms must be satisfied. // &#43;optional // RequiredDuringSchedulingRequiredDuringExecution []PodAffinityTerm `json:&#34;requiredDuringSchedulingRequiredDuringExecution,omitempty&#34;` // If the affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to a pod label update), the // system may or may not try to eventually evict the pod from its node. // When there are multiple elements, the lists of nodes corresponding to each // podAffinityTerm are intersected, i.e. all terms must be satisfied. // &#43;optional RequiredDuringSchedulingIgnoredDuringExecution []PodAffinityTerm `json:&#34;requiredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,1,rep,name=requiredDuringSchedulingIgnoredDuringExecution&#34;` // The scheduler will prefer to schedule pods to nodes that satisfy // the affinity expressions specified by this field, but it may choose // a node that violates one or more of the expressions. The node that is // most preferred is the one with the greatest sum of weights, i.e. // for each node that meets all of the scheduling requirements (resource // request, requiredDuringScheduling affinity expressions, etc.), // compute a sum by iterating through the elements of this field and adding // &#34;weight&#34; to the sum if the node has pods which matches the corresponding podAffinityTerm; the // node(s) with the highest sum are the most preferred. // &#43;optional PreferredDuringSchedulingIgnoredDuringExecution []WeightedPodAffinityTerm `json:&#34;preferredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,2,rep,name=preferredDuringSchedulingIgnoredDuringExecution&#34;` } PodAntiAffinity // Pod anti affinity is a group of inter pod anti affinity scheduling rules. type PodAntiAffinity struct { // NOT YET IMPLEMENTED. TODO: Uncomment field once it is implemented. // If the anti-affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the anti-affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to a pod label update), the // system will try to eventually evict the pod from its node. // When there are multiple elements, the lists of nodes corresponding to each // podAffinityTerm are intersected, i.e. all terms must be satisfied. // &#43;optional // RequiredDuringSchedulingRequiredDuringExecution []PodAffinityTerm `json:&#34;requiredDuringSchedulingRequiredDuringExecution,omitempty&#34;` // If the anti-affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the anti-affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to a pod label update), the // system may or may not try to eventually evict the pod from its node. // When there are multiple elements, the lists of nodes corresponding to each // podAffinityTerm are intersected, i.e. all terms must be satisfied. // &#43;optional RequiredDuringSchedulingIgnoredDuringExecution []PodAffinityTerm `json:&#34;requiredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,1,rep,name=requiredDuringSchedulingIgnoredDuringExecution&#34;` // The scheduler will prefer to schedule pods to nodes that satisfy // the anti-affinity expressions specified by this field, but it may choose // a node that violates one or more of the expressions. The node that is // most preferred is the one with the greatest sum of weights, i.e. // for each node that meets all of the scheduling requirements (resource // request, requiredDuringScheduling anti-affinity expressions, etc.), // compute a sum by iterating through the elements of this field and adding // &#34;weight&#34; to the sum if the node has pods which matches the corresponding podAffinityTerm; the // node(s) with the highest sum are the most preferred. // &#43;optional PreferredDuringSchedulingIgnoredDuringExecution []WeightedPodAffinityTerm `json:&#34;preferredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,2,rep,name=preferredDuringSchedulingIgnoredDuringExecution&#34;` } Toleration // The pod this Toleration is attached to tolerates any taint that matches // the triple &lt;key,value,effect&gt; using the matching operator &lt;operator&gt;. type Toleration struct { // Key is the taint key that the toleration applies to. Empty means match all taint keys. // If the key is empty, operator must be Exists; this combination means to match all values and all keys. // &#43;optional Key string `json:&#34;key,omitempty&#34; protobuf:&#34;bytes,1,opt,name=key&#34;` // Operator represents a key&#39;s relationship to the value. // Valid operators are Exists and Equal. Defaults to Equal. // Exists is equivalent to wildcard for value, so that a pod can // tolerate all taints of a particular category. // &#43;optional Operator TolerationOperator `json:&#34;operator,omitempty&#34; protobuf:&#34;bytes,2,opt,name=operator,casttype=TolerationOperator&#34;` // Value is the taint value the toleration matches to. // If the operator is Exists, the value should be empty, otherwise just a regular string. // &#43;optional Value string `json:&#34;value,omitempty&#34; protobuf:&#34;bytes,3,opt,name=value&#34;` // Effect indicates the taint effect to match. Empty means match all taint effects. // When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute. // &#43;optional Effect TaintEffect `json:&#34;effect,omitempty&#34; protobuf:&#34;bytes,4,opt,name=effect,casttype=TaintEffect&#34;` // TolerationSeconds represents the period of time the toleration (which must be // of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, // it is not set, which means tolerate the taint forever (do not evict). Zero and // negative values will be treated as 0 (evict immediately) by the system. // &#43;optional TolerationSeconds *int64 `json:&#34;tolerationSeconds,omitempty&#34; protobuf:&#34;varint,5,opt,name=tolerationSeconds&#34;` } // A toleration operator is the set of operators that can be used in a toleration. type TolerationOperator string const ( TolerationOpExists TolerationOperator = &#34;Exists&#34; TolerationOpEqual TolerationOperator = &#34;Equal&#34; )">
+  <meta itemprop="datePublished" content="2023-05-08T18:19:26+08:00">
+  <meta itemprop="dateModified" content="2023-05-08T18:41:22+08:00">
+  <meta itemprop="wordCount" content="1312">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Pod Affinity">
+  <meta name="twitter:description" content="简要概述 TODO;
+数据结构 Affinity // Affinity is a group of affinity scheduling rules. type Affinity struct { // Describes node affinity scheduling rules for the pod. // &#43;optional NodeAffinity *NodeAffinity `json:&#34;nodeAffinity,omitempty&#34; protobuf:&#34;bytes,1,opt,name=nodeAffinity&#34;` // Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)). // &#43;optional PodAffinity *PodAffinity `json:&#34;podAffinity,omitempty&#34; protobuf:&#34;bytes,2,opt,name=podAffinity&#34;` // Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)). // &#43;optional PodAntiAffinity *PodAntiAffinity `json:&#34;podAntiAffinity,omitempty&#34; protobuf:&#34;bytes,3,opt,name=podAntiAffinity&#34;` } NodeAffinity // Node affinity is a group of node affinity scheduling rules. type NodeAffinity struct { // NOT YET IMPLEMENTED. TODO: Uncomment field once it is implemented. // If the affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to an update), the system // will try to eventually evict the pod from its node. // &#43;optional // RequiredDuringSchedulingRequiredDuringExecution *NodeSelector `json:&#34;requiredDuringSchedulingRequiredDuringExecution,omitempty&#34;` // If the affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to an update), the system // may or may not try to eventually evict the pod from its node. // &#43;optional RequiredDuringSchedulingIgnoredDuringExecution *NodeSelector `json:&#34;requiredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,1,opt,name=requiredDuringSchedulingIgnoredDuringExecution&#34;` // The scheduler will prefer to schedule pods to nodes that satisfy // the affinity expressions specified by this field, but it may choose // a node that violates one or more of the expressions. The node that is // most preferred is the one with the greatest sum of weights, i.e. // for each node that meets all of the scheduling requirements (resource // request, requiredDuringScheduling affinity expressions, etc.), // compute a sum by iterating through the elements of this field and adding // &#34;weight&#34; to the sum if the node matches the corresponding matchExpressions; the // node(s) with the highest sum are the most preferred. // &#43;optional PreferredDuringSchedulingIgnoredDuringExecution []PreferredSchedulingTerm `json:&#34;preferredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,2,rep,name=preferredDuringSchedulingIgnoredDuringExecution&#34;` } PodAffinity // Pod affinity is a group of inter pod affinity scheduling rules. type PodAffinity struct { // NOT YET IMPLEMENTED. TODO: Uncomment field once it is implemented. // If the affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to a pod label update), the // system will try to eventually evict the pod from its node. // When there are multiple elements, the lists of nodes corresponding to each // podAffinityTerm are intersected, i.e. all terms must be satisfied. // &#43;optional // RequiredDuringSchedulingRequiredDuringExecution []PodAffinityTerm `json:&#34;requiredDuringSchedulingRequiredDuringExecution,omitempty&#34;` // If the affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to a pod label update), the // system may or may not try to eventually evict the pod from its node. // When there are multiple elements, the lists of nodes corresponding to each // podAffinityTerm are intersected, i.e. all terms must be satisfied. // &#43;optional RequiredDuringSchedulingIgnoredDuringExecution []PodAffinityTerm `json:&#34;requiredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,1,rep,name=requiredDuringSchedulingIgnoredDuringExecution&#34;` // The scheduler will prefer to schedule pods to nodes that satisfy // the affinity expressions specified by this field, but it may choose // a node that violates one or more of the expressions. The node that is // most preferred is the one with the greatest sum of weights, i.e. // for each node that meets all of the scheduling requirements (resource // request, requiredDuringScheduling affinity expressions, etc.), // compute a sum by iterating through the elements of this field and adding // &#34;weight&#34; to the sum if the node has pods which matches the corresponding podAffinityTerm; the // node(s) with the highest sum are the most preferred. // &#43;optional PreferredDuringSchedulingIgnoredDuringExecution []WeightedPodAffinityTerm `json:&#34;preferredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,2,rep,name=preferredDuringSchedulingIgnoredDuringExecution&#34;` } PodAntiAffinity // Pod anti affinity is a group of inter pod anti affinity scheduling rules. type PodAntiAffinity struct { // NOT YET IMPLEMENTED. TODO: Uncomment field once it is implemented. // If the anti-affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the anti-affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to a pod label update), the // system will try to eventually evict the pod from its node. // When there are multiple elements, the lists of nodes corresponding to each // podAffinityTerm are intersected, i.e. all terms must be satisfied. // &#43;optional // RequiredDuringSchedulingRequiredDuringExecution []PodAffinityTerm `json:&#34;requiredDuringSchedulingRequiredDuringExecution,omitempty&#34;` // If the anti-affinity requirements specified by this field are not met at // scheduling time, the pod will not be scheduled onto the node. // If the anti-affinity requirements specified by this field cease to be met // at some point during pod execution (e.g. due to a pod label update), the // system may or may not try to eventually evict the pod from its node. // When there are multiple elements, the lists of nodes corresponding to each // podAffinityTerm are intersected, i.e. all terms must be satisfied. // &#43;optional RequiredDuringSchedulingIgnoredDuringExecution []PodAffinityTerm `json:&#34;requiredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,1,rep,name=requiredDuringSchedulingIgnoredDuringExecution&#34;` // The scheduler will prefer to schedule pods to nodes that satisfy // the anti-affinity expressions specified by this field, but it may choose // a node that violates one or more of the expressions. The node that is // most preferred is the one with the greatest sum of weights, i.e. // for each node that meets all of the scheduling requirements (resource // request, requiredDuringScheduling anti-affinity expressions, etc.), // compute a sum by iterating through the elements of this field and adding // &#34;weight&#34; to the sum if the node has pods which matches the corresponding podAffinityTerm; the // node(s) with the highest sum are the most preferred. // &#43;optional PreferredDuringSchedulingIgnoredDuringExecution []WeightedPodAffinityTerm `json:&#34;preferredDuringSchedulingIgnoredDuringExecution,omitempty&#34; protobuf:&#34;bytes,2,rep,name=preferredDuringSchedulingIgnoredDuringExecution&#34;` } Toleration // The pod this Toleration is attached to tolerates any taint that matches // the triple &lt;key,value,effect&gt; using the matching operator &lt;operator&gt;. type Toleration struct { // Key is the taint key that the toleration applies to. Empty means match all taint keys. // If the key is empty, operator must be Exists; this combination means to match all values and all keys. // &#43;optional Key string `json:&#34;key,omitempty&#34; protobuf:&#34;bytes,1,opt,name=key&#34;` // Operator represents a key&#39;s relationship to the value. // Valid operators are Exists and Equal. Defaults to Equal. // Exists is equivalent to wildcard for value, so that a pod can // tolerate all taints of a particular category. // &#43;optional Operator TolerationOperator `json:&#34;operator,omitempty&#34; protobuf:&#34;bytes,2,opt,name=operator,casttype=TolerationOperator&#34;` // Value is the taint value the toleration matches to. // If the operator is Exists, the value should be empty, otherwise just a regular string. // &#43;optional Value string `json:&#34;value,omitempty&#34; protobuf:&#34;bytes,3,opt,name=value&#34;` // Effect indicates the taint effect to match. Empty means match all taint effects. // When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute. // &#43;optional Effect TaintEffect `json:&#34;effect,omitempty&#34; protobuf:&#34;bytes,4,opt,name=effect,casttype=TaintEffect&#34;` // TolerationSeconds represents the period of time the toleration (which must be // of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, // it is not set, which means tolerate the taint forever (do not evict). Zero and // negative values will be treated as 0 (evict immediately) by the system. // &#43;optional TolerationSeconds *int64 `json:&#34;tolerationSeconds,omitempty&#34; protobuf:&#34;varint,5,opt,name=tolerationSeconds&#34;` } // A toleration operator is the set of operators that can be used in a toleration. type TolerationOperator string const ( TolerationOpExists TolerationOperator = &#34;Exists&#34; TolerationOpEqual TolerationOperator = &#34;Equal&#34; )">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1042,6 +1045,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3075,9 +3095,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3091,10 +3111,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3154,6 +3377,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4529,7 +4811,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

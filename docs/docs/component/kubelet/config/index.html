@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -26,71 +26,71 @@
 外部组建参数
 
 
+  
+      
+          名称
+          默认值
+          来自组件
+          说明
+      
+  
+  
+      
+          add-dir-header …">
+<meta property="og:url" content="/docs/component/kubelet/config/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="参数配置">
+  <meta property="og:description" content="简要概述 参数解析 命令行参数 外部组建参数 名称 默认值 来自组件 说明 add-dir-header false TODO; 在输出日志时，是否把代码文件所在目录一起提供，如：state/state_mem.go:36，否则仅输出：state_mem.go:36 alsologtostderr - klog 已弃用 application-metrics-count-limit - cadvisor 已废弃 azure-container-registry-config - azure 包含 Azure 容器镜像库配置信息的文件的路径 boot-id-file - cadvisor 默认来自：/proc/sys/kernel/random/boot_id cloud-config - kubelet 已弃用 cloud-provider - kubelet 已弃用 cni-bin-dir /opt/cni/bin dockershim 已弃用 cni 的相关二进制地址 cni-cache-dir /var/lib/cni/cache dockershim 已弃用 cni-conf-dir /etc/cni/net.d dockershim 已弃用 container-hints /etc/cadvisor/container_hints.json cadvisor 已废弃 container-runtime remote kubelet 已废弃，目前支持 docker、remote，以后仅支持 remote containerd - cadvisor 已废弃 containerd-namespace - cadvisor 已废弃 docker - cadvisor 已废弃 docker-endpoint - dockershim 已弃用 docker-env-metadata-whitelist - cadvisor 已废弃 docker-only - cadvisor 已废弃 docker-root - cadvisor 已废弃 docker-tls - cadvisor 已废弃 docker-tls-ca - cadvisor 已废弃 docker-tls-cert - cadvisor 已废弃 docker-tls-key - cadvisor 已废弃 dynamic-config-dir - kubelet 已废弃 enable-load-reader - cadvisor 已废弃 event-storage-age-limit - cadvisor 已废弃 event-storage-event-limit - cadvisor 已废弃 experimental-allocatable-ignore-eviction false kubelet 设置为 true 表示在计算节点可分配资源数量时忽略硬性逐出阈值设置 experimental-bootstrap-kubeconfig - kubelet Use –bootstrap-kubeconfig experimental-check-node-capabilities-before-mount - kubelet 已废弃 experimental-kernel-memcg-notification - kubelet 已废弃 experimental-mounter-path - kubelet 已废弃 global-housekeeping-interval - cadvisor 已废弃 image-pull-progress-deadline - dockershim 已弃用 keep-terminated-pod-volumes - kubelet 已废弃 log-backtrace-at 0 klog 已弃用 log-dir - klog 已弃用，如果此值为非空，则在所指定的目录中写入日志文件 log-file - klog 已弃用，如果此值非空，使用所给字符串作为日志文件名 log-file-max-size 1800 klog 已弃用，设置日志文件的最大值。单位为兆字节（M）。如果值为 0，则表示文件大小无限制 log-flush-frequency 5s klog 两次日志刷新之间的最大秒数 logtostderr true klog 日志输出到 stderr 而不是文件 machine-id-file - cadvisor /etc/machine-id,/var/lib/dbus/machine-id master-service-namespace - kubelet 已弃用，kubelet 向 Pod 注入 Kubernetes 主控服务信息时使用的命名空间 maximum-dead-containers -1 kubelet 已弃用，使用 eviction 代替 maximum-dead-containers-per-container 1 kubelet 已弃用，使用 eviction 代替 minimum-container-ttl-duration - kubelet 已弃用，使用 eviction 代替 network-plugin - dockershim 已弃用 network-plugin-mtu - dockershim 已弃用 non-masquerade-cidr - kubelet 已弃用 one-output - kubelet 已弃用 port 10250 kubelet 已弃用，kubelet 服务监听的本机端口号 really-crash-for-testing - kubelet 已弃用 register-schedulable true kubelet 已弃用 seccomp-profile-root - kubelet 已弃用 skip-headers - klog 已弃用 skip-log-headers - klog 已弃用 stderrthreshold - klog 已弃用 storage-driver-buffer-duration - cadvisor storage-driver-db - cadvisor 已废弃 storage-driver-host - cadvisor 已废弃 storage-driver-password - cadvisor 已废弃 storage-driver-secure - cadvisor 已废弃 storage-driver-table - cadvisor 已废弃 storage-driver-user - cadvisor 已废弃 v - klog 日志级别详细程度的数值 组建内置参数 名称 默认值 KubeletConfiguration 说明 address 0.0.0.0 address kubelet api 服务监听的地址 allowed-unsafe-sysctls - TODO; 允许不安全的 sysctl 设置 anonymous-auth true TODO; 是否可接受匿名请求，用户名为 system:anonymous，用户组为 system:unauthenticated authentication-token-webhook TODO authentication.webhook.enabled TODO；使用 TokenReview API 对持有者令牌进行身份认证 authentication-token-webhook-cache-ttl 2m0s authentication.webhook.cacheTTL 对 Webhook 令牌认证组件所返回的响应的缓存时间 authorization-mode AlwaysAllow 或 Webhook authorization.mode 服务端鉴权模式，可选值：AlwaysAllow、Webhook，当设置 –config 时默认值为 Webhook authorization-webhook-cache-authorized-ttl 5m0s authorization.webhook.cacheAuthorizedTTL 对 Webhook 认证组件所返回的 “Authorized（已授权）” 应答的缓存时间 authorization-webhook-cache-unauthorized-ttl 30s authorization.webhook.cacheUnauthorizedTTL 对 Webhook 认证组件所返回的 “Unauthorized（未授权）” 应答的缓存时间 bootstrap-kubeconfig - - 包含 apiserver 上配置的 known_tokens.csv 里面 token，用于获取 kubelet-client-current.pem 证书 cert-dir /var/lib/kubelet/pki - kubelet.crt 与 kubelet.key 证书路径, 优先级低于 tls-cert-file 与 tls-private-key-file cgroup-driver cgroupfs cgroupDriver 用来操作本机 cgroup 时使用的驱动程序。支持的选项包括 cgroupfs 和 systemd cgroup-root &#34;&#34; TODO 为 Pod 设置根 cgroup 默认将使用容器运行时的默认设置 cgroups-per-qos true TODO 启用创建 QoS cgroup 层次结构。此值为 true 时 kubelet 为 QoS 和 Pod 创建顶级的 cgroup client-ca-file - authentication.x509.clientCAFile TODO; 检查客户端证书，如 kube-apiserver 请求 kubelet ?? cluster-dns - clusterDNS 用于 Pod 中设置了 “dnsPolicy=ClusterFirst” 时为容器提供 DNS 服务 cluster-domain cluster.local clusterDomain 集群域名，如果设置了此值，kubelet 除了将主机的搜索域配置到所有容器之外，还会为其配置这里指定的域名 config - - 指向 KubeletConfiguration 配置文件，命令行参数会覆盖此文件中的配置 container-log-max-files 5 containerLogMaxFiles 设置容器的日志文件个数上限，必须不小于2且只能与 –container-runtime=remote 一起使用 container-log-max-size 10Mi containerLogMaxSize 设置容器日志文件在轮换生成新文件时之前的最大值 container-runtime-endpoint &#34;&#34; - 如：unix:///var/run/containerd/containerd.sock contention-profiling - - TODO; 启用锁竞争分析，前提是开启 pprof cpu-cfs-quota true TODO TODO; 为设置了 CPU 限制的容器启用 CPU CFS 配额保障 cpu-cfs-quota-period 100ms TODO TODO; 设置 CPU CFS 配额周期 cpu.cfs_period_us。默认使用 Linux 内核所设置的默认值 cpu-manager-policy none TODO TODO; 要使用的 CPU 管理器策略。可选值包括：none 和 static cpu-manager-policy-options - TODO TODO; 一组用于微调其行为的 key=value CPU 管理器策略选项 cpu-manager-reconcile-period 10s TODO TODO; 设置 CPU 管理器的调和时间 enable-controller-attach-detach true TODO ｜ 启用 Attach/Detach 控制器来挂接和摘除调度到该节点的卷，同时禁用 kubelet 执行挂接和摘除操作 enable-debugging-handlers true TODO 启用服务器上用于日志收集和在本地运行容器和命令的端点 enable-server true TODO 启用 kubelet 服务器 enforce-node-allocatable pods TODO 用逗号分隔的列表，包含由 kubelet 强制执行的节点可分配资源级别 event-burst 10 TODO 事件记录的个数的突发峰值上限 event-qps 5 TODO 设置大于 0 的值表示限制每秒可生成的事件数量。设置为 0 表示不限制 eviction-hard imagefs.available&lt;15%,memory.available&lt;100Mi,nodefs.available&lt;10% TODO 触发 Pod 驱逐操作的一组硬性门限 eviction-max-pod-grace-period - TODO 响应满足软性驱逐阈值（Soft Eviction Threshold）而终止 Pod 时使用的最长宽限期（以秒为单位 eviction-minimum-reclaim - TODO 当某资源压力过大时，kubelet 将执行 Pod 驱逐操作 eviction-pressure-transition-period 5m0s TODO 在驱逐压力状况解除之前的最长等待时间 eviction-soft - TODO 设置一组驱逐阈值（例如：memory.available&lt;1.5Gi）。 如果在相应的宽限期内达到该阈值，则会触发 Pod 驱逐操作 eviction-soft-grace-period - TODO 设置一组驱逐宽限期（例如，memory.available=1m30s），对应于触发软性 Pod 驱逐操作之前软性驱逐阈值所需持续的时间长短 exit-on-lock-contention - - 设置为 true 表示当发生锁文件竞争时 kubelet 可以退出 experimental-logging-sanitization - TODO 对一些日志敏感字段做特殊处理 fail-swap-on true failSwapOn 设置为 true 表示如果主机启用了交换分区，kubelet 将直接失败 file-check-frequency 20s TODO 检查配置文件中新数据的时间间隔 hairpin-mode promiscuous-bridge hairpinMode 设置 kubelet 执行 hairpin 网络地址转译的方式，该模式允许后端端点对其自身服务的访问能够再次经由负载均衡转发回自身，可选项包括 promiscuous-bridge、hairpin-veth 和 none healthz-bind-address 127.0.0.1 healthzBindAddress 用于运行 healthz 服务器的 IP 地址 healthz-port 10248 healthzPort 本地 healthz 端点使用的端口（设置为 0 表示禁用） hostname-override - - 将使用此字符串而不是实际的主机名作为节点标识 housekeeping-interval 10s TODO TODO http-check-frequency 20s TODO HTTP 服务以获取新数据的时间间隔 image-credential-provider-bin-dir - - TODO; 指向凭据提供组件可执行文件所在目录的路径 image-credential-provider-config - - TODO; 指向凭据提供插件配置文件所在目录的路径 image-gc-high-threshold 85 TODO 镜像垃圾回收上限。磁盘使用空间达到该百分比时，镜像垃圾回收将持续工作。 值必须在 [0，100] 范围内。要禁用镜像垃圾回收，请设置为 100 image-gc-low-threshold 80 TODO 镜像垃圾回收下限。磁盘使用空间在达到该百分比之前，镜像垃圾回收操作不会运行。 值必须在 [0，100] 范围内，并且不得大于 high-threshold的值 image-service-endpoint - - 远程镜像服务的端点，未设置则同 container-runtime-endpoint iptables-drop-bit 15 TODO 标记数据包将被丢弃的 fwmark 位设置。必须在 [0，31] 范围内 iptables-masquerade-bit 14 TODO 标记数据包将进行 SNAT 的 fwmark 空间位设置。必须在 [0，31] 范围内 kernel-memcg-notification - TODO 若启用，则 kubelet 将与内核中的 memcg 通知机制集成，不再使用轮询的方式来判定 是否 Pod 达到内存驱逐阈值 kube-api-burst 10 TODO 每秒发送到 apiserver 的突发请求数量上限 kube-api-content-type application/vnd.kubernetes.protobuf TODO 发送到 apiserver 的请求的内容类型 kube-api-qps 5 TODO 与 apiserver 通信的每秒查询个数QPS，此值必须&gt;=0，如果为0，则使用默认5。不包含事件和节点心跳 api，它们的速率限制是由一组不同的标志所控制 kube-reserved - kubeReserved 系统预留的资源配置，以一组 &lt;资源名称&gt;=&lt;资源数量&gt; 格式表示，支持：cpu、memory、ephemeral-storage kube-reserved-cgroup &#34;&#34; TODO 给出某个顶层 cgroup 绝对名称，该 cgroup 用于管理通过标志 –kube-reserved 为 kubernetes 组件所预留的计算资源 kubeconfig - - 指定如何连接到 API 服务器 kubelet-cgroups - TODO 用于创建和运行 kubelet 的 cgroup 的绝对名称 lock-file - - kubelet 使用的锁文件的路径 log-json-info-buffer-size 0 TODO 实验性特性 log-json-split-stream - TODO 实验性特性 logging-format text TODO 设置日志文件格式。可以设置的格式有：“text”、“json” make-iptables-util-chains true TODO 设置为 true 表示 kubelet 将确保 iptables 规则在主机上存在 manifest-url - TODO 用于访问要运行的其他 Pod 规范的 URL manifest-url-header - TODO 请求 manifest-url 自定义的头 max-open-files 1000000 TODO kubelet 进程可以打开的最大文件数量 max-pods 110 maxPods 此 kubelet 能运行的 Pod 最大数量 memory-manager-policy None TODO 内存管理器策略使用。可选值：‘None’、‘Static’ minimum-image-ttl-duration 2m0s TODO 已结束的容器在被垃圾回收清理之前的最少存活时间。 例如：‘300ms’、’10s’ 或者 ‘2h45m’ node-ip - - 节点的 IP 地址 node-labels - - kubelet 在集群中注册本节点时设置的标签 node-status-max-images 50 TODO 在 node.status.images 中可以报告的最大镜像数量。如果指定为 -1，则不设上限 node-status-update-frequency 10s TODO 指定 kubelet 向主控节点汇报节点状态的时间间隔。注意：更改此常量时请务必谨慎， 它必须与节点控制器中的 nodeMonitorGracePeriod 一起使用 oom-score-adj -999 oomScoreAdj kubelet 进程的 oom-score-adj 参数值。有效范围为 [-1000，1000] pod-cidr - TODO 用于给 Pod 分配 IP 地址的 CIDR 地址池，仅在独立运行模式下使用 pod-infra-container-image k8s.gcr.io/pause:3.5 - 所指定的镜像不会被镜像垃圾收集器删除，依赖CRI pod-manifest-path - staticPodPath 设置包含要运行的静态 Pod 的文件的路径 pod-max-pids -1 TODO 设置每个 Pod 中的最大进程数目。如果为 -1，则 kubelet 使用节点可分配的 PID 容量作为默认值 pods-per-core - TODO 在每个处理器核上可运行的 Pod 数量 protect-kernel-defaults - TODO TODO provider-id - TODO 设置主机数据库中用来标识节点的唯一标识 qos-reserved - TODO TODO read-only-port 10255 TODO kubelet 可以在没有身份验证/鉴权的情况下提供只读服务的端口（设置为 0 表示禁用） register-node true TODO 向 API 服务器注册节点 register-with-taints - TODO 设置本节点的污点标记，格式为 =:， 以逗号分隔 registry-burst 10 TODO 设置突发性镜像拉取的个数上限 registry-qps 5 TODO 如此值大于 0，可用来限制镜像仓库的 QPS 上限。设置为 0，表示不受限制 reserved-cpus - TODO 为系统和 Kubernetes 保留使用的 CPU，优先级高于 system-reserved 和 –kube-reskube-reserved reserved-memory - TODO TODO; 以逗号分隔的 NUMA 节点内存预留列表 resolv-conf /etc/resolv.conf TODO 名字解析服务的配置文件名，用作容器 DNS 解析配置的基础 root-dir /var/lib/kubelet - 设置用于管理 kubelet 文件的根目录 rotate-certificates - TODO 当客户端证书即将过期时 kubelet 自动从 kube-apiserver 请求新的证书进行轮换 rotate-server-certificates - TODO 当 kubelet 的服务证书即将过期时自动从 kube-apiserver 请求新的证书进行轮换 runonce - - 表示从本地清单或远程 URL 创建完 Pod 后立即退出 kubelet 进程 runtime-cgroups - - TODO; 设置用于创建和运行容器运行时的 cgroup 的绝对名称 runtime-request-timeout 2m0s TODO 设置除了长时间运行的请求（包括 pull、logs、exec 和 attach 等操作）之外的其他运行时请求的超时时间 seccomp-default - - TODO; 启用 RuntimeDefault 作为所有工作负载的默认 seccomp 配置文件 serialize-image-pulls true serializeImagePulls 逐一拉取镜像 streaming-connection-idle-timeout 4h0m0s TODO; 设置流连接在自动关闭之前可以空闲的最长时间。0 表示没有超时限制，与 kubelet 服务器的所有连接最长持续时间为 4 小时 sync-frequency 1m0s TODO 在运行中的容器与其配置之间执行同步操作的最长时间间隔 system-cgroups - TODO TODO system-reserved - systemReserved 系统预留的资源配置，以一组 资源名称=资源数量 的格式表示 system-reserved-cgroup &#34;&#34; TODO TODO; 此标志给出一个顶层 cgroup 绝对名称，该 cgroup 用于管理非 kubernetes 组件 tls-cert-file - TODO 用于 HTTPS 认证，如未提供，则 kubelet 生成自签名证书和密钥，并将其保存到通过 –cert-dir 指定的目录 tls-cipher-suites - TODO 服务器端加密算法列表，以逗号分隔 tls-min-version - TODO 设置支持的最小 TLS 版本号，可选的版本号包括：VersionTLS10、 VersionTLS11、VersionTLS12 和 VersionTLS13 tls-private-key-file - TODO 同上 topology-manager-policy none TODO 设置拓扑管理策略（Topology Manager policy）。可选值包括：none、 best-effort、restricted 和 single-numa-node topology-manager-scope container TODO TODO; 拓扑提示信息使用范围 volume-plugin-dir - TODO 用来搜索第三方存储卷插件的目录 volume-stats-agg-period 1m0s TODO 指定 kubelet 计算和缓存所有 Pod 和卷的磁盘用量总值的时间间隔。要禁用磁盘用量计算， 请设置为 0 数据结构 KubeletConfiguration // KubeletConfiguration contains the configuration for the Kubelet type KubeletConfiguration struct { metav1.TypeMeta // enableServer enables Kubelet&#39;s secured server. // Note: Kubelet&#39;s insecure port is controlled by the readOnlyPort option. EnableServer bool // staticPodPath is the path to the directory containing local (static) pods to // run, or the path to a single static pod file. StaticPodPath string // syncFrequency is the max period between synchronizing running // containers and config SyncFrequency metav1.Duration // fileCheckFrequency is the duration between checking config files for // new data FileCheckFrequency metav1.Duration // httpCheckFrequency is the duration between checking http for new data HTTPCheckFrequency metav1.Duration // staticPodURL is the URL for accessing static pods to run StaticPodURL string // staticPodURLHeader is a map of slices with HTTP headers to use when accessing the podURL StaticPodURLHeader map[string][]string // address is the IP address for the Kubelet to serve on (set to 0.0.0.0 // for all interfaces) Address string // port is the port for the Kubelet to serve on. Port int32 // readOnlyPort is the read-only port for the Kubelet to serve on with // no authentication/authorization (set to 0 to disable) ReadOnlyPort int32 // volumePluginDir is the full path of the directory in which to search // for additional third party volume plugins. VolumePluginDir string // providerID, if set, sets the unique id of the instance that an external provider (i.e. cloudprovider) // can use to identify a specific node ProviderID string // tlsCertFile is the file containing x509 Certificate for HTTPS. (CA cert, // if any, concatenated after server cert). If tlsCertFile and // tlsPrivateKeyFile are not provided, a self-signed certificate // and key are generated for the public address and saved to the directory // passed to the Kubelet&#39;s --cert-dir flag. TLSCertFile string // tlsPrivateKeyFile is the file containing x509 private key matching tlsCertFile TLSPrivateKeyFile string // TLSCipherSuites is the list of allowed cipher suites for the server. // Values are from tls package constants (https://golang.org/pkg/crypto/tls/#pkg-constants). TLSCipherSuites []string // TLSMinVersion is the minimum TLS version supported. // Values are from tls package constants (https://golang.org/pkg/crypto/tls/#pkg-constants). TLSMinVersion string // rotateCertificates enables client certificate rotation. The Kubelet will request a // new certificate from the certificates.k8s.io API. This requires an approver to approve the // certificate signing requests. RotateCertificates bool // serverTLSBootstrap enables server certificate bootstrap. Instead of self // signing a serving certificate, the Kubelet will request a certificate from // the certificates.k8s.io API. This requires an approver to approve the // certificate signing requests. The RotateKubeletServerCertificate feature // must be enabled. ServerTLSBootstrap bool // authentication specifies how requests to the Kubelet&#39;s server are authenticated Authentication KubeletAuthentication // authorization specifies how requests to the Kubelet&#39;s server are authorized Authorization KubeletAuthorization // registryPullQPS is the limit of registry pulls per second. // Set to 0 for no limit. RegistryPullQPS int32 // registryBurst is the maximum size of bursty pulls, temporarily allows // pulls to burst to this number, while still not exceeding registryPullQPS. // Only used if registryPullQPS &gt; 0. RegistryBurst int32 // eventRecordQPS is the maximum event creations per second. If 0, there // is no limit enforced. EventRecordQPS int32 // eventBurst is the maximum size of a burst of event creations, temporarily // allows event creations to burst to this number, while still not exceeding // eventRecordQPS. Only used if eventRecordQPS &gt; 0. EventBurst int32 // enableDebuggingHandlers enables server endpoints for log collection // and local running of containers and commands EnableDebuggingHandlers bool // enableContentionProfiling enables lock contention profiling, if enableDebuggingHandlers is true. EnableContentionProfiling bool // healthzPort is the port of the localhost healthz endpoint (set to 0 to disable) HealthzPort int32 // healthzBindAddress is the IP address for the healthz server to serve on HealthzBindAddress string // oomScoreAdj is The oom-score-adj value for kubelet process. Values // must be within the range [-1000, 1000]. OOMScoreAdj int32 // clusterDomain is the DNS domain for this cluster. If set, kubelet will // configure all containers to search this domain in addition to the // host&#39;s search domains. ClusterDomain string // clusterDNS is a list of IP addresses for a cluster DNS server. If set, // kubelet will configure all containers to use this for DNS resolution // instead of the host&#39;s DNS servers. ClusterDNS []string // streamingConnectionIdleTimeout is the maximum time a streaming connection // can be idle before the connection is automatically closed. StreamingConnectionIdleTimeout metav1.Duration // nodeStatusUpdateFrequency is the frequency that kubelet computes node // status. If node lease feature is not enabled, it is also the frequency that // kubelet posts node status to master. In that case, be cautious when // changing the constant, it must work with nodeMonitorGracePeriod in nodecontroller. NodeStatusUpdateFrequency metav1.Duration // nodeStatusReportFrequency is the frequency that kubelet posts node // status to master if node status does not change. Kubelet will ignore this // frequency and post node status immediately if any change is detected. It is // only used when node lease feature is enabled. NodeStatusReportFrequency metav1.Duration // nodeLeaseDurationSeconds is the duration the Kubelet will set on its corresponding Lease. NodeLeaseDurationSeconds int32 // imageMinimumGCAge is the minimum age for an unused image before it is // garbage collected. ImageMinimumGCAge metav1.Duration // imageGCHighThresholdPercent is the percent of disk usage after which // image garbage collection is always run. The percent is calculated as // this field value out of 100. ImageGCHighThresholdPercent int32 // imageGCLowThresholdPercent is the percent of disk usage before which // image garbage collection is never run. Lowest disk usage to garbage // collect to. The percent is calculated as this field value out of 100. ImageGCLowThresholdPercent int32 // How frequently to calculate and cache volume disk usage for all pods VolumeStatsAggPeriod metav1.Duration // KubeletCgroups is the absolute name of cgroups to isolate the kubelet in KubeletCgroups string // SystemCgroups is absolute name of cgroups in which to place // all non-kernel processes that are not already in a container. Empty // for no container. Rolling back the flag requires a reboot. SystemCgroups string // CgroupRoot is the root cgroup to use for pods. // If CgroupsPerQOS is enabled, this is the root of the QoS cgroup hierarchy. CgroupRoot string // Enable QoS based Cgroup hierarchy: top level cgroups for QoS Classes // And all Burstable and BestEffort pods are brought up under their // specific top level QoS cgroup. CgroupsPerQOS bool // driver that the kubelet uses to manipulate cgroups on the host (cgroupfs or systemd) CgroupDriver string // CPUManagerPolicy is the name of the policy to use. // Requires the CPUManager feature gate to be enabled. CPUManagerPolicy string // CPUManagerPolicyOptions is a set of key=value which allows to set extra options // to fine tune the behaviour of the cpu manager policies. // Requires both the &#34;CPUManager&#34; and &#34;CPUManagerPolicyOptions&#34; feature gates to be enabled. CPUManagerPolicyOptions map[string]string // CPU Manager reconciliation period. // Requires the CPUManager feature gate to be enabled. CPUManagerReconcilePeriod metav1.Duration // MemoryManagerPolicy is the name of the policy to use. // Requires the MemoryManager feature gate to be enabled. MemoryManagerPolicy string // TopologyManagerPolicy is the name of the policy to use. // Policies other than &#34;none&#34; require the TopologyManager feature gate to be enabled. TopologyManagerPolicy string // TopologyManagerScope represents the scope of topology hint generation // that topology manager requests and hint providers generate. // &#34;pod&#34; scope requires the TopologyManager feature gate to be enabled. // Default: &#34;container&#34; // &#43;optional TopologyManagerScope string // Map of QoS resource reservation percentages (memory only for now). // Requires the QOSReserved feature gate to be enabled. QOSReserved map[string]string // runtimeRequestTimeout is the timeout for all runtime requests except long running // requests - pull, logs, exec and attach. RuntimeRequestTimeout metav1.Duration // hairpinMode specifies how the Kubelet should configure the container // bridge for hairpin packets. // Setting this flag allows endpoints in a Service to loadbalance back to // themselves if they should try to access their own Service. Values: // &#34;promiscuous-bridge&#34;: make the container bridge promiscuous. // &#34;hairpin-veth&#34;: set the hairpin flag on container veth interfaces. // &#34;none&#34;: do nothing. // Generally, one must set --hairpin-mode=hairpin-veth to achieve hairpin NAT, // because promiscuous-bridge assumes the existence of a container bridge named cbr0. HairpinMode string // maxPods is the number of pods that can run on this Kubelet. MaxPods int32 // The CIDR to use for pod IP addresses, only used in standalone mode. // In cluster mode, this is obtained from the master. PodCIDR string // The maximum number of processes per pod. If -1, the kubelet defaults to the node allocatable pid capacity. PodPidsLimit int64 // ResolverConfig is the resolver configuration file used as the basis // for the container DNS resolution configuration. ResolverConfig string // RunOnce causes the Kubelet to check the API server once for pods, // run those in addition to the pods specified by static pod files, and exit. RunOnce bool // cpuCFSQuota enables CPU CFS quota enforcement for containers that // specify CPU limits CPUCFSQuota bool // CPUCFSQuotaPeriod sets the CPU CFS quota period value, cpu.cfs_period_us, defaults to 100ms CPUCFSQuotaPeriod metav1.Duration // maxOpenFiles is Number of files that can be opened by Kubelet process. MaxOpenFiles int64 // nodeStatusMaxImages caps the number of images reported in Node.Status.Images. NodeStatusMaxImages int32 // contentType is contentType of requests sent to apiserver. ContentType string // kubeAPIQPS is the QPS to use while talking with kubernetes apiserver KubeAPIQPS int32 // kubeAPIBurst is the burst to allow while talking with kubernetes // apiserver KubeAPIBurst int32 // serializeImagePulls when enabled, tells the Kubelet to pull images one at a time. SerializeImagePulls bool // Map of signal names to quantities that defines hard eviction thresholds. For example: {&#34;memory.available&#34;: &#34;300Mi&#34;}. EvictionHard map[string]string // Map of signal names to quantities that defines soft eviction thresholds. For example: {&#34;memory.available&#34;: &#34;300Mi&#34;}. EvictionSoft map[string]string // Map of signal names to quantities that defines grace periods for each soft eviction signal. For example: {&#34;memory.available&#34;: &#34;30s&#34;}. EvictionSoftGracePeriod map[string]string // Duration for which the kubelet has to wait before transitioning out of an eviction pressure condition. EvictionPressureTransitionPeriod metav1.Duration // Maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. EvictionMaxPodGracePeriod int32 // Map of signal names to quantities that defines minimum reclaims, which describe the minimum // amount of a given resource the kubelet will reclaim when performing a pod eviction while // that resource is under pressure. For example: {&#34;imagefs.available&#34;: &#34;2Gi&#34;} EvictionMinimumReclaim map[string]string // podsPerCore is the maximum number of pods per core. Cannot exceed MaxPods. // If 0, this field is ignored. PodsPerCore int32 // enableControllerAttachDetach enables the Attach/Detach controller to // manage attachment/detachment of volumes scheduled to this node, and // disables kubelet from executing any attach/detach operations EnableControllerAttachDetach bool // protectKernelDefaults, if true, causes the Kubelet to error if kernel // flags are not as it expects. Otherwise the Kubelet will attempt to modify // kernel flags to match its expectation. ProtectKernelDefaults bool // If true, Kubelet ensures a set of iptables rules are present on host. // These rules will serve as utility for various components, e.g. kube-proxy. // The rules will be created based on IPTablesMasqueradeBit and IPTablesDropBit. MakeIPTablesUtilChains bool // iptablesMasqueradeBit is the bit of the iptables fwmark space to mark for SNAT // Values must be within the range [0, 31]. Must be different from other mark bits. // Warning: Please match the value of the corresponding parameter in kube-proxy. // TODO: clean up IPTablesMasqueradeBit in kube-proxy IPTablesMasqueradeBit int32 // iptablesDropBit is the bit of the iptables fwmark space to mark for dropping packets. // Values must be within the range [0, 31]. Must be different from other mark bits. IPTablesDropBit int32 // featureGates is a map of feature names to bools that enable or disable alpha/experimental // features. This field modifies piecemeal the built-in default values from // &#34;k8s.io/kubernetes/pkg/features/kube_features.go&#34;. FeatureGates map[string]bool // Tells the Kubelet to fail to start if swap is enabled on the node. FailSwapOn bool // memorySwap configures swap memory available to container workloads. // &#43;featureGate=NodeSwap // &#43;optional MemorySwap MemorySwapConfiguration // A quantity defines the maximum size of the container log file before it is rotated. For example: &#34;5Mi&#34; or &#34;256Ki&#34;. ContainerLogMaxSize string // Maximum number of container log files that can be present for a container. ContainerLogMaxFiles int32 // ConfigMapAndSecretChangeDetectionStrategy is a mode in which config map and secret managers are running. ConfigMapAndSecretChangeDetectionStrategy ResourceChangeDetectionStrategy // A comma separated whitelist of unsafe sysctls or sysctl patterns (ending in *). // Unsafe sysctl groups are kernel.shm*, kernel.msg*, kernel.sem, fs.mqueue.*, and net.*. // These sysctls are namespaced but not allowed by default. For example: &#34;kernel.msg*,net.ipv4.route.min_pmtu&#34; // &#43;optional AllowedUnsafeSysctls []string // kernelMemcgNotification if enabled, the kubelet will integrate with the kernel memcg // notification to determine if memory eviction thresholds are crossed rather than polling. KernelMemcgNotification bool /* the following fields are meant for Node Allocatable */ // A set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G,pid=100) pairs // that describe resources reserved for non-kubernetes components. // Currently only cpu and memory are supported. // See http://kubernetes.io/docs/user-guide/compute-resources for more detail. SystemReserved map[string]string // A set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G,pid=100) pairs // that describe resources reserved for kubernetes system components. // Currently cpu, memory and local ephemeral storage for root file system are supported. // See http://kubernetes.io/docs/user-guide/compute-resources for more detail. KubeReserved map[string]string // This flag helps kubelet identify absolute name of top level cgroup used to enforce `SystemReserved` compute resource reservation for OS system daemons. // Refer to [Node Allocatable](https://git.k8s.io/community/contributors/design-proposals/node/node-allocatable.md) doc for more information. SystemReservedCgroup string // This flag helps kubelet identify absolute name of top level cgroup used to enforce `KubeReserved` compute resource reservation for Kubernetes node system daemons. // Refer to [Node Allocatable](https://git.k8s.io/community/contributors/design-proposals/node/node-allocatable.md) doc for more information. KubeReservedCgroup string // This flag specifies the various Node Allocatable enforcements that Kubelet needs to perform. // This flag accepts a list of options. Acceptable options are `pods`, `system-reserved` &amp; `kube-reserved`. // Refer to [Node Allocatable](https://git.k8s.io/community/contributors/design-proposals/node/node-allocatable.md) doc for more information. EnforceNodeAllocatable []string // This option specifies the cpu list reserved for the host level system threads and kubernetes related threads. // This provide a &#34;static&#34; CPU list rather than the &#34;dynamic&#34; list by system-reserved and kube-reserved. // This option overwrites CPUs provided by system-reserved and kube-reserved. ReservedSystemCPUs string // The previous version for which you want to show hidden metrics. // Only the previous minor version is meaningful, other values will not be allowed. // The format is &lt;major&gt;.&lt;minor&gt;, e.g.: &#39;1.16&#39;. // The purpose of this format is make sure you have the opportunity to notice if the next release hides additional metrics, // rather than being surprised when they are permanently removed in the release after that. ShowHiddenMetricsForVersion string // Logging specifies the options of logging. // Refer [Logs Options](https://github.com/kubernetes/component-base/blob/master/logs/options.go) for more information. Logging componentbaseconfig.LoggingConfiguration // EnableSystemLogHandler enables /logs handler. EnableSystemLogHandler bool // ShutdownGracePeriod specifies the total duration that the node should delay the shutdown and total grace period for pod termination during a node shutdown. // Defaults to 0 seconds. // &#43;featureGate=GracefulNodeShutdown // &#43;optional ShutdownGracePeriod metav1.Duration // ShutdownGracePeriodCriticalPods specifies the duration used to terminate critical pods during a node shutdown. This should be less than ShutdownGracePeriod. // Defaults to 0 seconds. // For example, if ShutdownGracePeriod=30s, and ShutdownGracePeriodCriticalPods=10s, during a node shutdown the first 20 seconds would be reserved for gracefully terminating normal pods, and the last 10 seconds would be reserved for terminating critical pods. // &#43;featureGate=GracefulNodeShutdown // &#43;optional ShutdownGracePeriodCriticalPods metav1.Duration // ReservedMemory specifies a comma-separated list of memory reservations for NUMA nodes. // The parameter makes sense only in the context of the memory manager feature. The memory manager will not allocate reserved memory for container workloads. // For example, if you have a NUMA0 with 10Gi of memory and the ReservedMemory was specified to reserve 1Gi of memory at NUMA0, // the memory manager will assume that only 9Gi is available for allocation. // You can specify a different amount of NUMA node and memory types. // You can omit this parameter at all, but you should be aware that the amount of reserved memory from all NUMA nodes // should be equal to the amount of memory specified by the node allocatable features(https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable). // If at least one node allocatable parameter has a non-zero value, you will need to specify at least one NUMA node. // Also, avoid specifying: // 1. Duplicates, the same NUMA node, and memory type, but with a different value. // 2. zero limits for any memory type. // 3. NUMAs nodes IDs that do not exist under the machine. // 4. memory types except for memory and hugepages-&lt;size&gt; ReservedMemory []MemoryReservation // EnableProfiling enables /debug/pprof handler. EnableProfilingHandler bool // EnableDebugFlagsHandler enables/debug/flags/v handler. EnableDebugFlagsHandler bool // SeccompDefault enables the use of `RuntimeDefault` as the default seccomp profile for all workloads. SeccompDefault bool // MemoryThrottlingFactor specifies the factor multiplied by the memory limit or node allocatable memory // when setting the cgroupv2 memory.high value to enforce MemoryQoS. // Decreasing this factor will set lower high limit for container cgroups and put heavier reclaim pressure // while increasing will put less reclaim pressure. // See http://kep.k8s.io/2570 for more details. // Default: 0.8 // &#43;featureGate=MemoryQoS // &#43;optional MemoryThrottlingFactor *float64 }">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-12-19T11:34:43+08:00">
+    <meta property="article:modified_time" content="2023-02-08T23:17:58+08:00">
+
+  <meta itemprop="name" content="参数配置">
+  <meta itemprop="description" content="简要概述 参数解析 命令行参数 外部组建参数 名称 默认值 来自组件 说明 add-dir-header false TODO; 在输出日志时，是否把代码文件所在目录一起提供，如：state/state_mem.go:36，否则仅输出：state_mem.go:36 alsologtostderr - klog 已弃用 application-metrics-count-limit - cadvisor 已废弃 azure-container-registry-config - azure 包含 Azure 容器镜像库配置信息的文件的路径 boot-id-file - cadvisor 默认来自：/proc/sys/kernel/random/boot_id cloud-config - kubelet 已弃用 cloud-provider - kubelet 已弃用 cni-bin-dir /opt/cni/bin dockershim 已弃用 cni 的相关二进制地址 cni-cache-dir /var/lib/cni/cache dockershim 已弃用 cni-conf-dir /etc/cni/net.d dockershim 已弃用 container-hints /etc/cadvisor/container_hints.json cadvisor 已废弃 container-runtime remote kubelet 已废弃，目前支持 docker、remote，以后仅支持 remote containerd - cadvisor 已废弃 containerd-namespace - cadvisor 已废弃 docker - cadvisor 已废弃 docker-endpoint - dockershim 已弃用 docker-env-metadata-whitelist - cadvisor 已废弃 docker-only - cadvisor 已废弃 docker-root - cadvisor 已废弃 docker-tls - cadvisor 已废弃 docker-tls-ca - cadvisor 已废弃 docker-tls-cert - cadvisor 已废弃 docker-tls-key - cadvisor 已废弃 dynamic-config-dir - kubelet 已废弃 enable-load-reader - cadvisor 已废弃 event-storage-age-limit - cadvisor 已废弃 event-storage-event-limit - cadvisor 已废弃 experimental-allocatable-ignore-eviction false kubelet 设置为 true 表示在计算节点可分配资源数量时忽略硬性逐出阈值设置 experimental-bootstrap-kubeconfig - kubelet Use –bootstrap-kubeconfig experimental-check-node-capabilities-before-mount - kubelet 已废弃 experimental-kernel-memcg-notification - kubelet 已废弃 experimental-mounter-path - kubelet 已废弃 global-housekeeping-interval - cadvisor 已废弃 image-pull-progress-deadline - dockershim 已弃用 keep-terminated-pod-volumes - kubelet 已废弃 log-backtrace-at 0 klog 已弃用 log-dir - klog 已弃用，如果此值为非空，则在所指定的目录中写入日志文件 log-file - klog 已弃用，如果此值非空，使用所给字符串作为日志文件名 log-file-max-size 1800 klog 已弃用，设置日志文件的最大值。单位为兆字节（M）。如果值为 0，则表示文件大小无限制 log-flush-frequency 5s klog 两次日志刷新之间的最大秒数 logtostderr true klog 日志输出到 stderr 而不是文件 machine-id-file - cadvisor /etc/machine-id,/var/lib/dbus/machine-id master-service-namespace - kubelet 已弃用，kubelet 向 Pod 注入 Kubernetes 主控服务信息时使用的命名空间 maximum-dead-containers -1 kubelet 已弃用，使用 eviction 代替 maximum-dead-containers-per-container 1 kubelet 已弃用，使用 eviction 代替 minimum-container-ttl-duration - kubelet 已弃用，使用 eviction 代替 network-plugin - dockershim 已弃用 network-plugin-mtu - dockershim 已弃用 non-masquerade-cidr - kubelet 已弃用 one-output - kubelet 已弃用 port 10250 kubelet 已弃用，kubelet 服务监听的本机端口号 really-crash-for-testing - kubelet 已弃用 register-schedulable true kubelet 已弃用 seccomp-profile-root - kubelet 已弃用 skip-headers - klog 已弃用 skip-log-headers - klog 已弃用 stderrthreshold - klog 已弃用 storage-driver-buffer-duration - cadvisor storage-driver-db - cadvisor 已废弃 storage-driver-host - cadvisor 已废弃 storage-driver-password - cadvisor 已废弃 storage-driver-secure - cadvisor 已废弃 storage-driver-table - cadvisor 已废弃 storage-driver-user - cadvisor 已废弃 v - klog 日志级别详细程度的数值 组建内置参数 名称 默认值 KubeletConfiguration 说明 address 0.0.0.0 address kubelet api 服务监听的地址 allowed-unsafe-sysctls - TODO; 允许不安全的 sysctl 设置 anonymous-auth true TODO; 是否可接受匿名请求，用户名为 system:anonymous，用户组为 system:unauthenticated authentication-token-webhook TODO authentication.webhook.enabled TODO；使用 TokenReview API 对持有者令牌进行身份认证 authentication-token-webhook-cache-ttl 2m0s authentication.webhook.cacheTTL 对 Webhook 令牌认证组件所返回的响应的缓存时间 authorization-mode AlwaysAllow 或 Webhook authorization.mode 服务端鉴权模式，可选值：AlwaysAllow、Webhook，当设置 –config 时默认值为 Webhook authorization-webhook-cache-authorized-ttl 5m0s authorization.webhook.cacheAuthorizedTTL 对 Webhook 认证组件所返回的 “Authorized（已授权）” 应答的缓存时间 authorization-webhook-cache-unauthorized-ttl 30s authorization.webhook.cacheUnauthorizedTTL 对 Webhook 认证组件所返回的 “Unauthorized（未授权）” 应答的缓存时间 bootstrap-kubeconfig - - 包含 apiserver 上配置的 known_tokens.csv 里面 token，用于获取 kubelet-client-current.pem 证书 cert-dir /var/lib/kubelet/pki - kubelet.crt 与 kubelet.key 证书路径, 优先级低于 tls-cert-file 与 tls-private-key-file cgroup-driver cgroupfs cgroupDriver 用来操作本机 cgroup 时使用的驱动程序。支持的选项包括 cgroupfs 和 systemd cgroup-root &#34;&#34; TODO 为 Pod 设置根 cgroup 默认将使用容器运行时的默认设置 cgroups-per-qos true TODO 启用创建 QoS cgroup 层次结构。此值为 true 时 kubelet 为 QoS 和 Pod 创建顶级的 cgroup client-ca-file - authentication.x509.clientCAFile TODO; 检查客户端证书，如 kube-apiserver 请求 kubelet ?? cluster-dns - clusterDNS 用于 Pod 中设置了 “dnsPolicy=ClusterFirst” 时为容器提供 DNS 服务 cluster-domain cluster.local clusterDomain 集群域名，如果设置了此值，kubelet 除了将主机的搜索域配置到所有容器之外，还会为其配置这里指定的域名 config - - 指向 KubeletConfiguration 配置文件，命令行参数会覆盖此文件中的配置 container-log-max-files 5 containerLogMaxFiles 设置容器的日志文件个数上限，必须不小于2且只能与 –container-runtime=remote 一起使用 container-log-max-size 10Mi containerLogMaxSize 设置容器日志文件在轮换生成新文件时之前的最大值 container-runtime-endpoint &#34;&#34; - 如：unix:///var/run/containerd/containerd.sock contention-profiling - - TODO; 启用锁竞争分析，前提是开启 pprof cpu-cfs-quota true TODO TODO; 为设置了 CPU 限制的容器启用 CPU CFS 配额保障 cpu-cfs-quota-period 100ms TODO TODO; 设置 CPU CFS 配额周期 cpu.cfs_period_us。默认使用 Linux 内核所设置的默认值 cpu-manager-policy none TODO TODO; 要使用的 CPU 管理器策略。可选值包括：none 和 static cpu-manager-policy-options - TODO TODO; 一组用于微调其行为的 key=value CPU 管理器策略选项 cpu-manager-reconcile-period 10s TODO TODO; 设置 CPU 管理器的调和时间 enable-controller-attach-detach true TODO ｜ 启用 Attach/Detach 控制器来挂接和摘除调度到该节点的卷，同时禁用 kubelet 执行挂接和摘除操作 enable-debugging-handlers true TODO 启用服务器上用于日志收集和在本地运行容器和命令的端点 enable-server true TODO 启用 kubelet 服务器 enforce-node-allocatable pods TODO 用逗号分隔的列表，包含由 kubelet 强制执行的节点可分配资源级别 event-burst 10 TODO 事件记录的个数的突发峰值上限 event-qps 5 TODO 设置大于 0 的值表示限制每秒可生成的事件数量。设置为 0 表示不限制 eviction-hard imagefs.available&lt;15%,memory.available&lt;100Mi,nodefs.available&lt;10% TODO 触发 Pod 驱逐操作的一组硬性门限 eviction-max-pod-grace-period - TODO 响应满足软性驱逐阈值（Soft Eviction Threshold）而终止 Pod 时使用的最长宽限期（以秒为单位 eviction-minimum-reclaim - TODO 当某资源压力过大时，kubelet 将执行 Pod 驱逐操作 eviction-pressure-transition-period 5m0s TODO 在驱逐压力状况解除之前的最长等待时间 eviction-soft - TODO 设置一组驱逐阈值（例如：memory.available&lt;1.5Gi）。 如果在相应的宽限期内达到该阈值，则会触发 Pod 驱逐操作 eviction-soft-grace-period - TODO 设置一组驱逐宽限期（例如，memory.available=1m30s），对应于触发软性 Pod 驱逐操作之前软性驱逐阈值所需持续的时间长短 exit-on-lock-contention - - 设置为 true 表示当发生锁文件竞争时 kubelet 可以退出 experimental-logging-sanitization - TODO 对一些日志敏感字段做特殊处理 fail-swap-on true failSwapOn 设置为 true 表示如果主机启用了交换分区，kubelet 将直接失败 file-check-frequency 20s TODO 检查配置文件中新数据的时间间隔 hairpin-mode promiscuous-bridge hairpinMode 设置 kubelet 执行 hairpin 网络地址转译的方式，该模式允许后端端点对其自身服务的访问能够再次经由负载均衡转发回自身，可选项包括 promiscuous-bridge、hairpin-veth 和 none healthz-bind-address 127.0.0.1 healthzBindAddress 用于运行 healthz 服务器的 IP 地址 healthz-port 10248 healthzPort 本地 healthz 端点使用的端口（设置为 0 表示禁用） hostname-override - - 将使用此字符串而不是实际的主机名作为节点标识 housekeeping-interval 10s TODO TODO http-check-frequency 20s TODO HTTP 服务以获取新数据的时间间隔 image-credential-provider-bin-dir - - TODO; 指向凭据提供组件可执行文件所在目录的路径 image-credential-provider-config - - TODO; 指向凭据提供插件配置文件所在目录的路径 image-gc-high-threshold 85 TODO 镜像垃圾回收上限。磁盘使用空间达到该百分比时，镜像垃圾回收将持续工作。 值必须在 [0，100] 范围内。要禁用镜像垃圾回收，请设置为 100 image-gc-low-threshold 80 TODO 镜像垃圾回收下限。磁盘使用空间在达到该百分比之前，镜像垃圾回收操作不会运行。 值必须在 [0，100] 范围内，并且不得大于 high-threshold的值 image-service-endpoint - - 远程镜像服务的端点，未设置则同 container-runtime-endpoint iptables-drop-bit 15 TODO 标记数据包将被丢弃的 fwmark 位设置。必须在 [0，31] 范围内 iptables-masquerade-bit 14 TODO 标记数据包将进行 SNAT 的 fwmark 空间位设置。必须在 [0，31] 范围内 kernel-memcg-notification - TODO 若启用，则 kubelet 将与内核中的 memcg 通知机制集成，不再使用轮询的方式来判定 是否 Pod 达到内存驱逐阈值 kube-api-burst 10 TODO 每秒发送到 apiserver 的突发请求数量上限 kube-api-content-type application/vnd.kubernetes.protobuf TODO 发送到 apiserver 的请求的内容类型 kube-api-qps 5 TODO 与 apiserver 通信的每秒查询个数QPS，此值必须&gt;=0，如果为0，则使用默认5。不包含事件和节点心跳 api，它们的速率限制是由一组不同的标志所控制 kube-reserved - kubeReserved 系统预留的资源配置，以一组 &lt;资源名称&gt;=&lt;资源数量&gt; 格式表示，支持：cpu、memory、ephemeral-storage kube-reserved-cgroup &#34;&#34; TODO 给出某个顶层 cgroup 绝对名称，该 cgroup 用于管理通过标志 –kube-reserved 为 kubernetes 组件所预留的计算资源 kubeconfig - - 指定如何连接到 API 服务器 kubelet-cgroups - TODO 用于创建和运行 kubelet 的 cgroup 的绝对名称 lock-file - - kubelet 使用的锁文件的路径 log-json-info-buffer-size 0 TODO 实验性特性 log-json-split-stream - TODO 实验性特性 logging-format text TODO 设置日志文件格式。可以设置的格式有：“text”、“json” make-iptables-util-chains true TODO 设置为 true 表示 kubelet 将确保 iptables 规则在主机上存在 manifest-url - TODO 用于访问要运行的其他 Pod 规范的 URL manifest-url-header - TODO 请求 manifest-url 自定义的头 max-open-files 1000000 TODO kubelet 进程可以打开的最大文件数量 max-pods 110 maxPods 此 kubelet 能运行的 Pod 最大数量 memory-manager-policy None TODO 内存管理器策略使用。可选值：‘None’、‘Static’ minimum-image-ttl-duration 2m0s TODO 已结束的容器在被垃圾回收清理之前的最少存活时间。 例如：‘300ms’、’10s’ 或者 ‘2h45m’ node-ip - - 节点的 IP 地址 node-labels - - kubelet 在集群中注册本节点时设置的标签 node-status-max-images 50 TODO 在 node.status.images 中可以报告的最大镜像数量。如果指定为 -1，则不设上限 node-status-update-frequency 10s TODO 指定 kubelet 向主控节点汇报节点状态的时间间隔。注意：更改此常量时请务必谨慎， 它必须与节点控制器中的 nodeMonitorGracePeriod 一起使用 oom-score-adj -999 oomScoreAdj kubelet 进程的 oom-score-adj 参数值。有效范围为 [-1000，1000] pod-cidr - TODO 用于给 Pod 分配 IP 地址的 CIDR 地址池，仅在独立运行模式下使用 pod-infra-container-image k8s.gcr.io/pause:3.5 - 所指定的镜像不会被镜像垃圾收集器删除，依赖CRI pod-manifest-path - staticPodPath 设置包含要运行的静态 Pod 的文件的路径 pod-max-pids -1 TODO 设置每个 Pod 中的最大进程数目。如果为 -1，则 kubelet 使用节点可分配的 PID 容量作为默认值 pods-per-core - TODO 在每个处理器核上可运行的 Pod 数量 protect-kernel-defaults - TODO TODO provider-id - TODO 设置主机数据库中用来标识节点的唯一标识 qos-reserved - TODO TODO read-only-port 10255 TODO kubelet 可以在没有身份验证/鉴权的情况下提供只读服务的端口（设置为 0 表示禁用） register-node true TODO 向 API 服务器注册节点 register-with-taints - TODO 设置本节点的污点标记，格式为 =:， 以逗号分隔 registry-burst 10 TODO 设置突发性镜像拉取的个数上限 registry-qps 5 TODO 如此值大于 0，可用来限制镜像仓库的 QPS 上限。设置为 0，表示不受限制 reserved-cpus - TODO 为系统和 Kubernetes 保留使用的 CPU，优先级高于 system-reserved 和 –kube-reskube-reserved reserved-memory - TODO TODO; 以逗号分隔的 NUMA 节点内存预留列表 resolv-conf /etc/resolv.conf TODO 名字解析服务的配置文件名，用作容器 DNS 解析配置的基础 root-dir /var/lib/kubelet - 设置用于管理 kubelet 文件的根目录 rotate-certificates - TODO 当客户端证书即将过期时 kubelet 自动从 kube-apiserver 请求新的证书进行轮换 rotate-server-certificates - TODO 当 kubelet 的服务证书即将过期时自动从 kube-apiserver 请求新的证书进行轮换 runonce - - 表示从本地清单或远程 URL 创建完 Pod 后立即退出 kubelet 进程 runtime-cgroups - - TODO; 设置用于创建和运行容器运行时的 cgroup 的绝对名称 runtime-request-timeout 2m0s TODO 设置除了长时间运行的请求（包括 pull、logs、exec 和 attach 等操作）之外的其他运行时请求的超时时间 seccomp-default - - TODO; 启用 RuntimeDefault 作为所有工作负载的默认 seccomp 配置文件 serialize-image-pulls true serializeImagePulls 逐一拉取镜像 streaming-connection-idle-timeout 4h0m0s TODO; 设置流连接在自动关闭之前可以空闲的最长时间。0 表示没有超时限制，与 kubelet 服务器的所有连接最长持续时间为 4 小时 sync-frequency 1m0s TODO 在运行中的容器与其配置之间执行同步操作的最长时间间隔 system-cgroups - TODO TODO system-reserved - systemReserved 系统预留的资源配置，以一组 资源名称=资源数量 的格式表示 system-reserved-cgroup &#34;&#34; TODO TODO; 此标志给出一个顶层 cgroup 绝对名称，该 cgroup 用于管理非 kubernetes 组件 tls-cert-file - TODO 用于 HTTPS 认证，如未提供，则 kubelet 生成自签名证书和密钥，并将其保存到通过 –cert-dir 指定的目录 tls-cipher-suites - TODO 服务器端加密算法列表，以逗号分隔 tls-min-version - TODO 设置支持的最小 TLS 版本号，可选的版本号包括：VersionTLS10、 VersionTLS11、VersionTLS12 和 VersionTLS13 tls-private-key-file - TODO 同上 topology-manager-policy none TODO 设置拓扑管理策略（Topology Manager policy）。可选值包括：none、 best-effort、restricted 和 single-numa-node topology-manager-scope container TODO TODO; 拓扑提示信息使用范围 volume-plugin-dir - TODO 用来搜索第三方存储卷插件的目录 volume-stats-agg-period 1m0s TODO 指定 kubelet 计算和缓存所有 Pod 和卷的磁盘用量总值的时间间隔。要禁用磁盘用量计算， 请设置为 0 数据结构 KubeletConfiguration // KubeletConfiguration contains the configuration for the Kubelet type KubeletConfiguration struct { metav1.TypeMeta // enableServer enables Kubelet&#39;s secured server. // Note: Kubelet&#39;s insecure port is controlled by the readOnlyPort option. EnableServer bool // staticPodPath is the path to the directory containing local (static) pods to // run, or the path to a single static pod file. StaticPodPath string // syncFrequency is the max period between synchronizing running // containers and config SyncFrequency metav1.Duration // fileCheckFrequency is the duration between checking config files for // new data FileCheckFrequency metav1.Duration // httpCheckFrequency is the duration between checking http for new data HTTPCheckFrequency metav1.Duration // staticPodURL is the URL for accessing static pods to run StaticPodURL string // staticPodURLHeader is a map of slices with HTTP headers to use when accessing the podURL StaticPodURLHeader map[string][]string // address is the IP address for the Kubelet to serve on (set to 0.0.0.0 // for all interfaces) Address string // port is the port for the Kubelet to serve on. Port int32 // readOnlyPort is the read-only port for the Kubelet to serve on with // no authentication/authorization (set to 0 to disable) ReadOnlyPort int32 // volumePluginDir is the full path of the directory in which to search // for additional third party volume plugins. VolumePluginDir string // providerID, if set, sets the unique id of the instance that an external provider (i.e. cloudprovider) // can use to identify a specific node ProviderID string // tlsCertFile is the file containing x509 Certificate for HTTPS. (CA cert, // if any, concatenated after server cert). If tlsCertFile and // tlsPrivateKeyFile are not provided, a self-signed certificate // and key are generated for the public address and saved to the directory // passed to the Kubelet&#39;s --cert-dir flag. TLSCertFile string // tlsPrivateKeyFile is the file containing x509 private key matching tlsCertFile TLSPrivateKeyFile string // TLSCipherSuites is the list of allowed cipher suites for the server. // Values are from tls package constants (https://golang.org/pkg/crypto/tls/#pkg-constants). TLSCipherSuites []string // TLSMinVersion is the minimum TLS version supported. // Values are from tls package constants (https://golang.org/pkg/crypto/tls/#pkg-constants). TLSMinVersion string // rotateCertificates enables client certificate rotation. The Kubelet will request a // new certificate from the certificates.k8s.io API. This requires an approver to approve the // certificate signing requests. RotateCertificates bool // serverTLSBootstrap enables server certificate bootstrap. Instead of self // signing a serving certificate, the Kubelet will request a certificate from // the certificates.k8s.io API. This requires an approver to approve the // certificate signing requests. The RotateKubeletServerCertificate feature // must be enabled. ServerTLSBootstrap bool // authentication specifies how requests to the Kubelet&#39;s server are authenticated Authentication KubeletAuthentication // authorization specifies how requests to the Kubelet&#39;s server are authorized Authorization KubeletAuthorization // registryPullQPS is the limit of registry pulls per second. // Set to 0 for no limit. RegistryPullQPS int32 // registryBurst is the maximum size of bursty pulls, temporarily allows // pulls to burst to this number, while still not exceeding registryPullQPS. // Only used if registryPullQPS &gt; 0. RegistryBurst int32 // eventRecordQPS is the maximum event creations per second. If 0, there // is no limit enforced. EventRecordQPS int32 // eventBurst is the maximum size of a burst of event creations, temporarily // allows event creations to burst to this number, while still not exceeding // eventRecordQPS. Only used if eventRecordQPS &gt; 0. EventBurst int32 // enableDebuggingHandlers enables server endpoints for log collection // and local running of containers and commands EnableDebuggingHandlers bool // enableContentionProfiling enables lock contention profiling, if enableDebuggingHandlers is true. EnableContentionProfiling bool // healthzPort is the port of the localhost healthz endpoint (set to 0 to disable) HealthzPort int32 // healthzBindAddress is the IP address for the healthz server to serve on HealthzBindAddress string // oomScoreAdj is The oom-score-adj value for kubelet process. Values // must be within the range [-1000, 1000]. OOMScoreAdj int32 // clusterDomain is the DNS domain for this cluster. If set, kubelet will // configure all containers to search this domain in addition to the // host&#39;s search domains. ClusterDomain string // clusterDNS is a list of IP addresses for a cluster DNS server. If set, // kubelet will configure all containers to use this for DNS resolution // instead of the host&#39;s DNS servers. ClusterDNS []string // streamingConnectionIdleTimeout is the maximum time a streaming connection // can be idle before the connection is automatically closed. StreamingConnectionIdleTimeout metav1.Duration // nodeStatusUpdateFrequency is the frequency that kubelet computes node // status. If node lease feature is not enabled, it is also the frequency that // kubelet posts node status to master. In that case, be cautious when // changing the constant, it must work with nodeMonitorGracePeriod in nodecontroller. NodeStatusUpdateFrequency metav1.Duration // nodeStatusReportFrequency is the frequency that kubelet posts node // status to master if node status does not change. Kubelet will ignore this // frequency and post node status immediately if any change is detected. It is // only used when node lease feature is enabled. NodeStatusReportFrequency metav1.Duration // nodeLeaseDurationSeconds is the duration the Kubelet will set on its corresponding Lease. NodeLeaseDurationSeconds int32 // imageMinimumGCAge is the minimum age for an unused image before it is // garbage collected. ImageMinimumGCAge metav1.Duration // imageGCHighThresholdPercent is the percent of disk usage after which // image garbage collection is always run. The percent is calculated as // this field value out of 100. ImageGCHighThresholdPercent int32 // imageGCLowThresholdPercent is the percent of disk usage before which // image garbage collection is never run. Lowest disk usage to garbage // collect to. The percent is calculated as this field value out of 100. ImageGCLowThresholdPercent int32 // How frequently to calculate and cache volume disk usage for all pods VolumeStatsAggPeriod metav1.Duration // KubeletCgroups is the absolute name of cgroups to isolate the kubelet in KubeletCgroups string // SystemCgroups is absolute name of cgroups in which to place // all non-kernel processes that are not already in a container. Empty // for no container. Rolling back the flag requires a reboot. SystemCgroups string // CgroupRoot is the root cgroup to use for pods. // If CgroupsPerQOS is enabled, this is the root of the QoS cgroup hierarchy. CgroupRoot string // Enable QoS based Cgroup hierarchy: top level cgroups for QoS Classes // And all Burstable and BestEffort pods are brought up under their // specific top level QoS cgroup. CgroupsPerQOS bool // driver that the kubelet uses to manipulate cgroups on the host (cgroupfs or systemd) CgroupDriver string // CPUManagerPolicy is the name of the policy to use. // Requires the CPUManager feature gate to be enabled. CPUManagerPolicy string // CPUManagerPolicyOptions is a set of key=value which allows to set extra options // to fine tune the behaviour of the cpu manager policies. // Requires both the &#34;CPUManager&#34; and &#34;CPUManagerPolicyOptions&#34; feature gates to be enabled. CPUManagerPolicyOptions map[string]string // CPU Manager reconciliation period. // Requires the CPUManager feature gate to be enabled. CPUManagerReconcilePeriod metav1.Duration // MemoryManagerPolicy is the name of the policy to use. // Requires the MemoryManager feature gate to be enabled. MemoryManagerPolicy string // TopologyManagerPolicy is the name of the policy to use. // Policies other than &#34;none&#34; require the TopologyManager feature gate to be enabled. TopologyManagerPolicy string // TopologyManagerScope represents the scope of topology hint generation // that topology manager requests and hint providers generate. // &#34;pod&#34; scope requires the TopologyManager feature gate to be enabled. // Default: &#34;container&#34; // &#43;optional TopologyManagerScope string // Map of QoS resource reservation percentages (memory only for now). // Requires the QOSReserved feature gate to be enabled. QOSReserved map[string]string // runtimeRequestTimeout is the timeout for all runtime requests except long running // requests - pull, logs, exec and attach. RuntimeRequestTimeout metav1.Duration // hairpinMode specifies how the Kubelet should configure the container // bridge for hairpin packets. // Setting this flag allows endpoints in a Service to loadbalance back to // themselves if they should try to access their own Service. Values: // &#34;promiscuous-bridge&#34;: make the container bridge promiscuous. // &#34;hairpin-veth&#34;: set the hairpin flag on container veth interfaces. // &#34;none&#34;: do nothing. // Generally, one must set --hairpin-mode=hairpin-veth to achieve hairpin NAT, // because promiscuous-bridge assumes the existence of a container bridge named cbr0. HairpinMode string // maxPods is the number of pods that can run on this Kubelet. MaxPods int32 // The CIDR to use for pod IP addresses, only used in standalone mode. // In cluster mode, this is obtained from the master. PodCIDR string // The maximum number of processes per pod. If -1, the kubelet defaults to the node allocatable pid capacity. PodPidsLimit int64 // ResolverConfig is the resolver configuration file used as the basis // for the container DNS resolution configuration. ResolverConfig string // RunOnce causes the Kubelet to check the API server once for pods, // run those in addition to the pods specified by static pod files, and exit. RunOnce bool // cpuCFSQuota enables CPU CFS quota enforcement for containers that // specify CPU limits CPUCFSQuota bool // CPUCFSQuotaPeriod sets the CPU CFS quota period value, cpu.cfs_period_us, defaults to 100ms CPUCFSQuotaPeriod metav1.Duration // maxOpenFiles is Number of files that can be opened by Kubelet process. MaxOpenFiles int64 // nodeStatusMaxImages caps the number of images reported in Node.Status.Images. NodeStatusMaxImages int32 // contentType is contentType of requests sent to apiserver. ContentType string // kubeAPIQPS is the QPS to use while talking with kubernetes apiserver KubeAPIQPS int32 // kubeAPIBurst is the burst to allow while talking with kubernetes // apiserver KubeAPIBurst int32 // serializeImagePulls when enabled, tells the Kubelet to pull images one at a time. SerializeImagePulls bool // Map of signal names to quantities that defines hard eviction thresholds. For example: {&#34;memory.available&#34;: &#34;300Mi&#34;}. EvictionHard map[string]string // Map of signal names to quantities that defines soft eviction thresholds. For example: {&#34;memory.available&#34;: &#34;300Mi&#34;}. EvictionSoft map[string]string // Map of signal names to quantities that defines grace periods for each soft eviction signal. For example: {&#34;memory.available&#34;: &#34;30s&#34;}. EvictionSoftGracePeriod map[string]string // Duration for which the kubelet has to wait before transitioning out of an eviction pressure condition. EvictionPressureTransitionPeriod metav1.Duration // Maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. EvictionMaxPodGracePeriod int32 // Map of signal names to quantities that defines minimum reclaims, which describe the minimum // amount of a given resource the kubelet will reclaim when performing a pod eviction while // that resource is under pressure. For example: {&#34;imagefs.available&#34;: &#34;2Gi&#34;} EvictionMinimumReclaim map[string]string // podsPerCore is the maximum number of pods per core. Cannot exceed MaxPods. // If 0, this field is ignored. PodsPerCore int32 // enableControllerAttachDetach enables the Attach/Detach controller to // manage attachment/detachment of volumes scheduled to this node, and // disables kubelet from executing any attach/detach operations EnableControllerAttachDetach bool // protectKernelDefaults, if true, causes the Kubelet to error if kernel // flags are not as it expects. Otherwise the Kubelet will attempt to modify // kernel flags to match its expectation. ProtectKernelDefaults bool // If true, Kubelet ensures a set of iptables rules are present on host. // These rules will serve as utility for various components, e.g. kube-proxy. // The rules will be created based on IPTablesMasqueradeBit and IPTablesDropBit. MakeIPTablesUtilChains bool // iptablesMasqueradeBit is the bit of the iptables fwmark space to mark for SNAT // Values must be within the range [0, 31]. Must be different from other mark bits. // Warning: Please match the value of the corresponding parameter in kube-proxy. // TODO: clean up IPTablesMasqueradeBit in kube-proxy IPTablesMasqueradeBit int32 // iptablesDropBit is the bit of the iptables fwmark space to mark for dropping packets. // Values must be within the range [0, 31]. Must be different from other mark bits. IPTablesDropBit int32 // featureGates is a map of feature names to bools that enable or disable alpha/experimental // features. This field modifies piecemeal the built-in default values from // &#34;k8s.io/kubernetes/pkg/features/kube_features.go&#34;. FeatureGates map[string]bool // Tells the Kubelet to fail to start if swap is enabled on the node. FailSwapOn bool // memorySwap configures swap memory available to container workloads. // &#43;featureGate=NodeSwap // &#43;optional MemorySwap MemorySwapConfiguration // A quantity defines the maximum size of the container log file before it is rotated. For example: &#34;5Mi&#34; or &#34;256Ki&#34;. ContainerLogMaxSize string // Maximum number of container log files that can be present for a container. ContainerLogMaxFiles int32 // ConfigMapAndSecretChangeDetectionStrategy is a mode in which config map and secret managers are running. ConfigMapAndSecretChangeDetectionStrategy ResourceChangeDetectionStrategy // A comma separated whitelist of unsafe sysctls or sysctl patterns (ending in *). // Unsafe sysctl groups are kernel.shm*, kernel.msg*, kernel.sem, fs.mqueue.*, and net.*. // These sysctls are namespaced but not allowed by default. For example: &#34;kernel.msg*,net.ipv4.route.min_pmtu&#34; // &#43;optional AllowedUnsafeSysctls []string // kernelMemcgNotification if enabled, the kubelet will integrate with the kernel memcg // notification to determine if memory eviction thresholds are crossed rather than polling. KernelMemcgNotification bool /* the following fields are meant for Node Allocatable */ // A set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G,pid=100) pairs // that describe resources reserved for non-kubernetes components. // Currently only cpu and memory are supported. // See http://kubernetes.io/docs/user-guide/compute-resources for more detail. SystemReserved map[string]string // A set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G,pid=100) pairs // that describe resources reserved for kubernetes system components. // Currently cpu, memory and local ephemeral storage for root file system are supported. // See http://kubernetes.io/docs/user-guide/compute-resources for more detail. KubeReserved map[string]string // This flag helps kubelet identify absolute name of top level cgroup used to enforce `SystemReserved` compute resource reservation for OS system daemons. // Refer to [Node Allocatable](https://git.k8s.io/community/contributors/design-proposals/node/node-allocatable.md) doc for more information. SystemReservedCgroup string // This flag helps kubelet identify absolute name of top level cgroup used to enforce `KubeReserved` compute resource reservation for Kubernetes node system daemons. // Refer to [Node Allocatable](https://git.k8s.io/community/contributors/design-proposals/node/node-allocatable.md) doc for more information. KubeReservedCgroup string // This flag specifies the various Node Allocatable enforcements that Kubelet needs to perform. // This flag accepts a list of options. Acceptable options are `pods`, `system-reserved` &amp; `kube-reserved`. // Refer to [Node Allocatable](https://git.k8s.io/community/contributors/design-proposals/node/node-allocatable.md) doc for more information. EnforceNodeAllocatable []string // This option specifies the cpu list reserved for the host level system threads and kubernetes related threads. // This provide a &#34;static&#34; CPU list rather than the &#34;dynamic&#34; list by system-reserved and kube-reserved. // This option overwrites CPUs provided by system-reserved and kube-reserved. ReservedSystemCPUs string // The previous version for which you want to show hidden metrics. // Only the previous minor version is meaningful, other values will not be allowed. // The format is &lt;major&gt;.&lt;minor&gt;, e.g.: &#39;1.16&#39;. // The purpose of this format is make sure you have the opportunity to notice if the next release hides additional metrics, // rather than being surprised when they are permanently removed in the release after that. ShowHiddenMetricsForVersion string // Logging specifies the options of logging. // Refer [Logs Options](https://github.com/kubernetes/component-base/blob/master/logs/options.go) for more information. Logging componentbaseconfig.LoggingConfiguration // EnableSystemLogHandler enables /logs handler. EnableSystemLogHandler bool // ShutdownGracePeriod specifies the total duration that the node should delay the shutdown and total grace period for pod termination during a node shutdown. // Defaults to 0 seconds. // &#43;featureGate=GracefulNodeShutdown // &#43;optional ShutdownGracePeriod metav1.Duration // ShutdownGracePeriodCriticalPods specifies the duration used to terminate critical pods during a node shutdown. This should be less than ShutdownGracePeriod. // Defaults to 0 seconds. // For example, if ShutdownGracePeriod=30s, and ShutdownGracePeriodCriticalPods=10s, during a node shutdown the first 20 seconds would be reserved for gracefully terminating normal pods, and the last 10 seconds would be reserved for terminating critical pods. // &#43;featureGate=GracefulNodeShutdown // &#43;optional ShutdownGracePeriodCriticalPods metav1.Duration // ReservedMemory specifies a comma-separated list of memory reservations for NUMA nodes. // The parameter makes sense only in the context of the memory manager feature. The memory manager will not allocate reserved memory for container workloads. // For example, if you have a NUMA0 with 10Gi of memory and the ReservedMemory was specified to reserve 1Gi of memory at NUMA0, // the memory manager will assume that only 9Gi is available for allocation. // You can specify a different amount of NUMA node and memory types. // You can omit this parameter at all, but you should be aware that the amount of reserved memory from all NUMA nodes // should be equal to the amount of memory specified by the node allocatable features(https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable). // If at least one node allocatable parameter has a non-zero value, you will need to specify at least one NUMA node. // Also, avoid specifying: // 1. Duplicates, the same NUMA node, and memory type, but with a different value. // 2. zero limits for any memory type. // 3. NUMAs nodes IDs that do not exist under the machine. // 4. memory types except for memory and hugepages-&lt;size&gt; ReservedMemory []MemoryReservation // EnableProfiling enables /debug/pprof handler. EnableProfilingHandler bool // EnableDebugFlagsHandler enables/debug/flags/v handler. EnableDebugFlagsHandler bool // SeccompDefault enables the use of `RuntimeDefault` as the default seccomp profile for all workloads. SeccompDefault bool // MemoryThrottlingFactor specifies the factor multiplied by the memory limit or node allocatable memory // when setting the cgroupv2 memory.high value to enforce MemoryQoS. // Decreasing this factor will set lower high limit for container cgroups and put heavier reclaim pressure // while increasing will put less reclaim pressure. // See http://kep.k8s.io/2570 for more details. // Default: 0.8 // &#43;featureGate=MemoryQoS // &#43;optional MemoryThrottlingFactor *float64 }">
+  <meta itemprop="datePublished" content="2022-12-19T11:34:43+08:00">
+  <meta itemprop="dateModified" content="2023-02-08T23:17:58+08:00">
+  <meta itemprop="wordCount" content="3938">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="参数配置">
+  <meta name="twitter:description" content="简要概述 参数解析 命令行参数 外部组建参数 名称 默认值 来自组件 说明 add-dir-header false TODO; 在输出日志时，是否把代码文件所在目录一起提供，如：state/state_mem.go:36，否则仅输出：state_mem.go:36 alsologtostderr - klog 已弃用 application-metrics-count-limit - cadvisor 已废弃 azure-container-registry-config - azure 包含 Azure 容器镜像库配置信息的文件的路径 boot-id-file - cadvisor 默认来自：/proc/sys/kernel/random/boot_id cloud-config - kubelet 已弃用 cloud-provider - kubelet 已弃用 cni-bin-dir /opt/cni/bin dockershim 已弃用 cni 的相关二进制地址 cni-cache-dir /var/lib/cni/cache dockershim 已弃用 cni-conf-dir /etc/cni/net.d dockershim 已弃用 container-hints /etc/cadvisor/container_hints.json cadvisor 已废弃 container-runtime remote kubelet 已废弃，目前支持 docker、remote，以后仅支持 remote containerd - cadvisor 已废弃 containerd-namespace - cadvisor 已废弃 docker - cadvisor 已废弃 docker-endpoint - dockershim 已弃用 docker-env-metadata-whitelist - cadvisor 已废弃 docker-only - cadvisor 已废弃 docker-root - cadvisor 已废弃 docker-tls - cadvisor 已废弃 docker-tls-ca - cadvisor 已废弃 docker-tls-cert - cadvisor 已废弃 docker-tls-key - cadvisor 已废弃 dynamic-config-dir - kubelet 已废弃 enable-load-reader - cadvisor 已废弃 event-storage-age-limit - cadvisor 已废弃 event-storage-event-limit - cadvisor 已废弃 experimental-allocatable-ignore-eviction false kubelet 设置为 true 表示在计算节点可分配资源数量时忽略硬性逐出阈值设置 experimental-bootstrap-kubeconfig - kubelet Use –bootstrap-kubeconfig experimental-check-node-capabilities-before-mount - kubelet 已废弃 experimental-kernel-memcg-notification - kubelet 已废弃 experimental-mounter-path - kubelet 已废弃 global-housekeeping-interval - cadvisor 已废弃 image-pull-progress-deadline - dockershim 已弃用 keep-terminated-pod-volumes - kubelet 已废弃 log-backtrace-at 0 klog 已弃用 log-dir - klog 已弃用，如果此值为非空，则在所指定的目录中写入日志文件 log-file - klog 已弃用，如果此值非空，使用所给字符串作为日志文件名 log-file-max-size 1800 klog 已弃用，设置日志文件的最大值。单位为兆字节（M）。如果值为 0，则表示文件大小无限制 log-flush-frequency 5s klog 两次日志刷新之间的最大秒数 logtostderr true klog 日志输出到 stderr 而不是文件 machine-id-file - cadvisor /etc/machine-id,/var/lib/dbus/machine-id master-service-namespace - kubelet 已弃用，kubelet 向 Pod 注入 Kubernetes 主控服务信息时使用的命名空间 maximum-dead-containers -1 kubelet 已弃用，使用 eviction 代替 maximum-dead-containers-per-container 1 kubelet 已弃用，使用 eviction 代替 minimum-container-ttl-duration - kubelet 已弃用，使用 eviction 代替 network-plugin - dockershim 已弃用 network-plugin-mtu - dockershim 已弃用 non-masquerade-cidr - kubelet 已弃用 one-output - kubelet 已弃用 port 10250 kubelet 已弃用，kubelet 服务监听的本机端口号 really-crash-for-testing - kubelet 已弃用 register-schedulable true kubelet 已弃用 seccomp-profile-root - kubelet 已弃用 skip-headers - klog 已弃用 skip-log-headers - klog 已弃用 stderrthreshold - klog 已弃用 storage-driver-buffer-duration - cadvisor storage-driver-db - cadvisor 已废弃 storage-driver-host - cadvisor 已废弃 storage-driver-password - cadvisor 已废弃 storage-driver-secure - cadvisor 已废弃 storage-driver-table - cadvisor 已废弃 storage-driver-user - cadvisor 已废弃 v - klog 日志级别详细程度的数值 组建内置参数 名称 默认值 KubeletConfiguration 说明 address 0.0.0.0 address kubelet api 服务监听的地址 allowed-unsafe-sysctls - TODO; 允许不安全的 sysctl 设置 anonymous-auth true TODO; 是否可接受匿名请求，用户名为 system:anonymous，用户组为 system:unauthenticated authentication-token-webhook TODO authentication.webhook.enabled TODO；使用 TokenReview API 对持有者令牌进行身份认证 authentication-token-webhook-cache-ttl 2m0s authentication.webhook.cacheTTL 对 Webhook 令牌认证组件所返回的响应的缓存时间 authorization-mode AlwaysAllow 或 Webhook authorization.mode 服务端鉴权模式，可选值：AlwaysAllow、Webhook，当设置 –config 时默认值为 Webhook authorization-webhook-cache-authorized-ttl 5m0s authorization.webhook.cacheAuthorizedTTL 对 Webhook 认证组件所返回的 “Authorized（已授权）” 应答的缓存时间 authorization-webhook-cache-unauthorized-ttl 30s authorization.webhook.cacheUnauthorizedTTL 对 Webhook 认证组件所返回的 “Unauthorized（未授权）” 应答的缓存时间 bootstrap-kubeconfig - - 包含 apiserver 上配置的 known_tokens.csv 里面 token，用于获取 kubelet-client-current.pem 证书 cert-dir /var/lib/kubelet/pki - kubelet.crt 与 kubelet.key 证书路径, 优先级低于 tls-cert-file 与 tls-private-key-file cgroup-driver cgroupfs cgroupDriver 用来操作本机 cgroup 时使用的驱动程序。支持的选项包括 cgroupfs 和 systemd cgroup-root &#34;&#34; TODO 为 Pod 设置根 cgroup 默认将使用容器运行时的默认设置 cgroups-per-qos true TODO 启用创建 QoS cgroup 层次结构。此值为 true 时 kubelet 为 QoS 和 Pod 创建顶级的 cgroup client-ca-file - authentication.x509.clientCAFile TODO; 检查客户端证书，如 kube-apiserver 请求 kubelet ?? cluster-dns - clusterDNS 用于 Pod 中设置了 “dnsPolicy=ClusterFirst” 时为容器提供 DNS 服务 cluster-domain cluster.local clusterDomain 集群域名，如果设置了此值，kubelet 除了将主机的搜索域配置到所有容器之外，还会为其配置这里指定的域名 config - - 指向 KubeletConfiguration 配置文件，命令行参数会覆盖此文件中的配置 container-log-max-files 5 containerLogMaxFiles 设置容器的日志文件个数上限，必须不小于2且只能与 –container-runtime=remote 一起使用 container-log-max-size 10Mi containerLogMaxSize 设置容器日志文件在轮换生成新文件时之前的最大值 container-runtime-endpoint &#34;&#34; - 如：unix:///var/run/containerd/containerd.sock contention-profiling - - TODO; 启用锁竞争分析，前提是开启 pprof cpu-cfs-quota true TODO TODO; 为设置了 CPU 限制的容器启用 CPU CFS 配额保障 cpu-cfs-quota-period 100ms TODO TODO; 设置 CPU CFS 配额周期 cpu.cfs_period_us。默认使用 Linux 内核所设置的默认值 cpu-manager-policy none TODO TODO; 要使用的 CPU 管理器策略。可选值包括：none 和 static cpu-manager-policy-options - TODO TODO; 一组用于微调其行为的 key=value CPU 管理器策略选项 cpu-manager-reconcile-period 10s TODO TODO; 设置 CPU 管理器的调和时间 enable-controller-attach-detach true TODO ｜ 启用 Attach/Detach 控制器来挂接和摘除调度到该节点的卷，同时禁用 kubelet 执行挂接和摘除操作 enable-debugging-handlers true TODO 启用服务器上用于日志收集和在本地运行容器和命令的端点 enable-server true TODO 启用 kubelet 服务器 enforce-node-allocatable pods TODO 用逗号分隔的列表，包含由 kubelet 强制执行的节点可分配资源级别 event-burst 10 TODO 事件记录的个数的突发峰值上限 event-qps 5 TODO 设置大于 0 的值表示限制每秒可生成的事件数量。设置为 0 表示不限制 eviction-hard imagefs.available&lt;15%,memory.available&lt;100Mi,nodefs.available&lt;10% TODO 触发 Pod 驱逐操作的一组硬性门限 eviction-max-pod-grace-period - TODO 响应满足软性驱逐阈值（Soft Eviction Threshold）而终止 Pod 时使用的最长宽限期（以秒为单位 eviction-minimum-reclaim - TODO 当某资源压力过大时，kubelet 将执行 Pod 驱逐操作 eviction-pressure-transition-period 5m0s TODO 在驱逐压力状况解除之前的最长等待时间 eviction-soft - TODO 设置一组驱逐阈值（例如：memory.available&lt;1.5Gi）。 如果在相应的宽限期内达到该阈值，则会触发 Pod 驱逐操作 eviction-soft-grace-period - TODO 设置一组驱逐宽限期（例如，memory.available=1m30s），对应于触发软性 Pod 驱逐操作之前软性驱逐阈值所需持续的时间长短 exit-on-lock-contention - - 设置为 true 表示当发生锁文件竞争时 kubelet 可以退出 experimental-logging-sanitization - TODO 对一些日志敏感字段做特殊处理 fail-swap-on true failSwapOn 设置为 true 表示如果主机启用了交换分区，kubelet 将直接失败 file-check-frequency 20s TODO 检查配置文件中新数据的时间间隔 hairpin-mode promiscuous-bridge hairpinMode 设置 kubelet 执行 hairpin 网络地址转译的方式，该模式允许后端端点对其自身服务的访问能够再次经由负载均衡转发回自身，可选项包括 promiscuous-bridge、hairpin-veth 和 none healthz-bind-address 127.0.0.1 healthzBindAddress 用于运行 healthz 服务器的 IP 地址 healthz-port 10248 healthzPort 本地 healthz 端点使用的端口（设置为 0 表示禁用） hostname-override - - 将使用此字符串而不是实际的主机名作为节点标识 housekeeping-interval 10s TODO TODO http-check-frequency 20s TODO HTTP 服务以获取新数据的时间间隔 image-credential-provider-bin-dir - - TODO; 指向凭据提供组件可执行文件所在目录的路径 image-credential-provider-config - - TODO; 指向凭据提供插件配置文件所在目录的路径 image-gc-high-threshold 85 TODO 镜像垃圾回收上限。磁盘使用空间达到该百分比时，镜像垃圾回收将持续工作。 值必须在 [0，100] 范围内。要禁用镜像垃圾回收，请设置为 100 image-gc-low-threshold 80 TODO 镜像垃圾回收下限。磁盘使用空间在达到该百分比之前，镜像垃圾回收操作不会运行。 值必须在 [0，100] 范围内，并且不得大于 high-threshold的值 image-service-endpoint - - 远程镜像服务的端点，未设置则同 container-runtime-endpoint iptables-drop-bit 15 TODO 标记数据包将被丢弃的 fwmark 位设置。必须在 [0，31] 范围内 iptables-masquerade-bit 14 TODO 标记数据包将进行 SNAT 的 fwmark 空间位设置。必须在 [0，31] 范围内 kernel-memcg-notification - TODO 若启用，则 kubelet 将与内核中的 memcg 通知机制集成，不再使用轮询的方式来判定 是否 Pod 达到内存驱逐阈值 kube-api-burst 10 TODO 每秒发送到 apiserver 的突发请求数量上限 kube-api-content-type application/vnd.kubernetes.protobuf TODO 发送到 apiserver 的请求的内容类型 kube-api-qps 5 TODO 与 apiserver 通信的每秒查询个数QPS，此值必须&gt;=0，如果为0，则使用默认5。不包含事件和节点心跳 api，它们的速率限制是由一组不同的标志所控制 kube-reserved - kubeReserved 系统预留的资源配置，以一组 &lt;资源名称&gt;=&lt;资源数量&gt; 格式表示，支持：cpu、memory、ephemeral-storage kube-reserved-cgroup &#34;&#34; TODO 给出某个顶层 cgroup 绝对名称，该 cgroup 用于管理通过标志 –kube-reserved 为 kubernetes 组件所预留的计算资源 kubeconfig - - 指定如何连接到 API 服务器 kubelet-cgroups - TODO 用于创建和运行 kubelet 的 cgroup 的绝对名称 lock-file - - kubelet 使用的锁文件的路径 log-json-info-buffer-size 0 TODO 实验性特性 log-json-split-stream - TODO 实验性特性 logging-format text TODO 设置日志文件格式。可以设置的格式有：“text”、“json” make-iptables-util-chains true TODO 设置为 true 表示 kubelet 将确保 iptables 规则在主机上存在 manifest-url - TODO 用于访问要运行的其他 Pod 规范的 URL manifest-url-header - TODO 请求 manifest-url 自定义的头 max-open-files 1000000 TODO kubelet 进程可以打开的最大文件数量 max-pods 110 maxPods 此 kubelet 能运行的 Pod 最大数量 memory-manager-policy None TODO 内存管理器策略使用。可选值：‘None’、‘Static’ minimum-image-ttl-duration 2m0s TODO 已结束的容器在被垃圾回收清理之前的最少存活时间。 例如：‘300ms’、’10s’ 或者 ‘2h45m’ node-ip - - 节点的 IP 地址 node-labels - - kubelet 在集群中注册本节点时设置的标签 node-status-max-images 50 TODO 在 node.status.images 中可以报告的最大镜像数量。如果指定为 -1，则不设上限 node-status-update-frequency 10s TODO 指定 kubelet 向主控节点汇报节点状态的时间间隔。注意：更改此常量时请务必谨慎， 它必须与节点控制器中的 nodeMonitorGracePeriod 一起使用 oom-score-adj -999 oomScoreAdj kubelet 进程的 oom-score-adj 参数值。有效范围为 [-1000，1000] pod-cidr - TODO 用于给 Pod 分配 IP 地址的 CIDR 地址池，仅在独立运行模式下使用 pod-infra-container-image k8s.gcr.io/pause:3.5 - 所指定的镜像不会被镜像垃圾收集器删除，依赖CRI pod-manifest-path - staticPodPath 设置包含要运行的静态 Pod 的文件的路径 pod-max-pids -1 TODO 设置每个 Pod 中的最大进程数目。如果为 -1，则 kubelet 使用节点可分配的 PID 容量作为默认值 pods-per-core - TODO 在每个处理器核上可运行的 Pod 数量 protect-kernel-defaults - TODO TODO provider-id - TODO 设置主机数据库中用来标识节点的唯一标识 qos-reserved - TODO TODO read-only-port 10255 TODO kubelet 可以在没有身份验证/鉴权的情况下提供只读服务的端口（设置为 0 表示禁用） register-node true TODO 向 API 服务器注册节点 register-with-taints - TODO 设置本节点的污点标记，格式为 =:， 以逗号分隔 registry-burst 10 TODO 设置突发性镜像拉取的个数上限 registry-qps 5 TODO 如此值大于 0，可用来限制镜像仓库的 QPS 上限。设置为 0，表示不受限制 reserved-cpus - TODO 为系统和 Kubernetes 保留使用的 CPU，优先级高于 system-reserved 和 –kube-reskube-reserved reserved-memory - TODO TODO; 以逗号分隔的 NUMA 节点内存预留列表 resolv-conf /etc/resolv.conf TODO 名字解析服务的配置文件名，用作容器 DNS 解析配置的基础 root-dir /var/lib/kubelet - 设置用于管理 kubelet 文件的根目录 rotate-certificates - TODO 当客户端证书即将过期时 kubelet 自动从 kube-apiserver 请求新的证书进行轮换 rotate-server-certificates - TODO 当 kubelet 的服务证书即将过期时自动从 kube-apiserver 请求新的证书进行轮换 runonce - - 表示从本地清单或远程 URL 创建完 Pod 后立即退出 kubelet 进程 runtime-cgroups - - TODO; 设置用于创建和运行容器运行时的 cgroup 的绝对名称 runtime-request-timeout 2m0s TODO 设置除了长时间运行的请求（包括 pull、logs、exec 和 attach 等操作）之外的其他运行时请求的超时时间 seccomp-default - - TODO; 启用 RuntimeDefault 作为所有工作负载的默认 seccomp 配置文件 serialize-image-pulls true serializeImagePulls 逐一拉取镜像 streaming-connection-idle-timeout 4h0m0s TODO; 设置流连接在自动关闭之前可以空闲的最长时间。0 表示没有超时限制，与 kubelet 服务器的所有连接最长持续时间为 4 小时 sync-frequency 1m0s TODO 在运行中的容器与其配置之间执行同步操作的最长时间间隔 system-cgroups - TODO TODO system-reserved - systemReserved 系统预留的资源配置，以一组 资源名称=资源数量 的格式表示 system-reserved-cgroup &#34;&#34; TODO TODO; 此标志给出一个顶层 cgroup 绝对名称，该 cgroup 用于管理非 kubernetes 组件 tls-cert-file - TODO 用于 HTTPS 认证，如未提供，则 kubelet 生成自签名证书和密钥，并将其保存到通过 –cert-dir 指定的目录 tls-cipher-suites - TODO 服务器端加密算法列表，以逗号分隔 tls-min-version - TODO 设置支持的最小 TLS 版本号，可选的版本号包括：VersionTLS10、 VersionTLS11、VersionTLS12 和 VersionTLS13 tls-private-key-file - TODO 同上 topology-manager-policy none TODO 设置拓扑管理策略（Topology Manager policy）。可选值包括：none、 best-effort、restricted 和 single-numa-node topology-manager-scope container TODO TODO; 拓扑提示信息使用范围 volume-plugin-dir - TODO 用来搜索第三方存储卷插件的目录 volume-stats-agg-period 1m0s TODO 指定 kubelet 计算和缓存所有 Pod 和卷的磁盘用量总值的时间间隔。要禁用磁盘用量计算， 请设置为 0 数据结构 KubeletConfiguration // KubeletConfiguration contains the configuration for the Kubelet type KubeletConfiguration struct { metav1.TypeMeta // enableServer enables Kubelet&#39;s secured server. // Note: Kubelet&#39;s insecure port is controlled by the readOnlyPort option. EnableServer bool // staticPodPath is the path to the directory containing local (static) pods to // run, or the path to a single static pod file. StaticPodPath string // syncFrequency is the max period between synchronizing running // containers and config SyncFrequency metav1.Duration // fileCheckFrequency is the duration between checking config files for // new data FileCheckFrequency metav1.Duration // httpCheckFrequency is the duration between checking http for new data HTTPCheckFrequency metav1.Duration // staticPodURL is the URL for accessing static pods to run StaticPodURL string // staticPodURLHeader is a map of slices with HTTP headers to use when accessing the podURL StaticPodURLHeader map[string][]string // address is the IP address for the Kubelet to serve on (set to 0.0.0.0 // for all interfaces) Address string // port is the port for the Kubelet to serve on. Port int32 // readOnlyPort is the read-only port for the Kubelet to serve on with // no authentication/authorization (set to 0 to disable) ReadOnlyPort int32 // volumePluginDir is the full path of the directory in which to search // for additional third party volume plugins. VolumePluginDir string // providerID, if set, sets the unique id of the instance that an external provider (i.e. cloudprovider) // can use to identify a specific node ProviderID string // tlsCertFile is the file containing x509 Certificate for HTTPS. (CA cert, // if any, concatenated after server cert). If tlsCertFile and // tlsPrivateKeyFile are not provided, a self-signed certificate // and key are generated for the public address and saved to the directory // passed to the Kubelet&#39;s --cert-dir flag. TLSCertFile string // tlsPrivateKeyFile is the file containing x509 private key matching tlsCertFile TLSPrivateKeyFile string // TLSCipherSuites is the list of allowed cipher suites for the server. // Values are from tls package constants (https://golang.org/pkg/crypto/tls/#pkg-constants). TLSCipherSuites []string // TLSMinVersion is the minimum TLS version supported. // Values are from tls package constants (https://golang.org/pkg/crypto/tls/#pkg-constants). TLSMinVersion string // rotateCertificates enables client certificate rotation. The Kubelet will request a // new certificate from the certificates.k8s.io API. This requires an approver to approve the // certificate signing requests. RotateCertificates bool // serverTLSBootstrap enables server certificate bootstrap. Instead of self // signing a serving certificate, the Kubelet will request a certificate from // the certificates.k8s.io API. This requires an approver to approve the // certificate signing requests. The RotateKubeletServerCertificate feature // must be enabled. ServerTLSBootstrap bool // authentication specifies how requests to the Kubelet&#39;s server are authenticated Authentication KubeletAuthentication // authorization specifies how requests to the Kubelet&#39;s server are authorized Authorization KubeletAuthorization // registryPullQPS is the limit of registry pulls per second. // Set to 0 for no limit. RegistryPullQPS int32 // registryBurst is the maximum size of bursty pulls, temporarily allows // pulls to burst to this number, while still not exceeding registryPullQPS. // Only used if registryPullQPS &gt; 0. RegistryBurst int32 // eventRecordQPS is the maximum event creations per second. If 0, there // is no limit enforced. EventRecordQPS int32 // eventBurst is the maximum size of a burst of event creations, temporarily // allows event creations to burst to this number, while still not exceeding // eventRecordQPS. Only used if eventRecordQPS &gt; 0. EventBurst int32 // enableDebuggingHandlers enables server endpoints for log collection // and local running of containers and commands EnableDebuggingHandlers bool // enableContentionProfiling enables lock contention profiling, if enableDebuggingHandlers is true. EnableContentionProfiling bool // healthzPort is the port of the localhost healthz endpoint (set to 0 to disable) HealthzPort int32 // healthzBindAddress is the IP address for the healthz server to serve on HealthzBindAddress string // oomScoreAdj is The oom-score-adj value for kubelet process. Values // must be within the range [-1000, 1000]. OOMScoreAdj int32 // clusterDomain is the DNS domain for this cluster. If set, kubelet will // configure all containers to search this domain in addition to the // host&#39;s search domains. ClusterDomain string // clusterDNS is a list of IP addresses for a cluster DNS server. If set, // kubelet will configure all containers to use this for DNS resolution // instead of the host&#39;s DNS servers. ClusterDNS []string // streamingConnectionIdleTimeout is the maximum time a streaming connection // can be idle before the connection is automatically closed. StreamingConnectionIdleTimeout metav1.Duration // nodeStatusUpdateFrequency is the frequency that kubelet computes node // status. If node lease feature is not enabled, it is also the frequency that // kubelet posts node status to master. In that case, be cautious when // changing the constant, it must work with nodeMonitorGracePeriod in nodecontroller. NodeStatusUpdateFrequency metav1.Duration // nodeStatusReportFrequency is the frequency that kubelet posts node // status to master if node status does not change. Kubelet will ignore this // frequency and post node status immediately if any change is detected. It is // only used when node lease feature is enabled. NodeStatusReportFrequency metav1.Duration // nodeLeaseDurationSeconds is the duration the Kubelet will set on its corresponding Lease. NodeLeaseDurationSeconds int32 // imageMinimumGCAge is the minimum age for an unused image before it is // garbage collected. ImageMinimumGCAge metav1.Duration // imageGCHighThresholdPercent is the percent of disk usage after which // image garbage collection is always run. The percent is calculated as // this field value out of 100. ImageGCHighThresholdPercent int32 // imageGCLowThresholdPercent is the percent of disk usage before which // image garbage collection is never run. Lowest disk usage to garbage // collect to. The percent is calculated as this field value out of 100. ImageGCLowThresholdPercent int32 // How frequently to calculate and cache volume disk usage for all pods VolumeStatsAggPeriod metav1.Duration // KubeletCgroups is the absolute name of cgroups to isolate the kubelet in KubeletCgroups string // SystemCgroups is absolute name of cgroups in which to place // all non-kernel processes that are not already in a container. Empty // for no container. Rolling back the flag requires a reboot. SystemCgroups string // CgroupRoot is the root cgroup to use for pods. // If CgroupsPerQOS is enabled, this is the root of the QoS cgroup hierarchy. CgroupRoot string // Enable QoS based Cgroup hierarchy: top level cgroups for QoS Classes // And all Burstable and BestEffort pods are brought up under their // specific top level QoS cgroup. CgroupsPerQOS bool // driver that the kubelet uses to manipulate cgroups on the host (cgroupfs or systemd) CgroupDriver string // CPUManagerPolicy is the name of the policy to use. // Requires the CPUManager feature gate to be enabled. CPUManagerPolicy string // CPUManagerPolicyOptions is a set of key=value which allows to set extra options // to fine tune the behaviour of the cpu manager policies. // Requires both the &#34;CPUManager&#34; and &#34;CPUManagerPolicyOptions&#34; feature gates to be enabled. CPUManagerPolicyOptions map[string]string // CPU Manager reconciliation period. // Requires the CPUManager feature gate to be enabled. CPUManagerReconcilePeriod metav1.Duration // MemoryManagerPolicy is the name of the policy to use. // Requires the MemoryManager feature gate to be enabled. MemoryManagerPolicy string // TopologyManagerPolicy is the name of the policy to use. // Policies other than &#34;none&#34; require the TopologyManager feature gate to be enabled. TopologyManagerPolicy string // TopologyManagerScope represents the scope of topology hint generation // that topology manager requests and hint providers generate. // &#34;pod&#34; scope requires the TopologyManager feature gate to be enabled. // Default: &#34;container&#34; // &#43;optional TopologyManagerScope string // Map of QoS resource reservation percentages (memory only for now). // Requires the QOSReserved feature gate to be enabled. QOSReserved map[string]string // runtimeRequestTimeout is the timeout for all runtime requests except long running // requests - pull, logs, exec and attach. RuntimeRequestTimeout metav1.Duration // hairpinMode specifies how the Kubelet should configure the container // bridge for hairpin packets. // Setting this flag allows endpoints in a Service to loadbalance back to // themselves if they should try to access their own Service. Values: // &#34;promiscuous-bridge&#34;: make the container bridge promiscuous. // &#34;hairpin-veth&#34;: set the hairpin flag on container veth interfaces. // &#34;none&#34;: do nothing. // Generally, one must set --hairpin-mode=hairpin-veth to achieve hairpin NAT, // because promiscuous-bridge assumes the existence of a container bridge named cbr0. HairpinMode string // maxPods is the number of pods that can run on this Kubelet. MaxPods int32 // The CIDR to use for pod IP addresses, only used in standalone mode. // In cluster mode, this is obtained from the master. PodCIDR string // The maximum number of processes per pod. If -1, the kubelet defaults to the node allocatable pid capacity. PodPidsLimit int64 // ResolverConfig is the resolver configuration file used as the basis // for the container DNS resolution configuration. ResolverConfig string // RunOnce causes the Kubelet to check the API server once for pods, // run those in addition to the pods specified by static pod files, and exit. RunOnce bool // cpuCFSQuota enables CPU CFS quota enforcement for containers that // specify CPU limits CPUCFSQuota bool // CPUCFSQuotaPeriod sets the CPU CFS quota period value, cpu.cfs_period_us, defaults to 100ms CPUCFSQuotaPeriod metav1.Duration // maxOpenFiles is Number of files that can be opened by Kubelet process. MaxOpenFiles int64 // nodeStatusMaxImages caps the number of images reported in Node.Status.Images. NodeStatusMaxImages int32 // contentType is contentType of requests sent to apiserver. ContentType string // kubeAPIQPS is the QPS to use while talking with kubernetes apiserver KubeAPIQPS int32 // kubeAPIBurst is the burst to allow while talking with kubernetes // apiserver KubeAPIBurst int32 // serializeImagePulls when enabled, tells the Kubelet to pull images one at a time. SerializeImagePulls bool // Map of signal names to quantities that defines hard eviction thresholds. For example: {&#34;memory.available&#34;: &#34;300Mi&#34;}. EvictionHard map[string]string // Map of signal names to quantities that defines soft eviction thresholds. For example: {&#34;memory.available&#34;: &#34;300Mi&#34;}. EvictionSoft map[string]string // Map of signal names to quantities that defines grace periods for each soft eviction signal. For example: {&#34;memory.available&#34;: &#34;30s&#34;}. EvictionSoftGracePeriod map[string]string // Duration for which the kubelet has to wait before transitioning out of an eviction pressure condition. EvictionPressureTransitionPeriod metav1.Duration // Maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. EvictionMaxPodGracePeriod int32 // Map of signal names to quantities that defines minimum reclaims, which describe the minimum // amount of a given resource the kubelet will reclaim when performing a pod eviction while // that resource is under pressure. For example: {&#34;imagefs.available&#34;: &#34;2Gi&#34;} EvictionMinimumReclaim map[string]string // podsPerCore is the maximum number of pods per core. Cannot exceed MaxPods. // If 0, this field is ignored. PodsPerCore int32 // enableControllerAttachDetach enables the Attach/Detach controller to // manage attachment/detachment of volumes scheduled to this node, and // disables kubelet from executing any attach/detach operations EnableControllerAttachDetach bool // protectKernelDefaults, if true, causes the Kubelet to error if kernel // flags are not as it expects. Otherwise the Kubelet will attempt to modify // kernel flags to match its expectation. ProtectKernelDefaults bool // If true, Kubelet ensures a set of iptables rules are present on host. // These rules will serve as utility for various components, e.g. kube-proxy. // The rules will be created based on IPTablesMasqueradeBit and IPTablesDropBit. MakeIPTablesUtilChains bool // iptablesMasqueradeBit is the bit of the iptables fwmark space to mark for SNAT // Values must be within the range [0, 31]. Must be different from other mark bits. // Warning: Please match the value of the corresponding parameter in kube-proxy. // TODO: clean up IPTablesMasqueradeBit in kube-proxy IPTablesMasqueradeBit int32 // iptablesDropBit is the bit of the iptables fwmark space to mark for dropping packets. // Values must be within the range [0, 31]. Must be different from other mark bits. IPTablesDropBit int32 // featureGates is a map of feature names to bools that enable or disable alpha/experimental // features. This field modifies piecemeal the built-in default values from // &#34;k8s.io/kubernetes/pkg/features/kube_features.go&#34;. FeatureGates map[string]bool // Tells the Kubelet to fail to start if swap is enabled on the node. FailSwapOn bool // memorySwap configures swap memory available to container workloads. // &#43;featureGate=NodeSwap // &#43;optional MemorySwap MemorySwapConfiguration // A quantity defines the maximum size of the container log file before it is rotated. For example: &#34;5Mi&#34; or &#34;256Ki&#34;. ContainerLogMaxSize string // Maximum number of container log files that can be present for a container. ContainerLogMaxFiles int32 // ConfigMapAndSecretChangeDetectionStrategy is a mode in which config map and secret managers are running. ConfigMapAndSecretChangeDetectionStrategy ResourceChangeDetectionStrategy // A comma separated whitelist of unsafe sysctls or sysctl patterns (ending in *). // Unsafe sysctl groups are kernel.shm*, kernel.msg*, kernel.sem, fs.mqueue.*, and net.*. // These sysctls are namespaced but not allowed by default. For example: &#34;kernel.msg*,net.ipv4.route.min_pmtu&#34; // &#43;optional AllowedUnsafeSysctls []string // kernelMemcgNotification if enabled, the kubelet will integrate with the kernel memcg // notification to determine if memory eviction thresholds are crossed rather than polling. KernelMemcgNotification bool /* the following fields are meant for Node Allocatable */ // A set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G,pid=100) pairs // that describe resources reserved for non-kubernetes components. // Currently only cpu and memory are supported. // See http://kubernetes.io/docs/user-guide/compute-resources for more detail. SystemReserved map[string]string // A set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G,pid=100) pairs // that describe resources reserved for kubernetes system components. // Currently cpu, memory and local ephemeral storage for root file system are supported. // See http://kubernetes.io/docs/user-guide/compute-resources for more detail. KubeReserved map[string]string // This flag helps kubelet identify absolute name of top level cgroup used to enforce `SystemReserved` compute resource reservation for OS system daemons. // Refer to [Node Allocatable](https://git.k8s.io/community/contributors/design-proposals/node/node-allocatable.md) doc for more information. SystemReservedCgroup string // This flag helps kubelet identify absolute name of top level cgroup used to enforce `KubeReserved` compute resource reservation for Kubernetes node system daemons. // Refer to [Node Allocatable](https://git.k8s.io/community/contributors/design-proposals/node/node-allocatable.md) doc for more information. KubeReservedCgroup string // This flag specifies the various Node Allocatable enforcements that Kubelet needs to perform. // This flag accepts a list of options. Acceptable options are `pods`, `system-reserved` &amp; `kube-reserved`. // Refer to [Node Allocatable](https://git.k8s.io/community/contributors/design-proposals/node/node-allocatable.md) doc for more information. EnforceNodeAllocatable []string // This option specifies the cpu list reserved for the host level system threads and kubernetes related threads. // This provide a &#34;static&#34; CPU list rather than the &#34;dynamic&#34; list by system-reserved and kube-reserved. // This option overwrites CPUs provided by system-reserved and kube-reserved. ReservedSystemCPUs string // The previous version for which you want to show hidden metrics. // Only the previous minor version is meaningful, other values will not be allowed. // The format is &lt;major&gt;.&lt;minor&gt;, e.g.: &#39;1.16&#39;. // The purpose of this format is make sure you have the opportunity to notice if the next release hides additional metrics, // rather than being surprised when they are permanently removed in the release after that. ShowHiddenMetricsForVersion string // Logging specifies the options of logging. // Refer [Logs Options](https://github.com/kubernetes/component-base/blob/master/logs/options.go) for more information. Logging componentbaseconfig.LoggingConfiguration // EnableSystemLogHandler enables /logs handler. EnableSystemLogHandler bool // ShutdownGracePeriod specifies the total duration that the node should delay the shutdown and total grace period for pod termination during a node shutdown. // Defaults to 0 seconds. // &#43;featureGate=GracefulNodeShutdown // &#43;optional ShutdownGracePeriod metav1.Duration // ShutdownGracePeriodCriticalPods specifies the duration used to terminate critical pods during a node shutdown. This should be less than ShutdownGracePeriod. // Defaults to 0 seconds. // For example, if ShutdownGracePeriod=30s, and ShutdownGracePeriodCriticalPods=10s, during a node shutdown the first 20 seconds would be reserved for gracefully terminating normal pods, and the last 10 seconds would be reserved for terminating critical pods. // &#43;featureGate=GracefulNodeShutdown // &#43;optional ShutdownGracePeriodCriticalPods metav1.Duration // ReservedMemory specifies a comma-separated list of memory reservations for NUMA nodes. // The parameter makes sense only in the context of the memory manager feature. The memory manager will not allocate reserved memory for container workloads. // For example, if you have a NUMA0 with 10Gi of memory and the ReservedMemory was specified to reserve 1Gi of memory at NUMA0, // the memory manager will assume that only 9Gi is available for allocation. // You can specify a different amount of NUMA node and memory types. // You can omit this parameter at all, but you should be aware that the amount of reserved memory from all NUMA nodes // should be equal to the amount of memory specified by the node allocatable features(https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/#node-allocatable). // If at least one node allocatable parameter has a non-zero value, you will need to specify at least one NUMA node. // Also, avoid specifying: // 1. Duplicates, the same NUMA node, and memory type, but with a different value. // 2. zero limits for any memory type. // 3. NUMAs nodes IDs that do not exist under the machine. // 4. memory types except for memory and hugepages-&lt;size&gt; ReservedMemory []MemoryReservation // EnableProfiling enables /debug/pprof handler. EnableProfilingHandler bool // EnableDebugFlagsHandler enables/debug/flags/v handler. EnableDebugFlagsHandler bool // SeccompDefault enables the use of `RuntimeDefault` as the default seccomp profile for all workloads. SeccompDefault bool // MemoryThrottlingFactor specifies the factor multiplied by the memory limit or node allocatable memory // when setting the cgroupv2 memory.high value to enforce MemoryQoS. // Decreasing this factor will set lower high limit for container cgroups and put heavier reclaim pressure // while increasing will put less reclaim pressure. // See http://kep.k8s.io/2570 for more details. // Default: 0.8 // &#43;featureGate=MemoryQoS // &#43;optional MemoryThrottlingFactor *float64 }">
 
 
-名称
-默认值
-来自组件
-说明
 
 
-
-
-add-dir-header
-false
-TODO;
-在输出日志时，是否把代码文件所在目录一起提供，如：state/state_mem.go:36，否则仅输出：state_mem.go:36 …">
-<meta property="og:title" content="参数配置" />
-<meta property="og:description" content="简要概述 参数解析 命令行参数 外部组建参数 名称 默认值 来自组件 说明 add-dir-header false TODO; 在输出日志时，是否把代码文件所在目录一起提供，如：state/state_mem.go:36，否则仅输出：state_mem.go:36 alsologtostderr - klog 已弃用 application-metrics-count-limit - cadvisor 已废弃 azure-container-registry-config - azure 包含 Azure 容器镜像库配置信息的文件的路径 boot-id-file - cadvisor 默认来自：/proc/sys/kernel/random/boot_id cloud-config - kubelet 已弃用 cloud-provider - kubelet 已弃用 cni-bin-dir /opt/cni/bin dockershim 已弃用 cni 的相关二进制地址 cni-cache-dir /var/lib/cni/cache dockershim 已弃用 cni-conf-dir /etc/cni/net.d dockershim 已弃用 container-hints /etc/cadvisor/container_hints.json cadvisor 已废弃 container-runtime remote kubelet 已废弃，目前支持 docker、remote，以后仅支持 remote containerd - cadvisor 已废弃 containerd-namespace - cadvisor 已废弃 docker - cadvisor 已废弃 docker-endpoint - dockershim 已弃用 docker-env-metadata-whitelist - cadvisor 已废弃 docker-only - cadvisor 已废弃 docker-root - cadvisor 已废弃 docker-tls - cadvisor 已废弃 docker-tls-ca - cadvisor 已废弃 docker-tls-cert - cadvisor 已废弃 docker-tls-key - cadvisor 已废弃 dynamic-config-dir - kubelet 已废弃 enable-load-reader - cadvisor 已废弃 event-storage-age-limit - cadvisor 已废弃 event-storage-event-limit - cadvisor 已废弃 experimental-allocatable-ignore-eviction false kubelet 设置为 true 表示在计算节点可分配资源数量时忽略硬性逐出阈值设置 experimental-bootstrap-kubeconfig - kubelet Use &ndash;bootstrap-kubeconfig experimental-check-node-capabilities-before-mount - kubelet 已废弃 experimental-kernel-memcg-notification - kubelet 已废弃 experimental-mounter-path - kubelet 已废弃 global-housekeeping-interval - cadvisor 已废弃 image-pull-progress-deadline - dockershim 已弃用 keep-terminated-pod-volumes - kubelet 已废弃 log-backtrace-at 0 klog 已弃用 log-dir - klog 已弃用，如果此值为非空，则在所指定的目录中写入日志文件 log-file - klog 已弃用，如果此值非空，使用所给字符串作为日志文件名 log-file-max-size 1800 klog 已弃用，设置日志文件的最大值。单位为兆字节（M）。如果值为 0，则表示文件大小无限制 log-flush-frequency 5s klog 两次日志刷新之间的最大秒数 logtostderr true klog 日志输出到 stderr 而不是文件 machine-id-file - cadvisor /etc/machine-id,/var/lib/dbus/machine-id master-service-namespace - kubelet 已弃用，kubelet 向 Pod 注入 Kubernetes 主控服务信息时使用的命名空间 maximum-dead-containers -1 kubelet 已弃用，使用 eviction 代替 maximum-dead-containers-per-container 1 kubelet 已弃用，使用 eviction 代替 minimum-container-ttl-duration - kubelet 已弃用，使用 eviction 代替 network-plugin - dockershim 已弃用 network-plugin-mtu - dockershim 已弃用 non-masquerade-cidr - kubelet 已弃用 one-output - kubelet 已弃用 port 10250 kubelet 已弃用，kubelet 服务监听的本机端口号 really-crash-for-testing - kubelet 已弃用 register-schedulable true kubelet 已弃用 seccomp-profile-root - kubelet 已弃用 skip-headers - klog 已弃用 skip-log-headers - klog 已弃用 stderrthreshold - klog 已弃用 storage-driver-buffer-duration - cadvisor storage-driver-db - cadvisor 已废弃 storage-driver-host - cadvisor 已废弃 storage-driver-password - cadvisor 已废弃 storage-driver-secure - cadvisor 已废弃 storage-driver-table - cadvisor 已废弃 storage-driver-user - cadvisor 已废弃 v - klog 日志级别详细程度的数值 组建内置参数 名称 默认值 KubeletConfiguration 说明 address 0." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/component/kubelet/config/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-12-19T11:34:43+08:00" />
-<meta property="article:modified_time" content="2023-02-08T23:17:58+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="参数配置">
-<meta itemprop="description" content="简要概述 参数解析 命令行参数 外部组建参数 名称 默认值 来自组件 说明 add-dir-header false TODO; 在输出日志时，是否把代码文件所在目录一起提供，如：state/state_mem.go:36，否则仅输出：state_mem.go:36 alsologtostderr - klog 已弃用 application-metrics-count-limit - cadvisor 已废弃 azure-container-registry-config - azure 包含 Azure 容器镜像库配置信息的文件的路径 boot-id-file - cadvisor 默认来自：/proc/sys/kernel/random/boot_id cloud-config - kubelet 已弃用 cloud-provider - kubelet 已弃用 cni-bin-dir /opt/cni/bin dockershim 已弃用 cni 的相关二进制地址 cni-cache-dir /var/lib/cni/cache dockershim 已弃用 cni-conf-dir /etc/cni/net.d dockershim 已弃用 container-hints /etc/cadvisor/container_hints.json cadvisor 已废弃 container-runtime remote kubelet 已废弃，目前支持 docker、remote，以后仅支持 remote containerd - cadvisor 已废弃 containerd-namespace - cadvisor 已废弃 docker - cadvisor 已废弃 docker-endpoint - dockershim 已弃用 docker-env-metadata-whitelist - cadvisor 已废弃 docker-only - cadvisor 已废弃 docker-root - cadvisor 已废弃 docker-tls - cadvisor 已废弃 docker-tls-ca - cadvisor 已废弃 docker-tls-cert - cadvisor 已废弃 docker-tls-key - cadvisor 已废弃 dynamic-config-dir - kubelet 已废弃 enable-load-reader - cadvisor 已废弃 event-storage-age-limit - cadvisor 已废弃 event-storage-event-limit - cadvisor 已废弃 experimental-allocatable-ignore-eviction false kubelet 设置为 true 表示在计算节点可分配资源数量时忽略硬性逐出阈值设置 experimental-bootstrap-kubeconfig - kubelet Use &ndash;bootstrap-kubeconfig experimental-check-node-capabilities-before-mount - kubelet 已废弃 experimental-kernel-memcg-notification - kubelet 已废弃 experimental-mounter-path - kubelet 已废弃 global-housekeeping-interval - cadvisor 已废弃 image-pull-progress-deadline - dockershim 已弃用 keep-terminated-pod-volumes - kubelet 已废弃 log-backtrace-at 0 klog 已弃用 log-dir - klog 已弃用，如果此值为非空，则在所指定的目录中写入日志文件 log-file - klog 已弃用，如果此值非空，使用所给字符串作为日志文件名 log-file-max-size 1800 klog 已弃用，设置日志文件的最大值。单位为兆字节（M）。如果值为 0，则表示文件大小无限制 log-flush-frequency 5s klog 两次日志刷新之间的最大秒数 logtostderr true klog 日志输出到 stderr 而不是文件 machine-id-file - cadvisor /etc/machine-id,/var/lib/dbus/machine-id master-service-namespace - kubelet 已弃用，kubelet 向 Pod 注入 Kubernetes 主控服务信息时使用的命名空间 maximum-dead-containers -1 kubelet 已弃用，使用 eviction 代替 maximum-dead-containers-per-container 1 kubelet 已弃用，使用 eviction 代替 minimum-container-ttl-duration - kubelet 已弃用，使用 eviction 代替 network-plugin - dockershim 已弃用 network-plugin-mtu - dockershim 已弃用 non-masquerade-cidr - kubelet 已弃用 one-output - kubelet 已弃用 port 10250 kubelet 已弃用，kubelet 服务监听的本机端口号 really-crash-for-testing - kubelet 已弃用 register-schedulable true kubelet 已弃用 seccomp-profile-root - kubelet 已弃用 skip-headers - klog 已弃用 skip-log-headers - klog 已弃用 stderrthreshold - klog 已弃用 storage-driver-buffer-duration - cadvisor storage-driver-db - cadvisor 已废弃 storage-driver-host - cadvisor 已废弃 storage-driver-password - cadvisor 已废弃 storage-driver-secure - cadvisor 已废弃 storage-driver-table - cadvisor 已废弃 storage-driver-user - cadvisor 已废弃 v - klog 日志级别详细程度的数值 组建内置参数 名称 默认值 KubeletConfiguration 说明 address 0."><meta itemprop="datePublished" content="2022-12-19T11:34:43+08:00" />
-<meta itemprop="dateModified" content="2023-02-08T23:17:58+08:00" />
-<meta itemprop="wordCount" content="3938">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="参数配置"/>
-<meta name="twitter:description" content="简要概述 参数解析 命令行参数 外部组建参数 名称 默认值 来自组件 说明 add-dir-header false TODO; 在输出日志时，是否把代码文件所在目录一起提供，如：state/state_mem.go:36，否则仅输出：state_mem.go:36 alsologtostderr - klog 已弃用 application-metrics-count-limit - cadvisor 已废弃 azure-container-registry-config - azure 包含 Azure 容器镜像库配置信息的文件的路径 boot-id-file - cadvisor 默认来自：/proc/sys/kernel/random/boot_id cloud-config - kubelet 已弃用 cloud-provider - kubelet 已弃用 cni-bin-dir /opt/cni/bin dockershim 已弃用 cni 的相关二进制地址 cni-cache-dir /var/lib/cni/cache dockershim 已弃用 cni-conf-dir /etc/cni/net.d dockershim 已弃用 container-hints /etc/cadvisor/container_hints.json cadvisor 已废弃 container-runtime remote kubelet 已废弃，目前支持 docker、remote，以后仅支持 remote containerd - cadvisor 已废弃 containerd-namespace - cadvisor 已废弃 docker - cadvisor 已废弃 docker-endpoint - dockershim 已弃用 docker-env-metadata-whitelist - cadvisor 已废弃 docker-only - cadvisor 已废弃 docker-root - cadvisor 已废弃 docker-tls - cadvisor 已废弃 docker-tls-ca - cadvisor 已废弃 docker-tls-cert - cadvisor 已废弃 docker-tls-key - cadvisor 已废弃 dynamic-config-dir - kubelet 已废弃 enable-load-reader - cadvisor 已废弃 event-storage-age-limit - cadvisor 已废弃 event-storage-event-limit - cadvisor 已废弃 experimental-allocatable-ignore-eviction false kubelet 设置为 true 表示在计算节点可分配资源数量时忽略硬性逐出阈值设置 experimental-bootstrap-kubeconfig - kubelet Use &ndash;bootstrap-kubeconfig experimental-check-node-capabilities-before-mount - kubelet 已废弃 experimental-kernel-memcg-notification - kubelet 已废弃 experimental-mounter-path - kubelet 已废弃 global-housekeeping-interval - cadvisor 已废弃 image-pull-progress-deadline - dockershim 已弃用 keep-terminated-pod-volumes - kubelet 已废弃 log-backtrace-at 0 klog 已弃用 log-dir - klog 已弃用，如果此值为非空，则在所指定的目录中写入日志文件 log-file - klog 已弃用，如果此值非空，使用所给字符串作为日志文件名 log-file-max-size 1800 klog 已弃用，设置日志文件的最大值。单位为兆字节（M）。如果值为 0，则表示文件大小无限制 log-flush-frequency 5s klog 两次日志刷新之间的最大秒数 logtostderr true klog 日志输出到 stderr 而不是文件 machine-id-file - cadvisor /etc/machine-id,/var/lib/dbus/machine-id master-service-namespace - kubelet 已弃用，kubelet 向 Pod 注入 Kubernetes 主控服务信息时使用的命名空间 maximum-dead-containers -1 kubelet 已弃用，使用 eviction 代替 maximum-dead-containers-per-container 1 kubelet 已弃用，使用 eviction 代替 minimum-container-ttl-duration - kubelet 已弃用，使用 eviction 代替 network-plugin - dockershim 已弃用 network-plugin-mtu - dockershim 已弃用 non-masquerade-cidr - kubelet 已弃用 one-output - kubelet 已弃用 port 10250 kubelet 已弃用，kubelet 服务监听的本机端口号 really-crash-for-testing - kubelet 已弃用 register-schedulable true kubelet 已弃用 seccomp-profile-root - kubelet 已弃用 skip-headers - klog 已弃用 skip-log-headers - klog 已弃用 stderrthreshold - klog 已弃用 storage-driver-buffer-duration - cadvisor storage-driver-db - cadvisor 已废弃 storage-driver-host - cadvisor 已废弃 storage-driver-password - cadvisor 已废弃 storage-driver-secure - cadvisor 已废弃 storage-driver-table - cadvisor 已废弃 storage-driver-user - cadvisor 已废弃 v - klog 日志级别详细程度的数值 组建内置参数 名称 默认值 KubeletConfiguration 说明 address 0."/>
-
-
-
-
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1053,6 +1053,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3086,9 +3103,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3102,10 +3119,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3165,6 +3385,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4303,1117 +4582,1117 @@ if (!doNotTrack) {
 <li>外部组建参数</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>默认值</th>
-<th>来自组件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>add-dir-header</td>
-<td>false</td>
-<td>TODO;</td>
-<td>在输出日志时，是否把代码文件所在目录一起提供，如：state/state_mem.go:36，否则仅输出：state_mem.go:36</td>
-</tr>
-<tr>
-<td>alsologtostderr</td>
-<td>-</td>
-<td>klog</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>application-metrics-count-limit</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>azure-container-registry-config</td>
-<td>-</td>
-<td>azure</td>
-<td>包含 Azure 容器镜像库配置信息的文件的路径</td>
-</tr>
-<tr>
-<td>boot-id-file</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>默认来自：/proc/sys/kernel/random/boot_id</td>
-</tr>
-<tr>
-<td>cloud-config</td>
-<td>-</td>
-<td>kubelet</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>cloud-provider</td>
-<td>-</td>
-<td>kubelet</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>cni-bin-dir</td>
-<td>/opt/cni/bin</td>
-<td>dockershim</td>
-<td>已弃用 cni 的相关二进制地址</td>
-</tr>
-<tr>
-<td>cni-cache-dir</td>
-<td>/var/lib/cni/cache</td>
-<td>dockershim</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>cni-conf-dir</td>
-<td>/etc/cni/net.d</td>
-<td>dockershim</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>container-hints</td>
-<td>/etc/cadvisor/container_hints.json</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>container-runtime</td>
-<td>remote</td>
-<td>kubelet</td>
-<td>已废弃，目前支持 docker、remote，以后仅支持 remote</td>
-</tr>
-<tr>
-<td>containerd</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>containerd-namespace</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>docker</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>docker-endpoint</td>
-<td>-</td>
-<td>dockershim</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>docker-env-metadata-whitelist</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>docker-only</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>docker-root</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>docker-tls</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>docker-tls-ca</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>docker-tls-cert</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>docker-tls-key</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>dynamic-config-dir</td>
-<td>-</td>
-<td>kubelet</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>enable-load-reader</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>event-storage-age-limit</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>event-storage-event-limit</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>experimental-allocatable-ignore-eviction</td>
-<td>false</td>
-<td>kubelet</td>
-<td>设置为 true 表示在计算节点可分配资源数量时忽略硬性逐出阈值设置</td>
-</tr>
-<tr>
-<td>experimental-bootstrap-kubeconfig</td>
-<td>-</td>
-<td>kubelet</td>
-<td>Use &ndash;bootstrap-kubeconfig</td>
-</tr>
-<tr>
-<td>experimental-check-node-capabilities-before-mount</td>
-<td>-</td>
-<td>kubelet</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>experimental-kernel-memcg-notification</td>
-<td>-</td>
-<td>kubelet</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>experimental-mounter-path</td>
-<td>-</td>
-<td>kubelet</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>global-housekeeping-interval</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>image-pull-progress-deadline</td>
-<td>-</td>
-<td>dockershim</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>keep-terminated-pod-volumes</td>
-<td>-</td>
-<td>kubelet</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>log-backtrace-at</td>
-<td>0</td>
-<td>klog</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>log-dir</td>
-<td>-</td>
-<td>klog</td>
-<td>已弃用，如果此值为非空，则在所指定的目录中写入日志文件</td>
-</tr>
-<tr>
-<td>log-file</td>
-<td>-</td>
-<td>klog</td>
-<td>已弃用，如果此值非空，使用所给字符串作为日志文件名</td>
-</tr>
-<tr>
-<td>log-file-max-size</td>
-<td>1800</td>
-<td>klog</td>
-<td>已弃用，设置日志文件的最大值。单位为兆字节（M）。如果值为 0，则表示文件大小无限制</td>
-</tr>
-<tr>
-<td>log-flush-frequency</td>
-<td>5s</td>
-<td>klog</td>
-<td>两次日志刷新之间的最大秒数</td>
-</tr>
-<tr>
-<td>logtostderr</td>
-<td>true</td>
-<td>klog</td>
-<td>日志输出到 stderr 而不是文件</td>
-</tr>
-<tr>
-<td>machine-id-file</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>/etc/machine-id,/var/lib/dbus/machine-id</td>
-</tr>
-<tr>
-<td>master-service-namespace</td>
-<td>-</td>
-<td>kubelet</td>
-<td>已弃用，kubelet 向 Pod 注入 Kubernetes 主控服务信息时使用的命名空间</td>
-</tr>
-<tr>
-<td>maximum-dead-containers</td>
-<td>-1</td>
-<td>kubelet</td>
-<td>已弃用，使用 eviction 代替</td>
-</tr>
-<tr>
-<td>maximum-dead-containers-per-container</td>
-<td>1</td>
-<td>kubelet</td>
-<td>已弃用，使用 eviction 代替</td>
-</tr>
-<tr>
-<td>minimum-container-ttl-duration</td>
-<td>-</td>
-<td>kubelet</td>
-<td>已弃用，使用 eviction 代替</td>
-</tr>
-<tr>
-<td>network-plugin</td>
-<td>-</td>
-<td>dockershim</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>network-plugin-mtu</td>
-<td>-</td>
-<td>dockershim</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>non-masquerade-cidr</td>
-<td>-</td>
-<td>kubelet</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>one-output</td>
-<td>-</td>
-<td>kubelet</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>port</td>
-<td>10250</td>
-<td>kubelet</td>
-<td>已弃用，kubelet 服务监听的本机端口号</td>
-</tr>
-<tr>
-<td>really-crash-for-testing</td>
-<td>-</td>
-<td>kubelet</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>register-schedulable</td>
-<td>true</td>
-<td>kubelet</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>seccomp-profile-root</td>
-<td>-</td>
-<td>kubelet</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>skip-headers</td>
-<td>-</td>
-<td>klog</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>skip-log-headers</td>
-<td>-</td>
-<td>klog</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>stderrthreshold</td>
-<td>-</td>
-<td>klog</td>
-<td>已弃用</td>
-</tr>
-<tr>
-<td>storage-driver-buffer-duration</td>
-<td></td>
-<td>-</td>
-<td>cadvisor</td>
-</tr>
-<tr>
-<td>storage-driver-db</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>storage-driver-host</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>storage-driver-password</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>storage-driver-secure</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>storage-driver-table</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>storage-driver-user</td>
-<td>-</td>
-<td>cadvisor</td>
-<td>已废弃</td>
-</tr>
-<tr>
-<td>v</td>
-<td>-</td>
-<td>klog</td>
-<td>日志级别详细程度的数值</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>默认值</th>
+          <th>来自组件</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>add-dir-header</td>
+          <td>false</td>
+          <td>TODO;</td>
+          <td>在输出日志时，是否把代码文件所在目录一起提供，如：state/state_mem.go:36，否则仅输出：state_mem.go:36</td>
+      </tr>
+      <tr>
+          <td>alsologtostderr</td>
+          <td>-</td>
+          <td>klog</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>application-metrics-count-limit</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>azure-container-registry-config</td>
+          <td>-</td>
+          <td>azure</td>
+          <td>包含 Azure 容器镜像库配置信息的文件的路径</td>
+      </tr>
+      <tr>
+          <td>boot-id-file</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>默认来自：/proc/sys/kernel/random/boot_id</td>
+      </tr>
+      <tr>
+          <td>cloud-config</td>
+          <td>-</td>
+          <td>kubelet</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>cloud-provider</td>
+          <td>-</td>
+          <td>kubelet</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>cni-bin-dir</td>
+          <td>/opt/cni/bin</td>
+          <td>dockershim</td>
+          <td>已弃用 cni 的相关二进制地址</td>
+      </tr>
+      <tr>
+          <td>cni-cache-dir</td>
+          <td>/var/lib/cni/cache</td>
+          <td>dockershim</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>cni-conf-dir</td>
+          <td>/etc/cni/net.d</td>
+          <td>dockershim</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>container-hints</td>
+          <td>/etc/cadvisor/container_hints.json</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>container-runtime</td>
+          <td>remote</td>
+          <td>kubelet</td>
+          <td>已废弃，目前支持 docker、remote，以后仅支持 remote</td>
+      </tr>
+      <tr>
+          <td>containerd</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>containerd-namespace</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>docker</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>docker-endpoint</td>
+          <td>-</td>
+          <td>dockershim</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>docker-env-metadata-whitelist</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>docker-only</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>docker-root</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>docker-tls</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>docker-tls-ca</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>docker-tls-cert</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>docker-tls-key</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>dynamic-config-dir</td>
+          <td>-</td>
+          <td>kubelet</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>enable-load-reader</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>event-storage-age-limit</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>event-storage-event-limit</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>experimental-allocatable-ignore-eviction</td>
+          <td>false</td>
+          <td>kubelet</td>
+          <td>设置为 true 表示在计算节点可分配资源数量时忽略硬性逐出阈值设置</td>
+      </tr>
+      <tr>
+          <td>experimental-bootstrap-kubeconfig</td>
+          <td>-</td>
+          <td>kubelet</td>
+          <td>Use &ndash;bootstrap-kubeconfig</td>
+      </tr>
+      <tr>
+          <td>experimental-check-node-capabilities-before-mount</td>
+          <td>-</td>
+          <td>kubelet</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>experimental-kernel-memcg-notification</td>
+          <td>-</td>
+          <td>kubelet</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>experimental-mounter-path</td>
+          <td>-</td>
+          <td>kubelet</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>global-housekeeping-interval</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>image-pull-progress-deadline</td>
+          <td>-</td>
+          <td>dockershim</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>keep-terminated-pod-volumes</td>
+          <td>-</td>
+          <td>kubelet</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>log-backtrace-at</td>
+          <td>0</td>
+          <td>klog</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>log-dir</td>
+          <td>-</td>
+          <td>klog</td>
+          <td>已弃用，如果此值为非空，则在所指定的目录中写入日志文件</td>
+      </tr>
+      <tr>
+          <td>log-file</td>
+          <td>-</td>
+          <td>klog</td>
+          <td>已弃用，如果此值非空，使用所给字符串作为日志文件名</td>
+      </tr>
+      <tr>
+          <td>log-file-max-size</td>
+          <td>1800</td>
+          <td>klog</td>
+          <td>已弃用，设置日志文件的最大值。单位为兆字节（M）。如果值为 0，则表示文件大小无限制</td>
+      </tr>
+      <tr>
+          <td>log-flush-frequency</td>
+          <td>5s</td>
+          <td>klog</td>
+          <td>两次日志刷新之间的最大秒数</td>
+      </tr>
+      <tr>
+          <td>logtostderr</td>
+          <td>true</td>
+          <td>klog</td>
+          <td>日志输出到 stderr 而不是文件</td>
+      </tr>
+      <tr>
+          <td>machine-id-file</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>/etc/machine-id,/var/lib/dbus/machine-id</td>
+      </tr>
+      <tr>
+          <td>master-service-namespace</td>
+          <td>-</td>
+          <td>kubelet</td>
+          <td>已弃用，kubelet 向 Pod 注入 Kubernetes 主控服务信息时使用的命名空间</td>
+      </tr>
+      <tr>
+          <td>maximum-dead-containers</td>
+          <td>-1</td>
+          <td>kubelet</td>
+          <td>已弃用，使用 eviction 代替</td>
+      </tr>
+      <tr>
+          <td>maximum-dead-containers-per-container</td>
+          <td>1</td>
+          <td>kubelet</td>
+          <td>已弃用，使用 eviction 代替</td>
+      </tr>
+      <tr>
+          <td>minimum-container-ttl-duration</td>
+          <td>-</td>
+          <td>kubelet</td>
+          <td>已弃用，使用 eviction 代替</td>
+      </tr>
+      <tr>
+          <td>network-plugin</td>
+          <td>-</td>
+          <td>dockershim</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>network-plugin-mtu</td>
+          <td>-</td>
+          <td>dockershim</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>non-masquerade-cidr</td>
+          <td>-</td>
+          <td>kubelet</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>one-output</td>
+          <td>-</td>
+          <td>kubelet</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>port</td>
+          <td>10250</td>
+          <td>kubelet</td>
+          <td>已弃用，kubelet 服务监听的本机端口号</td>
+      </tr>
+      <tr>
+          <td>really-crash-for-testing</td>
+          <td>-</td>
+          <td>kubelet</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>register-schedulable</td>
+          <td>true</td>
+          <td>kubelet</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>seccomp-profile-root</td>
+          <td>-</td>
+          <td>kubelet</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>skip-headers</td>
+          <td>-</td>
+          <td>klog</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>skip-log-headers</td>
+          <td>-</td>
+          <td>klog</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>stderrthreshold</td>
+          <td>-</td>
+          <td>klog</td>
+          <td>已弃用</td>
+      </tr>
+      <tr>
+          <td>storage-driver-buffer-duration</td>
+          <td></td>
+          <td>-</td>
+          <td>cadvisor</td>
+      </tr>
+      <tr>
+          <td>storage-driver-db</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>storage-driver-host</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>storage-driver-password</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>storage-driver-secure</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>storage-driver-table</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>storage-driver-user</td>
+          <td>-</td>
+          <td>cadvisor</td>
+          <td>已废弃</td>
+      </tr>
+      <tr>
+          <td>v</td>
+          <td>-</td>
+          <td>klog</td>
+          <td>日志级别详细程度的数值</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li>组建内置参数</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>默认值</th>
-<th>KubeletConfiguration</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>address</td>
-<td>0.0.0.0</td>
-<td>address</td>
-<td>kubelet api 服务监听的地址</td>
-</tr>
-<tr>
-<td>allowed-unsafe-sysctls</td>
-<td>-</td>
-<td>TODO;</td>
-<td>允许不安全的 sysctl 设置</td>
-</tr>
-<tr>
-<td>anonymous-auth</td>
-<td>true</td>
-<td>TODO;</td>
-<td>是否可接受匿名请求，用户名为 system:anonymous，用户组为 system:unauthenticated</td>
-</tr>
-<tr>
-<td>authentication-token-webhook</td>
-<td>TODO</td>
-<td>authentication.webhook.enabled</td>
-<td>TODO；使用 TokenReview API 对持有者令牌进行身份认证</td>
-</tr>
-<tr>
-<td>authentication-token-webhook-cache-ttl</td>
-<td>2m0s</td>
-<td>authentication.webhook.cacheTTL</td>
-<td>对 Webhook 令牌认证组件所返回的响应的缓存时间</td>
-</tr>
-<tr>
-<td>authorization-mode</td>
-<td>AlwaysAllow 或 Webhook</td>
-<td>authorization.mode</td>
-<td>服务端鉴权模式，可选值：AlwaysAllow、Webhook，当设置 &ndash;config 时默认值为 Webhook</td>
-</tr>
-<tr>
-<td>authorization-webhook-cache-authorized-ttl</td>
-<td>5m0s</td>
-<td>authorization.webhook.cacheAuthorizedTTL</td>
-<td>对 Webhook 认证组件所返回的 “Authorized（已授权）” 应答的缓存时间</td>
-</tr>
-<tr>
-<td>authorization-webhook-cache-unauthorized-ttl</td>
-<td>30s</td>
-<td>authorization.webhook.cacheUnauthorizedTTL</td>
-<td>对 Webhook 认证组件所返回的 “Unauthorized（未授权）” 应答的缓存时间</td>
-</tr>
-<tr>
-<td>bootstrap-kubeconfig</td>
-<td>-</td>
-<td>-</td>
-<td>包含 apiserver 上配置的 known_tokens.csv 里面 token，用于获取 kubelet-client-current.pem 证书</td>
-</tr>
-<tr>
-<td>cert-dir</td>
-<td>/var/lib/kubelet/pki</td>
-<td>-</td>
-<td>kubelet.crt 与 kubelet.key 证书路径, 优先级低于 tls-cert-file 与 tls-private-key-file</td>
-</tr>
-<tr>
-<td>cgroup-driver</td>
-<td>cgroupfs</td>
-<td>cgroupDriver</td>
-<td>用来操作本机 cgroup 时使用的驱动程序。支持的选项包括 cgroupfs 和 systemd</td>
-</tr>
-<tr>
-<td>cgroup-root</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-<td>为 Pod 设置根 cgroup 默认将使用容器运行时的默认设置</td>
-</tr>
-<tr>
-<td>cgroups-per-qos</td>
-<td>true</td>
-<td>TODO</td>
-<td>启用创建 QoS cgroup 层次结构。此值为 true 时 kubelet 为 QoS 和 Pod 创建顶级的 cgroup</td>
-</tr>
-<tr>
-<td>client-ca-file</td>
-<td>-</td>
-<td>authentication.x509.clientCAFile</td>
-<td>TODO; 检查客户端证书，如 kube-apiserver 请求 kubelet ??</td>
-</tr>
-<tr>
-<td>cluster-dns</td>
-<td>-</td>
-<td>clusterDNS</td>
-<td>用于 Pod 中设置了 &ldquo;dnsPolicy=ClusterFirst&rdquo; 时为容器提供 DNS 服务</td>
-</tr>
-<tr>
-<td>cluster-domain</td>
-<td>cluster.local</td>
-<td>clusterDomain</td>
-<td>集群域名，如果设置了此值，kubelet 除了将主机的搜索域配置到所有容器之外，还会为其配置这里指定的域名</td>
-</tr>
-<tr>
-<td>config</td>
-<td>-</td>
-<td>-</td>
-<td>指向 KubeletConfiguration 配置文件，命令行参数会覆盖此文件中的配置</td>
-</tr>
-<tr>
-<td>container-log-max-files</td>
-<td>5</td>
-<td>containerLogMaxFiles</td>
-<td>设置容器的日志文件个数上限，必须不小于2且只能与 &ndash;container-runtime=remote 一起使用</td>
-</tr>
-<tr>
-<td>container-log-max-size</td>
-<td>10Mi</td>
-<td>containerLogMaxSize</td>
-<td>设置容器日志文件在轮换生成新文件时之前的最大值</td>
-</tr>
-<tr>
-<td>container-runtime-endpoint</td>
-<td>&quot;&quot;</td>
-<td>-</td>
-<td>如：unix:///var/run/containerd/containerd.sock</td>
-</tr>
-<tr>
-<td>contention-profiling</td>
-<td>-</td>
-<td>-</td>
-<td>TODO; 启用锁竞争分析，前提是开启 pprof</td>
-</tr>
-<tr>
-<td>cpu-cfs-quota</td>
-<td>true</td>
-<td>TODO</td>
-<td>TODO; 为设置了 CPU 限制的容器启用 CPU CFS 配额保障</td>
-</tr>
-<tr>
-<td>cpu-cfs-quota-period</td>
-<td>100ms</td>
-<td>TODO</td>
-<td>TODO; 设置 CPU CFS 配额周期 cpu.cfs_period_us。默认使用 Linux 内核所设置的默认值</td>
-</tr>
-<tr>
-<td>cpu-manager-policy</td>
-<td>none</td>
-<td>TODO</td>
-<td>TODO; 要使用的 CPU 管理器策略。可选值包括：none 和 static</td>
-</tr>
-<tr>
-<td>cpu-manager-policy-options</td>
-<td>-</td>
-<td>TODO</td>
-<td>TODO; 一组用于微调其行为的 key=value CPU 管理器策略选项</td>
-</tr>
-<tr>
-<td>cpu-manager-reconcile-period</td>
-<td>10s</td>
-<td>TODO</td>
-<td>TODO; 设置 CPU 管理器的调和时间</td>
-</tr>
-<tr>
-<td>enable-controller-attach-detach</td>
-<td>true</td>
-<td>TODO ｜ 启用 Attach/Detach 控制器来挂接和摘除调度到该节点的卷，同时禁用 kubelet 执行挂接和摘除操作</td>
-<td></td>
-</tr>
-<tr>
-<td>enable-debugging-handlers</td>
-<td>true</td>
-<td>TODO</td>
-<td>启用服务器上用于日志收集和在本地运行容器和命令的端点</td>
-</tr>
-<tr>
-<td>enable-server</td>
-<td>true</td>
-<td>TODO</td>
-<td>启用 kubelet 服务器</td>
-</tr>
-<tr>
-<td>enforce-node-allocatable</td>
-<td>pods</td>
-<td>TODO</td>
-<td>用逗号分隔的列表，包含由 kubelet 强制执行的节点可分配资源级别</td>
-</tr>
-<tr>
-<td>event-burst</td>
-<td>10</td>
-<td>TODO</td>
-<td>事件记录的个数的突发峰值上限</td>
-</tr>
-<tr>
-<td>event-qps</td>
-<td>5</td>
-<td>TODO</td>
-<td>设置大于 0 的值表示限制每秒可生成的事件数量。设置为 0 表示不限制</td>
-</tr>
-<tr>
-<td>eviction-hard</td>
-<td>imagefs.available&lt;15%,memory.available&lt;100Mi,nodefs.available&lt;10%</td>
-<td>TODO</td>
-<td>触发 Pod 驱逐操作的一组硬性门限</td>
-</tr>
-<tr>
-<td>eviction-max-pod-grace-period</td>
-<td>-</td>
-<td>TODO</td>
-<td>响应满足软性驱逐阈值（Soft Eviction Threshold）而终止 Pod 时使用的最长宽限期（以秒为单位</td>
-</tr>
-<tr>
-<td>eviction-minimum-reclaim</td>
-<td>-</td>
-<td>TODO</td>
-<td>当某资源压力过大时，kubelet 将执行 Pod 驱逐操作</td>
-</tr>
-<tr>
-<td>eviction-pressure-transition-period</td>
-<td>5m0s</td>
-<td>TODO</td>
-<td>在驱逐压力状况解除之前的最长等待时间</td>
-</tr>
-<tr>
-<td>eviction-soft</td>
-<td>-</td>
-<td>TODO</td>
-<td>设置一组驱逐阈值（例如：memory.available&lt;1.5Gi）。 如果在相应的宽限期内达到该阈值，则会触发 Pod 驱逐操作</td>
-</tr>
-<tr>
-<td>eviction-soft-grace-period</td>
-<td>-</td>
-<td>TODO</td>
-<td>设置一组驱逐宽限期（例如，memory.available=1m30s），对应于触发软性 Pod 驱逐操作之前软性驱逐阈值所需持续的时间长短</td>
-</tr>
-<tr>
-<td>exit-on-lock-contention</td>
-<td>-</td>
-<td>-</td>
-<td>设置为 true 表示当发生锁文件竞争时 kubelet 可以退出</td>
-</tr>
-<tr>
-<td>experimental-logging-sanitization</td>
-<td>-</td>
-<td>TODO</td>
-<td>对一些日志敏感字段做特殊处理</td>
-</tr>
-<tr>
-<td>fail-swap-on</td>
-<td>true</td>
-<td>failSwapOn</td>
-<td>设置为 true 表示如果主机启用了交换分区，kubelet 将直接失败</td>
-</tr>
-<tr>
-<td>file-check-frequency</td>
-<td>20s</td>
-<td>TODO</td>
-<td>检查配置文件中新数据的时间间隔</td>
-</tr>
-<tr>
-<td>hairpin-mode</td>
-<td>promiscuous-bridge</td>
-<td>hairpinMode</td>
-<td>设置 kubelet 执行 hairpin 网络地址转译的方式，该模式允许后端端点对其自身服务的访问能够再次经由负载均衡转发回自身，可选项包括 promiscuous-bridge、hairpin-veth 和 none</td>
-</tr>
-<tr>
-<td>healthz-bind-address</td>
-<td>127.0.0.1</td>
-<td>healthzBindAddress</td>
-<td>用于运行 healthz 服务器的 IP 地址</td>
-</tr>
-<tr>
-<td>healthz-port</td>
-<td>10248</td>
-<td>healthzPort</td>
-<td>本地 healthz 端点使用的端口（设置为 0 表示禁用）</td>
-</tr>
-<tr>
-<td>hostname-override</td>
-<td>-</td>
-<td>-</td>
-<td>将使用此字符串而不是实际的主机名作为节点标识</td>
-</tr>
-<tr>
-<td>housekeeping-interval</td>
-<td>10s</td>
-<td>TODO</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>http-check-frequency</td>
-<td>20s</td>
-<td>TODO</td>
-<td>HTTP 服务以获取新数据的时间间隔</td>
-</tr>
-<tr>
-<td>image-credential-provider-bin-dir</td>
-<td>-</td>
-<td>-</td>
-<td>TODO; 指向凭据提供组件可执行文件所在目录的路径</td>
-</tr>
-<tr>
-<td>image-credential-provider-config</td>
-<td>-</td>
-<td>-</td>
-<td>TODO; 指向凭据提供插件配置文件所在目录的路径</td>
-</tr>
-<tr>
-<td>image-gc-high-threshold</td>
-<td>85</td>
-<td>TODO</td>
-<td>镜像垃圾回收上限。磁盘使用空间达到该百分比时，镜像垃圾回收将持续工作。 值必须在 [0，100] 范围内。要禁用镜像垃圾回收，请设置为 100</td>
-</tr>
-<tr>
-<td>image-gc-low-threshold</td>
-<td>80</td>
-<td>TODO</td>
-<td>镜像垃圾回收下限。磁盘使用空间在达到该百分比之前，镜像垃圾回收操作不会运行。 值必须在 [0，100] 范围内，并且不得大于 high-threshold的值</td>
-</tr>
-<tr>
-<td>image-service-endpoint</td>
-<td>-</td>
-<td>-</td>
-<td>远程镜像服务的端点，未设置则同 container-runtime-endpoint</td>
-</tr>
-<tr>
-<td>iptables-drop-bit</td>
-<td>15</td>
-<td>TODO</td>
-<td>标记数据包将被丢弃的 fwmark 位设置。必须在 [0，31] 范围内</td>
-</tr>
-<tr>
-<td>iptables-masquerade-bit</td>
-<td>14</td>
-<td>TODO</td>
-<td>标记数据包将进行 SNAT 的 fwmark 空间位设置。必须在 [0，31] 范围内</td>
-</tr>
-<tr>
-<td>kernel-memcg-notification</td>
-<td>-</td>
-<td>TODO</td>
-<td>若启用，则 kubelet 将与内核中的 memcg 通知机制集成，不再使用轮询的方式来判定 是否 Pod 达到内存驱逐阈值</td>
-</tr>
-<tr>
-<td>kube-api-burst</td>
-<td>10</td>
-<td>TODO</td>
-<td>每秒发送到 apiserver 的突发请求数量上限</td>
-</tr>
-<tr>
-<td>kube-api-content-type</td>
-<td>application/vnd.kubernetes.protobuf</td>
-<td>TODO</td>
-<td>发送到 apiserver 的请求的内容类型</td>
-</tr>
-<tr>
-<td>kube-api-qps</td>
-<td>5</td>
-<td>TODO</td>
-<td>与 apiserver 通信的每秒查询个数QPS，此值必须&gt;=0，如果为0，则使用默认5。不包含事件和节点心跳 api，它们的速率限制是由一组不同的标志所控制</td>
-</tr>
-<tr>
-<td>kube-reserved</td>
-<td>-</td>
-<td>kubeReserved</td>
-<td>系统预留的资源配置，以一组 &lt;资源名称&gt;=&lt;资源数量&gt; 格式表示，支持：cpu、memory、ephemeral-storage</td>
-</tr>
-<tr>
-<td>kube-reserved-cgroup</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-<td>给出某个顶层 cgroup 绝对名称，该 cgroup 用于管理通过标志 &ndash;kube-reserved 为 kubernetes 组件所预留的计算资源</td>
-</tr>
-<tr>
-<td>kubeconfig</td>
-<td>-</td>
-<td>-</td>
-<td>指定如何连接到 API 服务器</td>
-</tr>
-<tr>
-<td>kubelet-cgroups</td>
-<td>-</td>
-<td>TODO</td>
-<td>用于创建和运行 kubelet 的 cgroup 的绝对名称</td>
-</tr>
-<tr>
-<td>lock-file</td>
-<td>-</td>
-<td>-</td>
-<td>kubelet 使用的锁文件的路径</td>
-</tr>
-<tr>
-<td>log-json-info-buffer-size</td>
-<td>0</td>
-<td>TODO</td>
-<td>实验性特性</td>
-</tr>
-<tr>
-<td>log-json-split-stream</td>
-<td>-</td>
-<td>TODO</td>
-<td>实验性特性</td>
-</tr>
-<tr>
-<td>logging-format</td>
-<td>text</td>
-<td>TODO</td>
-<td>设置日志文件格式。可以设置的格式有：&ldquo;text&rdquo;、&ldquo;json&rdquo;</td>
-</tr>
-<tr>
-<td>make-iptables-util-chains</td>
-<td>true</td>
-<td>TODO</td>
-<td>设置为 true 表示 kubelet 将确保 iptables 规则在主机上存在</td>
-</tr>
-<tr>
-<td>manifest-url</td>
-<td>-</td>
-<td>TODO</td>
-<td>用于访问要运行的其他 Pod 规范的 URL</td>
-</tr>
-<tr>
-<td>manifest-url-header</td>
-<td>-</td>
-<td>TODO</td>
-<td>请求 manifest-url 自定义的头</td>
-</tr>
-<tr>
-<td>max-open-files</td>
-<td>1000000</td>
-<td>TODO</td>
-<td>kubelet 进程可以打开的最大文件数量</td>
-</tr>
-<tr>
-<td>max-pods</td>
-<td>110</td>
-<td>maxPods</td>
-<td>此 kubelet 能运行的 Pod 最大数量</td>
-</tr>
-<tr>
-<td>memory-manager-policy</td>
-<td>None</td>
-<td>TODO</td>
-<td>内存管理器策略使用。可选值：&lsquo;None&rsquo;、&lsquo;Static&rsquo;</td>
-</tr>
-<tr>
-<td>minimum-image-ttl-duration</td>
-<td>2m0s</td>
-<td>TODO</td>
-<td>已结束的容器在被垃圾回收清理之前的最少存活时间。 例如：&lsquo;300ms&rsquo;、&rsquo;10s&rsquo; 或者 &lsquo;2h45m&rsquo;</td>
-</tr>
-<tr>
-<td>node-ip</td>
-<td>-</td>
-<td>-</td>
-<td>节点的 IP 地址</td>
-</tr>
-<tr>
-<td>node-labels</td>
-<td>-</td>
-<td>-</td>
-<td>kubelet 在集群中注册本节点时设置的标签</td>
-</tr>
-<tr>
-<td>node-status-max-images</td>
-<td>50</td>
-<td>TODO</td>
-<td>在 node.status.images 中可以报告的最大镜像数量。如果指定为 -1，则不设上限</td>
-</tr>
-<tr>
-<td>node-status-update-frequency</td>
-<td>10s</td>
-<td>TODO</td>
-<td>指定 kubelet 向主控节点汇报节点状态的时间间隔。注意：更改此常量时请务必谨慎， 它必须与节点控制器中的 nodeMonitorGracePeriod 一起使用</td>
-</tr>
-<tr>
-<td>oom-score-adj</td>
-<td>-999</td>
-<td>oomScoreAdj</td>
-<td>kubelet 进程的 oom-score-adj 参数值。有效范围为 [-1000，1000]</td>
-</tr>
-<tr>
-<td>pod-cidr</td>
-<td>-</td>
-<td>TODO</td>
-<td>用于给 Pod 分配 IP 地址的 CIDR 地址池，仅在独立运行模式下使用</td>
-</tr>
-<tr>
-<td>pod-infra-container-image</td>
-<td>k8s.gcr.io/pause:3.5</td>
-<td>-</td>
-<td>所指定的镜像不会被镜像垃圾收集器删除，依赖CRI</td>
-</tr>
-<tr>
-<td>pod-manifest-path</td>
-<td>-</td>
-<td>staticPodPath</td>
-<td>设置包含要运行的静态 Pod 的文件的路径</td>
-</tr>
-<tr>
-<td>pod-max-pids</td>
-<td>-1</td>
-<td>TODO</td>
-<td>设置每个 Pod 中的最大进程数目。如果为 -1，则 kubelet 使用节点可分配的 PID 容量作为默认值</td>
-</tr>
-<tr>
-<td>pods-per-core</td>
-<td>-</td>
-<td>TODO</td>
-<td>在每个处理器核上可运行的 Pod 数量</td>
-</tr>
-<tr>
-<td>protect-kernel-defaults</td>
-<td>-</td>
-<td>TODO</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>provider-id</td>
-<td>-</td>
-<td>TODO</td>
-<td>设置主机数据库中用来标识节点的唯一标识</td>
-</tr>
-<tr>
-<td>qos-reserved</td>
-<td>-</td>
-<td>TODO</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>read-only-port</td>
-<td>10255</td>
-<td>TODO</td>
-<td>kubelet 可以在没有身份验证/鉴权的情况下提供只读服务的端口（设置为 0 表示禁用）</td>
-</tr>
-<tr>
-<td>register-node</td>
-<td>true</td>
-<td>TODO</td>
-<td>向 API 服务器注册节点</td>
-</tr>
-<tr>
-<td>register-with-taints</td>
-<td>-</td>
-<td>TODO</td>
-<td>设置本节点的污点标记，格式为 <key>=<value>:<effect>， 以逗号分隔</td>
-</tr>
-<tr>
-<td>registry-burst</td>
-<td>10</td>
-<td>TODO</td>
-<td>设置突发性镜像拉取的个数上限</td>
-</tr>
-<tr>
-<td>registry-qps</td>
-<td>5</td>
-<td>TODO</td>
-<td>如此值大于 0，可用来限制镜像仓库的 QPS 上限。设置为 0，表示不受限制</td>
-</tr>
-<tr>
-<td>reserved-cpus</td>
-<td>-</td>
-<td>TODO</td>
-<td>为系统和 Kubernetes 保留使用的 CPU，优先级高于 system-reserved 和 &ndash;kube-reskube-reserved</td>
-</tr>
-<tr>
-<td>reserved-memory</td>
-<td>-</td>
-<td>TODO</td>
-<td>TODO; 以逗号分隔的 NUMA 节点内存预留列表</td>
-</tr>
-<tr>
-<td>resolv-conf</td>
-<td>/etc/resolv.conf</td>
-<td>TODO</td>
-<td>名字解析服务的配置文件名，用作容器 DNS 解析配置的基础</td>
-</tr>
-<tr>
-<td>root-dir</td>
-<td>/var/lib/kubelet</td>
-<td>-</td>
-<td>设置用于管理 kubelet 文件的根目录</td>
-</tr>
-<tr>
-<td>rotate-certificates</td>
-<td>-</td>
-<td>TODO</td>
-<td>当客户端证书即将过期时 kubelet 自动从 kube-apiserver 请求新的证书进行轮换</td>
-</tr>
-<tr>
-<td>rotate-server-certificates</td>
-<td>-</td>
-<td>TODO</td>
-<td>当 kubelet 的服务证书即将过期时自动从 kube-apiserver 请求新的证书进行轮换</td>
-</tr>
-<tr>
-<td>runonce</td>
-<td>-</td>
-<td>-</td>
-<td>表示从本地清单或远程 URL 创建完 Pod 后立即退出 kubelet 进程</td>
-</tr>
-<tr>
-<td>runtime-cgroups</td>
-<td>-</td>
-<td>-</td>
-<td>TODO; 设置用于创建和运行容器运行时的 cgroup 的绝对名称</td>
-</tr>
-<tr>
-<td>runtime-request-timeout</td>
-<td>2m0s</td>
-<td>TODO</td>
-<td>设置除了长时间运行的请求（包括 pull、logs、exec 和 attach 等操作）之外的其他运行时请求的超时时间</td>
-</tr>
-<tr>
-<td>seccomp-default</td>
-<td>-</td>
-<td>-</td>
-<td>TODO; 启用 RuntimeDefault 作为所有工作负载的默认 seccomp 配置文件</td>
-</tr>
-<tr>
-<td>serialize-image-pulls</td>
-<td>true</td>
-<td>serializeImagePulls</td>
-<td>逐一拉取镜像</td>
-</tr>
-<tr>
-<td>streaming-connection-idle-timeout</td>
-<td>4h0m0s</td>
-<td>TODO; 设置流连接在自动关闭之前可以空闲的最长时间。0 表示没有超时限制，与 kubelet 服务器的所有连接最长持续时间为 4 小时</td>
-<td></td>
-</tr>
-<tr>
-<td>sync-frequency</td>
-<td>1m0s</td>
-<td>TODO</td>
-<td>在运行中的容器与其配置之间执行同步操作的最长时间间隔</td>
-</tr>
-<tr>
-<td>system-cgroups</td>
-<td>-</td>
-<td>TODO</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>system-reserved</td>
-<td>-</td>
-<td>systemReserved</td>
-<td>系统预留的资源配置，以一组 资源名称=资源数量 的格式表示</td>
-</tr>
-<tr>
-<td>system-reserved-cgroup</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-<td>TODO; 此标志给出一个顶层 cgroup 绝对名称，该 cgroup 用于管理非 kubernetes 组件</td>
-</tr>
-<tr>
-<td>tls-cert-file</td>
-<td>-</td>
-<td>TODO</td>
-<td>用于 HTTPS 认证，如未提供，则 kubelet 生成自签名证书和密钥，并将其保存到通过 &ndash;cert-dir 指定的目录</td>
-</tr>
-<tr>
-<td>tls-cipher-suites</td>
-<td>-</td>
-<td>TODO</td>
-<td>服务器端加密算法列表，以逗号分隔</td>
-</tr>
-<tr>
-<td>tls-min-version</td>
-<td>-</td>
-<td>TODO</td>
-<td>设置支持的最小 TLS 版本号，可选的版本号包括：VersionTLS10、 VersionTLS11、VersionTLS12 和 VersionTLS13</td>
-</tr>
-<tr>
-<td>tls-private-key-file</td>
-<td>-</td>
-<td>TODO</td>
-<td>同上</td>
-</tr>
-<tr>
-<td>topology-manager-policy</td>
-<td>none</td>
-<td>TODO</td>
-<td>设置拓扑管理策略（Topology Manager policy）。可选值包括：none、 best-effort、restricted 和 single-numa-node</td>
-</tr>
-<tr>
-<td>topology-manager-scope</td>
-<td>container</td>
-<td>TODO</td>
-<td>TODO; 拓扑提示信息使用范围</td>
-</tr>
-<tr>
-<td>volume-plugin-dir</td>
-<td>-</td>
-<td>TODO</td>
-<td>用来搜索第三方存储卷插件的目录</td>
-</tr>
-<tr>
-<td>volume-stats-agg-period</td>
-<td>1m0s</td>
-<td>TODO</td>
-<td>指定 kubelet 计算和缓存所有 Pod 和卷的磁盘用量总值的时间间隔。要禁用磁盘用量计算， 请设置为 0</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>默认值</th>
+          <th>KubeletConfiguration</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>address</td>
+          <td>0.0.0.0</td>
+          <td>address</td>
+          <td>kubelet api 服务监听的地址</td>
+      </tr>
+      <tr>
+          <td>allowed-unsafe-sysctls</td>
+          <td>-</td>
+          <td>TODO;</td>
+          <td>允许不安全的 sysctl 设置</td>
+      </tr>
+      <tr>
+          <td>anonymous-auth</td>
+          <td>true</td>
+          <td>TODO;</td>
+          <td>是否可接受匿名请求，用户名为 system:anonymous，用户组为 system:unauthenticated</td>
+      </tr>
+      <tr>
+          <td>authentication-token-webhook</td>
+          <td>TODO</td>
+          <td>authentication.webhook.enabled</td>
+          <td>TODO；使用 TokenReview API 对持有者令牌进行身份认证</td>
+      </tr>
+      <tr>
+          <td>authentication-token-webhook-cache-ttl</td>
+          <td>2m0s</td>
+          <td>authentication.webhook.cacheTTL</td>
+          <td>对 Webhook 令牌认证组件所返回的响应的缓存时间</td>
+      </tr>
+      <tr>
+          <td>authorization-mode</td>
+          <td>AlwaysAllow 或 Webhook</td>
+          <td>authorization.mode</td>
+          <td>服务端鉴权模式，可选值：AlwaysAllow、Webhook，当设置 &ndash;config 时默认值为 Webhook</td>
+      </tr>
+      <tr>
+          <td>authorization-webhook-cache-authorized-ttl</td>
+          <td>5m0s</td>
+          <td>authorization.webhook.cacheAuthorizedTTL</td>
+          <td>对 Webhook 认证组件所返回的 “Authorized（已授权）” 应答的缓存时间</td>
+      </tr>
+      <tr>
+          <td>authorization-webhook-cache-unauthorized-ttl</td>
+          <td>30s</td>
+          <td>authorization.webhook.cacheUnauthorizedTTL</td>
+          <td>对 Webhook 认证组件所返回的 “Unauthorized（未授权）” 应答的缓存时间</td>
+      </tr>
+      <tr>
+          <td>bootstrap-kubeconfig</td>
+          <td>-</td>
+          <td>-</td>
+          <td>包含 apiserver 上配置的 known_tokens.csv 里面 token，用于获取 kubelet-client-current.pem 证书</td>
+      </tr>
+      <tr>
+          <td>cert-dir</td>
+          <td>/var/lib/kubelet/pki</td>
+          <td>-</td>
+          <td>kubelet.crt 与 kubelet.key 证书路径, 优先级低于 tls-cert-file 与 tls-private-key-file</td>
+      </tr>
+      <tr>
+          <td>cgroup-driver</td>
+          <td>cgroupfs</td>
+          <td>cgroupDriver</td>
+          <td>用来操作本机 cgroup 时使用的驱动程序。支持的选项包括 cgroupfs 和 systemd</td>
+      </tr>
+      <tr>
+          <td>cgroup-root</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+          <td>为 Pod 设置根 cgroup 默认将使用容器运行时的默认设置</td>
+      </tr>
+      <tr>
+          <td>cgroups-per-qos</td>
+          <td>true</td>
+          <td>TODO</td>
+          <td>启用创建 QoS cgroup 层次结构。此值为 true 时 kubelet 为 QoS 和 Pod 创建顶级的 cgroup</td>
+      </tr>
+      <tr>
+          <td>client-ca-file</td>
+          <td>-</td>
+          <td>authentication.x509.clientCAFile</td>
+          <td>TODO; 检查客户端证书，如 kube-apiserver 请求 kubelet ??</td>
+      </tr>
+      <tr>
+          <td>cluster-dns</td>
+          <td>-</td>
+          <td>clusterDNS</td>
+          <td>用于 Pod 中设置了 &ldquo;dnsPolicy=ClusterFirst&rdquo; 时为容器提供 DNS 服务</td>
+      </tr>
+      <tr>
+          <td>cluster-domain</td>
+          <td>cluster.local</td>
+          <td>clusterDomain</td>
+          <td>集群域名，如果设置了此值，kubelet 除了将主机的搜索域配置到所有容器之外，还会为其配置这里指定的域名</td>
+      </tr>
+      <tr>
+          <td>config</td>
+          <td>-</td>
+          <td>-</td>
+          <td>指向 KubeletConfiguration 配置文件，命令行参数会覆盖此文件中的配置</td>
+      </tr>
+      <tr>
+          <td>container-log-max-files</td>
+          <td>5</td>
+          <td>containerLogMaxFiles</td>
+          <td>设置容器的日志文件个数上限，必须不小于2且只能与 &ndash;container-runtime=remote 一起使用</td>
+      </tr>
+      <tr>
+          <td>container-log-max-size</td>
+          <td>10Mi</td>
+          <td>containerLogMaxSize</td>
+          <td>设置容器日志文件在轮换生成新文件时之前的最大值</td>
+      </tr>
+      <tr>
+          <td>container-runtime-endpoint</td>
+          <td>&quot;&quot;</td>
+          <td>-</td>
+          <td>如：unix:///var/run/containerd/containerd.sock</td>
+      </tr>
+      <tr>
+          <td>contention-profiling</td>
+          <td>-</td>
+          <td>-</td>
+          <td>TODO; 启用锁竞争分析，前提是开启 pprof</td>
+      </tr>
+      <tr>
+          <td>cpu-cfs-quota</td>
+          <td>true</td>
+          <td>TODO</td>
+          <td>TODO; 为设置了 CPU 限制的容器启用 CPU CFS 配额保障</td>
+      </tr>
+      <tr>
+          <td>cpu-cfs-quota-period</td>
+          <td>100ms</td>
+          <td>TODO</td>
+          <td>TODO; 设置 CPU CFS 配额周期 cpu.cfs_period_us。默认使用 Linux 内核所设置的默认值</td>
+      </tr>
+      <tr>
+          <td>cpu-manager-policy</td>
+          <td>none</td>
+          <td>TODO</td>
+          <td>TODO; 要使用的 CPU 管理器策略。可选值包括：none 和 static</td>
+      </tr>
+      <tr>
+          <td>cpu-manager-policy-options</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>TODO; 一组用于微调其行为的 key=value CPU 管理器策略选项</td>
+      </tr>
+      <tr>
+          <td>cpu-manager-reconcile-period</td>
+          <td>10s</td>
+          <td>TODO</td>
+          <td>TODO; 设置 CPU 管理器的调和时间</td>
+      </tr>
+      <tr>
+          <td>enable-controller-attach-detach</td>
+          <td>true</td>
+          <td>TODO ｜ 启用 Attach/Detach 控制器来挂接和摘除调度到该节点的卷，同时禁用 kubelet 执行挂接和摘除操作</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>enable-debugging-handlers</td>
+          <td>true</td>
+          <td>TODO</td>
+          <td>启用服务器上用于日志收集和在本地运行容器和命令的端点</td>
+      </tr>
+      <tr>
+          <td>enable-server</td>
+          <td>true</td>
+          <td>TODO</td>
+          <td>启用 kubelet 服务器</td>
+      </tr>
+      <tr>
+          <td>enforce-node-allocatable</td>
+          <td>pods</td>
+          <td>TODO</td>
+          <td>用逗号分隔的列表，包含由 kubelet 强制执行的节点可分配资源级别</td>
+      </tr>
+      <tr>
+          <td>event-burst</td>
+          <td>10</td>
+          <td>TODO</td>
+          <td>事件记录的个数的突发峰值上限</td>
+      </tr>
+      <tr>
+          <td>event-qps</td>
+          <td>5</td>
+          <td>TODO</td>
+          <td>设置大于 0 的值表示限制每秒可生成的事件数量。设置为 0 表示不限制</td>
+      </tr>
+      <tr>
+          <td>eviction-hard</td>
+          <td>imagefs.available&lt;15%,memory.available&lt;100Mi,nodefs.available&lt;10%</td>
+          <td>TODO</td>
+          <td>触发 Pod 驱逐操作的一组硬性门限</td>
+      </tr>
+      <tr>
+          <td>eviction-max-pod-grace-period</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>响应满足软性驱逐阈值（Soft Eviction Threshold）而终止 Pod 时使用的最长宽限期（以秒为单位</td>
+      </tr>
+      <tr>
+          <td>eviction-minimum-reclaim</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>当某资源压力过大时，kubelet 将执行 Pod 驱逐操作</td>
+      </tr>
+      <tr>
+          <td>eviction-pressure-transition-period</td>
+          <td>5m0s</td>
+          <td>TODO</td>
+          <td>在驱逐压力状况解除之前的最长等待时间</td>
+      </tr>
+      <tr>
+          <td>eviction-soft</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>设置一组驱逐阈值（例如：memory.available&lt;1.5Gi）。 如果在相应的宽限期内达到该阈值，则会触发 Pod 驱逐操作</td>
+      </tr>
+      <tr>
+          <td>eviction-soft-grace-period</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>设置一组驱逐宽限期（例如，memory.available=1m30s），对应于触发软性 Pod 驱逐操作之前软性驱逐阈值所需持续的时间长短</td>
+      </tr>
+      <tr>
+          <td>exit-on-lock-contention</td>
+          <td>-</td>
+          <td>-</td>
+          <td>设置为 true 表示当发生锁文件竞争时 kubelet 可以退出</td>
+      </tr>
+      <tr>
+          <td>experimental-logging-sanitization</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>对一些日志敏感字段做特殊处理</td>
+      </tr>
+      <tr>
+          <td>fail-swap-on</td>
+          <td>true</td>
+          <td>failSwapOn</td>
+          <td>设置为 true 表示如果主机启用了交换分区，kubelet 将直接失败</td>
+      </tr>
+      <tr>
+          <td>file-check-frequency</td>
+          <td>20s</td>
+          <td>TODO</td>
+          <td>检查配置文件中新数据的时间间隔</td>
+      </tr>
+      <tr>
+          <td>hairpin-mode</td>
+          <td>promiscuous-bridge</td>
+          <td>hairpinMode</td>
+          <td>设置 kubelet 执行 hairpin 网络地址转译的方式，该模式允许后端端点对其自身服务的访问能够再次经由负载均衡转发回自身，可选项包括 promiscuous-bridge、hairpin-veth 和 none</td>
+      </tr>
+      <tr>
+          <td>healthz-bind-address</td>
+          <td>127.0.0.1</td>
+          <td>healthzBindAddress</td>
+          <td>用于运行 healthz 服务器的 IP 地址</td>
+      </tr>
+      <tr>
+          <td>healthz-port</td>
+          <td>10248</td>
+          <td>healthzPort</td>
+          <td>本地 healthz 端点使用的端口（设置为 0 表示禁用）</td>
+      </tr>
+      <tr>
+          <td>hostname-override</td>
+          <td>-</td>
+          <td>-</td>
+          <td>将使用此字符串而不是实际的主机名作为节点标识</td>
+      </tr>
+      <tr>
+          <td>housekeeping-interval</td>
+          <td>10s</td>
+          <td>TODO</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>http-check-frequency</td>
+          <td>20s</td>
+          <td>TODO</td>
+          <td>HTTP 服务以获取新数据的时间间隔</td>
+      </tr>
+      <tr>
+          <td>image-credential-provider-bin-dir</td>
+          <td>-</td>
+          <td>-</td>
+          <td>TODO; 指向凭据提供组件可执行文件所在目录的路径</td>
+      </tr>
+      <tr>
+          <td>image-credential-provider-config</td>
+          <td>-</td>
+          <td>-</td>
+          <td>TODO; 指向凭据提供插件配置文件所在目录的路径</td>
+      </tr>
+      <tr>
+          <td>image-gc-high-threshold</td>
+          <td>85</td>
+          <td>TODO</td>
+          <td>镜像垃圾回收上限。磁盘使用空间达到该百分比时，镜像垃圾回收将持续工作。 值必须在 [0，100] 范围内。要禁用镜像垃圾回收，请设置为 100</td>
+      </tr>
+      <tr>
+          <td>image-gc-low-threshold</td>
+          <td>80</td>
+          <td>TODO</td>
+          <td>镜像垃圾回收下限。磁盘使用空间在达到该百分比之前，镜像垃圾回收操作不会运行。 值必须在 [0，100] 范围内，并且不得大于 high-threshold的值</td>
+      </tr>
+      <tr>
+          <td>image-service-endpoint</td>
+          <td>-</td>
+          <td>-</td>
+          <td>远程镜像服务的端点，未设置则同 container-runtime-endpoint</td>
+      </tr>
+      <tr>
+          <td>iptables-drop-bit</td>
+          <td>15</td>
+          <td>TODO</td>
+          <td>标记数据包将被丢弃的 fwmark 位设置。必须在 [0，31] 范围内</td>
+      </tr>
+      <tr>
+          <td>iptables-masquerade-bit</td>
+          <td>14</td>
+          <td>TODO</td>
+          <td>标记数据包将进行 SNAT 的 fwmark 空间位设置。必须在 [0，31] 范围内</td>
+      </tr>
+      <tr>
+          <td>kernel-memcg-notification</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>若启用，则 kubelet 将与内核中的 memcg 通知机制集成，不再使用轮询的方式来判定 是否 Pod 达到内存驱逐阈值</td>
+      </tr>
+      <tr>
+          <td>kube-api-burst</td>
+          <td>10</td>
+          <td>TODO</td>
+          <td>每秒发送到 apiserver 的突发请求数量上限</td>
+      </tr>
+      <tr>
+          <td>kube-api-content-type</td>
+          <td>application/vnd.kubernetes.protobuf</td>
+          <td>TODO</td>
+          <td>发送到 apiserver 的请求的内容类型</td>
+      </tr>
+      <tr>
+          <td>kube-api-qps</td>
+          <td>5</td>
+          <td>TODO</td>
+          <td>与 apiserver 通信的每秒查询个数QPS，此值必须&gt;=0，如果为0，则使用默认5。不包含事件和节点心跳 api，它们的速率限制是由一组不同的标志所控制</td>
+      </tr>
+      <tr>
+          <td>kube-reserved</td>
+          <td>-</td>
+          <td>kubeReserved</td>
+          <td>系统预留的资源配置，以一组 &lt;资源名称&gt;=&lt;资源数量&gt; 格式表示，支持：cpu、memory、ephemeral-storage</td>
+      </tr>
+      <tr>
+          <td>kube-reserved-cgroup</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+          <td>给出某个顶层 cgroup 绝对名称，该 cgroup 用于管理通过标志 &ndash;kube-reserved 为 kubernetes 组件所预留的计算资源</td>
+      </tr>
+      <tr>
+          <td>kubeconfig</td>
+          <td>-</td>
+          <td>-</td>
+          <td>指定如何连接到 API 服务器</td>
+      </tr>
+      <tr>
+          <td>kubelet-cgroups</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>用于创建和运行 kubelet 的 cgroup 的绝对名称</td>
+      </tr>
+      <tr>
+          <td>lock-file</td>
+          <td>-</td>
+          <td>-</td>
+          <td>kubelet 使用的锁文件的路径</td>
+      </tr>
+      <tr>
+          <td>log-json-info-buffer-size</td>
+          <td>0</td>
+          <td>TODO</td>
+          <td>实验性特性</td>
+      </tr>
+      <tr>
+          <td>log-json-split-stream</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>实验性特性</td>
+      </tr>
+      <tr>
+          <td>logging-format</td>
+          <td>text</td>
+          <td>TODO</td>
+          <td>设置日志文件格式。可以设置的格式有：&ldquo;text&rdquo;、&ldquo;json&rdquo;</td>
+      </tr>
+      <tr>
+          <td>make-iptables-util-chains</td>
+          <td>true</td>
+          <td>TODO</td>
+          <td>设置为 true 表示 kubelet 将确保 iptables 规则在主机上存在</td>
+      </tr>
+      <tr>
+          <td>manifest-url</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>用于访问要运行的其他 Pod 规范的 URL</td>
+      </tr>
+      <tr>
+          <td>manifest-url-header</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>请求 manifest-url 自定义的头</td>
+      </tr>
+      <tr>
+          <td>max-open-files</td>
+          <td>1000000</td>
+          <td>TODO</td>
+          <td>kubelet 进程可以打开的最大文件数量</td>
+      </tr>
+      <tr>
+          <td>max-pods</td>
+          <td>110</td>
+          <td>maxPods</td>
+          <td>此 kubelet 能运行的 Pod 最大数量</td>
+      </tr>
+      <tr>
+          <td>memory-manager-policy</td>
+          <td>None</td>
+          <td>TODO</td>
+          <td>内存管理器策略使用。可选值：&lsquo;None&rsquo;、&lsquo;Static&rsquo;</td>
+      </tr>
+      <tr>
+          <td>minimum-image-ttl-duration</td>
+          <td>2m0s</td>
+          <td>TODO</td>
+          <td>已结束的容器在被垃圾回收清理之前的最少存活时间。 例如：&lsquo;300ms&rsquo;、&rsquo;10s&rsquo; 或者 &lsquo;2h45m&rsquo;</td>
+      </tr>
+      <tr>
+          <td>node-ip</td>
+          <td>-</td>
+          <td>-</td>
+          <td>节点的 IP 地址</td>
+      </tr>
+      <tr>
+          <td>node-labels</td>
+          <td>-</td>
+          <td>-</td>
+          <td>kubelet 在集群中注册本节点时设置的标签</td>
+      </tr>
+      <tr>
+          <td>node-status-max-images</td>
+          <td>50</td>
+          <td>TODO</td>
+          <td>在 node.status.images 中可以报告的最大镜像数量。如果指定为 -1，则不设上限</td>
+      </tr>
+      <tr>
+          <td>node-status-update-frequency</td>
+          <td>10s</td>
+          <td>TODO</td>
+          <td>指定 kubelet 向主控节点汇报节点状态的时间间隔。注意：更改此常量时请务必谨慎， 它必须与节点控制器中的 nodeMonitorGracePeriod 一起使用</td>
+      </tr>
+      <tr>
+          <td>oom-score-adj</td>
+          <td>-999</td>
+          <td>oomScoreAdj</td>
+          <td>kubelet 进程的 oom-score-adj 参数值。有效范围为 [-1000，1000]</td>
+      </tr>
+      <tr>
+          <td>pod-cidr</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>用于给 Pod 分配 IP 地址的 CIDR 地址池，仅在独立运行模式下使用</td>
+      </tr>
+      <tr>
+          <td>pod-infra-container-image</td>
+          <td>k8s.gcr.io/pause:3.5</td>
+          <td>-</td>
+          <td>所指定的镜像不会被镜像垃圾收集器删除，依赖CRI</td>
+      </tr>
+      <tr>
+          <td>pod-manifest-path</td>
+          <td>-</td>
+          <td>staticPodPath</td>
+          <td>设置包含要运行的静态 Pod 的文件的路径</td>
+      </tr>
+      <tr>
+          <td>pod-max-pids</td>
+          <td>-1</td>
+          <td>TODO</td>
+          <td>设置每个 Pod 中的最大进程数目。如果为 -1，则 kubelet 使用节点可分配的 PID 容量作为默认值</td>
+      </tr>
+      <tr>
+          <td>pods-per-core</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>在每个处理器核上可运行的 Pod 数量</td>
+      </tr>
+      <tr>
+          <td>protect-kernel-defaults</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>provider-id</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>设置主机数据库中用来标识节点的唯一标识</td>
+      </tr>
+      <tr>
+          <td>qos-reserved</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>read-only-port</td>
+          <td>10255</td>
+          <td>TODO</td>
+          <td>kubelet 可以在没有身份验证/鉴权的情况下提供只读服务的端口（设置为 0 表示禁用）</td>
+      </tr>
+      <tr>
+          <td>register-node</td>
+          <td>true</td>
+          <td>TODO</td>
+          <td>向 API 服务器注册节点</td>
+      </tr>
+      <tr>
+          <td>register-with-taints</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>设置本节点的污点标记，格式为 <key>=<value>:<effect>， 以逗号分隔</td>
+      </tr>
+      <tr>
+          <td>registry-burst</td>
+          <td>10</td>
+          <td>TODO</td>
+          <td>设置突发性镜像拉取的个数上限</td>
+      </tr>
+      <tr>
+          <td>registry-qps</td>
+          <td>5</td>
+          <td>TODO</td>
+          <td>如此值大于 0，可用来限制镜像仓库的 QPS 上限。设置为 0，表示不受限制</td>
+      </tr>
+      <tr>
+          <td>reserved-cpus</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>为系统和 Kubernetes 保留使用的 CPU，优先级高于 system-reserved 和 &ndash;kube-reskube-reserved</td>
+      </tr>
+      <tr>
+          <td>reserved-memory</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>TODO; 以逗号分隔的 NUMA 节点内存预留列表</td>
+      </tr>
+      <tr>
+          <td>resolv-conf</td>
+          <td>/etc/resolv.conf</td>
+          <td>TODO</td>
+          <td>名字解析服务的配置文件名，用作容器 DNS 解析配置的基础</td>
+      </tr>
+      <tr>
+          <td>root-dir</td>
+          <td>/var/lib/kubelet</td>
+          <td>-</td>
+          <td>设置用于管理 kubelet 文件的根目录</td>
+      </tr>
+      <tr>
+          <td>rotate-certificates</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>当客户端证书即将过期时 kubelet 自动从 kube-apiserver 请求新的证书进行轮换</td>
+      </tr>
+      <tr>
+          <td>rotate-server-certificates</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>当 kubelet 的服务证书即将过期时自动从 kube-apiserver 请求新的证书进行轮换</td>
+      </tr>
+      <tr>
+          <td>runonce</td>
+          <td>-</td>
+          <td>-</td>
+          <td>表示从本地清单或远程 URL 创建完 Pod 后立即退出 kubelet 进程</td>
+      </tr>
+      <tr>
+          <td>runtime-cgroups</td>
+          <td>-</td>
+          <td>-</td>
+          <td>TODO; 设置用于创建和运行容器运行时的 cgroup 的绝对名称</td>
+      </tr>
+      <tr>
+          <td>runtime-request-timeout</td>
+          <td>2m0s</td>
+          <td>TODO</td>
+          <td>设置除了长时间运行的请求（包括 pull、logs、exec 和 attach 等操作）之外的其他运行时请求的超时时间</td>
+      </tr>
+      <tr>
+          <td>seccomp-default</td>
+          <td>-</td>
+          <td>-</td>
+          <td>TODO; 启用 RuntimeDefault 作为所有工作负载的默认 seccomp 配置文件</td>
+      </tr>
+      <tr>
+          <td>serialize-image-pulls</td>
+          <td>true</td>
+          <td>serializeImagePulls</td>
+          <td>逐一拉取镜像</td>
+      </tr>
+      <tr>
+          <td>streaming-connection-idle-timeout</td>
+          <td>4h0m0s</td>
+          <td>TODO; 设置流连接在自动关闭之前可以空闲的最长时间。0 表示没有超时限制，与 kubelet 服务器的所有连接最长持续时间为 4 小时</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>sync-frequency</td>
+          <td>1m0s</td>
+          <td>TODO</td>
+          <td>在运行中的容器与其配置之间执行同步操作的最长时间间隔</td>
+      </tr>
+      <tr>
+          <td>system-cgroups</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>system-reserved</td>
+          <td>-</td>
+          <td>systemReserved</td>
+          <td>系统预留的资源配置，以一组 资源名称=资源数量 的格式表示</td>
+      </tr>
+      <tr>
+          <td>system-reserved-cgroup</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+          <td>TODO; 此标志给出一个顶层 cgroup 绝对名称，该 cgroup 用于管理非 kubernetes 组件</td>
+      </tr>
+      <tr>
+          <td>tls-cert-file</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>用于 HTTPS 认证，如未提供，则 kubelet 生成自签名证书和密钥，并将其保存到通过 &ndash;cert-dir 指定的目录</td>
+      </tr>
+      <tr>
+          <td>tls-cipher-suites</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>服务器端加密算法列表，以逗号分隔</td>
+      </tr>
+      <tr>
+          <td>tls-min-version</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>设置支持的最小 TLS 版本号，可选的版本号包括：VersionTLS10、 VersionTLS11、VersionTLS12 和 VersionTLS13</td>
+      </tr>
+      <tr>
+          <td>tls-private-key-file</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>同上</td>
+      </tr>
+      <tr>
+          <td>topology-manager-policy</td>
+          <td>none</td>
+          <td>TODO</td>
+          <td>设置拓扑管理策略（Topology Manager policy）。可选值包括：none、 best-effort、restricted 和 single-numa-node</td>
+      </tr>
+      <tr>
+          <td>topology-manager-scope</td>
+          <td>container</td>
+          <td>TODO</td>
+          <td>TODO; 拓扑提示信息使用范围</td>
+      </tr>
+      <tr>
+          <td>volume-plugin-dir</td>
+          <td>-</td>
+          <td>TODO</td>
+          <td>用来搜索第三方存储卷插件的目录</td>
+      </tr>
+      <tr>
+          <td>volume-stats-agg-period</td>
+          <td>1m0s</td>
+          <td>TODO</td>
+          <td>指定 kubelet 计算和缓存所有 Pod 和卷的磁盘用量总值的时间间隔。要禁用磁盘用量计算， 请设置为 0</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="数据结构">数据结构</h2>
 <h3 id="kubeletconfiguration">KubeletConfiguration</h3>
@@ -5859,7 +6138,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

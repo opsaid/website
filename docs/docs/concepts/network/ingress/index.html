@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -22,69 +22,72 @@
 <meta name="description" content="简要概述
 Ingress 是对集群中服务的外部访问进行管理的 API 对象，典型的访问方式是 HTTP。
 它不会公开任意端口或协议，一般只将 HTTP 和 HTTPS 以外的服务公开到网络时，如果是其他协议服务，使用 Service.Type=NodePort …">
-<meta property="og:title" content="Ingress" />
-<meta property="og:description" content="简要概述 Ingress 是对集群中服务的外部访问进行管理的 API 对象，典型的访问方式是 HTTP。
+<meta property="og:url" content="/docs/concepts/network/ingress/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Ingress">
+  <meta property="og:description" content="简要概述 Ingress 是对集群中服务的外部访问进行管理的 API 对象，典型的访问方式是 HTTP。
 它不会公开任意端口或协议，一般只将 HTTP 和 HTTPS 以外的服务公开到网络时，如果是其他协议服务，使用 Service.Type=NodePort 或 Service.Type=LoadBalancer 类型的 Service
 这里基于 k8s-1.22 版本，数据结构代码路径：
 staging/src/k8s.io/api/extensions/v1beta1/types.go staging/src/k8s.io/api/networking/v1/types.go staging/src/k8s.io/api/networking/v1beta1/types.go 所以该版本 Ingress 资源可使用三种 apiVersion 风格：
-接口版本1 apiVersion: extensions/v1beta1 kind: Ingress 接口版本2 apiVersion: networking.k8s.io/v1beta1 kind: Ingress 接口版本3 apiVersion: networking.k8s.io/v1 kind: Ingress 配置示例 接口版本1 apiVersion: extensions/v1beta1 kind: Ingress metadata: name: demo-test-v1 spec: rules: - host: &#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34; http: paths: - backend: serviceName: demo-test-v1 servicePort: 10080 path: / pathType: Prefix 接口版本2 apiVersion: networking." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/concepts/network/ingress/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-11-17T15:36:12+08:00" />
-<meta property="article:modified_time" content="2023-01-28T23:55:24+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Ingress">
-<meta itemprop="description" content="简要概述 Ingress 是对集群中服务的外部访问进行管理的 API 对象，典型的访问方式是 HTTP。
+接口版本1 apiVersion: extensions/v1beta1 kind: Ingress 接口版本2 apiVersion: networking.k8s.io/v1beta1 kind: Ingress 接口版本3 apiVersion: networking.k8s.io/v1 kind: Ingress 配置示例 接口版本1 apiVersion: extensions/v1beta1 kind: Ingress metadata: name: demo-test-v1 spec: rules: - host: &#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34; http: paths: - backend: serviceName: demo-test-v1 servicePort: 10080 path: / pathType: Prefix 接口版本2 apiVersion: networking.k8s.io/v1beta1 kind: Ingress metadata: name: demo-test-v1 spec: rules: - host: &#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34; http: paths: - backend: serviceName: demo-test-v1 servicePort: 10080 path: / pathType: Prefix 接口版本3 apiVersion: networking.k8s.io/v1 kind: Ingress metadata: name: demo-test-v1 spec: rules: - host: &#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34; http: paths: - backend: service: name: demo-test-v1 port: number: 10080 path: / pathType: Prefix 接口版本 networking.k8s.io/v1beta1 相比 extensions/v1beta1 新增以下类型：IngressClassSpec、IngressClassParametersReference、IngressClassNamespacedParams、IngressClassList；而 networking.k8s.io/v1 中的 IngressBackend 类型发生了变化。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-11-17T15:36:12+08:00">
+    <meta property="article:modified_time" content="2023-01-28T23:55:24+08:00">
+
+  <meta itemprop="name" content="Ingress">
+  <meta itemprop="description" content="简要概述 Ingress 是对集群中服务的外部访问进行管理的 API 对象，典型的访问方式是 HTTP。
 它不会公开任意端口或协议，一般只将 HTTP 和 HTTPS 以外的服务公开到网络时，如果是其他协议服务，使用 Service.Type=NodePort 或 Service.Type=LoadBalancer 类型的 Service
 这里基于 k8s-1.22 版本，数据结构代码路径：
 staging/src/k8s.io/api/extensions/v1beta1/types.go staging/src/k8s.io/api/networking/v1/types.go staging/src/k8s.io/api/networking/v1beta1/types.go 所以该版本 Ingress 资源可使用三种 apiVersion 风格：
-接口版本1 apiVersion: extensions/v1beta1 kind: Ingress 接口版本2 apiVersion: networking.k8s.io/v1beta1 kind: Ingress 接口版本3 apiVersion: networking.k8s.io/v1 kind: Ingress 配置示例 接口版本1 apiVersion: extensions/v1beta1 kind: Ingress metadata: name: demo-test-v1 spec: rules: - host: &#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34; http: paths: - backend: serviceName: demo-test-v1 servicePort: 10080 path: / pathType: Prefix 接口版本2 apiVersion: networking."><meta itemprop="datePublished" content="2022-11-17T15:36:12+08:00" />
-<meta itemprop="dateModified" content="2023-01-28T23:55:24+08:00" />
-<meta itemprop="wordCount" content="2599">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Ingress"/>
-<meta name="twitter:description" content="简要概述 Ingress 是对集群中服务的外部访问进行管理的 API 对象，典型的访问方式是 HTTP。
+接口版本1 apiVersion: extensions/v1beta1 kind: Ingress 接口版本2 apiVersion: networking.k8s.io/v1beta1 kind: Ingress 接口版本3 apiVersion: networking.k8s.io/v1 kind: Ingress 配置示例 接口版本1 apiVersion: extensions/v1beta1 kind: Ingress metadata: name: demo-test-v1 spec: rules: - host: &#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34; http: paths: - backend: serviceName: demo-test-v1 servicePort: 10080 path: / pathType: Prefix 接口版本2 apiVersion: networking.k8s.io/v1beta1 kind: Ingress metadata: name: demo-test-v1 spec: rules: - host: &#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34; http: paths: - backend: serviceName: demo-test-v1 servicePort: 10080 path: / pathType: Prefix 接口版本3 apiVersion: networking.k8s.io/v1 kind: Ingress metadata: name: demo-test-v1 spec: rules: - host: &#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34; http: paths: - backend: service: name: demo-test-v1 port: number: 10080 path: / pathType: Prefix 接口版本 networking.k8s.io/v1beta1 相比 extensions/v1beta1 新增以下类型：IngressClassSpec、IngressClassParametersReference、IngressClassNamespacedParams、IngressClassList；而 networking.k8s.io/v1 中的 IngressBackend 类型发生了变化。">
+  <meta itemprop="datePublished" content="2022-11-17T15:36:12+08:00">
+  <meta itemprop="dateModified" content="2023-01-28T23:55:24+08:00">
+  <meta itemprop="wordCount" content="2599">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ingress">
+  <meta name="twitter:description" content="简要概述 Ingress 是对集群中服务的外部访问进行管理的 API 对象，典型的访问方式是 HTTP。
 它不会公开任意端口或协议，一般只将 HTTP 和 HTTPS 以外的服务公开到网络时，如果是其他协议服务，使用 Service.Type=NodePort 或 Service.Type=LoadBalancer 类型的 Service
 这里基于 k8s-1.22 版本，数据结构代码路径：
 staging/src/k8s.io/api/extensions/v1beta1/types.go staging/src/k8s.io/api/networking/v1/types.go staging/src/k8s.io/api/networking/v1beta1/types.go 所以该版本 Ingress 资源可使用三种 apiVersion 风格：
-接口版本1 apiVersion: extensions/v1beta1 kind: Ingress 接口版本2 apiVersion: networking.k8s.io/v1beta1 kind: Ingress 接口版本3 apiVersion: networking.k8s.io/v1 kind: Ingress 配置示例 接口版本1 apiVersion: extensions/v1beta1 kind: Ingress metadata: name: demo-test-v1 spec: rules: - host: &#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34; http: paths: - backend: serviceName: demo-test-v1 servicePort: 10080 path: / pathType: Prefix 接口版本2 apiVersion: networking."/>
+接口版本1 apiVersion: extensions/v1beta1 kind: Ingress 接口版本2 apiVersion: networking.k8s.io/v1beta1 kind: Ingress 接口版本3 apiVersion: networking.k8s.io/v1 kind: Ingress 配置示例 接口版本1 apiVersion: extensions/v1beta1 kind: Ingress metadata: name: demo-test-v1 spec: rules: - host: &#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34; http: paths: - backend: serviceName: demo-test-v1 servicePort: 10080 path: / pathType: Prefix 接口版本2 apiVersion: networking.k8s.io/v1beta1 kind: Ingress metadata: name: demo-test-v1 spec: rules: - host: &#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34; http: paths: - backend: serviceName: demo-test-v1 servicePort: 10080 path: / pathType: Prefix 接口版本3 apiVersion: networking.k8s.io/v1 kind: Ingress metadata: name: demo-test-v1 spec: rules: - host: &#34;demo-test-v1.biz-dev-uptime.a-demo-web.site&#34; http: paths: - backend: service: name: demo-test-v1 port: number: 10080 path: / pathType: Prefix 接口版本 networking.k8s.io/v1beta1 相比 extensions/v1beta1 新增以下类型：IngressClassSpec、IngressClassParametersReference、IngressClassNamespacedParams、IngressClassList；而 networking.k8s.io/v1 中的 IngressBackend 类型发生了变化。">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1047,6 +1050,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3080,9 +3100,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3096,10 +3116,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3159,6 +3382,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4819,7 +5101,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

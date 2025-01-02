@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -33,69 +33,72 @@ URL 参数
 HTTP/1.1 200
 
 &lt;?xml version=&#34;1.0&#34; …">
-<meta property="og:title" content="接口：ListBuckets" />
-<meta property="og:description" content="简要概述 列出该用户可访问的存储桶，官方文档。
+<meta property="og:url" content="/docs/data-store/object-storage/list-buckets/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="接口：ListBuckets">
+  <meta property="og:description" content="简要概述 列出该用户可访问的存储桶，官方文档。
 接口解析 请求语法 GET / HTTP/1.1 Host: {endpoint} URL 参数 无。
 请求结构 无。
 响应语法 HTTP/1.1 200 &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;ListAllMyBucketsResult&gt; &lt;Buckets&gt; &lt;Bucket&gt; &lt;CreationDate&gt;timestamp&lt;/CreationDate&gt; &lt;Name&gt;string&lt;/Name&gt; &lt;/Bucket&gt; &lt;/Buckets&gt; &lt;Owner&gt; &lt;DisplayName&gt;string&lt;/DisplayName&gt; &lt;ID&gt;string&lt;/ID&gt; &lt;/Owner&gt; &lt;/ListAllMyBucketsResult&gt; 请求示例 通过 rclone 进行测试
-测试指令 ./rclone \ --dump bodies \ --s3-force-path-style=false \ lsd \ minio: 请求响应 2023/06/21 14:46:45 DEBUG : &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2023/06/21 14:46:45 DEBUG : HTTP REQUEST (req 0x14000134300) 2023/06/21 14:46:45 DEBUG : GET / HTTP/1.1 Host: minio.dev.173ops.com User-Agent: rclone/v1." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/data-store/object-storage/list-buckets/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-06-19T11:00:32+08:00" />
-<meta property="article:modified_time" content="2023-07-06T22:38:07+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="接口：ListBuckets">
-<meta itemprop="description" content="简要概述 列出该用户可访问的存储桶，官方文档。
+测试指令 ./rclone \ --dump bodies \ --s3-force-path-style=false \ lsd \ minio: 请求响应 2023/06/21 14:46:45 DEBUG : &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2023/06/21 14:46:45 DEBUG : HTTP REQUEST (req 0x14000134300) 2023/06/21 14:46:45 DEBUG : GET / HTTP/1.1 Host: minio.dev.173ops.com User-Agent: rclone/v1.62.2 Authorization: XXXX X-Amz-Content-Sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 X-Amz-Date: 20230621T064645Z Accept-Encoding: gzip 2023/06/21 14:46:45 DEBUG : &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2023/06/21 14:46:45 DEBUG : &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; 2023/06/21 14:46:45 DEBUG : HTTP RESPONSE (req 0x14000134300) 2023/06/21 14:46:45 DEBUG : HTTP/1.1 200 OK Content-Length: 462 Accept-Ranges: bytes Connection: keep-alive Content-Security-Policy: block-all-mixed-content Content-Type: application/xml Date: Wed, 21 Jun 2023 06:46:45 GMT Server: nginx/1.16.1 Strict-Transport-Security: max-age=31536000; includeSubDomains Vary: Origin Vary: Accept-Encoding X-Amz-Id-2: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8 X-Amz-Request-Id: 176A99B34DCCDFA0 X-Content-Type-Options: nosniff X-Xss-Protection: 1; mode=block &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;ListAllMyBucketsResult xmlns=&#34;http://s3.amazonaws.com/doc/2006-03-01/&#34;&gt; &lt;Owner&gt; &lt;ID&gt;02d6176db174dc93cb1b899f7c6078f08654445fe8cf1b6ce98d8855f66bdbf4&lt;/ID&gt; &lt;DisplayName&gt;minio&lt;/DisplayName&gt; &lt;/Owner&gt; &lt;Buckets&gt; &lt;Bucket&gt; &lt;Name&gt;is-a-big-tenant&lt;/Name&gt; &lt;CreationDate&gt;2023-06-14T10:10:39.152Z&lt;/CreationDate&gt; &lt;/Bucket&gt; &lt;Bucket&gt; &lt;Name&gt;uptime&lt;/Name&gt; &lt;CreationDate&gt;2023-06-20T10:25:49.245Z&lt;/CreationDate&gt; &lt;/Bucket&gt; &lt;/Buckets&gt; &lt;/ListAllMyBucketsResult&gt; 2023/06/21 14:46:45 DEBUG : &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-06-19T11:00:32+08:00">
+    <meta property="article:modified_time" content="2023-07-06T22:38:07+08:00">
+
+  <meta itemprop="name" content="接口：ListBuckets">
+  <meta itemprop="description" content="简要概述 列出该用户可访问的存储桶，官方文档。
 接口解析 请求语法 GET / HTTP/1.1 Host: {endpoint} URL 参数 无。
 请求结构 无。
 响应语法 HTTP/1.1 200 &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;ListAllMyBucketsResult&gt; &lt;Buckets&gt; &lt;Bucket&gt; &lt;CreationDate&gt;timestamp&lt;/CreationDate&gt; &lt;Name&gt;string&lt;/Name&gt; &lt;/Bucket&gt; &lt;/Buckets&gt; &lt;Owner&gt; &lt;DisplayName&gt;string&lt;/DisplayName&gt; &lt;ID&gt;string&lt;/ID&gt; &lt;/Owner&gt; &lt;/ListAllMyBucketsResult&gt; 请求示例 通过 rclone 进行测试
-测试指令 ./rclone \ --dump bodies \ --s3-force-path-style=false \ lsd \ minio: 请求响应 2023/06/21 14:46:45 DEBUG : &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2023/06/21 14:46:45 DEBUG : HTTP REQUEST (req 0x14000134300) 2023/06/21 14:46:45 DEBUG : GET / HTTP/1.1 Host: minio.dev.173ops.com User-Agent: rclone/v1."><meta itemprop="datePublished" content="2023-06-19T11:00:32+08:00" />
-<meta itemprop="dateModified" content="2023-07-06T22:38:07+08:00" />
-<meta itemprop="wordCount" content="165">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="接口：ListBuckets"/>
-<meta name="twitter:description" content="简要概述 列出该用户可访问的存储桶，官方文档。
+测试指令 ./rclone \ --dump bodies \ --s3-force-path-style=false \ lsd \ minio: 请求响应 2023/06/21 14:46:45 DEBUG : &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2023/06/21 14:46:45 DEBUG : HTTP REQUEST (req 0x14000134300) 2023/06/21 14:46:45 DEBUG : GET / HTTP/1.1 Host: minio.dev.173ops.com User-Agent: rclone/v1.62.2 Authorization: XXXX X-Amz-Content-Sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 X-Amz-Date: 20230621T064645Z Accept-Encoding: gzip 2023/06/21 14:46:45 DEBUG : &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2023/06/21 14:46:45 DEBUG : &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; 2023/06/21 14:46:45 DEBUG : HTTP RESPONSE (req 0x14000134300) 2023/06/21 14:46:45 DEBUG : HTTP/1.1 200 OK Content-Length: 462 Accept-Ranges: bytes Connection: keep-alive Content-Security-Policy: block-all-mixed-content Content-Type: application/xml Date: Wed, 21 Jun 2023 06:46:45 GMT Server: nginx/1.16.1 Strict-Transport-Security: max-age=31536000; includeSubDomains Vary: Origin Vary: Accept-Encoding X-Amz-Id-2: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8 X-Amz-Request-Id: 176A99B34DCCDFA0 X-Content-Type-Options: nosniff X-Xss-Protection: 1; mode=block &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;ListAllMyBucketsResult xmlns=&#34;http://s3.amazonaws.com/doc/2006-03-01/&#34;&gt; &lt;Owner&gt; &lt;ID&gt;02d6176db174dc93cb1b899f7c6078f08654445fe8cf1b6ce98d8855f66bdbf4&lt;/ID&gt; &lt;DisplayName&gt;minio&lt;/DisplayName&gt; &lt;/Owner&gt; &lt;Buckets&gt; &lt;Bucket&gt; &lt;Name&gt;is-a-big-tenant&lt;/Name&gt; &lt;CreationDate&gt;2023-06-14T10:10:39.152Z&lt;/CreationDate&gt; &lt;/Bucket&gt; &lt;Bucket&gt; &lt;Name&gt;uptime&lt;/Name&gt; &lt;CreationDate&gt;2023-06-20T10:25:49.245Z&lt;/CreationDate&gt; &lt;/Bucket&gt; &lt;/Buckets&gt; &lt;/ListAllMyBucketsResult&gt; 2023/06/21 14:46:45 DEBUG : &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;">
+  <meta itemprop="datePublished" content="2023-06-19T11:00:32+08:00">
+  <meta itemprop="dateModified" content="2023-07-06T22:38:07+08:00">
+  <meta itemprop="wordCount" content="165">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="接口：ListBuckets">
+  <meta name="twitter:description" content="简要概述 列出该用户可访问的存储桶，官方文档。
 接口解析 请求语法 GET / HTTP/1.1 Host: {endpoint} URL 参数 无。
 请求结构 无。
 响应语法 HTTP/1.1 200 &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;ListAllMyBucketsResult&gt; &lt;Buckets&gt; &lt;Bucket&gt; &lt;CreationDate&gt;timestamp&lt;/CreationDate&gt; &lt;Name&gt;string&lt;/Name&gt; &lt;/Bucket&gt; &lt;/Buckets&gt; &lt;Owner&gt; &lt;DisplayName&gt;string&lt;/DisplayName&gt; &lt;ID&gt;string&lt;/ID&gt; &lt;/Owner&gt; &lt;/ListAllMyBucketsResult&gt; 请求示例 通过 rclone 进行测试
-测试指令 ./rclone \ --dump bodies \ --s3-force-path-style=false \ lsd \ minio: 请求响应 2023/06/21 14:46:45 DEBUG : &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2023/06/21 14:46:45 DEBUG : HTTP REQUEST (req 0x14000134300) 2023/06/21 14:46:45 DEBUG : GET / HTTP/1.1 Host: minio.dev.173ops.com User-Agent: rclone/v1."/>
+测试指令 ./rclone \ --dump bodies \ --s3-force-path-style=false \ lsd \ minio: 请求响应 2023/06/21 14:46:45 DEBUG : &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2023/06/21 14:46:45 DEBUG : HTTP REQUEST (req 0x14000134300) 2023/06/21 14:46:45 DEBUG : GET / HTTP/1.1 Host: minio.dev.173ops.com User-Agent: rclone/v1.62.2 Authorization: XXXX X-Amz-Content-Sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 X-Amz-Date: 20230621T064645Z Accept-Encoding: gzip 2023/06/21 14:46:45 DEBUG : &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2023/06/21 14:46:45 DEBUG : &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; 2023/06/21 14:46:45 DEBUG : HTTP RESPONSE (req 0x14000134300) 2023/06/21 14:46:45 DEBUG : HTTP/1.1 200 OK Content-Length: 462 Accept-Ranges: bytes Connection: keep-alive Content-Security-Policy: block-all-mixed-content Content-Type: application/xml Date: Wed, 21 Jun 2023 06:46:45 GMT Server: nginx/1.16.1 Strict-Transport-Security: max-age=31536000; includeSubDomains Vary: Origin Vary: Accept-Encoding X-Amz-Id-2: dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8 X-Amz-Request-Id: 176A99B34DCCDFA0 X-Content-Type-Options: nosniff X-Xss-Protection: 1; mode=block &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;ListAllMyBucketsResult xmlns=&#34;http://s3.amazonaws.com/doc/2006-03-01/&#34;&gt; &lt;Owner&gt; &lt;ID&gt;02d6176db174dc93cb1b899f7c6078f08654445fe8cf1b6ce98d8855f66bdbf4&lt;/ID&gt; &lt;DisplayName&gt;minio&lt;/DisplayName&gt; &lt;/Owner&gt; &lt;Buckets&gt; &lt;Bucket&gt; &lt;Name&gt;is-a-big-tenant&lt;/Name&gt; &lt;CreationDate&gt;2023-06-14T10:10:39.152Z&lt;/CreationDate&gt; &lt;/Bucket&gt; &lt;Bucket&gt; &lt;Name&gt;uptime&lt;/Name&gt; &lt;CreationDate&gt;2023-06-20T10:25:49.245Z&lt;/CreationDate&gt; &lt;/Bucket&gt; &lt;/Buckets&gt; &lt;/ListAllMyBucketsResult&gt; 2023/06/21 14:46:45 DEBUG : &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1058,6 +1061,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3091,9 +3111,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3107,10 +3127,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3170,6 +3393,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4481,7 +4763,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

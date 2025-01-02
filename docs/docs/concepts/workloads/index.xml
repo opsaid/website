@@ -4,6 +4,7 @@
     <link>/docs/concepts/workloads/</link>
     <description>Recent content in 工作负载 on OPSaid</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
     <lastBuildDate>Mon, 05 Dec 2022 18:55:11 +0800</lastBuildDate>
     
 	  <atom:link href="/docs/concepts/workloads/index.xml" rel="self" type="application/rss+xml" />
@@ -321,9 +322,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#000&#34;&gt;SetHostnameAsFQDN&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;bool&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;`json:&amp;#34;setHostnameAsFQDN,omitempty&amp;#34; protobuf:&amp;#34;varint,35,opt,name=setHostnameAsFQDN&amp;#34;`&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;volume&#34;&gt;Volume&lt;/h3&gt;
-&lt;p&gt;参考 &lt;a href=&#34;/docs/concepts/workloads/pods-volume/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#34;&gt;Pod Volume&lt;/a&gt; 数据结构。&lt;/p&gt;
+&lt;p&gt;参考 &lt;a href=&#34;/docs/concepts/workloads/pods-volume/#数据结构&#34;&gt;Pod Volume&lt;/a&gt; 数据结构。&lt;/p&gt;
 &lt;h3 id=&#34;container&#34;&gt;Container&lt;/h3&gt;
-&lt;p&gt;参考 &lt;a href=&#34;/docs/concepts/workloads/pods-container/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#34;&gt;Pod Container&lt;/a&gt; 数据结构。&lt;/p&gt;
+&lt;p&gt;参考 &lt;a href=&#34;/docs/concepts/workloads/pods-container/#数据结构&#34;&gt;Pod Container&lt;/a&gt; 数据结构。&lt;/p&gt;
 &lt;h3 id=&#34;ephemeralcontainer&#34;&gt;EphemeralContainer&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-golang&#34; data-lang=&#34;golang&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// An EphemeralContainer is a container that may be added temporarily to an existing pod for
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// user-initiated activities such as debugging. Ephemeral containers have no resource or
@@ -385,7 +386,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#000&#34;&gt;DNSNone&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;DNSPolicy&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;None&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;podsecuritycontext&#34;&gt;PodSecurityContext&lt;/h3&gt;
-&lt;p&gt;参考 &lt;a href=&#34;/docs/concepts/workloads/pods-security/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#34;&gt;Pod Security&lt;/a&gt; 数据结构。&lt;/p&gt;
+&lt;p&gt;参考 &lt;a href=&#34;/docs/concepts/workloads/pods-security/#数据结构&#34;&gt;Pod Security&lt;/a&gt; 数据结构。&lt;/p&gt;
 &lt;h3 id=&#34;localobjectreference&#34;&gt;LocalObjectReference&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-golang&#34; data-lang=&#34;golang&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// LocalObjectReference contains enough information to let you locate the
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// referenced object inside the same namespace.
@@ -398,9 +399,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#000&#34;&gt;Name&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;string&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;`json:&amp;#34;name,omitempty&amp;#34; protobuf:&amp;#34;bytes,1,opt,name=name&amp;#34;`&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;affinity&#34;&gt;Affinity&lt;/h3&gt;
-&lt;p&gt;参考 &lt;a href=&#34;/docs/concepts/workloads/pods-affinity/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#34;&gt;Pod Affinity&lt;/a&gt; 数据结构。&lt;/p&gt;
+&lt;p&gt;参考 &lt;a href=&#34;/docs/concepts/workloads/pods-affinity/#数据结构&#34;&gt;Pod Affinity&lt;/a&gt; 数据结构。&lt;/p&gt;
 &lt;h3 id=&#34;toleration&#34;&gt;Toleration&lt;/h3&gt;
-&lt;p&gt;参考 &lt;a href=&#34;/docs/concepts/workloads/pods-affinity/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#34;&gt;Pod Affinity&lt;/a&gt; 数据结构。&lt;/p&gt;
+&lt;p&gt;参考 &lt;a href=&#34;/docs/concepts/workloads/pods-affinity/#数据结构&#34;&gt;Pod Affinity&lt;/a&gt; 数据结构。&lt;/p&gt;
 &lt;h3 id=&#34;hostalias&#34;&gt;HostAlias&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-golang&#34; data-lang=&#34;golang&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;// pod&amp;#39;s hosts file.

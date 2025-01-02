@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -23,63 +23,66 @@
 apiVersion: kubeadm.k8s.io/v1beta3
 kind: InitConfiguration
 代码路径： …">
-<meta property="og:title" content="Init" />
-<meta property="og:description" content="简要概述 apiVersion: kubeadm.k8s.io/v1beta3 kind: InitConfiguration 代码路径：
+<meta property="og:url" content="/docs/concepts/kubeadm/init/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Init">
+  <meta property="og:description" content="简要概述 apiVersion: kubeadm.k8s.io/v1beta3 kind: InitConfiguration 代码路径：
 https://github.com/kubernetes/kubernetes/blob/master/cmd/kubeadm/app/apis/kubeadm/v1beta3/types.go 配置示例 TODO;
-数据结构 InitConfiguration // InitConfiguration contains a list of elements that is specific &#34;kubeadm init&#34;-only runtime // information. type InitConfiguration struct { metav1.TypeMeta `json:&#34;,inline&#34;` // `kubeadm init`-only information. These fields are solely used the first time `kubeadm init` runs. // After that, the information in the fields IS NOT uploaded to the `kubeadm-config` ConfigMap // that is used by `kubeadm upgrade` for instance." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/concepts/kubeadm/init/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-12-02T15:04:36+08:00" />
-<meta property="article:modified_time" content="2023-01-28T23:55:24+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Init">
-<meta itemprop="description" content="简要概述 apiVersion: kubeadm.k8s.io/v1beta3 kind: InitConfiguration 代码路径：
+数据结构 InitConfiguration // InitConfiguration contains a list of elements that is specific &#34;kubeadm init&#34;-only runtime // information. type InitConfiguration struct { metav1.TypeMeta `json:&#34;,inline&#34;` // `kubeadm init`-only information. These fields are solely used the first time `kubeadm init` runs. // After that, the information in the fields IS NOT uploaded to the `kubeadm-config` ConfigMap // that is used by `kubeadm upgrade` for instance. These fields must be omitempty. // BootstrapTokens is respected at `kubeadm init` time and describes a set of Bootstrap Tokens to create. // This information IS NOT uploaded to the kubeadm cluster configmap, partly because of its sensitive nature // &#43;optional BootstrapTokens []bootstraptokenv1.BootstrapToken `json:&#34;bootstrapTokens,omitempty&#34;` // NodeRegistration holds fields that relate to registering the new control-plane node to the cluster // &#43;optional NodeRegistration NodeRegistrationOptions `json:&#34;nodeRegistration,omitempty&#34;` // LocalAPIEndpoint represents the endpoint of the API server instance that&#39;s deployed on this control plane node // In HA setups, this differs from ClusterConfiguration.ControlPlaneEndpoint in the sense that ControlPlaneEndpoint // is the global endpoint for the cluster, which then loadbalances the requests to each individual API server. This // configuration object lets you customize what IP/DNS name and port the local API server advertises it&#39;s accessible // on. By default, kubeadm tries to auto-detect the IP of the default interface and use that, but in case that process // fails you may set the desired value here. // &#43;optional LocalAPIEndpoint APIEndpoint `json:&#34;localAPIEndpoint,omitempty&#34;` // CertificateKey sets the key with which certificates and keys are encrypted prior to being uploaded in // a secret in the cluster during the uploadcerts init phase. // &#43;optional CertificateKey string `json:&#34;certificateKey,omitempty&#34;` // SkipPhases is a list of phases to skip during command execution. // The list of phases can be obtained with the &#34;kubeadm init --help&#34; command. // The flag &#34;--skip-phases&#34; takes precedence over this field. // &#43;optional SkipPhases []string `json:&#34;skipPhases,omitempty&#34;` // Patches contains options related to applying patches to components deployed by kubeadm during // &#34;kubeadm init&#34;. // &#43;optional Patches *Patches `json:&#34;patches,omitempty&#34;` } bootstraptokenv1.BootstrapToken bootstraptokenv1 &#34;k8s.io/kubernetes/cmd/kubeadm/app/apis/bootstraptoken/v1&#34; // BootstrapToken describes one bootstrap token, stored as a Secret in the cluster // &#43;k8s:deepcopy-gen=true type BootstrapToken struct { // Token is used for establishing bidirectional trust between nodes and control-planes. // Used for joining nodes in the cluster. Token *BootstrapTokenString `json:&#34;token&#34; datapolicy:&#34;token&#34;` // Description sets a human-friendly message why this token exists and what it&#39;s used // for, so other administrators can know its purpose. // &#43;optional Description string `json:&#34;description,omitempty&#34;` // TTL defines the time to live for this token. Defaults to 24h. // Expires and TTL are mutually exclusive. // &#43;optional TTL *metav1.Duration `json:&#34;ttl,omitempty&#34;` // Expires specifies the timestamp when this token expires. Defaults to being set // dynamically at runtime based on the TTL. Expires and TTL are mutually exclusive. // &#43;optional Expires *metav1.Time `json:&#34;expires,omitempty&#34;` // Usages describes the ways in which this token can be used. Can by default be used // for establishing bidirectional trust, but that can be changed here. // &#43;optional Usages []string `json:&#34;usages,omitempty&#34;` // Groups specifies the extra groups that this token will authenticate as when/if // used for authentication // &#43;optional Groups []string `json:&#34;groups,omitempty&#34;` } // BootstrapTokenString is a token of the format abcdef.abcdef0123456789 that is used // for both validation of the practically of the API server from a joining node&#39;s point // of view and as an authentication method for the node in the bootstrap phase of // &#34;kubeadm join&#34;. This token is and should be short-lived type BootstrapTokenString struct { ID string `json:&#34;-&#34;` Secret string `json:&#34;-&#34; datapolicy:&#34;token&#34;` } NodeRegistrationOptions // NodeRegistrationOptions holds fields that relate to registering a new control-plane or node to the cluster, either via &#34;kubeadm init&#34; or &#34;kubeadm join&#34; type NodeRegistrationOptions struct { // Name is the `.Metadata.Name` field of the Node API object that will be created in this `kubeadm init` or `kubeadm join` operation. // This field is also used in the CommonName field of the kubelet&#39;s client certificate to the API server. // Defaults to the hostname of the node if not provided. // &#43;optional Name string `json:&#34;name,omitempty&#34;` // CRISocket is used to retrieve container runtime info. This information will be annotated to the Node API object, for later re-use // &#43;optional CRISocket string `json:&#34;criSocket,omitempty&#34;` // Taints specifies the taints the Node API object should be registered with. If this field is unset, i.e. nil, in the `kubeadm init` process // it will be defaulted to []v1.Taint{&#39;node-role.kubernetes.io/master=&#34;&#34;&#39;}. If you don&#39;t want to taint your control-plane node, set this field to an // empty slice, i.e. `taints: []` in the YAML file. This field is solely used for Node registration. Taints []corev1.Taint `json:&#34;taints&#34;` // KubeletExtraArgs passes through extra arguments to the kubelet. The arguments here are passed to the kubelet command line via the environment file // kubeadm writes at runtime for the kubelet to source. This overrides the generic base-level configuration in the kubelet-config-1.X ConfigMap // Flags have higher priority when parsing. These values are local and specific to the node kubeadm is executing on. // A key in this map is the flag name as it appears on the // command line except without leading dash(es). // &#43;optional KubeletExtraArgs map[string]string `json:&#34;kubeletExtraArgs,omitempty&#34;` // IgnorePreflightErrors provides a slice of pre-flight errors to be ignored when the current node is registered. // &#43;optional IgnorePreflightErrors []string `json:&#34;ignorePreflightErrors,omitempty&#34;` // ImagePullPolicy specifies the policy for image pulling during kubeadm &#34;init&#34; and &#34;join&#34; operations. // The value of this field must be one of &#34;Always&#34;, &#34;IfNotPresent&#34; or &#34;Never&#34;. // If this field is unset kubeadm will default it to &#34;IfNotPresent&#34;, or pull the required images if not present on the host. // &#43;optional ImagePullPolicy corev1.PullPolicy `json:&#34;imagePullPolicy,omitempty&#34;` } APIEndpoint // APIEndpoint struct contains elements of API server instance deployed on a node. type APIEndpoint struct { // AdvertiseAddress sets the IP address for the API server to advertise. // &#43;optional AdvertiseAddress string `json:&#34;advertiseAddress,omitempty&#34;` // BindPort sets the secure port for the API Server to bind to. // Defaults to 6443. // &#43;optional BindPort int32 `json:&#34;bindPort,omitempty&#34;` }">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-12-02T15:04:36+08:00">
+    <meta property="article:modified_time" content="2023-01-28T23:55:24+08:00">
+
+  <meta itemprop="name" content="Init">
+  <meta itemprop="description" content="简要概述 apiVersion: kubeadm.k8s.io/v1beta3 kind: InitConfiguration 代码路径：
 https://github.com/kubernetes/kubernetes/blob/master/cmd/kubeadm/app/apis/kubeadm/v1beta3/types.go 配置示例 TODO;
-数据结构 InitConfiguration // InitConfiguration contains a list of elements that is specific &#34;kubeadm init&#34;-only runtime // information. type InitConfiguration struct { metav1.TypeMeta `json:&#34;,inline&#34;` // `kubeadm init`-only information. These fields are solely used the first time `kubeadm init` runs. // After that, the information in the fields IS NOT uploaded to the `kubeadm-config` ConfigMap // that is used by `kubeadm upgrade` for instance."><meta itemprop="datePublished" content="2022-12-02T15:04:36+08:00" />
-<meta itemprop="dateModified" content="2023-01-28T23:55:24+08:00" />
-<meta itemprop="wordCount" content="994">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Init"/>
-<meta name="twitter:description" content="简要概述 apiVersion: kubeadm.k8s.io/v1beta3 kind: InitConfiguration 代码路径：
+数据结构 InitConfiguration // InitConfiguration contains a list of elements that is specific &#34;kubeadm init&#34;-only runtime // information. type InitConfiguration struct { metav1.TypeMeta `json:&#34;,inline&#34;` // `kubeadm init`-only information. These fields are solely used the first time `kubeadm init` runs. // After that, the information in the fields IS NOT uploaded to the `kubeadm-config` ConfigMap // that is used by `kubeadm upgrade` for instance. These fields must be omitempty. // BootstrapTokens is respected at `kubeadm init` time and describes a set of Bootstrap Tokens to create. // This information IS NOT uploaded to the kubeadm cluster configmap, partly because of its sensitive nature // &#43;optional BootstrapTokens []bootstraptokenv1.BootstrapToken `json:&#34;bootstrapTokens,omitempty&#34;` // NodeRegistration holds fields that relate to registering the new control-plane node to the cluster // &#43;optional NodeRegistration NodeRegistrationOptions `json:&#34;nodeRegistration,omitempty&#34;` // LocalAPIEndpoint represents the endpoint of the API server instance that&#39;s deployed on this control plane node // In HA setups, this differs from ClusterConfiguration.ControlPlaneEndpoint in the sense that ControlPlaneEndpoint // is the global endpoint for the cluster, which then loadbalances the requests to each individual API server. This // configuration object lets you customize what IP/DNS name and port the local API server advertises it&#39;s accessible // on. By default, kubeadm tries to auto-detect the IP of the default interface and use that, but in case that process // fails you may set the desired value here. // &#43;optional LocalAPIEndpoint APIEndpoint `json:&#34;localAPIEndpoint,omitempty&#34;` // CertificateKey sets the key with which certificates and keys are encrypted prior to being uploaded in // a secret in the cluster during the uploadcerts init phase. // &#43;optional CertificateKey string `json:&#34;certificateKey,omitempty&#34;` // SkipPhases is a list of phases to skip during command execution. // The list of phases can be obtained with the &#34;kubeadm init --help&#34; command. // The flag &#34;--skip-phases&#34; takes precedence over this field. // &#43;optional SkipPhases []string `json:&#34;skipPhases,omitempty&#34;` // Patches contains options related to applying patches to components deployed by kubeadm during // &#34;kubeadm init&#34;. // &#43;optional Patches *Patches `json:&#34;patches,omitempty&#34;` } bootstraptokenv1.BootstrapToken bootstraptokenv1 &#34;k8s.io/kubernetes/cmd/kubeadm/app/apis/bootstraptoken/v1&#34; // BootstrapToken describes one bootstrap token, stored as a Secret in the cluster // &#43;k8s:deepcopy-gen=true type BootstrapToken struct { // Token is used for establishing bidirectional trust between nodes and control-planes. // Used for joining nodes in the cluster. Token *BootstrapTokenString `json:&#34;token&#34; datapolicy:&#34;token&#34;` // Description sets a human-friendly message why this token exists and what it&#39;s used // for, so other administrators can know its purpose. // &#43;optional Description string `json:&#34;description,omitempty&#34;` // TTL defines the time to live for this token. Defaults to 24h. // Expires and TTL are mutually exclusive. // &#43;optional TTL *metav1.Duration `json:&#34;ttl,omitempty&#34;` // Expires specifies the timestamp when this token expires. Defaults to being set // dynamically at runtime based on the TTL. Expires and TTL are mutually exclusive. // &#43;optional Expires *metav1.Time `json:&#34;expires,omitempty&#34;` // Usages describes the ways in which this token can be used. Can by default be used // for establishing bidirectional trust, but that can be changed here. // &#43;optional Usages []string `json:&#34;usages,omitempty&#34;` // Groups specifies the extra groups that this token will authenticate as when/if // used for authentication // &#43;optional Groups []string `json:&#34;groups,omitempty&#34;` } // BootstrapTokenString is a token of the format abcdef.abcdef0123456789 that is used // for both validation of the practically of the API server from a joining node&#39;s point // of view and as an authentication method for the node in the bootstrap phase of // &#34;kubeadm join&#34;. This token is and should be short-lived type BootstrapTokenString struct { ID string `json:&#34;-&#34;` Secret string `json:&#34;-&#34; datapolicy:&#34;token&#34;` } NodeRegistrationOptions // NodeRegistrationOptions holds fields that relate to registering a new control-plane or node to the cluster, either via &#34;kubeadm init&#34; or &#34;kubeadm join&#34; type NodeRegistrationOptions struct { // Name is the `.Metadata.Name` field of the Node API object that will be created in this `kubeadm init` or `kubeadm join` operation. // This field is also used in the CommonName field of the kubelet&#39;s client certificate to the API server. // Defaults to the hostname of the node if not provided. // &#43;optional Name string `json:&#34;name,omitempty&#34;` // CRISocket is used to retrieve container runtime info. This information will be annotated to the Node API object, for later re-use // &#43;optional CRISocket string `json:&#34;criSocket,omitempty&#34;` // Taints specifies the taints the Node API object should be registered with. If this field is unset, i.e. nil, in the `kubeadm init` process // it will be defaulted to []v1.Taint{&#39;node-role.kubernetes.io/master=&#34;&#34;&#39;}. If you don&#39;t want to taint your control-plane node, set this field to an // empty slice, i.e. `taints: []` in the YAML file. This field is solely used for Node registration. Taints []corev1.Taint `json:&#34;taints&#34;` // KubeletExtraArgs passes through extra arguments to the kubelet. The arguments here are passed to the kubelet command line via the environment file // kubeadm writes at runtime for the kubelet to source. This overrides the generic base-level configuration in the kubelet-config-1.X ConfigMap // Flags have higher priority when parsing. These values are local and specific to the node kubeadm is executing on. // A key in this map is the flag name as it appears on the // command line except without leading dash(es). // &#43;optional KubeletExtraArgs map[string]string `json:&#34;kubeletExtraArgs,omitempty&#34;` // IgnorePreflightErrors provides a slice of pre-flight errors to be ignored when the current node is registered. // &#43;optional IgnorePreflightErrors []string `json:&#34;ignorePreflightErrors,omitempty&#34;` // ImagePullPolicy specifies the policy for image pulling during kubeadm &#34;init&#34; and &#34;join&#34; operations. // The value of this field must be one of &#34;Always&#34;, &#34;IfNotPresent&#34; or &#34;Never&#34;. // If this field is unset kubeadm will default it to &#34;IfNotPresent&#34;, or pull the required images if not present on the host. // &#43;optional ImagePullPolicy corev1.PullPolicy `json:&#34;imagePullPolicy,omitempty&#34;` } APIEndpoint // APIEndpoint struct contains elements of API server instance deployed on a node. type APIEndpoint struct { // AdvertiseAddress sets the IP address for the API server to advertise. // &#43;optional AdvertiseAddress string `json:&#34;advertiseAddress,omitempty&#34;` // BindPort sets the secure port for the API Server to bind to. // Defaults to 6443. // &#43;optional BindPort int32 `json:&#34;bindPort,omitempty&#34;` }">
+  <meta itemprop="datePublished" content="2022-12-02T15:04:36+08:00">
+  <meta itemprop="dateModified" content="2023-01-28T23:55:24+08:00">
+  <meta itemprop="wordCount" content="994">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Init">
+  <meta name="twitter:description" content="简要概述 apiVersion: kubeadm.k8s.io/v1beta3 kind: InitConfiguration 代码路径：
 https://github.com/kubernetes/kubernetes/blob/master/cmd/kubeadm/app/apis/kubeadm/v1beta3/types.go 配置示例 TODO;
-数据结构 InitConfiguration // InitConfiguration contains a list of elements that is specific &#34;kubeadm init&#34;-only runtime // information. type InitConfiguration struct { metav1.TypeMeta `json:&#34;,inline&#34;` // `kubeadm init`-only information. These fields are solely used the first time `kubeadm init` runs. // After that, the information in the fields IS NOT uploaded to the `kubeadm-config` ConfigMap // that is used by `kubeadm upgrade` for instance."/>
+数据结构 InitConfiguration // InitConfiguration contains a list of elements that is specific &#34;kubeadm init&#34;-only runtime // information. type InitConfiguration struct { metav1.TypeMeta `json:&#34;,inline&#34;` // `kubeadm init`-only information. These fields are solely used the first time `kubeadm init` runs. // After that, the information in the fields IS NOT uploaded to the `kubeadm-config` ConfigMap // that is used by `kubeadm upgrade` for instance. These fields must be omitempty. // BootstrapTokens is respected at `kubeadm init` time and describes a set of Bootstrap Tokens to create. // This information IS NOT uploaded to the kubeadm cluster configmap, partly because of its sensitive nature // &#43;optional BootstrapTokens []bootstraptokenv1.BootstrapToken `json:&#34;bootstrapTokens,omitempty&#34;` // NodeRegistration holds fields that relate to registering the new control-plane node to the cluster // &#43;optional NodeRegistration NodeRegistrationOptions `json:&#34;nodeRegistration,omitempty&#34;` // LocalAPIEndpoint represents the endpoint of the API server instance that&#39;s deployed on this control plane node // In HA setups, this differs from ClusterConfiguration.ControlPlaneEndpoint in the sense that ControlPlaneEndpoint // is the global endpoint for the cluster, which then loadbalances the requests to each individual API server. This // configuration object lets you customize what IP/DNS name and port the local API server advertises it&#39;s accessible // on. By default, kubeadm tries to auto-detect the IP of the default interface and use that, but in case that process // fails you may set the desired value here. // &#43;optional LocalAPIEndpoint APIEndpoint `json:&#34;localAPIEndpoint,omitempty&#34;` // CertificateKey sets the key with which certificates and keys are encrypted prior to being uploaded in // a secret in the cluster during the uploadcerts init phase. // &#43;optional CertificateKey string `json:&#34;certificateKey,omitempty&#34;` // SkipPhases is a list of phases to skip during command execution. // The list of phases can be obtained with the &#34;kubeadm init --help&#34; command. // The flag &#34;--skip-phases&#34; takes precedence over this field. // &#43;optional SkipPhases []string `json:&#34;skipPhases,omitempty&#34;` // Patches contains options related to applying patches to components deployed by kubeadm during // &#34;kubeadm init&#34;. // &#43;optional Patches *Patches `json:&#34;patches,omitempty&#34;` } bootstraptokenv1.BootstrapToken bootstraptokenv1 &#34;k8s.io/kubernetes/cmd/kubeadm/app/apis/bootstraptoken/v1&#34; // BootstrapToken describes one bootstrap token, stored as a Secret in the cluster // &#43;k8s:deepcopy-gen=true type BootstrapToken struct { // Token is used for establishing bidirectional trust between nodes and control-planes. // Used for joining nodes in the cluster. Token *BootstrapTokenString `json:&#34;token&#34; datapolicy:&#34;token&#34;` // Description sets a human-friendly message why this token exists and what it&#39;s used // for, so other administrators can know its purpose. // &#43;optional Description string `json:&#34;description,omitempty&#34;` // TTL defines the time to live for this token. Defaults to 24h. // Expires and TTL are mutually exclusive. // &#43;optional TTL *metav1.Duration `json:&#34;ttl,omitempty&#34;` // Expires specifies the timestamp when this token expires. Defaults to being set // dynamically at runtime based on the TTL. Expires and TTL are mutually exclusive. // &#43;optional Expires *metav1.Time `json:&#34;expires,omitempty&#34;` // Usages describes the ways in which this token can be used. Can by default be used // for establishing bidirectional trust, but that can be changed here. // &#43;optional Usages []string `json:&#34;usages,omitempty&#34;` // Groups specifies the extra groups that this token will authenticate as when/if // used for authentication // &#43;optional Groups []string `json:&#34;groups,omitempty&#34;` } // BootstrapTokenString is a token of the format abcdef.abcdef0123456789 that is used // for both validation of the practically of the API server from a joining node&#39;s point // of view and as an authentication method for the node in the bootstrap phase of // &#34;kubeadm join&#34;. This token is and should be short-lived type BootstrapTokenString struct { ID string `json:&#34;-&#34;` Secret string `json:&#34;-&#34; datapolicy:&#34;token&#34;` } NodeRegistrationOptions // NodeRegistrationOptions holds fields that relate to registering a new control-plane or node to the cluster, either via &#34;kubeadm init&#34; or &#34;kubeadm join&#34; type NodeRegistrationOptions struct { // Name is the `.Metadata.Name` field of the Node API object that will be created in this `kubeadm init` or `kubeadm join` operation. // This field is also used in the CommonName field of the kubelet&#39;s client certificate to the API server. // Defaults to the hostname of the node if not provided. // &#43;optional Name string `json:&#34;name,omitempty&#34;` // CRISocket is used to retrieve container runtime info. This information will be annotated to the Node API object, for later re-use // &#43;optional CRISocket string `json:&#34;criSocket,omitempty&#34;` // Taints specifies the taints the Node API object should be registered with. If this field is unset, i.e. nil, in the `kubeadm init` process // it will be defaulted to []v1.Taint{&#39;node-role.kubernetes.io/master=&#34;&#34;&#39;}. If you don&#39;t want to taint your control-plane node, set this field to an // empty slice, i.e. `taints: []` in the YAML file. This field is solely used for Node registration. Taints []corev1.Taint `json:&#34;taints&#34;` // KubeletExtraArgs passes through extra arguments to the kubelet. The arguments here are passed to the kubelet command line via the environment file // kubeadm writes at runtime for the kubelet to source. This overrides the generic base-level configuration in the kubelet-config-1.X ConfigMap // Flags have higher priority when parsing. These values are local and specific to the node kubeadm is executing on. // A key in this map is the flag name as it appears on the // command line except without leading dash(es). // &#43;optional KubeletExtraArgs map[string]string `json:&#34;kubeletExtraArgs,omitempty&#34;` // IgnorePreflightErrors provides a slice of pre-flight errors to be ignored when the current node is registered. // &#43;optional IgnorePreflightErrors []string `json:&#34;ignorePreflightErrors,omitempty&#34;` // ImagePullPolicy specifies the policy for image pulling during kubeadm &#34;init&#34; and &#34;join&#34; operations. // The value of this field must be one of &#34;Always&#34;, &#34;IfNotPresent&#34; or &#34;Never&#34;. // If this field is unset kubeadm will default it to &#34;IfNotPresent&#34;, or pull the required images if not present on the host. // &#43;optional ImagePullPolicy corev1.PullPolicy `json:&#34;imagePullPolicy,omitempty&#34;` } APIEndpoint // APIEndpoint struct contains elements of API server instance deployed on a node. type APIEndpoint struct { // AdvertiseAddress sets the IP address for the API server to advertise. // &#43;optional AdvertiseAddress string `json:&#34;advertiseAddress,omitempty&#34;` // BindPort sets the secure port for the API Server to bind to. // Defaults to 6443. // &#43;optional BindPort int32 `json:&#34;bindPort,omitempty&#34;` }">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1042,6 +1045,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3075,9 +3095,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3091,10 +3111,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3154,6 +3377,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4515,7 +4797,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

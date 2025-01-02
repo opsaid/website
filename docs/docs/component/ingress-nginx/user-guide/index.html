@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -23,78 +23,74 @@
 以下配置说明均基于官方版本 1.31 做说明。
 Support Versions table
 
-
-
-Ingress-NGINX version
-k8s supported version
-Alpine Version
-Nginx Version
-
-
-
-
-v1.3.1
-1.24, 1.23, …">
-<meta property="og:title" content="User guide" />
-<meta property="og:description" content="版本信息 以下配置说明均基于官方版本 1.31 做说明。
+  
+      
+          Ingress-NGINX version
+          k8s supported version
+          Alpine …">
+<meta property="og:url" content="/docs/component/ingress-nginx/user-guide/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="User guide">
+  <meta property="og:description" content="版本信息 以下配置说明均基于官方版本 1.31 做说明。
 Support Versions table Ingress-NGINX version k8s supported version Alpine Version Nginx Version v1.3.1 1.24, 1.23, 1.22, 1.21, 1.20 3.16.2 1.19.10† v1.3.0 1.24, 1.23, 1.22, 1.21, 1.20 3.16.0 1.19.10† v1.1.1 1.23, 1.22, 1.21, 1.20, 1.19 3.14.2 1.19.9† v1.0.0 1.22, 1.21, 1.20, 1.19 3.13.5 1.20.1 安装部署 配置示例 参数解析 可用的Annotations 这里仅记录个人认为有比较有用处的几个注解，全部列表可以参考官方文档说明。
-在ingress上annotation的键值对只能是字符串类型，数字或布尔类型需通过引号包含，如：&ldquo;100&rdquo;, &ldquo;false&rdquo;。默认键前缀是&quot;nginx.ingress.kubernetes.io&quot;，由参数&quot;&ndash;annotations-prefix&quot;控制。
-名称 说明 默认值 可取值 nginx.ingress.kubernetes.io/app-root 当应用请求&quot;/&ldquo;时做302重定向的目标url - - nginx.ingress.kubernetes.io/affinity 用于保持会话连接 - cookie nginx.ingress.kubernetes.io/affinity-mode 同上 balanced &ldquo;balanced&rdquo; or &ldquo;persistent&rdquo; nginx." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/component/ingress-nginx/user-guide/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-09-11T11:13:40+08:00" />
-<meta property="article:modified_time" content="2023-03-06T14:08:00+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="User guide">
-<meta itemprop="description" content="版本信息 以下配置说明均基于官方版本 1.31 做说明。
+在ingress上annotation的键值对只能是字符串类型，数字或布尔类型需通过引号包含，如：“100”, “false”。默认键前缀是&#34;nginx.ingress.kubernetes.io&#34;，由参数&#34;–annotations-prefix&#34;控制。
+名称 说明 默认值 可取值 nginx.ingress.kubernetes.io/app-root 当应用请求&#34;/“时做302重定向的目标url - - nginx.ingress.kubernetes.io/affinity 用于保持会话连接 - cookie nginx.ingress.kubernetes.io/affinity-mode 同上 balanced “balanced” or “persistent” nginx.ingress.kubernetes.io/affinity-canary-behavior 同上 sticky “sticky” or “legacy” nginx.ingress.kubernetes.io/session-cookie-name 同上 INGRESSCOOKIE - nginx.ingress.kubernetes.io/session-cookie-path 同上 / - nginx.ingress.kubernetes.io/session-cookie-secure 同上；只能用https协议发送给服务器 false true, false nginx.ingress.kubernetes.io/session-cookie-samesite 同上；Chrome 51 开始，浏览器的 Cookie 新增加了一个SameSite属性，用来防止 CSRF 攻击 和用户追踪 - “None”, “Lax”, “Strict” nginx.ingress.kubernetes.io/session-cookie-conditional-samesite-none 同上 - “true”, “false” nginx.ingress.kubernetes.io/auth-type 认证 - “basic” or “digest” nginx.ingress.kubernetes.io/auth-secret 同上；存放认证&#34;secret&#34;资源的名称 - - nginx.ingress.kubernetes.io/auth-secret-type 同上；存放认证&#34;secret&#34;资源的格式 - “auth-file”, “auth-map” nginx.ingress.kubernetes.io/auth-realm 认证 - - nginx.ingress.kubernetes.io/canary 灰度、金丝雀发布 - “true” or “false” nginx.ingress.kubernetes.io/canary-by-header 同上，基于HTTP请求头的流量调度，这里对于请求头名称，对应值可取&#34;always&#34;或&#34;never” - - nginx.ingress.kubernetes.io/canary-by-header-value 同上，自定义匹配请求头的值，以代替&#34;always&#34;与&#34;never&#34; - - nginx.ingress.kubernetes.io/canary-by-header-pattern 同上 - - nginx.ingress.kubernetes.io/canary-by-cookie 同上，基于Cookie的流量调度，这里对应cookie名称，对应值可取&#34;always&#34;或&#34;never&#34; - - nginx.ingress.kubernetes.io/canary-weight 同上，流量调度到灰度副本的权重，填写数字如：30 - - nginx.ingress.kubernetes.io/canary-weight-total 同上，总权重是多少，配合上面使用 - 100 [nginx.ingress.kubernetes.io/client-body-buffer-size] TODO; HTTP请求体缓冲区大小，如果请求超过这个值会写入nginx配置的temp_path做个缓冲 - 8k [nginx.ingress.kubernetes.io/configuration-snippet] TODO; 可自定义nginx配置，比较危险，建议关闭 - - [nginx.ingress.kubernetes.io/server-snippet] TODO; 可自定义nginx配置，比较危险，建议关闭 - - [nginx.ingress.kubernetes.io/stream-snippet] TODO; 可自定义nginx配置，比较危险，建议关闭 - - [nginx.ingress.kubernetes.io/custom-http-errors] TODO; 设置 proxy-intercept-errors - - [nginx.ingress.kubernetes.io/default-backend] TODO；访问该ingress如果后端没有活跃地址，则转发至同空间下配置的服务名, 优先级高于全局配置 - - [nginx.ingress.kubernetes.io/enable-cors] TODO; 开启跨域 - - [nginx.ingress.kubernetes.io/force-ssl-redirect] TODO; 如果该ingress开启ssl，是否强制跳转http，通过http状态码308 - - [nginx.ingress.kubernetes.io/ssl-redirect] TODO; - - [nginx.ingress.kubernetes.io/from-to-www-redirect] TODO; - - [nginx.ingress.kubernetes.io/permanent-redirect] TODO; - - [nginx.ingress.kubernetes.io/permanent-redirect-code] TODO; - - [nginx.ingress.kubernetes.io/temporal-redirect] TODO; - - [nginx.ingress.kubernetes.io/preserve-trailing-slash] TODO; - - [nginx.ingress.kubernetes.io/enable-rewrite-log] TODO; 是否开启rewrite日志，默认为关闭 - - [nginx.ingress.kubernetes.io/rewrite-target] TODO; - - [nginx.ingress.kubernetes.io/http2-push-preload] TODO; HTTP2推送预加载 - - [nginx.ingress.kubernetes.io/limit-connections] TODO; 请求限制 - - [nginx.ingress.kubernetes.io/proxy-body-size] TODO; 代理配置 - - [nginx.ingress.kubernetes.io/upstream-hash-by] TODO; 代理后段算法 - - [nginx.ingress.kubernetes.io/load-balance] TODO; 代理后段算法 - - [nginx.ingress.kubernetes.io/satisfy] TODO; 不清楚用途 - - [nginx.ingress.kubernetes.io/server-alias] TODO; 设置别名，不能冲突 - - [nginx.ingress.kubernetes.io/ssl-passthrough] TODO; “false” “true” or “false” [nginx.ingress.kubernetes.io/x-forwarded-prefix] TODO; - - [nginx.ingress.kubernetes.io/upstream-vhost] TODO; - - [nginx.ingress.kubernetes.io/enable-access-log] TODO; - - [nginx.ingress.kubernetes.io/enable-opentracing] TODO; - - [nginx.ingress.kubernetes.io/opentracing-trust-incoming-span] TODO; - - [nginx.ingress.kubernetes.io/enable-influxdb] 写入性能数据至influxdb，在k8s上使用prometheus，这个不建议开启 “false” “true” or “false” [nginx.ingress.kubernetes.io/influxdb-measurement] 同上 - - [nginx.ingress.kubernetes.io/influxdb-port] 同上 - - [nginx.ingress.kubernetes.io/influxdb-host] 同上 - - [nginx.ingress.kubernetes.io/influxdb-server-name] 同上 - - [nginx.ingress.kubernetes.io/use-regex] TODO; - - [nginx.ingress.kubernetes.io/enable-modsecurity] 开启modsecurity，仅在专用集群使用，业务集群不开启 ｜ - ｜ - ｜ [nginx.ingress.kubernetes.io/enable-owasp-core-rules] 同上 - - [nginx.ingress.kubernetes.io/modsecurity-transaction-id] 同上 - - [nginx.ingress.kubernetes.io/modsecurity-snippet] 同上 - - [nginx.ingress.kubernetes.io/mirror-request-body] TODO；镜像 - - [nginx.ingress.kubernetes.io/mirror-target] 同上 - - [nginx.ingress.kubernetes.io/mirror-host] 同上 - - 命令行参数 名称 说明 默认值 原始HELP add_dir_header TODO TODO If true, adds the file directory to the header of the log messages alsologtostderr 错误输出终端，同时写入也文件 - log to standard error as well as files (no effect when -logtostderr=true) annotations-prefix ingress使用注解的标签前缀 nginx.ingress.kubernetes.io Prefix of the Ingress annotations specific to the NGINX controller. (default “nginx.ingress.kubernetes.io”) apiserver-host 连接的api server地址 kubernetes.default.svc Takes the form “protocol://address:port”. If not specified, it is assumed the program runs inside a Kubernetes cluster and local discovery is attempted. certificate-authority ca证书，验证api server的https - Path to a cert file for the certificate authority. This certificate is used only when the flag –apiserver-host is specified. configmap 用于控制器全局的ConfigMap配置名 nginx-configuration Name of the ConfigMap containing custom global configurations for the controller. controller-class TODO k8s.io/ingress-nginx Ingress Class Controller value this Ingress satisfies. The class of an Ingress object is set using the field IngressClassName in Kubernetes clusters version v1.19.0 or higher. The .spec.controller value of the IngressClass referenced in an Ingress Object should be the same value specified here to make this object be watched. deep-inspect TODO true Enables ingress object security deep inspector (default true) default-backend-service 处理查询到的主机，流量转发的后段服务 $(POD_NAMESPACE)/ingress-nginx-defaultbackend Service used to serve HTTP requests not matching any known server name (catch-all). Takes the form “namespace/name”. The controller configures NGINX to forward requests to the first port of this Service. default-server-port TODO 8181 Port to use for exposing the default server (catch-all). default-ssl-certificate TODO - Secret containing a SSL certificate to be used by the default HTTPS server disable-catch-all TODO - Disable support for catch-all Ingresses disable-full-test TODO；默认开启 - Disable full test of all merged ingresses at the admission stage and tests the template of the ingress being created or updated disable-svc-external-name TODO - Disable support for Services of type ExternalName dynamic-configuration-retries TODO 15 Number of times to retry failed dynamic configuration before failing to sync an ingress. election-id 解决多副本同时更新状态，使用的选举id锁 ingress-controller-leader Election id to use for Ingress status updates. enable-metrics 开启nginx的prometheus类型性能指标，影响性能，高并发下可以考虑关闭 true Enables the collection of NGINX metrics enable-ssl-chain-completion TODO - Autocomplete SSL certificate chains with missing intermediate CA certificates. Certificates uploaded to Kubernetes must have the “Authority Information Access” X.509 v3 extension for this to succeed. enable-ssl-passthrough TODO - Enable SSL Passthrough. health-check-path 健康检测的url地址 /healthz URL path of the health check endpoint. Configured inside the NGINX status server. All requests received on the port defined by the healthz-port parameter are forwarded internally to this path. health-check-timeout 健康检测超时时间，秒 10 Time limit, in seconds, for a probe to health-check-path to succeed. healthz-host 健康检测主机地址 - Address to bind the healthz endpoint. healthz-port 健康检测端口 10254 Port to use for the healthz endpoint. http-port 接收http协议流量的端口 80 Port to use for servicing HTTP traffic. https-port 接收https协议流量的端口 80 Port to use for servicing HTTPS traffic. ingress-class 已被废弃；TODO - Name of the ingress class this controller satisfies. The class of an Ingress object is set using the annotation “kubernetes.io/ingress.class”. The parameter –controller-class has precedence over this. ingress-class-by-name TODO TODO Define if Ingress Controller should watch for Ingress Class by Name together with Controller Class internal-logger-address TODO 127.0.0.1:11514 Address to be used when binding internal syslogger kubeconfig 连接api server的信息 - Path to a kubeconfig file containing authorization and API server information. length-buckets TODO - Set of buckets which will be used for prometheus histogram metrics such as RequestLength, ResponseLength. ([10.000000,20.000000,30.000000,40.000000,50.000000,60.000000,70.000000,80.000000,90.000000,100.000000]) log_backtrace_at TODO 0 when logging hits line file:N, emit a stack trace log_dir 日志目录 - If non-empty, write log files in this directory (no effect when -logtostderr=true) log_file 日志文件名 - If non-empty, use this log file (no effect when -logtostderr=true) log_file_max_size 日志文件最大值，单位：MB 1800MB Defines the maximum size a log file can grow to (no effect when -logtostderr=true). Unit is megabytes. If the value is 0, the maximum file size is unlimited. logtostderr 日志输出到终端 true log to standard error instead of files maxmind-edition-ids TODO - Maxmind edition ids to download GeoLite2 Databases. (default “GeoLite2-City,GeoLite2-ASN”) maxmind-license-key TODO - Maxmind license key to download GeoLite2 Databases. maxmind-mirror TODO - Maxmind mirror url (example: http://geoip.local/databases maxmind-retries-count TODO 1 Number of attempts to download the GeoIP DB. maxmind-retries-timeout TODO 0s Maxmind downloading delay between 1st and 2nd attempt, 0s - do not retry to download if something went wrong. metrics-per-host TODO true Export metrics per-host monitor-max-batch-size TODO 10000 Max batch size of NGINX metrics one_output TODO TODO If true, only write logs to their native severity level post-shutdown-grace-period TODO 10 Seconds to wait after the nginx process has stopped before controller exits. profiler-port 控制器对外提供的profiler端口地址 10245 Port to use for expose the ingress controller Go profiler when it is enabled. profiling 是否开启pprof true Enable profiling via web interface host:port/debug/pprof/ publish-service 各个 ingress.status 的 Address 地址，监听命名空间下服务，格式为：“namespace/name”，一般仅在公有云环境使用 TODO Service fronting the Ingress controller. Takes the form “namespace/name”. When used together with update-status, the controller mirrors the address of this service’s endpoints to the load-balancer status of all Ingress objects it satisfies. publish-status-address 功能同&#34;publish-service&#34;，有人工预先分配 TODO Customized address (or addresses, separated by comma) to set as the load-balancer status of Ingress objects this controller satisfies. Requires the update-status parameter. report-node-internal-ip-address 功能同&#34;publish-service&#34;，使用当前 controler 部署节点的IP，一般在私有云使用 TODO Set the load-balancer status of Ingress objects to internal Node addresses instead of external. report-status-classes TODO TODO Use status classes (2xx, 3xx, 4xx and 5xx) instead of status codes in metrics shutdown-grace-period TODO TODO Seconds to wait after receiving the shutdown signal, before stopping the nginx process. size-buckets TODO TODO Set of buckets which will be used for prometheus histogram metrics such as BytesSent (default [10.000000,100.000000,1000.000000,10000.000000,100000.000000,1000000.000000,10000000.000000]) skip_headers TODO TODO If true, avoid header prefixes in the log messages skip_log_headers TODO TODO If true, avoid headers when opening log files (no effect when -logtostderr=true) ssl-passthrough-proxy-port TODO 442 Port to use internally for SSL Passthrough. status-port TODO 10246 Port to use for the lua HTTP endpoint configuration. status-update-interval TODO 60 Time interval in seconds in which the status should check if an update is required. Default is 60 seconds stderrthreshold TODO 2 logs at or above this threshold go to stderr when writing to files and stderr (no effect when -logtostderr=true or -alsologtostderr=false) stream-port TODO 10247 Port to use for the lua TCP/UDP endpoint configuration. sync-period TODO；默认关闭 - Period at which the controller forces the repopulation of its local object stores. sync-rate-limit TODO 0.3 Define the sync frequency upper limit tcp-services-configmap nginx stream tcp代理 tcp-services Name of the ConfigMap containing the definition of the TCP services to expose. The key in the map indicates the external port to be used. The value is a reference to a Service in the form “namespace/name:port”, where “port” can either be a port number or name. time-buckets TODO TODO Set of buckets which will be used for prometheus histogram metrics such as RequestTime, ResponseTime (default [0.005000,0.010000,0.025000,0.050000,0.100000,0.250000,0.500000,1.000000,2.500000,5.000000,10.000000]) udp-services-configmap nginx stream udp代理 udp-services Name of the ConfigMap containing the definition of the UDP services to expose. The key in the map indicates the external port to be used. The value is a reference to a Service in the form “namespace/name:port”, where “port” can either be a port name or number. update-status TODO true Update the load-balancer status of Ingress objects this controller satisfies. Requires setting the publish-service parameter to a valid Service reference. update-status-on-shutdown TODO true Update the load-balancer status of Ingress objects when the controller shuts down. Requires the update-status parameter. v 日志级别 - number for the log level verbosity validating-webhook 准入控制器验证ingress的配置 TODO The address to start an admission controller on to validate incoming ingresses. Takes the form “:port”. If not provided, no admission controller is started. validating-webhook-certificate 准入控制器的证书 TODO The path of the validating webhook certificate PEM. validating-webhook-key 准入控制器的证书 TODO The path of the validating webhook key PEM. vmodule TODO TODO comma-separated list of pattern=N settings for file-filtered logging watch-ingress-without-class TODO TODO Define if Ingress Controller should also watch for Ingresses without an IngressClass or the annotation specified watch-namespace TODO TODO Namespace the controller watches for updates to Kubernetes objects. This includes Ingresses, Services and all configuration resources. All namespaces are watched if this parameter is left empty. watch-namespace-selector TODO TODO Selector selects namespaces the controller watches for updates to Kubernetes objects. ConfigMap 配置参数 可以通过这个定制 nginx.conf 文件内容，里面填写的键值对对照数据结构 config.go 配置，由于 “ConfigMap” 里面只能是 string 类型，所以任何值需使用引号包含起来，如：&#34;128&#34;。如果是数组类型，则通过逗号分隔，如：&#34;192.168.30.0/24, 192.168.31.0/24&#34;">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-09-11T11:13:40+08:00">
+    <meta property="article:modified_time" content="2023-03-06T14:08:00+08:00">
+
+  <meta itemprop="name" content="User guide">
+  <meta itemprop="description" content="版本信息 以下配置说明均基于官方版本 1.31 做说明。
 Support Versions table Ingress-NGINX version k8s supported version Alpine Version Nginx Version v1.3.1 1.24, 1.23, 1.22, 1.21, 1.20 3.16.2 1.19.10† v1.3.0 1.24, 1.23, 1.22, 1.21, 1.20 3.16.0 1.19.10† v1.1.1 1.23, 1.22, 1.21, 1.20, 1.19 3.14.2 1.19.9† v1.0.0 1.22, 1.21, 1.20, 1.19 3.13.5 1.20.1 安装部署 配置示例 参数解析 可用的Annotations 这里仅记录个人认为有比较有用处的几个注解，全部列表可以参考官方文档说明。
-在ingress上annotation的键值对只能是字符串类型，数字或布尔类型需通过引号包含，如：&ldquo;100&rdquo;, &ldquo;false&rdquo;。默认键前缀是&quot;nginx.ingress.kubernetes.io&quot;，由参数&quot;&ndash;annotations-prefix&quot;控制。
-名称 说明 默认值 可取值 nginx.ingress.kubernetes.io/app-root 当应用请求&quot;/&ldquo;时做302重定向的目标url - - nginx.ingress.kubernetes.io/affinity 用于保持会话连接 - cookie nginx.ingress.kubernetes.io/affinity-mode 同上 balanced &ldquo;balanced&rdquo; or &ldquo;persistent&rdquo; nginx."><meta itemprop="datePublished" content="2022-09-11T11:13:40+08:00" />
-<meta itemprop="dateModified" content="2023-03-06T14:08:00+08:00" />
-<meta itemprop="wordCount" content="3703">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="User guide"/>
-<meta name="twitter:description" content="版本信息 以下配置说明均基于官方版本 1.31 做说明。
+在ingress上annotation的键值对只能是字符串类型，数字或布尔类型需通过引号包含，如：“100”, “false”。默认键前缀是&#34;nginx.ingress.kubernetes.io&#34;，由参数&#34;–annotations-prefix&#34;控制。
+名称 说明 默认值 可取值 nginx.ingress.kubernetes.io/app-root 当应用请求&#34;/“时做302重定向的目标url - - nginx.ingress.kubernetes.io/affinity 用于保持会话连接 - cookie nginx.ingress.kubernetes.io/affinity-mode 同上 balanced “balanced” or “persistent” nginx.ingress.kubernetes.io/affinity-canary-behavior 同上 sticky “sticky” or “legacy” nginx.ingress.kubernetes.io/session-cookie-name 同上 INGRESSCOOKIE - nginx.ingress.kubernetes.io/session-cookie-path 同上 / - nginx.ingress.kubernetes.io/session-cookie-secure 同上；只能用https协议发送给服务器 false true, false nginx.ingress.kubernetes.io/session-cookie-samesite 同上；Chrome 51 开始，浏览器的 Cookie 新增加了一个SameSite属性，用来防止 CSRF 攻击 和用户追踪 - “None”, “Lax”, “Strict” nginx.ingress.kubernetes.io/session-cookie-conditional-samesite-none 同上 - “true”, “false” nginx.ingress.kubernetes.io/auth-type 认证 - “basic” or “digest” nginx.ingress.kubernetes.io/auth-secret 同上；存放认证&#34;secret&#34;资源的名称 - - nginx.ingress.kubernetes.io/auth-secret-type 同上；存放认证&#34;secret&#34;资源的格式 - “auth-file”, “auth-map” nginx.ingress.kubernetes.io/auth-realm 认证 - - nginx.ingress.kubernetes.io/canary 灰度、金丝雀发布 - “true” or “false” nginx.ingress.kubernetes.io/canary-by-header 同上，基于HTTP请求头的流量调度，这里对于请求头名称，对应值可取&#34;always&#34;或&#34;never” - - nginx.ingress.kubernetes.io/canary-by-header-value 同上，自定义匹配请求头的值，以代替&#34;always&#34;与&#34;never&#34; - - nginx.ingress.kubernetes.io/canary-by-header-pattern 同上 - - nginx.ingress.kubernetes.io/canary-by-cookie 同上，基于Cookie的流量调度，这里对应cookie名称，对应值可取&#34;always&#34;或&#34;never&#34; - - nginx.ingress.kubernetes.io/canary-weight 同上，流量调度到灰度副本的权重，填写数字如：30 - - nginx.ingress.kubernetes.io/canary-weight-total 同上，总权重是多少，配合上面使用 - 100 [nginx.ingress.kubernetes.io/client-body-buffer-size] TODO; HTTP请求体缓冲区大小，如果请求超过这个值会写入nginx配置的temp_path做个缓冲 - 8k [nginx.ingress.kubernetes.io/configuration-snippet] TODO; 可自定义nginx配置，比较危险，建议关闭 - - [nginx.ingress.kubernetes.io/server-snippet] TODO; 可自定义nginx配置，比较危险，建议关闭 - - [nginx.ingress.kubernetes.io/stream-snippet] TODO; 可自定义nginx配置，比较危险，建议关闭 - - [nginx.ingress.kubernetes.io/custom-http-errors] TODO; 设置 proxy-intercept-errors - - [nginx.ingress.kubernetes.io/default-backend] TODO；访问该ingress如果后端没有活跃地址，则转发至同空间下配置的服务名, 优先级高于全局配置 - - [nginx.ingress.kubernetes.io/enable-cors] TODO; 开启跨域 - - [nginx.ingress.kubernetes.io/force-ssl-redirect] TODO; 如果该ingress开启ssl，是否强制跳转http，通过http状态码308 - - [nginx.ingress.kubernetes.io/ssl-redirect] TODO; - - [nginx.ingress.kubernetes.io/from-to-www-redirect] TODO; - - [nginx.ingress.kubernetes.io/permanent-redirect] TODO; - - [nginx.ingress.kubernetes.io/permanent-redirect-code] TODO; - - [nginx.ingress.kubernetes.io/temporal-redirect] TODO; - - [nginx.ingress.kubernetes.io/preserve-trailing-slash] TODO; - - [nginx.ingress.kubernetes.io/enable-rewrite-log] TODO; 是否开启rewrite日志，默认为关闭 - - [nginx.ingress.kubernetes.io/rewrite-target] TODO; - - [nginx.ingress.kubernetes.io/http2-push-preload] TODO; HTTP2推送预加载 - - [nginx.ingress.kubernetes.io/limit-connections] TODO; 请求限制 - - [nginx.ingress.kubernetes.io/proxy-body-size] TODO; 代理配置 - - [nginx.ingress.kubernetes.io/upstream-hash-by] TODO; 代理后段算法 - - [nginx.ingress.kubernetes.io/load-balance] TODO; 代理后段算法 - - [nginx.ingress.kubernetes.io/satisfy] TODO; 不清楚用途 - - [nginx.ingress.kubernetes.io/server-alias] TODO; 设置别名，不能冲突 - - [nginx.ingress.kubernetes.io/ssl-passthrough] TODO; “false” “true” or “false” [nginx.ingress.kubernetes.io/x-forwarded-prefix] TODO; - - [nginx.ingress.kubernetes.io/upstream-vhost] TODO; - - [nginx.ingress.kubernetes.io/enable-access-log] TODO; - - [nginx.ingress.kubernetes.io/enable-opentracing] TODO; - - [nginx.ingress.kubernetes.io/opentracing-trust-incoming-span] TODO; - - [nginx.ingress.kubernetes.io/enable-influxdb] 写入性能数据至influxdb，在k8s上使用prometheus，这个不建议开启 “false” “true” or “false” [nginx.ingress.kubernetes.io/influxdb-measurement] 同上 - - [nginx.ingress.kubernetes.io/influxdb-port] 同上 - - [nginx.ingress.kubernetes.io/influxdb-host] 同上 - - [nginx.ingress.kubernetes.io/influxdb-server-name] 同上 - - [nginx.ingress.kubernetes.io/use-regex] TODO; - - [nginx.ingress.kubernetes.io/enable-modsecurity] 开启modsecurity，仅在专用集群使用，业务集群不开启 ｜ - ｜ - ｜ [nginx.ingress.kubernetes.io/enable-owasp-core-rules] 同上 - - [nginx.ingress.kubernetes.io/modsecurity-transaction-id] 同上 - - [nginx.ingress.kubernetes.io/modsecurity-snippet] 同上 - - [nginx.ingress.kubernetes.io/mirror-request-body] TODO；镜像 - - [nginx.ingress.kubernetes.io/mirror-target] 同上 - - [nginx.ingress.kubernetes.io/mirror-host] 同上 - - 命令行参数 名称 说明 默认值 原始HELP add_dir_header TODO TODO If true, adds the file directory to the header of the log messages alsologtostderr 错误输出终端，同时写入也文件 - log to standard error as well as files (no effect when -logtostderr=true) annotations-prefix ingress使用注解的标签前缀 nginx.ingress.kubernetes.io Prefix of the Ingress annotations specific to the NGINX controller. (default “nginx.ingress.kubernetes.io”) apiserver-host 连接的api server地址 kubernetes.default.svc Takes the form “protocol://address:port”. If not specified, it is assumed the program runs inside a Kubernetes cluster and local discovery is attempted. certificate-authority ca证书，验证api server的https - Path to a cert file for the certificate authority. This certificate is used only when the flag –apiserver-host is specified. configmap 用于控制器全局的ConfigMap配置名 nginx-configuration Name of the ConfigMap containing custom global configurations for the controller. controller-class TODO k8s.io/ingress-nginx Ingress Class Controller value this Ingress satisfies. The class of an Ingress object is set using the field IngressClassName in Kubernetes clusters version v1.19.0 or higher. The .spec.controller value of the IngressClass referenced in an Ingress Object should be the same value specified here to make this object be watched. deep-inspect TODO true Enables ingress object security deep inspector (default true) default-backend-service 处理查询到的主机，流量转发的后段服务 $(POD_NAMESPACE)/ingress-nginx-defaultbackend Service used to serve HTTP requests not matching any known server name (catch-all). Takes the form “namespace/name”. The controller configures NGINX to forward requests to the first port of this Service. default-server-port TODO 8181 Port to use for exposing the default server (catch-all). default-ssl-certificate TODO - Secret containing a SSL certificate to be used by the default HTTPS server disable-catch-all TODO - Disable support for catch-all Ingresses disable-full-test TODO；默认开启 - Disable full test of all merged ingresses at the admission stage and tests the template of the ingress being created or updated disable-svc-external-name TODO - Disable support for Services of type ExternalName dynamic-configuration-retries TODO 15 Number of times to retry failed dynamic configuration before failing to sync an ingress. election-id 解决多副本同时更新状态，使用的选举id锁 ingress-controller-leader Election id to use for Ingress status updates. enable-metrics 开启nginx的prometheus类型性能指标，影响性能，高并发下可以考虑关闭 true Enables the collection of NGINX metrics enable-ssl-chain-completion TODO - Autocomplete SSL certificate chains with missing intermediate CA certificates. Certificates uploaded to Kubernetes must have the “Authority Information Access” X.509 v3 extension for this to succeed. enable-ssl-passthrough TODO - Enable SSL Passthrough. health-check-path 健康检测的url地址 /healthz URL path of the health check endpoint. Configured inside the NGINX status server. All requests received on the port defined by the healthz-port parameter are forwarded internally to this path. health-check-timeout 健康检测超时时间，秒 10 Time limit, in seconds, for a probe to health-check-path to succeed. healthz-host 健康检测主机地址 - Address to bind the healthz endpoint. healthz-port 健康检测端口 10254 Port to use for the healthz endpoint. http-port 接收http协议流量的端口 80 Port to use for servicing HTTP traffic. https-port 接收https协议流量的端口 80 Port to use for servicing HTTPS traffic. ingress-class 已被废弃；TODO - Name of the ingress class this controller satisfies. The class of an Ingress object is set using the annotation “kubernetes.io/ingress.class”. The parameter –controller-class has precedence over this. ingress-class-by-name TODO TODO Define if Ingress Controller should watch for Ingress Class by Name together with Controller Class internal-logger-address TODO 127.0.0.1:11514 Address to be used when binding internal syslogger kubeconfig 连接api server的信息 - Path to a kubeconfig file containing authorization and API server information. length-buckets TODO - Set of buckets which will be used for prometheus histogram metrics such as RequestLength, ResponseLength. ([10.000000,20.000000,30.000000,40.000000,50.000000,60.000000,70.000000,80.000000,90.000000,100.000000]) log_backtrace_at TODO 0 when logging hits line file:N, emit a stack trace log_dir 日志目录 - If non-empty, write log files in this directory (no effect when -logtostderr=true) log_file 日志文件名 - If non-empty, use this log file (no effect when -logtostderr=true) log_file_max_size 日志文件最大值，单位：MB 1800MB Defines the maximum size a log file can grow to (no effect when -logtostderr=true). Unit is megabytes. If the value is 0, the maximum file size is unlimited. logtostderr 日志输出到终端 true log to standard error instead of files maxmind-edition-ids TODO - Maxmind edition ids to download GeoLite2 Databases. (default “GeoLite2-City,GeoLite2-ASN”) maxmind-license-key TODO - Maxmind license key to download GeoLite2 Databases. maxmind-mirror TODO - Maxmind mirror url (example: http://geoip.local/databases maxmind-retries-count TODO 1 Number of attempts to download the GeoIP DB. maxmind-retries-timeout TODO 0s Maxmind downloading delay between 1st and 2nd attempt, 0s - do not retry to download if something went wrong. metrics-per-host TODO true Export metrics per-host monitor-max-batch-size TODO 10000 Max batch size of NGINX metrics one_output TODO TODO If true, only write logs to their native severity level post-shutdown-grace-period TODO 10 Seconds to wait after the nginx process has stopped before controller exits. profiler-port 控制器对外提供的profiler端口地址 10245 Port to use for expose the ingress controller Go profiler when it is enabled. profiling 是否开启pprof true Enable profiling via web interface host:port/debug/pprof/ publish-service 各个 ingress.status 的 Address 地址，监听命名空间下服务，格式为：“namespace/name”，一般仅在公有云环境使用 TODO Service fronting the Ingress controller. Takes the form “namespace/name”. When used together with update-status, the controller mirrors the address of this service’s endpoints to the load-balancer status of all Ingress objects it satisfies. publish-status-address 功能同&#34;publish-service&#34;，有人工预先分配 TODO Customized address (or addresses, separated by comma) to set as the load-balancer status of Ingress objects this controller satisfies. Requires the update-status parameter. report-node-internal-ip-address 功能同&#34;publish-service&#34;，使用当前 controler 部署节点的IP，一般在私有云使用 TODO Set the load-balancer status of Ingress objects to internal Node addresses instead of external. report-status-classes TODO TODO Use status classes (2xx, 3xx, 4xx and 5xx) instead of status codes in metrics shutdown-grace-period TODO TODO Seconds to wait after receiving the shutdown signal, before stopping the nginx process. size-buckets TODO TODO Set of buckets which will be used for prometheus histogram metrics such as BytesSent (default [10.000000,100.000000,1000.000000,10000.000000,100000.000000,1000000.000000,10000000.000000]) skip_headers TODO TODO If true, avoid header prefixes in the log messages skip_log_headers TODO TODO If true, avoid headers when opening log files (no effect when -logtostderr=true) ssl-passthrough-proxy-port TODO 442 Port to use internally for SSL Passthrough. status-port TODO 10246 Port to use for the lua HTTP endpoint configuration. status-update-interval TODO 60 Time interval in seconds in which the status should check if an update is required. Default is 60 seconds stderrthreshold TODO 2 logs at or above this threshold go to stderr when writing to files and stderr (no effect when -logtostderr=true or -alsologtostderr=false) stream-port TODO 10247 Port to use for the lua TCP/UDP endpoint configuration. sync-period TODO；默认关闭 - Period at which the controller forces the repopulation of its local object stores. sync-rate-limit TODO 0.3 Define the sync frequency upper limit tcp-services-configmap nginx stream tcp代理 tcp-services Name of the ConfigMap containing the definition of the TCP services to expose. The key in the map indicates the external port to be used. The value is a reference to a Service in the form “namespace/name:port”, where “port” can either be a port number or name. time-buckets TODO TODO Set of buckets which will be used for prometheus histogram metrics such as RequestTime, ResponseTime (default [0.005000,0.010000,0.025000,0.050000,0.100000,0.250000,0.500000,1.000000,2.500000,5.000000,10.000000]) udp-services-configmap nginx stream udp代理 udp-services Name of the ConfigMap containing the definition of the UDP services to expose. The key in the map indicates the external port to be used. The value is a reference to a Service in the form “namespace/name:port”, where “port” can either be a port name or number. update-status TODO true Update the load-balancer status of Ingress objects this controller satisfies. Requires setting the publish-service parameter to a valid Service reference. update-status-on-shutdown TODO true Update the load-balancer status of Ingress objects when the controller shuts down. Requires the update-status parameter. v 日志级别 - number for the log level verbosity validating-webhook 准入控制器验证ingress的配置 TODO The address to start an admission controller on to validate incoming ingresses. Takes the form “:port”. If not provided, no admission controller is started. validating-webhook-certificate 准入控制器的证书 TODO The path of the validating webhook certificate PEM. validating-webhook-key 准入控制器的证书 TODO The path of the validating webhook key PEM. vmodule TODO TODO comma-separated list of pattern=N settings for file-filtered logging watch-ingress-without-class TODO TODO Define if Ingress Controller should also watch for Ingresses without an IngressClass or the annotation specified watch-namespace TODO TODO Namespace the controller watches for updates to Kubernetes objects. This includes Ingresses, Services and all configuration resources. All namespaces are watched if this parameter is left empty. watch-namespace-selector TODO TODO Selector selects namespaces the controller watches for updates to Kubernetes objects. ConfigMap 配置参数 可以通过这个定制 nginx.conf 文件内容，里面填写的键值对对照数据结构 config.go 配置，由于 “ConfigMap” 里面只能是 string 类型，所以任何值需使用引号包含起来，如：&#34;128&#34;。如果是数组类型，则通过逗号分隔，如：&#34;192.168.30.0/24, 192.168.31.0/24&#34;">
+  <meta itemprop="datePublished" content="2022-09-11T11:13:40+08:00">
+  <meta itemprop="dateModified" content="2023-03-06T14:08:00+08:00">
+  <meta itemprop="wordCount" content="3703">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="User guide">
+  <meta name="twitter:description" content="版本信息 以下配置说明均基于官方版本 1.31 做说明。
 Support Versions table Ingress-NGINX version k8s supported version Alpine Version Nginx Version v1.3.1 1.24, 1.23, 1.22, 1.21, 1.20 3.16.2 1.19.10† v1.3.0 1.24, 1.23, 1.22, 1.21, 1.20 3.16.0 1.19.10† v1.1.1 1.23, 1.22, 1.21, 1.20, 1.19 3.14.2 1.19.9† v1.0.0 1.22, 1.21, 1.20, 1.19 3.13.5 1.20.1 安装部署 配置示例 参数解析 可用的Annotations 这里仅记录个人认为有比较有用处的几个注解，全部列表可以参考官方文档说明。
-在ingress上annotation的键值对只能是字符串类型，数字或布尔类型需通过引号包含，如：&ldquo;100&rdquo;, &ldquo;false&rdquo;。默认键前缀是&quot;nginx.ingress.kubernetes.io&quot;，由参数&quot;&ndash;annotations-prefix&quot;控制。
-名称 说明 默认值 可取值 nginx.ingress.kubernetes.io/app-root 当应用请求&quot;/&ldquo;时做302重定向的目标url - - nginx.ingress.kubernetes.io/affinity 用于保持会话连接 - cookie nginx.ingress.kubernetes.io/affinity-mode 同上 balanced &ldquo;balanced&rdquo; or &ldquo;persistent&rdquo; nginx."/>
+在ingress上annotation的键值对只能是字符串类型，数字或布尔类型需通过引号包含，如：“100”, “false”。默认键前缀是&#34;nginx.ingress.kubernetes.io&#34;，由参数&#34;–annotations-prefix&#34;控制。
+名称 说明 默认值 可取值 nginx.ingress.kubernetes.io/app-root 当应用请求&#34;/“时做302重定向的目标url - - nginx.ingress.kubernetes.io/affinity 用于保持会话连接 - cookie nginx.ingress.kubernetes.io/affinity-mode 同上 balanced “balanced” or “persistent” nginx.ingress.kubernetes.io/affinity-canary-behavior 同上 sticky “sticky” or “legacy” nginx.ingress.kubernetes.io/session-cookie-name 同上 INGRESSCOOKIE - nginx.ingress.kubernetes.io/session-cookie-path 同上 / - nginx.ingress.kubernetes.io/session-cookie-secure 同上；只能用https协议发送给服务器 false true, false nginx.ingress.kubernetes.io/session-cookie-samesite 同上；Chrome 51 开始，浏览器的 Cookie 新增加了一个SameSite属性，用来防止 CSRF 攻击 和用户追踪 - “None”, “Lax”, “Strict” nginx.ingress.kubernetes.io/session-cookie-conditional-samesite-none 同上 - “true”, “false” nginx.ingress.kubernetes.io/auth-type 认证 - “basic” or “digest” nginx.ingress.kubernetes.io/auth-secret 同上；存放认证&#34;secret&#34;资源的名称 - - nginx.ingress.kubernetes.io/auth-secret-type 同上；存放认证&#34;secret&#34;资源的格式 - “auth-file”, “auth-map” nginx.ingress.kubernetes.io/auth-realm 认证 - - nginx.ingress.kubernetes.io/canary 灰度、金丝雀发布 - “true” or “false” nginx.ingress.kubernetes.io/canary-by-header 同上，基于HTTP请求头的流量调度，这里对于请求头名称，对应值可取&#34;always&#34;或&#34;never” - - nginx.ingress.kubernetes.io/canary-by-header-value 同上，自定义匹配请求头的值，以代替&#34;always&#34;与&#34;never&#34; - - nginx.ingress.kubernetes.io/canary-by-header-pattern 同上 - - nginx.ingress.kubernetes.io/canary-by-cookie 同上，基于Cookie的流量调度，这里对应cookie名称，对应值可取&#34;always&#34;或&#34;never&#34; - - nginx.ingress.kubernetes.io/canary-weight 同上，流量调度到灰度副本的权重，填写数字如：30 - - nginx.ingress.kubernetes.io/canary-weight-total 同上，总权重是多少，配合上面使用 - 100 [nginx.ingress.kubernetes.io/client-body-buffer-size] TODO; HTTP请求体缓冲区大小，如果请求超过这个值会写入nginx配置的temp_path做个缓冲 - 8k [nginx.ingress.kubernetes.io/configuration-snippet] TODO; 可自定义nginx配置，比较危险，建议关闭 - - [nginx.ingress.kubernetes.io/server-snippet] TODO; 可自定义nginx配置，比较危险，建议关闭 - - [nginx.ingress.kubernetes.io/stream-snippet] TODO; 可自定义nginx配置，比较危险，建议关闭 - - [nginx.ingress.kubernetes.io/custom-http-errors] TODO; 设置 proxy-intercept-errors - - [nginx.ingress.kubernetes.io/default-backend] TODO；访问该ingress如果后端没有活跃地址，则转发至同空间下配置的服务名, 优先级高于全局配置 - - [nginx.ingress.kubernetes.io/enable-cors] TODO; 开启跨域 - - [nginx.ingress.kubernetes.io/force-ssl-redirect] TODO; 如果该ingress开启ssl，是否强制跳转http，通过http状态码308 - - [nginx.ingress.kubernetes.io/ssl-redirect] TODO; - - [nginx.ingress.kubernetes.io/from-to-www-redirect] TODO; - - [nginx.ingress.kubernetes.io/permanent-redirect] TODO; - - [nginx.ingress.kubernetes.io/permanent-redirect-code] TODO; - - [nginx.ingress.kubernetes.io/temporal-redirect] TODO; - - [nginx.ingress.kubernetes.io/preserve-trailing-slash] TODO; - - [nginx.ingress.kubernetes.io/enable-rewrite-log] TODO; 是否开启rewrite日志，默认为关闭 - - [nginx.ingress.kubernetes.io/rewrite-target] TODO; - - [nginx.ingress.kubernetes.io/http2-push-preload] TODO; HTTP2推送预加载 - - [nginx.ingress.kubernetes.io/limit-connections] TODO; 请求限制 - - [nginx.ingress.kubernetes.io/proxy-body-size] TODO; 代理配置 - - [nginx.ingress.kubernetes.io/upstream-hash-by] TODO; 代理后段算法 - - [nginx.ingress.kubernetes.io/load-balance] TODO; 代理后段算法 - - [nginx.ingress.kubernetes.io/satisfy] TODO; 不清楚用途 - - [nginx.ingress.kubernetes.io/server-alias] TODO; 设置别名，不能冲突 - - [nginx.ingress.kubernetes.io/ssl-passthrough] TODO; “false” “true” or “false” [nginx.ingress.kubernetes.io/x-forwarded-prefix] TODO; - - [nginx.ingress.kubernetes.io/upstream-vhost] TODO; - - [nginx.ingress.kubernetes.io/enable-access-log] TODO; - - [nginx.ingress.kubernetes.io/enable-opentracing] TODO; - - [nginx.ingress.kubernetes.io/opentracing-trust-incoming-span] TODO; - - [nginx.ingress.kubernetes.io/enable-influxdb] 写入性能数据至influxdb，在k8s上使用prometheus，这个不建议开启 “false” “true” or “false” [nginx.ingress.kubernetes.io/influxdb-measurement] 同上 - - [nginx.ingress.kubernetes.io/influxdb-port] 同上 - - [nginx.ingress.kubernetes.io/influxdb-host] 同上 - - [nginx.ingress.kubernetes.io/influxdb-server-name] 同上 - - [nginx.ingress.kubernetes.io/use-regex] TODO; - - [nginx.ingress.kubernetes.io/enable-modsecurity] 开启modsecurity，仅在专用集群使用，业务集群不开启 ｜ - ｜ - ｜ [nginx.ingress.kubernetes.io/enable-owasp-core-rules] 同上 - - [nginx.ingress.kubernetes.io/modsecurity-transaction-id] 同上 - - [nginx.ingress.kubernetes.io/modsecurity-snippet] 同上 - - [nginx.ingress.kubernetes.io/mirror-request-body] TODO；镜像 - - [nginx.ingress.kubernetes.io/mirror-target] 同上 - - [nginx.ingress.kubernetes.io/mirror-host] 同上 - - 命令行参数 名称 说明 默认值 原始HELP add_dir_header TODO TODO If true, adds the file directory to the header of the log messages alsologtostderr 错误输出终端，同时写入也文件 - log to standard error as well as files (no effect when -logtostderr=true) annotations-prefix ingress使用注解的标签前缀 nginx.ingress.kubernetes.io Prefix of the Ingress annotations specific to the NGINX controller. (default “nginx.ingress.kubernetes.io”) apiserver-host 连接的api server地址 kubernetes.default.svc Takes the form “protocol://address:port”. If not specified, it is assumed the program runs inside a Kubernetes cluster and local discovery is attempted. certificate-authority ca证书，验证api server的https - Path to a cert file for the certificate authority. This certificate is used only when the flag –apiserver-host is specified. configmap 用于控制器全局的ConfigMap配置名 nginx-configuration Name of the ConfigMap containing custom global configurations for the controller. controller-class TODO k8s.io/ingress-nginx Ingress Class Controller value this Ingress satisfies. The class of an Ingress object is set using the field IngressClassName in Kubernetes clusters version v1.19.0 or higher. The .spec.controller value of the IngressClass referenced in an Ingress Object should be the same value specified here to make this object be watched. deep-inspect TODO true Enables ingress object security deep inspector (default true) default-backend-service 处理查询到的主机，流量转发的后段服务 $(POD_NAMESPACE)/ingress-nginx-defaultbackend Service used to serve HTTP requests not matching any known server name (catch-all). Takes the form “namespace/name”. The controller configures NGINX to forward requests to the first port of this Service. default-server-port TODO 8181 Port to use for exposing the default server (catch-all). default-ssl-certificate TODO - Secret containing a SSL certificate to be used by the default HTTPS server disable-catch-all TODO - Disable support for catch-all Ingresses disable-full-test TODO；默认开启 - Disable full test of all merged ingresses at the admission stage and tests the template of the ingress being created or updated disable-svc-external-name TODO - Disable support for Services of type ExternalName dynamic-configuration-retries TODO 15 Number of times to retry failed dynamic configuration before failing to sync an ingress. election-id 解决多副本同时更新状态，使用的选举id锁 ingress-controller-leader Election id to use for Ingress status updates. enable-metrics 开启nginx的prometheus类型性能指标，影响性能，高并发下可以考虑关闭 true Enables the collection of NGINX metrics enable-ssl-chain-completion TODO - Autocomplete SSL certificate chains with missing intermediate CA certificates. Certificates uploaded to Kubernetes must have the “Authority Information Access” X.509 v3 extension for this to succeed. enable-ssl-passthrough TODO - Enable SSL Passthrough. health-check-path 健康检测的url地址 /healthz URL path of the health check endpoint. Configured inside the NGINX status server. All requests received on the port defined by the healthz-port parameter are forwarded internally to this path. health-check-timeout 健康检测超时时间，秒 10 Time limit, in seconds, for a probe to health-check-path to succeed. healthz-host 健康检测主机地址 - Address to bind the healthz endpoint. healthz-port 健康检测端口 10254 Port to use for the healthz endpoint. http-port 接收http协议流量的端口 80 Port to use for servicing HTTP traffic. https-port 接收https协议流量的端口 80 Port to use for servicing HTTPS traffic. ingress-class 已被废弃；TODO - Name of the ingress class this controller satisfies. The class of an Ingress object is set using the annotation “kubernetes.io/ingress.class”. The parameter –controller-class has precedence over this. ingress-class-by-name TODO TODO Define if Ingress Controller should watch for Ingress Class by Name together with Controller Class internal-logger-address TODO 127.0.0.1:11514 Address to be used when binding internal syslogger kubeconfig 连接api server的信息 - Path to a kubeconfig file containing authorization and API server information. length-buckets TODO - Set of buckets which will be used for prometheus histogram metrics such as RequestLength, ResponseLength. ([10.000000,20.000000,30.000000,40.000000,50.000000,60.000000,70.000000,80.000000,90.000000,100.000000]) log_backtrace_at TODO 0 when logging hits line file:N, emit a stack trace log_dir 日志目录 - If non-empty, write log files in this directory (no effect when -logtostderr=true) log_file 日志文件名 - If non-empty, use this log file (no effect when -logtostderr=true) log_file_max_size 日志文件最大值，单位：MB 1800MB Defines the maximum size a log file can grow to (no effect when -logtostderr=true). Unit is megabytes. If the value is 0, the maximum file size is unlimited. logtostderr 日志输出到终端 true log to standard error instead of files maxmind-edition-ids TODO - Maxmind edition ids to download GeoLite2 Databases. (default “GeoLite2-City,GeoLite2-ASN”) maxmind-license-key TODO - Maxmind license key to download GeoLite2 Databases. maxmind-mirror TODO - Maxmind mirror url (example: http://geoip.local/databases maxmind-retries-count TODO 1 Number of attempts to download the GeoIP DB. maxmind-retries-timeout TODO 0s Maxmind downloading delay between 1st and 2nd attempt, 0s - do not retry to download if something went wrong. metrics-per-host TODO true Export metrics per-host monitor-max-batch-size TODO 10000 Max batch size of NGINX metrics one_output TODO TODO If true, only write logs to their native severity level post-shutdown-grace-period TODO 10 Seconds to wait after the nginx process has stopped before controller exits. profiler-port 控制器对外提供的profiler端口地址 10245 Port to use for expose the ingress controller Go profiler when it is enabled. profiling 是否开启pprof true Enable profiling via web interface host:port/debug/pprof/ publish-service 各个 ingress.status 的 Address 地址，监听命名空间下服务，格式为：“namespace/name”，一般仅在公有云环境使用 TODO Service fronting the Ingress controller. Takes the form “namespace/name”. When used together with update-status, the controller mirrors the address of this service’s endpoints to the load-balancer status of all Ingress objects it satisfies. publish-status-address 功能同&#34;publish-service&#34;，有人工预先分配 TODO Customized address (or addresses, separated by comma) to set as the load-balancer status of Ingress objects this controller satisfies. Requires the update-status parameter. report-node-internal-ip-address 功能同&#34;publish-service&#34;，使用当前 controler 部署节点的IP，一般在私有云使用 TODO Set the load-balancer status of Ingress objects to internal Node addresses instead of external. report-status-classes TODO TODO Use status classes (2xx, 3xx, 4xx and 5xx) instead of status codes in metrics shutdown-grace-period TODO TODO Seconds to wait after receiving the shutdown signal, before stopping the nginx process. size-buckets TODO TODO Set of buckets which will be used for prometheus histogram metrics such as BytesSent (default [10.000000,100.000000,1000.000000,10000.000000,100000.000000,1000000.000000,10000000.000000]) skip_headers TODO TODO If true, avoid header prefixes in the log messages skip_log_headers TODO TODO If true, avoid headers when opening log files (no effect when -logtostderr=true) ssl-passthrough-proxy-port TODO 442 Port to use internally for SSL Passthrough. status-port TODO 10246 Port to use for the lua HTTP endpoint configuration. status-update-interval TODO 60 Time interval in seconds in which the status should check if an update is required. Default is 60 seconds stderrthreshold TODO 2 logs at or above this threshold go to stderr when writing to files and stderr (no effect when -logtostderr=true or -alsologtostderr=false) stream-port TODO 10247 Port to use for the lua TCP/UDP endpoint configuration. sync-period TODO；默认关闭 - Period at which the controller forces the repopulation of its local object stores. sync-rate-limit TODO 0.3 Define the sync frequency upper limit tcp-services-configmap nginx stream tcp代理 tcp-services Name of the ConfigMap containing the definition of the TCP services to expose. The key in the map indicates the external port to be used. The value is a reference to a Service in the form “namespace/name:port”, where “port” can either be a port number or name. time-buckets TODO TODO Set of buckets which will be used for prometheus histogram metrics such as RequestTime, ResponseTime (default [0.005000,0.010000,0.025000,0.050000,0.100000,0.250000,0.500000,1.000000,2.500000,5.000000,10.000000]) udp-services-configmap nginx stream udp代理 udp-services Name of the ConfigMap containing the definition of the UDP services to expose. The key in the map indicates the external port to be used. The value is a reference to a Service in the form “namespace/name:port”, where “port” can either be a port name or number. update-status TODO true Update the load-balancer status of Ingress objects this controller satisfies. Requires setting the publish-service parameter to a valid Service reference. update-status-on-shutdown TODO true Update the load-balancer status of Ingress objects when the controller shuts down. Requires the update-status parameter. v 日志级别 - number for the log level verbosity validating-webhook 准入控制器验证ingress的配置 TODO The address to start an admission controller on to validate incoming ingresses. Takes the form “:port”. If not provided, no admission controller is started. validating-webhook-certificate 准入控制器的证书 TODO The path of the validating webhook certificate PEM. validating-webhook-key 准入控制器的证书 TODO The path of the validating webhook key PEM. vmodule TODO TODO comma-separated list of pattern=N settings for file-filtered logging watch-ingress-without-class TODO TODO Define if Ingress Controller should also watch for Ingresses without an IngressClass or the annotation specified watch-namespace TODO TODO Namespace the controller watches for updates to Kubernetes objects. This includes Ingresses, Services and all configuration resources. All namespaces are watched if this parameter is left empty. watch-namespace-selector TODO TODO Selector selects namespaces the controller watches for updates to Kubernetes objects. ConfigMap 配置参数 可以通过这个定制 nginx.conf 文件内容，里面填写的键值对对照数据结构 config.go 配置，由于 “ConfigMap” 里面只能是 string 类型，所以任何值需使用引号包含起来，如：&#34;128&#34;。如果是数组类型，则通过逗号分隔，如：&#34;192.168.30.0/24, 192.168.31.0/24&#34;">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1057,6 +1053,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3090,9 +3103,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3106,10 +3119,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3169,6 +3385,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4325,40 +4600,40 @@ if (!doNotTrack) {
 <p>以下配置说明均基于官方版本 1.31 做说明。</p>
 <h3 id="support-versions-table">Support Versions table</h3>
 <table>
-<thead>
-<tr>
-<th>Ingress-NGINX version</th>
-<th>k8s supported version</th>
-<th>Alpine Version</th>
-<th>Nginx Version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>v1.3.1</td>
-<td>1.24, 1.23, 1.22, 1.21, 1.20</td>
-<td>3.16.2</td>
-<td>1.19.10†</td>
-</tr>
-<tr>
-<td>v1.3.0</td>
-<td>1.24, 1.23, 1.22, 1.21, 1.20</td>
-<td>3.16.0</td>
-<td>1.19.10†</td>
-</tr>
-<tr>
-<td>v1.1.1</td>
-<td>1.23, 1.22, 1.21, 1.20, 1.19</td>
-<td>3.14.2</td>
-<td>1.19.9†</td>
-</tr>
-<tr>
-<td>v1.0.0</td>
-<td>1.22, 1.21, 1.20, 1.19</td>
-<td>3.13.5</td>
-<td>1.20.1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Ingress-NGINX version</th>
+          <th>k8s supported version</th>
+          <th>Alpine Version</th>
+          <th>Nginx Version</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>v1.3.1</td>
+          <td>1.24, 1.23, 1.22, 1.21, 1.20</td>
+          <td>3.16.2</td>
+          <td>1.19.10†</td>
+      </tr>
+      <tr>
+          <td>v1.3.0</td>
+          <td>1.24, 1.23, 1.22, 1.21, 1.20</td>
+          <td>3.16.0</td>
+          <td>1.19.10†</td>
+      </tr>
+      <tr>
+          <td>v1.1.1</td>
+          <td>1.23, 1.22, 1.21, 1.20, 1.19</td>
+          <td>3.14.2</td>
+          <td>1.19.9†</td>
+      </tr>
+      <tr>
+          <td>v1.0.0</td>
+          <td>1.22, 1.21, 1.20, 1.19</td>
+          <td>3.13.5</td>
+          <td>1.20.1</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="安装部署">安装部署</h2>
 <h2 id="配置示例">配置示例</h2>
@@ -4373,845 +4648,845 @@ if (!doNotTrack) {
 </blockquote>
 </blockquote>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>说明</th>
-<th>默认值</th>
-<th>可取值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#app-root">nginx.ingress.kubernetes.io/app-root</a></td>
-<td>当应用请求&quot;/&ldquo;时做302重定向的目标url</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td><a href="#affinity">nginx.ingress.kubernetes.io/affinity</a></td>
-<td>用于保持会话连接</td>
-<td>-</td>
-<td>cookie</td>
-</tr>
-<tr>
-<td><a href="#affinity">nginx.ingress.kubernetes.io/affinity-mode</a></td>
-<td>同上</td>
-<td>balanced</td>
-<td>&ldquo;balanced&rdquo; or &ldquo;persistent&rdquo;</td>
-</tr>
-<tr>
-<td><a href="#affinity">nginx.ingress.kubernetes.io/affinity-canary-behavior</a></td>
-<td>同上</td>
-<td>sticky</td>
-<td>&ldquo;sticky&rdquo; or &ldquo;legacy&rdquo;</td>
-</tr>
-<tr>
-<td><a href="#affinity">nginx.ingress.kubernetes.io/session-cookie-name</a></td>
-<td>同上</td>
-<td>INGRESSCOOKIE</td>
-<td>-</td>
-</tr>
-<tr>
-<td><a href="#affinity">nginx.ingress.kubernetes.io/session-cookie-path</a></td>
-<td>同上</td>
-<td>/</td>
-<td>-</td>
-</tr>
-<tr>
-<td><a href="#affinity">nginx.ingress.kubernetes.io/session-cookie-secure</a></td>
-<td>同上；只能用https协议发送给服务器</td>
-<td>false</td>
-<td>true, false</td>
-</tr>
-<tr>
-<td><a href="#affinity">nginx.ingress.kubernetes.io/session-cookie-samesite</a></td>
-<td>同上；Chrome 51 开始，浏览器的 Cookie 新增加了一个SameSite属性，用来防止 CSRF 攻击 和用户追踪</td>
-<td>-</td>
-<td>&ldquo;None&rdquo;, &ldquo;Lax&rdquo;, &ldquo;Strict&rdquo;</td>
-</tr>
-<tr>
-<td><a href="#affinity">nginx.ingress.kubernetes.io/session-cookie-conditional-samesite-none</a></td>
-<td>同上</td>
-<td>-</td>
-<td>&ldquo;true&rdquo;, &ldquo;false&rdquo;</td>
-</tr>
-<tr>
-<td><a href="#auth">nginx.ingress.kubernetes.io/auth-type</a></td>
-<td>认证</td>
-<td>-</td>
-<td>&ldquo;basic&rdquo; or &ldquo;digest&rdquo;</td>
-</tr>
-<tr>
-<td><a href="#auth">nginx.ingress.kubernetes.io/auth-secret</a></td>
-<td>同上；存放认证&quot;secret&quot;资源的名称</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td><a href="#auth">nginx.ingress.kubernetes.io/auth-secret-type</a></td>
-<td>同上；存放认证&quot;secret&quot;资源的格式</td>
-<td>-</td>
-<td>&ldquo;auth-file&rdquo;, &ldquo;auth-map&rdquo;</td>
-</tr>
-<tr>
-<td><a href="#auth">nginx.ingress.kubernetes.io/auth-realm</a></td>
-<td>认证</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td><a href="#canary">nginx.ingress.kubernetes.io/canary</a></td>
-<td>灰度、金丝雀发布</td>
-<td>-</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-</tr>
-<tr>
-<td><a href="#canary">nginx.ingress.kubernetes.io/canary-by-header</a></td>
-<td>同上，基于HTTP请求头的流量调度，这里对于请求头名称，对应值可取&quot;always&quot;或&quot;never&rdquo;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td><a href="#canary">nginx.ingress.kubernetes.io/canary-by-header-value</a></td>
-<td>同上，自定义匹配请求头的值，以代替&quot;always&quot;与&quot;never&quot;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td><a href="#canary">nginx.ingress.kubernetes.io/canary-by-header-pattern</a></td>
-<td>同上</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td><a href="#canary">nginx.ingress.kubernetes.io/canary-by-cookie</a></td>
-<td>同上，基于Cookie的流量调度，这里对应cookie名称，对应值可取&quot;always&quot;或&quot;never&quot;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td><a href="#canary">nginx.ingress.kubernetes.io/canary-weight</a></td>
-<td>同上，流量调度到灰度副本的权重，填写数字如：30</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td><a href="#canary">nginx.ingress.kubernetes.io/canary-weight-total</a></td>
-<td>同上，总权重是多少，配合上面使用</td>
-<td>-</td>
-<td>100</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/client-body-buffer-size]</td>
-<td>TODO; HTTP请求体缓冲区大小，如果请求超过这个值会写入nginx配置的temp_path做个缓冲</td>
-<td>-</td>
-<td>8k</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/configuration-snippet]</td>
-<td>TODO; 可自定义nginx配置，比较危险，建议关闭</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/server-snippet]</td>
-<td>TODO; 可自定义nginx配置，比较危险，建议关闭</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/stream-snippet]</td>
-<td>TODO; 可自定义nginx配置，比较危险，建议关闭</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/custom-http-errors]</td>
-<td>TODO; 设置 proxy-intercept-errors</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/default-backend]</td>
-<td>TODO；访问该ingress如果后端没有活跃地址，则转发至同空间下配置的服务名, 优先级高于全局配置</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/enable-cors]</td>
-<td>TODO; 开启跨域</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/force-ssl-redirect]</td>
-<td>TODO; 如果该ingress开启ssl，是否强制跳转http，通过http状态码308</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/ssl-redirect]</td>
-<td>TODO;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/from-to-www-redirect]</td>
-<td>TODO;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/permanent-redirect]</td>
-<td>TODO;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/permanent-redirect-code]</td>
-<td>TODO;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/temporal-redirect]</td>
-<td>TODO;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/preserve-trailing-slash]</td>
-<td>TODO;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/enable-rewrite-log] TODO; 是否开启rewrite日志，默认为关闭</td>
-<td>-</td>
-<td>-</td>
-<td></td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/rewrite-target]</td>
-<td>TODO;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/http2-push-preload]</td>
-<td>TODO; HTTP2推送预加载</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/limit-connections]</td>
-<td>TODO; 请求限制</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/proxy-body-size]</td>
-<td>TODO; 代理配置</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/upstream-hash-by]</td>
-<td>TODO; 代理后段算法</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/load-balance]</td>
-<td>TODO; 代理后段算法</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/satisfy]</td>
-<td>TODO; 不清楚用途</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/server-alias]</td>
-<td>TODO; 设置别名，不能冲突</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/ssl-passthrough]</td>
-<td>TODO;</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/x-forwarded-prefix]</td>
-<td>TODO;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/upstream-vhost]</td>
-<td>TODO;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/enable-access-log]</td>
-<td>TODO;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/enable-opentracing]</td>
-<td>TODO;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/opentracing-trust-incoming-span]</td>
-<td>TODO;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/enable-influxdb]</td>
-<td>写入性能数据至influxdb，在k8s上使用prometheus，这个不建议开启</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/influxdb-measurement]</td>
-<td>同上</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/influxdb-port]</td>
-<td>同上</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/influxdb-host]</td>
-<td>同上</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/influxdb-server-name]</td>
-<td>同上</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/use-regex]</td>
-<td>TODO;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/enable-modsecurity]</td>
-<td>开启modsecurity，仅在专用集群使用，业务集群不开启 ｜ - ｜ - ｜</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/enable-owasp-core-rules]</td>
-<td>同上</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/modsecurity-transaction-id]</td>
-<td>同上</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/modsecurity-snippet]</td>
-<td>同上</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/mirror-request-body]</td>
-<td>TODO；镜像</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/mirror-target]</td>
-<td>同上</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>[nginx.ingress.kubernetes.io/mirror-host]</td>
-<td>同上</td>
-<td>-</td>
-<td>-</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>说明</th>
+          <th>默认值</th>
+          <th>可取值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#app-root">nginx.ingress.kubernetes.io/app-root</a></td>
+          <td>当应用请求&quot;/&ldquo;时做302重定向的目标url</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#affinity">nginx.ingress.kubernetes.io/affinity</a></td>
+          <td>用于保持会话连接</td>
+          <td>-</td>
+          <td>cookie</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#affinity">nginx.ingress.kubernetes.io/affinity-mode</a></td>
+          <td>同上</td>
+          <td>balanced</td>
+          <td>&ldquo;balanced&rdquo; or &ldquo;persistent&rdquo;</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#affinity">nginx.ingress.kubernetes.io/affinity-canary-behavior</a></td>
+          <td>同上</td>
+          <td>sticky</td>
+          <td>&ldquo;sticky&rdquo; or &ldquo;legacy&rdquo;</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#affinity">nginx.ingress.kubernetes.io/session-cookie-name</a></td>
+          <td>同上</td>
+          <td>INGRESSCOOKIE</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#affinity">nginx.ingress.kubernetes.io/session-cookie-path</a></td>
+          <td>同上</td>
+          <td>/</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#affinity">nginx.ingress.kubernetes.io/session-cookie-secure</a></td>
+          <td>同上；只能用https协议发送给服务器</td>
+          <td>false</td>
+          <td>true, false</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#affinity">nginx.ingress.kubernetes.io/session-cookie-samesite</a></td>
+          <td>同上；Chrome 51 开始，浏览器的 Cookie 新增加了一个SameSite属性，用来防止 CSRF 攻击 和用户追踪</td>
+          <td>-</td>
+          <td>&ldquo;None&rdquo;, &ldquo;Lax&rdquo;, &ldquo;Strict&rdquo;</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#affinity">nginx.ingress.kubernetes.io/session-cookie-conditional-samesite-none</a></td>
+          <td>同上</td>
+          <td>-</td>
+          <td>&ldquo;true&rdquo;, &ldquo;false&rdquo;</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#auth">nginx.ingress.kubernetes.io/auth-type</a></td>
+          <td>认证</td>
+          <td>-</td>
+          <td>&ldquo;basic&rdquo; or &ldquo;digest&rdquo;</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#auth">nginx.ingress.kubernetes.io/auth-secret</a></td>
+          <td>同上；存放认证&quot;secret&quot;资源的名称</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#auth">nginx.ingress.kubernetes.io/auth-secret-type</a></td>
+          <td>同上；存放认证&quot;secret&quot;资源的格式</td>
+          <td>-</td>
+          <td>&ldquo;auth-file&rdquo;, &ldquo;auth-map&rdquo;</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#auth">nginx.ingress.kubernetes.io/auth-realm</a></td>
+          <td>认证</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#canary">nginx.ingress.kubernetes.io/canary</a></td>
+          <td>灰度、金丝雀发布</td>
+          <td>-</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#canary">nginx.ingress.kubernetes.io/canary-by-header</a></td>
+          <td>同上，基于HTTP请求头的流量调度，这里对于请求头名称，对应值可取&quot;always&quot;或&quot;never&rdquo;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#canary">nginx.ingress.kubernetes.io/canary-by-header-value</a></td>
+          <td>同上，自定义匹配请求头的值，以代替&quot;always&quot;与&quot;never&quot;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#canary">nginx.ingress.kubernetes.io/canary-by-header-pattern</a></td>
+          <td>同上</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#canary">nginx.ingress.kubernetes.io/canary-by-cookie</a></td>
+          <td>同上，基于Cookie的流量调度，这里对应cookie名称，对应值可取&quot;always&quot;或&quot;never&quot;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#canary">nginx.ingress.kubernetes.io/canary-weight</a></td>
+          <td>同上，流量调度到灰度副本的权重，填写数字如：30</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/component/ingress-nginx/user-guide/#canary">nginx.ingress.kubernetes.io/canary-weight-total</a></td>
+          <td>同上，总权重是多少，配合上面使用</td>
+          <td>-</td>
+          <td>100</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/client-body-buffer-size]</td>
+          <td>TODO; HTTP请求体缓冲区大小，如果请求超过这个值会写入nginx配置的temp_path做个缓冲</td>
+          <td>-</td>
+          <td>8k</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/configuration-snippet]</td>
+          <td>TODO; 可自定义nginx配置，比较危险，建议关闭</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/server-snippet]</td>
+          <td>TODO; 可自定义nginx配置，比较危险，建议关闭</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/stream-snippet]</td>
+          <td>TODO; 可自定义nginx配置，比较危险，建议关闭</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/custom-http-errors]</td>
+          <td>TODO; 设置 proxy-intercept-errors</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/default-backend]</td>
+          <td>TODO；访问该ingress如果后端没有活跃地址，则转发至同空间下配置的服务名, 优先级高于全局配置</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/enable-cors]</td>
+          <td>TODO; 开启跨域</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/force-ssl-redirect]</td>
+          <td>TODO; 如果该ingress开启ssl，是否强制跳转http，通过http状态码308</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/ssl-redirect]</td>
+          <td>TODO;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/from-to-www-redirect]</td>
+          <td>TODO;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/permanent-redirect]</td>
+          <td>TODO;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/permanent-redirect-code]</td>
+          <td>TODO;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/temporal-redirect]</td>
+          <td>TODO;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/preserve-trailing-slash]</td>
+          <td>TODO;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/enable-rewrite-log] TODO; 是否开启rewrite日志，默认为关闭</td>
+          <td>-</td>
+          <td>-</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/rewrite-target]</td>
+          <td>TODO;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/http2-push-preload]</td>
+          <td>TODO; HTTP2推送预加载</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/limit-connections]</td>
+          <td>TODO; 请求限制</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/proxy-body-size]</td>
+          <td>TODO; 代理配置</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/upstream-hash-by]</td>
+          <td>TODO; 代理后段算法</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/load-balance]</td>
+          <td>TODO; 代理后段算法</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/satisfy]</td>
+          <td>TODO; 不清楚用途</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/server-alias]</td>
+          <td>TODO; 设置别名，不能冲突</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/ssl-passthrough]</td>
+          <td>TODO;</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/x-forwarded-prefix]</td>
+          <td>TODO;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/upstream-vhost]</td>
+          <td>TODO;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/enable-access-log]</td>
+          <td>TODO;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/enable-opentracing]</td>
+          <td>TODO;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/opentracing-trust-incoming-span]</td>
+          <td>TODO;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/enable-influxdb]</td>
+          <td>写入性能数据至influxdb，在k8s上使用prometheus，这个不建议开启</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/influxdb-measurement]</td>
+          <td>同上</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/influxdb-port]</td>
+          <td>同上</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/influxdb-host]</td>
+          <td>同上</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/influxdb-server-name]</td>
+          <td>同上</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/use-regex]</td>
+          <td>TODO;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/enable-modsecurity]</td>
+          <td>开启modsecurity，仅在专用集群使用，业务集群不开启 ｜ - ｜ - ｜</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/enable-owasp-core-rules]</td>
+          <td>同上</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/modsecurity-transaction-id]</td>
+          <td>同上</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/modsecurity-snippet]</td>
+          <td>同上</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/mirror-request-body]</td>
+          <td>TODO；镜像</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/mirror-target]</td>
+          <td>同上</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>[nginx.ingress.kubernetes.io/mirror-host]</td>
+          <td>同上</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="命令行参数">命令行参数</h3>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>说明</th>
-<th>默认值</th>
-<th>原始HELP</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>add_dir_header</td>
-<td>TODO</td>
-<td>TODO</td>
-<td>If true, adds the file directory to the header of the log messages</td>
-</tr>
-<tr>
-<td>alsologtostderr</td>
-<td>错误输出终端，同时写入也文件</td>
-<td>-</td>
-<td>log to standard error as well as files (no effect when -logtostderr=true)</td>
-</tr>
-<tr>
-<td>annotations-prefix</td>
-<td>ingress使用注解的标签前缀</td>
-<td>nginx.ingress.kubernetes.io</td>
-<td>Prefix of the Ingress annotations specific to the NGINX controller. (default &ldquo;nginx.ingress.kubernetes.io&rdquo;)</td>
-</tr>
-<tr>
-<td>apiserver-host</td>
-<td>连接的api server地址</td>
-<td>kubernetes.default.svc</td>
-<td>Takes the form &ldquo;protocol://address:port&rdquo;. If not specified, it is assumed the program runs inside a Kubernetes cluster and local discovery is attempted.</td>
-</tr>
-<tr>
-<td>certificate-authority</td>
-<td>ca证书，验证api server的https</td>
-<td>-</td>
-<td>Path to a cert file for the certificate authority. This certificate is used only when the flag &ndash;apiserver-host is specified.</td>
-</tr>
-<tr>
-<td>configmap</td>
-<td>用于控制器全局的ConfigMap配置名</td>
-<td>nginx-configuration</td>
-<td>Name of the ConfigMap containing custom global configurations for the controller.</td>
-</tr>
-<tr>
-<td>controller-class</td>
-<td>TODO</td>
-<td>k8s.io/ingress-nginx</td>
-<td>Ingress Class Controller value this Ingress satisfies. The class of an Ingress object is set using the field IngressClassName in Kubernetes clusters version v1.19.0 or higher. The .spec.controller value of the IngressClass referenced in an Ingress Object should be the same value specified here to make this object be watched.</td>
-</tr>
-<tr>
-<td>deep-inspect</td>
-<td>TODO</td>
-<td>true</td>
-<td>Enables ingress object security deep inspector (default true)</td>
-</tr>
-<tr>
-<td>default-backend-service</td>
-<td>处理查询到的主机，流量转发的后段服务</td>
-<td>$(POD_NAMESPACE)/ingress-nginx-defaultbackend</td>
-<td>Service used to serve HTTP requests not matching any known server name (catch-all). Takes the form &ldquo;namespace/name&rdquo;. The controller configures NGINX to forward requests to the first port of this Service.</td>
-</tr>
-<tr>
-<td>default-server-port</td>
-<td>TODO</td>
-<td>8181</td>
-<td>Port to use for exposing the default server (catch-all).</td>
-</tr>
-<tr>
-<td>default-ssl-certificate</td>
-<td>TODO</td>
-<td>-</td>
-<td>Secret containing a SSL certificate to be used by the default HTTPS server</td>
-</tr>
-<tr>
-<td>disable-catch-all</td>
-<td>TODO</td>
-<td>-</td>
-<td>Disable support for catch-all Ingresses</td>
-</tr>
-<tr>
-<td>disable-full-test</td>
-<td>TODO；默认开启</td>
-<td>-</td>
-<td>Disable full test of all merged ingresses at the admission stage and tests the template of the ingress being created or updated</td>
-</tr>
-<tr>
-<td>disable-svc-external-name</td>
-<td>TODO</td>
-<td>-</td>
-<td>Disable support for Services of type ExternalName</td>
-</tr>
-<tr>
-<td>dynamic-configuration-retries</td>
-<td>TODO</td>
-<td>15</td>
-<td>Number of times to retry failed dynamic configuration before failing to sync an ingress.</td>
-</tr>
-<tr>
-<td>election-id</td>
-<td>解决多副本同时更新状态，使用的选举id锁</td>
-<td>ingress-controller-leader</td>
-<td>Election id to use for Ingress status updates.</td>
-</tr>
-<tr>
-<td>enable-metrics</td>
-<td>开启nginx的prometheus类型性能指标，影响性能，高并发下可以考虑关闭</td>
-<td>true</td>
-<td>Enables the collection of NGINX metrics</td>
-</tr>
-<tr>
-<td>enable-ssl-chain-completion</td>
-<td>TODO</td>
-<td>-</td>
-<td>Autocomplete SSL certificate chains with missing intermediate CA certificates. Certificates uploaded to Kubernetes must have the &ldquo;Authority Information Access&rdquo; X.509 v3 extension for this to succeed.</td>
-</tr>
-<tr>
-<td>enable-ssl-passthrough</td>
-<td>TODO</td>
-<td>-</td>
-<td>Enable SSL Passthrough.</td>
-</tr>
-<tr>
-<td>health-check-path</td>
-<td>健康检测的url地址</td>
-<td>/healthz</td>
-<td>URL path of the health check endpoint. Configured inside the NGINX status server. All requests received on the port defined by the healthz-port parameter are forwarded internally to this path.</td>
-</tr>
-<tr>
-<td>health-check-timeout</td>
-<td>健康检测超时时间，秒</td>
-<td>10</td>
-<td>Time limit, in seconds, for a probe to health-check-path to succeed.</td>
-</tr>
-<tr>
-<td>healthz-host</td>
-<td>健康检测主机地址</td>
-<td>-</td>
-<td>Address to bind the healthz endpoint.</td>
-</tr>
-<tr>
-<td>healthz-port</td>
-<td>健康检测端口</td>
-<td>10254</td>
-<td>Port to use for the healthz endpoint.</td>
-</tr>
-<tr>
-<td>http-port</td>
-<td>接收http协议流量的端口</td>
-<td>80</td>
-<td>Port to use for servicing HTTP traffic.</td>
-</tr>
-<tr>
-<td>https-port</td>
-<td>接收https协议流量的端口</td>
-<td>80</td>
-<td>Port to use for servicing HTTPS traffic.</td>
-</tr>
-<tr>
-<td>ingress-class</td>
-<td>已被废弃；TODO</td>
-<td>-</td>
-<td>Name of the ingress class this controller satisfies. The class of an Ingress object is set using the annotation &ldquo;kubernetes.io/ingress.class&rdquo;. The parameter &ndash;controller-class has precedence over this.</td>
-</tr>
-<tr>
-<td>ingress-class-by-name</td>
-<td>TODO</td>
-<td>TODO</td>
-<td>Define if Ingress Controller should watch for Ingress Class by Name together with Controller Class</td>
-</tr>
-<tr>
-<td>internal-logger-address</td>
-<td>TODO</td>
-<td>127.0.0.1:11514</td>
-<td>Address to be used when binding internal syslogger</td>
-</tr>
-<tr>
-<td>kubeconfig</td>
-<td>连接api server的信息</td>
-<td>-</td>
-<td>Path to a kubeconfig file containing authorization and API server information.</td>
-</tr>
-<tr>
-<td>length-buckets</td>
-<td>TODO</td>
-<td>-</td>
-<td>Set of buckets which will be used for prometheus histogram metrics such as RequestLength, ResponseLength. ([10.000000,20.000000,30.000000,40.000000,50.000000,60.000000,70.000000,80.000000,90.000000,100.000000])</td>
-</tr>
-<tr>
-<td>log_backtrace_at</td>
-<td>TODO</td>
-<td>0</td>
-<td>when logging hits line file:N, emit a stack trace</td>
-</tr>
-<tr>
-<td>log_dir</td>
-<td>日志目录</td>
-<td>-</td>
-<td>If non-empty, write log files in this directory (no effect when -logtostderr=true)</td>
-</tr>
-<tr>
-<td>log_file</td>
-<td>日志文件名</td>
-<td>-</td>
-<td>If non-empty, use this log file (no effect when -logtostderr=true)</td>
-</tr>
-<tr>
-<td>log_file_max_size</td>
-<td>日志文件最大值，单位：MB</td>
-<td>1800MB</td>
-<td>Defines the maximum size a log file can grow to (no effect when -logtostderr=true). Unit is megabytes. If the value is 0, the maximum file size is unlimited.</td>
-</tr>
-<tr>
-<td>logtostderr</td>
-<td>日志输出到终端</td>
-<td>true</td>
-<td>log to standard error instead of files</td>
-</tr>
-<tr>
-<td>maxmind-edition-ids</td>
-<td>TODO</td>
-<td>-</td>
-<td>Maxmind edition ids to download GeoLite2 Databases. (default &ldquo;GeoLite2-City,GeoLite2-ASN&rdquo;)</td>
-</tr>
-<tr>
-<td>maxmind-license-key</td>
-<td>TODO</td>
-<td>-</td>
-<td>Maxmind license key to download GeoLite2 Databases.</td>
-</tr>
-<tr>
-<td>maxmind-mirror</td>
-<td>TODO</td>
-<td>-</td>
-<td>Maxmind mirror url (example: <a href="http://geoip.local/databases">http://geoip.local/databases</a></td>
-</tr>
-<tr>
-<td>maxmind-retries-count</td>
-<td>TODO</td>
-<td>1</td>
-<td>Number of attempts to download the GeoIP DB.</td>
-</tr>
-<tr>
-<td>maxmind-retries-timeout</td>
-<td>TODO</td>
-<td>0s</td>
-<td>Maxmind downloading delay between 1st and 2nd attempt, 0s - do not retry to download if something went wrong.</td>
-</tr>
-<tr>
-<td>metrics-per-host</td>
-<td>TODO</td>
-<td>true</td>
-<td>Export metrics per-host</td>
-</tr>
-<tr>
-<td>monitor-max-batch-size</td>
-<td>TODO</td>
-<td>10000</td>
-<td>Max batch size of NGINX metrics</td>
-</tr>
-<tr>
-<td>one_output</td>
-<td>TODO</td>
-<td>TODO</td>
-<td>If true, only write logs to their native severity level</td>
-</tr>
-<tr>
-<td>post-shutdown-grace-period</td>
-<td>TODO</td>
-<td>10</td>
-<td>Seconds to wait after the nginx process has stopped before controller exits.</td>
-</tr>
-<tr>
-<td>profiler-port</td>
-<td>控制器对外提供的profiler端口地址</td>
-<td>10245</td>
-<td>Port to use for expose the ingress controller Go profiler when it is enabled.</td>
-</tr>
-<tr>
-<td>profiling</td>
-<td>是否开启pprof</td>
-<td>true</td>
-<td>Enable profiling via web interface host:port/debug/pprof/</td>
-</tr>
-<tr>
-<td>publish-service</td>
-<td>各个 ingress.status 的 Address 地址，监听命名空间下服务，格式为：&ldquo;namespace/name&rdquo;，一般仅在公有云环境使用</td>
-<td>TODO</td>
-<td>Service fronting the Ingress controller. Takes the form &ldquo;namespace/name&rdquo;. When used together with update-status, the controller mirrors the address of this service&rsquo;s endpoints to the load-balancer status of all Ingress objects it satisfies.</td>
-</tr>
-<tr>
-<td>publish-status-address</td>
-<td>功能同&quot;publish-service&quot;，有人工预先分配</td>
-<td>TODO</td>
-<td>Customized address (or addresses, separated by comma) to set as the load-balancer status of Ingress objects this controller satisfies. Requires the update-status parameter.</td>
-</tr>
-<tr>
-<td>report-node-internal-ip-address</td>
-<td>功能同&quot;publish-service&quot;，使用当前 controler 部署节点的IP，一般在私有云使用</td>
-<td>TODO</td>
-<td>Set the load-balancer status of Ingress objects to internal Node addresses instead of external.</td>
-</tr>
-<tr>
-<td>report-status-classes</td>
-<td>TODO</td>
-<td>TODO</td>
-<td>Use status classes (2xx, 3xx, 4xx and 5xx) instead of status codes in metrics</td>
-</tr>
-<tr>
-<td>shutdown-grace-period</td>
-<td>TODO</td>
-<td>TODO</td>
-<td>Seconds to wait after receiving the shutdown signal, before stopping the nginx process.</td>
-</tr>
-<tr>
-<td>size-buckets</td>
-<td>TODO</td>
-<td>TODO</td>
-<td>Set of buckets which will be used for prometheus histogram metrics such as BytesSent (default [10.000000,100.000000,1000.000000,10000.000000,100000.000000,1000000.000000,10000000.000000])</td>
-</tr>
-<tr>
-<td>skip_headers</td>
-<td>TODO</td>
-<td>TODO</td>
-<td>If true, avoid header prefixes in the log messages</td>
-</tr>
-<tr>
-<td>skip_log_headers</td>
-<td>TODO</td>
-<td>TODO</td>
-<td>If true, avoid headers when opening log files (no effect when -logtostderr=true)</td>
-</tr>
-<tr>
-<td>ssl-passthrough-proxy-port</td>
-<td>TODO</td>
-<td>442</td>
-<td>Port to use internally for SSL Passthrough.</td>
-</tr>
-<tr>
-<td>status-port</td>
-<td>TODO</td>
-<td>10246</td>
-<td>Port to use for the lua HTTP endpoint configuration.</td>
-</tr>
-<tr>
-<td>status-update-interval</td>
-<td>TODO</td>
-<td>60</td>
-<td>Time interval in seconds in which the status should check if an update is required. Default is 60 seconds</td>
-</tr>
-<tr>
-<td>stderrthreshold</td>
-<td>TODO</td>
-<td>2</td>
-<td>logs at or above this threshold go to stderr when writing to files and stderr (no effect when -logtostderr=true or -alsologtostderr=false)</td>
-</tr>
-<tr>
-<td>stream-port</td>
-<td>TODO</td>
-<td>10247</td>
-<td>Port to use for the lua TCP/UDP endpoint configuration.</td>
-</tr>
-<tr>
-<td>sync-period</td>
-<td>TODO；默认关闭</td>
-<td>-</td>
-<td>Period at which the controller forces the repopulation of its local object stores.</td>
-</tr>
-<tr>
-<td>sync-rate-limit</td>
-<td>TODO</td>
-<td>0.3</td>
-<td>Define the sync frequency upper limit</td>
-</tr>
-<tr>
-<td>tcp-services-configmap</td>
-<td>nginx stream tcp代理</td>
-<td>tcp-services</td>
-<td>Name of the ConfigMap containing the definition of the TCP services to expose. The key in the map indicates the external port to be used. The value is a reference to a Service in the form &ldquo;namespace/name:port&rdquo;, where &ldquo;port&rdquo; can either be a port number or name.</td>
-</tr>
-<tr>
-<td>time-buckets</td>
-<td>TODO</td>
-<td>TODO</td>
-<td>Set of buckets which will be used for prometheus histogram metrics such as RequestTime, ResponseTime (default [0.005000,0.010000,0.025000,0.050000,0.100000,0.250000,0.500000,1.000000,2.500000,5.000000,10.000000])</td>
-</tr>
-<tr>
-<td>udp-services-configmap</td>
-<td>nginx stream udp代理</td>
-<td>udp-services</td>
-<td>Name of the ConfigMap containing the definition of the UDP services to expose. The key in the map indicates the external port to be used. The value is a reference to a Service in the form &ldquo;namespace/name:port&rdquo;, where &ldquo;port&rdquo; can either be a port name or number.</td>
-</tr>
-<tr>
-<td>update-status</td>
-<td>TODO</td>
-<td>true</td>
-<td>Update the load-balancer status of Ingress objects this controller satisfies. Requires setting the publish-service parameter to a valid Service reference.</td>
-</tr>
-<tr>
-<td>update-status-on-shutdown</td>
-<td>TODO</td>
-<td>true</td>
-<td>Update the load-balancer status of Ingress objects when the controller shuts down. Requires the update-status parameter.</td>
-</tr>
-<tr>
-<td>v</td>
-<td>日志级别</td>
-<td>-</td>
-<td>number for the log level verbosity</td>
-</tr>
-<tr>
-<td>validating-webhook</td>
-<td>准入控制器验证ingress的配置</td>
-<td>TODO</td>
-<td>The address to start an admission controller on to validate incoming ingresses. Takes the form &ldquo;<host>:port&rdquo;. If not provided, no admission controller is started.</td>
-</tr>
-<tr>
-<td>validating-webhook-certificate</td>
-<td>准入控制器的证书</td>
-<td>TODO</td>
-<td>The path of the validating webhook certificate PEM.</td>
-</tr>
-<tr>
-<td>validating-webhook-key</td>
-<td>准入控制器的证书</td>
-<td>TODO</td>
-<td>The path of the validating webhook key PEM.</td>
-</tr>
-<tr>
-<td>vmodule</td>
-<td>TODO</td>
-<td>TODO</td>
-<td>comma-separated list of pattern=N settings for file-filtered logging</td>
-</tr>
-<tr>
-<td>watch-ingress-without-class</td>
-<td>TODO</td>
-<td>TODO</td>
-<td>Define if Ingress Controller should also watch for Ingresses without an IngressClass or the annotation specified</td>
-</tr>
-<tr>
-<td>watch-namespace</td>
-<td>TODO</td>
-<td>TODO</td>
-<td>Namespace the controller watches for updates to Kubernetes objects. This includes Ingresses, Services and all configuration resources. All namespaces are watched if this parameter is left empty.</td>
-</tr>
-<tr>
-<td>watch-namespace-selector</td>
-<td>TODO</td>
-<td>TODO</td>
-<td>Selector selects namespaces the controller watches for updates to Kubernetes objects.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>说明</th>
+          <th>默认值</th>
+          <th>原始HELP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>add_dir_header</td>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>If true, adds the file directory to the header of the log messages</td>
+      </tr>
+      <tr>
+          <td>alsologtostderr</td>
+          <td>错误输出终端，同时写入也文件</td>
+          <td>-</td>
+          <td>log to standard error as well as files (no effect when -logtostderr=true)</td>
+      </tr>
+      <tr>
+          <td>annotations-prefix</td>
+          <td>ingress使用注解的标签前缀</td>
+          <td>nginx.ingress.kubernetes.io</td>
+          <td>Prefix of the Ingress annotations specific to the NGINX controller. (default &ldquo;nginx.ingress.kubernetes.io&rdquo;)</td>
+      </tr>
+      <tr>
+          <td>apiserver-host</td>
+          <td>连接的api server地址</td>
+          <td>kubernetes.default.svc</td>
+          <td>Takes the form &ldquo;protocol://address:port&rdquo;. If not specified, it is assumed the program runs inside a Kubernetes cluster and local discovery is attempted.</td>
+      </tr>
+      <tr>
+          <td>certificate-authority</td>
+          <td>ca证书，验证api server的https</td>
+          <td>-</td>
+          <td>Path to a cert file for the certificate authority. This certificate is used only when the flag &ndash;apiserver-host is specified.</td>
+      </tr>
+      <tr>
+          <td>configmap</td>
+          <td>用于控制器全局的ConfigMap配置名</td>
+          <td>nginx-configuration</td>
+          <td>Name of the ConfigMap containing custom global configurations for the controller.</td>
+      </tr>
+      <tr>
+          <td>controller-class</td>
+          <td>TODO</td>
+          <td>k8s.io/ingress-nginx</td>
+          <td>Ingress Class Controller value this Ingress satisfies. The class of an Ingress object is set using the field IngressClassName in Kubernetes clusters version v1.19.0 or higher. The .spec.controller value of the IngressClass referenced in an Ingress Object should be the same value specified here to make this object be watched.</td>
+      </tr>
+      <tr>
+          <td>deep-inspect</td>
+          <td>TODO</td>
+          <td>true</td>
+          <td>Enables ingress object security deep inspector (default true)</td>
+      </tr>
+      <tr>
+          <td>default-backend-service</td>
+          <td>处理查询到的主机，流量转发的后段服务</td>
+          <td>$(POD_NAMESPACE)/ingress-nginx-defaultbackend</td>
+          <td>Service used to serve HTTP requests not matching any known server name (catch-all). Takes the form &ldquo;namespace/name&rdquo;. The controller configures NGINX to forward requests to the first port of this Service.</td>
+      </tr>
+      <tr>
+          <td>default-server-port</td>
+          <td>TODO</td>
+          <td>8181</td>
+          <td>Port to use for exposing the default server (catch-all).</td>
+      </tr>
+      <tr>
+          <td>default-ssl-certificate</td>
+          <td>TODO</td>
+          <td>-</td>
+          <td>Secret containing a SSL certificate to be used by the default HTTPS server</td>
+      </tr>
+      <tr>
+          <td>disable-catch-all</td>
+          <td>TODO</td>
+          <td>-</td>
+          <td>Disable support for catch-all Ingresses</td>
+      </tr>
+      <tr>
+          <td>disable-full-test</td>
+          <td>TODO；默认开启</td>
+          <td>-</td>
+          <td>Disable full test of all merged ingresses at the admission stage and tests the template of the ingress being created or updated</td>
+      </tr>
+      <tr>
+          <td>disable-svc-external-name</td>
+          <td>TODO</td>
+          <td>-</td>
+          <td>Disable support for Services of type ExternalName</td>
+      </tr>
+      <tr>
+          <td>dynamic-configuration-retries</td>
+          <td>TODO</td>
+          <td>15</td>
+          <td>Number of times to retry failed dynamic configuration before failing to sync an ingress.</td>
+      </tr>
+      <tr>
+          <td>election-id</td>
+          <td>解决多副本同时更新状态，使用的选举id锁</td>
+          <td>ingress-controller-leader</td>
+          <td>Election id to use for Ingress status updates.</td>
+      </tr>
+      <tr>
+          <td>enable-metrics</td>
+          <td>开启nginx的prometheus类型性能指标，影响性能，高并发下可以考虑关闭</td>
+          <td>true</td>
+          <td>Enables the collection of NGINX metrics</td>
+      </tr>
+      <tr>
+          <td>enable-ssl-chain-completion</td>
+          <td>TODO</td>
+          <td>-</td>
+          <td>Autocomplete SSL certificate chains with missing intermediate CA certificates. Certificates uploaded to Kubernetes must have the &ldquo;Authority Information Access&rdquo; X.509 v3 extension for this to succeed.</td>
+      </tr>
+      <tr>
+          <td>enable-ssl-passthrough</td>
+          <td>TODO</td>
+          <td>-</td>
+          <td>Enable SSL Passthrough.</td>
+      </tr>
+      <tr>
+          <td>health-check-path</td>
+          <td>健康检测的url地址</td>
+          <td>/healthz</td>
+          <td>URL path of the health check endpoint. Configured inside the NGINX status server. All requests received on the port defined by the healthz-port parameter are forwarded internally to this path.</td>
+      </tr>
+      <tr>
+          <td>health-check-timeout</td>
+          <td>健康检测超时时间，秒</td>
+          <td>10</td>
+          <td>Time limit, in seconds, for a probe to health-check-path to succeed.</td>
+      </tr>
+      <tr>
+          <td>healthz-host</td>
+          <td>健康检测主机地址</td>
+          <td>-</td>
+          <td>Address to bind the healthz endpoint.</td>
+      </tr>
+      <tr>
+          <td>healthz-port</td>
+          <td>健康检测端口</td>
+          <td>10254</td>
+          <td>Port to use for the healthz endpoint.</td>
+      </tr>
+      <tr>
+          <td>http-port</td>
+          <td>接收http协议流量的端口</td>
+          <td>80</td>
+          <td>Port to use for servicing HTTP traffic.</td>
+      </tr>
+      <tr>
+          <td>https-port</td>
+          <td>接收https协议流量的端口</td>
+          <td>80</td>
+          <td>Port to use for servicing HTTPS traffic.</td>
+      </tr>
+      <tr>
+          <td>ingress-class</td>
+          <td>已被废弃；TODO</td>
+          <td>-</td>
+          <td>Name of the ingress class this controller satisfies. The class of an Ingress object is set using the annotation &ldquo;kubernetes.io/ingress.class&rdquo;. The parameter &ndash;controller-class has precedence over this.</td>
+      </tr>
+      <tr>
+          <td>ingress-class-by-name</td>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>Define if Ingress Controller should watch for Ingress Class by Name together with Controller Class</td>
+      </tr>
+      <tr>
+          <td>internal-logger-address</td>
+          <td>TODO</td>
+          <td>127.0.0.1:11514</td>
+          <td>Address to be used when binding internal syslogger</td>
+      </tr>
+      <tr>
+          <td>kubeconfig</td>
+          <td>连接api server的信息</td>
+          <td>-</td>
+          <td>Path to a kubeconfig file containing authorization and API server information.</td>
+      </tr>
+      <tr>
+          <td>length-buckets</td>
+          <td>TODO</td>
+          <td>-</td>
+          <td>Set of buckets which will be used for prometheus histogram metrics such as RequestLength, ResponseLength. ([10.000000,20.000000,30.000000,40.000000,50.000000,60.000000,70.000000,80.000000,90.000000,100.000000])</td>
+      </tr>
+      <tr>
+          <td>log_backtrace_at</td>
+          <td>TODO</td>
+          <td>0</td>
+          <td>when logging hits line file:N, emit a stack trace</td>
+      </tr>
+      <tr>
+          <td>log_dir</td>
+          <td>日志目录</td>
+          <td>-</td>
+          <td>If non-empty, write log files in this directory (no effect when -logtostderr=true)</td>
+      </tr>
+      <tr>
+          <td>log_file</td>
+          <td>日志文件名</td>
+          <td>-</td>
+          <td>If non-empty, use this log file (no effect when -logtostderr=true)</td>
+      </tr>
+      <tr>
+          <td>log_file_max_size</td>
+          <td>日志文件最大值，单位：MB</td>
+          <td>1800MB</td>
+          <td>Defines the maximum size a log file can grow to (no effect when -logtostderr=true). Unit is megabytes. If the value is 0, the maximum file size is unlimited.</td>
+      </tr>
+      <tr>
+          <td>logtostderr</td>
+          <td>日志输出到终端</td>
+          <td>true</td>
+          <td>log to standard error instead of files</td>
+      </tr>
+      <tr>
+          <td>maxmind-edition-ids</td>
+          <td>TODO</td>
+          <td>-</td>
+          <td>Maxmind edition ids to download GeoLite2 Databases. (default &ldquo;GeoLite2-City,GeoLite2-ASN&rdquo;)</td>
+      </tr>
+      <tr>
+          <td>maxmind-license-key</td>
+          <td>TODO</td>
+          <td>-</td>
+          <td>Maxmind license key to download GeoLite2 Databases.</td>
+      </tr>
+      <tr>
+          <td>maxmind-mirror</td>
+          <td>TODO</td>
+          <td>-</td>
+          <td>Maxmind mirror url (example: <a href="http://geoip.local/databases">http://geoip.local/databases</a></td>
+      </tr>
+      <tr>
+          <td>maxmind-retries-count</td>
+          <td>TODO</td>
+          <td>1</td>
+          <td>Number of attempts to download the GeoIP DB.</td>
+      </tr>
+      <tr>
+          <td>maxmind-retries-timeout</td>
+          <td>TODO</td>
+          <td>0s</td>
+          <td>Maxmind downloading delay between 1st and 2nd attempt, 0s - do not retry to download if something went wrong.</td>
+      </tr>
+      <tr>
+          <td>metrics-per-host</td>
+          <td>TODO</td>
+          <td>true</td>
+          <td>Export metrics per-host</td>
+      </tr>
+      <tr>
+          <td>monitor-max-batch-size</td>
+          <td>TODO</td>
+          <td>10000</td>
+          <td>Max batch size of NGINX metrics</td>
+      </tr>
+      <tr>
+          <td>one_output</td>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>If true, only write logs to their native severity level</td>
+      </tr>
+      <tr>
+          <td>post-shutdown-grace-period</td>
+          <td>TODO</td>
+          <td>10</td>
+          <td>Seconds to wait after the nginx process has stopped before controller exits.</td>
+      </tr>
+      <tr>
+          <td>profiler-port</td>
+          <td>控制器对外提供的profiler端口地址</td>
+          <td>10245</td>
+          <td>Port to use for expose the ingress controller Go profiler when it is enabled.</td>
+      </tr>
+      <tr>
+          <td>profiling</td>
+          <td>是否开启pprof</td>
+          <td>true</td>
+          <td>Enable profiling via web interface host:port/debug/pprof/</td>
+      </tr>
+      <tr>
+          <td>publish-service</td>
+          <td>各个 ingress.status 的 Address 地址，监听命名空间下服务，格式为：&ldquo;namespace/name&rdquo;，一般仅在公有云环境使用</td>
+          <td>TODO</td>
+          <td>Service fronting the Ingress controller. Takes the form &ldquo;namespace/name&rdquo;. When used together with update-status, the controller mirrors the address of this service&rsquo;s endpoints to the load-balancer status of all Ingress objects it satisfies.</td>
+      </tr>
+      <tr>
+          <td>publish-status-address</td>
+          <td>功能同&quot;publish-service&quot;，有人工预先分配</td>
+          <td>TODO</td>
+          <td>Customized address (or addresses, separated by comma) to set as the load-balancer status of Ingress objects this controller satisfies. Requires the update-status parameter.</td>
+      </tr>
+      <tr>
+          <td>report-node-internal-ip-address</td>
+          <td>功能同&quot;publish-service&quot;，使用当前 controler 部署节点的IP，一般在私有云使用</td>
+          <td>TODO</td>
+          <td>Set the load-balancer status of Ingress objects to internal Node addresses instead of external.</td>
+      </tr>
+      <tr>
+          <td>report-status-classes</td>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>Use status classes (2xx, 3xx, 4xx and 5xx) instead of status codes in metrics</td>
+      </tr>
+      <tr>
+          <td>shutdown-grace-period</td>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>Seconds to wait after receiving the shutdown signal, before stopping the nginx process.</td>
+      </tr>
+      <tr>
+          <td>size-buckets</td>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>Set of buckets which will be used for prometheus histogram metrics such as BytesSent (default [10.000000,100.000000,1000.000000,10000.000000,100000.000000,1000000.000000,10000000.000000])</td>
+      </tr>
+      <tr>
+          <td>skip_headers</td>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>If true, avoid header prefixes in the log messages</td>
+      </tr>
+      <tr>
+          <td>skip_log_headers</td>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>If true, avoid headers when opening log files (no effect when -logtostderr=true)</td>
+      </tr>
+      <tr>
+          <td>ssl-passthrough-proxy-port</td>
+          <td>TODO</td>
+          <td>442</td>
+          <td>Port to use internally for SSL Passthrough.</td>
+      </tr>
+      <tr>
+          <td>status-port</td>
+          <td>TODO</td>
+          <td>10246</td>
+          <td>Port to use for the lua HTTP endpoint configuration.</td>
+      </tr>
+      <tr>
+          <td>status-update-interval</td>
+          <td>TODO</td>
+          <td>60</td>
+          <td>Time interval in seconds in which the status should check if an update is required. Default is 60 seconds</td>
+      </tr>
+      <tr>
+          <td>stderrthreshold</td>
+          <td>TODO</td>
+          <td>2</td>
+          <td>logs at or above this threshold go to stderr when writing to files and stderr (no effect when -logtostderr=true or -alsologtostderr=false)</td>
+      </tr>
+      <tr>
+          <td>stream-port</td>
+          <td>TODO</td>
+          <td>10247</td>
+          <td>Port to use for the lua TCP/UDP endpoint configuration.</td>
+      </tr>
+      <tr>
+          <td>sync-period</td>
+          <td>TODO；默认关闭</td>
+          <td>-</td>
+          <td>Period at which the controller forces the repopulation of its local object stores.</td>
+      </tr>
+      <tr>
+          <td>sync-rate-limit</td>
+          <td>TODO</td>
+          <td>0.3</td>
+          <td>Define the sync frequency upper limit</td>
+      </tr>
+      <tr>
+          <td>tcp-services-configmap</td>
+          <td>nginx stream tcp代理</td>
+          <td>tcp-services</td>
+          <td>Name of the ConfigMap containing the definition of the TCP services to expose. The key in the map indicates the external port to be used. The value is a reference to a Service in the form &ldquo;namespace/name:port&rdquo;, where &ldquo;port&rdquo; can either be a port number or name.</td>
+      </tr>
+      <tr>
+          <td>time-buckets</td>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>Set of buckets which will be used for prometheus histogram metrics such as RequestTime, ResponseTime (default [0.005000,0.010000,0.025000,0.050000,0.100000,0.250000,0.500000,1.000000,2.500000,5.000000,10.000000])</td>
+      </tr>
+      <tr>
+          <td>udp-services-configmap</td>
+          <td>nginx stream udp代理</td>
+          <td>udp-services</td>
+          <td>Name of the ConfigMap containing the definition of the UDP services to expose. The key in the map indicates the external port to be used. The value is a reference to a Service in the form &ldquo;namespace/name:port&rdquo;, where &ldquo;port&rdquo; can either be a port name or number.</td>
+      </tr>
+      <tr>
+          <td>update-status</td>
+          <td>TODO</td>
+          <td>true</td>
+          <td>Update the load-balancer status of Ingress objects this controller satisfies. Requires setting the publish-service parameter to a valid Service reference.</td>
+      </tr>
+      <tr>
+          <td>update-status-on-shutdown</td>
+          <td>TODO</td>
+          <td>true</td>
+          <td>Update the load-balancer status of Ingress objects when the controller shuts down. Requires the update-status parameter.</td>
+      </tr>
+      <tr>
+          <td>v</td>
+          <td>日志级别</td>
+          <td>-</td>
+          <td>number for the log level verbosity</td>
+      </tr>
+      <tr>
+          <td>validating-webhook</td>
+          <td>准入控制器验证ingress的配置</td>
+          <td>TODO</td>
+          <td>The address to start an admission controller on to validate incoming ingresses. Takes the form &ldquo;<host>:port&rdquo;. If not provided, no admission controller is started.</td>
+      </tr>
+      <tr>
+          <td>validating-webhook-certificate</td>
+          <td>准入控制器的证书</td>
+          <td>TODO</td>
+          <td>The path of the validating webhook certificate PEM.</td>
+      </tr>
+      <tr>
+          <td>validating-webhook-key</td>
+          <td>准入控制器的证书</td>
+          <td>TODO</td>
+          <td>The path of the validating webhook key PEM.</td>
+      </tr>
+      <tr>
+          <td>vmodule</td>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>comma-separated list of pattern=N settings for file-filtered logging</td>
+      </tr>
+      <tr>
+          <td>watch-ingress-without-class</td>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>Define if Ingress Controller should also watch for Ingresses without an IngressClass or the annotation specified</td>
+      </tr>
+      <tr>
+          <td>watch-namespace</td>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>Namespace the controller watches for updates to Kubernetes objects. This includes Ingresses, Services and all configuration resources. All namespaces are watched if this parameter is left empty.</td>
+      </tr>
+      <tr>
+          <td>watch-namespace-selector</td>
+          <td>TODO</td>
+          <td>TODO</td>
+          <td>Selector selects namespaces the controller watches for updates to Kubernetes objects.</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="configmap-配置参数">ConfigMap 配置参数</h3>
 <p>可以通过这个定制 <code>nginx.conf</code> 文件内容，里面填写的键值对对照数据结构 <code>config.go</code> 配置，由于 &ldquo;ConfigMap&rdquo; 里面只能是 <code>string</code> 类型，所以任何值需使用引号包含起来，如：<code>&quot;128&quot;</code>。如果是数组类型，则通过逗号分隔，如：<code>&quot;192.168.30.0/24, 192.168.31.0/24&quot;</code></p>
@@ -5223,400 +5498,400 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>  access-log-path: <span style="color:#4e9a06">&#34;/var/log/nginx/access.log&#34;</span>
 </span></span><span style="display:flex;"><span>  error-log-path: <span style="color:#4e9a06">&#34;/var/log/nginx/error.log&#34;</span>
 </span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>名称</th>
-<th>默认值</th>
-<th>可取值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>allow-backend-server-header</td>
-<td>&ldquo;true&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>是否以后端返回的 &ldquo;Server&rdquo; 响应头来代替nginx ingress的值</td>
-</tr>
-<tr>
-<td>allow-snippet-annotations</td>
-<td>&ldquo;true&rdquo;</td>
-<td>&ldquo;false&rdquo; or &ldquo;true&rdquo;</td>
-<td>开启ingress配置 *-snippet 更改 nginx.conf 内容，如果用户不可信则不开放</td>
-</tr>
-<tr>
-<td>annotation-value-word-blocklist</td>
-<td>&quot;&quot;</td>
-<td>字符串数组，见建议值</td>
-<td>定义哪些关键字不能提供给用户配置 annotation 使用，有安全风险</td>
-</tr>
-<tr>
-<td>hide-headers</td>
-<td>&quot;&quot;</td>
-<td>字符串数组</td>
-<td>定义哪些请求头不返回给客户端</td>
-</tr>
-<tr>
-<td>access-log-params</td>
-<td>&quot;&quot;</td>
-<td>access_log</td>
-<td>nginx access_log 额外的一些参数</td>
-</tr>
-<tr>
-<td>access-log-path</td>
-<td>&ldquo;/var/log/nginx/access.log&rdquo; 指向 &ldquo;/dev/stdout&rdquo;</td>
-<td>http 与 stream 共同使用</td>
-<td>客户端访问日志</td>
-</tr>
-<tr>
-<td>http-access-log-path</td>
-<td>&quot;&quot;</td>
-<td>http 访问日志，优先级高</td>
-<td>http 访问日志</td>
-</tr>
-<tr>
-<td>stream-access-log-path</td>
-<td>&quot;&quot;</td>
-<td>stream 访问日志，优先级高</td>
-<td>http 访问日志</td>
-</tr>
-<tr>
-<td>enable-access-log-for-default-backend</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>是否开启未匹配后端ingress的请求日志记录</td>
-</tr>
-<tr>
-<td>error-log-path</td>
-<td>&ldquo;/var/log/nginx/error.log&rdquo; 指向 &ldquo;/dev/stderr&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>nginx 错误日志</td>
-</tr>
-<tr>
-<td>enable-modsecurity</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>是否开启 modsecurity 功能</td>
-</tr>
-<tr>
-<td>enable-owasp-modsecurity-crs</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>同上</td>
-</tr>
-<tr>
-<td>modsecurity-snippet</td>
-<td>&quot;&quot;</td>
-<td>&quot;&quot;</td>
-<td>TODO; 同上</td>
-</tr>
-<tr>
-<td>client-header-buffer-size</td>
-<td>&ldquo;1k&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>客户端请求header缓存大小</td>
-</tr>
-<tr>
-<td>client-header-timeout</td>
-<td>&ldquo;60&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>-</td>
-</tr>
-<tr>
-<td>client-body-buffer-size</td>
-<td>&ldquo;8k&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>-</td>
-</tr>
-<tr>
-<td>client-body-timeout</td>
-<td>&ldquo;60&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>-</td>
-</tr>
-<tr>
-<td>disable-access-log</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; &ldquo;false&rdquo;</td>
-<td>是否关闭请求日志</td>
-</tr>
-<tr>
-<td>disable-ipv6</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>是否关闭ipv6监听</td>
-</tr>
-<tr>
-<td>disable-ipv6-dns</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>关闭nginx对ipv6的解析</td>
-</tr>
-<tr>
-<td>enable-underscores-in-headers</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>客户端提交下划线&quot;_&ldquo;的请求头是否忽略，不做传递至后端</td>
-</tr>
-<tr>
-<td>enable-ocsp</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>ignore-invalid-headers</td>
-<td>&ldquo;true&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>忽略异常请求头</td>
-</tr>
-<tr>
-<td>retry-non-idempotent</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>对非幂等的请求（POST、LOCK、PATCH），如果后端错误将不进行重试</td>
-</tr>
-<tr>
-<td>error-log-level</td>
-<td>&ldquo;notice&rdquo;</td>
-<td>见nginx error_log</td>
-<td>错误日志级别</td>
-</tr>
-<tr>
-<td>hsts</td>
-<td>&ldquo;true&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>告诉浏览器必须使用https进行访问</td>
-</tr>
-<tr>
-<td>hsts-include-subdomains</td>
-<td>&ldquo;true&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>hsts-max-age</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>hsts-preload</td>
-<td>&ldquo;false&rdquo;</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>keep-alive</td>
-<td>&ldquo;75&rdquo;</td>
-<td>&quot;&rdquo;</td>
-<td>客户端与服务端保持连接时长，避免频繁建立tcp，设置为0则关闭</td>
-</tr>
-<tr>
-<td>keep-alive-requests</td>
-<td>&ldquo;100&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>large-client-header-buffers</td>
-<td>&ldquo;4 8k&rdquo;</td>
-<td>&quot;&quot;</td>
-<td></td>
-</tr>
-<tr>
-<td>log-format-escape-json</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>如果日志以json格式输出，则对一些格式进行转换</td>
-</tr>
-<tr>
-<td>log-format-upstream</td>
-<td>见日志格式默认值</td>
-<td>&quot;&quot;</td>
-<td>客户端请求日志格式</td>
-</tr>
-<tr>
-<td>log-format-stream</td>
-<td>见stream日志格式默认值</td>
-<td>&quot;&quot;</td>
-<td>客户端请求日志格式</td>
-</tr>
-<tr>
-<td>enable-multi-accept</td>
-<td>&ldquo;treu&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>max-worker-connections</td>
-<td>&ldquo;16384&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>max-worker-open-files</td>
-<td>&ldquo;0&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>map-hash-bucket-size</td>
-<td>&ldquo;64&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>proxy-real-ip-cidr</td>
-<td>&ldquo;0.0.0.0/0&rdquo;</td>
-<td>字符串数组</td>
-<td>配置proxy中间层地址并过滤, 用于获取真实客户端IP</td>
-</tr>
-<tr>
-<td>proxy-set-headers</td>
-<td>&quot;&quot;</td>
-<td>&quot;&quot;</td>
-<td>自定义传输后段的请求头</td>
-</tr>
-<tr>
-<td>server-name-hash-max-size</td>
-<td>&ldquo;1024&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>server-name-hash-bucket-size</td>
-<td>&quot;&quot;</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>proxy-headers-hash-max-size</td>
-<td>&ldquo;512&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>proxy-headers-hash-bucket-size</td>
-<td>&ldquo;64&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>reuse-port</td>
-<td>&ldquo;true&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>plugins</td>
-<td>&quot;&quot;</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>server-tokens</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>是否返回客户端nginx的版本</td>
-</tr>
-<tr>
-<td>use-proxy-protocol</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>是否使用 PROXY 协议，可以获取客户端IP</td>
-</tr>
-<tr>
-<td>proxy-protocol-header-timeout</td>
-<td>&ldquo;5s&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>use-gzip</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>针对 HTTP 响应是否开启 gzip 压缩</td>
-</tr>
-<tr>
-<td>gzip-level</td>
-<td>&ldquo;1&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>gzip 压缩级别</td>
-</tr>
-<tr>
-<td>use-geoip</td>
-<td>&ldquo;true&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>开启 geoip</td>
-</tr>
-<tr>
-<td>use-geoip2</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>开启 geoip</td>
-</tr>
-<tr>
-<td>enable-brotli</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>使用 brotli 模块压缩</td>
-</tr>
-<tr>
-<td>user-http2</td>
-<td>&ldquo;false&rdquo;</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>开启 http2 支持</td>
-</tr>
-<tr>
-<td>gzip-min-length</td>
-<td>&ldquo;256&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>gzip-types</td>
-<td>见gzip默认压缩类型</td>
-<td>&quot;&quot;</td>
-<td>需要压缩的类型</td>
-</tr>
-<tr>
-<td>worker-processes</td>
-<td>&ldquo;auto&rdquo;</td>
-<td>&quot;&quot;</td>
-<td>开启nginx的进程数，默认等于cpu核心数</td>
-</tr>
-<tr>
-<td>load-balance</td>
-<td>&ldquo;round_robin&rdquo;</td>
-<td>&ldquo;round_robin&rdquo; or &ldquo;ewma&rdquo;</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>upstream-keepalive-connections</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>proxy-read-timeout</td>
-<td>60s</td>
-<td>x</td>
-<td>proxy读取等待后端响应体返回的最大时间</td>
-</tr>
-<tr>
-<td>proxy-next-upstream-tries</td>
-<td>3</td>
-<td>x</td>
-<td>proxy读取、发送后端如果超时，重试的次数</td>
-</tr>
-<tr>
-<td>compute-full-forwarded-for</td>
-<td>false</td>
-<td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
-<td>将 remote address 附加到 X-Forwarded-For,新增X-Original-Forwarded-For 记录旧值，一般用于解决 xff 伪造</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>默认值</th>
+          <th>可取值</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>allow-backend-server-header</td>
+          <td>&ldquo;true&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>是否以后端返回的 &ldquo;Server&rdquo; 响应头来代替nginx ingress的值</td>
+      </tr>
+      <tr>
+          <td>allow-snippet-annotations</td>
+          <td>&ldquo;true&rdquo;</td>
+          <td>&ldquo;false&rdquo; or &ldquo;true&rdquo;</td>
+          <td>开启ingress配置 *-snippet 更改 nginx.conf 内容，如果用户不可信则不开放</td>
+      </tr>
+      <tr>
+          <td>annotation-value-word-blocklist</td>
+          <td>&quot;&quot;</td>
+          <td>字符串数组，见建议值</td>
+          <td>定义哪些关键字不能提供给用户配置 annotation 使用，有安全风险</td>
+      </tr>
+      <tr>
+          <td>hide-headers</td>
+          <td>&quot;&quot;</td>
+          <td>字符串数组</td>
+          <td>定义哪些请求头不返回给客户端</td>
+      </tr>
+      <tr>
+          <td>access-log-params</td>
+          <td>&quot;&quot;</td>
+          <td>access_log</td>
+          <td>nginx access_log 额外的一些参数</td>
+      </tr>
+      <tr>
+          <td>access-log-path</td>
+          <td>&ldquo;/var/log/nginx/access.log&rdquo; 指向 &ldquo;/dev/stdout&rdquo;</td>
+          <td>http 与 stream 共同使用</td>
+          <td>客户端访问日志</td>
+      </tr>
+      <tr>
+          <td>http-access-log-path</td>
+          <td>&quot;&quot;</td>
+          <td>http 访问日志，优先级高</td>
+          <td>http 访问日志</td>
+      </tr>
+      <tr>
+          <td>stream-access-log-path</td>
+          <td>&quot;&quot;</td>
+          <td>stream 访问日志，优先级高</td>
+          <td>http 访问日志</td>
+      </tr>
+      <tr>
+          <td>enable-access-log-for-default-backend</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>是否开启未匹配后端ingress的请求日志记录</td>
+      </tr>
+      <tr>
+          <td>error-log-path</td>
+          <td>&ldquo;/var/log/nginx/error.log&rdquo; 指向 &ldquo;/dev/stderr&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>nginx 错误日志</td>
+      </tr>
+      <tr>
+          <td>enable-modsecurity</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>是否开启 modsecurity 功能</td>
+      </tr>
+      <tr>
+          <td>enable-owasp-modsecurity-crs</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>同上</td>
+      </tr>
+      <tr>
+          <td>modsecurity-snippet</td>
+          <td>&quot;&quot;</td>
+          <td>&quot;&quot;</td>
+          <td>TODO; 同上</td>
+      </tr>
+      <tr>
+          <td>client-header-buffer-size</td>
+          <td>&ldquo;1k&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>客户端请求header缓存大小</td>
+      </tr>
+      <tr>
+          <td>client-header-timeout</td>
+          <td>&ldquo;60&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>client-body-buffer-size</td>
+          <td>&ldquo;8k&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>client-body-timeout</td>
+          <td>&ldquo;60&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>disable-access-log</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; &ldquo;false&rdquo;</td>
+          <td>是否关闭请求日志</td>
+      </tr>
+      <tr>
+          <td>disable-ipv6</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>是否关闭ipv6监听</td>
+      </tr>
+      <tr>
+          <td>disable-ipv6-dns</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>关闭nginx对ipv6的解析</td>
+      </tr>
+      <tr>
+          <td>enable-underscores-in-headers</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>客户端提交下划线&quot;_&ldquo;的请求头是否忽略，不做传递至后端</td>
+      </tr>
+      <tr>
+          <td>enable-ocsp</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>ignore-invalid-headers</td>
+          <td>&ldquo;true&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>忽略异常请求头</td>
+      </tr>
+      <tr>
+          <td>retry-non-idempotent</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>对非幂等的请求（POST、LOCK、PATCH），如果后端错误将不进行重试</td>
+      </tr>
+      <tr>
+          <td>error-log-level</td>
+          <td>&ldquo;notice&rdquo;</td>
+          <td>见nginx error_log</td>
+          <td>错误日志级别</td>
+      </tr>
+      <tr>
+          <td>hsts</td>
+          <td>&ldquo;true&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>告诉浏览器必须使用https进行访问</td>
+      </tr>
+      <tr>
+          <td>hsts-include-subdomains</td>
+          <td>&ldquo;true&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>hsts-max-age</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>hsts-preload</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>keep-alive</td>
+          <td>&ldquo;75&rdquo;</td>
+          <td>&quot;&rdquo;</td>
+          <td>客户端与服务端保持连接时长，避免频繁建立tcp，设置为0则关闭</td>
+      </tr>
+      <tr>
+          <td>keep-alive-requests</td>
+          <td>&ldquo;100&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>large-client-header-buffers</td>
+          <td>&ldquo;4 8k&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>log-format-escape-json</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>如果日志以json格式输出，则对一些格式进行转换</td>
+      </tr>
+      <tr>
+          <td>log-format-upstream</td>
+          <td>见日志格式默认值</td>
+          <td>&quot;&quot;</td>
+          <td>客户端请求日志格式</td>
+      </tr>
+      <tr>
+          <td>log-format-stream</td>
+          <td>见stream日志格式默认值</td>
+          <td>&quot;&quot;</td>
+          <td>客户端请求日志格式</td>
+      </tr>
+      <tr>
+          <td>enable-multi-accept</td>
+          <td>&ldquo;treu&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>max-worker-connections</td>
+          <td>&ldquo;16384&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>max-worker-open-files</td>
+          <td>&ldquo;0&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>map-hash-bucket-size</td>
+          <td>&ldquo;64&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>proxy-real-ip-cidr</td>
+          <td>&ldquo;0.0.0.0/0&rdquo;</td>
+          <td>字符串数组</td>
+          <td>配置proxy中间层地址并过滤, 用于获取真实客户端IP</td>
+      </tr>
+      <tr>
+          <td>proxy-set-headers</td>
+          <td>&quot;&quot;</td>
+          <td>&quot;&quot;</td>
+          <td>自定义传输后段的请求头</td>
+      </tr>
+      <tr>
+          <td>server-name-hash-max-size</td>
+          <td>&ldquo;1024&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>server-name-hash-bucket-size</td>
+          <td>&quot;&quot;</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>proxy-headers-hash-max-size</td>
+          <td>&ldquo;512&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>proxy-headers-hash-bucket-size</td>
+          <td>&ldquo;64&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>reuse-port</td>
+          <td>&ldquo;true&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>plugins</td>
+          <td>&quot;&quot;</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>server-tokens</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>是否返回客户端nginx的版本</td>
+      </tr>
+      <tr>
+          <td>use-proxy-protocol</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>是否使用 PROXY 协议，可以获取客户端IP</td>
+      </tr>
+      <tr>
+          <td>proxy-protocol-header-timeout</td>
+          <td>&ldquo;5s&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>use-gzip</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>针对 HTTP 响应是否开启 gzip 压缩</td>
+      </tr>
+      <tr>
+          <td>gzip-level</td>
+          <td>&ldquo;1&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>gzip 压缩级别</td>
+      </tr>
+      <tr>
+          <td>use-geoip</td>
+          <td>&ldquo;true&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>开启 geoip</td>
+      </tr>
+      <tr>
+          <td>use-geoip2</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>开启 geoip</td>
+      </tr>
+      <tr>
+          <td>enable-brotli</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>使用 brotli 模块压缩</td>
+      </tr>
+      <tr>
+          <td>user-http2</td>
+          <td>&ldquo;false&rdquo;</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>开启 http2 支持</td>
+      </tr>
+      <tr>
+          <td>gzip-min-length</td>
+          <td>&ldquo;256&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>gzip-types</td>
+          <td>见gzip默认压缩类型</td>
+          <td>&quot;&quot;</td>
+          <td>需要压缩的类型</td>
+      </tr>
+      <tr>
+          <td>worker-processes</td>
+          <td>&ldquo;auto&rdquo;</td>
+          <td>&quot;&quot;</td>
+          <td>开启nginx的进程数，默认等于cpu核心数</td>
+      </tr>
+      <tr>
+          <td>load-balance</td>
+          <td>&ldquo;round_robin&rdquo;</td>
+          <td>&ldquo;round_robin&rdquo; or &ldquo;ewma&rdquo;</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>upstream-keepalive-connections</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>proxy-read-timeout</td>
+          <td>60s</td>
+          <td>x</td>
+          <td>proxy读取等待后端响应体返回的最大时间</td>
+      </tr>
+      <tr>
+          <td>proxy-next-upstream-tries</td>
+          <td>3</td>
+          <td>x</td>
+          <td>proxy读取、发送后端如果超时，重试的次数</td>
+      </tr>
+      <tr>
+          <td>compute-full-forwarded-for</td>
+          <td>false</td>
+          <td>&ldquo;true&rdquo; or &ldquo;false&rdquo;</td>
+          <td>将 remote address 附加到 X-Forwarded-For,新增X-Original-Forwarded-For 记录旧值，一般用于解决 xff 伪造</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li>ingress关闭建议值</li>
@@ -6119,64 +6394,64 @@ if (!doNotTrack) {
 <li>启动监听的端口</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>端口</th>
-<th>协议</th>
-<th>参数</th>
-<th>用途描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>80</td>
-<td>http</td>
-<td>http-port</td>
-<td>xxx</td>
-</tr>
-<tr>
-<td>443</td>
-<td>https</td>
-<td>https-port</td>
-<td>xx</td>
-</tr>
-<tr>
-<td>8181</td>
-<td>http</td>
-<td>default-server-port</td>
-<td>默认服务</td>
-</tr>
-<tr>
-<td>442</td>
-<td>https</td>
-<td>ssl-passthrough-proxy-port</td>
-<td>xxx</td>
-</tr>
-<tr>
-<td>10254</td>
-<td>http</td>
-<td>healthz-port</td>
-<td>/metrics, /healthz</td>
-</tr>
-<tr>
-<td>10245</td>
-<td>http</td>
-<td>profiler-port</td>
-<td>仅可在 127.0.0.1 监听； /debug/pprof/</td>
-</tr>
-<tr>
-<td>10246</td>
-<td>http</td>
-<td>status-port</td>
-<td>仅可在 127.0.0.1 监听；/healthz, /is-dynamic-lb-initialized, /nginx_status, /configuration</td>
-</tr>
-<tr>
-<td>10247</td>
-<td>tcp</td>
-<td>stream-port</td>
-<td>仅可在 127.0.0.1 监听；用于更新 tcp-services 与 udp-services 后端</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>端口</th>
+          <th>协议</th>
+          <th>参数</th>
+          <th>用途描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>80</td>
+          <td>http</td>
+          <td>http-port</td>
+          <td>xxx</td>
+      </tr>
+      <tr>
+          <td>443</td>
+          <td>https</td>
+          <td>https-port</td>
+          <td>xx</td>
+      </tr>
+      <tr>
+          <td>8181</td>
+          <td>http</td>
+          <td>default-server-port</td>
+          <td>默认服务</td>
+      </tr>
+      <tr>
+          <td>442</td>
+          <td>https</td>
+          <td>ssl-passthrough-proxy-port</td>
+          <td>xxx</td>
+      </tr>
+      <tr>
+          <td>10254</td>
+          <td>http</td>
+          <td>healthz-port</td>
+          <td>/metrics, /healthz</td>
+      </tr>
+      <tr>
+          <td>10245</td>
+          <td>http</td>
+          <td>profiler-port</td>
+          <td>仅可在 127.0.0.1 监听； /debug/pprof/</td>
+      </tr>
+      <tr>
+          <td>10246</td>
+          <td>http</td>
+          <td>status-port</td>
+          <td>仅可在 127.0.0.1 监听；/healthz, /is-dynamic-lb-initialized, /nginx_status, /configuration</td>
+      </tr>
+      <tr>
+          <td>10247</td>
+          <td>tcp</td>
+          <td>stream-port</td>
+          <td>仅可在 127.0.0.1 监听；用于更新 tcp-services 与 udp-services 后端</td>
+      </tr>
+  </tbody>
 </table>
 <pre tabindex="0"><code>rp := []int{
     n.cfg.ListenPorts.HTTP,
@@ -6548,7 +6823,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

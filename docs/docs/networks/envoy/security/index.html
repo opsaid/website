@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -25,75 +25,72 @@ TODO;
 https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/transport_socket/transport_socket
 配合上游使用
 在 config.cluster.v3.Cluster …">
-<meta property="og:title" content="安全认证" />
-<meta property="og:description" content="简要概述 TODO;
+<meta property="og:url" content="/docs/networks/envoy/security/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="安全认证">
+  <meta property="og:description" content="简要概述 TODO;
 证书验证 https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/transport_socket/transport_socket
 配合上游使用 在 config.cluster.v3.Cluster 中的 transport_socket 配置使用，支持以下类型：
-名称 类型 envoy.transport_sockets.tls extensions.transport_sockets.tls.v3.UpstreamTlsContext 如在 clusters[_].transport_socket 中配置使用 &ldquo;/tmp/http-ca.crt&rdquo; 作为 ca 验证上游服务端：
-static_resources: ...... clusters: - name: oneops-syncds-v1 type: STATIC ...... transport_socket: name: envoy.transport_sockets.tls typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext # 通用 tls 配置，则不做校验仅做通讯加密 common_tls_context: # 这说明需使用 &#34;/tmp/http-ca.crt&#34; 去验证上游集群 validation_context: trusted_ca: filename: /tmp/http-ca.crt 配合下游使用 在 config.listener.v3.FilterChain 中的 transport_socket 配置：
-支持这几种类型：
-名称 类型 envoy.transport_sockets.alts x envoy.transport_sockets.raw_buffer x envoy.transport_sockets.starttls x envoy.transport_sockets.tap x envoy.transport_sockets.tcp_stats x envoy.transport_sockets.tls extensions.transport_sockets.tls.v3.DownstreamTlsContext static_resources: listeners: - name: listener_0 ." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/networks/envoy/security/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2024-02-07T09:57:41+08:00" />
-<meta property="article:modified_time" content="2024-03-20T11:25:06+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="安全认证">
-<meta itemprop="description" content="简要概述 TODO;
+名称 类型 envoy.transport_sockets.tls extensions.transport_sockets.tls.v3.UpstreamTlsContext 如在 clusters[_].transport_socket 中配置使用 “/tmp/http-ca.crt” 作为 ca 验证上游服务端：
+static_resources: ...... clusters: - name: oneops-syncds-v1 type: STATIC ...... transport_socket: name: envoy.transport_sockets.tls typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext # 通用 tls 配置，则不做校验仅做通讯加密 common_tls_context: # 这说明需使用 &#34;/tmp/http-ca.crt&#34; 去验证上游集群 validation_context: trusted_ca: filename: /tmp/http-ca.crt 配合下游使用 在 config.listener.v3.FilterChain 中的 transport_socket 配置：">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-02-07T09:57:41+08:00">
+    <meta property="article:modified_time" content="2024-05-22T09:33:26+08:00">
+
+  <meta itemprop="name" content="安全认证">
+  <meta itemprop="description" content="简要概述 TODO;
 证书验证 https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/transport_socket/transport_socket
 配合上游使用 在 config.cluster.v3.Cluster 中的 transport_socket 配置使用，支持以下类型：
-名称 类型 envoy.transport_sockets.tls extensions.transport_sockets.tls.v3.UpstreamTlsContext 如在 clusters[_].transport_socket 中配置使用 &ldquo;/tmp/http-ca.crt&rdquo; 作为 ca 验证上游服务端：
-static_resources: ...... clusters: - name: oneops-syncds-v1 type: STATIC ...... transport_socket: name: envoy.transport_sockets.tls typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext # 通用 tls 配置，则不做校验仅做通讯加密 common_tls_context: # 这说明需使用 &#34;/tmp/http-ca.crt&#34; 去验证上游集群 validation_context: trusted_ca: filename: /tmp/http-ca.crt 配合下游使用 在 config.listener.v3.FilterChain 中的 transport_socket 配置：
-支持这几种类型：
-名称 类型 envoy.transport_sockets.alts x envoy.transport_sockets.raw_buffer x envoy.transport_sockets.starttls x envoy.transport_sockets.tap x envoy.transport_sockets.tcp_stats x envoy.transport_sockets.tls extensions.transport_sockets.tls.v3.DownstreamTlsContext static_resources: listeners: - name: listener_0 ."><meta itemprop="datePublished" content="2024-02-07T09:57:41+08:00" />
-<meta itemprop="dateModified" content="2024-03-20T11:25:06+08:00" />
-<meta itemprop="wordCount" content="727">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="安全认证"/>
-<meta name="twitter:description" content="简要概述 TODO;
+名称 类型 envoy.transport_sockets.tls extensions.transport_sockets.tls.v3.UpstreamTlsContext 如在 clusters[_].transport_socket 中配置使用 “/tmp/http-ca.crt” 作为 ca 验证上游服务端：
+static_resources: ...... clusters: - name: oneops-syncds-v1 type: STATIC ...... transport_socket: name: envoy.transport_sockets.tls typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext # 通用 tls 配置，则不做校验仅做通讯加密 common_tls_context: # 这说明需使用 &#34;/tmp/http-ca.crt&#34; 去验证上游集群 validation_context: trusted_ca: filename: /tmp/http-ca.crt 配合下游使用 在 config.listener.v3.FilterChain 中的 transport_socket 配置：">
+  <meta itemprop="datePublished" content="2024-02-07T09:57:41+08:00">
+  <meta itemprop="dateModified" content="2024-05-22T09:33:26+08:00">
+  <meta itemprop="wordCount" content="1221">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="安全认证">
+  <meta name="twitter:description" content="简要概述 TODO;
 证书验证 https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/transport_socket/transport_socket
 配合上游使用 在 config.cluster.v3.Cluster 中的 transport_socket 配置使用，支持以下类型：
-名称 类型 envoy.transport_sockets.tls extensions.transport_sockets.tls.v3.UpstreamTlsContext 如在 clusters[_].transport_socket 中配置使用 &ldquo;/tmp/http-ca.crt&rdquo; 作为 ca 验证上游服务端：
-static_resources: ...... clusters: - name: oneops-syncds-v1 type: STATIC ...... transport_socket: name: envoy.transport_sockets.tls typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext # 通用 tls 配置，则不做校验仅做通讯加密 common_tls_context: # 这说明需使用 &#34;/tmp/http-ca.crt&#34; 去验证上游集群 validation_context: trusted_ca: filename: /tmp/http-ca.crt 配合下游使用 在 config.listener.v3.FilterChain 中的 transport_socket 配置：
-支持这几种类型：
-名称 类型 envoy.transport_sockets.alts x envoy.transport_sockets.raw_buffer x envoy.transport_sockets.starttls x envoy.transport_sockets.tap x envoy.transport_sockets.tcp_stats x envoy.transport_sockets.tls extensions.transport_sockets.tls.v3.DownstreamTlsContext static_resources: listeners: - name: listener_0 ."/>
+名称 类型 envoy.transport_sockets.tls extensions.transport_sockets.tls.v3.UpstreamTlsContext 如在 clusters[_].transport_socket 中配置使用 “/tmp/http-ca.crt” 作为 ca 验证上游服务端：
+static_resources: ...... clusters: - name: oneops-syncds-v1 type: STATIC ...... transport_socket: name: envoy.transport_sockets.tls typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext # 通用 tls 配置，则不做校验仅做通讯加密 common_tls_context: # 这说明需使用 &#34;/tmp/http-ca.crt&#34; 去验证上游集群 validation_context: trusted_ca: filename: /tmp/http-ca.crt 配合下游使用 在 config.listener.v3.FilterChain 中的 transport_socket 配置：">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1056,6 +1053,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3089,9 +3103,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3105,10 +3119,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3168,6 +3385,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4234,6 +4510,24 @@ if (!doNotTrack) {
         <li><a href="#http-filter-配置示例-1">HTTP filter 配置示例</a></li>
       </ul>
     </li>
+    <li><a href="#角色访问控制配置参数">角色访问控制配置参数</a>
+      <ul>
+        <li><a href="#rbac">RBAC</a></li>
+        <li><a href="#policy">Policy</a></li>
+        <li><a href="#permissions">Permissions</a></li>
+        <li><a href="#principal">Principal</a></li>
+        <li><a href="#routev3headermatcher">route.v3.HeaderMatcher</a></li>
+        <li><a href="#typematcherv3pathmatcher">type.matcher.v3.PathMatcher</a></li>
+        <li><a href="#corev3cidrrange">core.v3.CidrRange</a></li>
+        <li><a href="#typev3int32range">type.v3.Int32Range</a></li>
+        <li><a href="#typematcherv3metadatamatcher">type.matcher.v3.MetadataMatcher</a></li>
+        <li><a href="#typematcherv3stringmatcher">type.matcher.v3.StringMatcher</a></li>
+        <li><a href="#corev3typedextensionconfig">core.v3.TypedExtensionConfig</a></li>
+        <li><a href="#typematcherv3valuematcher">type.matcher.v3.ValueMatcher</a></li>
+        <li><a href="#typematcherv3filterstatematcher">type.matcher.v3.FilterStateMatcher</a></li>
+        <li><a href="#typematcherv3regexmatcher">type.matcher.v3.RegexMatcher</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
 
@@ -4305,7 +4599,7 @@ if (!doNotTrack) {
 			
 		
 		
-			<p class="reading-time"><i class="fa fa-clock" aria-hidden="true"></i>&nbsp; 4 分钟阅读 &nbsp;</p>
+			<p class="reading-time"><i class="fa fa-clock" aria-hidden="true"></i>&nbsp; 6 分钟阅读 &nbsp;</p>
 
 		
 	</header>    
@@ -4316,18 +4610,18 @@ if (!doNotTrack) {
 <h3 id="配合上游使用">配合上游使用</h3>
 <p>在 <a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/cluster/v3/cluster.proto#config-cluster-v3-cluster">config.cluster.v3.Cluster</a> 中的 <code>transport_socket</code> 配置使用，支持以下类型：</p>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>envoy.transport_sockets.tls</td>
-<td><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/tls/v3/tls.proto#extensions-transport-sockets-tls-v3-upstreamtlscontext">extensions.transport_sockets.tls.v3.UpstreamTlsContext</a></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>类型</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>envoy.transport_sockets.tls</td>
+          <td><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/tls/v3/tls.proto#extensions-transport-sockets-tls-v3-upstreamtlscontext">extensions.transport_sockets.tls.v3.UpstreamTlsContext</a></td>
+      </tr>
+  </tbody>
 </table>
 <p>如在 <code>clusters[_].transport_socket</code> 中配置使用 &ldquo;/tmp/http-ca.crt&rdquo; 作为 ca 验证上游服务端：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">static_resources</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -4354,38 +4648,38 @@ if (!doNotTrack) {
 <p>在 <a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener_components.proto#config-listener-v3-filterchain">config.listener.v3.FilterChain</a> 中的 <code>transport_socket</code> 配置：</p>
 <p>支持这几种类型：</p>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>envoy.transport_sockets.alts</td>
-<td>x</td>
-</tr>
-<tr>
-<td>envoy.transport_sockets.raw_buffer</td>
-<td>x</td>
-</tr>
-<tr>
-<td>envoy.transport_sockets.starttls</td>
-<td>x</td>
-</tr>
-<tr>
-<td>envoy.transport_sockets.tap</td>
-<td>x</td>
-</tr>
-<tr>
-<td>envoy.transport_sockets.tcp_stats</td>
-<td>x</td>
-</tr>
-<tr>
-<td>envoy.transport_sockets.tls</td>
-<td><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/tls/v3/tls.proto#envoy-v3-api-msg-extensions-transport-sockets-tls-v3-downstreamtlscontext">extensions.transport_sockets.tls.v3.DownstreamTlsContext</a></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>类型</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>envoy.transport_sockets.alts</td>
+          <td>x</td>
+      </tr>
+      <tr>
+          <td>envoy.transport_sockets.raw_buffer</td>
+          <td>x</td>
+      </tr>
+      <tr>
+          <td>envoy.transport_sockets.starttls</td>
+          <td>x</td>
+      </tr>
+      <tr>
+          <td>envoy.transport_sockets.tap</td>
+          <td>x</td>
+      </tr>
+      <tr>
+          <td>envoy.transport_sockets.tcp_stats</td>
+          <td>x</td>
+      </tr>
+      <tr>
+          <td>envoy.transport_sockets.tls</td>
+          <td><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/transport_sockets/tls/v3/tls.proto#envoy-v3-api-msg-extensions-transport-sockets-tls-v3-downstreamtlscontext">extensions.transport_sockets.tls.v3.DownstreamTlsContext</a></td>
+      </tr>
+  </tbody>
 </table>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">static_resources</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">listeners</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -4418,16 +4712,11 @@ if (!doNotTrack) {
 <li>Network filter，当鉴权不通过则直接关闭连接；</li>
 <li>HTTP filter，当鉴权不通过则以 403 返回。</li>
 </ol>
-<p>策略（policy）由权限（permission）与主体（principal）组成：</p>
-<ol>
-<li>权限：指定请求的操作，既做什么，例如 HTTP 请求的方法和路径；</li>
-<li>主体：指定请求的下游客户端身份，既这是谁，例如 jwt 中的 sub 属性。</li>
-</ol>
-<p>角色与策略配置示例如下，详细接口文档参考 <a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/rbac/v3/rbac.proto">config.rbac.v3.RBAC</a>：</p>
+<p>角色与策略配置示例如下：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">action</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ALLOW</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">policies</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># 角色名称</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#4e9a06">&#34;service-admin&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#4e9a06">&#34;role-admin&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic"># 权限列表</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">permissions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">any</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -4436,26 +4725,6 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">authenticated</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">principal_name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">exact</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;cluster.local/ns/default/sa/admin&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">authenticated</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">principal_name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">exact</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;cluster.local/ns/default/sa/superuser&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#4e9a06">&#34;role-sal&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">permissions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">and_rules</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">rules</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span>- <span style="color:#204a87;font-weight:bold">header</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>{<span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;:method&#34;</span><span style="color:#204a87;font-weight:bold">, exact_match</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;GET&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span>}<span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span>- <span style="color:#204a87;font-weight:bold">header</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>{<span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;User&#34;</span><span style="color:#204a87;font-weight:bold">, exact_match</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;sal&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span>}<span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span>- <span style="color:#204a87;font-weight:bold">url_path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>{<span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">prefix</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;/&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span>}<span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">principals</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">filter</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">envoy.filters.http.jwt_authn</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#204a87;font-weight:bold">key</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">my_payload</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span>- <span style="color:#204a87;font-weight:bold">key</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sub</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">value</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">string_match</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">exact</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#4e9a06">&#34;admin@example.com&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#4e9a06">&#34;role-guest&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">permissions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">and_rules</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -4465,12 +4734,7 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">prefix</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;/guest&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">principals</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">any</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><p>策略匹配的动作 (action) 说明：</p>
-<ol>
-<li>当 <code>action: ALLOW</code> 时：当且仅当存在与请求匹配的策略时才允许该请求，也就是白名单；</li>
-<li>当 <code>action: DENY</code> 时：当且仅当没有与请求匹配的策略时才允许该请求，也就是黑名单；</li>
-<li>当 <code>action: LOG</code> 时：允许所有请求，当请求匹配策略时，更改 &ldquo;access_log_hint&rdquo; 为 &ldquo;true&rdquo;。</li>
-</ol>
+</span></span></span></code></pre></div><p>更多请参考<a href="/docs/networks/envoy/security/#角色访问控制配置参数">角色访问控制配置参数</a>。</p>
 <h3 id="network-filter-配置示例">Network filter 配置示例</h3>
 <p>拒绝来自 &ldquo;192.168.0.1&rdquo; 且访问 &ldquo;80&rdquo; 端口的客户端，其他来源均允许：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">static_resources</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -4544,8 +4808,11 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">......</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><h2 id="外部鉴权模式">外部鉴权模式</h2>
 <h3 id="基于-opa-的访问控制">基于 OPA 的访问控制</h3>
-<p><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ext_authz_filter.html">外部鉴权模式</a> 同 <a href="/docs/networks/envoy/security/#%E5%86%85%E7%BD%AE%E9%89%B4%E6%9D%83%E6%A8%A1%E5%BC%8F">内置鉴权模式</a> 一样，也支持 &ldquo;Network filter&rdquo; 与 &ldquo;HTTP filter&rdquo; 两种过滤器。它的流程是当请求发生至 Envoy 时，由 Envoy 把请求的元信息（HTTP 请求头、源 IP 与端口、目标 IP 与端口等）传递给下游 OPA 服务端，由它判断鉴权是否通过。</p>
-<p>这里 OPA 服务端由 <a href="https://github.com/open-policy-agent/opa-envoy-plugin">opa-envoy-plugin</a> 实现，启动与配置示例：</p>
+<p><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ext_authz_filter.html">外部鉴权模式</a> 同 <a href="/docs/networks/envoy/security/#内置鉴权模式">内置鉴权模式</a> 一样，也支持 &ldquo;Network filter&rdquo; 与 &ldquo;HTTP filter&rdquo; 两种过滤器。它的流程是当请求发生至 Envoy 时，由 Envoy 把请求的元信息（HTTP 请求头、源 IP 与端口、目标 IP 与端口等）传递给下游 OPA 服务端，由它判断鉴权是否通过。</p>
+<p>这里 OPA 服务端由 <a href="https://github.com/open-policy-agent/opa-envoy-plugin">opa-envoy-plugin</a> 实现</p>
+<ul>
+<li>服务启动配置参数</li>
+</ul>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>./main run <span style="color:#4e9a06">\
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>	--server <span style="color:#4e9a06">\
 </span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>	--addr<span style="color:#ce5c00;font-weight:bold">=</span>0.0.0.0:8181 <span style="color:#4e9a06">\
@@ -4750,7 +5017,661 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">}</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div><h2 id="角色访问控制配置参数">角色访问控制配置参数</h2>
+<h3 id="rbac">RBAC</h3>
+<blockquote>
+<p>数据结构见 <a href="https://github.com/envoyproxy/envoy/blob/main/api/envoy/config/rbac/v3/rbac.proto#L80">envoy/config/rbac/v3/rbac.proto</a></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">action</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ALLOW</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">policies</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#4e9a06">&#34;policy-name-1&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>{<span style="color:#000">Policy}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#4e9a06">&#34;policy-name-2&#34;</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>{<span style="color:#000">Policy}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>格式</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>action</td>
+          <td>string</td>
+          <td>可取 [&ldquo;ALLOW&rdquo;, &ldquo;DENY&rdquo;, &ldquo;LOG&rdquo;] 分别表示 &ldquo;白名单&rdquo;、&ldquo;黑名单&rdquo;、&ldquo;日志&rdquo; 模式</td>
+      </tr>
+      <tr>
+          <td>policies</td>
+          <td>map&lt;string, <a href="/docs/networks/envoy/security/#policy">Policy</a>&gt;</td>
+          <td>键值对，通过定义多个角色，每个角色对应的主体以及包含相关权限</td>
+      </tr>
+  </tbody>
+</table>
+<p>策略匹配的动作 (action) 说明：</p>
+<ol>
+<li>当 <code>action: ALLOW</code> 时：当且仅当存在与请求匹配的策略时才允许该请求，也就是白名单；</li>
+<li>当 <code>action: DENY</code> 时：当且仅当没有与请求匹配的策略时才允许该请求，也就是黑名单；</li>
+<li>当 <code>action: LOG</code> 时：允许所有请求，当请求匹配策略时，更改 &ldquo;access_log_hint&rdquo; 为 &ldquo;true&rdquo;。</li>
+</ol>
+<p>见 <a href="/docs/networks/envoy/security/#基于角色访问控制">基于角色访问控制</a> 示例。</p>
+<h3 id="policy">Policy</h3>
+<blockquote>
+<p>数据结构见 <a href="https://github.com/envoyproxy/envoy/blob/main/api/envoy/config/rbac/v3/rbac.proto#L168">envoy/config/rbac/v3/rbac.proto</a></p>
+</blockquote>
+<table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>格式</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>permissions</td>
+          <td>repeated <a href="/docs/networks/envoy/security/#permission">Permission</a></td>
+          <td>权限</td>
+      </tr>
+      <tr>
+          <td>principals</td>
+          <td>repeated <a href="/docs/networks/envoy/security/#principal">Principal</a></td>
+          <td>主体</td>
+      </tr>
+  </tbody>
+</table>
+<p>策略（Policy）由权限 <a href="/docs/networks/envoy/security/#permissions">(Permission)</a> 与主体 <a href="/docs/networks/envoy/security/#principal">(Principal)</a> 组成：</p>
+<ol>
+<li>权限：指定请求的操作，既做什么，例如 HTTP 请求的方法和路径；</li>
+<li>主体：指定请求的下游客户端身份，既这是谁，例如 jwt 中的 sub 属性。</li>
+</ol>
+<h3 id="permissions">Permissions</h3>
+<blockquote>
+<p>数据结构见 <a href="https://github.com/envoyproxy/envoy/blob/main/api/envoy/config/rbac/v3/rbac.proto#L198">envoy/config/rbac/v3/rbac.proto</a></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">permissions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">and_rules</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">rules</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>- {<span style="color:#204a87;font-weight:bold">Permissions}</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">or_rules</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">rules</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>- {<span style="color:#204a87;font-weight:bold">Permissions}</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">any</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">header</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">url_path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">destination_ip</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">destination_port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">destination_port_range</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">not_rule</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">requested_server_name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">matcher</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">uri_template</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>格式</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>and_rules</td>
+          <td>{ &ldquo;rules&rdquo;: [<a href="/docs/networks/envoy/security/#permissions">Permission,&hellip;</a>] }</td>
+          <td>满足所有里面的规则</td>
+      </tr>
+      <tr>
+          <td>or_rules</td>
+          <td>{ &ldquo;rules&rdquo;: [<a href="/docs/networks/envoy/security/#permissions">Permission,&hellip;</a>] }</td>
+          <td>满足其中任意一个规则</td>
+      </tr>
+      <tr>
+          <td>any</td>
+          <td>bool</td>
+          <td>任意条件</td>
+      </tr>
+      <tr>
+          <td>header</td>
+          <td><a href="/docs/networks/envoy/security/#routev3headermatcher">route.v3.HeaderMatcher</a></td>
+          <td>仅 HTTP 协议下有效，请求头匹配</td>
+      </tr>
+      <tr>
+          <td>url_path</td>
+          <td><a href="/docs/networks/envoy/security/#typematcherv3pathmatcher">type.matcher.v3.PathMatcher</a></td>
+          <td>仅 HTTP 协议下有效，请求 URL 匹配</td>
+      </tr>
+      <tr>
+          <td>destination_ip</td>
+          <td><a href="/docs/networks/envoy/security/#corev3cidrrange">core.v3.CidrRange</a></td>
+          <td>目标 IP 地址段</td>
+      </tr>
+      <tr>
+          <td>destination_port</td>
+          <td>uint32</td>
+          <td>目标端口</td>
+      </tr>
+      <tr>
+          <td>destination_port_range</td>
+          <td><a href="/docs/networks/envoy/security/#typev3int32range">type.v3.Int32Range</a></td>
+          <td>目标端口范围</td>
+      </tr>
+      <tr>
+          <td>metadata</td>
+          <td><a href="/docs/networks/envoy/security/#typematcherv3metadatamatcher">type.matcher.v3.MetadataMatcher</a></td>
+          <td>自定义元数据，如 jwt 属性</td>
+      </tr>
+      <tr>
+          <td>not_rule</td>
+          <td><a href="/docs/networks/envoy/security/#permissions">Permission</a></td>
+          <td>不能满足这些规则</td>
+      </tr>
+      <tr>
+          <td>requested_server_name</td>
+          <td><a href="/docs/networks/envoy/security/#typematcherv3stringmatcher">type.matcher.v3.StringMatcher</a></td>
+          <td>客户端 TLS SNI 匹配值</td>
+      </tr>
+      <tr>
+          <td>matcher</td>
+          <td><a href="/docs/networks/envoy/security/#corev3typedextensionconfig">core.v3.TypedExtensionConfig</a></td>
+          <td>自定义匹配扩展</td>
+      </tr>
+      <tr>
+          <td>uri_template</td>
+          <td><a href="/docs/networks/envoy/security/#corev3typedextensionconfig">core.v3.TypedExtensionConfig</a></td>
+          <td>url 模版路径匹配</td>
+      </tr>
+  </tbody>
+</table>
+<p>包含以上可配置属性，但<strong>同一时间仅可配置其中一项</strong>，不可同时配置。</p>
+<h3 id="principal">Principal</h3>
+<blockquote>
+<p>数据结构见 <a href="https://github.com/envoyproxy/envoy/blob/main/api/envoy/config/rbac/v3/rbac.proto#L283">envoy/config/rbac/v3/rbac.proto</a></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">principals</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">and_ids</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">ids</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>- {<span style="color:#000">Principal}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">or_ids</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">ids</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span>- {<span style="color:#000">Principal}</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">any</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">authenticated</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">source_ip</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">direct_remote_ip</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">remote_ip</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">header</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">url_path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">filter_state</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">not_id</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>格式</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>and_ids</td>
+          <td>{ &ldquo;ids&rdquo;: [<a href="/docs/networks/envoy/security/#principal">Principal,&hellip;</a>] }</td>
+          <td>一组身份标识，必须全匹配</td>
+      </tr>
+      <tr>
+          <td>or_ids</td>
+          <td>{ &ldquo;ids&rdquo;: [<a href="/docs/networks/envoy/security/#principal">Principal,&hellip;</a>] }</td>
+          <td>一组身份标识，至少匹配其中一项</td>
+      </tr>
+      <tr>
+          <td>any</td>
+          <td>bool</td>
+          <td>开启则允许所有</td>
+      </tr>
+      <tr>
+          <td>authenticated</td>
+          <td>{ &ldquo;principal_name&rdquo;: <a href="/docs/networks/envoy/security/#typematcherv3stringmatcher">type.matcher.v3.StringMatcher</a> }</td>
+          <td>用于匹配 URI SAN 或 DNS SAN</td>
+      </tr>
+      <tr>
+          <td>source_ip</td>
+          <td><a href="/docs/networks/envoy/security/#corev3cidrrange">core.v3.CidrRange</a></td>
+          <td>废弃，使用 &ldquo;remote_ip&rdquo; 代替</td>
+      </tr>
+      <tr>
+          <td>direct_remote_ip</td>
+          <td><a href="/docs/networks/envoy/security/#corev3cidrrange">core.v3.CidrRange</a></td>
+          <td>TODO；物理对接 IP 地址</td>
+      </tr>
+      <tr>
+          <td>remote_ip</td>
+          <td><a href="/docs/networks/envoy/security/#corev3cidrrange">core.v3.CidrRange</a></td>
+          <td>TODO；客户端 IP 地址，一般来自 xff 或者 protocol proxy 区别于 direct_remote_ip</td>
+      </tr>
+      <tr>
+          <td>header</td>
+          <td><a href="/docs/networks/envoy/security/#routev3headermatcher">route.v3.HeaderMatcher</a></td>
+          <td>仅 HTTP 协议下有效，请求头匹配</td>
+      </tr>
+      <tr>
+          <td>url_path</td>
+          <td><a href="/docs/networks/envoy/security/#typematcherv3pathmatcher">type.matcher.v3.PathMatcher</a></td>
+          <td>仅 HTTP 协议下有效，请求 URL 匹配</td>
+      </tr>
+      <tr>
+          <td>metadata</td>
+          <td><a href="/docs/networks/envoy/security/#typematcherv3metadatamatcher">type.matcher.v3.MetadataMatcher</a></td>
+          <td>元数据匹配</td>
+      </tr>
+      <tr>
+          <td>filter_state</td>
+          <td><a href="/docs/networks/envoy/security/#typematcherv3filterstatematcher">type.matcher.v3.FilterStateMatcher</a></td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>not_id</td>
+          <td><a href="/docs/networks/envoy/security/#principal">Principal</a></td>
+          <td>-</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="routev3headermatcher">route.v3.HeaderMatcher</h3>
+<blockquote>
+<p>数据结构见 <a href="https://github.com/envoyproxy/envoy/blob/main/api/envoy/config/route/v3/route_components.proto">envoy/config/route/v3/route_components.proto</a></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">permissions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">header</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;:method&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">string_match</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">exact</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;POST&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">principals</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">header</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;x-tr-user&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">string_match</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">exact</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;sysadmin&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>格式</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>HTTP/2 请求头名称，如 &ldquo;:authority&rdquo; 表示为 HTTP/1 下的 &ldquo;Host&rdquo;</td>
+      </tr>
+      <tr>
+          <td>exact_match</td>
+          <td>string</td>
+          <td>废弃，使用 &ldquo;string_match&rdquo; 代替</td>
+      </tr>
+      <tr>
+          <td>safe_regex_match</td>
+          <td><a href="/docs/networks/envoy/security/#typematcherv3regexmatcher">type.matcher.v3.RegexMatcher</a></td>
+          <td>废弃，使用 &ldquo;string_match&rdquo; 代替</td>
+      </tr>
+      <tr>
+          <td>range_match</td>
+          <td>type.v3.Int64Range</td>
+          <td>求头值必须表示十进制的整数形式，即可包含可选的正负号</td>
+      </tr>
+      <tr>
+          <td>present_match</td>
+          <td>bool</td>
+          <td>为 &ldquo;true&rdquo; 将根据请求中是否存在该头来执行匹配；&ldquo;false&rdquo; 将根据请求头是否缺失来匹配</td>
+      </tr>
+      <tr>
+          <td>prefix_match</td>
+          <td>string</td>
+          <td>废弃，使用 &ldquo;string_match&rdquo; 代替</td>
+      </tr>
+      <tr>
+          <td>suffix_match</td>
+          <td>string</td>
+          <td>废弃，使用 &ldquo;string_match&rdquo; 代替</td>
+      </tr>
+      <tr>
+          <td>contains_match</td>
+          <td>string</td>
+          <td>废弃，使用 &ldquo;string_match&rdquo; 代替</td>
+      </tr>
+      <tr>
+          <td>string_match</td>
+          <td><a href="/docs/networks/envoy/security/#typematcherv3stringmatcher">type.matcher.v3.StringMatcher</a></td>
+          <td>根据请求头部值的字符串匹配进行匹配</td>
+      </tr>
+  </tbody>
+</table>
+<p>以上参数除 &ldquo;name&rdquo; 外，其他<strong>同一时间仅可配置其中一项</strong>，不可同时配置。</p>
+<h3 id="typematcherv3pathmatcher">type.matcher.v3.PathMatcher</h3>
+<blockquote>
+<p>数据结构见 <a href="https://github.com/envoyproxy/envoy/blob/main/api/envoy/type/matcher/v3/path.proto">envoy/type/matcher/v3/path.proto</a></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">permissions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">url_path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">exact</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;/guest&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>格式</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>path</td>
+          <td><a href="/docs/networks/envoy/security/#typematcherv3stringmatcher">type.matcher.v3.StringMatcher</a></td>
+          <td>匹配请求 url 且不包含参数，如 &ldquo;/data&rdquo; 匹配 &ldquo;/data#fragment?param=value&rdquo;</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="corev3cidrrange">core.v3.CidrRange</h3>
+<blockquote>
+<p>数据结构见 <a href="https://github.com/envoyproxy/envoy/blob/main/api/envoy/config/core/v3/address.proto">envoy/config/core/v3/address.proto</a></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">permissions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">destination_ip</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">address_prefix</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">192.168.0.2</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">prefix_len</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">32</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>格式</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>address_prefix</td>
+          <td>string</td>
+          <td>目标 IPv4 或 IPv6 地址</td>
+      </tr>
+      <tr>
+          <td>prefix_len</td>
+          <td>int</td>
+          <td>子网掩码</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="typev3int32range">type.v3.Int32Range</h3>
+<blockquote>
+<p>数据结构见 <a href="https://github.com/envoyproxy/envoy/blob/main/api/envoy/config/core/v3/address.proto">envoy/type/v3/range.proto</a></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">permissions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">destination_port_range</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">start</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8080</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">end</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8088</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>格式</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>start</td>
+          <td>int32</td>
+          <td>端口开始，包含</td>
+      </tr>
+      <tr>
+          <td>end</td>
+          <td>int32</td>
+          <td>端口结束，不包含</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="typematcherv3metadatamatcher">type.matcher.v3.MetadataMatcher</h3>
+<blockquote>
+<p>数据结构见 <a href="https://github.com/envoyproxy/envoy/blob/main/api/envoy/type/matcher/v3/metadata.proto">envoy/type/matcher/v3/metadata.proto</a></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">permissions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">filter</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">envoy.filters.http.jwt_authn</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">path</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">key</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">playload</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">key</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sub</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">value</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">string_match</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">exact</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">user1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>格式</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>filter</td>
+          <td>string</td>
+          <td>用于从元数据中检索结构体的过滤器名称</td>
+      </tr>
+      <tr>
+          <td>path</td>
+          <td>repeated PathSegment</td>
+          <td>从结构体中检索值的路径</td>
+      </tr>
+      <tr>
+          <td>value</td>
+          <td><a href="/docs/networks/envoy/security/#typematcherv3valuematcher">type.matcher.v3.ValueMatcher</a></td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>invert</td>
+          <td>bool</td>
+          <td>-</td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li>PathSegment</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>格式</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>key</td>
+          <td>string</td>
+          <td>指向需获取结构体中值的键名</td>
+      </tr>
+  </tbody>
+</table>
+<p>TODO;</p>
+<h3 id="typematcherv3stringmatcher">type.matcher.v3.StringMatcher</h3>
+<blockquote>
+<p>数据结构见 <a href="https://github.com/envoyproxy/envoy/blob/main/api/envoy/type/matcher/v3/string.proto">envoy/type/matcher/v3/string.proto</a></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">permissions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">requested_server_name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">exact</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;hello&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">pristinals</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">header</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;:authority&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">string_match</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">safe_regex</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">regex</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;([0-9a-z]{6}).mi.test.opsaid.net&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>格式</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>exact</td>
+          <td>string</td>
+          <td>全匹配，如 &ldquo;abc&rdquo; 则必须匹配为 &ldquo;abc&rdquo;</td>
+      </tr>
+      <tr>
+          <td>prefix</td>
+          <td>string</td>
+          <td>前缀匹配，如 &ldquo;abc&rdquo; 可匹配为 &ldquo;abc.xyz&rdquo;</td>
+      </tr>
+      <tr>
+          <td>suffix</td>
+          <td>string</td>
+          <td>后缀匹配，如 &ldquo;abc&rdquo; 可匹配为 &ldquo;xyz.abc&rdquo;</td>
+      </tr>
+      <tr>
+          <td>safe_regex</td>
+          <td><a href="/docs/networks/envoy/security/#typematcherv3regexmatcher">type.matcher.v3.RegexMatcher</a></td>
+          <td>正则表达匹配</td>
+      </tr>
+      <tr>
+          <td>contains</td>
+          <td>string</td>
+          <td>包含匹配，如 &ldquo;abc&rdquo; 可匹配为 &ldquo;xyz.abc.def&rdquo;</td>
+      </tr>
+      <tr>
+          <td>custom</td>
+          <td>xds.core.v3.TypedExtensionConfig</td>
+          <td>自定义匹配</td>
+      </tr>
+  </tbody>
+</table>
+<p>以上参数<strong>同一时间仅可配置其中一项</strong>，不可同时配置。</p>
+<h3 id="corev3typedextensionconfig">core.v3.TypedExtensionConfig</h3>
+<blockquote>
+<p>数据结构见 <a href="https://github.com/envoyproxy/envoy/blob/main/api/envoy/config/core/v3/extension.proto">envoy/config/core/v3/extension.proto</a></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">permissions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">matcher</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">typed_config</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>格式</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>name</td>
+          <td>string</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>typed_config</td>
+          <td>google.protobuf.Any</td>
+          <td>-</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="typematcherv3valuematcher">type.matcher.v3.ValueMatcher</h3>
+<blockquote>
+<p>数据结构见 <a href="https://github.com/envoyproxy/envoy/blob/main/api/envoy/type/matcher/v3/value.proto">envoy/type/matcher/v3/value.proto</a></p>
+</blockquote>
+<table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>格式</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>null_match</td>
+          <td>string</td>
+          <td>&quot;&quot;</td>
+      </tr>
+      <tr>
+          <td>double_match</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>string_match</td>
+          <td><a href="/docs/networks/envoy/security/#typematcherv3stringmatcher">type.matcher.v3.StringMatcher</a></td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>bool_match</td>
+          <td>bool</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>present_match</td>
+          <td>bool</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>list_match</td>
+          <td>type.matcher.v3.ListMatcher</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>or_match</td>
+          <td>type.matcher.v3.OrMatcher</td>
+          <td>-</td>
+      </tr>
+  </tbody>
+</table>
+<p>以上参数<strong>同一时间仅可配置其中一项</strong>，不可同时配置。</p>
+<h3 id="typematcherv3filterstatematcher">type.matcher.v3.FilterStateMatcher</h3>
+<blockquote>
+<p>数据结构见 <a href="https://github.com/envoyproxy/envoy/blob/main/api/envoy/type/matcher/v3/filter_state.proto">envoy/type/matcher/v3/filter_state.proto</a></p>
+</blockquote>
+<table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>格式</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>string_match</td>
+          <td><a href="/docs/networks/envoy/security/#typematcherv3stringmatcher">type.matcher.v3.StringMatcher</a></td>
+          <td>-</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="typematcherv3regexmatcher">type.matcher.v3.RegexMatcher</h3>
+<blockquote>
+<p>数据结构见 <a href="https://github.com/envoyproxy/envoy/blob/main/api/envoy/type/matcher/v3/regex.proto">envoy/type/matcher/v3/regex.proto</a></p>
+</blockquote>
+<table>
+  <thead>
+      <tr>
+          <th>属性</th>
+          <th>格式</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>regex</td>
+          <td>string</td>
+          <td>正则表达式</td>
+      </tr>
+  </tbody>
+</table>
+
 	
 		<br /><hr />
 		<style>
@@ -4819,7 +5740,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  最后修改 2024.03.20: <a href="https://github.com/opsaid/website/commit/3843b4d79caf0c5b0cb751e5543c5957b0d252d4">docs: envoy ext_authz (3843b4d)</a>
+  最后修改 2024.05.22: <a href="https://github.com/opsaid/website/commit/8418eb54e6132c0f9370282354fb3ffca8cb08a2">feat: 添加 opa 应用示例 (8418eb5)</a>
 </div>
 
 </div>
@@ -4842,7 +5763,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

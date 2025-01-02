@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -23,82 +23,73 @@
 用于代理OIDC认证
 启动参数
 
+  
+      
+          名称
+          默认值
+          说明
+      
+  
+  
+      
+          alpha-config
+          -
+          使用 alpha 版本的配 …">
+<meta property="og:url" content="/docs/component/oauth2-proxy/config/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="参数配置">
+  <meta property="og:description" content="认证代理 用于代理OIDC认证
+启动参数 名称 默认值 说明 alpha-config - 使用 alpha 版本的配置数据结构 config - 配置文件 convert-config-to-alpha false 如果开启，则会自动转换配置为 alpha 版本格式 acr-values - TODO; allowed-group - 限制只有该组用户才可以登录，可配置多次 allowed-role - 配合 keycloak 使用，限制只有该角色可登录，可配置多次 api-route - TODO; approval-prompt force TODO; OAuth approval_prompt auth-logging true 认证日志 auth-logging-format - 认证日志格式：{{.Client}} - {{.RequestID}} - {{.Username}} [{{.Timestamp}}] [{{.Status}}] {{.Message}} authenticated-emails-file - TODO; 允许登录的邮件文件列表，每行一个 azure-graph-group-field - TODO; 配合 azure azure-tenant - TODO; 配合 azure banner &#34;&#34; TODO; 自定义显示框，使用 “-” 则关闭默认值 basic-auth-password - 传递的认证头 bitbucket-repository - TODO; bitbucket-team - TODO; client-id - OAuth Client ID client-secret - OAuth Client Secret client-secret-file - OAuth Client Secret code-challenge-method - 使用指定方法的PKCE代码质询，仅支持 ‘plain’ 或 ‘S256’ cookie-csrf-expire 15m0s CSRF cookie 的有效期 cookie-csrf-per-request - 如果开启则CSRF的cookie名每请求均不一样，关闭则使用同一个 cookie-domain - TODO; cookie-expire 168h0m0s cookie的有效期 cookie-httponly true cookie httponly cookie-name _oauth2_proxy cookie name cookie-path “/” cookie path cookie-refresh - 刷新cookie的时间，设置&#39;0’则禁用 cookie-samesite - SameSite cookie attribute (ie: “lax”, “strict”, “none”, or “”) cookie-secret - 用于 secure cookies cookie-secure true secure cookie flag custom-sign-in-logo - 自定义登录logo，设置&#34;-“则禁用默认图，支持：https 与本地文件 custom-templates-dir - 自定义html模版路径 display-htpasswd-form true 如果htpasswd file文件提供了，则是否显示登录认证 email-domain - 允许登录认证的邮件后缀，如果设置为’*‘则允许所有 errors-to-info-log - 输出错误日志至 /dev/stdout 而不是 /dev/stderr exclude-logging-path - 排除记录日志的路径，如：/path1,/path2,/path3 extra-jwt-issuers - TODO; flush-interval 1s TODO; footer &#34;” 自定义页脚，设置&#34;-“则关闭 force-code-challenge-method - 废弃，由 ‘code-challenge-method’ 代替 force-https - 强制HTTPS force-json-errors - TODO; gcp-healthchecks - 开启 GCP/GKE 健康探测 github-org - github github-repo - github github-team - github github-token - github github-user - github gitlab-group - gitlab gitlab-project - gitlab google-admin-email - google google-group - google google-service-account-json - google htpasswd-file - htpasswd htpasswd-user-group - htpasswd http-address - HTTP监听端口 https-address - HTTPS监听端口 insecure-oidc-allow-unverified-email - 如果在 id_token 中的email未验证则是否失败 insecure-oidc-skip-issuer-verification - 是否验证 OIDC discovery URL insecure-oidc-skip-nonce true 跳过验证OIDC中的 nonce 属性 jwt-key - TODO; jwt-key-file - TODO; keycloak-group - keycloak logging-compress - 是否启用GZIP压缩日志 logging-filename - 日志文件路径，未设置则输出到终端 logging-local-time true 记录日志是否使用本地时间 logging-max-age 7 最大的天数用于保留旧日志文件 logging-max-backups 最大的保留旧日志数量 login-url - 认证的端点 metrics-address 9100 开启”/metrics&#34;性能指标地址 metrics-secure-address 9100 以HTTPS协议开启&#34;/metrics&#34;性能指标地址 metrics-tls-cert-file - HTTPS证书地址 metrics-tls-key-file - HTTPS证书地址 oidc-audience-claim aud 验证OIDC中 audience 属性 oidc-email-claim email oidc token 中对应 email 的属性名 oidc-extra-audience - 对应token中aud属性，允许通过认证的值，该参数可配置多个 oidc-groups-claim groups 同上 oidc-issuer-url - OpenID Connect issuer URL (ie: https://accounts.google.com) oidc-jwks-url - OpenID Connect JWKS URL (ie: https://www.googleapis.com/oauth2/v3/certs) pass-access-token - 通过 X-Forwarded-Access-Token 头传递 access_token pass-authorization-header - 透传 Authorization 请求头 pass-basic-auth true 透传 HTTP Basic Auth, X-Forwarded-User and X-Forwarded-Email 头 pass-host-header true 透传 Host 头到下游 pass-user-headers true pass X-Forwarded-User and X-Forwarded-Email information to upstream ping-path “/ping” 监控探测接口 ping-user-agent - 自定义 user-agent prefer-email-to-user 认证相关 profile-url - TODO; prompt - OIDC prompt provider google OIDC认证提供方 provider-ca-file - ca地址 provider-display-name - OIDC提供方显示名称 proxy-prefix “/oauth2” TODO; proxy-websockets true 开启 WebSocket 代理 pubjwk-url - login.gov 需要 real-client-ip-header X-Real-IP 表示real IP的头，如：X-Forwarded-For, X-Real-IP, or X-ProxyUser-IP redeem-url - TODO; redirect-url - 认证成功后回调的地址，如：“https://internalapp.yourcompany.com/oauth2/callback&#34; redis-ca-path - redis 自定义ca路径 redis-cluster-connection-urls redis 相关 redis-connection-idle-timeout - redis 相关 redis-connection-url - redis 相关 redis-insecure-skip-tls-verify - redis 相关 redis-password - redis 相关 redis-sentinel-connection-urls - redis 相关 redis-sentinel-master-name - redis 相关 redis-sentinel-password - redis 相关 redis-use-cluster - redis 相关 redis-use-sentinel - redis 相关 request-id-header “X-Request-Id” 请求ID头 request-logging true 记录 HTTP 请求日志 request-logging-format - 请求日志格式，默认：”{{.Client}} - {{.RequestID}} - {{.Username}} [{{.Timestamp}}] {{.Host}} {{.RequestMethod}} {{.Upstream}} {{.RequestURI}} {{.Protocol}} {{.UserAgent}} {{.StatusCode}} {{.ResponseSize}} {{.RequestDuration}}&#34; resource - 仅在 azure ad reverse-proxy - TODO; scope - oauth scope session-cookie-minimal - TODO; session-store-type cookie session 存储的方式 set-authorization-header - 设置认证响应头，一般用于配合 nginx auth_request 使用 set-basic-auth - 设置认证响应头，一般用于配合 nginx auth_request 使用 set-xauthrequest - 设置认证响应头，一般用于配合 nginx auth_request 使用 show-debug-on-error - 显示详细的错误信息，这个不要在生产环境开启 signature-key - TODO; silence-ping-logging - 关闭请求日志在ping端点 skip-auth-preflight - 在 OPTIONS 阶段会跳过认证 skip-auth-regex - 已被废弃，使用 skip-auth-route skip-auth-route - 配置跳过认证阶段 skip-auth-strip-headers true TODO; skip-jwt-bearer-tokens false TODO; 是否移除jwt的认证头 skip-oidc-discovery - 跳过 OIDC 自发现 skip-provider-button - TODO；跳过？ ssl-insecure-skip-verify - TODO; ssl-upstream-insecure-skip-verify - TODO; standard-logging true 记录标准日志信息 standard-logging-format &#34;&#34; 默认值：&#34;[{{.Timestamp}}] [{{.File}}] {{.Message}}&#34; tls-cert-file - 证书 tls-cipher-suite - 证书 tls-key-file - 证书 tls-min-version - 证书 trusted-ip - 配置可信IP，可以绕过认证 upstream - 认证通过后转发的下游服务，支持：http、file、static 配置 upstream-timeout 30s 转发下游的超时时间 user-id-claim email 已废弃，使用 oidc-email-claim 代替 validate-url - access token 认证端点 whitelist-domain - 允许认证过后转发的域名列表">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:modified_time" content="2023-02-08T23:17:58+08:00">
 
-
-名称
-默认值
-说明
-
-
-
-
-alpha-config
--
-使用 alpha 版本的配置数据结构
-
-
-config
--
-配置文件
-
-
-convert-config-to-alpha
-false
-如果开启，则会自动转换配置为 alpha …">
-<meta property="og:title" content="参数配置" />
-<meta property="og:description" content="认证代理 用于代理OIDC认证
-启动参数 名称 默认值 说明 alpha-config - 使用 alpha 版本的配置数据结构 config - 配置文件 convert-config-to-alpha false 如果开启，则会自动转换配置为 alpha 版本格式 acr-values - TODO; allowed-group - 限制只有该组用户才可以登录，可配置多次 allowed-role - 配合 keycloak 使用，限制只有该角色可登录，可配置多次 api-route - TODO; approval-prompt force TODO; OAuth approval_prompt auth-logging true 认证日志 auth-logging-format - 认证日志格式：{{.Client}} - {{.RequestID}} - {{.Username}} [{{.Timestamp}}] [{{.Status}}] {{.Message}} authenticated-emails-file - TODO; 允许登录的邮件文件列表，每行一个 azure-graph-group-field - TODO; 配合 azure azure-tenant - TODO; 配合 azure banner &quot;&quot; TODO; 自定义显示框，使用 &ldquo;-&rdquo; 则关闭默认值 basic-auth-password - 传递的认证头 bitbucket-repository - TODO; bitbucket-team - TODO; client-id - OAuth Client ID client-secret - OAuth Client Secret client-secret-file - OAuth Client Secret code-challenge-method - 使用指定方法的PKCE代码质询，仅支持 &lsquo;plain&rsquo; 或 &lsquo;S256&rsquo; cookie-csrf-expire 15m0s CSRF cookie 的有效期 cookie-csrf-per-request - 如果开启则CSRF的cookie名每请求均不一样，关闭则使用同一个 cookie-domain - TODO; cookie-expire 168h0m0s cookie的有效期 cookie-httponly true cookie httponly cookie-name _oauth2_proxy cookie name cookie-path &ldquo;/&rdquo; cookie path cookie-refresh - 刷新cookie的时间，设置&#39;0&rsquo;则禁用 cookie-samesite - SameSite cookie attribute (ie: &ldquo;lax&rdquo;, &ldquo;strict&rdquo;, &ldquo;none&rdquo;, or &ldquo;&rdquo;) cookie-secret - 用于 secure cookies cookie-secure true secure cookie flag custom-sign-in-logo - 自定义登录logo，设置&quot;-&ldquo;则禁用默认图，支持：https 与本地文件 custom-templates-dir - 自定义html模版路径 display-htpasswd-form true 如果htpasswd file文件提供了，则是否显示登录认证 email-domain - 允许登录认证的邮件后缀，如果设置为&rsquo;*&lsquo;则允许所有 errors-to-info-log - 输出错误日志至 /dev/stdout 而不是 /dev/stderr exclude-logging-path - 排除记录日志的路径，如：/path1,/path2,/path3 extra-jwt-issuers - TODO; flush-interval 1s TODO; footer &quot;&rdquo; 自定义页脚，设置&quot;-&ldquo;则关闭 force-code-challenge-method - 废弃，由 &lsquo;code-challenge-method&rsquo; 代替 force-https - 强制HTTPS force-json-errors - TODO; gcp-healthchecks - 开启 GCP/GKE 健康探测 github-org - github github-repo - github github-team - github github-token - github github-user - github gitlab-group - gitlab gitlab-project - gitlab google-admin-email - google google-group - google google-service-account-json - google htpasswd-file - htpasswd htpasswd-user-group - htpasswd http-address - HTTP监听端口 https-address - HTTPS监听端口 insecure-oidc-allow-unverified-email - 如果在 id_token 中的email未验证则是否失败 insecure-oidc-skip-issuer-verification - 是否验证 OIDC discovery URL insecure-oidc-skip-nonce true 跳过验证OIDC中的 nonce 属性 jwt-key - TODO; jwt-key-file - TODO; keycloak-group - keycloak logging-compress - 是否启用GZIP压缩日志 logging-filename - 日志文件路径，未设置则输出到终端 logging-local-time true 记录日志是否使用本地时间 logging-max-age 7 最大的天数用于保留旧日志文件 logging-max-backups 最大的保留旧日志数量 login-url - 认证的端点 metrics-address 9100 开启&rdquo;/metrics&quot;性能指标地址 metrics-secure-address 9100 以HTTPS协议开启&quot;/metrics&quot;性能指标地址 metrics-tls-cert-file - HTTPS证书地址 metrics-tls-key-file - HTTPS证书地址 oidc-audience-claim aud 验证OIDC中 audience 属性 oidc-email-claim email oidc token 中对应 email 的属性名 oidc-extra-audience - 对应token中aud属性，允许通过认证的值，该参数可配置多个 oidc-groups-claim groups 同上 oidc-issuer-url - OpenID Connect issuer URL (ie: https://accounts." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/component/oauth2-proxy/config/" /><meta property="article:section" content="docs" />
-
-<meta property="article:modified_time" content="2023-02-08T23:17:58+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="参数配置">
-<meta itemprop="description" content="认证代理 用于代理OIDC认证
-启动参数 名称 默认值 说明 alpha-config - 使用 alpha 版本的配置数据结构 config - 配置文件 convert-config-to-alpha false 如果开启，则会自动转换配置为 alpha 版本格式 acr-values - TODO; allowed-group - 限制只有该组用户才可以登录，可配置多次 allowed-role - 配合 keycloak 使用，限制只有该角色可登录，可配置多次 api-route - TODO; approval-prompt force TODO; OAuth approval_prompt auth-logging true 认证日志 auth-logging-format - 认证日志格式：{{.Client}} - {{.RequestID}} - {{.Username}} [{{.Timestamp}}] [{{.Status}}] {{.Message}} authenticated-emails-file - TODO; 允许登录的邮件文件列表，每行一个 azure-graph-group-field - TODO; 配合 azure azure-tenant - TODO; 配合 azure banner &quot;&quot; TODO; 自定义显示框，使用 &ldquo;-&rdquo; 则关闭默认值 basic-auth-password - 传递的认证头 bitbucket-repository - TODO; bitbucket-team - TODO; client-id - OAuth Client ID client-secret - OAuth Client Secret client-secret-file - OAuth Client Secret code-challenge-method - 使用指定方法的PKCE代码质询，仅支持 &lsquo;plain&rsquo; 或 &lsquo;S256&rsquo; cookie-csrf-expire 15m0s CSRF cookie 的有效期 cookie-csrf-per-request - 如果开启则CSRF的cookie名每请求均不一样，关闭则使用同一个 cookie-domain - TODO; cookie-expire 168h0m0s cookie的有效期 cookie-httponly true cookie httponly cookie-name _oauth2_proxy cookie name cookie-path &ldquo;/&rdquo; cookie path cookie-refresh - 刷新cookie的时间，设置&#39;0&rsquo;则禁用 cookie-samesite - SameSite cookie attribute (ie: &ldquo;lax&rdquo;, &ldquo;strict&rdquo;, &ldquo;none&rdquo;, or &ldquo;&rdquo;) cookie-secret - 用于 secure cookies cookie-secure true secure cookie flag custom-sign-in-logo - 自定义登录logo，设置&quot;-&ldquo;则禁用默认图，支持：https 与本地文件 custom-templates-dir - 自定义html模版路径 display-htpasswd-form true 如果htpasswd file文件提供了，则是否显示登录认证 email-domain - 允许登录认证的邮件后缀，如果设置为&rsquo;*&lsquo;则允许所有 errors-to-info-log - 输出错误日志至 /dev/stdout 而不是 /dev/stderr exclude-logging-path - 排除记录日志的路径，如：/path1,/path2,/path3 extra-jwt-issuers - TODO; flush-interval 1s TODO; footer &quot;&rdquo; 自定义页脚，设置&quot;-&ldquo;则关闭 force-code-challenge-method - 废弃，由 &lsquo;code-challenge-method&rsquo; 代替 force-https - 强制HTTPS force-json-errors - TODO; gcp-healthchecks - 开启 GCP/GKE 健康探测 github-org - github github-repo - github github-team - github github-token - github github-user - github gitlab-group - gitlab gitlab-project - gitlab google-admin-email - google google-group - google google-service-account-json - google htpasswd-file - htpasswd htpasswd-user-group - htpasswd http-address - HTTP监听端口 https-address - HTTPS监听端口 insecure-oidc-allow-unverified-email - 如果在 id_token 中的email未验证则是否失败 insecure-oidc-skip-issuer-verification - 是否验证 OIDC discovery URL insecure-oidc-skip-nonce true 跳过验证OIDC中的 nonce 属性 jwt-key - TODO; jwt-key-file - TODO; keycloak-group - keycloak logging-compress - 是否启用GZIP压缩日志 logging-filename - 日志文件路径，未设置则输出到终端 logging-local-time true 记录日志是否使用本地时间 logging-max-age 7 最大的天数用于保留旧日志文件 logging-max-backups 最大的保留旧日志数量 login-url - 认证的端点 metrics-address 9100 开启&rdquo;/metrics&quot;性能指标地址 metrics-secure-address 9100 以HTTPS协议开启&quot;/metrics&quot;性能指标地址 metrics-tls-cert-file - HTTPS证书地址 metrics-tls-key-file - HTTPS证书地址 oidc-audience-claim aud 验证OIDC中 audience 属性 oidc-email-claim email oidc token 中对应 email 的属性名 oidc-extra-audience - 对应token中aud属性，允许通过认证的值，该参数可配置多个 oidc-groups-claim groups 同上 oidc-issuer-url - OpenID Connect issuer URL (ie: https://accounts.">
-<meta itemprop="dateModified" content="2023-02-08T23:17:58+08:00" />
-<meta itemprop="wordCount" content="604">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="参数配置"/>
-<meta name="twitter:description" content="认证代理 用于代理OIDC认证
-启动参数 名称 默认值 说明 alpha-config - 使用 alpha 版本的配置数据结构 config - 配置文件 convert-config-to-alpha false 如果开启，则会自动转换配置为 alpha 版本格式 acr-values - TODO; allowed-group - 限制只有该组用户才可以登录，可配置多次 allowed-role - 配合 keycloak 使用，限制只有该角色可登录，可配置多次 api-route - TODO; approval-prompt force TODO; OAuth approval_prompt auth-logging true 认证日志 auth-logging-format - 认证日志格式：{{.Client}} - {{.RequestID}} - {{.Username}} [{{.Timestamp}}] [{{.Status}}] {{.Message}} authenticated-emails-file - TODO; 允许登录的邮件文件列表，每行一个 azure-graph-group-field - TODO; 配合 azure azure-tenant - TODO; 配合 azure banner &quot;&quot; TODO; 自定义显示框，使用 &ldquo;-&rdquo; 则关闭默认值 basic-auth-password - 传递的认证头 bitbucket-repository - TODO; bitbucket-team - TODO; client-id - OAuth Client ID client-secret - OAuth Client Secret client-secret-file - OAuth Client Secret code-challenge-method - 使用指定方法的PKCE代码质询，仅支持 &lsquo;plain&rsquo; 或 &lsquo;S256&rsquo; cookie-csrf-expire 15m0s CSRF cookie 的有效期 cookie-csrf-per-request - 如果开启则CSRF的cookie名每请求均不一样，关闭则使用同一个 cookie-domain - TODO; cookie-expire 168h0m0s cookie的有效期 cookie-httponly true cookie httponly cookie-name _oauth2_proxy cookie name cookie-path &ldquo;/&rdquo; cookie path cookie-refresh - 刷新cookie的时间，设置&#39;0&rsquo;则禁用 cookie-samesite - SameSite cookie attribute (ie: &ldquo;lax&rdquo;, &ldquo;strict&rdquo;, &ldquo;none&rdquo;, or &ldquo;&rdquo;) cookie-secret - 用于 secure cookies cookie-secure true secure cookie flag custom-sign-in-logo - 自定义登录logo，设置&quot;-&ldquo;则禁用默认图，支持：https 与本地文件 custom-templates-dir - 自定义html模版路径 display-htpasswd-form true 如果htpasswd file文件提供了，则是否显示登录认证 email-domain - 允许登录认证的邮件后缀，如果设置为&rsquo;*&lsquo;则允许所有 errors-to-info-log - 输出错误日志至 /dev/stdout 而不是 /dev/stderr exclude-logging-path - 排除记录日志的路径，如：/path1,/path2,/path3 extra-jwt-issuers - TODO; flush-interval 1s TODO; footer &quot;&rdquo; 自定义页脚，设置&quot;-&ldquo;则关闭 force-code-challenge-method - 废弃，由 &lsquo;code-challenge-method&rsquo; 代替 force-https - 强制HTTPS force-json-errors - TODO; gcp-healthchecks - 开启 GCP/GKE 健康探测 github-org - github github-repo - github github-team - github github-token - github github-user - github gitlab-group - gitlab gitlab-project - gitlab google-admin-email - google google-group - google google-service-account-json - google htpasswd-file - htpasswd htpasswd-user-group - htpasswd http-address - HTTP监听端口 https-address - HTTPS监听端口 insecure-oidc-allow-unverified-email - 如果在 id_token 中的email未验证则是否失败 insecure-oidc-skip-issuer-verification - 是否验证 OIDC discovery URL insecure-oidc-skip-nonce true 跳过验证OIDC中的 nonce 属性 jwt-key - TODO; jwt-key-file - TODO; keycloak-group - keycloak logging-compress - 是否启用GZIP压缩日志 logging-filename - 日志文件路径，未设置则输出到终端 logging-local-time true 记录日志是否使用本地时间 logging-max-age 7 最大的天数用于保留旧日志文件 logging-max-backups 最大的保留旧日志数量 login-url - 认证的端点 metrics-address 9100 开启&rdquo;/metrics&quot;性能指标地址 metrics-secure-address 9100 以HTTPS协议开启&quot;/metrics&quot;性能指标地址 metrics-tls-cert-file - HTTPS证书地址 metrics-tls-key-file - HTTPS证书地址 oidc-audience-claim aud 验证OIDC中 audience 属性 oidc-email-claim email oidc token 中对应 email 的属性名 oidc-extra-audience - 对应token中aud属性，允许通过认证的值，该参数可配置多个 oidc-groups-claim groups 同上 oidc-issuer-url - OpenID Connect issuer URL (ie: https://accounts."/>
+  <meta itemprop="name" content="参数配置">
+  <meta itemprop="description" content="认证代理 用于代理OIDC认证
+启动参数 名称 默认值 说明 alpha-config - 使用 alpha 版本的配置数据结构 config - 配置文件 convert-config-to-alpha false 如果开启，则会自动转换配置为 alpha 版本格式 acr-values - TODO; allowed-group - 限制只有该组用户才可以登录，可配置多次 allowed-role - 配合 keycloak 使用，限制只有该角色可登录，可配置多次 api-route - TODO; approval-prompt force TODO; OAuth approval_prompt auth-logging true 认证日志 auth-logging-format - 认证日志格式：{{.Client}} - {{.RequestID}} - {{.Username}} [{{.Timestamp}}] [{{.Status}}] {{.Message}} authenticated-emails-file - TODO; 允许登录的邮件文件列表，每行一个 azure-graph-group-field - TODO; 配合 azure azure-tenant - TODO; 配合 azure banner &#34;&#34; TODO; 自定义显示框，使用 “-” 则关闭默认值 basic-auth-password - 传递的认证头 bitbucket-repository - TODO; bitbucket-team - TODO; client-id - OAuth Client ID client-secret - OAuth Client Secret client-secret-file - OAuth Client Secret code-challenge-method - 使用指定方法的PKCE代码质询，仅支持 ‘plain’ 或 ‘S256’ cookie-csrf-expire 15m0s CSRF cookie 的有效期 cookie-csrf-per-request - 如果开启则CSRF的cookie名每请求均不一样，关闭则使用同一个 cookie-domain - TODO; cookie-expire 168h0m0s cookie的有效期 cookie-httponly true cookie httponly cookie-name _oauth2_proxy cookie name cookie-path “/” cookie path cookie-refresh - 刷新cookie的时间，设置&#39;0’则禁用 cookie-samesite - SameSite cookie attribute (ie: “lax”, “strict”, “none”, or “”) cookie-secret - 用于 secure cookies cookie-secure true secure cookie flag custom-sign-in-logo - 自定义登录logo，设置&#34;-“则禁用默认图，支持：https 与本地文件 custom-templates-dir - 自定义html模版路径 display-htpasswd-form true 如果htpasswd file文件提供了，则是否显示登录认证 email-domain - 允许登录认证的邮件后缀，如果设置为’*‘则允许所有 errors-to-info-log - 输出错误日志至 /dev/stdout 而不是 /dev/stderr exclude-logging-path - 排除记录日志的路径，如：/path1,/path2,/path3 extra-jwt-issuers - TODO; flush-interval 1s TODO; footer &#34;” 自定义页脚，设置&#34;-“则关闭 force-code-challenge-method - 废弃，由 ‘code-challenge-method’ 代替 force-https - 强制HTTPS force-json-errors - TODO; gcp-healthchecks - 开启 GCP/GKE 健康探测 github-org - github github-repo - github github-team - github github-token - github github-user - github gitlab-group - gitlab gitlab-project - gitlab google-admin-email - google google-group - google google-service-account-json - google htpasswd-file - htpasswd htpasswd-user-group - htpasswd http-address - HTTP监听端口 https-address - HTTPS监听端口 insecure-oidc-allow-unverified-email - 如果在 id_token 中的email未验证则是否失败 insecure-oidc-skip-issuer-verification - 是否验证 OIDC discovery URL insecure-oidc-skip-nonce true 跳过验证OIDC中的 nonce 属性 jwt-key - TODO; jwt-key-file - TODO; keycloak-group - keycloak logging-compress - 是否启用GZIP压缩日志 logging-filename - 日志文件路径，未设置则输出到终端 logging-local-time true 记录日志是否使用本地时间 logging-max-age 7 最大的天数用于保留旧日志文件 logging-max-backups 最大的保留旧日志数量 login-url - 认证的端点 metrics-address 9100 开启”/metrics&#34;性能指标地址 metrics-secure-address 9100 以HTTPS协议开启&#34;/metrics&#34;性能指标地址 metrics-tls-cert-file - HTTPS证书地址 metrics-tls-key-file - HTTPS证书地址 oidc-audience-claim aud 验证OIDC中 audience 属性 oidc-email-claim email oidc token 中对应 email 的属性名 oidc-extra-audience - 对应token中aud属性，允许通过认证的值，该参数可配置多个 oidc-groups-claim groups 同上 oidc-issuer-url - OpenID Connect issuer URL (ie: https://accounts.google.com) oidc-jwks-url - OpenID Connect JWKS URL (ie: https://www.googleapis.com/oauth2/v3/certs) pass-access-token - 通过 X-Forwarded-Access-Token 头传递 access_token pass-authorization-header - 透传 Authorization 请求头 pass-basic-auth true 透传 HTTP Basic Auth, X-Forwarded-User and X-Forwarded-Email 头 pass-host-header true 透传 Host 头到下游 pass-user-headers true pass X-Forwarded-User and X-Forwarded-Email information to upstream ping-path “/ping” 监控探测接口 ping-user-agent - 自定义 user-agent prefer-email-to-user 认证相关 profile-url - TODO; prompt - OIDC prompt provider google OIDC认证提供方 provider-ca-file - ca地址 provider-display-name - OIDC提供方显示名称 proxy-prefix “/oauth2” TODO; proxy-websockets true 开启 WebSocket 代理 pubjwk-url - login.gov 需要 real-client-ip-header X-Real-IP 表示real IP的头，如：X-Forwarded-For, X-Real-IP, or X-ProxyUser-IP redeem-url - TODO; redirect-url - 认证成功后回调的地址，如：“https://internalapp.yourcompany.com/oauth2/callback&#34; redis-ca-path - redis 自定义ca路径 redis-cluster-connection-urls redis 相关 redis-connection-idle-timeout - redis 相关 redis-connection-url - redis 相关 redis-insecure-skip-tls-verify - redis 相关 redis-password - redis 相关 redis-sentinel-connection-urls - redis 相关 redis-sentinel-master-name - redis 相关 redis-sentinel-password - redis 相关 redis-use-cluster - redis 相关 redis-use-sentinel - redis 相关 request-id-header “X-Request-Id” 请求ID头 request-logging true 记录 HTTP 请求日志 request-logging-format - 请求日志格式，默认：”{{.Client}} - {{.RequestID}} - {{.Username}} [{{.Timestamp}}] {{.Host}} {{.RequestMethod}} {{.Upstream}} {{.RequestURI}} {{.Protocol}} {{.UserAgent}} {{.StatusCode}} {{.ResponseSize}} {{.RequestDuration}}&#34; resource - 仅在 azure ad reverse-proxy - TODO; scope - oauth scope session-cookie-minimal - TODO; session-store-type cookie session 存储的方式 set-authorization-header - 设置认证响应头，一般用于配合 nginx auth_request 使用 set-basic-auth - 设置认证响应头，一般用于配合 nginx auth_request 使用 set-xauthrequest - 设置认证响应头，一般用于配合 nginx auth_request 使用 show-debug-on-error - 显示详细的错误信息，这个不要在生产环境开启 signature-key - TODO; silence-ping-logging - 关闭请求日志在ping端点 skip-auth-preflight - 在 OPTIONS 阶段会跳过认证 skip-auth-regex - 已被废弃，使用 skip-auth-route skip-auth-route - 配置跳过认证阶段 skip-auth-strip-headers true TODO; skip-jwt-bearer-tokens false TODO; 是否移除jwt的认证头 skip-oidc-discovery - 跳过 OIDC 自发现 skip-provider-button - TODO；跳过？ ssl-insecure-skip-verify - TODO; ssl-upstream-insecure-skip-verify - TODO; standard-logging true 记录标准日志信息 standard-logging-format &#34;&#34; 默认值：&#34;[{{.Timestamp}}] [{{.File}}] {{.Message}}&#34; tls-cert-file - 证书 tls-cipher-suite - 证书 tls-key-file - 证书 tls-min-version - 证书 trusted-ip - 配置可信IP，可以绕过认证 upstream - 认证通过后转发的下游服务，支持：http、file、static 配置 upstream-timeout 30s 转发下游的超时时间 user-id-claim email 已废弃，使用 oidc-email-claim 代替 validate-url - access token 认证端点 whitelist-domain - 允许认证过后转发的域名列表">
+  <meta itemprop="dateModified" content="2023-02-08T23:17:58+08:00">
+  <meta itemprop="wordCount" content="604">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="参数配置">
+  <meta name="twitter:description" content="认证代理 用于代理OIDC认证
+启动参数 名称 默认值 说明 alpha-config - 使用 alpha 版本的配置数据结构 config - 配置文件 convert-config-to-alpha false 如果开启，则会自动转换配置为 alpha 版本格式 acr-values - TODO; allowed-group - 限制只有该组用户才可以登录，可配置多次 allowed-role - 配合 keycloak 使用，限制只有该角色可登录，可配置多次 api-route - TODO; approval-prompt force TODO; OAuth approval_prompt auth-logging true 认证日志 auth-logging-format - 认证日志格式：{{.Client}} - {{.RequestID}} - {{.Username}} [{{.Timestamp}}] [{{.Status}}] {{.Message}} authenticated-emails-file - TODO; 允许登录的邮件文件列表，每行一个 azure-graph-group-field - TODO; 配合 azure azure-tenant - TODO; 配合 azure banner &#34;&#34; TODO; 自定义显示框，使用 “-” 则关闭默认值 basic-auth-password - 传递的认证头 bitbucket-repository - TODO; bitbucket-team - TODO; client-id - OAuth Client ID client-secret - OAuth Client Secret client-secret-file - OAuth Client Secret code-challenge-method - 使用指定方法的PKCE代码质询，仅支持 ‘plain’ 或 ‘S256’ cookie-csrf-expire 15m0s CSRF cookie 的有效期 cookie-csrf-per-request - 如果开启则CSRF的cookie名每请求均不一样，关闭则使用同一个 cookie-domain - TODO; cookie-expire 168h0m0s cookie的有效期 cookie-httponly true cookie httponly cookie-name _oauth2_proxy cookie name cookie-path “/” cookie path cookie-refresh - 刷新cookie的时间，设置&#39;0’则禁用 cookie-samesite - SameSite cookie attribute (ie: “lax”, “strict”, “none”, or “”) cookie-secret - 用于 secure cookies cookie-secure true secure cookie flag custom-sign-in-logo - 自定义登录logo，设置&#34;-“则禁用默认图，支持：https 与本地文件 custom-templates-dir - 自定义html模版路径 display-htpasswd-form true 如果htpasswd file文件提供了，则是否显示登录认证 email-domain - 允许登录认证的邮件后缀，如果设置为’*‘则允许所有 errors-to-info-log - 输出错误日志至 /dev/stdout 而不是 /dev/stderr exclude-logging-path - 排除记录日志的路径，如：/path1,/path2,/path3 extra-jwt-issuers - TODO; flush-interval 1s TODO; footer &#34;” 自定义页脚，设置&#34;-“则关闭 force-code-challenge-method - 废弃，由 ‘code-challenge-method’ 代替 force-https - 强制HTTPS force-json-errors - TODO; gcp-healthchecks - 开启 GCP/GKE 健康探测 github-org - github github-repo - github github-team - github github-token - github github-user - github gitlab-group - gitlab gitlab-project - gitlab google-admin-email - google google-group - google google-service-account-json - google htpasswd-file - htpasswd htpasswd-user-group - htpasswd http-address - HTTP监听端口 https-address - HTTPS监听端口 insecure-oidc-allow-unverified-email - 如果在 id_token 中的email未验证则是否失败 insecure-oidc-skip-issuer-verification - 是否验证 OIDC discovery URL insecure-oidc-skip-nonce true 跳过验证OIDC中的 nonce 属性 jwt-key - TODO; jwt-key-file - TODO; keycloak-group - keycloak logging-compress - 是否启用GZIP压缩日志 logging-filename - 日志文件路径，未设置则输出到终端 logging-local-time true 记录日志是否使用本地时间 logging-max-age 7 最大的天数用于保留旧日志文件 logging-max-backups 最大的保留旧日志数量 login-url - 认证的端点 metrics-address 9100 开启”/metrics&#34;性能指标地址 metrics-secure-address 9100 以HTTPS协议开启&#34;/metrics&#34;性能指标地址 metrics-tls-cert-file - HTTPS证书地址 metrics-tls-key-file - HTTPS证书地址 oidc-audience-claim aud 验证OIDC中 audience 属性 oidc-email-claim email oidc token 中对应 email 的属性名 oidc-extra-audience - 对应token中aud属性，允许通过认证的值，该参数可配置多个 oidc-groups-claim groups 同上 oidc-issuer-url - OpenID Connect issuer URL (ie: https://accounts.google.com) oidc-jwks-url - OpenID Connect JWKS URL (ie: https://www.googleapis.com/oauth2/v3/certs) pass-access-token - 通过 X-Forwarded-Access-Token 头传递 access_token pass-authorization-header - 透传 Authorization 请求头 pass-basic-auth true 透传 HTTP Basic Auth, X-Forwarded-User and X-Forwarded-Email 头 pass-host-header true 透传 Host 头到下游 pass-user-headers true pass X-Forwarded-User and X-Forwarded-Email information to upstream ping-path “/ping” 监控探测接口 ping-user-agent - 自定义 user-agent prefer-email-to-user 认证相关 profile-url - TODO; prompt - OIDC prompt provider google OIDC认证提供方 provider-ca-file - ca地址 provider-display-name - OIDC提供方显示名称 proxy-prefix “/oauth2” TODO; proxy-websockets true 开启 WebSocket 代理 pubjwk-url - login.gov 需要 real-client-ip-header X-Real-IP 表示real IP的头，如：X-Forwarded-For, X-Real-IP, or X-ProxyUser-IP redeem-url - TODO; redirect-url - 认证成功后回调的地址，如：“https://internalapp.yourcompany.com/oauth2/callback&#34; redis-ca-path - redis 自定义ca路径 redis-cluster-connection-urls redis 相关 redis-connection-idle-timeout - redis 相关 redis-connection-url - redis 相关 redis-insecure-skip-tls-verify - redis 相关 redis-password - redis 相关 redis-sentinel-connection-urls - redis 相关 redis-sentinel-master-name - redis 相关 redis-sentinel-password - redis 相关 redis-use-cluster - redis 相关 redis-use-sentinel - redis 相关 request-id-header “X-Request-Id” 请求ID头 request-logging true 记录 HTTP 请求日志 request-logging-format - 请求日志格式，默认：”{{.Client}} - {{.RequestID}} - {{.Username}} [{{.Timestamp}}] {{.Host}} {{.RequestMethod}} {{.Upstream}} {{.RequestURI}} {{.Protocol}} {{.UserAgent}} {{.StatusCode}} {{.ResponseSize}} {{.RequestDuration}}&#34; resource - 仅在 azure ad reverse-proxy - TODO; scope - oauth scope session-cookie-minimal - TODO; session-store-type cookie session 存储的方式 set-authorization-header - 设置认证响应头，一般用于配合 nginx auth_request 使用 set-basic-auth - 设置认证响应头，一般用于配合 nginx auth_request 使用 set-xauthrequest - 设置认证响应头，一般用于配合 nginx auth_request 使用 show-debug-on-error - 显示详细的错误信息，这个不要在生产环境开启 signature-key - TODO; silence-ping-logging - 关闭请求日志在ping端点 skip-auth-preflight - 在 OPTIONS 阶段会跳过认证 skip-auth-regex - 已被废弃，使用 skip-auth-route skip-auth-route - 配置跳过认证阶段 skip-auth-strip-headers true TODO; skip-jwt-bearer-tokens false TODO; 是否移除jwt的认证头 skip-oidc-discovery - 跳过 OIDC 自发现 skip-provider-button - TODO；跳过？ ssl-insecure-skip-verify - TODO; ssl-upstream-insecure-skip-verify - TODO; standard-logging true 记录标准日志信息 standard-logging-format &#34;&#34; 默认值：&#34;[{{.Timestamp}}] [{{.File}}] {{.Message}}&#34; tls-cert-file - 证书 tls-cipher-suite - 证书 tls-key-file - 证书 tls-min-version - 证书 trusted-ip - 配置可信IP，可以绕过认证 upstream - 认证通过后转发的下游服务，支持：http、file、static 配置 upstream-timeout 30s 转发下游的超时时间 user-id-claim email 已废弃，使用 oidc-email-claim 代替 validate-url - access token 认证端点 whitelist-domain - 允许认证过后转发的域名列表">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1061,6 +1052,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3094,9 +3102,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3110,10 +3118,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3173,6 +3384,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4291,745 +4561,745 @@ if (!doNotTrack) {
 <p>用于代理OIDC认证</p>
 <h2 id="启动参数">启动参数</h2>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>默认值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>alpha-config</td>
-<td>-</td>
-<td>使用 alpha 版本的配置数据结构</td>
-</tr>
-<tr>
-<td>config</td>
-<td>-</td>
-<td>配置文件</td>
-</tr>
-<tr>
-<td>convert-config-to-alpha</td>
-<td>false</td>
-<td>如果开启，则会自动转换配置为 alpha 版本格式</td>
-</tr>
-<tr>
-<td>acr-values</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>allowed-group</td>
-<td>-</td>
-<td>限制只有该组用户才可以登录，可配置多次</td>
-</tr>
-<tr>
-<td>allowed-role</td>
-<td>-</td>
-<td>配合 keycloak 使用，限制只有该角色可登录，可配置多次</td>
-</tr>
-<tr>
-<td>api-route</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>approval-prompt</td>
-<td>force</td>
-<td>TODO; OAuth approval_prompt</td>
-</tr>
-<tr>
-<td>auth-logging</td>
-<td>true</td>
-<td>认证日志</td>
-</tr>
-<tr>
-<td>auth-logging-format</td>
-<td>-</td>
-<td>认证日志格式：{{.Client}} - {{.RequestID}} - {{.Username}} [{{.Timestamp}}] [{{.Status}}] {{.Message}}</td>
-</tr>
-<tr>
-<td>authenticated-emails-file</td>
-<td>-</td>
-<td>TODO; 允许登录的邮件文件列表，每行一个</td>
-</tr>
-<tr>
-<td>azure-graph-group-field</td>
-<td>-</td>
-<td>TODO; 配合 azure</td>
-</tr>
-<tr>
-<td>azure-tenant</td>
-<td>-</td>
-<td>TODO; 配合 azure</td>
-</tr>
-<tr>
-<td>banner</td>
-<td>&quot;&quot;</td>
-<td>TODO; 自定义显示框，使用 &ldquo;-&rdquo; 则关闭默认值</td>
-</tr>
-<tr>
-<td>basic-auth-password</td>
-<td>-</td>
-<td>传递的认证头</td>
-</tr>
-<tr>
-<td>bitbucket-repository</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>bitbucket-team</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>client-id</td>
-<td>-</td>
-<td>OAuth Client ID</td>
-</tr>
-<tr>
-<td>client-secret</td>
-<td>-</td>
-<td>OAuth Client Secret</td>
-</tr>
-<tr>
-<td>client-secret-file</td>
-<td>-</td>
-<td>OAuth Client Secret</td>
-</tr>
-<tr>
-<td>code-challenge-method</td>
-<td>-</td>
-<td>使用指定方法的PKCE代码质询，仅支持 &lsquo;plain&rsquo; 或 &lsquo;S256&rsquo;</td>
-</tr>
-<tr>
-<td>cookie-csrf-expire</td>
-<td>15m0s</td>
-<td>CSRF cookie 的有效期</td>
-</tr>
-<tr>
-<td>cookie-csrf-per-request</td>
-<td>-</td>
-<td>如果开启则CSRF的cookie名每请求均不一样，关闭则使用同一个</td>
-</tr>
-<tr>
-<td>cookie-domain</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>cookie-expire</td>
-<td>168h0m0s</td>
-<td>cookie的有效期</td>
-</tr>
-<tr>
-<td>cookie-httponly</td>
-<td>true</td>
-<td>cookie httponly</td>
-</tr>
-<tr>
-<td>cookie-name</td>
-<td>_oauth2_proxy</td>
-<td>cookie name</td>
-</tr>
-<tr>
-<td>cookie-path</td>
-<td>&ldquo;/&rdquo;</td>
-<td>cookie path</td>
-</tr>
-<tr>
-<td>cookie-refresh</td>
-<td>-</td>
-<td>刷新cookie的时间，设置'0&rsquo;则禁用</td>
-</tr>
-<tr>
-<td>cookie-samesite</td>
-<td>-</td>
-<td>SameSite cookie attribute (ie: &ldquo;lax&rdquo;, &ldquo;strict&rdquo;, &ldquo;none&rdquo;, or &ldquo;&rdquo;)</td>
-</tr>
-<tr>
-<td>cookie-secret</td>
-<td>-</td>
-<td>用于 secure cookies</td>
-</tr>
-<tr>
-<td>cookie-secure</td>
-<td>true</td>
-<td>secure cookie flag</td>
-</tr>
-<tr>
-<td>custom-sign-in-logo</td>
-<td>-</td>
-<td>自定义登录logo，设置&quot;-&ldquo;则禁用默认图，支持：https 与本地文件</td>
-</tr>
-<tr>
-<td>custom-templates-dir</td>
-<td>-</td>
-<td>自定义html模版路径</td>
-</tr>
-<tr>
-<td>display-htpasswd-form</td>
-<td>true</td>
-<td>如果htpasswd file文件提供了，则是否显示登录认证</td>
-</tr>
-<tr>
-<td>email-domain</td>
-<td>-</td>
-<td>允许登录认证的邮件后缀，如果设置为&rsquo;*&lsquo;则允许所有</td>
-</tr>
-<tr>
-<td>errors-to-info-log</td>
-<td>-</td>
-<td>输出错误日志至 /dev/stdout 而不是 /dev/stderr</td>
-</tr>
-<tr>
-<td>exclude-logging-path</td>
-<td>-</td>
-<td>排除记录日志的路径，如：/path1,/path2,/path3</td>
-</tr>
-<tr>
-<td>extra-jwt-issuers</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>flush-interval</td>
-<td>1s</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>footer</td>
-<td>&quot;&rdquo;</td>
-<td>自定义页脚，设置&quot;-&ldquo;则关闭</td>
-</tr>
-<tr>
-<td>force-code-challenge-method</td>
-<td>-</td>
-<td>废弃，由 &lsquo;code-challenge-method&rsquo; 代替</td>
-</tr>
-<tr>
-<td>force-https</td>
-<td>-</td>
-<td>强制HTTPS</td>
-</tr>
-<tr>
-<td>force-json-errors</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>gcp-healthchecks</td>
-<td>-</td>
-<td>开启 GCP/GKE 健康探测</td>
-</tr>
-<tr>
-<td>github-org</td>
-<td>-</td>
-<td>github</td>
-</tr>
-<tr>
-<td>github-repo</td>
-<td>-</td>
-<td>github</td>
-</tr>
-<tr>
-<td>github-team</td>
-<td>-</td>
-<td>github</td>
-</tr>
-<tr>
-<td>github-token</td>
-<td>-</td>
-<td>github</td>
-</tr>
-<tr>
-<td>github-user</td>
-<td>-</td>
-<td>github</td>
-</tr>
-<tr>
-<td>gitlab-group</td>
-<td>-</td>
-<td>gitlab</td>
-</tr>
-<tr>
-<td>gitlab-project</td>
-<td>-</td>
-<td>gitlab</td>
-</tr>
-<tr>
-<td>google-admin-email</td>
-<td>-</td>
-<td>google</td>
-</tr>
-<tr>
-<td>google-group</td>
-<td>-</td>
-<td>google</td>
-</tr>
-<tr>
-<td>google-service-account-json</td>
-<td>-</td>
-<td>google</td>
-</tr>
-<tr>
-<td>htpasswd-file</td>
-<td>-</td>
-<td>htpasswd</td>
-</tr>
-<tr>
-<td>htpasswd-user-group</td>
-<td>-</td>
-<td>htpasswd</td>
-</tr>
-<tr>
-<td>http-address</td>
-<td>-</td>
-<td>HTTP监听端口</td>
-</tr>
-<tr>
-<td>https-address</td>
-<td>-</td>
-<td>HTTPS监听端口</td>
-</tr>
-<tr>
-<td>insecure-oidc-allow-unverified-email</td>
-<td>-</td>
-<td>如果在 id_token 中的email未验证则是否失败</td>
-</tr>
-<tr>
-<td>insecure-oidc-skip-issuer-verification</td>
-<td>-</td>
-<td>是否验证 OIDC discovery URL</td>
-</tr>
-<tr>
-<td>insecure-oidc-skip-nonce</td>
-<td>true</td>
-<td>跳过验证OIDC中的 nonce 属性</td>
-</tr>
-<tr>
-<td>jwt-key</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>jwt-key-file</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>keycloak-group</td>
-<td>-</td>
-<td>keycloak</td>
-</tr>
-<tr>
-<td>logging-compress</td>
-<td>-</td>
-<td>是否启用GZIP压缩日志</td>
-</tr>
-<tr>
-<td>logging-filename</td>
-<td>-</td>
-<td>日志文件路径，未设置则输出到终端</td>
-</tr>
-<tr>
-<td>logging-local-time</td>
-<td>true</td>
-<td>记录日志是否使用本地时间</td>
-</tr>
-<tr>
-<td>logging-max-age</td>
-<td>7</td>
-<td>最大的天数用于保留旧日志文件</td>
-</tr>
-<tr>
-<td>logging-max-backups</td>
-<td>最大的保留旧日志数量</td>
-<td></td>
-</tr>
-<tr>
-<td>login-url</td>
-<td>-</td>
-<td>认证的端点</td>
-</tr>
-<tr>
-<td>metrics-address</td>
-<td>9100</td>
-<td>开启&rdquo;/metrics&quot;性能指标地址</td>
-</tr>
-<tr>
-<td>metrics-secure-address</td>
-<td>9100</td>
-<td>以HTTPS协议开启&quot;/metrics&quot;性能指标地址</td>
-</tr>
-<tr>
-<td>metrics-tls-cert-file</td>
-<td>-</td>
-<td>HTTPS证书地址</td>
-</tr>
-<tr>
-<td>metrics-tls-key-file</td>
-<td>-</td>
-<td>HTTPS证书地址</td>
-</tr>
-<tr>
-<td>oidc-audience-claim</td>
-<td>aud</td>
-<td>验证OIDC中 audience 属性</td>
-</tr>
-<tr>
-<td>oidc-email-claim</td>
-<td>email</td>
-<td>oidc token 中对应 email 的属性名</td>
-</tr>
-<tr>
-<td>oidc-extra-audience</td>
-<td>-</td>
-<td>对应token中aud属性，允许通过认证的值，该参数可配置多个</td>
-</tr>
-<tr>
-<td>oidc-groups-claim</td>
-<td>groups</td>
-<td>同上</td>
-</tr>
-<tr>
-<td>oidc-issuer-url</td>
-<td>-</td>
-<td>OpenID Connect issuer URL (ie: <a href="https://accounts.google.com">https://accounts.google.com</a>)</td>
-</tr>
-<tr>
-<td>oidc-jwks-url</td>
-<td>-</td>
-<td>OpenID Connect JWKS URL (ie: <a href="https://www.googleapis.com/oauth2/v3/certs">https://www.googleapis.com/oauth2/v3/certs</a>)</td>
-</tr>
-<tr>
-<td>pass-access-token</td>
-<td>-</td>
-<td>通过 X-Forwarded-Access-Token 头传递 access_token</td>
-</tr>
-<tr>
-<td>pass-authorization-header</td>
-<td>-</td>
-<td>透传 Authorization 请求头</td>
-</tr>
-<tr>
-<td>pass-basic-auth</td>
-<td>true</td>
-<td>透传 HTTP Basic Auth, X-Forwarded-User and X-Forwarded-Email 头</td>
-</tr>
-<tr>
-<td>pass-host-header</td>
-<td>true</td>
-<td>透传 Host 头到下游</td>
-</tr>
-<tr>
-<td>pass-user-headers</td>
-<td>true</td>
-<td>pass X-Forwarded-User and X-Forwarded-Email information to upstream</td>
-</tr>
-<tr>
-<td>ping-path</td>
-<td>&ldquo;/ping&rdquo;</td>
-<td>监控探测接口</td>
-</tr>
-<tr>
-<td>ping-user-agent</td>
-<td>-</td>
-<td>自定义 user-agent</td>
-</tr>
-<tr>
-<td>prefer-email-to-user</td>
-<td>认证相关</td>
-<td></td>
-</tr>
-<tr>
-<td>profile-url</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>prompt</td>
-<td>-</td>
-<td>OIDC prompt</td>
-</tr>
-<tr>
-<td>provider</td>
-<td>google</td>
-<td>OIDC认证提供方</td>
-</tr>
-<tr>
-<td>provider-ca-file</td>
-<td>-</td>
-<td>ca地址</td>
-</tr>
-<tr>
-<td>provider-display-name</td>
-<td>-</td>
-<td>OIDC提供方显示名称</td>
-</tr>
-<tr>
-<td>proxy-prefix</td>
-<td>&ldquo;/oauth2&rdquo;</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>proxy-websockets</td>
-<td>true</td>
-<td>开启 WebSocket 代理</td>
-</tr>
-<tr>
-<td>pubjwk-url</td>
-<td>-</td>
-<td>login.gov 需要</td>
-</tr>
-<tr>
-<td>real-client-ip-header</td>
-<td>X-Real-IP</td>
-<td>表示real IP的头，如：X-Forwarded-For, X-Real-IP, or X-ProxyUser-IP</td>
-</tr>
-<tr>
-<td>redeem-url</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>redirect-url</td>
-<td>-</td>
-<td>认证成功后回调的地址，如：&ldquo;<a href="https://internalapp.yourcompany.com/oauth2/callback%22">https://internalapp.yourcompany.com/oauth2/callback&quot;</a></td>
-</tr>
-<tr>
-<td>redis-ca-path</td>
-<td>-</td>
-<td>redis 自定义ca路径</td>
-</tr>
-<tr>
-<td>redis-cluster-connection-urls</td>
-<td>redis 相关</td>
-<td></td>
-</tr>
-<tr>
-<td>redis-connection-idle-timeout</td>
-<td>-</td>
-<td>redis 相关</td>
-</tr>
-<tr>
-<td>redis-connection-url</td>
-<td>-</td>
-<td>redis 相关</td>
-</tr>
-<tr>
-<td>redis-insecure-skip-tls-verify</td>
-<td>-</td>
-<td>redis 相关</td>
-</tr>
-<tr>
-<td>redis-password</td>
-<td>-</td>
-<td>redis 相关</td>
-</tr>
-<tr>
-<td>redis-sentinel-connection-urls</td>
-<td>-</td>
-<td>redis 相关</td>
-</tr>
-<tr>
-<td>redis-sentinel-master-name</td>
-<td>-</td>
-<td>redis 相关</td>
-</tr>
-<tr>
-<td>redis-sentinel-password</td>
-<td>-</td>
-<td>redis 相关</td>
-</tr>
-<tr>
-<td>redis-use-cluster</td>
-<td>-</td>
-<td>redis 相关</td>
-</tr>
-<tr>
-<td>redis-use-sentinel</td>
-<td>-</td>
-<td>redis 相关</td>
-</tr>
-<tr>
-<td>request-id-header</td>
-<td>&ldquo;X-Request-Id&rdquo;</td>
-<td>请求ID头</td>
-</tr>
-<tr>
-<td>request-logging</td>
-<td>true</td>
-<td>记录 HTTP 请求日志</td>
-</tr>
-<tr>
-<td>request-logging-format</td>
-<td>-</td>
-<td>请求日志格式，默认：&rdquo;{{.Client}} - {{.RequestID}} - {{.Username}} [{{.Timestamp}}] {{.Host}} {{.RequestMethod}} {{.Upstream}} {{.RequestURI}} {{.Protocol}} {{.UserAgent}} {{.StatusCode}} {{.ResponseSize}} {{.RequestDuration}}&quot;</td>
-</tr>
-<tr>
-<td>resource</td>
-<td>-</td>
-<td>仅在 azure ad</td>
-</tr>
-<tr>
-<td>reverse-proxy</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>scope</td>
-<td>-</td>
-<td>oauth scope</td>
-</tr>
-<tr>
-<td>session-cookie-minimal</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>session-store-type</td>
-<td>cookie</td>
-<td>session 存储的方式</td>
-</tr>
-<tr>
-<td>set-authorization-header</td>
-<td>-</td>
-<td>设置认证响应头，一般用于配合 nginx auth_request 使用</td>
-</tr>
-<tr>
-<td>set-basic-auth</td>
-<td>-</td>
-<td>设置认证响应头，一般用于配合 nginx auth_request 使用</td>
-</tr>
-<tr>
-<td>set-xauthrequest</td>
-<td>-</td>
-<td>设置认证响应头，一般用于配合 nginx auth_request 使用</td>
-</tr>
-<tr>
-<td>show-debug-on-error</td>
-<td>-</td>
-<td>显示详细的错误信息，这个不要在生产环境开启</td>
-</tr>
-<tr>
-<td>signature-key</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>silence-ping-logging</td>
-<td>-</td>
-<td>关闭请求日志在ping端点</td>
-</tr>
-<tr>
-<td>skip-auth-preflight</td>
-<td>-</td>
-<td>在 OPTIONS 阶段会跳过认证</td>
-</tr>
-<tr>
-<td>skip-auth-regex</td>
-<td>-</td>
-<td>已被废弃，使用 skip-auth-route</td>
-</tr>
-<tr>
-<td>skip-auth-route</td>
-<td>-</td>
-<td>配置跳过认证阶段</td>
-</tr>
-<tr>
-<td>skip-auth-strip-headers</td>
-<td>true</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>skip-jwt-bearer-tokens</td>
-<td>false</td>
-<td>TODO; 是否移除jwt的认证头</td>
-</tr>
-<tr>
-<td>skip-oidc-discovery</td>
-<td>-</td>
-<td>跳过 OIDC 自发现</td>
-</tr>
-<tr>
-<td>skip-provider-button</td>
-<td>-</td>
-<td>TODO；跳过？</td>
-</tr>
-<tr>
-<td>ssl-insecure-skip-verify</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>ssl-upstream-insecure-skip-verify</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>standard-logging</td>
-<td>true</td>
-<td>记录标准日志信息</td>
-</tr>
-<tr>
-<td>standard-logging-format</td>
-<td>&quot;&quot;</td>
-<td>默认值：&quot;[{{.Timestamp}}] [{{.File}}] {{.Message}}&quot;</td>
-</tr>
-<tr>
-<td>tls-cert-file</td>
-<td>-</td>
-<td>证书</td>
-</tr>
-<tr>
-<td>tls-cipher-suite</td>
-<td>-</td>
-<td>证书</td>
-</tr>
-<tr>
-<td>tls-key-file</td>
-<td>-</td>
-<td>证书</td>
-</tr>
-<tr>
-<td>tls-min-version</td>
-<td>-</td>
-<td>证书</td>
-</tr>
-<tr>
-<td>trusted-ip</td>
-<td>-</td>
-<td>配置可信IP，可以绕过认证</td>
-</tr>
-<tr>
-<td>upstream</td>
-<td>-</td>
-<td>认证通过后转发的下游服务，支持：http、file、static 配置</td>
-</tr>
-<tr>
-<td>upstream-timeout</td>
-<td>30s</td>
-<td>转发下游的超时时间</td>
-</tr>
-<tr>
-<td>user-id-claim</td>
-<td>email</td>
-<td>已废弃，使用 oidc-email-claim 代替</td>
-</tr>
-<tr>
-<td>validate-url</td>
-<td>-</td>
-<td>access token 认证端点</td>
-</tr>
-<tr>
-<td>whitelist-domain</td>
-<td>-</td>
-<td>允许认证过后转发的域名列表</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>默认值</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>alpha-config</td>
+          <td>-</td>
+          <td>使用 alpha 版本的配置数据结构</td>
+      </tr>
+      <tr>
+          <td>config</td>
+          <td>-</td>
+          <td>配置文件</td>
+      </tr>
+      <tr>
+          <td>convert-config-to-alpha</td>
+          <td>false</td>
+          <td>如果开启，则会自动转换配置为 alpha 版本格式</td>
+      </tr>
+      <tr>
+          <td>acr-values</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>allowed-group</td>
+          <td>-</td>
+          <td>限制只有该组用户才可以登录，可配置多次</td>
+      </tr>
+      <tr>
+          <td>allowed-role</td>
+          <td>-</td>
+          <td>配合 keycloak 使用，限制只有该角色可登录，可配置多次</td>
+      </tr>
+      <tr>
+          <td>api-route</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>approval-prompt</td>
+          <td>force</td>
+          <td>TODO; OAuth approval_prompt</td>
+      </tr>
+      <tr>
+          <td>auth-logging</td>
+          <td>true</td>
+          <td>认证日志</td>
+      </tr>
+      <tr>
+          <td>auth-logging-format</td>
+          <td>-</td>
+          <td>认证日志格式：{{.Client}} - {{.RequestID}} - {{.Username}} [{{.Timestamp}}] [{{.Status}}] {{.Message}}</td>
+      </tr>
+      <tr>
+          <td>authenticated-emails-file</td>
+          <td>-</td>
+          <td>TODO; 允许登录的邮件文件列表，每行一个</td>
+      </tr>
+      <tr>
+          <td>azure-graph-group-field</td>
+          <td>-</td>
+          <td>TODO; 配合 azure</td>
+      </tr>
+      <tr>
+          <td>azure-tenant</td>
+          <td>-</td>
+          <td>TODO; 配合 azure</td>
+      </tr>
+      <tr>
+          <td>banner</td>
+          <td>&quot;&quot;</td>
+          <td>TODO; 自定义显示框，使用 &ldquo;-&rdquo; 则关闭默认值</td>
+      </tr>
+      <tr>
+          <td>basic-auth-password</td>
+          <td>-</td>
+          <td>传递的认证头</td>
+      </tr>
+      <tr>
+          <td>bitbucket-repository</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>bitbucket-team</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>client-id</td>
+          <td>-</td>
+          <td>OAuth Client ID</td>
+      </tr>
+      <tr>
+          <td>client-secret</td>
+          <td>-</td>
+          <td>OAuth Client Secret</td>
+      </tr>
+      <tr>
+          <td>client-secret-file</td>
+          <td>-</td>
+          <td>OAuth Client Secret</td>
+      </tr>
+      <tr>
+          <td>code-challenge-method</td>
+          <td>-</td>
+          <td>使用指定方法的PKCE代码质询，仅支持 &lsquo;plain&rsquo; 或 &lsquo;S256&rsquo;</td>
+      </tr>
+      <tr>
+          <td>cookie-csrf-expire</td>
+          <td>15m0s</td>
+          <td>CSRF cookie 的有效期</td>
+      </tr>
+      <tr>
+          <td>cookie-csrf-per-request</td>
+          <td>-</td>
+          <td>如果开启则CSRF的cookie名每请求均不一样，关闭则使用同一个</td>
+      </tr>
+      <tr>
+          <td>cookie-domain</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>cookie-expire</td>
+          <td>168h0m0s</td>
+          <td>cookie的有效期</td>
+      </tr>
+      <tr>
+          <td>cookie-httponly</td>
+          <td>true</td>
+          <td>cookie httponly</td>
+      </tr>
+      <tr>
+          <td>cookie-name</td>
+          <td>_oauth2_proxy</td>
+          <td>cookie name</td>
+      </tr>
+      <tr>
+          <td>cookie-path</td>
+          <td>&ldquo;/&rdquo;</td>
+          <td>cookie path</td>
+      </tr>
+      <tr>
+          <td>cookie-refresh</td>
+          <td>-</td>
+          <td>刷新cookie的时间，设置'0&rsquo;则禁用</td>
+      </tr>
+      <tr>
+          <td>cookie-samesite</td>
+          <td>-</td>
+          <td>SameSite cookie attribute (ie: &ldquo;lax&rdquo;, &ldquo;strict&rdquo;, &ldquo;none&rdquo;, or &ldquo;&rdquo;)</td>
+      </tr>
+      <tr>
+          <td>cookie-secret</td>
+          <td>-</td>
+          <td>用于 secure cookies</td>
+      </tr>
+      <tr>
+          <td>cookie-secure</td>
+          <td>true</td>
+          <td>secure cookie flag</td>
+      </tr>
+      <tr>
+          <td>custom-sign-in-logo</td>
+          <td>-</td>
+          <td>自定义登录logo，设置&quot;-&ldquo;则禁用默认图，支持：https 与本地文件</td>
+      </tr>
+      <tr>
+          <td>custom-templates-dir</td>
+          <td>-</td>
+          <td>自定义html模版路径</td>
+      </tr>
+      <tr>
+          <td>display-htpasswd-form</td>
+          <td>true</td>
+          <td>如果htpasswd file文件提供了，则是否显示登录认证</td>
+      </tr>
+      <tr>
+          <td>email-domain</td>
+          <td>-</td>
+          <td>允许登录认证的邮件后缀，如果设置为&rsquo;*&lsquo;则允许所有</td>
+      </tr>
+      <tr>
+          <td>errors-to-info-log</td>
+          <td>-</td>
+          <td>输出错误日志至 /dev/stdout 而不是 /dev/stderr</td>
+      </tr>
+      <tr>
+          <td>exclude-logging-path</td>
+          <td>-</td>
+          <td>排除记录日志的路径，如：/path1,/path2,/path3</td>
+      </tr>
+      <tr>
+          <td>extra-jwt-issuers</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>flush-interval</td>
+          <td>1s</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>footer</td>
+          <td>&quot;&rdquo;</td>
+          <td>自定义页脚，设置&quot;-&ldquo;则关闭</td>
+      </tr>
+      <tr>
+          <td>force-code-challenge-method</td>
+          <td>-</td>
+          <td>废弃，由 &lsquo;code-challenge-method&rsquo; 代替</td>
+      </tr>
+      <tr>
+          <td>force-https</td>
+          <td>-</td>
+          <td>强制HTTPS</td>
+      </tr>
+      <tr>
+          <td>force-json-errors</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>gcp-healthchecks</td>
+          <td>-</td>
+          <td>开启 GCP/GKE 健康探测</td>
+      </tr>
+      <tr>
+          <td>github-org</td>
+          <td>-</td>
+          <td>github</td>
+      </tr>
+      <tr>
+          <td>github-repo</td>
+          <td>-</td>
+          <td>github</td>
+      </tr>
+      <tr>
+          <td>github-team</td>
+          <td>-</td>
+          <td>github</td>
+      </tr>
+      <tr>
+          <td>github-token</td>
+          <td>-</td>
+          <td>github</td>
+      </tr>
+      <tr>
+          <td>github-user</td>
+          <td>-</td>
+          <td>github</td>
+      </tr>
+      <tr>
+          <td>gitlab-group</td>
+          <td>-</td>
+          <td>gitlab</td>
+      </tr>
+      <tr>
+          <td>gitlab-project</td>
+          <td>-</td>
+          <td>gitlab</td>
+      </tr>
+      <tr>
+          <td>google-admin-email</td>
+          <td>-</td>
+          <td>google</td>
+      </tr>
+      <tr>
+          <td>google-group</td>
+          <td>-</td>
+          <td>google</td>
+      </tr>
+      <tr>
+          <td>google-service-account-json</td>
+          <td>-</td>
+          <td>google</td>
+      </tr>
+      <tr>
+          <td>htpasswd-file</td>
+          <td>-</td>
+          <td>htpasswd</td>
+      </tr>
+      <tr>
+          <td>htpasswd-user-group</td>
+          <td>-</td>
+          <td>htpasswd</td>
+      </tr>
+      <tr>
+          <td>http-address</td>
+          <td>-</td>
+          <td>HTTP监听端口</td>
+      </tr>
+      <tr>
+          <td>https-address</td>
+          <td>-</td>
+          <td>HTTPS监听端口</td>
+      </tr>
+      <tr>
+          <td>insecure-oidc-allow-unverified-email</td>
+          <td>-</td>
+          <td>如果在 id_token 中的email未验证则是否失败</td>
+      </tr>
+      <tr>
+          <td>insecure-oidc-skip-issuer-verification</td>
+          <td>-</td>
+          <td>是否验证 OIDC discovery URL</td>
+      </tr>
+      <tr>
+          <td>insecure-oidc-skip-nonce</td>
+          <td>true</td>
+          <td>跳过验证OIDC中的 nonce 属性</td>
+      </tr>
+      <tr>
+          <td>jwt-key</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>jwt-key-file</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>keycloak-group</td>
+          <td>-</td>
+          <td>keycloak</td>
+      </tr>
+      <tr>
+          <td>logging-compress</td>
+          <td>-</td>
+          <td>是否启用GZIP压缩日志</td>
+      </tr>
+      <tr>
+          <td>logging-filename</td>
+          <td>-</td>
+          <td>日志文件路径，未设置则输出到终端</td>
+      </tr>
+      <tr>
+          <td>logging-local-time</td>
+          <td>true</td>
+          <td>记录日志是否使用本地时间</td>
+      </tr>
+      <tr>
+          <td>logging-max-age</td>
+          <td>7</td>
+          <td>最大的天数用于保留旧日志文件</td>
+      </tr>
+      <tr>
+          <td>logging-max-backups</td>
+          <td>最大的保留旧日志数量</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>login-url</td>
+          <td>-</td>
+          <td>认证的端点</td>
+      </tr>
+      <tr>
+          <td>metrics-address</td>
+          <td>9100</td>
+          <td>开启&rdquo;/metrics&quot;性能指标地址</td>
+      </tr>
+      <tr>
+          <td>metrics-secure-address</td>
+          <td>9100</td>
+          <td>以HTTPS协议开启&quot;/metrics&quot;性能指标地址</td>
+      </tr>
+      <tr>
+          <td>metrics-tls-cert-file</td>
+          <td>-</td>
+          <td>HTTPS证书地址</td>
+      </tr>
+      <tr>
+          <td>metrics-tls-key-file</td>
+          <td>-</td>
+          <td>HTTPS证书地址</td>
+      </tr>
+      <tr>
+          <td>oidc-audience-claim</td>
+          <td>aud</td>
+          <td>验证OIDC中 audience 属性</td>
+      </tr>
+      <tr>
+          <td>oidc-email-claim</td>
+          <td>email</td>
+          <td>oidc token 中对应 email 的属性名</td>
+      </tr>
+      <tr>
+          <td>oidc-extra-audience</td>
+          <td>-</td>
+          <td>对应token中aud属性，允许通过认证的值，该参数可配置多个</td>
+      </tr>
+      <tr>
+          <td>oidc-groups-claim</td>
+          <td>groups</td>
+          <td>同上</td>
+      </tr>
+      <tr>
+          <td>oidc-issuer-url</td>
+          <td>-</td>
+          <td>OpenID Connect issuer URL (ie: <a href="https://accounts.google.com">https://accounts.google.com</a>)</td>
+      </tr>
+      <tr>
+          <td>oidc-jwks-url</td>
+          <td>-</td>
+          <td>OpenID Connect JWKS URL (ie: <a href="https://www.googleapis.com/oauth2/v3/certs">https://www.googleapis.com/oauth2/v3/certs</a>)</td>
+      </tr>
+      <tr>
+          <td>pass-access-token</td>
+          <td>-</td>
+          <td>通过 X-Forwarded-Access-Token 头传递 access_token</td>
+      </tr>
+      <tr>
+          <td>pass-authorization-header</td>
+          <td>-</td>
+          <td>透传 Authorization 请求头</td>
+      </tr>
+      <tr>
+          <td>pass-basic-auth</td>
+          <td>true</td>
+          <td>透传 HTTP Basic Auth, X-Forwarded-User and X-Forwarded-Email 头</td>
+      </tr>
+      <tr>
+          <td>pass-host-header</td>
+          <td>true</td>
+          <td>透传 Host 头到下游</td>
+      </tr>
+      <tr>
+          <td>pass-user-headers</td>
+          <td>true</td>
+          <td>pass X-Forwarded-User and X-Forwarded-Email information to upstream</td>
+      </tr>
+      <tr>
+          <td>ping-path</td>
+          <td>&ldquo;/ping&rdquo;</td>
+          <td>监控探测接口</td>
+      </tr>
+      <tr>
+          <td>ping-user-agent</td>
+          <td>-</td>
+          <td>自定义 user-agent</td>
+      </tr>
+      <tr>
+          <td>prefer-email-to-user</td>
+          <td>认证相关</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>profile-url</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>prompt</td>
+          <td>-</td>
+          <td>OIDC prompt</td>
+      </tr>
+      <tr>
+          <td>provider</td>
+          <td>google</td>
+          <td>OIDC认证提供方</td>
+      </tr>
+      <tr>
+          <td>provider-ca-file</td>
+          <td>-</td>
+          <td>ca地址</td>
+      </tr>
+      <tr>
+          <td>provider-display-name</td>
+          <td>-</td>
+          <td>OIDC提供方显示名称</td>
+      </tr>
+      <tr>
+          <td>proxy-prefix</td>
+          <td>&ldquo;/oauth2&rdquo;</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>proxy-websockets</td>
+          <td>true</td>
+          <td>开启 WebSocket 代理</td>
+      </tr>
+      <tr>
+          <td>pubjwk-url</td>
+          <td>-</td>
+          <td>login.gov 需要</td>
+      </tr>
+      <tr>
+          <td>real-client-ip-header</td>
+          <td>X-Real-IP</td>
+          <td>表示real IP的头，如：X-Forwarded-For, X-Real-IP, or X-ProxyUser-IP</td>
+      </tr>
+      <tr>
+          <td>redeem-url</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>redirect-url</td>
+          <td>-</td>
+          <td>认证成功后回调的地址，如：&ldquo;<a href="https://internalapp.yourcompany.com/oauth2/callback%22">https://internalapp.yourcompany.com/oauth2/callback"</a></td>
+      </tr>
+      <tr>
+          <td>redis-ca-path</td>
+          <td>-</td>
+          <td>redis 自定义ca路径</td>
+      </tr>
+      <tr>
+          <td>redis-cluster-connection-urls</td>
+          <td>redis 相关</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>redis-connection-idle-timeout</td>
+          <td>-</td>
+          <td>redis 相关</td>
+      </tr>
+      <tr>
+          <td>redis-connection-url</td>
+          <td>-</td>
+          <td>redis 相关</td>
+      </tr>
+      <tr>
+          <td>redis-insecure-skip-tls-verify</td>
+          <td>-</td>
+          <td>redis 相关</td>
+      </tr>
+      <tr>
+          <td>redis-password</td>
+          <td>-</td>
+          <td>redis 相关</td>
+      </tr>
+      <tr>
+          <td>redis-sentinel-connection-urls</td>
+          <td>-</td>
+          <td>redis 相关</td>
+      </tr>
+      <tr>
+          <td>redis-sentinel-master-name</td>
+          <td>-</td>
+          <td>redis 相关</td>
+      </tr>
+      <tr>
+          <td>redis-sentinel-password</td>
+          <td>-</td>
+          <td>redis 相关</td>
+      </tr>
+      <tr>
+          <td>redis-use-cluster</td>
+          <td>-</td>
+          <td>redis 相关</td>
+      </tr>
+      <tr>
+          <td>redis-use-sentinel</td>
+          <td>-</td>
+          <td>redis 相关</td>
+      </tr>
+      <tr>
+          <td>request-id-header</td>
+          <td>&ldquo;X-Request-Id&rdquo;</td>
+          <td>请求ID头</td>
+      </tr>
+      <tr>
+          <td>request-logging</td>
+          <td>true</td>
+          <td>记录 HTTP 请求日志</td>
+      </tr>
+      <tr>
+          <td>request-logging-format</td>
+          <td>-</td>
+          <td>请求日志格式，默认：&rdquo;{{.Client}} - {{.RequestID}} - {{.Username}} [{{.Timestamp}}] {{.Host}} {{.RequestMethod}} {{.Upstream}} {{.RequestURI}} {{.Protocol}} {{.UserAgent}} {{.StatusCode}} {{.ResponseSize}} {{.RequestDuration}}&quot;</td>
+      </tr>
+      <tr>
+          <td>resource</td>
+          <td>-</td>
+          <td>仅在 azure ad</td>
+      </tr>
+      <tr>
+          <td>reverse-proxy</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>scope</td>
+          <td>-</td>
+          <td>oauth scope</td>
+      </tr>
+      <tr>
+          <td>session-cookie-minimal</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>session-store-type</td>
+          <td>cookie</td>
+          <td>session 存储的方式</td>
+      </tr>
+      <tr>
+          <td>set-authorization-header</td>
+          <td>-</td>
+          <td>设置认证响应头，一般用于配合 nginx auth_request 使用</td>
+      </tr>
+      <tr>
+          <td>set-basic-auth</td>
+          <td>-</td>
+          <td>设置认证响应头，一般用于配合 nginx auth_request 使用</td>
+      </tr>
+      <tr>
+          <td>set-xauthrequest</td>
+          <td>-</td>
+          <td>设置认证响应头，一般用于配合 nginx auth_request 使用</td>
+      </tr>
+      <tr>
+          <td>show-debug-on-error</td>
+          <td>-</td>
+          <td>显示详细的错误信息，这个不要在生产环境开启</td>
+      </tr>
+      <tr>
+          <td>signature-key</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>silence-ping-logging</td>
+          <td>-</td>
+          <td>关闭请求日志在ping端点</td>
+      </tr>
+      <tr>
+          <td>skip-auth-preflight</td>
+          <td>-</td>
+          <td>在 OPTIONS 阶段会跳过认证</td>
+      </tr>
+      <tr>
+          <td>skip-auth-regex</td>
+          <td>-</td>
+          <td>已被废弃，使用 skip-auth-route</td>
+      </tr>
+      <tr>
+          <td>skip-auth-route</td>
+          <td>-</td>
+          <td>配置跳过认证阶段</td>
+      </tr>
+      <tr>
+          <td>skip-auth-strip-headers</td>
+          <td>true</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>skip-jwt-bearer-tokens</td>
+          <td>false</td>
+          <td>TODO; 是否移除jwt的认证头</td>
+      </tr>
+      <tr>
+          <td>skip-oidc-discovery</td>
+          <td>-</td>
+          <td>跳过 OIDC 自发现</td>
+      </tr>
+      <tr>
+          <td>skip-provider-button</td>
+          <td>-</td>
+          <td>TODO；跳过？</td>
+      </tr>
+      <tr>
+          <td>ssl-insecure-skip-verify</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>ssl-upstream-insecure-skip-verify</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>standard-logging</td>
+          <td>true</td>
+          <td>记录标准日志信息</td>
+      </tr>
+      <tr>
+          <td>standard-logging-format</td>
+          <td>&quot;&quot;</td>
+          <td>默认值：&quot;[{{.Timestamp}}] [{{.File}}] {{.Message}}&quot;</td>
+      </tr>
+      <tr>
+          <td>tls-cert-file</td>
+          <td>-</td>
+          <td>证书</td>
+      </tr>
+      <tr>
+          <td>tls-cipher-suite</td>
+          <td>-</td>
+          <td>证书</td>
+      </tr>
+      <tr>
+          <td>tls-key-file</td>
+          <td>-</td>
+          <td>证书</td>
+      </tr>
+      <tr>
+          <td>tls-min-version</td>
+          <td>-</td>
+          <td>证书</td>
+      </tr>
+      <tr>
+          <td>trusted-ip</td>
+          <td>-</td>
+          <td>配置可信IP，可以绕过认证</td>
+      </tr>
+      <tr>
+          <td>upstream</td>
+          <td>-</td>
+          <td>认证通过后转发的下游服务，支持：http、file、static 配置</td>
+      </tr>
+      <tr>
+          <td>upstream-timeout</td>
+          <td>30s</td>
+          <td>转发下游的超时时间</td>
+      </tr>
+      <tr>
+          <td>user-id-claim</td>
+          <td>email</td>
+          <td>已废弃，使用 oidc-email-claim 代替</td>
+      </tr>
+      <tr>
+          <td>validate-url</td>
+          <td>-</td>
+          <td>access token 认证端点</td>
+      </tr>
+      <tr>
+          <td>whitelist-domain</td>
+          <td>-</td>
+          <td>允许认证过后转发的域名列表</td>
+      </tr>
+  </tbody>
 </table>
 
 	
@@ -5123,7 +5393,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

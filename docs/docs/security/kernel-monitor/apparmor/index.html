@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -22,78 +22,81 @@
 <meta name="description" content="简要概述
 AppArmor 是一个 Linux 内核安全模块，用于补充系统用户和组的权限，将程序限制在一组有限的资源中。
 它通过调整配置文件以允许特定程序或容器所需的访问，如 Linux 权能字、网络访问、文件权限等。每个配置文件都可以在强制（enforcing）模式（阻止访问不允许的资源）或 投 …">
-<meta property="og:title" content="AppArmor" />
-<meta property="og:description" content="简要概述 AppArmor 是一个 Linux 内核安全模块，用于补充系统用户和组的权限，将程序限制在一组有限的资源中。
+<meta property="og:url" content="/docs/security/kernel-monitor/apparmor/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="AppArmor">
+  <meta property="og:description" content="简要概述 AppArmor 是一个 Linux 内核安全模块，用于补充系统用户和组的权限，将程序限制在一组有限的资源中。
 它通过调整配置文件以允许特定程序或容器所需的访问，如 Linux 权能字、网络访问、文件权限等。每个配置文件都可以在强制（enforcing）模式（阻止访问不允许的资源）或 投诉（complain）模式（仅报告冲突）下运行。
 有三个主要版本，分别是 2.x 系列（旧版本但仍受支持）、3.x 系列（当前版本）和 4.x 系列（开发中）
 快速开始 确认环境 查看宿主上是否启用：
 cat /sys/module/apparmor/parameters/enabled 查看宿主上规则加载：
 apparmor_status 目录结构 AppArmor 工具的配置在 /etc/apparmor/ 目录下。
 AppArmor 策略存储在 /etc/apparmor.d/ 目录下，各目录用途如：
-目录 说明 /etc/apparmor.d/abstractions/ 包含用于构建 AppArmor 抽象配置的文件，可在多个配置文件中重复使用，以提高可维护性和复用性 /etc/apparmor.d/apache2.d/ 包含与 Apache2 Web 服务器相关的 AppArmor 配置文件 /etc/apparmor.d/cache/ 预编译的二进制策略文件 /etc/apparmor.d/disable/ 包含一些符号链接，这些链接指向需要禁用的配置文件，禁用配置文件意味着它们不会对系统中的进程生效 /etc/apparmor.d/force-complain/ 包含一些符号链接，这些链接指向需要强制使用 complain 模式的配置文件，在该模式中，违反策略的行为将被记录，但不会导致实际的限制 /etc/apparmor.d/libvirt/ 包含与 libvirt 虚拟化工具相关的 AppArmor 配置，用来限制与虚拟机和容器相关的进程的权限 /etc/apparmor.d/local/ 本地管理员创建的自定义的配置文件通常存储在这个目录中，这样可以确保不会与系统提供的配置文件发生冲突 /etc/apparmor.d/namespaces/ TODO; /etc/apparmor.d/pam/ 包含与 PAM 相关的 AppArmor 配置 /etc/apparmor.d/tunables/ TODO; 具体取决于你的操作系统供应商和版本，你的系统可能具有上述目录中的一些或全部。策略的编写是通过特有的语法 AppArmor_Core_Policy_Reference 为各个应用编写成配置文件，然后使用 apparmor_parser 编译并加载到内核中。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/security/kernel-monitor/apparmor/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-12-04T14:10:28+08:00" />
-<meta property="article:modified_time" content="2023-12-05T10:55:33+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="AppArmor">
-<meta itemprop="description" content="简要概述 AppArmor 是一个 Linux 内核安全模块，用于补充系统用户和组的权限，将程序限制在一组有限的资源中。
+目录 说明 /etc/apparmor.d/abstractions/ 包含用于构建 AppArmor 抽象配置的文件，可在多个配置文件中重复使用，以提高可维护性和复用性 /etc/apparmor.d/apache2.d/ 包含与 Apache2 Web 服务器相关的 AppArmor 配置文件 /etc/apparmor.d/cache/ 预编译的二进制策略文件 /etc/apparmor.d/disable/ 包含一些符号链接，这些链接指向需要禁用的配置文件，禁用配置文件意味着它们不会对系统中的进程生效 /etc/apparmor.d/force-complain/ 包含一些符号链接，这些链接指向需要强制使用 complain 模式的配置文件，在该模式中，违反策略的行为将被记录，但不会导致实际的限制 /etc/apparmor.d/libvirt/ 包含与 libvirt 虚拟化工具相关的 AppArmor 配置，用来限制与虚拟机和容器相关的进程的权限 /etc/apparmor.d/local/ 本地管理员创建的自定义的配置文件通常存储在这个目录中，这样可以确保不会与系统提供的配置文件发生冲突 /etc/apparmor.d/namespaces/ TODO; /etc/apparmor.d/pam/ 包含与 PAM 相关的 AppArmor 配置 /etc/apparmor.d/tunables/ TODO; 具体取决于你的操作系统供应商和版本，你的系统可能具有上述目录中的一些或全部。策略的编写是通过特有的语法 AppArmor_Core_Policy_Reference 为各个应用编写成配置文件，然后使用 apparmor_parser 编译并加载到内核中。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-12-04T14:10:28+08:00">
+    <meta property="article:modified_time" content="2023-12-05T10:55:33+08:00">
+
+  <meta itemprop="name" content="AppArmor">
+  <meta itemprop="description" content="简要概述 AppArmor 是一个 Linux 内核安全模块，用于补充系统用户和组的权限，将程序限制在一组有限的资源中。
 它通过调整配置文件以允许特定程序或容器所需的访问，如 Linux 权能字、网络访问、文件权限等。每个配置文件都可以在强制（enforcing）模式（阻止访问不允许的资源）或 投诉（complain）模式（仅报告冲突）下运行。
 有三个主要版本，分别是 2.x 系列（旧版本但仍受支持）、3.x 系列（当前版本）和 4.x 系列（开发中）
 快速开始 确认环境 查看宿主上是否启用：
 cat /sys/module/apparmor/parameters/enabled 查看宿主上规则加载：
 apparmor_status 目录结构 AppArmor 工具的配置在 /etc/apparmor/ 目录下。
 AppArmor 策略存储在 /etc/apparmor.d/ 目录下，各目录用途如：
-目录 说明 /etc/apparmor.d/abstractions/ 包含用于构建 AppArmor 抽象配置的文件，可在多个配置文件中重复使用，以提高可维护性和复用性 /etc/apparmor.d/apache2.d/ 包含与 Apache2 Web 服务器相关的 AppArmor 配置文件 /etc/apparmor.d/cache/ 预编译的二进制策略文件 /etc/apparmor.d/disable/ 包含一些符号链接，这些链接指向需要禁用的配置文件，禁用配置文件意味着它们不会对系统中的进程生效 /etc/apparmor.d/force-complain/ 包含一些符号链接，这些链接指向需要强制使用 complain 模式的配置文件，在该模式中，违反策略的行为将被记录，但不会导致实际的限制 /etc/apparmor.d/libvirt/ 包含与 libvirt 虚拟化工具相关的 AppArmor 配置，用来限制与虚拟机和容器相关的进程的权限 /etc/apparmor.d/local/ 本地管理员创建的自定义的配置文件通常存储在这个目录中，这样可以确保不会与系统提供的配置文件发生冲突 /etc/apparmor.d/namespaces/ TODO; /etc/apparmor.d/pam/ 包含与 PAM 相关的 AppArmor 配置 /etc/apparmor.d/tunables/ TODO; 具体取决于你的操作系统供应商和版本，你的系统可能具有上述目录中的一些或全部。策略的编写是通过特有的语法 AppArmor_Core_Policy_Reference 为各个应用编写成配置文件，然后使用 apparmor_parser 编译并加载到内核中。"><meta itemprop="datePublished" content="2023-12-04T14:10:28+08:00" />
-<meta itemprop="dateModified" content="2023-12-05T10:55:33+08:00" />
-<meta itemprop="wordCount" content="319">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="AppArmor"/>
-<meta name="twitter:description" content="简要概述 AppArmor 是一个 Linux 内核安全模块，用于补充系统用户和组的权限，将程序限制在一组有限的资源中。
+目录 说明 /etc/apparmor.d/abstractions/ 包含用于构建 AppArmor 抽象配置的文件，可在多个配置文件中重复使用，以提高可维护性和复用性 /etc/apparmor.d/apache2.d/ 包含与 Apache2 Web 服务器相关的 AppArmor 配置文件 /etc/apparmor.d/cache/ 预编译的二进制策略文件 /etc/apparmor.d/disable/ 包含一些符号链接，这些链接指向需要禁用的配置文件，禁用配置文件意味着它们不会对系统中的进程生效 /etc/apparmor.d/force-complain/ 包含一些符号链接，这些链接指向需要强制使用 complain 模式的配置文件，在该模式中，违反策略的行为将被记录，但不会导致实际的限制 /etc/apparmor.d/libvirt/ 包含与 libvirt 虚拟化工具相关的 AppArmor 配置，用来限制与虚拟机和容器相关的进程的权限 /etc/apparmor.d/local/ 本地管理员创建的自定义的配置文件通常存储在这个目录中，这样可以确保不会与系统提供的配置文件发生冲突 /etc/apparmor.d/namespaces/ TODO; /etc/apparmor.d/pam/ 包含与 PAM 相关的 AppArmor 配置 /etc/apparmor.d/tunables/ TODO; 具体取决于你的操作系统供应商和版本，你的系统可能具有上述目录中的一些或全部。策略的编写是通过特有的语法 AppArmor_Core_Policy_Reference 为各个应用编写成配置文件，然后使用 apparmor_parser 编译并加载到内核中。">
+  <meta itemprop="datePublished" content="2023-12-04T14:10:28+08:00">
+  <meta itemprop="dateModified" content="2023-12-05T10:55:33+08:00">
+  <meta itemprop="wordCount" content="319">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AppArmor">
+  <meta name="twitter:description" content="简要概述 AppArmor 是一个 Linux 内核安全模块，用于补充系统用户和组的权限，将程序限制在一组有限的资源中。
 它通过调整配置文件以允许特定程序或容器所需的访问，如 Linux 权能字、网络访问、文件权限等。每个配置文件都可以在强制（enforcing）模式（阻止访问不允许的资源）或 投诉（complain）模式（仅报告冲突）下运行。
 有三个主要版本，分别是 2.x 系列（旧版本但仍受支持）、3.x 系列（当前版本）和 4.x 系列（开发中）
 快速开始 确认环境 查看宿主上是否启用：
 cat /sys/module/apparmor/parameters/enabled 查看宿主上规则加载：
 apparmor_status 目录结构 AppArmor 工具的配置在 /etc/apparmor/ 目录下。
 AppArmor 策略存储在 /etc/apparmor.d/ 目录下，各目录用途如：
-目录 说明 /etc/apparmor.d/abstractions/ 包含用于构建 AppArmor 抽象配置的文件，可在多个配置文件中重复使用，以提高可维护性和复用性 /etc/apparmor.d/apache2.d/ 包含与 Apache2 Web 服务器相关的 AppArmor 配置文件 /etc/apparmor.d/cache/ 预编译的二进制策略文件 /etc/apparmor.d/disable/ 包含一些符号链接，这些链接指向需要禁用的配置文件，禁用配置文件意味着它们不会对系统中的进程生效 /etc/apparmor.d/force-complain/ 包含一些符号链接，这些链接指向需要强制使用 complain 模式的配置文件，在该模式中，违反策略的行为将被记录，但不会导致实际的限制 /etc/apparmor.d/libvirt/ 包含与 libvirt 虚拟化工具相关的 AppArmor 配置，用来限制与虚拟机和容器相关的进程的权限 /etc/apparmor.d/local/ 本地管理员创建的自定义的配置文件通常存储在这个目录中，这样可以确保不会与系统提供的配置文件发生冲突 /etc/apparmor.d/namespaces/ TODO; /etc/apparmor.d/pam/ 包含与 PAM 相关的 AppArmor 配置 /etc/apparmor.d/tunables/ TODO; 具体取决于你的操作系统供应商和版本，你的系统可能具有上述目录中的一些或全部。策略的编写是通过特有的语法 AppArmor_Core_Policy_Reference 为各个应用编写成配置文件，然后使用 apparmor_parser 编译并加载到内核中。"/>
+目录 说明 /etc/apparmor.d/abstractions/ 包含用于构建 AppArmor 抽象配置的文件，可在多个配置文件中重复使用，以提高可维护性和复用性 /etc/apparmor.d/apache2.d/ 包含与 Apache2 Web 服务器相关的 AppArmor 配置文件 /etc/apparmor.d/cache/ 预编译的二进制策略文件 /etc/apparmor.d/disable/ 包含一些符号链接，这些链接指向需要禁用的配置文件，禁用配置文件意味着它们不会对系统中的进程生效 /etc/apparmor.d/force-complain/ 包含一些符号链接，这些链接指向需要强制使用 complain 模式的配置文件，在该模式中，违反策略的行为将被记录，但不会导致实际的限制 /etc/apparmor.d/libvirt/ 包含与 libvirt 虚拟化工具相关的 AppArmor 配置，用来限制与虚拟机和容器相关的进程的权限 /etc/apparmor.d/local/ 本地管理员创建的自定义的配置文件通常存储在这个目录中，这样可以确保不会与系统提供的配置文件发生冲突 /etc/apparmor.d/namespaces/ TODO; /etc/apparmor.d/pam/ 包含与 PAM 相关的 AppArmor 配置 /etc/apparmor.d/tunables/ TODO; 具体取决于你的操作系统供应商和版本，你的系统可能具有上述目录中的一些或全部。策略的编写是通过特有的语法 AppArmor_Core_Policy_Reference 为各个应用编写成配置文件，然后使用 apparmor_parser 编译并加载到内核中。">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1056,6 +1059,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3089,9 +3109,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3105,10 +3125,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3168,6 +3391,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4328,54 +4610,54 @@ if (!doNotTrack) {
 <p>AppArmor 工具的配置在 <code>/etc/apparmor/</code> 目录下。</p>
 <p>AppArmor 策略存储在 <code>/etc/apparmor.d/</code> 目录下，各目录用途如：</p>
 <table>
-<thead>
-<tr>
-<th>目录</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>/etc/apparmor.d/abstractions/</td>
-<td>包含用于构建 AppArmor 抽象配置的文件，可在多个配置文件中重复使用，以提高可维护性和复用性</td>
-</tr>
-<tr>
-<td>/etc/apparmor.d/apache2.d/</td>
-<td>包含与 Apache2 Web 服务器相关的 AppArmor 配置文件</td>
-</tr>
-<tr>
-<td>/etc/apparmor.d/cache/</td>
-<td>预编译的二进制策略文件</td>
-</tr>
-<tr>
-<td>/etc/apparmor.d/disable/</td>
-<td>包含一些符号链接，这些链接指向需要禁用的配置文件，禁用配置文件意味着它们不会对系统中的进程生效</td>
-</tr>
-<tr>
-<td>/etc/apparmor.d/force-complain/</td>
-<td>包含一些符号链接，这些链接指向需要强制使用 complain 模式的配置文件，在该模式中，违反策略的行为将被记录，但不会导致实际的限制</td>
-</tr>
-<tr>
-<td>/etc/apparmor.d/libvirt/</td>
-<td>包含与 libvirt 虚拟化工具相关的 AppArmor 配置，用来限制与虚拟机和容器相关的进程的权限</td>
-</tr>
-<tr>
-<td>/etc/apparmor.d/local/</td>
-<td>本地管理员创建的自定义的配置文件通常存储在这个目录中，这样可以确保不会与系统提供的配置文件发生冲突</td>
-</tr>
-<tr>
-<td>/etc/apparmor.d/namespaces/</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>/etc/apparmor.d/pam/</td>
-<td>包含与 PAM 相关的 AppArmor 配置</td>
-</tr>
-<tr>
-<td>/etc/apparmor.d/tunables/</td>
-<td>TODO;</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>目录</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>/etc/apparmor.d/abstractions/</td>
+          <td>包含用于构建 AppArmor 抽象配置的文件，可在多个配置文件中重复使用，以提高可维护性和复用性</td>
+      </tr>
+      <tr>
+          <td>/etc/apparmor.d/apache2.d/</td>
+          <td>包含与 Apache2 Web 服务器相关的 AppArmor 配置文件</td>
+      </tr>
+      <tr>
+          <td>/etc/apparmor.d/cache/</td>
+          <td>预编译的二进制策略文件</td>
+      </tr>
+      <tr>
+          <td>/etc/apparmor.d/disable/</td>
+          <td>包含一些符号链接，这些链接指向需要禁用的配置文件，禁用配置文件意味着它们不会对系统中的进程生效</td>
+      </tr>
+      <tr>
+          <td>/etc/apparmor.d/force-complain/</td>
+          <td>包含一些符号链接，这些链接指向需要强制使用 complain 模式的配置文件，在该模式中，违反策略的行为将被记录，但不会导致实际的限制</td>
+      </tr>
+      <tr>
+          <td>/etc/apparmor.d/libvirt/</td>
+          <td>包含与 libvirt 虚拟化工具相关的 AppArmor 配置，用来限制与虚拟机和容器相关的进程的权限</td>
+      </tr>
+      <tr>
+          <td>/etc/apparmor.d/local/</td>
+          <td>本地管理员创建的自定义的配置文件通常存储在这个目录中，这样可以确保不会与系统提供的配置文件发生冲突</td>
+      </tr>
+      <tr>
+          <td>/etc/apparmor.d/namespaces/</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>/etc/apparmor.d/pam/</td>
+          <td>包含与 PAM 相关的 AppArmor 配置</td>
+      </tr>
+      <tr>
+          <td>/etc/apparmor.d/tunables/</td>
+          <td>TODO;</td>
+      </tr>
+  </tbody>
 </table>
 <p>具体取决于你的操作系统供应商和版本，你的系统可能具有上述目录中的一些或全部。策略的编写是通过特有的语法 <a href="https://gitlab.com/apparmor/apparmor/-/wikis/AppArmor_Core_Policy_Reference">AppArmor_Core_Policy_Reference</a> 为各个应用编写成配置文件，然后使用 <code>apparmor_parser</code> 编译并加载到内核中。</p>
 <h2 id="限制本地应用测试">限制本地应用测试</h2>
@@ -4411,31 +4693,31 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>EOF
 </span></span></code></pre></div><p>这个规则说明禁止往 &ldquo;/root/*&rdquo; 目录下写文件。</p>
 <h3 id="生效规则-1">生效规则</h3>
-<p>第一部分同 <a href="/docs/security/kernel-monitor/apparmor/#%E7%94%9F%E6%95%88%E8%A7%84%E5%88%99">限制本地应用测试 / 生效规则</a>；</p>
+<p>第一部分同 <a href="/docs/security/kernel-monitor/apparmor/#生效规则">限制本地应用测试 / 生效规则</a>；</p>
 <p>第二部分为启用的 Pod 添加注解，格式为：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>container.apparmor.security.beta.kubernetes.io/&lt;container_name&gt;: &lt;value&gt;
 </span></span></code></pre></div><p>其中 &ldquo;&lt;container_name&gt;&rdquo; 对应 Pod 内需要启用的容器名，如有多个可单独配置，&ldquo;value&rdquo; 可配置以下三个值：</p>
 <table>
-<thead>
-<tr>
-<th>value</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>runtime/default</td>
-<td>指默认运行时配置文件，见<a href="https://github.com/containers/common/blob/main/pkg/apparmor/apparmor_linux_template.go">默认规则</a></td>
-</tr>
-<tr>
-<td>localhost/&lt;profile_name&gt;</td>
-<td>使用本地自定义规则，该宿主上必须存在，否则无法启动 Pod</td>
-</tr>
-<tr>
-<td>unconfined</td>
-<td>这相当于为容器禁用 AppArmor</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>value</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>runtime/default</td>
+          <td>指默认运行时配置文件，见<a href="https://github.com/containers/common/blob/main/pkg/apparmor/apparmor_linux_template.go">默认规则</a></td>
+      </tr>
+      <tr>
+          <td>localhost/&lt;profile_name&gt;</td>
+          <td>使用本地自定义规则，该宿主上必须存在，否则无法启动 Pod</td>
+      </tr>
+      <tr>
+          <td>unconfined</td>
+          <td>这相当于为容器禁用 AppArmor</td>
+      </tr>
+  </tbody>
 </table>
 <p>对应以上规则使用 &ldquo;kubernetes/app-demo-1&rdquo; 的规则为：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -4570,7 +4852,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

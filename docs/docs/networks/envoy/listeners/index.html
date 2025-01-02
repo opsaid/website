@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -24,75 +24,75 @@ Envoy 支持在单个进程中使用任意数量的监听器配置，一般我�
 支持 TCP 与 UDP 监听器。
 TCP 监听器
 每个监听器都配置了独立的网络层过滤器链（filter_chains），它由一个或多个网络层（L3/L4）过滤器组成，常见的有： …">
-<meta property="og:title" content="监听器" />
-<meta property="og:description" content="简要概述 Envoy 支持在单个进程中使用任意数量的监听器配置，一般我们建议一台主机仅运行一个进程，而不管监听器数量。
+<meta property="og:url" content="/docs/networks/envoy/listeners/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="监听器">
+  <meta property="og:description" content="简要概述 Envoy 支持在单个进程中使用任意数量的监听器配置，一般我们建议一台主机仅运行一个进程，而不管监听器数量。
 支持 TCP 与 UDP 监听器。
 TCP 监听器 每个监听器都配置了独立的网络层过滤器链（filter_chains），它由一个或多个网络层（L3/L4）过滤器组成，常见的有：
-名称 描述 类型 rate limiting 限速 x TLS client authentication TLS 客户端身份验证 x HTTP connection management HTTP 连接管理 x MongoDB sniffing mongodb 嗅探 x raw TCP proxy 原始 TCP 代理 x 当在监听器上接收到新连接时，根据配置的 &ldquo;filter_chain_match&rdquo; 条件选择适当的过滤器（filter_chain）然后开始处理后续事件。
+名称 描述 类型 rate limiting 限速 x TLS client authentication TLS 客户端身份验证 x HTTP connection management HTTP 连接管理 x MongoDB sniffing mongodb 嗅探 x raw TCP proxy 原始 TCP 代理 x 当在监听器上接收到新连接时，根据配置的 “filter_chain_match” 条件选择适当的过滤器（filter_chain）然后开始处理后续事件。
 监听器也可以选择配置监听器过滤器（listener filters），这些过滤器在网络层过滤器之前进行处理，并有机会操作连接元数据，通常是为了影响后续过滤器或集群如何处理连接。
-static_resources: listeners: - name: listener_0 address: ... # 监听器过滤器 listener_filters: ... # 网络层过滤器 filter_chains: ... clusters: ... UDP 监听器 TODO;
-过滤器 监听器过滤器 该过滤器主要目的用于管理连接的元数据，" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/networks/envoy/listeners/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2024-01-21T21:34:26+08:00" />
-<meta property="article:modified_time" content="2024-01-30T18:02:54+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="监听器">
-<meta itemprop="description" content="简要概述 Envoy 支持在单个进程中使用任意数量的监听器配置，一般我们建议一台主机仅运行一个进程，而不管监听器数量。
+static_resources: listeners: - name: listener_0 address: ... # 监听器过滤器 listener_filters: ... # 网络层过滤器 filter_chains: ... clusters: ... UDP 监听器 TODO;">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-01-21T21:34:26+08:00">
+    <meta property="article:modified_time" content="2024-01-30T18:02:54+08:00">
+
+  <meta itemprop="name" content="监听器">
+  <meta itemprop="description" content="简要概述 Envoy 支持在单个进程中使用任意数量的监听器配置，一般我们建议一台主机仅运行一个进程，而不管监听器数量。
 支持 TCP 与 UDP 监听器。
 TCP 监听器 每个监听器都配置了独立的网络层过滤器链（filter_chains），它由一个或多个网络层（L3/L4）过滤器组成，常见的有：
-名称 描述 类型 rate limiting 限速 x TLS client authentication TLS 客户端身份验证 x HTTP connection management HTTP 连接管理 x MongoDB sniffing mongodb 嗅探 x raw TCP proxy 原始 TCP 代理 x 当在监听器上接收到新连接时，根据配置的 &ldquo;filter_chain_match&rdquo; 条件选择适当的过滤器（filter_chain）然后开始处理后续事件。
+名称 描述 类型 rate limiting 限速 x TLS client authentication TLS 客户端身份验证 x HTTP connection management HTTP 连接管理 x MongoDB sniffing mongodb 嗅探 x raw TCP proxy 原始 TCP 代理 x 当在监听器上接收到新连接时，根据配置的 “filter_chain_match” 条件选择适当的过滤器（filter_chain）然后开始处理后续事件。
 监听器也可以选择配置监听器过滤器（listener filters），这些过滤器在网络层过滤器之前进行处理，并有机会操作连接元数据，通常是为了影响后续过滤器或集群如何处理连接。
-static_resources: listeners: - name: listener_0 address: ... # 监听器过滤器 listener_filters: ... # 网络层过滤器 filter_chains: ... clusters: ... UDP 监听器 TODO;
-过滤器 监听器过滤器 该过滤器主要目的用于管理连接的元数据，"><meta itemprop="datePublished" content="2024-01-21T21:34:26+08:00" />
-<meta itemprop="dateModified" content="2024-01-30T18:02:54+08:00" />
-<meta itemprop="wordCount" content="73">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="监听器"/>
-<meta name="twitter:description" content="简要概述 Envoy 支持在单个进程中使用任意数量的监听器配置，一般我们建议一台主机仅运行一个进程，而不管监听器数量。
+static_resources: listeners: - name: listener_0 address: ... # 监听器过滤器 listener_filters: ... # 网络层过滤器 filter_chains: ... clusters: ... UDP 监听器 TODO;">
+  <meta itemprop="datePublished" content="2024-01-21T21:34:26+08:00">
+  <meta itemprop="dateModified" content="2024-01-30T18:02:54+08:00">
+  <meta itemprop="wordCount" content="73">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="监听器">
+  <meta name="twitter:description" content="简要概述 Envoy 支持在单个进程中使用任意数量的监听器配置，一般我们建议一台主机仅运行一个进程，而不管监听器数量。
 支持 TCP 与 UDP 监听器。
 TCP 监听器 每个监听器都配置了独立的网络层过滤器链（filter_chains），它由一个或多个网络层（L3/L4）过滤器组成，常见的有：
-名称 描述 类型 rate limiting 限速 x TLS client authentication TLS 客户端身份验证 x HTTP connection management HTTP 连接管理 x MongoDB sniffing mongodb 嗅探 x raw TCP proxy 原始 TCP 代理 x 当在监听器上接收到新连接时，根据配置的 &ldquo;filter_chain_match&rdquo; 条件选择适当的过滤器（filter_chain）然后开始处理后续事件。
+名称 描述 类型 rate limiting 限速 x TLS client authentication TLS 客户端身份验证 x HTTP connection management HTTP 连接管理 x MongoDB sniffing mongodb 嗅探 x raw TCP proxy 原始 TCP 代理 x 当在监听器上接收到新连接时，根据配置的 “filter_chain_match” 条件选择适当的过滤器（filter_chain）然后开始处理后续事件。
 监听器也可以选择配置监听器过滤器（listener filters），这些过滤器在网络层过滤器之前进行处理，并有机会操作连接元数据，通常是为了影响后续过滤器或集群如何处理连接。
-static_resources: listeners: - name: listener_0 address: ... # 监听器过滤器 listener_filters: ... # 网络层过滤器 filter_chains: ... clusters: ... UDP 监听器 TODO;
-过滤器 监听器过滤器 该过滤器主要目的用于管理连接的元数据，"/>
+static_resources: listeners: - name: listener_0 address: ... # 监听器过滤器 listener_filters: ... # 网络层过滤器 filter_chains: ... clusters: ... UDP 监听器 TODO;">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1055,6 +1055,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3088,9 +3105,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3104,10 +3121,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3167,6 +3387,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4302,40 +4581,40 @@ if (!doNotTrack) {
 <h2 id="tcp-监听器">TCP 监听器</h2>
 <p>每个监听器都配置了独立的网络层过滤器链（filter_chains），它由一个或多个网络层（L3/L4）过滤器组成，常见的有：</p>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>描述</th>
-<th>类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>rate limiting</td>
-<td>限速</td>
-<td>x</td>
-</tr>
-<tr>
-<td>TLS client authentication</td>
-<td>TLS 客户端身份验证</td>
-<td>x</td>
-</tr>
-<tr>
-<td>HTTP connection management</td>
-<td>HTTP 连接管理</td>
-<td>x</td>
-</tr>
-<tr>
-<td>MongoDB sniffing</td>
-<td>mongodb 嗅探</td>
-<td>x</td>
-</tr>
-<tr>
-<td>raw TCP proxy</td>
-<td>原始 TCP 代理</td>
-<td>x</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>描述</th>
+          <th>类型</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>rate limiting</td>
+          <td>限速</td>
+          <td>x</td>
+      </tr>
+      <tr>
+          <td>TLS client authentication</td>
+          <td>TLS 客户端身份验证</td>
+          <td>x</td>
+      </tr>
+      <tr>
+          <td>HTTP connection management</td>
+          <td>HTTP 连接管理</td>
+          <td>x</td>
+      </tr>
+      <tr>
+          <td>MongoDB sniffing</td>
+          <td>mongodb 嗅探</td>
+          <td>x</td>
+      </tr>
+      <tr>
+          <td>raw TCP proxy</td>
+          <td>原始 TCP 代理</td>
+          <td>x</td>
+      </tr>
+  </tbody>
 </table>
 <p>当在监听器上接收到新连接时，根据配置的 &ldquo;filter_chain_match&rdquo;  条件选择适当的过滤器（filter_chain）然后开始处理后续事件。</p>
 <p>监听器也可以选择配置监听器过滤器（listener filters），这些过滤器在网络层过滤器之前进行处理，并有机会操作连接元数据，通常是为了影响后续过滤器或集群如何处理连接。</p>
@@ -4452,7 +4731,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

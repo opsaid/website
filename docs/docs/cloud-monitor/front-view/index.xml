@@ -1,0 +1,38 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – 前端视图</title>
+    <link>http://127.0.0.1:1313/docs/cloud-monitor/front-view/</link>
+    <description>Recent content in 前端视图 on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 31 Jan 2023 11:49:19 +0800</lastBuildDate>
+    
+	  <atom:link href="http://127.0.0.1:1313/docs/cloud-monitor/front-view/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Grafana 规范</title>
+      <link>http://127.0.0.1:1313/docs/cloud-monitor/front-view/grafana/</link>
+      <pubDate>Sun, 03 Jul 2022 15:42:08 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/docs/cloud-monitor/front-view/grafana/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;简要概述&#34;&gt;简要概述&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;创建变量 &amp;ldquo;DATASOURCE&amp;rdquo; 类型 &amp;ldquo;Datasource&amp;rdquo;，隐藏 &amp;ldquo;Variable&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;数据源类型 &amp;ldquo;Prometheus&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;明确过滤指定数据源&lt;/li&gt;
+&lt;/ol&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

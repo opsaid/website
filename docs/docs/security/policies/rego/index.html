@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -27,78 +27,81 @@ Scalar Values
 greeting   := &#34;Hello&#34;
 max_height := 42
 pi         := …">
-<meta property="og:title" content="Rego 语言" />
-<meta property="og:description" content="简要概述 这里做 Rego 的简要语法说明。
+<meta property="og:url" content="/docs/security/policies/rego/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Rego 语言">
+  <meta property="og:description" content="简要概述 这里做 Rego 的简要语法说明。
 基础类型 Scalar Values 标量值是 Rego 中最简单的类型，可以是字符串、数字、布尔值或 null，如：
 greeting := &#34;Hello&#34; max_height := 42 pi := 3.14159 allowed := true location := null docs := [greeting, max_height, pi, allowed, location] Strings 字符串支持两种声明方式，第一种通过双引号包含，如果有特殊字符需通过反斜杠转译，如：
 &#34;[a-zA-Z_]\\w*&#34; 第二种声明方式是通过反引号(`)，对特殊字符既所见即所得，如：
 `[a-zA-Z_]\w*` 这其实和 Go 语言字符串有相同申明方式。
 Composite Values 组合值包含两种类型：Objects（对象）、Sets（集合），在简单情况下，组合值可以像标量值一样被视为常量：
 cube := {&#34;width&#34;: 3, &#34;height&#34;: 4, &#34;depth&#34;: 5} docs := [greeting, max_height, pi, allowed, location] Objects（对象，也包含数组）键值可以是任意值：
-ips_by_port := { 80: [&#34;1.1.1.1&#34;, &#34;1.1.1.2&#34;], 443: [&#34;2.2.2.1&#34;], &#34;80&#34;: [&#34;1.1.1.3&#34;], } 这里 ips_by_port[80] 与 ips_by_port[&quot;80&quot;] 获取是不一样的结果，当需要把 ips_by_port 输出 JSON 结构时，原先以 80 为键名的内容会被 &quot;80&quot; 所覆盖，因为 JSON 本身不支持以数字为属性，所以我们在定义 rego 变量是要避免使用数字类型键值，如 ips_by_port 输出 JSON 结果集为：" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/security/policies/rego/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-11-21T16:18:29+08:00" />
-<meta property="article:modified_time" content="2023-12-13T16:29:34+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Rego 语言">
-<meta itemprop="description" content="简要概述 这里做 Rego 的简要语法说明。
+ips_by_port := { 80: [&#34;1.1.1.1&#34;, &#34;1.1.1.2&#34;], 443: [&#34;2.2.2.1&#34;], &#34;80&#34;: [&#34;1.1.1.3&#34;], } 这里 ips_by_port[80] 与 ips_by_port[&#34;80&#34;] 获取是不一样的结果，当需要把 ips_by_port 输出 JSON 结构时，原先以 80 为键名的内容会被 &#34;80&#34; 所覆盖，因为 JSON 本身不支持以数字为属性，所以我们在定义 rego 变量是要避免使用数字类型键值，如 ips_by_port 输出 JSON 结果集为：">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-11-21T16:18:29+08:00">
+    <meta property="article:modified_time" content="2023-12-13T16:29:34+08:00">
+
+  <meta itemprop="name" content="Rego 语言">
+  <meta itemprop="description" content="简要概述 这里做 Rego 的简要语法说明。
 基础类型 Scalar Values 标量值是 Rego 中最简单的类型，可以是字符串、数字、布尔值或 null，如：
 greeting := &#34;Hello&#34; max_height := 42 pi := 3.14159 allowed := true location := null docs := [greeting, max_height, pi, allowed, location] Strings 字符串支持两种声明方式，第一种通过双引号包含，如果有特殊字符需通过反斜杠转译，如：
 &#34;[a-zA-Z_]\\w*&#34; 第二种声明方式是通过反引号(`)，对特殊字符既所见即所得，如：
 `[a-zA-Z_]\w*` 这其实和 Go 语言字符串有相同申明方式。
 Composite Values 组合值包含两种类型：Objects（对象）、Sets（集合），在简单情况下，组合值可以像标量值一样被视为常量：
 cube := {&#34;width&#34;: 3, &#34;height&#34;: 4, &#34;depth&#34;: 5} docs := [greeting, max_height, pi, allowed, location] Objects（对象，也包含数组）键值可以是任意值：
-ips_by_port := { 80: [&#34;1.1.1.1&#34;, &#34;1.1.1.2&#34;], 443: [&#34;2.2.2.1&#34;], &#34;80&#34;: [&#34;1.1.1.3&#34;], } 这里 ips_by_port[80] 与 ips_by_port[&quot;80&quot;] 获取是不一样的结果，当需要把 ips_by_port 输出 JSON 结构时，原先以 80 为键名的内容会被 &quot;80&quot; 所覆盖，因为 JSON 本身不支持以数字为属性，所以我们在定义 rego 变量是要避免使用数字类型键值，如 ips_by_port 输出 JSON 结果集为："><meta itemprop="datePublished" content="2023-11-21T16:18:29+08:00" />
-<meta itemprop="dateModified" content="2023-12-13T16:29:34+08:00" />
-<meta itemprop="wordCount" content="1395">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Rego 语言"/>
-<meta name="twitter:description" content="简要概述 这里做 Rego 的简要语法说明。
+ips_by_port := { 80: [&#34;1.1.1.1&#34;, &#34;1.1.1.2&#34;], 443: [&#34;2.2.2.1&#34;], &#34;80&#34;: [&#34;1.1.1.3&#34;], } 这里 ips_by_port[80] 与 ips_by_port[&#34;80&#34;] 获取是不一样的结果，当需要把 ips_by_port 输出 JSON 结构时，原先以 80 为键名的内容会被 &#34;80&#34; 所覆盖，因为 JSON 本身不支持以数字为属性，所以我们在定义 rego 变量是要避免使用数字类型键值，如 ips_by_port 输出 JSON 结果集为：">
+  <meta itemprop="datePublished" content="2023-11-21T16:18:29+08:00">
+  <meta itemprop="dateModified" content="2023-12-13T16:29:34+08:00">
+  <meta itemprop="wordCount" content="1395">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Rego 语言">
+  <meta name="twitter:description" content="简要概述 这里做 Rego 的简要语法说明。
 基础类型 Scalar Values 标量值是 Rego 中最简单的类型，可以是字符串、数字、布尔值或 null，如：
 greeting := &#34;Hello&#34; max_height := 42 pi := 3.14159 allowed := true location := null docs := [greeting, max_height, pi, allowed, location] Strings 字符串支持两种声明方式，第一种通过双引号包含，如果有特殊字符需通过反斜杠转译，如：
 &#34;[a-zA-Z_]\\w*&#34; 第二种声明方式是通过反引号(`)，对特殊字符既所见即所得，如：
 `[a-zA-Z_]\w*` 这其实和 Go 语言字符串有相同申明方式。
 Composite Values 组合值包含两种类型：Objects（对象）、Sets（集合），在简单情况下，组合值可以像标量值一样被视为常量：
 cube := {&#34;width&#34;: 3, &#34;height&#34;: 4, &#34;depth&#34;: 5} docs := [greeting, max_height, pi, allowed, location] Objects（对象，也包含数组）键值可以是任意值：
-ips_by_port := { 80: [&#34;1.1.1.1&#34;, &#34;1.1.1.2&#34;], 443: [&#34;2.2.2.1&#34;], &#34;80&#34;: [&#34;1.1.1.3&#34;], } 这里 ips_by_port[80] 与 ips_by_port[&quot;80&quot;] 获取是不一样的结果，当需要把 ips_by_port 输出 JSON 结构时，原先以 80 为键名的内容会被 &quot;80&quot; 所覆盖，因为 JSON 本身不支持以数字为属性，所以我们在定义 rego 变量是要避免使用数字类型键值，如 ips_by_port 输出 JSON 结果集为："/>
+ips_by_port := { 80: [&#34;1.1.1.1&#34;, &#34;1.1.1.2&#34;], 443: [&#34;2.2.2.1&#34;], &#34;80&#34;: [&#34;1.1.1.3&#34;], } 这里 ips_by_port[80] 与 ips_by_port[&#34;80&#34;] 获取是不一样的结果，当需要把 ips_by_port 输出 JSON 结构时，原先以 80 为键名的内容会被 &#34;80&#34; 所覆盖，因为 JSON 本身不支持以数字为属性，所以我们在定义 rego 变量是要避免使用数字类型键值，如 ips_by_port 输出 JSON 结果集为：">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1061,6 +1064,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3094,9 +3114,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3110,10 +3130,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3173,6 +3396,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -5011,7 +5293,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

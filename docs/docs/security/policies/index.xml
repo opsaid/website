@@ -4,6 +4,7 @@
     <link>/docs/security/policies/</link>
     <description>Recent content in 策略代理 on OPSaid</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
     <lastBuildDate>Tue, 21 Nov 2023 16:15:46 +0800</lastBuildDate>
     
 	  <atom:link href="/docs/security/policies/index.xml" rel="self" type="application/rss+xml" />
@@ -960,26 +961,26 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;apiextensions.JSONSchemaProps -&amp;gt; apiextensions.CustomResourceDefinition
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;每个 &amp;ldquo;Constraint&amp;rdquo; CRD 都存在以下三个参数，在 &lt;code&gt;CreateSchema&lt;/code&gt; 方法中定义：&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;参数&lt;/th&gt;
-&lt;th&gt;类型&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;match&lt;/td&gt;
-&lt;td&gt;target.MatchSchema()&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;enforcementAction&lt;/td&gt;
-&lt;td&gt;string&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;parameters&lt;/td&gt;
-&lt;td&gt;ConstraintTemplate.Spec.CRD.Spec.Validation.OpenAPIV3Schema&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;参数&lt;/th&gt;
+          &lt;th&gt;类型&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;match&lt;/td&gt;
+          &lt;td&gt;target.MatchSchema()&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;enforcementAction&lt;/td&gt;
+          &lt;td&gt;string&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;parameters&lt;/td&gt;
+          &lt;td&gt;ConstraintTemplate.Spec.CRD.Spec.Validation.OpenAPIV3Schema&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;&amp;ldquo;match&amp;rdquo; 字段定义了约束将被应用于哪些资源，它支持以下类型的匹配器：&lt;/p&gt;
 &lt;ol&gt;

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -25,66 +25,69 @@ TODO;
 falco rules 使用 yaml 格式编写，有 &ldquo;Rules&rdquo;、&ldquo;Lists&rdquo;、&ldquo;Macros&rdquo; 三种类型：
 Rules
 在什么条件下会生成一个警报。一条规则通常伴随着一个描述性的输出字符串，该 …">
-<meta property="og:title" content="Falco" />
-<meta property="og:description" content="简要概述 TODO;
-规则 falco rules 使用 yaml 格式编写，有 &ldquo;Rules&rdquo;、&ldquo;Lists&rdquo;、&ldquo;Macros&rdquo; 三种类型：
+<meta property="og:url" content="/docs/security/runtime/falco/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Falco">
+  <meta property="og:description" content="简要概述 TODO;
+规则 falco rules 使用 yaml 格式编写，有 “Rules”、“Lists”、“Macros” 三种类型：
 Rules 在什么条件下会生成一个警报。一条规则通常伴随着一个描述性的输出字符串，该字符串会随着警报一起发送，示例规则如下：
-- rule: shell_in_container desc: notice shell activity within a container condition: &gt; evt.type = execve and evt.dir = &lt; and container.id != host and (proc.name = bash or proc.name = ksh) output: &gt; shell in a container (user=%user.name container_id=%container.id container_name=%container.name shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline) priority: WARNING 参数 必须 默认值 描述 rule 是 - 规则名称，全局唯一 condition 是 - 应用于事件的过滤表达式，用于检查它们是否与规则匹配 desc 是 - 这个规则用途描述 output 是 - 如果匹配到该规则，则对外输出内容 priority 是 - 告警级别取值：emergency, alert, critical, error, warning, notice, informational, debug exceptions 否 - TODO; enabled 否 true 是否启用规则，默认启用 tags 否 - 关联到该规则的标签 warn_evttypes 否 true 如果设置为 false 将抑制与规则没有事件类型相关的警告 skip-if-unknown-filter 否 false 如果设置为true，如果规则条件包含一个过滤检查，例如fd." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/security/runtime/falco/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2024-01-05T10:35:12+08:00" />
-<meta property="article:modified_time" content="2024-01-05T18:02:59+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Falco">
-<meta itemprop="description" content="简要概述 TODO;
-规则 falco rules 使用 yaml 格式编写，有 &ldquo;Rules&rdquo;、&ldquo;Lists&rdquo;、&ldquo;Macros&rdquo; 三种类型：
+- rule: shell_in_container desc: notice shell activity within a container condition: &gt; evt.type = execve and evt.dir = &lt; and container.id != host and (proc.name = bash or proc.name = ksh) output: &gt; shell in a container (user=%user.name container_id=%container.id container_name=%container.name shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline) priority: WARNING 参数 必须 默认值 描述 rule 是 - 规则名称，全局唯一 condition 是 - 应用于事件的过滤表达式，用于检查它们是否与规则匹配 desc 是 - 这个规则用途描述 output 是 - 如果匹配到该规则，则对外输出内容 priority 是 - 告警级别取值：emergency, alert, critical, error, warning, notice, informational, debug exceptions 否 - TODO; enabled 否 true 是否启用规则，默认启用 tags 否 - 关联到该规则的标签 warn_evttypes 否 true 如果设置为 false 将抑制与规则没有事件类型相关的警告 skip-if-unknown-filter 否 false 如果设置为true，如果规则条件包含一个过滤检查，例如fd.some_new_field，而该版本的Falco不知道这个字段，Falco会默默接受这条规则但不执行它；如果设置为false，Falco在发现未知的过滤检查时会报告错误并退出。 source 否 syscall 这个规则应该被评估的事件来源。典型的值包括syscall、k8s_audit，或者由源插件提供的来源。 Macros 宏提供了一种以可重用的方式定义规则常见子部分的方法，可以在规则内部甚至其他宏中重复使用。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-01-05T10:35:12+08:00">
+    <meta property="article:modified_time" content="2024-01-05T18:02:59+08:00">
+
+  <meta itemprop="name" content="Falco">
+  <meta itemprop="description" content="简要概述 TODO;
+规则 falco rules 使用 yaml 格式编写，有 “Rules”、“Lists”、“Macros” 三种类型：
 Rules 在什么条件下会生成一个警报。一条规则通常伴随着一个描述性的输出字符串，该字符串会随着警报一起发送，示例规则如下：
-- rule: shell_in_container desc: notice shell activity within a container condition: &gt; evt.type = execve and evt.dir = &lt; and container.id != host and (proc.name = bash or proc.name = ksh) output: &gt; shell in a container (user=%user.name container_id=%container.id container_name=%container.name shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline) priority: WARNING 参数 必须 默认值 描述 rule 是 - 规则名称，全局唯一 condition 是 - 应用于事件的过滤表达式，用于检查它们是否与规则匹配 desc 是 - 这个规则用途描述 output 是 - 如果匹配到该规则，则对外输出内容 priority 是 - 告警级别取值：emergency, alert, critical, error, warning, notice, informational, debug exceptions 否 - TODO; enabled 否 true 是否启用规则，默认启用 tags 否 - 关联到该规则的标签 warn_evttypes 否 true 如果设置为 false 将抑制与规则没有事件类型相关的警告 skip-if-unknown-filter 否 false 如果设置为true，如果规则条件包含一个过滤检查，例如fd."><meta itemprop="datePublished" content="2024-01-05T10:35:12+08:00" />
-<meta itemprop="dateModified" content="2024-01-05T18:02:59+08:00" />
-<meta itemprop="wordCount" content="240">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Falco"/>
-<meta name="twitter:description" content="简要概述 TODO;
-规则 falco rules 使用 yaml 格式编写，有 &ldquo;Rules&rdquo;、&ldquo;Lists&rdquo;、&ldquo;Macros&rdquo; 三种类型：
+- rule: shell_in_container desc: notice shell activity within a container condition: &gt; evt.type = execve and evt.dir = &lt; and container.id != host and (proc.name = bash or proc.name = ksh) output: &gt; shell in a container (user=%user.name container_id=%container.id container_name=%container.name shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline) priority: WARNING 参数 必须 默认值 描述 rule 是 - 规则名称，全局唯一 condition 是 - 应用于事件的过滤表达式，用于检查它们是否与规则匹配 desc 是 - 这个规则用途描述 output 是 - 如果匹配到该规则，则对外输出内容 priority 是 - 告警级别取值：emergency, alert, critical, error, warning, notice, informational, debug exceptions 否 - TODO; enabled 否 true 是否启用规则，默认启用 tags 否 - 关联到该规则的标签 warn_evttypes 否 true 如果设置为 false 将抑制与规则没有事件类型相关的警告 skip-if-unknown-filter 否 false 如果设置为true，如果规则条件包含一个过滤检查，例如fd.some_new_field，而该版本的Falco不知道这个字段，Falco会默默接受这条规则但不执行它；如果设置为false，Falco在发现未知的过滤检查时会报告错误并退出。 source 否 syscall 这个规则应该被评估的事件来源。典型的值包括syscall、k8s_audit，或者由源插件提供的来源。 Macros 宏提供了一种以可重用的方式定义规则常见子部分的方法，可以在规则内部甚至其他宏中重复使用。">
+  <meta itemprop="datePublished" content="2024-01-05T10:35:12+08:00">
+  <meta itemprop="dateModified" content="2024-01-05T18:02:59+08:00">
+  <meta itemprop="wordCount" content="240">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Falco">
+  <meta name="twitter:description" content="简要概述 TODO;
+规则 falco rules 使用 yaml 格式编写，有 “Rules”、“Lists”、“Macros” 三种类型：
 Rules 在什么条件下会生成一个警报。一条规则通常伴随着一个描述性的输出字符串，该字符串会随着警报一起发送，示例规则如下：
-- rule: shell_in_container desc: notice shell activity within a container condition: &gt; evt.type = execve and evt.dir = &lt; and container.id != host and (proc.name = bash or proc.name = ksh) output: &gt; shell in a container (user=%user.name container_id=%container.id container_name=%container.name shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline) priority: WARNING 参数 必须 默认值 描述 rule 是 - 规则名称，全局唯一 condition 是 - 应用于事件的过滤表达式，用于检查它们是否与规则匹配 desc 是 - 这个规则用途描述 output 是 - 如果匹配到该规则，则对外输出内容 priority 是 - 告警级别取值：emergency, alert, critical, error, warning, notice, informational, debug exceptions 否 - TODO; enabled 否 true 是否启用规则，默认启用 tags 否 - 关联到该规则的标签 warn_evttypes 否 true 如果设置为 false 将抑制与规则没有事件类型相关的警告 skip-if-unknown-filter 否 false 如果设置为true，如果规则条件包含一个过滤检查，例如fd."/>
+- rule: shell_in_container desc: notice shell activity within a container condition: &gt; evt.type = execve and evt.dir = &lt; and container.id != host and (proc.name = bash or proc.name = ksh) output: &gt; shell in a container (user=%user.name container_id=%container.id container_name=%container.name shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline) priority: WARNING 参数 必须 默认值 描述 rule 是 - 规则名称，全局唯一 condition 是 - 应用于事件的过滤表达式，用于检查它们是否与规则匹配 desc 是 - 这个规则用途描述 output 是 - 如果匹配到该规则，则对外输出内容 priority 是 - 告警级别取值：emergency, alert, critical, error, warning, notice, informational, debug exceptions 否 - TODO; enabled 否 true 是否启用规则，默认启用 tags 否 - 关联到该规则的标签 warn_evttypes 否 true 如果设置为 false 将抑制与规则没有事件类型相关的警告 skip-if-unknown-filter 否 false 如果设置为true，如果规则条件包含一个过滤检查，例如fd.some_new_field，而该版本的Falco不知道这个字段，Falco会默默接受这条规则但不执行它；如果设置为false，Falco在发现未知的过滤检查时会报告错误并退出。 source 否 syscall 这个规则应该被评估的事件来源。典型的值包括syscall、k8s_audit，或者由源插件提供的来源。 Macros 宏提供了一种以可重用的方式定义规则常见子部分的方法，可以在规则内部甚至其他宏中重复使用。">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1047,6 +1050,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3080,9 +3100,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3096,10 +3116,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3159,6 +3382,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4307,108 +4589,108 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">    shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline)    </span><span style="color:#f8f8f8;text-decoration:underline">    
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">priority</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">WARNING</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>必须</th>
-<th>默认值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>rule</td>
-<td>是</td>
-<td>-</td>
-<td>规则名称，全局唯一</td>
-</tr>
-<tr>
-<td>condition</td>
-<td>是</td>
-<td>-</td>
-<td>应用于事件的过滤表达式，用于检查它们是否与规则匹配</td>
-</tr>
-<tr>
-<td>desc</td>
-<td>是</td>
-<td>-</td>
-<td>这个规则用途描述</td>
-</tr>
-<tr>
-<td>output</td>
-<td>是</td>
-<td>-</td>
-<td>如果匹配到该规则，则对外输出内容</td>
-</tr>
-<tr>
-<td>priority</td>
-<td>是</td>
-<td>-</td>
-<td>告警级别取值：emergency, alert, critical, error, warning, notice, informational, debug</td>
-</tr>
-<tr>
-<td>exceptions</td>
-<td>否</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>enabled</td>
-<td>否</td>
-<td>true</td>
-<td>是否启用规则，默认启用</td>
-</tr>
-<tr>
-<td>tags</td>
-<td>否</td>
-<td>-</td>
-<td>关联到该规则的标签</td>
-</tr>
-<tr>
-<td>warn_evttypes</td>
-<td>否</td>
-<td>true</td>
-<td>如果设置为 false 将抑制与规则没有事件类型相关的警告</td>
-</tr>
-<tr>
-<td>skip-if-unknown-filter</td>
-<td>否</td>
-<td>false</td>
-<td>如果设置为true，如果规则条件包含一个过滤检查，例如fd.some_new_field，而该版本的Falco不知道这个字段，Falco会默默接受这条规则但不执行它；如果设置为false，Falco在发现未知的过滤检查时会报告错误并退出。</td>
-</tr>
-<tr>
-<td>source</td>
-<td>否</td>
-<td>syscall</td>
-<td>这个规则应该被评估的事件来源。典型的值包括syscall、k8s_audit，或者由源插件提供的来源。</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>参数</th>
+          <th>必须</th>
+          <th>默认值</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>rule</td>
+          <td>是</td>
+          <td>-</td>
+          <td>规则名称，全局唯一</td>
+      </tr>
+      <tr>
+          <td>condition</td>
+          <td>是</td>
+          <td>-</td>
+          <td>应用于事件的过滤表达式，用于检查它们是否与规则匹配</td>
+      </tr>
+      <tr>
+          <td>desc</td>
+          <td>是</td>
+          <td>-</td>
+          <td>这个规则用途描述</td>
+      </tr>
+      <tr>
+          <td>output</td>
+          <td>是</td>
+          <td>-</td>
+          <td>如果匹配到该规则，则对外输出内容</td>
+      </tr>
+      <tr>
+          <td>priority</td>
+          <td>是</td>
+          <td>-</td>
+          <td>告警级别取值：emergency, alert, critical, error, warning, notice, informational, debug</td>
+      </tr>
+      <tr>
+          <td>exceptions</td>
+          <td>否</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>enabled</td>
+          <td>否</td>
+          <td>true</td>
+          <td>是否启用规则，默认启用</td>
+      </tr>
+      <tr>
+          <td>tags</td>
+          <td>否</td>
+          <td>-</td>
+          <td>关联到该规则的标签</td>
+      </tr>
+      <tr>
+          <td>warn_evttypes</td>
+          <td>否</td>
+          <td>true</td>
+          <td>如果设置为 false 将抑制与规则没有事件类型相关的警告</td>
+      </tr>
+      <tr>
+          <td>skip-if-unknown-filter</td>
+          <td>否</td>
+          <td>false</td>
+          <td>如果设置为true，如果规则条件包含一个过滤检查，例如fd.some_new_field，而该版本的Falco不知道这个字段，Falco会默默接受这条规则但不执行它；如果设置为false，Falco在发现未知的过滤检查时会报告错误并退出。</td>
+      </tr>
+      <tr>
+          <td>source</td>
+          <td>否</td>
+          <td>syscall</td>
+          <td>这个规则应该被评估的事件来源。典型的值包括syscall、k8s_audit，或者由源插件提供的来源。</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="macros">Macros</h3>
 <p>宏提供了一种以可重用的方式定义规则常见子部分的方法，可以在规则内部甚至其他宏中重复使用。</p>
 <table>
-<thead>
-<tr>
-<th>参数</th>
-<th>必须</th>
-<th>默认值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>macro</td>
-<td>是</td>
-<td>-</td>
-<td>规则名称，全局唯一</td>
-</tr>
-<tr>
-<td>condition</td>
-<td>是</td>
-<td>-</td>
-<td>应用于事件的过滤表达式，用于检查它们是否与规则匹配</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>参数</th>
+          <th>必须</th>
+          <th>默认值</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>macro</td>
+          <td>是</td>
+          <td>-</td>
+          <td>规则名称，全局唯一</td>
+      </tr>
+      <tr>
+          <td>condition</td>
+          <td>是</td>
+          <td>-</td>
+          <td>应用于事件的过滤表达式，用于检查它们是否与规则匹配</td>
+      </tr>
+  </tbody>
 </table>
 <p>如上 &ldquo;Rules&rdquo; 的 &ldquo;condition&rdquo; 示例中以下两个语句，被大量使用：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>evt.type = execve and evt.dir = &lt;
@@ -4435,28 +4717,28 @@ if (!doNotTrack) {
 </span></span></span></code></pre></div><h3 id="lists">Lists</h3>
 <p>列表是命名的项目集合，你可以在规则、宏，甚至其他列表中使用这些项目，与规则和宏不同，列表不能被解析为过滤表达式。</p>
 <table>
-<thead>
-<tr>
-<th>参数</th>
-<th>必须</th>
-<th>默认值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>list</td>
-<td>是</td>
-<td>-</td>
-<td>规则名称，全局唯一</td>
-</tr>
-<tr>
-<td>items</td>
-<td>是</td>
-<td>-</td>
-<td>数组格式，列表的值</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>参数</th>
+          <th>必须</th>
+          <th>默认值</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>list</td>
+          <td>是</td>
+          <td>-</td>
+          <td>规则名称，全局唯一</td>
+      </tr>
+      <tr>
+          <td>items</td>
+          <td>是</td>
+          <td>-</td>
+          <td>数组格式，列表的值</td>
+      </tr>
+  </tbody>
 </table>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#204a87;font-weight:bold">list</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">shell_binaries</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">items</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">bash, csh, ksh, sh, tcsh, zsh, dash]</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -4561,7 +4843,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

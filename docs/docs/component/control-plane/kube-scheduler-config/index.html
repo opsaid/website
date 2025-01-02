@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -22,63 +22,64 @@
 <meta name="description" content="简要概述
 kube-scheduler 主要配置已经均迁移至 KubeSchedulerConfiguration 不建议在启动命令行上配置。
 KubeSchedulerConfiguration …">
-<meta property="og:title" content="kube-scheduler 配置" />
-<meta property="og:description" content="简要概述 kube-scheduler 主要配置已经均迁移至 KubeSchedulerConfiguration 不建议在启动命令行上配置。
+<meta property="og:url" content="/docs/component/control-plane/kube-scheduler-config/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="kube-scheduler 配置">
+  <meta property="og:description" content="简要概述 kube-scheduler 主要配置已经均迁移至 KubeSchedulerConfiguration 不建议在启动命令行上配置。
 KubeSchedulerConfiguration github.com/kubernetes/kubernetes/src/k8s.io/kube-scheduler/config/v1/types.go
-// KubeSchedulerConfiguration configures a scheduler type KubeSchedulerConfiguration struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Parallelism defines the amount of parallelism in algorithms for scheduling a Pods. Must be greater than 0. Defaults to 16 Parallelism *int32 `json:&#34;parallelism,omitempty&#34;` // LeaderElection defines the configuration of leader election client. LeaderElection componentbaseconfigv1alpha1.LeaderElectionConfiguration `json:&#34;leaderElection&#34;` // ClientConnection specifies the kubeconfig file and client connection // settings for the proxy server to use when communicating with the apiserver." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/component/control-plane/kube-scheduler-config/" /><meta property="article:section" content="docs" />
+// KubeSchedulerConfiguration configures a scheduler type KubeSchedulerConfiguration struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Parallelism defines the amount of parallelism in algorithms for scheduling a Pods. Must be greater than 0. Defaults to 16 Parallelism *int32 `json:&#34;parallelism,omitempty&#34;` // LeaderElection defines the configuration of leader election client. LeaderElection componentbaseconfigv1alpha1.LeaderElectionConfiguration `json:&#34;leaderElection&#34;` // ClientConnection specifies the kubeconfig file and client connection // settings for the proxy server to use when communicating with the apiserver. ClientConnection componentbaseconfigv1alpha1.ClientConnectionConfiguration `json:&#34;clientConnection&#34;` // DebuggingConfiguration holds configuration for Debugging related features // TODO: We might wanna make this a substruct like Debugging componentbaseconfigv1alpha1.DebuggingConfiguration componentbaseconfigv1alpha1.DebuggingConfiguration `json:&#34;,inline&#34;` // PercentageOfNodesToScore is the percentage of all nodes that once found feasible // for running a pod, the scheduler stops its search for more feasible nodes in // the cluster. This helps improve scheduler&#39;s performance. Scheduler always tries to find // at least &#34;minFeasibleNodesToFind&#34; feasible nodes no matter what the value of this flag is. // Example: if the cluster size is 500 nodes and the value of this flag is 30, // then scheduler stops finding further feasible nodes once it finds 150 feasible ones. // When the value is 0, default percentage (5%--50% based on the size of the cluster) of the // nodes will be scored. It is overridden by profile level PercentageofNodesToScore. PercentageOfNodesToScore *int32 `json:&#34;percentageOfNodesToScore,omitempty&#34;` // PodInitialBackoffSeconds is the initial backoff for unschedulable pods. // If specified, it must be greater than 0. If this value is null, the default value (1s) // will be used. PodInitialBackoffSeconds *int64 `json:&#34;podInitialBackoffSeconds,omitempty&#34;` // PodMaxBackoffSeconds is the max backoff for unschedulable pods. // If specified, it must be greater than podInitialBackoffSeconds. If this value is null, // the default value (10s) will be used. PodMaxBackoffSeconds *int64 `json:&#34;podMaxBackoffSeconds,omitempty&#34;` // Profiles are scheduling profiles that kube-scheduler supports. Pods can // choose to be scheduled under a particular profile by setting its associated // scheduler name. Pods that don&#39;t specify any scheduler name are scheduled // with the &#34;default-scheduler&#34; profile, if present here. // &#43;listType=map // &#43;listMapKey=schedulerName Profiles []KubeSchedulerProfile `json:&#34;profiles,omitempty&#34;` // Extenders are the list of scheduler extenders, each holding the values of how to communicate // with the extender. These extenders are shared by all scheduler profiles. // &#43;listType=set Extenders []Extender `json:&#34;extenders,omitempty&#34;` } 默认scheduler配置">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:modified_time" content="2023-12-04T14:07:58+08:00">
 
-<meta property="article:modified_time" content="2023-12-04T14:07:58+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="kube-scheduler 配置">
-<meta itemprop="description" content="简要概述 kube-scheduler 主要配置已经均迁移至 KubeSchedulerConfiguration 不建议在启动命令行上配置。
+  <meta itemprop="name" content="kube-scheduler 配置">
+  <meta itemprop="description" content="简要概述 kube-scheduler 主要配置已经均迁移至 KubeSchedulerConfiguration 不建议在启动命令行上配置。
 KubeSchedulerConfiguration github.com/kubernetes/kubernetes/src/k8s.io/kube-scheduler/config/v1/types.go
-// KubeSchedulerConfiguration configures a scheduler type KubeSchedulerConfiguration struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Parallelism defines the amount of parallelism in algorithms for scheduling a Pods. Must be greater than 0. Defaults to 16 Parallelism *int32 `json:&#34;parallelism,omitempty&#34;` // LeaderElection defines the configuration of leader election client. LeaderElection componentbaseconfigv1alpha1.LeaderElectionConfiguration `json:&#34;leaderElection&#34;` // ClientConnection specifies the kubeconfig file and client connection // settings for the proxy server to use when communicating with the apiserver.">
-<meta itemprop="dateModified" content="2023-12-04T14:07:58+08:00" />
-<meta itemprop="wordCount" content="373">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="kube-scheduler 配置"/>
-<meta name="twitter:description" content="简要概述 kube-scheduler 主要配置已经均迁移至 KubeSchedulerConfiguration 不建议在启动命令行上配置。
+// KubeSchedulerConfiguration configures a scheduler type KubeSchedulerConfiguration struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Parallelism defines the amount of parallelism in algorithms for scheduling a Pods. Must be greater than 0. Defaults to 16 Parallelism *int32 `json:&#34;parallelism,omitempty&#34;` // LeaderElection defines the configuration of leader election client. LeaderElection componentbaseconfigv1alpha1.LeaderElectionConfiguration `json:&#34;leaderElection&#34;` // ClientConnection specifies the kubeconfig file and client connection // settings for the proxy server to use when communicating with the apiserver. ClientConnection componentbaseconfigv1alpha1.ClientConnectionConfiguration `json:&#34;clientConnection&#34;` // DebuggingConfiguration holds configuration for Debugging related features // TODO: We might wanna make this a substruct like Debugging componentbaseconfigv1alpha1.DebuggingConfiguration componentbaseconfigv1alpha1.DebuggingConfiguration `json:&#34;,inline&#34;` // PercentageOfNodesToScore is the percentage of all nodes that once found feasible // for running a pod, the scheduler stops its search for more feasible nodes in // the cluster. This helps improve scheduler&#39;s performance. Scheduler always tries to find // at least &#34;minFeasibleNodesToFind&#34; feasible nodes no matter what the value of this flag is. // Example: if the cluster size is 500 nodes and the value of this flag is 30, // then scheduler stops finding further feasible nodes once it finds 150 feasible ones. // When the value is 0, default percentage (5%--50% based on the size of the cluster) of the // nodes will be scored. It is overridden by profile level PercentageofNodesToScore. PercentageOfNodesToScore *int32 `json:&#34;percentageOfNodesToScore,omitempty&#34;` // PodInitialBackoffSeconds is the initial backoff for unschedulable pods. // If specified, it must be greater than 0. If this value is null, the default value (1s) // will be used. PodInitialBackoffSeconds *int64 `json:&#34;podInitialBackoffSeconds,omitempty&#34;` // PodMaxBackoffSeconds is the max backoff for unschedulable pods. // If specified, it must be greater than podInitialBackoffSeconds. If this value is null, // the default value (10s) will be used. PodMaxBackoffSeconds *int64 `json:&#34;podMaxBackoffSeconds,omitempty&#34;` // Profiles are scheduling profiles that kube-scheduler supports. Pods can // choose to be scheduled under a particular profile by setting its associated // scheduler name. Pods that don&#39;t specify any scheduler name are scheduled // with the &#34;default-scheduler&#34; profile, if present here. // &#43;listType=map // &#43;listMapKey=schedulerName Profiles []KubeSchedulerProfile `json:&#34;profiles,omitempty&#34;` // Extenders are the list of scheduler extenders, each holding the values of how to communicate // with the extender. These extenders are shared by all scheduler profiles. // &#43;listType=set Extenders []Extender `json:&#34;extenders,omitempty&#34;` } 默认scheduler配置">
+  <meta itemprop="dateModified" content="2023-12-04T14:07:58+08:00">
+  <meta itemprop="wordCount" content="373">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="kube-scheduler 配置">
+  <meta name="twitter:description" content="简要概述 kube-scheduler 主要配置已经均迁移至 KubeSchedulerConfiguration 不建议在启动命令行上配置。
 KubeSchedulerConfiguration github.com/kubernetes/kubernetes/src/k8s.io/kube-scheduler/config/v1/types.go
-// KubeSchedulerConfiguration configures a scheduler type KubeSchedulerConfiguration struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Parallelism defines the amount of parallelism in algorithms for scheduling a Pods. Must be greater than 0. Defaults to 16 Parallelism *int32 `json:&#34;parallelism,omitempty&#34;` // LeaderElection defines the configuration of leader election client. LeaderElection componentbaseconfigv1alpha1.LeaderElectionConfiguration `json:&#34;leaderElection&#34;` // ClientConnection specifies the kubeconfig file and client connection // settings for the proxy server to use when communicating with the apiserver."/>
+// KubeSchedulerConfiguration configures a scheduler type KubeSchedulerConfiguration struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Parallelism defines the amount of parallelism in algorithms for scheduling a Pods. Must be greater than 0. Defaults to 16 Parallelism *int32 `json:&#34;parallelism,omitempty&#34;` // LeaderElection defines the configuration of leader election client. LeaderElection componentbaseconfigv1alpha1.LeaderElectionConfiguration `json:&#34;leaderElection&#34;` // ClientConnection specifies the kubeconfig file and client connection // settings for the proxy server to use when communicating with the apiserver. ClientConnection componentbaseconfigv1alpha1.ClientConnectionConfiguration `json:&#34;clientConnection&#34;` // DebuggingConfiguration holds configuration for Debugging related features // TODO: We might wanna make this a substruct like Debugging componentbaseconfigv1alpha1.DebuggingConfiguration componentbaseconfigv1alpha1.DebuggingConfiguration `json:&#34;,inline&#34;` // PercentageOfNodesToScore is the percentage of all nodes that once found feasible // for running a pod, the scheduler stops its search for more feasible nodes in // the cluster. This helps improve scheduler&#39;s performance. Scheduler always tries to find // at least &#34;minFeasibleNodesToFind&#34; feasible nodes no matter what the value of this flag is. // Example: if the cluster size is 500 nodes and the value of this flag is 30, // then scheduler stops finding further feasible nodes once it finds 150 feasible ones. // When the value is 0, default percentage (5%--50% based on the size of the cluster) of the // nodes will be scored. It is overridden by profile level PercentageofNodesToScore. PercentageOfNodesToScore *int32 `json:&#34;percentageOfNodesToScore,omitempty&#34;` // PodInitialBackoffSeconds is the initial backoff for unschedulable pods. // If specified, it must be greater than 0. If this value is null, the default value (1s) // will be used. PodInitialBackoffSeconds *int64 `json:&#34;podInitialBackoffSeconds,omitempty&#34;` // PodMaxBackoffSeconds is the max backoff for unschedulable pods. // If specified, it must be greater than podInitialBackoffSeconds. If this value is null, // the default value (10s) will be used. PodMaxBackoffSeconds *int64 `json:&#34;podMaxBackoffSeconds,omitempty&#34;` // Profiles are scheduling profiles that kube-scheduler supports. Pods can // choose to be scheduled under a particular profile by setting its associated // scheduler name. Pods that don&#39;t specify any scheduler name are scheduled // with the &#34;default-scheduler&#34; profile, if present here. // &#43;listType=map // &#43;listMapKey=schedulerName Profiles []KubeSchedulerProfile `json:&#34;profiles,omitempty&#34;` // Extenders are the list of scheduler extenders, each holding the values of how to communicate // with the extender. These extenders are shared by all scheduler profiles. // &#43;listType=set Extenders []Extender `json:&#34;extenders,omitempty&#34;` } 默认scheduler配置">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1041,6 +1042,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3074,9 +3092,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3090,10 +3108,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3153,6 +3374,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4428,7 +4708,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

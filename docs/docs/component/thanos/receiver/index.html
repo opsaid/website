@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -22,74 +22,72 @@
 <meta name="description" content="参数解析
 启动参数
 
+  
+      
+          名称
+          默认值
+          说明
+      
+  
+  
+      
+          grpc-address
+          0.0.0.0:10901
+          gRPC …">
+<meta property="og:url" content="/docs/component/thanos/receiver/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Receiver">
+  <meta property="og:description" content="参数解析 启动参数 名称 默认值 说明 grpc-address 0.0.0.0:10901 gRPC服务 StoreAPI 监听的地址 grpc-grace-period 2m gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 grpc-server-max-connection-age 60m TODO; grpc-server-tls-cert &#34;&#34; 是否开启tls认证，为空表示禁用 grpc-server-tls-client-ca &#34;&#34; TLS CA，为空表示不对客户端验证 grpc-server-tls-key &#34;&#34; 是否开启tls认证，为空表示禁用 hash-func &#34;&#34; TODO; 如：&#34;&#34;, “SHA256” http-address 0.0.0.0:10902 监听 HTTP 服务地址 http-grace-period 2m HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 http.config &#34;&#34; TODO; http的配置，用于开启TLS、认证等 label &#34;&#34; 格式：=&#34;&#34;，植入标签，用于标识 log.format logfmt 日志格式，可取值：logfmt、json log.level info 日志级别 objstore.config &#34;&#34; 功能同 ‘objstore.config-file’ 对象存储地址 objstore.config-file &#34;&#34; 对象存储地址 receive.default-tenant-id default-tenant 如果未设置租户ID，则以此为默认值 receive.hashrings &#34;&#34; 功能同 ‘receive.hashrings-file’，优先级高 receive.hashrings-algorithm hashmod 用于 hashrings 算法，可取：hashmod, ketama receive.hashrings-file &#34;&#34; TODO; receive.hashrings-file-refresh-interval 5m 刷新 hashrings-file 指向文件的时间 receive.local-endpoint &#34;&#34; 在hashring文件列表配置的所有地址，指明哪个为该节点，如果为空且配置了hashring则开启&#34;RoutingOnly&#34;模式 receive.relabel-config &#34;&#34; 功能同 ‘receive.relabel-config-file’ receive.relabel-config-file &#34;&#34; TODO; receive.replica-header THANOS-REPLICA TODO; 用于表示副本数的HTTP请求头 receive.replication-factor 1 TODO; int((h.options.ReplicationFactor / 2) &#43; 1) receive.tenant-certificate-field &#34;&#34; 使用 tls 证书中的属性表示租户，必须是 organization, organizationalUnit or commonName 之一，优先级高于 receive.tenant-header receive.tenant-header THANOS-TENANT HTTP请求头，值代表写入的租户 receive.tenant-label-name tenant_id 植入到指标里租户的标签名 remote-write.address 0.0.0.0:19291 用于 remote write 的http服务地址 remote-write.client-server-name &#34;&#34; TODO; remote-write.client-tls-ca &#34;&#34; 用于验证客户端 remote-write.client-tls-cert &#34;&#34; 同上 remote-write.client-tls-key &#34;&#34; 同上 remote-write.server-tls-cert &#34;&#34; 用于 remote write 服务是否开启tls，为空表示关闭 remote-write.server-tls-key &#34;&#34; 同上 remote-write.server-tls-client-ca &#34;&#34; 用于验证客户端，未配置则不开启 request.logging-config &#34;&#34; 功能同 ‘request.logging-config-file’ request.logging-config-file &#34;&#34; TODO; tracing.config &#34;&#34; 功能同 ’tracing.config-file’ tracing.config-file &#34;&#34; TODO; tsdb.allow-overlapping-blocks - TODO; tsdb.max-exemplars 0 TODO; tsdb.no-lockfile &#34;&#34; TODO; tsdb.path ./data TODO; tsdb.retention 15d 性能数据保留的时间，设置0表示不过期 tsdb.wal-compression &#34;&#34; 是否压缩 wal 隐藏参数 名称 默认值 说明 receive-forward-timeout 5s 转发的超时时间 tsdb.min-block-duration 2h TODO; tsdb.max-block-duration 2h TODO; shipper.ignore-unequal-block-size false TODO; shipper.allow-out-of-order-uploads false TODO; 两种模式 Routing Receiver 在启动参数不配置以下时，为该模式，仅做流量转发">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-10-08T15:31:20+08:00">
+    <meta property="article:modified_time" content="2023-02-13T16:48:32+08:00">
+
+  <meta itemprop="name" content="Receiver">
+  <meta itemprop="description" content="参数解析 启动参数 名称 默认值 说明 grpc-address 0.0.0.0:10901 gRPC服务 StoreAPI 监听的地址 grpc-grace-period 2m gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 grpc-server-max-connection-age 60m TODO; grpc-server-tls-cert &#34;&#34; 是否开启tls认证，为空表示禁用 grpc-server-tls-client-ca &#34;&#34; TLS CA，为空表示不对客户端验证 grpc-server-tls-key &#34;&#34; 是否开启tls认证，为空表示禁用 hash-func &#34;&#34; TODO; 如：&#34;&#34;, “SHA256” http-address 0.0.0.0:10902 监听 HTTP 服务地址 http-grace-period 2m HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 http.config &#34;&#34; TODO; http的配置，用于开启TLS、认证等 label &#34;&#34; 格式：=&#34;&#34;，植入标签，用于标识 log.format logfmt 日志格式，可取值：logfmt、json log.level info 日志级别 objstore.config &#34;&#34; 功能同 ‘objstore.config-file’ 对象存储地址 objstore.config-file &#34;&#34; 对象存储地址 receive.default-tenant-id default-tenant 如果未设置租户ID，则以此为默认值 receive.hashrings &#34;&#34; 功能同 ‘receive.hashrings-file’，优先级高 receive.hashrings-algorithm hashmod 用于 hashrings 算法，可取：hashmod, ketama receive.hashrings-file &#34;&#34; TODO; receive.hashrings-file-refresh-interval 5m 刷新 hashrings-file 指向文件的时间 receive.local-endpoint &#34;&#34; 在hashring文件列表配置的所有地址，指明哪个为该节点，如果为空且配置了hashring则开启&#34;RoutingOnly&#34;模式 receive.relabel-config &#34;&#34; 功能同 ‘receive.relabel-config-file’ receive.relabel-config-file &#34;&#34; TODO; receive.replica-header THANOS-REPLICA TODO; 用于表示副本数的HTTP请求头 receive.replication-factor 1 TODO; int((h.options.ReplicationFactor / 2) &#43; 1) receive.tenant-certificate-field &#34;&#34; 使用 tls 证书中的属性表示租户，必须是 organization, organizationalUnit or commonName 之一，优先级高于 receive.tenant-header receive.tenant-header THANOS-TENANT HTTP请求头，值代表写入的租户 receive.tenant-label-name tenant_id 植入到指标里租户的标签名 remote-write.address 0.0.0.0:19291 用于 remote write 的http服务地址 remote-write.client-server-name &#34;&#34; TODO; remote-write.client-tls-ca &#34;&#34; 用于验证客户端 remote-write.client-tls-cert &#34;&#34; 同上 remote-write.client-tls-key &#34;&#34; 同上 remote-write.server-tls-cert &#34;&#34; 用于 remote write 服务是否开启tls，为空表示关闭 remote-write.server-tls-key &#34;&#34; 同上 remote-write.server-tls-client-ca &#34;&#34; 用于验证客户端，未配置则不开启 request.logging-config &#34;&#34; 功能同 ‘request.logging-config-file’ request.logging-config-file &#34;&#34; TODO; tracing.config &#34;&#34; 功能同 ’tracing.config-file’ tracing.config-file &#34;&#34; TODO; tsdb.allow-overlapping-blocks - TODO; tsdb.max-exemplars 0 TODO; tsdb.no-lockfile &#34;&#34; TODO; tsdb.path ./data TODO; tsdb.retention 15d 性能数据保留的时间，设置0表示不过期 tsdb.wal-compression &#34;&#34; 是否压缩 wal 隐藏参数 名称 默认值 说明 receive-forward-timeout 5s 转发的超时时间 tsdb.min-block-duration 2h TODO; tsdb.max-block-duration 2h TODO; shipper.ignore-unequal-block-size false TODO; shipper.allow-out-of-order-uploads false TODO; 两种模式 Routing Receiver 在启动参数不配置以下时，为该模式，仅做流量转发">
+  <meta itemprop="datePublished" content="2022-10-08T15:31:20+08:00">
+  <meta itemprop="dateModified" content="2023-02-13T16:48:32+08:00">
+  <meta itemprop="wordCount" content="349">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Receiver">
+  <meta name="twitter:description" content="参数解析 启动参数 名称 默认值 说明 grpc-address 0.0.0.0:10901 gRPC服务 StoreAPI 监听的地址 grpc-grace-period 2m gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 grpc-server-max-connection-age 60m TODO; grpc-server-tls-cert &#34;&#34; 是否开启tls认证，为空表示禁用 grpc-server-tls-client-ca &#34;&#34; TLS CA，为空表示不对客户端验证 grpc-server-tls-key &#34;&#34; 是否开启tls认证，为空表示禁用 hash-func &#34;&#34; TODO; 如：&#34;&#34;, “SHA256” http-address 0.0.0.0:10902 监听 HTTP 服务地址 http-grace-period 2m HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 http.config &#34;&#34; TODO; http的配置，用于开启TLS、认证等 label &#34;&#34; 格式：=&#34;&#34;，植入标签，用于标识 log.format logfmt 日志格式，可取值：logfmt、json log.level info 日志级别 objstore.config &#34;&#34; 功能同 ‘objstore.config-file’ 对象存储地址 objstore.config-file &#34;&#34; 对象存储地址 receive.default-tenant-id default-tenant 如果未设置租户ID，则以此为默认值 receive.hashrings &#34;&#34; 功能同 ‘receive.hashrings-file’，优先级高 receive.hashrings-algorithm hashmod 用于 hashrings 算法，可取：hashmod, ketama receive.hashrings-file &#34;&#34; TODO; receive.hashrings-file-refresh-interval 5m 刷新 hashrings-file 指向文件的时间 receive.local-endpoint &#34;&#34; 在hashring文件列表配置的所有地址，指明哪个为该节点，如果为空且配置了hashring则开启&#34;RoutingOnly&#34;模式 receive.relabel-config &#34;&#34; 功能同 ‘receive.relabel-config-file’ receive.relabel-config-file &#34;&#34; TODO; receive.replica-header THANOS-REPLICA TODO; 用于表示副本数的HTTP请求头 receive.replication-factor 1 TODO; int((h.options.ReplicationFactor / 2) &#43; 1) receive.tenant-certificate-field &#34;&#34; 使用 tls 证书中的属性表示租户，必须是 organization, organizationalUnit or commonName 之一，优先级高于 receive.tenant-header receive.tenant-header THANOS-TENANT HTTP请求头，值代表写入的租户 receive.tenant-label-name tenant_id 植入到指标里租户的标签名 remote-write.address 0.0.0.0:19291 用于 remote write 的http服务地址 remote-write.client-server-name &#34;&#34; TODO; remote-write.client-tls-ca &#34;&#34; 用于验证客户端 remote-write.client-tls-cert &#34;&#34; 同上 remote-write.client-tls-key &#34;&#34; 同上 remote-write.server-tls-cert &#34;&#34; 用于 remote write 服务是否开启tls，为空表示关闭 remote-write.server-tls-key &#34;&#34; 同上 remote-write.server-tls-client-ca &#34;&#34; 用于验证客户端，未配置则不开启 request.logging-config &#34;&#34; 功能同 ‘request.logging-config-file’ request.logging-config-file &#34;&#34; TODO; tracing.config &#34;&#34; 功能同 ’tracing.config-file’ tracing.config-file &#34;&#34; TODO; tsdb.allow-overlapping-blocks - TODO; tsdb.max-exemplars 0 TODO; tsdb.no-lockfile &#34;&#34; TODO; tsdb.path ./data TODO; tsdb.retention 15d 性能数据保留的时间，设置0表示不过期 tsdb.wal-compression &#34;&#34; 是否压缩 wal 隐藏参数 名称 默认值 说明 receive-forward-timeout 5s 转发的超时时间 tsdb.min-block-duration 2h TODO; tsdb.max-block-duration 2h TODO; shipper.ignore-unequal-block-size false TODO; shipper.allow-out-of-order-uploads false TODO; 两种模式 Routing Receiver 在启动参数不配置以下时，为该模式，仅做流量转发">
 
 
-名称
-默认值
-说明
 
 
-
-
-grpc-address
-0.0.0.0:10901
-gRPC服务 StoreAPI 监听的地址
-
-
-grpc-grace-period
-2m
-gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout …">
-<meta property="og:title" content="Receiver" />
-<meta property="og:description" content="参数解析 启动参数 名称 默认值 说明 grpc-address 0.0.0.0:10901 gRPC服务 StoreAPI 监听的地址 grpc-grace-period 2m gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 grpc-server-max-connection-age 60m TODO; grpc-server-tls-cert &quot;&quot; 是否开启tls认证，为空表示禁用 grpc-server-tls-client-ca &quot;&quot; TLS CA，为空表示不对客户端验证 grpc-server-tls-key &quot;&quot; 是否开启tls认证，为空表示禁用 hash-func &quot;&quot; TODO; 如：&quot;&quot;, &ldquo;SHA256&rdquo; http-address 0.0.0.0:10902 监听 HTTP 服务地址 http-grace-period 2m HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 http.config &quot;&quot; TODO; http的配置，用于开启TLS、认证等 label &quot;&quot; 格式：=&quot;&quot;，植入标签，用于标识 log.format logfmt 日志格式，可取值：logfmt、json log.level info 日志级别 objstore.config &quot;&quot; 功能同 ‘objstore.config-file’ 对象存储地址 objstore.config-file &quot;&quot; 对象存储地址 receive.default-tenant-id default-tenant 如果未设置租户ID，则以此为默认值 receive.hashrings &quot;&quot; 功能同 &lsquo;receive." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/component/thanos/receiver/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-10-08T15:31:20+08:00" />
-<meta property="article:modified_time" content="2023-02-13T16:48:32+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Receiver">
-<meta itemprop="description" content="参数解析 启动参数 名称 默认值 说明 grpc-address 0.0.0.0:10901 gRPC服务 StoreAPI 监听的地址 grpc-grace-period 2m gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 grpc-server-max-connection-age 60m TODO; grpc-server-tls-cert &quot;&quot; 是否开启tls认证，为空表示禁用 grpc-server-tls-client-ca &quot;&quot; TLS CA，为空表示不对客户端验证 grpc-server-tls-key &quot;&quot; 是否开启tls认证，为空表示禁用 hash-func &quot;&quot; TODO; 如：&quot;&quot;, &ldquo;SHA256&rdquo; http-address 0.0.0.0:10902 监听 HTTP 服务地址 http-grace-period 2m HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 http.config &quot;&quot; TODO; http的配置，用于开启TLS、认证等 label &quot;&quot; 格式：=&quot;&quot;，植入标签，用于标识 log.format logfmt 日志格式，可取值：logfmt、json log.level info 日志级别 objstore.config &quot;&quot; 功能同 ‘objstore.config-file’ 对象存储地址 objstore.config-file &quot;&quot; 对象存储地址 receive.default-tenant-id default-tenant 如果未设置租户ID，则以此为默认值 receive.hashrings &quot;&quot; 功能同 &lsquo;receive."><meta itemprop="datePublished" content="2022-10-08T15:31:20+08:00" />
-<meta itemprop="dateModified" content="2023-02-13T16:48:32+08:00" />
-<meta itemprop="wordCount" content="349">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Receiver"/>
-<meta name="twitter:description" content="参数解析 启动参数 名称 默认值 说明 grpc-address 0.0.0.0:10901 gRPC服务 StoreAPI 监听的地址 grpc-grace-period 2m gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 grpc-server-max-connection-age 60m TODO; grpc-server-tls-cert &quot;&quot; 是否开启tls认证，为空表示禁用 grpc-server-tls-client-ca &quot;&quot; TLS CA，为空表示不对客户端验证 grpc-server-tls-key &quot;&quot; 是否开启tls认证，为空表示禁用 hash-func &quot;&quot; TODO; 如：&quot;&quot;, &ldquo;SHA256&rdquo; http-address 0.0.0.0:10902 监听 HTTP 服务地址 http-grace-period 2m HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 http.config &quot;&quot; TODO; http的配置，用于开启TLS、认证等 label &quot;&quot; 格式：=&quot;&quot;，植入标签，用于标识 log.format logfmt 日志格式，可取值：logfmt、json log.level info 日志级别 objstore.config &quot;&quot; 功能同 ‘objstore.config-file’ 对象存储地址 objstore.config-file &quot;&quot; 对象存储地址 receive.default-tenant-id default-tenant 如果未设置租户ID，则以此为默认值 receive.hashrings &quot;&quot; 功能同 &lsquo;receive."/>
-
-
-
-
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1052,6 +1050,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3085,9 +3100,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3101,10 +3116,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3164,6 +3382,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4299,284 +4576,284 @@ if (!doNotTrack) {
 	<h2 id="参数解析">参数解析</h2>
 <h3 id="启动参数">启动参数</h3>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>默认值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>grpc-address</td>
-<td>0.0.0.0:10901</td>
-<td>gRPC服务 StoreAPI 监听的地址</td>
-</tr>
-<tr>
-<td>grpc-grace-period</td>
-<td>2m</td>
-<td>gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现</td>
-</tr>
-<tr>
-<td>grpc-server-max-connection-age</td>
-<td>60m</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>grpc-server-tls-cert</td>
-<td>&quot;&quot;</td>
-<td>是否开启tls认证，为空表示禁用</td>
-</tr>
-<tr>
-<td>grpc-server-tls-client-ca</td>
-<td>&quot;&quot;</td>
-<td>TLS CA，为空表示不对客户端验证</td>
-</tr>
-<tr>
-<td>grpc-server-tls-key</td>
-<td>&quot;&quot;</td>
-<td>是否开启tls认证，为空表示禁用</td>
-</tr>
-<tr>
-<td>hash-func</td>
-<td>&quot;&quot;</td>
-<td>TODO; 如：&quot;&quot;, &ldquo;SHA256&rdquo;</td>
-</tr>
-<tr>
-<td>http-address</td>
-<td>0.0.0.0:10902</td>
-<td>监听 HTTP 服务地址</td>
-</tr>
-<tr>
-<td>http-grace-period</td>
-<td>2m</td>
-<td>HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现</td>
-</tr>
-<tr>
-<td>http.config</td>
-<td>&quot;&quot;</td>
-<td>TODO; http的配置，用于开启TLS、认证等</td>
-</tr>
-<tr>
-<td>label</td>
-<td>&quot;&quot;</td>
-<td>格式：=&quot;&quot;，植入标签，用于标识</td>
-</tr>
-<tr>
-<td>log.format</td>
-<td>logfmt</td>
-<td>日志格式，可取值：logfmt、json</td>
-</tr>
-<tr>
-<td>log.level</td>
-<td>info</td>
-<td>日志级别</td>
-</tr>
-<tr>
-<td>objstore.config</td>
-<td>&quot;&quot;</td>
-<td>功能同 ‘objstore.config-file’ 对象存储地址</td>
-</tr>
-<tr>
-<td>objstore.config-file</td>
-<td>&quot;&quot;</td>
-<td>对象存储地址</td>
-</tr>
-<tr>
-<td>receive.default-tenant-id</td>
-<td>default-tenant</td>
-<td>如果未设置租户ID，则以此为默认值</td>
-</tr>
-<tr>
-<td>receive.hashrings</td>
-<td>&quot;&quot;</td>
-<td>功能同 &lsquo;receive.hashrings-file&rsquo;，优先级高</td>
-</tr>
-<tr>
-<td>receive.hashrings-algorithm</td>
-<td>hashmod</td>
-<td>用于 hashrings 算法，可取：hashmod, ketama</td>
-</tr>
-<tr>
-<td>receive.hashrings-file</td>
-<td>&quot;&quot;</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>receive.hashrings-file-refresh-interval</td>
-<td>5m</td>
-<td>刷新 hashrings-file 指向文件的时间</td>
-</tr>
-<tr>
-<td>receive.local-endpoint</td>
-<td>&quot;&quot;</td>
-<td>在hashring文件列表配置的所有地址，指明哪个为该节点，如果为空且配置了hashring则开启&quot;RoutingOnly&quot;模式</td>
-</tr>
-<tr>
-<td>receive.relabel-config</td>
-<td>&quot;&quot;</td>
-<td>功能同 &lsquo;receive.relabel-config-file&rsquo;</td>
-</tr>
-<tr>
-<td>receive.relabel-config-file</td>
-<td>&quot;&quot;</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>receive.replica-header</td>
-<td>THANOS-REPLICA</td>
-<td>TODO; 用于表示副本数的HTTP请求头</td>
-</tr>
-<tr>
-<td>receive.replication-factor</td>
-<td>1</td>
-<td>TODO; int((h.options.ReplicationFactor / 2) + 1)</td>
-</tr>
-<tr>
-<td>receive.tenant-certificate-field</td>
-<td>&quot;&quot;</td>
-<td>使用 tls 证书中的属性表示租户，必须是 organization, organizationalUnit or commonName 之一，优先级高于 receive.tenant-header</td>
-</tr>
-<tr>
-<td>receive.tenant-header</td>
-<td>THANOS-TENANT</td>
-<td>HTTP请求头，值代表写入的租户</td>
-</tr>
-<tr>
-<td>receive.tenant-label-name</td>
-<td>tenant_id</td>
-<td>植入到指标里租户的标签名</td>
-</tr>
-<tr>
-<td>remote-write.address</td>
-<td>0.0.0.0:19291</td>
-<td>用于 remote write 的http服务地址</td>
-</tr>
-<tr>
-<td>remote-write.client-server-name</td>
-<td>&quot;&quot;</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>remote-write.client-tls-ca</td>
-<td>&quot;&quot;</td>
-<td>用于验证客户端</td>
-</tr>
-<tr>
-<td>remote-write.client-tls-cert</td>
-<td>&quot;&quot;</td>
-<td>同上</td>
-</tr>
-<tr>
-<td>remote-write.client-tls-key</td>
-<td>&quot;&quot;</td>
-<td>同上</td>
-</tr>
-<tr>
-<td>remote-write.server-tls-cert</td>
-<td>&quot;&quot;</td>
-<td>用于 remote write 服务是否开启tls，为空表示关闭</td>
-</tr>
-<tr>
-<td>remote-write.server-tls-key</td>
-<td>&quot;&quot;</td>
-<td>同上</td>
-</tr>
-<tr>
-<td>remote-write.server-tls-client-ca</td>
-<td>&quot;&quot;</td>
-<td>用于验证客户端，未配置则不开启</td>
-</tr>
-<tr>
-<td>request.logging-config</td>
-<td>&quot;&quot;</td>
-<td>功能同 &lsquo;request.logging-config-file&rsquo;</td>
-</tr>
-<tr>
-<td>request.logging-config-file</td>
-<td>&quot;&quot;</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>tracing.config</td>
-<td>&quot;&quot;</td>
-<td>功能同 &rsquo;tracing.config-file&rsquo;</td>
-</tr>
-<tr>
-<td>tracing.config-file</td>
-<td>&quot;&quot;</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>tsdb.allow-overlapping-blocks</td>
-<td>-</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>tsdb.max-exemplars</td>
-<td>0</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>tsdb.no-lockfile</td>
-<td>&quot;&quot;</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>tsdb.path</td>
-<td>./data</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>tsdb.retention</td>
-<td>15d</td>
-<td>性能数据保留的时间，设置0表示不过期</td>
-</tr>
-<tr>
-<td>tsdb.wal-compression</td>
-<td>&quot;&quot;</td>
-<td>是否压缩 wal</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>默认值</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>grpc-address</td>
+          <td>0.0.0.0:10901</td>
+          <td>gRPC服务 StoreAPI 监听的地址</td>
+      </tr>
+      <tr>
+          <td>grpc-grace-period</td>
+          <td>2m</td>
+          <td>gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现</td>
+      </tr>
+      <tr>
+          <td>grpc-server-max-connection-age</td>
+          <td>60m</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>grpc-server-tls-cert</td>
+          <td>&quot;&quot;</td>
+          <td>是否开启tls认证，为空表示禁用</td>
+      </tr>
+      <tr>
+          <td>grpc-server-tls-client-ca</td>
+          <td>&quot;&quot;</td>
+          <td>TLS CA，为空表示不对客户端验证</td>
+      </tr>
+      <tr>
+          <td>grpc-server-tls-key</td>
+          <td>&quot;&quot;</td>
+          <td>是否开启tls认证，为空表示禁用</td>
+      </tr>
+      <tr>
+          <td>hash-func</td>
+          <td>&quot;&quot;</td>
+          <td>TODO; 如：&quot;&quot;, &ldquo;SHA256&rdquo;</td>
+      </tr>
+      <tr>
+          <td>http-address</td>
+          <td>0.0.0.0:10902</td>
+          <td>监听 HTTP 服务地址</td>
+      </tr>
+      <tr>
+          <td>http-grace-period</td>
+          <td>2m</td>
+          <td>HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现</td>
+      </tr>
+      <tr>
+          <td>http.config</td>
+          <td>&quot;&quot;</td>
+          <td>TODO; http的配置，用于开启TLS、认证等</td>
+      </tr>
+      <tr>
+          <td>label</td>
+          <td>&quot;&quot;</td>
+          <td>格式：=&quot;&quot;，植入标签，用于标识</td>
+      </tr>
+      <tr>
+          <td>log.format</td>
+          <td>logfmt</td>
+          <td>日志格式，可取值：logfmt、json</td>
+      </tr>
+      <tr>
+          <td>log.level</td>
+          <td>info</td>
+          <td>日志级别</td>
+      </tr>
+      <tr>
+          <td>objstore.config</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 ‘objstore.config-file’ 对象存储地址</td>
+      </tr>
+      <tr>
+          <td>objstore.config-file</td>
+          <td>&quot;&quot;</td>
+          <td>对象存储地址</td>
+      </tr>
+      <tr>
+          <td>receive.default-tenant-id</td>
+          <td>default-tenant</td>
+          <td>如果未设置租户ID，则以此为默认值</td>
+      </tr>
+      <tr>
+          <td>receive.hashrings</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 &lsquo;receive.hashrings-file&rsquo;，优先级高</td>
+      </tr>
+      <tr>
+          <td>receive.hashrings-algorithm</td>
+          <td>hashmod</td>
+          <td>用于 hashrings 算法，可取：hashmod, ketama</td>
+      </tr>
+      <tr>
+          <td>receive.hashrings-file</td>
+          <td>&quot;&quot;</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>receive.hashrings-file-refresh-interval</td>
+          <td>5m</td>
+          <td>刷新 hashrings-file 指向文件的时间</td>
+      </tr>
+      <tr>
+          <td>receive.local-endpoint</td>
+          <td>&quot;&quot;</td>
+          <td>在hashring文件列表配置的所有地址，指明哪个为该节点，如果为空且配置了hashring则开启&quot;RoutingOnly&quot;模式</td>
+      </tr>
+      <tr>
+          <td>receive.relabel-config</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 &lsquo;receive.relabel-config-file&rsquo;</td>
+      </tr>
+      <tr>
+          <td>receive.relabel-config-file</td>
+          <td>&quot;&quot;</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>receive.replica-header</td>
+          <td>THANOS-REPLICA</td>
+          <td>TODO; 用于表示副本数的HTTP请求头</td>
+      </tr>
+      <tr>
+          <td>receive.replication-factor</td>
+          <td>1</td>
+          <td>TODO; int((h.options.ReplicationFactor / 2) + 1)</td>
+      </tr>
+      <tr>
+          <td>receive.tenant-certificate-field</td>
+          <td>&quot;&quot;</td>
+          <td>使用 tls 证书中的属性表示租户，必须是 organization, organizationalUnit or commonName 之一，优先级高于 receive.tenant-header</td>
+      </tr>
+      <tr>
+          <td>receive.tenant-header</td>
+          <td>THANOS-TENANT</td>
+          <td>HTTP请求头，值代表写入的租户</td>
+      </tr>
+      <tr>
+          <td>receive.tenant-label-name</td>
+          <td>tenant_id</td>
+          <td>植入到指标里租户的标签名</td>
+      </tr>
+      <tr>
+          <td>remote-write.address</td>
+          <td>0.0.0.0:19291</td>
+          <td>用于 remote write 的http服务地址</td>
+      </tr>
+      <tr>
+          <td>remote-write.client-server-name</td>
+          <td>&quot;&quot;</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>remote-write.client-tls-ca</td>
+          <td>&quot;&quot;</td>
+          <td>用于验证客户端</td>
+      </tr>
+      <tr>
+          <td>remote-write.client-tls-cert</td>
+          <td>&quot;&quot;</td>
+          <td>同上</td>
+      </tr>
+      <tr>
+          <td>remote-write.client-tls-key</td>
+          <td>&quot;&quot;</td>
+          <td>同上</td>
+      </tr>
+      <tr>
+          <td>remote-write.server-tls-cert</td>
+          <td>&quot;&quot;</td>
+          <td>用于 remote write 服务是否开启tls，为空表示关闭</td>
+      </tr>
+      <tr>
+          <td>remote-write.server-tls-key</td>
+          <td>&quot;&quot;</td>
+          <td>同上</td>
+      </tr>
+      <tr>
+          <td>remote-write.server-tls-client-ca</td>
+          <td>&quot;&quot;</td>
+          <td>用于验证客户端，未配置则不开启</td>
+      </tr>
+      <tr>
+          <td>request.logging-config</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 &lsquo;request.logging-config-file&rsquo;</td>
+      </tr>
+      <tr>
+          <td>request.logging-config-file</td>
+          <td>&quot;&quot;</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>tracing.config</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 &rsquo;tracing.config-file&rsquo;</td>
+      </tr>
+      <tr>
+          <td>tracing.config-file</td>
+          <td>&quot;&quot;</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>tsdb.allow-overlapping-blocks</td>
+          <td>-</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>tsdb.max-exemplars</td>
+          <td>0</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>tsdb.no-lockfile</td>
+          <td>&quot;&quot;</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>tsdb.path</td>
+          <td>./data</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>tsdb.retention</td>
+          <td>15d</td>
+          <td>性能数据保留的时间，设置0表示不过期</td>
+      </tr>
+      <tr>
+          <td>tsdb.wal-compression</td>
+          <td>&quot;&quot;</td>
+          <td>是否压缩 wal</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li>隐藏参数</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>默认值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>receive-forward-timeout</td>
-<td>5s</td>
-<td>转发的超时时间</td>
-</tr>
-<tr>
-<td>tsdb.min-block-duration</td>
-<td>2h</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>tsdb.max-block-duration</td>
-<td>2h</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>shipper.ignore-unequal-block-size</td>
-<td>false</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>shipper.allow-out-of-order-uploads</td>
-<td>false</td>
-<td>TODO;</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>默认值</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>receive-forward-timeout</td>
+          <td>5s</td>
+          <td>转发的超时时间</td>
+      </tr>
+      <tr>
+          <td>tsdb.min-block-duration</td>
+          <td>2h</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>tsdb.max-block-duration</td>
+          <td>2h</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>shipper.ignore-unequal-block-size</td>
+          <td>false</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>shipper.allow-out-of-order-uploads</td>
+          <td>false</td>
+          <td>TODO;</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="两种模式">两种模式</h2>
 <h3 id="routing-receiver">Routing Receiver</h3>
@@ -4705,7 +4982,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -21,87 +21,73 @@
 <title>ZooKeeper Exporter | OPSaid</title>
 <meta name="description" content="Common Labels
 
+  
+      
+          标签名
+          示例值
+      
+  
+  
+      
+          instance
+          [localhost]
+      
+      
+          job …">
+<meta property="og:url" content="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="ZooKeeper Exporter">
+  <meta property="og:description" content="Common Labels 标签名 示例值 instance [localhost] job [opsaid-agent,zookeeper-exporter] Metrics 名称 类型 描述 zookeeper_service_TickTime gauge TickTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TickTime) zookeeper_service_JuteMaxBufferSize gauge JuteMaxBufferSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;JuteMaxBufferSize) zookeeper_service_DataDirSize gauge DataDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;DataDirSize) zookeeper_service_QuorumSize gauge QuorumSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;QuorumSize) zookeeper_service_ConfigVersion gauge ConfigVersion (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;ConfigVersion) zookeeper_service_FsyncThresholdExceedCount gauge FsyncThresholdExceedCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;FsyncThresholdExceedCount) zookeeper_service_PortUnification gauge PortUnification (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;PortUnification) zookeeper_service_LogDirSize gauge LogDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;LogDirSize) zookeeper_service_TxnLogElapsedSyncTime gauge TxnLogElapsedSyncTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TxnLogElapsedSyncTime) zookeeper_service_OutstandingRequests gauge OutstandingRequests (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;OutstandingRequests) zookeeper_service_InMemoryDataTree_NodeCount gauge NodeCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower, name3=InMemoryDataTree&gt;&lt;&gt;NodeCount) zookeeper_service_MinClientResponseSize gauge MinClientResponseSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MinClientResponseSize) zookeeper_service_MaxClientCnxnsPerHost gauge MaxClientCnxnsPerHost (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxClientCnxnsPerHost) zookeeper_service_Leader gauge Leader (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.2&gt;&lt;&gt;Leader) zookeeper_service_ElectionType gauge ElectionType (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;ElectionType) zookeeper_service_InitLimit gauge InitLimit (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;InitLimit) zookeeper_service_MaxRequestLatency gauge MaxRequestLatency (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxRequestLatency) zookeeper_service_AvgRequestLatency gauge AvgRequestLatency (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;AvgRequestLatency) zookeeper_service_SyncLimit gauge SyncLimit (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;SyncLimit) zookeeper_service_PendingRevalidationCount gauge PendingRevalidationCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;PendingRevalidationCount) zookeeper_service_LastClientResponseSize gauge LastClientResponseSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;LastClientResponseSize) zookeeper_service_MaxClientResponseSize gauge MaxClientResponseSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxClientResponseSize) zookeeper_service_MinSessionTimeout gauge MinSessionTimeout (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MinSessionTimeout) zookeeper_service_PacketsReceived gauge PacketsReceived (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;PacketsReceived) zookeeper_service_SslQuorum gauge SslQuorum (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;SslQuorum) zookeeper_service_PartOfEnsemble gauge PartOfEnsemble (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;PartOfEnsemble) zookeeper_service_MinRequestLatency gauge MinRequestLatency (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MinRequestLatency) zookeeper_service_Tick gauge Tick (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;Tick) zookeeper_service_PacketsSent gauge PacketsSent (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;PacketsSent) zookeeper_service_InMemoryDataTree_WatchCount gauge WatchCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower, name3=InMemoryDataTree&gt;&lt;&gt;WatchCount) zookeeper_service_MaxSessionTimeout gauge MaxSessionTimeout (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxSessionTimeout) zookeeper_service_ElectionTimeTaken gauge ElectionTimeTaken (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;ElectionTimeTaken) zookeeper_service_NumAliveConnections gauge NumAliveConnections (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;NumAliveConnections) Examples zookeeper_service_TickTime 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_JuteMaxBufferSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_DataDirSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_QuorumSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_ConfigVersion 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_FsyncThresholdExceedCount 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_PortUnification 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_LogDirSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_TxnLogElapsedSyncTime 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_OutstandingRequests 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_InMemoryDataTree_NodeCount 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MinClientResponseSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MaxClientCnxnsPerHost 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_Leader 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_ElectionType 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_InitLimit 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MaxRequestLatency 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_AvgRequestLatency 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_SyncLimit 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_PendingRevalidationCount 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_LastClientResponseSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MaxClientResponseSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MinSessionTimeout 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_PacketsReceived 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_SslQuorum 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_PartOfEnsemble 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MinRequestLatency 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_Tick 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_PacketsSent 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_InMemoryDataTree_WatchCount 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MaxSessionTimeout 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_ElectionTimeTaken 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_NumAliveConnections 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] Code generated by opsaid-agent.">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-01-24T10:43:37+08:00">
+    <meta property="article:modified_time" content="2023-02-01T23:22:56+08:00">
 
-
-标签名
-示例值
-
-
-
-
-instance
-[localhost]
-
-
-job
-[opsaid-agent,zookeeper-exporter]
-
-
-
-Metrics
-
-
-
-名称
-类型
-描述
-
-
-
-
-zookeeper_service_TickTime
-gauge …">
-<meta property="og:title" content="ZooKeeper Exporter" />
-<meta property="og:description" content="Common Labels 标签名 示例值 instance [localhost] job [opsaid-agent,zookeeper-exporter] Metrics 名称 类型 描述 zookeeper_service_TickTime gauge TickTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TickTime) zookeeper_service_JuteMaxBufferSize gauge JuteMaxBufferSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;JuteMaxBufferSize) zookeeper_service_DataDirSize gauge DataDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;DataDirSize) zookeeper_service_QuorumSize gauge QuorumSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;QuorumSize) zookeeper_service_ConfigVersion gauge ConfigVersion (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;ConfigVersion) zookeeper_service_FsyncThresholdExceedCount gauge FsyncThresholdExceedCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;FsyncThresholdExceedCount) zookeeper_service_PortUnification gauge PortUnification (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;PortUnification) zookeeper_service_LogDirSize gauge LogDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;LogDirSize) zookeeper_service_TxnLogElapsedSyncTime gauge TxnLogElapsedSyncTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TxnLogElapsedSyncTime) zookeeper_service_OutstandingRequests gauge OutstandingRequests (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;OutstandingRequests) zookeeper_service_InMemoryDataTree_NodeCount gauge NodeCount (org." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-01-24T10:43:37+08:00" />
-<meta property="article:modified_time" content="2023-02-01T23:22:56+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="ZooKeeper Exporter">
-<meta itemprop="description" content="Common Labels 标签名 示例值 instance [localhost] job [opsaid-agent,zookeeper-exporter] Metrics 名称 类型 描述 zookeeper_service_TickTime gauge TickTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TickTime) zookeeper_service_JuteMaxBufferSize gauge JuteMaxBufferSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;JuteMaxBufferSize) zookeeper_service_DataDirSize gauge DataDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;DataDirSize) zookeeper_service_QuorumSize gauge QuorumSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;QuorumSize) zookeeper_service_ConfigVersion gauge ConfigVersion (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;ConfigVersion) zookeeper_service_FsyncThresholdExceedCount gauge FsyncThresholdExceedCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;FsyncThresholdExceedCount) zookeeper_service_PortUnification gauge PortUnification (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;PortUnification) zookeeper_service_LogDirSize gauge LogDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;LogDirSize) zookeeper_service_TxnLogElapsedSyncTime gauge TxnLogElapsedSyncTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TxnLogElapsedSyncTime) zookeeper_service_OutstandingRequests gauge OutstandingRequests (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;OutstandingRequests) zookeeper_service_InMemoryDataTree_NodeCount gauge NodeCount (org."><meta itemprop="datePublished" content="2022-01-24T10:43:37+08:00" />
-<meta itemprop="dateModified" content="2023-02-01T23:22:56+08:00" />
-<meta itemprop="wordCount" content="567">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ZooKeeper Exporter"/>
-<meta name="twitter:description" content="Common Labels 标签名 示例值 instance [localhost] job [opsaid-agent,zookeeper-exporter] Metrics 名称 类型 描述 zookeeper_service_TickTime gauge TickTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TickTime) zookeeper_service_JuteMaxBufferSize gauge JuteMaxBufferSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;JuteMaxBufferSize) zookeeper_service_DataDirSize gauge DataDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;DataDirSize) zookeeper_service_QuorumSize gauge QuorumSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;QuorumSize) zookeeper_service_ConfigVersion gauge ConfigVersion (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;ConfigVersion) zookeeper_service_FsyncThresholdExceedCount gauge FsyncThresholdExceedCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;FsyncThresholdExceedCount) zookeeper_service_PortUnification gauge PortUnification (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;PortUnification) zookeeper_service_LogDirSize gauge LogDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;LogDirSize) zookeeper_service_TxnLogElapsedSyncTime gauge TxnLogElapsedSyncTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TxnLogElapsedSyncTime) zookeeper_service_OutstandingRequests gauge OutstandingRequests (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;OutstandingRequests) zookeeper_service_InMemoryDataTree_NodeCount gauge NodeCount (org."/>
+  <meta itemprop="name" content="ZooKeeper Exporter">
+  <meta itemprop="description" content="Common Labels 标签名 示例值 instance [localhost] job [opsaid-agent,zookeeper-exporter] Metrics 名称 类型 描述 zookeeper_service_TickTime gauge TickTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TickTime) zookeeper_service_JuteMaxBufferSize gauge JuteMaxBufferSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;JuteMaxBufferSize) zookeeper_service_DataDirSize gauge DataDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;DataDirSize) zookeeper_service_QuorumSize gauge QuorumSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;QuorumSize) zookeeper_service_ConfigVersion gauge ConfigVersion (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;ConfigVersion) zookeeper_service_FsyncThresholdExceedCount gauge FsyncThresholdExceedCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;FsyncThresholdExceedCount) zookeeper_service_PortUnification gauge PortUnification (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;PortUnification) zookeeper_service_LogDirSize gauge LogDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;LogDirSize) zookeeper_service_TxnLogElapsedSyncTime gauge TxnLogElapsedSyncTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TxnLogElapsedSyncTime) zookeeper_service_OutstandingRequests gauge OutstandingRequests (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;OutstandingRequests) zookeeper_service_InMemoryDataTree_NodeCount gauge NodeCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower, name3=InMemoryDataTree&gt;&lt;&gt;NodeCount) zookeeper_service_MinClientResponseSize gauge MinClientResponseSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MinClientResponseSize) zookeeper_service_MaxClientCnxnsPerHost gauge MaxClientCnxnsPerHost (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxClientCnxnsPerHost) zookeeper_service_Leader gauge Leader (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.2&gt;&lt;&gt;Leader) zookeeper_service_ElectionType gauge ElectionType (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;ElectionType) zookeeper_service_InitLimit gauge InitLimit (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;InitLimit) zookeeper_service_MaxRequestLatency gauge MaxRequestLatency (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxRequestLatency) zookeeper_service_AvgRequestLatency gauge AvgRequestLatency (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;AvgRequestLatency) zookeeper_service_SyncLimit gauge SyncLimit (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;SyncLimit) zookeeper_service_PendingRevalidationCount gauge PendingRevalidationCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;PendingRevalidationCount) zookeeper_service_LastClientResponseSize gauge LastClientResponseSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;LastClientResponseSize) zookeeper_service_MaxClientResponseSize gauge MaxClientResponseSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxClientResponseSize) zookeeper_service_MinSessionTimeout gauge MinSessionTimeout (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MinSessionTimeout) zookeeper_service_PacketsReceived gauge PacketsReceived (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;PacketsReceived) zookeeper_service_SslQuorum gauge SslQuorum (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;SslQuorum) zookeeper_service_PartOfEnsemble gauge PartOfEnsemble (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;PartOfEnsemble) zookeeper_service_MinRequestLatency gauge MinRequestLatency (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MinRequestLatency) zookeeper_service_Tick gauge Tick (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;Tick) zookeeper_service_PacketsSent gauge PacketsSent (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;PacketsSent) zookeeper_service_InMemoryDataTree_WatchCount gauge WatchCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower, name3=InMemoryDataTree&gt;&lt;&gt;WatchCount) zookeeper_service_MaxSessionTimeout gauge MaxSessionTimeout (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxSessionTimeout) zookeeper_service_ElectionTimeTaken gauge ElectionTimeTaken (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;ElectionTimeTaken) zookeeper_service_NumAliveConnections gauge NumAliveConnections (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;NumAliveConnections) Examples zookeeper_service_TickTime 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_JuteMaxBufferSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_DataDirSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_QuorumSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_ConfigVersion 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_FsyncThresholdExceedCount 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_PortUnification 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_LogDirSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_TxnLogElapsedSyncTime 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_OutstandingRequests 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_InMemoryDataTree_NodeCount 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MinClientResponseSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MaxClientCnxnsPerHost 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_Leader 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_ElectionType 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_InitLimit 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MaxRequestLatency 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_AvgRequestLatency 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_SyncLimit 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_PendingRevalidationCount 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_LastClientResponseSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MaxClientResponseSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MinSessionTimeout 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_PacketsReceived 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_SslQuorum 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_PartOfEnsemble 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MinRequestLatency 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_Tick 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_PacketsSent 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_InMemoryDataTree_WatchCount 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MaxSessionTimeout 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_ElectionTimeTaken 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_NumAliveConnections 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] Code generated by opsaid-agent.">
+  <meta itemprop="datePublished" content="2022-01-24T10:43:37+08:00">
+  <meta itemprop="dateModified" content="2023-02-01T23:22:56+08:00">
+  <meta itemprop="wordCount" content="567">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ZooKeeper Exporter">
+  <meta name="twitter:description" content="Common Labels 标签名 示例值 instance [localhost] job [opsaid-agent,zookeeper-exporter] Metrics 名称 类型 描述 zookeeper_service_TickTime gauge TickTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TickTime) zookeeper_service_JuteMaxBufferSize gauge JuteMaxBufferSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;JuteMaxBufferSize) zookeeper_service_DataDirSize gauge DataDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;DataDirSize) zookeeper_service_QuorumSize gauge QuorumSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;QuorumSize) zookeeper_service_ConfigVersion gauge ConfigVersion (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;ConfigVersion) zookeeper_service_FsyncThresholdExceedCount gauge FsyncThresholdExceedCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;FsyncThresholdExceedCount) zookeeper_service_PortUnification gauge PortUnification (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;PortUnification) zookeeper_service_LogDirSize gauge LogDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;LogDirSize) zookeeper_service_TxnLogElapsedSyncTime gauge TxnLogElapsedSyncTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TxnLogElapsedSyncTime) zookeeper_service_OutstandingRequests gauge OutstandingRequests (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;OutstandingRequests) zookeeper_service_InMemoryDataTree_NodeCount gauge NodeCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower, name3=InMemoryDataTree&gt;&lt;&gt;NodeCount) zookeeper_service_MinClientResponseSize gauge MinClientResponseSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MinClientResponseSize) zookeeper_service_MaxClientCnxnsPerHost gauge MaxClientCnxnsPerHost (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxClientCnxnsPerHost) zookeeper_service_Leader gauge Leader (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.2&gt;&lt;&gt;Leader) zookeeper_service_ElectionType gauge ElectionType (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;ElectionType) zookeeper_service_InitLimit gauge InitLimit (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;InitLimit) zookeeper_service_MaxRequestLatency gauge MaxRequestLatency (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxRequestLatency) zookeeper_service_AvgRequestLatency gauge AvgRequestLatency (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;AvgRequestLatency) zookeeper_service_SyncLimit gauge SyncLimit (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;SyncLimit) zookeeper_service_PendingRevalidationCount gauge PendingRevalidationCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;PendingRevalidationCount) zookeeper_service_LastClientResponseSize gauge LastClientResponseSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;LastClientResponseSize) zookeeper_service_MaxClientResponseSize gauge MaxClientResponseSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxClientResponseSize) zookeeper_service_MinSessionTimeout gauge MinSessionTimeout (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MinSessionTimeout) zookeeper_service_PacketsReceived gauge PacketsReceived (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;PacketsReceived) zookeeper_service_SslQuorum gauge SslQuorum (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;SslQuorum) zookeeper_service_PartOfEnsemble gauge PartOfEnsemble (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;PartOfEnsemble) zookeeper_service_MinRequestLatency gauge MinRequestLatency (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MinRequestLatency) zookeeper_service_Tick gauge Tick (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;Tick) zookeeper_service_PacketsSent gauge PacketsSent (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;PacketsSent) zookeeper_service_InMemoryDataTree_WatchCount gauge WatchCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower, name3=InMemoryDataTree&gt;&lt;&gt;WatchCount) zookeeper_service_MaxSessionTimeout gauge MaxSessionTimeout (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxSessionTimeout) zookeeper_service_ElectionTimeTaken gauge ElectionTimeTaken (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;ElectionTimeTaken) zookeeper_service_NumAliveConnections gauge NumAliveConnections (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;NumAliveConnections) Examples zookeeper_service_TickTime 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_JuteMaxBufferSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_DataDirSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_QuorumSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_ConfigVersion 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_FsyncThresholdExceedCount 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_PortUnification 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_LogDirSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_TxnLogElapsedSyncTime 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_OutstandingRequests 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_InMemoryDataTree_NodeCount 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MinClientResponseSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MaxClientCnxnsPerHost 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_Leader 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_ElectionType 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_InitLimit 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MaxRequestLatency 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_AvgRequestLatency 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_SyncLimit 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_PendingRevalidationCount 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_LastClientResponseSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MaxClientResponseSize 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MinSessionTimeout 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_PacketsReceived 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_SslQuorum 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_PartOfEnsemble 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MinRequestLatency 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_Tick 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_PacketsSent 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_InMemoryDataTree_WatchCount 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_MaxSessionTimeout 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_ElectionTimeTaken 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] zookeeper_service_NumAliveConnections 标签名 示例值 Common Labels Common Labels memberType [Follower] replicaId [1] Code generated by opsaid-agent.">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1064,6 +1050,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3097,9 +3100,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3113,10 +3116,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3176,6 +3382,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4337,959 +4602,959 @@ if (!doNotTrack) {
 	</header>    
 	<h2 id="common-labels">Common Labels</h2>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>instance</td>
-<td>[localhost]</td>
-</tr>
-<tr>
-<td>job</td>
-<td>[opsaid-agent,zookeeper-exporter]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>instance</td>
+          <td>[localhost]</td>
+      </tr>
+      <tr>
+          <td>job</td>
+          <td>[opsaid-agent,zookeeper-exporter]</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="metrics">Metrics</h2>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#zookeeper_service_TickTime">zookeeper_service_TickTime</a></td>
-<td>gauge</td>
-<td>TickTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TickTime)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_JuteMaxBufferSize">zookeeper_service_JuteMaxBufferSize</a></td>
-<td>gauge</td>
-<td>JuteMaxBufferSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;JuteMaxBufferSize)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_DataDirSize">zookeeper_service_DataDirSize</a></td>
-<td>gauge</td>
-<td>DataDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;DataDirSize)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_QuorumSize">zookeeper_service_QuorumSize</a></td>
-<td>gauge</td>
-<td>QuorumSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;QuorumSize)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_ConfigVersion">zookeeper_service_ConfigVersion</a></td>
-<td>gauge</td>
-<td>ConfigVersion (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;ConfigVersion)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_FsyncThresholdExceedCount">zookeeper_service_FsyncThresholdExceedCount</a></td>
-<td>gauge</td>
-<td>FsyncThresholdExceedCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;FsyncThresholdExceedCount)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_PortUnification">zookeeper_service_PortUnification</a></td>
-<td>gauge</td>
-<td>PortUnification (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;PortUnification)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_LogDirSize">zookeeper_service_LogDirSize</a></td>
-<td>gauge</td>
-<td>LogDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;LogDirSize)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_TxnLogElapsedSyncTime">zookeeper_service_TxnLogElapsedSyncTime</a></td>
-<td>gauge</td>
-<td>TxnLogElapsedSyncTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TxnLogElapsedSyncTime)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_OutstandingRequests">zookeeper_service_OutstandingRequests</a></td>
-<td>gauge</td>
-<td>OutstandingRequests (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;OutstandingRequests)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_InMemoryDataTree_NodeCount">zookeeper_service_InMemoryDataTree_NodeCount</a></td>
-<td>gauge</td>
-<td>NodeCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower, name3=InMemoryDataTree&gt;&lt;&gt;NodeCount)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_MinClientResponseSize">zookeeper_service_MinClientResponseSize</a></td>
-<td>gauge</td>
-<td>MinClientResponseSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MinClientResponseSize)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_MaxClientCnxnsPerHost">zookeeper_service_MaxClientCnxnsPerHost</a></td>
-<td>gauge</td>
-<td>MaxClientCnxnsPerHost (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxClientCnxnsPerHost)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_Leader">zookeeper_service_Leader</a></td>
-<td>gauge</td>
-<td>Leader (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.2&gt;&lt;&gt;Leader)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_ElectionType">zookeeper_service_ElectionType</a></td>
-<td>gauge</td>
-<td>ElectionType (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;ElectionType)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_InitLimit">zookeeper_service_InitLimit</a></td>
-<td>gauge</td>
-<td>InitLimit (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;InitLimit)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_MaxRequestLatency">zookeeper_service_MaxRequestLatency</a></td>
-<td>gauge</td>
-<td>MaxRequestLatency (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxRequestLatency)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_AvgRequestLatency">zookeeper_service_AvgRequestLatency</a></td>
-<td>gauge</td>
-<td>AvgRequestLatency (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;AvgRequestLatency)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_SyncLimit">zookeeper_service_SyncLimit</a></td>
-<td>gauge</td>
-<td>SyncLimit (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;SyncLimit)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_PendingRevalidationCount">zookeeper_service_PendingRevalidationCount</a></td>
-<td>gauge</td>
-<td>PendingRevalidationCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;PendingRevalidationCount)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_LastClientResponseSize">zookeeper_service_LastClientResponseSize</a></td>
-<td>gauge</td>
-<td>LastClientResponseSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;LastClientResponseSize)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_MaxClientResponseSize">zookeeper_service_MaxClientResponseSize</a></td>
-<td>gauge</td>
-<td>MaxClientResponseSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxClientResponseSize)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_MinSessionTimeout">zookeeper_service_MinSessionTimeout</a></td>
-<td>gauge</td>
-<td>MinSessionTimeout (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MinSessionTimeout)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_PacketsReceived">zookeeper_service_PacketsReceived</a></td>
-<td>gauge</td>
-<td>PacketsReceived (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;PacketsReceived)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_SslQuorum">zookeeper_service_SslQuorum</a></td>
-<td>gauge</td>
-<td>SslQuorum (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;SslQuorum)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_PartOfEnsemble">zookeeper_service_PartOfEnsemble</a></td>
-<td>gauge</td>
-<td>PartOfEnsemble (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;PartOfEnsemble)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_MinRequestLatency">zookeeper_service_MinRequestLatency</a></td>
-<td>gauge</td>
-<td>MinRequestLatency (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MinRequestLatency)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_Tick">zookeeper_service_Tick</a></td>
-<td>gauge</td>
-<td>Tick (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;Tick)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_PacketsSent">zookeeper_service_PacketsSent</a></td>
-<td>gauge</td>
-<td>PacketsSent (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;PacketsSent)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_InMemoryDataTree_WatchCount">zookeeper_service_InMemoryDataTree_WatchCount</a></td>
-<td>gauge</td>
-<td>WatchCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower, name3=InMemoryDataTree&gt;&lt;&gt;WatchCount)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_MaxSessionTimeout">zookeeper_service_MaxSessionTimeout</a></td>
-<td>gauge</td>
-<td>MaxSessionTimeout (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxSessionTimeout)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_ElectionTimeTaken">zookeeper_service_ElectionTimeTaken</a></td>
-<td>gauge</td>
-<td>ElectionTimeTaken (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;ElectionTimeTaken)</td>
-</tr>
-<tr>
-<td><a href="#zookeeper_service_NumAliveConnections">zookeeper_service_NumAliveConnections</a></td>
-<td>gauge</td>
-<td>NumAliveConnections (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;NumAliveConnections)</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>类型</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_TickTime">zookeeper_service_TickTime</a></td>
+          <td>gauge</td>
+          <td>TickTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TickTime)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_JuteMaxBufferSize">zookeeper_service_JuteMaxBufferSize</a></td>
+          <td>gauge</td>
+          <td>JuteMaxBufferSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;JuteMaxBufferSize)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_DataDirSize">zookeeper_service_DataDirSize</a></td>
+          <td>gauge</td>
+          <td>DataDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;DataDirSize)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_QuorumSize">zookeeper_service_QuorumSize</a></td>
+          <td>gauge</td>
+          <td>QuorumSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;QuorumSize)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_ConfigVersion">zookeeper_service_ConfigVersion</a></td>
+          <td>gauge</td>
+          <td>ConfigVersion (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;ConfigVersion)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_FsyncThresholdExceedCount">zookeeper_service_FsyncThresholdExceedCount</a></td>
+          <td>gauge</td>
+          <td>FsyncThresholdExceedCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;FsyncThresholdExceedCount)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_PortUnification">zookeeper_service_PortUnification</a></td>
+          <td>gauge</td>
+          <td>PortUnification (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;PortUnification)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_LogDirSize">zookeeper_service_LogDirSize</a></td>
+          <td>gauge</td>
+          <td>LogDirSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;LogDirSize)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_TxnLogElapsedSyncTime">zookeeper_service_TxnLogElapsedSyncTime</a></td>
+          <td>gauge</td>
+          <td>TxnLogElapsedSyncTime (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;TxnLogElapsedSyncTime)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_OutstandingRequests">zookeeper_service_OutstandingRequests</a></td>
+          <td>gauge</td>
+          <td>OutstandingRequests (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;OutstandingRequests)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_InMemoryDataTree_NodeCount">zookeeper_service_InMemoryDataTree_NodeCount</a></td>
+          <td>gauge</td>
+          <td>NodeCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower, name3=InMemoryDataTree&gt;&lt;&gt;NodeCount)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_MinClientResponseSize">zookeeper_service_MinClientResponseSize</a></td>
+          <td>gauge</td>
+          <td>MinClientResponseSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MinClientResponseSize)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_MaxClientCnxnsPerHost">zookeeper_service_MaxClientCnxnsPerHost</a></td>
+          <td>gauge</td>
+          <td>MaxClientCnxnsPerHost (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxClientCnxnsPerHost)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_Leader">zookeeper_service_Leader</a></td>
+          <td>gauge</td>
+          <td>Leader (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.2&gt;&lt;&gt;Leader)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_ElectionType">zookeeper_service_ElectionType</a></td>
+          <td>gauge</td>
+          <td>ElectionType (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;ElectionType)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_InitLimit">zookeeper_service_InitLimit</a></td>
+          <td>gauge</td>
+          <td>InitLimit (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;InitLimit)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_MaxRequestLatency">zookeeper_service_MaxRequestLatency</a></td>
+          <td>gauge</td>
+          <td>MaxRequestLatency (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxRequestLatency)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_AvgRequestLatency">zookeeper_service_AvgRequestLatency</a></td>
+          <td>gauge</td>
+          <td>AvgRequestLatency (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;AvgRequestLatency)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_SyncLimit">zookeeper_service_SyncLimit</a></td>
+          <td>gauge</td>
+          <td>SyncLimit (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;SyncLimit)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_PendingRevalidationCount">zookeeper_service_PendingRevalidationCount</a></td>
+          <td>gauge</td>
+          <td>PendingRevalidationCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;PendingRevalidationCount)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_LastClientResponseSize">zookeeper_service_LastClientResponseSize</a></td>
+          <td>gauge</td>
+          <td>LastClientResponseSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;LastClientResponseSize)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_MaxClientResponseSize">zookeeper_service_MaxClientResponseSize</a></td>
+          <td>gauge</td>
+          <td>MaxClientResponseSize (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxClientResponseSize)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_MinSessionTimeout">zookeeper_service_MinSessionTimeout</a></td>
+          <td>gauge</td>
+          <td>MinSessionTimeout (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MinSessionTimeout)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_PacketsReceived">zookeeper_service_PacketsReceived</a></td>
+          <td>gauge</td>
+          <td>PacketsReceived (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;PacketsReceived)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_SslQuorum">zookeeper_service_SslQuorum</a></td>
+          <td>gauge</td>
+          <td>SslQuorum (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1&gt;&lt;&gt;SslQuorum)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_PartOfEnsemble">zookeeper_service_PartOfEnsemble</a></td>
+          <td>gauge</td>
+          <td>PartOfEnsemble (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;PartOfEnsemble)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_MinRequestLatency">zookeeper_service_MinRequestLatency</a></td>
+          <td>gauge</td>
+          <td>MinRequestLatency (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MinRequestLatency)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_Tick">zookeeper_service_Tick</a></td>
+          <td>gauge</td>
+          <td>Tick (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1&gt;&lt;&gt;Tick)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_PacketsSent">zookeeper_service_PacketsSent</a></td>
+          <td>gauge</td>
+          <td>PacketsSent (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;PacketsSent)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_InMemoryDataTree_WatchCount">zookeeper_service_InMemoryDataTree_WatchCount</a></td>
+          <td>gauge</td>
+          <td>WatchCount (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower, name3=InMemoryDataTree&gt;&lt;&gt;WatchCount)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_MaxSessionTimeout">zookeeper_service_MaxSessionTimeout</a></td>
+          <td>gauge</td>
+          <td>MaxSessionTimeout (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;MaxSessionTimeout)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_ElectionTimeTaken">zookeeper_service_ElectionTimeTaken</a></td>
+          <td>gauge</td>
+          <td>ElectionTimeTaken (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;ElectionTimeTaken)</td>
+      </tr>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#zookeeper_service_NumAliveConnections">zookeeper_service_NumAliveConnections</a></td>
+          <td>gauge</td>
+          <td>NumAliveConnections (org.apache.ZooKeeperService&lt;name0=ReplicatedServer_id1, name1=replica.1, name2=Follower&gt;&lt;&gt;NumAliveConnections)</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="examples">Examples</h2>
 <h3 id="zookeeper_service_ticktime">zookeeper_service_TickTime</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_jutemaxbuffersize">zookeeper_service_JuteMaxBufferSize</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_datadirsize">zookeeper_service_DataDirSize</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_quorumsize">zookeeper_service_QuorumSize</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_configversion">zookeeper_service_ConfigVersion</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_fsyncthresholdexceedcount">zookeeper_service_FsyncThresholdExceedCount</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_portunification">zookeeper_service_PortUnification</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_logdirsize">zookeeper_service_LogDirSize</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_txnlogelapsedsynctime">zookeeper_service_TxnLogElapsedSyncTime</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_outstandingrequests">zookeeper_service_OutstandingRequests</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_inmemorydatatree_nodecount">zookeeper_service_InMemoryDataTree_NodeCount</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_minclientresponsesize">zookeeper_service_MinClientResponseSize</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_maxclientcnxnsperhost">zookeeper_service_MaxClientCnxnsPerHost</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_leader">zookeeper_service_Leader</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_electiontype">zookeeper_service_ElectionType</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_initlimit">zookeeper_service_InitLimit</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_maxrequestlatency">zookeeper_service_MaxRequestLatency</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_avgrequestlatency">zookeeper_service_AvgRequestLatency</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_synclimit">zookeeper_service_SyncLimit</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_pendingrevalidationcount">zookeeper_service_PendingRevalidationCount</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_lastclientresponsesize">zookeeper_service_LastClientResponseSize</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_maxclientresponsesize">zookeeper_service_MaxClientResponseSize</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_minsessiontimeout">zookeeper_service_MinSessionTimeout</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_packetsreceived">zookeeper_service_PacketsReceived</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_sslquorum">zookeeper_service_SslQuorum</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_partofensemble">zookeeper_service_PartOfEnsemble</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_minrequestlatency">zookeeper_service_MinRequestLatency</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_tick">zookeeper_service_Tick</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_packetssent">zookeeper_service_PacketsSent</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_inmemorydatatree_watchcount">zookeeper_service_InMemoryDataTree_WatchCount</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_maxsessiontimeout">zookeeper_service_MaxSessionTimeout</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_electiontimetaken">zookeeper_service_ElectionTimeTaken</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="zookeeper_service_numaliveconnections">zookeeper_service_NumAliveConnections</h3>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>示例值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#common-labels">Common Labels</a></td>
-<td><a href="#common-labels">Common Labels</a></td>
-</tr>
-<tr>
-<td>memberType</td>
-<td>[Follower]</td>
-</tr>
-<tr>
-<td>replicaId</td>
-<td>[1]</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>示例值</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+          <td><a href="/docs/cloud-monitor/preset-metrics/zookeeper-exporter/#common-labels">Common Labels</a></td>
+      </tr>
+      <tr>
+          <td>memberType</td>
+          <td>[Follower]</td>
+      </tr>
+      <tr>
+          <td>replicaId</td>
+          <td>[1]</td>
+      </tr>
+  </tbody>
 </table>
 <hr>
 <p><em>Code generated by <a href="https://github.com/opsaid/agent">opsaid-agent</a>.</em></p>
@@ -5385,7 +5650,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

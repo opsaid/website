@@ -1,0 +1,32 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – Ansible</title>
+    <link>http://127.0.0.1:1313/docs/devops/ansible/</link>
+    <description>Recent content in Ansible on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 16 May 2023 10:38:37 +0800</lastBuildDate>
+    
+	  <atom:link href="http://127.0.0.1:1313/docs/devops/ansible/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Awx</title>
+      <link>http://127.0.0.1:1313/docs/devops/ansible/awx/</link>
+      <pubDate>Tue, 16 May 2023 10:38:57 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/docs/devops/ansible/awx/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

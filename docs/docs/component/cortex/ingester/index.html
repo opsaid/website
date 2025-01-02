@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -22,8 +22,10 @@
 <meta name="description" content="简要概述
 摄取器服务负责将传入的样本数据写入长期存储后端（如对象存储或分布式文件系统等适合长期存储的后端），并在读取路径上返回内存中的系列样本供查询使用。
 而在读取路径上，摄取器服务负责响应查询请求并返回内存中的系列样本。这样，对于频繁的查询操作，可以避免从长期存储后端读取数据，而是直接从内存中提供 …">
-<meta property="og:title" content="Ingester" />
-<meta property="og:description" content="简要概述 摄取器服务负责将传入的样本数据写入长期存储后端（如对象存储或分布式文件系统等适合长期存储的后端），并在读取路径上返回内存中的系列样本供查询使用。
+<meta property="og:url" content="/docs/component/cortex/ingester/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Ingester">
+  <meta property="og:description" content="简要概述 摄取器服务负责将传入的样本数据写入长期存储后端（如对象存储或分布式文件系统等适合长期存储的后端），并在读取路径上返回内存中的系列样本供查询使用。
 而在读取路径上，摄取器服务负责响应查询请求并返回内存中的系列样本。这样，对于频繁的查询操作，可以避免从长期存储后端读取数据，而是直接从内存中提供结果，提高查询性能和响应时间。通过将写入和读取功能分开，摄取器服务能够有效地管理数据的写入和查询操作，并提供快速的查询响应速度。
 传入的样本数据并不会立即写入存储，而是保留在内存中，并定期刷新到存储中（默认情况下，每隔2小时）。因此，在执行读取路径上的查询时，查询器可能需要从摄取器和长期存储中获取样本。
 由于系列样本在内存中被保留一段时间，某些查询可能需要获取最新的样本数据。在这种情况下，查询器将从摄取器中获取最新的内存样本，以便提供准确的查询结果。
@@ -44,13 +46,15 @@ PENDING（待处理）：摄取器刚启动。在此状态下，摄取器既不�
 写入解放是Cortex系统低总拥有成本（Total Cost of Ownership，TCO）的主要原因之一。通过在内存中对样本进行批处理和压缩，摄取器减少了写入长期存储的次数和数据量。这种批处理和压缩的操作减少了对存储系统的负载，降低了硬件资源需求和运维成本。
 通过写入解放，Cortex系统能够更有效地利用存储资源，提高了系统的性能和扩展性。通过批处理和压缩，摄取器在将数据刷新到长期存储之前，减少了存储访问的频率和数据量。这不仅减轻了存储系统的负担，还降低了存储成本。写入解放机制是Cortex系统设计中的关键策略，有助于实现更经济高效的数据处理和存储管理，从而降低了系统的总拥有成本。
 配置示例 ingester_config 官方文档
-ingester: lifecycler: ring: kvstore: store: etcd prefix: collectors/ etcd: endpoints: [] dial_timeout: 10s max_retries: 10 tls_enabled: false tls_cert_path: &#34;&#34; tls_key_path: &#34;&#34; tls_ca_path: &#34;&#34; tls_server_name: &#34;&#34; tls_insecure_skip_verify: false username: &#34;&#34; password: &#34;&#34; heartbeat_timeout: 1m0s replication_factor: 1 zone_awareness_enabled: false excluded_zones: &#34;&#34; num_tokens: 512 heartbeat_period: 5s observe_period: 0s join_after: 0s min_ready_duration: 0s interface_names: - eth0 - en0 final_sleep: 0s tokens_file_path: &#34;&#34; availability_zone: &#34;&#34; unregister_on_shutdown: true readiness_check_ring_health: true address: &#34;&#34; port: 0 id: limiqi-mac2016-01." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/component/cortex/ingester/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-05-30T11:24:49+08:00" />
-<meta property="article:modified_time" content="2023-06-19T10:30:12+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Ingester">
-<meta itemprop="description" content="简要概述 摄取器服务负责将传入的样本数据写入长期存储后端（如对象存储或分布式文件系统等适合长期存储的后端），并在读取路径上返回内存中的系列样本供查询使用。
+ingester: lifecycler: ring: kvstore: store: etcd prefix: collectors/ etcd: endpoints: [] dial_timeout: 10s max_retries: 10 tls_enabled: false tls_cert_path: &#34;&#34; tls_key_path: &#34;&#34; tls_ca_path: &#34;&#34; tls_server_name: &#34;&#34; tls_insecure_skip_verify: false username: &#34;&#34; password: &#34;&#34; heartbeat_timeout: 1m0s replication_factor: 1 zone_awareness_enabled: false excluded_zones: &#34;&#34; num_tokens: 512 heartbeat_period: 5s observe_period: 0s join_after: 0s min_ready_duration: 0s interface_names: - eth0 - en0 final_sleep: 0s tokens_file_path: &#34;&#34; availability_zone: &#34;&#34; unregister_on_shutdown: true readiness_check_ring_health: true address: &#34;&#34; port: 0 id: limiqi-mac2016-01.local metadata_retain_period: 10m0s rate_update_period: 15s active_series_metrics_enabled: true active_series_metrics_update_period: 1m0s active_series_metrics_idle_timeout: 10m0s instance_limits: max_ingestion_rate: 0 max_tenants: 0 max_series: 0 max_inflight_push_requests: 0 ignore_series_limit_for_metric_names: &#34;&#34; ingester_client_config 官方文档">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-05-30T11:24:49+08:00">
+    <meta property="article:modified_time" content="2023-06-19T10:30:12+08:00">
+
+  <meta itemprop="name" content="Ingester">
+  <meta itemprop="description" content="简要概述 摄取器服务负责将传入的样本数据写入长期存储后端（如对象存储或分布式文件系统等适合长期存储的后端），并在读取路径上返回内存中的系列样本供查询使用。
 而在读取路径上，摄取器服务负责响应查询请求并返回内存中的系列样本。这样，对于频繁的查询操作，可以避免从长期存储后端读取数据，而是直接从内存中提供结果，提高查询性能和响应时间。通过将写入和读取功能分开，摄取器服务能够有效地管理数据的写入和查询操作，并提供快速的查询响应速度。
 传入的样本数据并不会立即写入存储，而是保留在内存中，并定期刷新到存储中（默认情况下，每隔2小时）。因此，在执行读取路径上的查询时，查询器可能需要从摄取器和长期存储中获取样本。
 由于系列样本在内存中被保留一段时间，某些查询可能需要获取最新的样本数据。在这种情况下，查询器将从摄取器中获取最新的内存样本，以便提供准确的查询结果。
@@ -71,12 +75,13 @@ PENDING（待处理）：摄取器刚启动。在此状态下，摄取器既不�
 写入解放是Cortex系统低总拥有成本（Total Cost of Ownership，TCO）的主要原因之一。通过在内存中对样本进行批处理和压缩，摄取器减少了写入长期存储的次数和数据量。这种批处理和压缩的操作减少了对存储系统的负载，降低了硬件资源需求和运维成本。
 通过写入解放，Cortex系统能够更有效地利用存储资源，提高了系统的性能和扩展性。通过批处理和压缩，摄取器在将数据刷新到长期存储之前，减少了存储访问的频率和数据量。这不仅减轻了存储系统的负担，还降低了存储成本。写入解放机制是Cortex系统设计中的关键策略，有助于实现更经济高效的数据处理和存储管理，从而降低了系统的总拥有成本。
 配置示例 ingester_config 官方文档
-ingester: lifecycler: ring: kvstore: store: etcd prefix: collectors/ etcd: endpoints: [] dial_timeout: 10s max_retries: 10 tls_enabled: false tls_cert_path: &#34;&#34; tls_key_path: &#34;&#34; tls_ca_path: &#34;&#34; tls_server_name: &#34;&#34; tls_insecure_skip_verify: false username: &#34;&#34; password: &#34;&#34; heartbeat_timeout: 1m0s replication_factor: 1 zone_awareness_enabled: false excluded_zones: &#34;&#34; num_tokens: 512 heartbeat_period: 5s observe_period: 0s join_after: 0s min_ready_duration: 0s interface_names: - eth0 - en0 final_sleep: 0s tokens_file_path: &#34;&#34; availability_zone: &#34;&#34; unregister_on_shutdown: true readiness_check_ring_health: true address: &#34;&#34; port: 0 id: limiqi-mac2016-01."><meta itemprop="datePublished" content="2023-05-30T11:24:49+08:00" />
-<meta itemprop="dateModified" content="2023-06-19T10:30:12+08:00" />
-<meta itemprop="wordCount" content="540">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Ingester"/>
-<meta name="twitter:description" content="简要概述 摄取器服务负责将传入的样本数据写入长期存储后端（如对象存储或分布式文件系统等适合长期存储的后端），并在读取路径上返回内存中的系列样本供查询使用。
+ingester: lifecycler: ring: kvstore: store: etcd prefix: collectors/ etcd: endpoints: [] dial_timeout: 10s max_retries: 10 tls_enabled: false tls_cert_path: &#34;&#34; tls_key_path: &#34;&#34; tls_ca_path: &#34;&#34; tls_server_name: &#34;&#34; tls_insecure_skip_verify: false username: &#34;&#34; password: &#34;&#34; heartbeat_timeout: 1m0s replication_factor: 1 zone_awareness_enabled: false excluded_zones: &#34;&#34; num_tokens: 512 heartbeat_period: 5s observe_period: 0s join_after: 0s min_ready_duration: 0s interface_names: - eth0 - en0 final_sleep: 0s tokens_file_path: &#34;&#34; availability_zone: &#34;&#34; unregister_on_shutdown: true readiness_check_ring_health: true address: &#34;&#34; port: 0 id: limiqi-mac2016-01.local metadata_retain_period: 10m0s rate_update_period: 15s active_series_metrics_enabled: true active_series_metrics_update_period: 1m0s active_series_metrics_idle_timeout: 10m0s instance_limits: max_ingestion_rate: 0 max_tenants: 0 max_series: 0 max_inflight_push_requests: 0 ignore_series_limit_for_metric_names: &#34;&#34; ingester_client_config 官方文档">
+  <meta itemprop="datePublished" content="2023-05-30T11:24:49+08:00">
+  <meta itemprop="dateModified" content="2023-06-19T10:30:12+08:00">
+  <meta itemprop="wordCount" content="540">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ingester">
+  <meta name="twitter:description" content="简要概述 摄取器服务负责将传入的样本数据写入长期存储后端（如对象存储或分布式文件系统等适合长期存储的后端），并在读取路径上返回内存中的系列样本供查询使用。
 而在读取路径上，摄取器服务负责响应查询请求并返回内存中的系列样本。这样，对于频繁的查询操作，可以避免从长期存储后端读取数据，而是直接从内存中提供结果，提高查询性能和响应时间。通过将写入和读取功能分开，摄取器服务能够有效地管理数据的写入和查询操作，并提供快速的查询响应速度。
 传入的样本数据并不会立即写入存储，而是保留在内存中，并定期刷新到存储中（默认情况下，每隔2小时）。因此，在执行读取路径上的查询时，查询器可能需要从摄取器和长期存储中获取样本。
 由于系列样本在内存中被保留一段时间，某些查询可能需要获取最新的样本数据。在这种情况下，查询器将从摄取器中获取最新的内存样本，以便提供准确的查询结果。
@@ -97,45 +102,43 @@ PENDING（待处理）：摄取器刚启动。在此状态下，摄取器既不�
 写入解放是Cortex系统低总拥有成本（Total Cost of Ownership，TCO）的主要原因之一。通过在内存中对样本进行批处理和压缩，摄取器减少了写入长期存储的次数和数据量。这种批处理和压缩的操作减少了对存储系统的负载，降低了硬件资源需求和运维成本。
 通过写入解放，Cortex系统能够更有效地利用存储资源，提高了系统的性能和扩展性。通过批处理和压缩，摄取器在将数据刷新到长期存储之前，减少了存储访问的频率和数据量。这不仅减轻了存储系统的负担，还降低了存储成本。写入解放机制是Cortex系统设计中的关键策略，有助于实现更经济高效的数据处理和存储管理，从而降低了系统的总拥有成本。
 配置示例 ingester_config 官方文档
-ingester: lifecycler: ring: kvstore: store: etcd prefix: collectors/ etcd: endpoints: [] dial_timeout: 10s max_retries: 10 tls_enabled: false tls_cert_path: &#34;&#34; tls_key_path: &#34;&#34; tls_ca_path: &#34;&#34; tls_server_name: &#34;&#34; tls_insecure_skip_verify: false username: &#34;&#34; password: &#34;&#34; heartbeat_timeout: 1m0s replication_factor: 1 zone_awareness_enabled: false excluded_zones: &#34;&#34; num_tokens: 512 heartbeat_period: 5s observe_period: 0s join_after: 0s min_ready_duration: 0s interface_names: - eth0 - en0 final_sleep: 0s tokens_file_path: &#34;&#34; availability_zone: &#34;&#34; unregister_on_shutdown: true readiness_check_ring_health: true address: &#34;&#34; port: 0 id: limiqi-mac2016-01."/>
+ingester: lifecycler: ring: kvstore: store: etcd prefix: collectors/ etcd: endpoints: [] dial_timeout: 10s max_retries: 10 tls_enabled: false tls_cert_path: &#34;&#34; tls_key_path: &#34;&#34; tls_ca_path: &#34;&#34; tls_server_name: &#34;&#34; tls_insecure_skip_verify: false username: &#34;&#34; password: &#34;&#34; heartbeat_timeout: 1m0s replication_factor: 1 zone_awareness_enabled: false excluded_zones: &#34;&#34; num_tokens: 512 heartbeat_period: 5s observe_period: 0s join_after: 0s min_ready_duration: 0s interface_names: - eth0 - en0 final_sleep: 0s tokens_file_path: &#34;&#34; availability_zone: &#34;&#34; unregister_on_shutdown: true readiness_check_ring_health: true address: &#34;&#34; port: 0 id: limiqi-mac2016-01.local metadata_retain_period: 10m0s rate_update_period: 15s active_series_metrics_enabled: true active_series_metrics_update_period: 1m0s active_series_metrics_idle_timeout: 10m0s instance_limits: max_ingestion_rate: 0 max_tenants: 0 max_series: 0 max_inflight_push_requests: 0 ignore_series_limit_for_metric_names: &#34;&#34; ingester_client_config 官方文档">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1098,6 +1101,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3131,9 +3151,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3147,10 +3167,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3210,6 +3433,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4667,7 +4949,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

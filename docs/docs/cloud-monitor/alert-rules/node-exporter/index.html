@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -22,82 +22,79 @@
 <meta name="description" content="简要概述
 appid = &ldquo;oneops&rdquo;
 
-
-
-指标名
-类型
-说明
-
-
-
-
-node_filesystem_avail_bytes
-xx
-分区还剩的空间
-
-
-node_filesystem_size_bytes
-xx …">
-<meta property="og:title" content="Node Exporter" />
-<meta property="og:description" content="简要概述 appid = &ldquo;oneops&rdquo;
+  
+      
+          指标名
+          类型
+          说明
+      
+  
+  
+      
+          node_filesystem_avail_bytes …">
+<meta property="og:url" content="/docs/cloud-monitor/alert-rules/node-exporter/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Node Exporter">
+  <meta property="og:description" content="简要概述 appid = “oneops”
 指标名 类型 说明 node_filesystem_avail_bytes xx 分区还剩的空间 node_filesystem_size_bytes xx 分区总的空间 公共标签
 标签名 说明 api.opsaid.cn/fault-priority P5 api.opsaid.cn/pm2-uuid 项目的UUID 全局默认告警规则 groups: - name: default-global-host-2m interval: 2m rules: 检测周期较长，持续周期较长，用于全局判断
-主机cpu使用率预警 alert: NodeCPUUseHigh60 expr: | ( 1 - (sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;,mode=&#34;idle&#34;}[1m])) by (appid,job,instance,serial_num) / sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;}[1m])) by (appid,job,instance,serial_num) ) ) &gt;= 0.6 for: 6m labels: api_opsaid_cn_fault_priority: P5 api_opsaid_cn_pm2_uuid: 99feafb5-bed6-4daf-927a-69a2ab80c485 annotations: summary: 2分钟检测一次,持续6分钟,CPU使用率大于60%(当前值:{{$value|humanizePercentage}}) 主机iowait使用率预警 alert: NodeCPUIOWaitHigh20 expr: | ( (sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;,mode=&#34;iowait&#34;}[1m])) by (appid,job,instance,serial_num) / sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;}[1m])) by (appid,job,instance,serial_num) ) ) &gt;= 0." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/cloud-monitor/alert-rules/node-exporter/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-01-24T10:43:37+08:00" />
-<meta property="article:modified_time" content="2023-02-15T11:51:03+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Node Exporter">
-<meta itemprop="description" content="简要概述 appid = &ldquo;oneops&rdquo;
+主机cpu使用率预警 alert: NodeCPUUseHigh60 expr: | ( 1 - (sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;,mode=&#34;idle&#34;}[1m])) by (appid,job,instance,serial_num) / sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;}[1m])) by (appid,job,instance,serial_num) ) ) &gt;= 0.6 for: 6m labels: api_opsaid_cn_fault_priority: P5 api_opsaid_cn_pm2_uuid: 99feafb5-bed6-4daf-927a-69a2ab80c485 annotations: summary: 2分钟检测一次,持续6分钟,CPU使用率大于60%(当前值:{{$value|humanizePercentage}}) 主机iowait使用率预警 alert: NodeCPUIOWaitHigh20 expr: | ( (sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;,mode=&#34;iowait&#34;}[1m])) by (appid,job,instance,serial_num) / sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;}[1m])) by (appid,job,instance,serial_num) ) ) &gt;= 0.2 for: 6m labels: api_opsaid_cn_fault_priority: P5 api_opsaid_cn_pm2_uuid: 99feafb5-bed6-4daf-927a-69a2ab80c485 annotations: summary: 2分钟检测一次,持续6分钟,iowait使用率大于20%(当前值:{{$value|humanizePercentage}}) 主机最近1分钟负载预警 alert: NodeLoad1High30 expr: ceil(avg(node_load1{appid!~&#34;uptime&#34;}) by (appid,job,instance,serial_num)) &gt; 30 for: 6m labels: api_opsaid_cn_fault_priority: P5 api_opsaid_cn_pm2_uuid: 99feafb5-bed6-4daf-927a-69a2ab80c485 annotations: summary: 2分钟检测一次,持续6分钟,load1大于30(当前值:{{$value}}) 预测空间24小时内会满 基于前6小时数据集预测24小时内空间可能满，需持续1小时">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-01-24T10:43:37+08:00">
+    <meta property="article:modified_time" content="2023-02-15T11:51:03+08:00">
+
+  <meta itemprop="name" content="Node Exporter">
+  <meta itemprop="description" content="简要概述 appid = “oneops”
 指标名 类型 说明 node_filesystem_avail_bytes xx 分区还剩的空间 node_filesystem_size_bytes xx 分区总的空间 公共标签
 标签名 说明 api.opsaid.cn/fault-priority P5 api.opsaid.cn/pm2-uuid 项目的UUID 全局默认告警规则 groups: - name: default-global-host-2m interval: 2m rules: 检测周期较长，持续周期较长，用于全局判断
-主机cpu使用率预警 alert: NodeCPUUseHigh60 expr: | ( 1 - (sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;,mode=&#34;idle&#34;}[1m])) by (appid,job,instance,serial_num) / sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;}[1m])) by (appid,job,instance,serial_num) ) ) &gt;= 0.6 for: 6m labels: api_opsaid_cn_fault_priority: P5 api_opsaid_cn_pm2_uuid: 99feafb5-bed6-4daf-927a-69a2ab80c485 annotations: summary: 2分钟检测一次,持续6分钟,CPU使用率大于60%(当前值:{{$value|humanizePercentage}}) 主机iowait使用率预警 alert: NodeCPUIOWaitHigh20 expr: | ( (sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;,mode=&#34;iowait&#34;}[1m])) by (appid,job,instance,serial_num) / sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;}[1m])) by (appid,job,instance,serial_num) ) ) &gt;= 0."><meta itemprop="datePublished" content="2022-01-24T10:43:37+08:00" />
-<meta itemprop="dateModified" content="2023-02-15T11:51:03+08:00" />
-<meta itemprop="wordCount" content="521">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Node Exporter"/>
-<meta name="twitter:description" content="简要概述 appid = &ldquo;oneops&rdquo;
+主机cpu使用率预警 alert: NodeCPUUseHigh60 expr: | ( 1 - (sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;,mode=&#34;idle&#34;}[1m])) by (appid,job,instance,serial_num) / sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;}[1m])) by (appid,job,instance,serial_num) ) ) &gt;= 0.6 for: 6m labels: api_opsaid_cn_fault_priority: P5 api_opsaid_cn_pm2_uuid: 99feafb5-bed6-4daf-927a-69a2ab80c485 annotations: summary: 2分钟检测一次,持续6分钟,CPU使用率大于60%(当前值:{{$value|humanizePercentage}}) 主机iowait使用率预警 alert: NodeCPUIOWaitHigh20 expr: | ( (sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;,mode=&#34;iowait&#34;}[1m])) by (appid,job,instance,serial_num) / sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;}[1m])) by (appid,job,instance,serial_num) ) ) &gt;= 0.2 for: 6m labels: api_opsaid_cn_fault_priority: P5 api_opsaid_cn_pm2_uuid: 99feafb5-bed6-4daf-927a-69a2ab80c485 annotations: summary: 2分钟检测一次,持续6分钟,iowait使用率大于20%(当前值:{{$value|humanizePercentage}}) 主机最近1分钟负载预警 alert: NodeLoad1High30 expr: ceil(avg(node_load1{appid!~&#34;uptime&#34;}) by (appid,job,instance,serial_num)) &gt; 30 for: 6m labels: api_opsaid_cn_fault_priority: P5 api_opsaid_cn_pm2_uuid: 99feafb5-bed6-4daf-927a-69a2ab80c485 annotations: summary: 2分钟检测一次,持续6分钟,load1大于30(当前值:{{$value}}) 预测空间24小时内会满 基于前6小时数据集预测24小时内空间可能满，需持续1小时">
+  <meta itemprop="datePublished" content="2022-01-24T10:43:37+08:00">
+  <meta itemprop="dateModified" content="2023-02-15T11:51:03+08:00">
+  <meta itemprop="wordCount" content="521">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Node Exporter">
+  <meta name="twitter:description" content="简要概述 appid = “oneops”
 指标名 类型 说明 node_filesystem_avail_bytes xx 分区还剩的空间 node_filesystem_size_bytes xx 分区总的空间 公共标签
 标签名 说明 api.opsaid.cn/fault-priority P5 api.opsaid.cn/pm2-uuid 项目的UUID 全局默认告警规则 groups: - name: default-global-host-2m interval: 2m rules: 检测周期较长，持续周期较长，用于全局判断
-主机cpu使用率预警 alert: NodeCPUUseHigh60 expr: | ( 1 - (sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;,mode=&#34;idle&#34;}[1m])) by (appid,job,instance,serial_num) / sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;}[1m])) by (appid,job,instance,serial_num) ) ) &gt;= 0.6 for: 6m labels: api_opsaid_cn_fault_priority: P5 api_opsaid_cn_pm2_uuid: 99feafb5-bed6-4daf-927a-69a2ab80c485 annotations: summary: 2分钟检测一次,持续6分钟,CPU使用率大于60%(当前值:{{$value|humanizePercentage}}) 主机iowait使用率预警 alert: NodeCPUIOWaitHigh20 expr: | ( (sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;,mode=&#34;iowait&#34;}[1m])) by (appid,job,instance,serial_num) / sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;}[1m])) by (appid,job,instance,serial_num) ) ) &gt;= 0."/>
+主机cpu使用率预警 alert: NodeCPUUseHigh60 expr: | ( 1 - (sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;,mode=&#34;idle&#34;}[1m])) by (appid,job,instance,serial_num) / sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;}[1m])) by (appid,job,instance,serial_num) ) ) &gt;= 0.6 for: 6m labels: api_opsaid_cn_fault_priority: P5 api_opsaid_cn_pm2_uuid: 99feafb5-bed6-4daf-927a-69a2ab80c485 annotations: summary: 2分钟检测一次,持续6分钟,CPU使用率大于60%(当前值:{{$value|humanizePercentage}}) 主机iowait使用率预警 alert: NodeCPUIOWaitHigh20 expr: | ( (sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;,mode=&#34;iowait&#34;}[1m])) by (appid,job,instance,serial_num) / sum(increase(node_cpu_seconds_total{appid!~&#34;uptime&#34;}[1m])) by (appid,job,instance,serial_num) ) ) &gt;= 0.2 for: 6m labels: api_opsaid_cn_fault_priority: P5 api_opsaid_cn_pm2_uuid: 99feafb5-bed6-4daf-927a-69a2ab80c485 annotations: summary: 2分钟检测一次,持续6分钟,iowait使用率大于20%(当前值:{{$value|humanizePercentage}}) 主机最近1分钟负载预警 alert: NodeLoad1High30 expr: ceil(avg(node_load1{appid!~&#34;uptime&#34;}) by (appid,job,instance,serial_num)) &gt; 30 for: 6m labels: api_opsaid_cn_fault_priority: P5 api_opsaid_cn_pm2_uuid: 99feafb5-bed6-4daf-927a-69a2ab80c485 annotations: summary: 2分钟检测一次,持续6分钟,load1大于30(当前值:{{$value}}) 预测空间24小时内会满 基于前6小时数据集预测24小时内空间可能满，需持续1小时">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1060,6 +1057,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3093,9 +3107,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3109,10 +3123,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3172,6 +3389,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4316,44 +4592,44 @@ if (!doNotTrack) {
 	<h2 id="简要概述">简要概述</h2>
 <p>appid = &ldquo;oneops&rdquo;</p>
 <table>
-<thead>
-<tr>
-<th>指标名</th>
-<th>类型</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>node_filesystem_avail_bytes</td>
-<td>xx</td>
-<td>分区还剩的空间</td>
-</tr>
-<tr>
-<td>node_filesystem_size_bytes</td>
-<td>xx</td>
-<td>分区总的空间</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>指标名</th>
+          <th>类型</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>node_filesystem_avail_bytes</td>
+          <td>xx</td>
+          <td>分区还剩的空间</td>
+      </tr>
+      <tr>
+          <td>node_filesystem_size_bytes</td>
+          <td>xx</td>
+          <td>分区总的空间</td>
+      </tr>
+  </tbody>
 </table>
 <p>公共标签</p>
 <table>
-<thead>
-<tr>
-<th>标签名</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>api.opsaid.cn/fault-priority</td>
-<td>P5</td>
-</tr>
-<tr>
-<td>api.opsaid.cn/pm2-uuid</td>
-<td>项目的UUID</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>标签名</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>api.opsaid.cn/fault-priority</td>
+          <td>P5</td>
+      </tr>
+      <tr>
+          <td>api.opsaid.cn/pm2-uuid</td>
+          <td>项目的UUID</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="全局默认告警规则">全局默认告警规则</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>groups:
@@ -4704,7 +4980,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

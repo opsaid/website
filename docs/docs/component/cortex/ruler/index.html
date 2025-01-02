@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -27,60 +27,63 @@ ruler:
   poll_interval: 60s
   rule_path: /data/cortex/rule
   alertmanager_url: …">
-<meta property="og:title" content="Ruler" />
-<meta property="og:description" content="简要概述 用于告警规则
-配置示例 ruler: evaluation_interval: 60s poll_interval: 60s rule_path: /data/cortex/rule alertmanager_url: &#34;http://192.168.31.201:9009/alertmanager&#34; enable_alertmanager_v2: true notification_queue_capacity: 10000 notification_timeout: 10s enable_sharding: true ring: kvstore: store: &#34;etcd&#34; prefix: &#34;/cortex/rulers/&#34; etcd: endpoints: [&#34;192.168.31.201:2379&#34;,&#34;192.168.31.202:2379&#34;,&#34;192.168.31.203:2379&#34;] dial_timeout: 10s max_retries: 10 tls_enabled: true tls_cert_path: &#34;/opt/cortex/pki/server.crt&#34; tls_key_path: &#34;/opt/cortex/pki/server.key&#34; tls_ca_path: &#34;/opt/cortex/pki/ca.crt&#34; tls_insecure_skip_verify: false heartbeat_period: 5s heartbeat_timeout: 1m0s instance_id: node1 instance_port: 9005 instance_addr: &#34;192.168.31.201&#34; enable_api: true query_stats_enabled: true ruler_storage: backend: s3 s3: endpoint: &#34;192.168.31.200:9000&#34; region: &#34;default&#34; bucket_name: &#34;uptime&#34; secret_access_key: &#34;minioadmin&#34; access_key_id: &#34;minioadmin&#34; insecure: false 数据结构 Config // Config is the configuration for the recording rules server." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/component/cortex/ruler/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-06-30T17:40:42+08:00" />
-<meta property="article:modified_time" content="2023-07-06T22:38:07+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Ruler">
-<meta itemprop="description" content="简要概述 用于告警规则
-配置示例 ruler: evaluation_interval: 60s poll_interval: 60s rule_path: /data/cortex/rule alertmanager_url: &#34;http://192.168.31.201:9009/alertmanager&#34; enable_alertmanager_v2: true notification_queue_capacity: 10000 notification_timeout: 10s enable_sharding: true ring: kvstore: store: &#34;etcd&#34; prefix: &#34;/cortex/rulers/&#34; etcd: endpoints: [&#34;192.168.31.201:2379&#34;,&#34;192.168.31.202:2379&#34;,&#34;192.168.31.203:2379&#34;] dial_timeout: 10s max_retries: 10 tls_enabled: true tls_cert_path: &#34;/opt/cortex/pki/server.crt&#34; tls_key_path: &#34;/opt/cortex/pki/server.key&#34; tls_ca_path: &#34;/opt/cortex/pki/ca.crt&#34; tls_insecure_skip_verify: false heartbeat_period: 5s heartbeat_timeout: 1m0s instance_id: node1 instance_port: 9005 instance_addr: &#34;192.168.31.201&#34; enable_api: true query_stats_enabled: true ruler_storage: backend: s3 s3: endpoint: &#34;192.168.31.200:9000&#34; region: &#34;default&#34; bucket_name: &#34;uptime&#34; secret_access_key: &#34;minioadmin&#34; access_key_id: &#34;minioadmin&#34; insecure: false 数据结构 Config // Config is the configuration for the recording rules server."><meta itemprop="datePublished" content="2023-06-30T17:40:42+08:00" />
-<meta itemprop="dateModified" content="2023-07-06T22:38:07+08:00" />
-<meta itemprop="wordCount" content="559">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Ruler"/>
-<meta name="twitter:description" content="简要概述 用于告警规则
-配置示例 ruler: evaluation_interval: 60s poll_interval: 60s rule_path: /data/cortex/rule alertmanager_url: &#34;http://192.168.31.201:9009/alertmanager&#34; enable_alertmanager_v2: true notification_queue_capacity: 10000 notification_timeout: 10s enable_sharding: true ring: kvstore: store: &#34;etcd&#34; prefix: &#34;/cortex/rulers/&#34; etcd: endpoints: [&#34;192.168.31.201:2379&#34;,&#34;192.168.31.202:2379&#34;,&#34;192.168.31.203:2379&#34;] dial_timeout: 10s max_retries: 10 tls_enabled: true tls_cert_path: &#34;/opt/cortex/pki/server.crt&#34; tls_key_path: &#34;/opt/cortex/pki/server.key&#34; tls_ca_path: &#34;/opt/cortex/pki/ca.crt&#34; tls_insecure_skip_verify: false heartbeat_period: 5s heartbeat_timeout: 1m0s instance_id: node1 instance_port: 9005 instance_addr: &#34;192.168.31.201&#34; enable_api: true query_stats_enabled: true ruler_storage: backend: s3 s3: endpoint: &#34;192.168.31.200:9000&#34; region: &#34;default&#34; bucket_name: &#34;uptime&#34; secret_access_key: &#34;minioadmin&#34; access_key_id: &#34;minioadmin&#34; insecure: false 数据结构 Config // Config is the configuration for the recording rules server."/>
+<meta property="og:url" content="/docs/component/cortex/ruler/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Ruler">
+  <meta property="og:description" content="简要概述 用于告警规则
+配置示例 ruler: evaluation_interval: 60s poll_interval: 60s rule_path: /data/cortex/rule alertmanager_url: &#34;http://192.168.31.201:9009/alertmanager&#34; enable_alertmanager_v2: true notification_queue_capacity: 10000 notification_timeout: 10s enable_sharding: true ring: kvstore: store: &#34;etcd&#34; prefix: &#34;/cortex/rulers/&#34; etcd: endpoints: [&#34;192.168.31.201:2379&#34;,&#34;192.168.31.202:2379&#34;,&#34;192.168.31.203:2379&#34;] dial_timeout: 10s max_retries: 10 tls_enabled: true tls_cert_path: &#34;/opt/cortex/pki/server.crt&#34; tls_key_path: &#34;/opt/cortex/pki/server.key&#34; tls_ca_path: &#34;/opt/cortex/pki/ca.crt&#34; tls_insecure_skip_verify: false heartbeat_period: 5s heartbeat_timeout: 1m0s instance_id: node1 instance_port: 9005 instance_addr: &#34;192.168.31.201&#34; enable_api: true query_stats_enabled: true ruler_storage: backend: s3 s3: endpoint: &#34;192.168.31.200:9000&#34; region: &#34;default&#34; bucket_name: &#34;uptime&#34; secret_access_key: &#34;minioadmin&#34; access_key_id: &#34;minioadmin&#34; insecure: false 数据结构 Config // Config is the configuration for the recording rules server. type Config struct { // This is used for template expansion in alerts; must be a valid URL. ExternalURL flagext.URLValue `yaml:&#34;external_url&#34;` // Labels to add to all alerts ExternalLabels labels.Labels `yaml:&#34;external_labels,omitempty&#34; doc:&#34;nocli|description=Labels to add to all alerts.&#34;` // GRPC Client configuration. ClientTLSConfig grpcclient.Config `yaml:&#34;ruler_client&#34;` // How frequently to evaluate rules by default. // 检测告警规则表达式的时间，默认 1分钟 EvaluationInterval time.Duration `yaml:&#34;evaluation_interval&#34;` // How frequently to poll for updated rules. // 多久同步一次告警规则，默认 1分钟 PollInterval time.Duration `yaml:&#34;poll_interval&#34;` // Path to store rule files for prom manager. // 存放告警规则在本地的路径 RulePath string `yaml:&#34;rule_path&#34;` // URL of the Alertmanager to send notifications to. // If your are configuring the ruler to send to a Cortex Alertmanager, // ensure this includes any path set in the Alertmanager external URL. // 告警推送至 alertmanager 实例 AlertmanagerURL string `yaml:&#34;alertmanager_url&#34;` // Whether to use DNS SRV records to discover Alertmanager. AlertmanagerDiscovery bool `yaml:&#34;enable_alertmanager_discovery&#34;` // How long to wait between refreshing the list of Alertmanager based on DNS service discovery. AlertmanagerRefreshInterval time.Duration `yaml:&#34;alertmanager_refresh_interval&#34;` // Enables the ruler notifier to use the Alertmananger V2 API. // 调用 alertmanager 使用接口版本2 AlertmanangerEnableV2API bool `yaml:&#34;enable_alertmanager_v2&#34;` // Capacity of the queue for notifications to be sent to the Alertmanager. NotificationQueueCapacity int `yaml:&#34;notification_queue_capacity&#34;` // HTTP timeout duration when sending notifications to the Alertmanager. NotificationTimeout time.Duration `yaml:&#34;notification_timeout&#34;` // Client configs for interacting with the Alertmanager Notifier NotifierConfig `yaml:&#34;alertmanager_client&#34;` // Max time to tolerate outage for restoring &#34;for&#34; state of alert. OutageTolerance time.Duration `yaml:&#34;for_outage_tolerance&#34;` // Minimum duration between alert and restored &#34;for&#34; state. This is maintained only for alerts with configured &#34;for&#34; time greater than grace period. ForGracePeriod time.Duration `yaml:&#34;for_grace_period&#34;` // Minimum amount of time to wait before resending an alert to Alertmanager. ResendDelay time.Duration `yaml:&#34;resend_delay&#34;` // Enable sharding rule groups. EnableSharding bool `yaml:&#34;enable_sharding&#34;` ShardingStrategy string `yaml:&#34;sharding_strategy&#34;` SearchPendingFor time.Duration `yaml:&#34;search_pending_for&#34;` Ring RingConfig `yaml:&#34;ring&#34;` FlushCheckPeriod time.Duration `yaml:&#34;flush_period&#34;` EnableAPI bool `yaml:&#34;enable_api&#34;` EnabledTenants flagext.StringSliceCSV `yaml:&#34;enabled_tenants&#34;` DisabledTenants flagext.StringSliceCSV `yaml:&#34;disabled_tenants&#34;` RingCheckPeriod time.Duration `yaml:&#34;-&#34;` EnableQueryStats bool `yaml:&#34;query_stats_enabled&#34;` DisableRuleGroupLabel bool `yaml:&#34;disable_rule_group_label&#34;` } rulestore.Config github.com/cortexproject/cortex/pkg/ruler/rulestore/config.go">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-06-30T17:40:42+08:00">
+    <meta property="article:modified_time" content="2023-07-06T22:38:07+08:00">
+
+  <meta itemprop="name" content="Ruler">
+  <meta itemprop="description" content="简要概述 用于告警规则
+配置示例 ruler: evaluation_interval: 60s poll_interval: 60s rule_path: /data/cortex/rule alertmanager_url: &#34;http://192.168.31.201:9009/alertmanager&#34; enable_alertmanager_v2: true notification_queue_capacity: 10000 notification_timeout: 10s enable_sharding: true ring: kvstore: store: &#34;etcd&#34; prefix: &#34;/cortex/rulers/&#34; etcd: endpoints: [&#34;192.168.31.201:2379&#34;,&#34;192.168.31.202:2379&#34;,&#34;192.168.31.203:2379&#34;] dial_timeout: 10s max_retries: 10 tls_enabled: true tls_cert_path: &#34;/opt/cortex/pki/server.crt&#34; tls_key_path: &#34;/opt/cortex/pki/server.key&#34; tls_ca_path: &#34;/opt/cortex/pki/ca.crt&#34; tls_insecure_skip_verify: false heartbeat_period: 5s heartbeat_timeout: 1m0s instance_id: node1 instance_port: 9005 instance_addr: &#34;192.168.31.201&#34; enable_api: true query_stats_enabled: true ruler_storage: backend: s3 s3: endpoint: &#34;192.168.31.200:9000&#34; region: &#34;default&#34; bucket_name: &#34;uptime&#34; secret_access_key: &#34;minioadmin&#34; access_key_id: &#34;minioadmin&#34; insecure: false 数据结构 Config // Config is the configuration for the recording rules server. type Config struct { // This is used for template expansion in alerts; must be a valid URL. ExternalURL flagext.URLValue `yaml:&#34;external_url&#34;` // Labels to add to all alerts ExternalLabels labels.Labels `yaml:&#34;external_labels,omitempty&#34; doc:&#34;nocli|description=Labels to add to all alerts.&#34;` // GRPC Client configuration. ClientTLSConfig grpcclient.Config `yaml:&#34;ruler_client&#34;` // How frequently to evaluate rules by default. // 检测告警规则表达式的时间，默认 1分钟 EvaluationInterval time.Duration `yaml:&#34;evaluation_interval&#34;` // How frequently to poll for updated rules. // 多久同步一次告警规则，默认 1分钟 PollInterval time.Duration `yaml:&#34;poll_interval&#34;` // Path to store rule files for prom manager. // 存放告警规则在本地的路径 RulePath string `yaml:&#34;rule_path&#34;` // URL of the Alertmanager to send notifications to. // If your are configuring the ruler to send to a Cortex Alertmanager, // ensure this includes any path set in the Alertmanager external URL. // 告警推送至 alertmanager 实例 AlertmanagerURL string `yaml:&#34;alertmanager_url&#34;` // Whether to use DNS SRV records to discover Alertmanager. AlertmanagerDiscovery bool `yaml:&#34;enable_alertmanager_discovery&#34;` // How long to wait between refreshing the list of Alertmanager based on DNS service discovery. AlertmanagerRefreshInterval time.Duration `yaml:&#34;alertmanager_refresh_interval&#34;` // Enables the ruler notifier to use the Alertmananger V2 API. // 调用 alertmanager 使用接口版本2 AlertmanangerEnableV2API bool `yaml:&#34;enable_alertmanager_v2&#34;` // Capacity of the queue for notifications to be sent to the Alertmanager. NotificationQueueCapacity int `yaml:&#34;notification_queue_capacity&#34;` // HTTP timeout duration when sending notifications to the Alertmanager. NotificationTimeout time.Duration `yaml:&#34;notification_timeout&#34;` // Client configs for interacting with the Alertmanager Notifier NotifierConfig `yaml:&#34;alertmanager_client&#34;` // Max time to tolerate outage for restoring &#34;for&#34; state of alert. OutageTolerance time.Duration `yaml:&#34;for_outage_tolerance&#34;` // Minimum duration between alert and restored &#34;for&#34; state. This is maintained only for alerts with configured &#34;for&#34; time greater than grace period. ForGracePeriod time.Duration `yaml:&#34;for_grace_period&#34;` // Minimum amount of time to wait before resending an alert to Alertmanager. ResendDelay time.Duration `yaml:&#34;resend_delay&#34;` // Enable sharding rule groups. EnableSharding bool `yaml:&#34;enable_sharding&#34;` ShardingStrategy string `yaml:&#34;sharding_strategy&#34;` SearchPendingFor time.Duration `yaml:&#34;search_pending_for&#34;` Ring RingConfig `yaml:&#34;ring&#34;` FlushCheckPeriod time.Duration `yaml:&#34;flush_period&#34;` EnableAPI bool `yaml:&#34;enable_api&#34;` EnabledTenants flagext.StringSliceCSV `yaml:&#34;enabled_tenants&#34;` DisabledTenants flagext.StringSliceCSV `yaml:&#34;disabled_tenants&#34;` RingCheckPeriod time.Duration `yaml:&#34;-&#34;` EnableQueryStats bool `yaml:&#34;query_stats_enabled&#34;` DisableRuleGroupLabel bool `yaml:&#34;disable_rule_group_label&#34;` } rulestore.Config github.com/cortexproject/cortex/pkg/ruler/rulestore/config.go">
+  <meta itemprop="datePublished" content="2023-06-30T17:40:42+08:00">
+  <meta itemprop="dateModified" content="2023-07-06T22:38:07+08:00">
+  <meta itemprop="wordCount" content="559">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ruler">
+  <meta name="twitter:description" content="简要概述 用于告警规则
+配置示例 ruler: evaluation_interval: 60s poll_interval: 60s rule_path: /data/cortex/rule alertmanager_url: &#34;http://192.168.31.201:9009/alertmanager&#34; enable_alertmanager_v2: true notification_queue_capacity: 10000 notification_timeout: 10s enable_sharding: true ring: kvstore: store: &#34;etcd&#34; prefix: &#34;/cortex/rulers/&#34; etcd: endpoints: [&#34;192.168.31.201:2379&#34;,&#34;192.168.31.202:2379&#34;,&#34;192.168.31.203:2379&#34;] dial_timeout: 10s max_retries: 10 tls_enabled: true tls_cert_path: &#34;/opt/cortex/pki/server.crt&#34; tls_key_path: &#34;/opt/cortex/pki/server.key&#34; tls_ca_path: &#34;/opt/cortex/pki/ca.crt&#34; tls_insecure_skip_verify: false heartbeat_period: 5s heartbeat_timeout: 1m0s instance_id: node1 instance_port: 9005 instance_addr: &#34;192.168.31.201&#34; enable_api: true query_stats_enabled: true ruler_storage: backend: s3 s3: endpoint: &#34;192.168.31.200:9000&#34; region: &#34;default&#34; bucket_name: &#34;uptime&#34; secret_access_key: &#34;minioadmin&#34; access_key_id: &#34;minioadmin&#34; insecure: false 数据结构 Config // Config is the configuration for the recording rules server. type Config struct { // This is used for template expansion in alerts; must be a valid URL. ExternalURL flagext.URLValue `yaml:&#34;external_url&#34;` // Labels to add to all alerts ExternalLabels labels.Labels `yaml:&#34;external_labels,omitempty&#34; doc:&#34;nocli|description=Labels to add to all alerts.&#34;` // GRPC Client configuration. ClientTLSConfig grpcclient.Config `yaml:&#34;ruler_client&#34;` // How frequently to evaluate rules by default. // 检测告警规则表达式的时间，默认 1分钟 EvaluationInterval time.Duration `yaml:&#34;evaluation_interval&#34;` // How frequently to poll for updated rules. // 多久同步一次告警规则，默认 1分钟 PollInterval time.Duration `yaml:&#34;poll_interval&#34;` // Path to store rule files for prom manager. // 存放告警规则在本地的路径 RulePath string `yaml:&#34;rule_path&#34;` // URL of the Alertmanager to send notifications to. // If your are configuring the ruler to send to a Cortex Alertmanager, // ensure this includes any path set in the Alertmanager external URL. // 告警推送至 alertmanager 实例 AlertmanagerURL string `yaml:&#34;alertmanager_url&#34;` // Whether to use DNS SRV records to discover Alertmanager. AlertmanagerDiscovery bool `yaml:&#34;enable_alertmanager_discovery&#34;` // How long to wait between refreshing the list of Alertmanager based on DNS service discovery. AlertmanagerRefreshInterval time.Duration `yaml:&#34;alertmanager_refresh_interval&#34;` // Enables the ruler notifier to use the Alertmananger V2 API. // 调用 alertmanager 使用接口版本2 AlertmanangerEnableV2API bool `yaml:&#34;enable_alertmanager_v2&#34;` // Capacity of the queue for notifications to be sent to the Alertmanager. NotificationQueueCapacity int `yaml:&#34;notification_queue_capacity&#34;` // HTTP timeout duration when sending notifications to the Alertmanager. NotificationTimeout time.Duration `yaml:&#34;notification_timeout&#34;` // Client configs for interacting with the Alertmanager Notifier NotifierConfig `yaml:&#34;alertmanager_client&#34;` // Max time to tolerate outage for restoring &#34;for&#34; state of alert. OutageTolerance time.Duration `yaml:&#34;for_outage_tolerance&#34;` // Minimum duration between alert and restored &#34;for&#34; state. This is maintained only for alerts with configured &#34;for&#34; time greater than grace period. ForGracePeriod time.Duration `yaml:&#34;for_grace_period&#34;` // Minimum amount of time to wait before resending an alert to Alertmanager. ResendDelay time.Duration `yaml:&#34;resend_delay&#34;` // Enable sharding rule groups. EnableSharding bool `yaml:&#34;enable_sharding&#34;` ShardingStrategy string `yaml:&#34;sharding_strategy&#34;` SearchPendingFor time.Duration `yaml:&#34;search_pending_for&#34;` Ring RingConfig `yaml:&#34;ring&#34;` FlushCheckPeriod time.Duration `yaml:&#34;flush_period&#34;` EnableAPI bool `yaml:&#34;enable_api&#34;` EnabledTenants flagext.StringSliceCSV `yaml:&#34;enabled_tenants&#34;` DisabledTenants flagext.StringSliceCSV `yaml:&#34;disabled_tenants&#34;` RingCheckPeriod time.Duration `yaml:&#34;-&#34;` EnableQueryStats bool `yaml:&#34;query_stats_enabled&#34;` DisableRuleGroupLabel bool `yaml:&#34;disable_rule_group_label&#34;` } rulestore.Config github.com/cortexproject/cortex/pkg/ruler/rulestore/config.go">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1043,6 +1046,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3076,9 +3096,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3092,10 +3112,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3155,6 +3378,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4541,7 +4823,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

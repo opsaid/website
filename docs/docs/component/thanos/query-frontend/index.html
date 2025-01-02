@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -22,63 +22,66 @@
 <meta name="description" content="Query Frontend 组件
 基于 thanos/v0.28，面向用户层面用于提供查询数据，它是无状态可以进行水平扩展，用于对范围查询与缓存。
 当前仅接口/api/v1/query_range会经过该组件处理，其他接口请求会直接传递到下游查询组件。 …">
-<meta property="og:title" content="Query Frontend" />
-<meta property="og:description" content="Query Frontend 组件 基于 thanos/v0.28，面向用户层面用于提供查询数据，它是无状态可以进行水平扩展，用于对范围查询与缓存。
+<meta property="og:url" content="/docs/component/thanos/query-frontend/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Query Frontend">
+  <meta property="og:description" content="Query Frontend 组件 基于 thanos/v0.28，面向用户层面用于提供查询数据，它是无状态可以进行水平扩展，用于对范围查询与缓存。
 当前仅接口/api/v1/query_range会经过该组件处理，其他接口请求会直接传递到下游查询组件。
-启动参数 名称 默认值 说明 cache-compression-type &quot;&quot; 对结果集的压缩，支持 &lsquo;snappy&rsquo; http-address 0.0.0.0:10902 监听 HTTP 服务地址 http-grace-period 2m HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 http.config &quot;&quot; TODO labels.default-time-range 24h TODO; labels.max-query-parallelism 14 TODO; labels.max-retries-per-request 5 TODO; labels.partial-response &quot;&quot; 如果未指定partial_response参数，则为标签请求启用部分响应 labels.response-cache-config &quot;&quot; 功能同 labels.response-cache-config-file labels.response-cache-config-file &quot;&quot; TODO; labels.response-cache-max-freshness 1m 最近允许标签请求的可缓存结果，以防止缓存可能仍在变化中的最近结果 labels.split-interval 24h 按间隔拆分标签请求并并行执行，标签时应大于0。配置了响应缓存配置 log.format logfmt 日志格式，可取值：logfmt、json log.level info 日志级别 log.request.decision &quot;&quot; 已被废弃 query-frontend.compress-responses &quot;&quot; 压缩HTTP响应 query-frontend.downstream-tripper-config &quot;&quot; 功能同 query-frontend.downstream-tripper-config-file query-frontend.downstream-tripper-config-file TODO；包含downstream tripper的配置，如果是 ‘127." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/component/thanos/query-frontend/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-10-21T12:48:13+08:00" />
-<meta property="article:modified_time" content="2023-02-13T16:48:32+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Query Frontend">
-<meta itemprop="description" content="Query Frontend 组件 基于 thanos/v0.28，面向用户层面用于提供查询数据，它是无状态可以进行水平扩展，用于对范围查询与缓存。
+启动参数 名称 默认值 说明 cache-compression-type &#34;&#34; 对结果集的压缩，支持 ‘snappy’ http-address 0.0.0.0:10902 监听 HTTP 服务地址 http-grace-period 2m HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 http.config &#34;&#34; TODO labels.default-time-range 24h TODO; labels.max-query-parallelism 14 TODO; labels.max-retries-per-request 5 TODO; labels.partial-response &#34;&#34; 如果未指定partial_response参数，则为标签请求启用部分响应 labels.response-cache-config &#34;&#34; 功能同 labels.response-cache-config-file labels.response-cache-config-file &#34;&#34; TODO; labels.response-cache-max-freshness 1m 最近允许标签请求的可缓存结果，以防止缓存可能仍在变化中的最近结果 labels.split-interval 24h 按间隔拆分标签请求并并行执行，标签时应大于0。配置了响应缓存配置 log.format logfmt 日志格式，可取值：logfmt、json log.level info 日志级别 log.request.decision &#34;&#34; 已被废弃 query-frontend.compress-responses &#34;&#34; 压缩HTTP响应 query-frontend.downstream-tripper-config &#34;&#34; 功能同 query-frontend.downstream-tripper-config-file query-frontend.downstream-tripper-config-file TODO；包含downstream tripper的配置，如果是 ‘127.0.0.1’ 则建议 max_idle_conns_per_host 至少配置为100 query-frontend.downstream-url “http://localhost:9090” 转发至下游兼容 prometheus query api 地址 query-frontend.forward-header &#34;&#34; 转发至下游的http请求头 query-frontend.log-queries-longer-than 0 记录超过配置时间的慢查询，设置0为关闭，设置小于0则开启所有 query-frontend.org-id-header &#34;&#34; 用于标识慢速查询源的请求头名称，将会植入至慢日志’org_id’字段中，如为配置默认植入的值为’anonymous&#39; query-range.align-range-with-step &#34;&#34; TODO; query-range.max-query-length 0 限制查询的时间最大区间范围，设置0为禁用 query-range.max-query-parallelism 14 TODO; 前端将并行计划最大查询范围请求数 query-range.max-retries-per-request 5 TODO; 单个查询范围请求的最大重试次数；除此之外，将返回下游错误 query-range.partial-response &#34;&#34; 如果未指定partial_response参数，则为查询范围请求启用部分响应 query-range.request-downsampled &#34;&#34; 在对范围请求的响应为空或不完整的情况下，对下采样数据进行额外查询 query-range.response-cache-config &#34;&#34; 功能同 query-range.response-cache-config-file query-range.response-cache-config-file &#34;&#34; 响应缓存的配置文件 query-range.response-cache-max-freshness 1m 最近允许查询范围请求的可缓存结果，以防止缓存可能仍在变化中的最近结果 query-range.split-interval 24h 按间隔拆分查询范围请求并并行执行，如果query-range.response-cache-config配置了，则必须开启 request.logging-config &#34;&#34; 功能同 request.logging-config-file request.logging-config-file &#34;&#34; TODO； tracing.config &#34;&#34; 功能同 tracing.config-file tracing.config-file &#34;&#34; 链路跟踪配置文件 web.disable-cors &#34;&#34; 是否禁用跨域，默认允许所有 功能特性 查询分割 针对一个长查询切割为多个子查询，由启动参数--query-range.split-interval设定，这有以下几个好处：">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-10-21T12:48:13+08:00">
+    <meta property="article:modified_time" content="2023-02-13T16:48:32+08:00">
+
+  <meta itemprop="name" content="Query Frontend">
+  <meta itemprop="description" content="Query Frontend 组件 基于 thanos/v0.28，面向用户层面用于提供查询数据，它是无状态可以进行水平扩展，用于对范围查询与缓存。
 当前仅接口/api/v1/query_range会经过该组件处理，其他接口请求会直接传递到下游查询组件。
-启动参数 名称 默认值 说明 cache-compression-type &quot;&quot; 对结果集的压缩，支持 &lsquo;snappy&rsquo; http-address 0.0.0.0:10902 监听 HTTP 服务地址 http-grace-period 2m HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 http.config &quot;&quot; TODO labels.default-time-range 24h TODO; labels.max-query-parallelism 14 TODO; labels.max-retries-per-request 5 TODO; labels.partial-response &quot;&quot; 如果未指定partial_response参数，则为标签请求启用部分响应 labels.response-cache-config &quot;&quot; 功能同 labels.response-cache-config-file labels.response-cache-config-file &quot;&quot; TODO; labels.response-cache-max-freshness 1m 最近允许标签请求的可缓存结果，以防止缓存可能仍在变化中的最近结果 labels.split-interval 24h 按间隔拆分标签请求并并行执行，标签时应大于0。配置了响应缓存配置 log.format logfmt 日志格式，可取值：logfmt、json log.level info 日志级别 log.request.decision &quot;&quot; 已被废弃 query-frontend.compress-responses &quot;&quot; 压缩HTTP响应 query-frontend.downstream-tripper-config &quot;&quot; 功能同 query-frontend.downstream-tripper-config-file query-frontend.downstream-tripper-config-file TODO；包含downstream tripper的配置，如果是 ‘127."><meta itemprop="datePublished" content="2022-10-21T12:48:13+08:00" />
-<meta itemprop="dateModified" content="2023-02-13T16:48:32+08:00" />
-<meta itemprop="wordCount" content="166">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Query Frontend"/>
-<meta name="twitter:description" content="Query Frontend 组件 基于 thanos/v0.28，面向用户层面用于提供查询数据，它是无状态可以进行水平扩展，用于对范围查询与缓存。
+启动参数 名称 默认值 说明 cache-compression-type &#34;&#34; 对结果集的压缩，支持 ‘snappy’ http-address 0.0.0.0:10902 监听 HTTP 服务地址 http-grace-period 2m HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 http.config &#34;&#34; TODO labels.default-time-range 24h TODO; labels.max-query-parallelism 14 TODO; labels.max-retries-per-request 5 TODO; labels.partial-response &#34;&#34; 如果未指定partial_response参数，则为标签请求启用部分响应 labels.response-cache-config &#34;&#34; 功能同 labels.response-cache-config-file labels.response-cache-config-file &#34;&#34; TODO; labels.response-cache-max-freshness 1m 最近允许标签请求的可缓存结果，以防止缓存可能仍在变化中的最近结果 labels.split-interval 24h 按间隔拆分标签请求并并行执行，标签时应大于0。配置了响应缓存配置 log.format logfmt 日志格式，可取值：logfmt、json log.level info 日志级别 log.request.decision &#34;&#34; 已被废弃 query-frontend.compress-responses &#34;&#34; 压缩HTTP响应 query-frontend.downstream-tripper-config &#34;&#34; 功能同 query-frontend.downstream-tripper-config-file query-frontend.downstream-tripper-config-file TODO；包含downstream tripper的配置，如果是 ‘127.0.0.1’ 则建议 max_idle_conns_per_host 至少配置为100 query-frontend.downstream-url “http://localhost:9090” 转发至下游兼容 prometheus query api 地址 query-frontend.forward-header &#34;&#34; 转发至下游的http请求头 query-frontend.log-queries-longer-than 0 记录超过配置时间的慢查询，设置0为关闭，设置小于0则开启所有 query-frontend.org-id-header &#34;&#34; 用于标识慢速查询源的请求头名称，将会植入至慢日志’org_id’字段中，如为配置默认植入的值为’anonymous&#39; query-range.align-range-with-step &#34;&#34; TODO; query-range.max-query-length 0 限制查询的时间最大区间范围，设置0为禁用 query-range.max-query-parallelism 14 TODO; 前端将并行计划最大查询范围请求数 query-range.max-retries-per-request 5 TODO; 单个查询范围请求的最大重试次数；除此之外，将返回下游错误 query-range.partial-response &#34;&#34; 如果未指定partial_response参数，则为查询范围请求启用部分响应 query-range.request-downsampled &#34;&#34; 在对范围请求的响应为空或不完整的情况下，对下采样数据进行额外查询 query-range.response-cache-config &#34;&#34; 功能同 query-range.response-cache-config-file query-range.response-cache-config-file &#34;&#34; 响应缓存的配置文件 query-range.response-cache-max-freshness 1m 最近允许查询范围请求的可缓存结果，以防止缓存可能仍在变化中的最近结果 query-range.split-interval 24h 按间隔拆分查询范围请求并并行执行，如果query-range.response-cache-config配置了，则必须开启 request.logging-config &#34;&#34; 功能同 request.logging-config-file request.logging-config-file &#34;&#34; TODO； tracing.config &#34;&#34; 功能同 tracing.config-file tracing.config-file &#34;&#34; 链路跟踪配置文件 web.disable-cors &#34;&#34; 是否禁用跨域，默认允许所有 功能特性 查询分割 针对一个长查询切割为多个子查询，由启动参数--query-range.split-interval设定，这有以下几个好处：">
+  <meta itemprop="datePublished" content="2022-10-21T12:48:13+08:00">
+  <meta itemprop="dateModified" content="2023-02-13T16:48:32+08:00">
+  <meta itemprop="wordCount" content="166">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Query Frontend">
+  <meta name="twitter:description" content="Query Frontend 组件 基于 thanos/v0.28，面向用户层面用于提供查询数据，它是无状态可以进行水平扩展，用于对范围查询与缓存。
 当前仅接口/api/v1/query_range会经过该组件处理，其他接口请求会直接传递到下游查询组件。
-启动参数 名称 默认值 说明 cache-compression-type &quot;&quot; 对结果集的压缩，支持 &lsquo;snappy&rsquo; http-address 0.0.0.0:10902 监听 HTTP 服务地址 http-grace-period 2m HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 http.config &quot;&quot; TODO labels.default-time-range 24h TODO; labels.max-query-parallelism 14 TODO; labels.max-retries-per-request 5 TODO; labels.partial-response &quot;&quot; 如果未指定partial_response参数，则为标签请求启用部分响应 labels.response-cache-config &quot;&quot; 功能同 labels.response-cache-config-file labels.response-cache-config-file &quot;&quot; TODO; labels.response-cache-max-freshness 1m 最近允许标签请求的可缓存结果，以防止缓存可能仍在变化中的最近结果 labels.split-interval 24h 按间隔拆分标签请求并并行执行，标签时应大于0。配置了响应缓存配置 log.format logfmt 日志格式，可取值：logfmt、json log.level info 日志级别 log.request.decision &quot;&quot; 已被废弃 query-frontend.compress-responses &quot;&quot; 压缩HTTP响应 query-frontend.downstream-tripper-config &quot;&quot; 功能同 query-frontend.downstream-tripper-config-file query-frontend.downstream-tripper-config-file TODO；包含downstream tripper的配置，如果是 ‘127."/>
+启动参数 名称 默认值 说明 cache-compression-type &#34;&#34; 对结果集的压缩，支持 ‘snappy’ http-address 0.0.0.0:10902 监听 HTTP 服务地址 http-grace-period 2m HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 http.config &#34;&#34; TODO labels.default-time-range 24h TODO; labels.max-query-parallelism 14 TODO; labels.max-retries-per-request 5 TODO; labels.partial-response &#34;&#34; 如果未指定partial_response参数，则为标签请求启用部分响应 labels.response-cache-config &#34;&#34; 功能同 labels.response-cache-config-file labels.response-cache-config-file &#34;&#34; TODO; labels.response-cache-max-freshness 1m 最近允许标签请求的可缓存结果，以防止缓存可能仍在变化中的最近结果 labels.split-interval 24h 按间隔拆分标签请求并并行执行，标签时应大于0。配置了响应缓存配置 log.format logfmt 日志格式，可取值：logfmt、json log.level info 日志级别 log.request.decision &#34;&#34; 已被废弃 query-frontend.compress-responses &#34;&#34; 压缩HTTP响应 query-frontend.downstream-tripper-config &#34;&#34; 功能同 query-frontend.downstream-tripper-config-file query-frontend.downstream-tripper-config-file TODO；包含downstream tripper的配置，如果是 ‘127.0.0.1’ 则建议 max_idle_conns_per_host 至少配置为100 query-frontend.downstream-url “http://localhost:9090” 转发至下游兼容 prometheus query api 地址 query-frontend.forward-header &#34;&#34; 转发至下游的http请求头 query-frontend.log-queries-longer-than 0 记录超过配置时间的慢查询，设置0为关闭，设置小于0则开启所有 query-frontend.org-id-header &#34;&#34; 用于标识慢速查询源的请求头名称，将会植入至慢日志’org_id’字段中，如为配置默认植入的值为’anonymous&#39; query-range.align-range-with-step &#34;&#34; TODO; query-range.max-query-length 0 限制查询的时间最大区间范围，设置0为禁用 query-range.max-query-parallelism 14 TODO; 前端将并行计划最大查询范围请求数 query-range.max-retries-per-request 5 TODO; 单个查询范围请求的最大重试次数；除此之外，将返回下游错误 query-range.partial-response &#34;&#34; 如果未指定partial_response参数，则为查询范围请求启用部分响应 query-range.request-downsampled &#34;&#34; 在对范围请求的响应为空或不完整的情况下，对下采样数据进行额外查询 query-range.response-cache-config &#34;&#34; 功能同 query-range.response-cache-config-file query-range.response-cache-config-file &#34;&#34; 响应缓存的配置文件 query-range.response-cache-max-freshness 1m 最近允许查询范围请求的可缓存结果，以防止缓存可能仍在变化中的最近结果 query-range.split-interval 24h 按间隔拆分查询范围请求并并行执行，如果query-range.response-cache-config配置了，则必须开启 request.logging-config &#34;&#34; 功能同 request.logging-config-file request.logging-config-file &#34;&#34; TODO； tracing.config &#34;&#34; 功能同 tracing.config-file tracing.config-file &#34;&#34; 链路跟踪配置文件 web.disable-cors &#34;&#34; 是否禁用跨域，默认允许所有 功能特性 查询分割 针对一个长查询切割为多个子查询，由启动参数--query-range.split-interval设定，这有以下几个好处：">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1041,6 +1044,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3074,9 +3094,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3090,10 +3110,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3153,6 +3376,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4288,200 +4570,200 @@ if (!doNotTrack) {
 <p>当前仅接口<code>/api/v1/query_range</code>会经过该组件处理，其他接口请求会直接传递到下游查询组件。</p>
 <h2 id="启动参数">启动参数</h2>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>默认值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>cache-compression-type</td>
-<td>&quot;&quot;</td>
-<td>对结果集的压缩，支持 &lsquo;snappy&rsquo;</td>
-</tr>
-<tr>
-<td>http-address</td>
-<td>0.0.0.0:10902</td>
-<td>监听 HTTP 服务地址</td>
-</tr>
-<tr>
-<td>http-grace-period</td>
-<td>2m</td>
-<td>HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现</td>
-</tr>
-<tr>
-<td>http.config</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>labels.default-time-range</td>
-<td>24h</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>labels.max-query-parallelism</td>
-<td>14</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>labels.max-retries-per-request</td>
-<td>5</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>labels.partial-response</td>
-<td>&quot;&quot;</td>
-<td>如果未指定partial_response参数，则为标签请求启用部分响应</td>
-</tr>
-<tr>
-<td>labels.response-cache-config</td>
-<td>&quot;&quot;</td>
-<td>功能同 <code>labels.response-cache-config-file</code></td>
-</tr>
-<tr>
-<td>labels.response-cache-config-file</td>
-<td>&quot;&quot;</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>labels.response-cache-max-freshness</td>
-<td>1m</td>
-<td>最近允许标签请求的可缓存结果，以防止缓存可能仍在变化中的最近结果</td>
-</tr>
-<tr>
-<td>labels.split-interval</td>
-<td>24h</td>
-<td>按间隔拆分标签请求并并行执行，标签时应大于0。配置了响应缓存配置</td>
-</tr>
-<tr>
-<td>log.format</td>
-<td>logfmt</td>
-<td>日志格式，可取值：logfmt、json</td>
-</tr>
-<tr>
-<td>log.level</td>
-<td>info</td>
-<td>日志级别</td>
-</tr>
-<tr>
-<td>log.request.decision</td>
-<td>&quot;&quot;</td>
-<td>已被废弃</td>
-</tr>
-<tr>
-<td>query-frontend.compress-responses</td>
-<td>&quot;&quot;</td>
-<td>压缩HTTP响应</td>
-</tr>
-<tr>
-<td>query-frontend.downstream-tripper-config</td>
-<td>&quot;&quot;</td>
-<td>功能同 <code>query-frontend.downstream-tripper-config-file</code></td>
-</tr>
-<tr>
-<td>query-frontend.downstream-tripper-config-file</td>
-<td>TODO；包含downstream tripper的配置，如果是 ‘127.0.0.1’ 则建议 max_idle_conns_per_host 至少配置为100</td>
-<td></td>
-</tr>
-<tr>
-<td>query-frontend.downstream-url</td>
-<td>&ldquo;http://localhost:9090&rdquo;</td>
-<td>转发至下游兼容 prometheus query api 地址</td>
-</tr>
-<tr>
-<td>query-frontend.forward-header</td>
-<td>&quot;&quot;</td>
-<td>转发至下游的http请求头</td>
-</tr>
-<tr>
-<td>query-frontend.log-queries-longer-than</td>
-<td>0</td>
-<td>记录超过配置时间的慢查询，设置0为关闭，设置小于0则开启所有</td>
-</tr>
-<tr>
-<td>query-frontend.org-id-header</td>
-<td>&quot;&quot;</td>
-<td>用于标识慢速查询源的请求头名称，将会植入至慢日志&rsquo;org_id&rsquo;字段中，如为配置默认植入的值为&rsquo;anonymous'</td>
-</tr>
-<tr>
-<td>query-range.align-range-with-step</td>
-<td>&quot;&quot;</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>query-range.max-query-length</td>
-<td>0</td>
-<td>限制查询的时间最大区间范围，设置0为禁用</td>
-</tr>
-<tr>
-<td>query-range.max-query-parallelism</td>
-<td>14</td>
-<td>TODO; 前端将并行计划最大查询范围请求数</td>
-</tr>
-<tr>
-<td>query-range.max-retries-per-request</td>
-<td>5</td>
-<td>TODO; 单个查询范围请求的最大重试次数；除此之外，将返回下游错误</td>
-</tr>
-<tr>
-<td>query-range.partial-response</td>
-<td>&quot;&quot;</td>
-<td>如果未指定partial_response参数，则为查询范围请求启用部分响应</td>
-</tr>
-<tr>
-<td>query-range.request-downsampled</td>
-<td>&quot;&quot;</td>
-<td>在对范围请求的响应为空或不完整的情况下，对下采样数据进行额外查询</td>
-</tr>
-<tr>
-<td>query-range.response-cache-config</td>
-<td>&quot;&quot;</td>
-<td>功能同 <code>query-range.response-cache-config-file</code></td>
-</tr>
-<tr>
-<td>query-range.response-cache-config-file</td>
-<td>&quot;&quot;</td>
-<td>响应缓存的配置文件</td>
-</tr>
-<tr>
-<td>query-range.response-cache-max-freshness</td>
-<td>1m</td>
-<td>最近允许查询范围请求的可缓存结果，以防止缓存可能仍在变化中的最近结果</td>
-</tr>
-<tr>
-<td>query-range.split-interval</td>
-<td>24h</td>
-<td>按间隔拆分查询范围请求并并行执行，如果<code>query-range.response-cache-config</code>配置了，则必须开启</td>
-</tr>
-<tr>
-<td>request.logging-config</td>
-<td>&quot;&quot;</td>
-<td>功能同 <code>request.logging-config-file</code></td>
-</tr>
-<tr>
-<td>request.logging-config-file</td>
-<td>&quot;&quot;</td>
-<td>TODO；</td>
-</tr>
-<tr>
-<td>tracing.config</td>
-<td>&quot;&quot;</td>
-<td>功能同 <code>tracing.config-file</code></td>
-</tr>
-<tr>
-<td>tracing.config-file</td>
-<td>&quot;&quot;</td>
-<td>链路跟踪配置文件</td>
-</tr>
-<tr>
-<td>web.disable-cors</td>
-<td>&quot;&quot;</td>
-<td>是否禁用跨域，默认允许所有</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>默认值</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>cache-compression-type</td>
+          <td>&quot;&quot;</td>
+          <td>对结果集的压缩，支持 &lsquo;snappy&rsquo;</td>
+      </tr>
+      <tr>
+          <td>http-address</td>
+          <td>0.0.0.0:10902</td>
+          <td>监听 HTTP 服务地址</td>
+      </tr>
+      <tr>
+          <td>http-grace-period</td>
+          <td>2m</td>
+          <td>HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现</td>
+      </tr>
+      <tr>
+          <td>http.config</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>labels.default-time-range</td>
+          <td>24h</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>labels.max-query-parallelism</td>
+          <td>14</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>labels.max-retries-per-request</td>
+          <td>5</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>labels.partial-response</td>
+          <td>&quot;&quot;</td>
+          <td>如果未指定partial_response参数，则为标签请求启用部分响应</td>
+      </tr>
+      <tr>
+          <td>labels.response-cache-config</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 <code>labels.response-cache-config-file</code></td>
+      </tr>
+      <tr>
+          <td>labels.response-cache-config-file</td>
+          <td>&quot;&quot;</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>labels.response-cache-max-freshness</td>
+          <td>1m</td>
+          <td>最近允许标签请求的可缓存结果，以防止缓存可能仍在变化中的最近结果</td>
+      </tr>
+      <tr>
+          <td>labels.split-interval</td>
+          <td>24h</td>
+          <td>按间隔拆分标签请求并并行执行，标签时应大于0。配置了响应缓存配置</td>
+      </tr>
+      <tr>
+          <td>log.format</td>
+          <td>logfmt</td>
+          <td>日志格式，可取值：logfmt、json</td>
+      </tr>
+      <tr>
+          <td>log.level</td>
+          <td>info</td>
+          <td>日志级别</td>
+      </tr>
+      <tr>
+          <td>log.request.decision</td>
+          <td>&quot;&quot;</td>
+          <td>已被废弃</td>
+      </tr>
+      <tr>
+          <td>query-frontend.compress-responses</td>
+          <td>&quot;&quot;</td>
+          <td>压缩HTTP响应</td>
+      </tr>
+      <tr>
+          <td>query-frontend.downstream-tripper-config</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 <code>query-frontend.downstream-tripper-config-file</code></td>
+      </tr>
+      <tr>
+          <td>query-frontend.downstream-tripper-config-file</td>
+          <td>TODO；包含downstream tripper的配置，如果是 ‘127.0.0.1’ 则建议 max_idle_conns_per_host 至少配置为100</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>query-frontend.downstream-url</td>
+          <td>&ldquo;http://localhost:9090&rdquo;</td>
+          <td>转发至下游兼容 prometheus query api 地址</td>
+      </tr>
+      <tr>
+          <td>query-frontend.forward-header</td>
+          <td>&quot;&quot;</td>
+          <td>转发至下游的http请求头</td>
+      </tr>
+      <tr>
+          <td>query-frontend.log-queries-longer-than</td>
+          <td>0</td>
+          <td>记录超过配置时间的慢查询，设置0为关闭，设置小于0则开启所有</td>
+      </tr>
+      <tr>
+          <td>query-frontend.org-id-header</td>
+          <td>&quot;&quot;</td>
+          <td>用于标识慢速查询源的请求头名称，将会植入至慢日志&rsquo;org_id&rsquo;字段中，如为配置默认植入的值为&rsquo;anonymous'</td>
+      </tr>
+      <tr>
+          <td>query-range.align-range-with-step</td>
+          <td>&quot;&quot;</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>query-range.max-query-length</td>
+          <td>0</td>
+          <td>限制查询的时间最大区间范围，设置0为禁用</td>
+      </tr>
+      <tr>
+          <td>query-range.max-query-parallelism</td>
+          <td>14</td>
+          <td>TODO; 前端将并行计划最大查询范围请求数</td>
+      </tr>
+      <tr>
+          <td>query-range.max-retries-per-request</td>
+          <td>5</td>
+          <td>TODO; 单个查询范围请求的最大重试次数；除此之外，将返回下游错误</td>
+      </tr>
+      <tr>
+          <td>query-range.partial-response</td>
+          <td>&quot;&quot;</td>
+          <td>如果未指定partial_response参数，则为查询范围请求启用部分响应</td>
+      </tr>
+      <tr>
+          <td>query-range.request-downsampled</td>
+          <td>&quot;&quot;</td>
+          <td>在对范围请求的响应为空或不完整的情况下，对下采样数据进行额外查询</td>
+      </tr>
+      <tr>
+          <td>query-range.response-cache-config</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 <code>query-range.response-cache-config-file</code></td>
+      </tr>
+      <tr>
+          <td>query-range.response-cache-config-file</td>
+          <td>&quot;&quot;</td>
+          <td>响应缓存的配置文件</td>
+      </tr>
+      <tr>
+          <td>query-range.response-cache-max-freshness</td>
+          <td>1m</td>
+          <td>最近允许查询范围请求的可缓存结果，以防止缓存可能仍在变化中的最近结果</td>
+      </tr>
+      <tr>
+          <td>query-range.split-interval</td>
+          <td>24h</td>
+          <td>按间隔拆分查询范围请求并并行执行，如果<code>query-range.response-cache-config</code>配置了，则必须开启</td>
+      </tr>
+      <tr>
+          <td>request.logging-config</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 <code>request.logging-config-file</code></td>
+      </tr>
+      <tr>
+          <td>request.logging-config-file</td>
+          <td>&quot;&quot;</td>
+          <td>TODO；</td>
+      </tr>
+      <tr>
+          <td>tracing.config</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 <code>tracing.config-file</code></td>
+      </tr>
+      <tr>
+          <td>tracing.config-file</td>
+          <td>&quot;&quot;</td>
+          <td>链路跟踪配置文件</td>
+      </tr>
+      <tr>
+          <td>web.disable-cors</td>
+          <td>&quot;&quot;</td>
+          <td>是否禁用跨域，默认允许所有</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="功能特性">功能特性</h2>
 <h3 id="查询分割">查询分割</h3>
@@ -4595,7 +4877,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

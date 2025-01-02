@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -23,66 +23,69 @@
 属于组：&ldquo;discovery.k8s.io&rdquo;
 {Group: discoveryv1.GroupName, Kind: &#34;EndpointSlice&#34;}
 代码路径： …">
-<meta property="og:title" content="EndpointSlice" />
-<meta property="og:description" content="简要概述 属于组：&ldquo;discovery.k8s.io&rdquo;
+<meta property="og:url" content="/docs/concepts/network/endpoint-slice/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="EndpointSlice">
+  <meta property="og:description" content="简要概述 属于组：“discovery.k8s.io”
 {Group: discoveryv1.GroupName, Kind: &#34;EndpointSlice&#34;} 代码路径：
 staging/src/k8s.io/api/discovery/v1/types.go 当一个 POD 发生重启时，如果是 Endpoint 资源，它在 etcd 中的结构是一整块数据，则需全量更新，如果是 EndpointSlice 资源，则仅更新其中一小块，因为它在 etcd 中是分成几块内容。
-配置示例 apiVersion: discovery.k8s.io/v1 kind: EndpointSlice metadata: labels: kubernetes.io/service-name: tidb-proxy name: tidb-proxy-ljzbz namespace: default ownerReferences: addressType: IPv4 endpoints: - addresses: - 192.168.31.201 conditions: ready: true - addresses: - 192.168.31.202 conditions: ready: true - addresses: - 192.168.31.203 conditions: ready: true ports: - name: &#34;&#34; port: 6443 protocol: TCP 数据结构 EndpointSlice staging/src/k8s.io/api/discovery/v1/types.go // EndpointSlice represents a subset of the endpoints that implement a service." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/concepts/network/endpoint-slice/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-02-01T22:35:51+08:00" />
-<meta property="article:modified_time" content="2023-02-01T23:22:56+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="EndpointSlice">
-<meta itemprop="description" content="简要概述 属于组：&ldquo;discovery.k8s.io&rdquo;
+配置示例 apiVersion: discovery.k8s.io/v1 kind: EndpointSlice metadata: labels: kubernetes.io/service-name: tidb-proxy name: tidb-proxy-ljzbz namespace: default ownerReferences: addressType: IPv4 endpoints: - addresses: - 192.168.31.201 conditions: ready: true - addresses: - 192.168.31.202 conditions: ready: true - addresses: - 192.168.31.203 conditions: ready: true ports: - name: &#34;&#34; port: 6443 protocol: TCP 数据结构 EndpointSlice staging/src/k8s.io/api/discovery/v1/types.go // EndpointSlice represents a subset of the endpoints that implement a service. // For a given service there may be multiple EndpointSlice objects, selected by // labels, which must be joined to produce the full set of endpoints. type EndpointSlice struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Standard object&#39;s metadata. // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // addressType specifies the type of address carried by this EndpointSlice. // All addresses in this slice must be the same type. This field is // immutable after creation. The following address types are currently // supported: // * IPv4: Represents an IPv4 Address. // * IPv6: Represents an IPv6 Address. // * FQDN: Represents a Fully Qualified Domain Name. AddressType AddressType `json:&#34;addressType&#34; protobuf:&#34;bytes,4,rep,name=addressType&#34;` // endpoints is a list of unique endpoints in this slice. Each slice may // include a maximum of 1000 endpoints. // &#43;listType=atomic Endpoints []Endpoint `json:&#34;endpoints&#34; protobuf:&#34;bytes,2,rep,name=endpoints&#34;` // ports specifies the list of network ports exposed by each endpoint in // this slice. Each port must have a unique name. When ports is empty, it // indicates that there are no defined ports. When a port is defined with a // nil port value, it indicates &#34;all ports&#34;. Each slice may include a // maximum of 100 ports. // &#43;optional // &#43;listType=atomic Ports []EndpointPort `json:&#34;ports&#34; protobuf:&#34;bytes,3,rep,name=ports&#34;` } AddressType // AddressType represents the type of address referred to by an endpoint. type AddressType string const ( // AddressTypeIPv4 represents an IPv4 Address. AddressTypeIPv4 = AddressType(v1.IPv4Protocol) // AddressTypeIPv6 represents an IPv6 Address. AddressTypeIPv6 = AddressType(v1.IPv6Protocol) // AddressTypeFQDN represents a FQDN. AddressTypeFQDN = AddressType(&#34;FQDN&#34;) ) Endpoint // Endpoint represents a single logical &#34;backend&#34; implementing a service. type Endpoint struct { // addresses of this endpoint. The contents of this field are interpreted // according to the corresponding EndpointSlice addressType field. Consumers // must handle different types of addresses in the context of their own // capabilities. This must contain at least one address but no more than // 100. // &#43;listType=set Addresses []string `json:&#34;addresses&#34; protobuf:&#34;bytes,1,rep,name=addresses&#34;` // conditions contains information about the current status of the endpoint. Conditions EndpointConditions `json:&#34;conditions,omitempty&#34; protobuf:&#34;bytes,2,opt,name=conditions&#34;` // hostname of this endpoint. This field may be used by consumers of // endpoints to distinguish endpoints from each other (e.g. in DNS names). // Multiple endpoints which use the same hostname should be considered // fungible (e.g. multiple A values in DNS). Must be lowercase and pass DNS // Label (RFC 1123) validation. // &#43;optional Hostname *string `json:&#34;hostname,omitempty&#34; protobuf:&#34;bytes,3,opt,name=hostname&#34;` // targetRef is a reference to a Kubernetes object that represents this // endpoint. // &#43;optional TargetRef *v1.ObjectReference `json:&#34;targetRef,omitempty&#34; protobuf:&#34;bytes,4,opt,name=targetRef&#34;` // deprecatedTopology contains topology information part of the v1beta1 // API. This field is deprecated, and will be removed when the v1beta1 // API is removed (no sooner than kubernetes v1.24). While this field can // hold values, it is not writable through the v1 API, and any attempts to // write to it will be silently ignored. Topology information can be found // in the zone and nodeName fields instead. // &#43;optional DeprecatedTopology map[string]string `json:&#34;deprecatedTopology,omitempty&#34; protobuf:&#34;bytes,5,opt,name=deprecatedTopology&#34;` // nodeName represents the name of the Node hosting this endpoint. This can // be used to determine endpoints local to a Node. This field can be enabled // with the EndpointSliceNodeName feature gate. // &#43;optional NodeName *string `json:&#34;nodeName,omitempty&#34; protobuf:&#34;bytes,6,opt,name=nodeName&#34;` // zone is the name of the Zone this endpoint exists in. // &#43;optional Zone *string `json:&#34;zone,omitempty&#34; protobuf:&#34;bytes,7,opt,name=zone&#34;` // hints contains information associated with how an endpoint should be // consumed. // &#43;optional Hints *EndpointHints `json:&#34;hints,omitempty&#34; protobuf:&#34;bytes,8,opt,name=hints&#34;` } EndpointConditions // EndpointConditions represents the current condition of an endpoint. type EndpointConditions struct { // ready indicates that this endpoint is prepared to receive traffic, // according to whatever system is managing the endpoint. A nil value // indicates an unknown state. In most cases consumers should interpret this // unknown state as ready. For compatibility reasons, ready should never be // &#34;true&#34; for terminating endpoints. // &#43;optional Ready *bool `json:&#34;ready,omitempty&#34; protobuf:&#34;bytes,1,name=ready&#34;` // serving is identical to ready except that it is set regardless of the // terminating state of endpoints. This condition should be set to true for // a ready endpoint that is terminating. If nil, consumers should defer to // the ready condition. This field can be enabled with the // EndpointSliceTerminatingCondition feature gate. // &#43;optional Serving *bool `json:&#34;serving,omitempty&#34; protobuf:&#34;bytes,2,name=serving&#34;` // terminating indicates that this endpoint is terminating. A nil value // indicates an unknown state. Consumers should interpret this unknown state // to mean that the endpoint is not terminating. This field can be enabled // with the EndpointSliceTerminatingCondition feature gate. // &#43;optional Terminating *bool `json:&#34;terminating,omitempty&#34; protobuf:&#34;bytes,3,name=terminating&#34;` } EndpointPort 由 EndpointSlice.Endpoint 数据结构，区别">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-02-01T22:35:51+08:00">
+    <meta property="article:modified_time" content="2023-02-01T23:22:56+08:00">
+
+  <meta itemprop="name" content="EndpointSlice">
+  <meta itemprop="description" content="简要概述 属于组：“discovery.k8s.io”
 {Group: discoveryv1.GroupName, Kind: &#34;EndpointSlice&#34;} 代码路径：
 staging/src/k8s.io/api/discovery/v1/types.go 当一个 POD 发生重启时，如果是 Endpoint 资源，它在 etcd 中的结构是一整块数据，则需全量更新，如果是 EndpointSlice 资源，则仅更新其中一小块，因为它在 etcd 中是分成几块内容。
-配置示例 apiVersion: discovery.k8s.io/v1 kind: EndpointSlice metadata: labels: kubernetes.io/service-name: tidb-proxy name: tidb-proxy-ljzbz namespace: default ownerReferences: addressType: IPv4 endpoints: - addresses: - 192.168.31.201 conditions: ready: true - addresses: - 192.168.31.202 conditions: ready: true - addresses: - 192.168.31.203 conditions: ready: true ports: - name: &#34;&#34; port: 6443 protocol: TCP 数据结构 EndpointSlice staging/src/k8s.io/api/discovery/v1/types.go // EndpointSlice represents a subset of the endpoints that implement a service."><meta itemprop="datePublished" content="2023-02-01T22:35:51+08:00" />
-<meta itemprop="dateModified" content="2023-02-01T23:22:56+08:00" />
-<meta itemprop="wordCount" content="1111">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="EndpointSlice"/>
-<meta name="twitter:description" content="简要概述 属于组：&ldquo;discovery.k8s.io&rdquo;
+配置示例 apiVersion: discovery.k8s.io/v1 kind: EndpointSlice metadata: labels: kubernetes.io/service-name: tidb-proxy name: tidb-proxy-ljzbz namespace: default ownerReferences: addressType: IPv4 endpoints: - addresses: - 192.168.31.201 conditions: ready: true - addresses: - 192.168.31.202 conditions: ready: true - addresses: - 192.168.31.203 conditions: ready: true ports: - name: &#34;&#34; port: 6443 protocol: TCP 数据结构 EndpointSlice staging/src/k8s.io/api/discovery/v1/types.go // EndpointSlice represents a subset of the endpoints that implement a service. // For a given service there may be multiple EndpointSlice objects, selected by // labels, which must be joined to produce the full set of endpoints. type EndpointSlice struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Standard object&#39;s metadata. // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // addressType specifies the type of address carried by this EndpointSlice. // All addresses in this slice must be the same type. This field is // immutable after creation. The following address types are currently // supported: // * IPv4: Represents an IPv4 Address. // * IPv6: Represents an IPv6 Address. // * FQDN: Represents a Fully Qualified Domain Name. AddressType AddressType `json:&#34;addressType&#34; protobuf:&#34;bytes,4,rep,name=addressType&#34;` // endpoints is a list of unique endpoints in this slice. Each slice may // include a maximum of 1000 endpoints. // &#43;listType=atomic Endpoints []Endpoint `json:&#34;endpoints&#34; protobuf:&#34;bytes,2,rep,name=endpoints&#34;` // ports specifies the list of network ports exposed by each endpoint in // this slice. Each port must have a unique name. When ports is empty, it // indicates that there are no defined ports. When a port is defined with a // nil port value, it indicates &#34;all ports&#34;. Each slice may include a // maximum of 100 ports. // &#43;optional // &#43;listType=atomic Ports []EndpointPort `json:&#34;ports&#34; protobuf:&#34;bytes,3,rep,name=ports&#34;` } AddressType // AddressType represents the type of address referred to by an endpoint. type AddressType string const ( // AddressTypeIPv4 represents an IPv4 Address. AddressTypeIPv4 = AddressType(v1.IPv4Protocol) // AddressTypeIPv6 represents an IPv6 Address. AddressTypeIPv6 = AddressType(v1.IPv6Protocol) // AddressTypeFQDN represents a FQDN. AddressTypeFQDN = AddressType(&#34;FQDN&#34;) ) Endpoint // Endpoint represents a single logical &#34;backend&#34; implementing a service. type Endpoint struct { // addresses of this endpoint. The contents of this field are interpreted // according to the corresponding EndpointSlice addressType field. Consumers // must handle different types of addresses in the context of their own // capabilities. This must contain at least one address but no more than // 100. // &#43;listType=set Addresses []string `json:&#34;addresses&#34; protobuf:&#34;bytes,1,rep,name=addresses&#34;` // conditions contains information about the current status of the endpoint. Conditions EndpointConditions `json:&#34;conditions,omitempty&#34; protobuf:&#34;bytes,2,opt,name=conditions&#34;` // hostname of this endpoint. This field may be used by consumers of // endpoints to distinguish endpoints from each other (e.g. in DNS names). // Multiple endpoints which use the same hostname should be considered // fungible (e.g. multiple A values in DNS). Must be lowercase and pass DNS // Label (RFC 1123) validation. // &#43;optional Hostname *string `json:&#34;hostname,omitempty&#34; protobuf:&#34;bytes,3,opt,name=hostname&#34;` // targetRef is a reference to a Kubernetes object that represents this // endpoint. // &#43;optional TargetRef *v1.ObjectReference `json:&#34;targetRef,omitempty&#34; protobuf:&#34;bytes,4,opt,name=targetRef&#34;` // deprecatedTopology contains topology information part of the v1beta1 // API. This field is deprecated, and will be removed when the v1beta1 // API is removed (no sooner than kubernetes v1.24). While this field can // hold values, it is not writable through the v1 API, and any attempts to // write to it will be silently ignored. Topology information can be found // in the zone and nodeName fields instead. // &#43;optional DeprecatedTopology map[string]string `json:&#34;deprecatedTopology,omitempty&#34; protobuf:&#34;bytes,5,opt,name=deprecatedTopology&#34;` // nodeName represents the name of the Node hosting this endpoint. This can // be used to determine endpoints local to a Node. This field can be enabled // with the EndpointSliceNodeName feature gate. // &#43;optional NodeName *string `json:&#34;nodeName,omitempty&#34; protobuf:&#34;bytes,6,opt,name=nodeName&#34;` // zone is the name of the Zone this endpoint exists in. // &#43;optional Zone *string `json:&#34;zone,omitempty&#34; protobuf:&#34;bytes,7,opt,name=zone&#34;` // hints contains information associated with how an endpoint should be // consumed. // &#43;optional Hints *EndpointHints `json:&#34;hints,omitempty&#34; protobuf:&#34;bytes,8,opt,name=hints&#34;` } EndpointConditions // EndpointConditions represents the current condition of an endpoint. type EndpointConditions struct { // ready indicates that this endpoint is prepared to receive traffic, // according to whatever system is managing the endpoint. A nil value // indicates an unknown state. In most cases consumers should interpret this // unknown state as ready. For compatibility reasons, ready should never be // &#34;true&#34; for terminating endpoints. // &#43;optional Ready *bool `json:&#34;ready,omitempty&#34; protobuf:&#34;bytes,1,name=ready&#34;` // serving is identical to ready except that it is set regardless of the // terminating state of endpoints. This condition should be set to true for // a ready endpoint that is terminating. If nil, consumers should defer to // the ready condition. This field can be enabled with the // EndpointSliceTerminatingCondition feature gate. // &#43;optional Serving *bool `json:&#34;serving,omitempty&#34; protobuf:&#34;bytes,2,name=serving&#34;` // terminating indicates that this endpoint is terminating. A nil value // indicates an unknown state. Consumers should interpret this unknown state // to mean that the endpoint is not terminating. This field can be enabled // with the EndpointSliceTerminatingCondition feature gate. // &#43;optional Terminating *bool `json:&#34;terminating,omitempty&#34; protobuf:&#34;bytes,3,name=terminating&#34;` } EndpointPort 由 EndpointSlice.Endpoint 数据结构，区别">
+  <meta itemprop="datePublished" content="2023-02-01T22:35:51+08:00">
+  <meta itemprop="dateModified" content="2023-02-01T23:22:56+08:00">
+  <meta itemprop="wordCount" content="1111">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="EndpointSlice">
+  <meta name="twitter:description" content="简要概述 属于组：“discovery.k8s.io”
 {Group: discoveryv1.GroupName, Kind: &#34;EndpointSlice&#34;} 代码路径：
 staging/src/k8s.io/api/discovery/v1/types.go 当一个 POD 发生重启时，如果是 Endpoint 资源，它在 etcd 中的结构是一整块数据，则需全量更新，如果是 EndpointSlice 资源，则仅更新其中一小块，因为它在 etcd 中是分成几块内容。
-配置示例 apiVersion: discovery.k8s.io/v1 kind: EndpointSlice metadata: labels: kubernetes.io/service-name: tidb-proxy name: tidb-proxy-ljzbz namespace: default ownerReferences: addressType: IPv4 endpoints: - addresses: - 192.168.31.201 conditions: ready: true - addresses: - 192.168.31.202 conditions: ready: true - addresses: - 192.168.31.203 conditions: ready: true ports: - name: &#34;&#34; port: 6443 protocol: TCP 数据结构 EndpointSlice staging/src/k8s.io/api/discovery/v1/types.go // EndpointSlice represents a subset of the endpoints that implement a service."/>
+配置示例 apiVersion: discovery.k8s.io/v1 kind: EndpointSlice metadata: labels: kubernetes.io/service-name: tidb-proxy name: tidb-proxy-ljzbz namespace: default ownerReferences: addressType: IPv4 endpoints: - addresses: - 192.168.31.201 conditions: ready: true - addresses: - 192.168.31.202 conditions: ready: true - addresses: - 192.168.31.203 conditions: ready: true ports: - name: &#34;&#34; port: 6443 protocol: TCP 数据结构 EndpointSlice staging/src/k8s.io/api/discovery/v1/types.go // EndpointSlice represents a subset of the endpoints that implement a service. // For a given service there may be multiple EndpointSlice objects, selected by // labels, which must be joined to produce the full set of endpoints. type EndpointSlice struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Standard object&#39;s metadata. // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // addressType specifies the type of address carried by this EndpointSlice. // All addresses in this slice must be the same type. This field is // immutable after creation. The following address types are currently // supported: // * IPv4: Represents an IPv4 Address. // * IPv6: Represents an IPv6 Address. // * FQDN: Represents a Fully Qualified Domain Name. AddressType AddressType `json:&#34;addressType&#34; protobuf:&#34;bytes,4,rep,name=addressType&#34;` // endpoints is a list of unique endpoints in this slice. Each slice may // include a maximum of 1000 endpoints. // &#43;listType=atomic Endpoints []Endpoint `json:&#34;endpoints&#34; protobuf:&#34;bytes,2,rep,name=endpoints&#34;` // ports specifies the list of network ports exposed by each endpoint in // this slice. Each port must have a unique name. When ports is empty, it // indicates that there are no defined ports. When a port is defined with a // nil port value, it indicates &#34;all ports&#34;. Each slice may include a // maximum of 100 ports. // &#43;optional // &#43;listType=atomic Ports []EndpointPort `json:&#34;ports&#34; protobuf:&#34;bytes,3,rep,name=ports&#34;` } AddressType // AddressType represents the type of address referred to by an endpoint. type AddressType string const ( // AddressTypeIPv4 represents an IPv4 Address. AddressTypeIPv4 = AddressType(v1.IPv4Protocol) // AddressTypeIPv6 represents an IPv6 Address. AddressTypeIPv6 = AddressType(v1.IPv6Protocol) // AddressTypeFQDN represents a FQDN. AddressTypeFQDN = AddressType(&#34;FQDN&#34;) ) Endpoint // Endpoint represents a single logical &#34;backend&#34; implementing a service. type Endpoint struct { // addresses of this endpoint. The contents of this field are interpreted // according to the corresponding EndpointSlice addressType field. Consumers // must handle different types of addresses in the context of their own // capabilities. This must contain at least one address but no more than // 100. // &#43;listType=set Addresses []string `json:&#34;addresses&#34; protobuf:&#34;bytes,1,rep,name=addresses&#34;` // conditions contains information about the current status of the endpoint. Conditions EndpointConditions `json:&#34;conditions,omitempty&#34; protobuf:&#34;bytes,2,opt,name=conditions&#34;` // hostname of this endpoint. This field may be used by consumers of // endpoints to distinguish endpoints from each other (e.g. in DNS names). // Multiple endpoints which use the same hostname should be considered // fungible (e.g. multiple A values in DNS). Must be lowercase and pass DNS // Label (RFC 1123) validation. // &#43;optional Hostname *string `json:&#34;hostname,omitempty&#34; protobuf:&#34;bytes,3,opt,name=hostname&#34;` // targetRef is a reference to a Kubernetes object that represents this // endpoint. // &#43;optional TargetRef *v1.ObjectReference `json:&#34;targetRef,omitempty&#34; protobuf:&#34;bytes,4,opt,name=targetRef&#34;` // deprecatedTopology contains topology information part of the v1beta1 // API. This field is deprecated, and will be removed when the v1beta1 // API is removed (no sooner than kubernetes v1.24). While this field can // hold values, it is not writable through the v1 API, and any attempts to // write to it will be silently ignored. Topology information can be found // in the zone and nodeName fields instead. // &#43;optional DeprecatedTopology map[string]string `json:&#34;deprecatedTopology,omitempty&#34; protobuf:&#34;bytes,5,opt,name=deprecatedTopology&#34;` // nodeName represents the name of the Node hosting this endpoint. This can // be used to determine endpoints local to a Node. This field can be enabled // with the EndpointSliceNodeName feature gate. // &#43;optional NodeName *string `json:&#34;nodeName,omitempty&#34; protobuf:&#34;bytes,6,opt,name=nodeName&#34;` // zone is the name of the Zone this endpoint exists in. // &#43;optional Zone *string `json:&#34;zone,omitempty&#34; protobuf:&#34;bytes,7,opt,name=zone&#34;` // hints contains information associated with how an endpoint should be // consumed. // &#43;optional Hints *EndpointHints `json:&#34;hints,omitempty&#34; protobuf:&#34;bytes,8,opt,name=hints&#34;` } EndpointConditions // EndpointConditions represents the current condition of an endpoint. type EndpointConditions struct { // ready indicates that this endpoint is prepared to receive traffic, // according to whatever system is managing the endpoint. A nil value // indicates an unknown state. In most cases consumers should interpret this // unknown state as ready. For compatibility reasons, ready should never be // &#34;true&#34; for terminating endpoints. // &#43;optional Ready *bool `json:&#34;ready,omitempty&#34; protobuf:&#34;bytes,1,name=ready&#34;` // serving is identical to ready except that it is set regardless of the // terminating state of endpoints. This condition should be set to true for // a ready endpoint that is terminating. If nil, consumers should defer to // the ready condition. This field can be enabled with the // EndpointSliceTerminatingCondition feature gate. // &#43;optional Serving *bool `json:&#34;serving,omitempty&#34; protobuf:&#34;bytes,2,name=serving&#34;` // terminating indicates that this endpoint is terminating. A nil value // indicates an unknown state. Consumers should interpret this unknown state // to mean that the endpoint is not terminating. This field can be enabled // with the EndpointSliceTerminatingCondition feature gate. // &#43;optional Terminating *bool `json:&#34;terminating,omitempty&#34; protobuf:&#34;bytes,3,name=terminating&#34;` } EndpointPort 由 EndpointSlice.Endpoint 数据结构，区别">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1045,6 +1048,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3078,9 +3098,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3094,10 +3114,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3157,6 +3380,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4581,7 +4863,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

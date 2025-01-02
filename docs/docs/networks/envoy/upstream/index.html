@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -25,72 +25,75 @@
 
 静态配置
 集群 …">
-<meta property="og:title" content="上游集群" />
-<meta property="og:description" content="简要概述 管理上游集群的配置，可以包含任意数量独立配置的上游集群，集群管理器处理了哪些主机可用和健康、负载平衡、线程本地存储上游连接数据、上游连接类型（TCP/IP、UDP）、上游协议在适用的情况下（HTTP/1.1、HTTP/2、HTTP/3）等所有复杂性。
+<meta property="og:url" content="/docs/networks/envoy/upstream/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="上游集群">
+  <meta property="og:description" content="简要概述 管理上游集群的配置，可以包含任意数量独立配置的上游集群，集群管理器处理了哪些主机可用和健康、负载平衡、线程本地存储上游连接数据、上游连接类型（TCP/IP、UDP）、上游协议在适用的情况下（HTTP/1.1、HTTP/2、HTTP/3）等所有复杂性。
 集群管理配置可支持：
 静态配置 集群发现服务（CDS）API 集群配置 静态配置 static_resources: listeners: - name: listener_0 ...... clusters: - name: oneops-syncds-v1 type: LOGICAL_DNS dns_lookup_family: V4_ONLY load_assignment: cluster_name: oneops-syncds-v1 endpoints: - lb_endpoints: - endpoint: address: socket_address: address: 192.168.0.1 port_value: 8080 服务发现 在配置中定义上游集群时，Envoy需要知道如何解析集群的成员。这被称为服务发现。
 在 envoy 上最佳案例是使用最终一致的服务发现以及主动健康检查（Envoy 显式地对上游集群成员进行健康检查）来确定集群健康，而不是类似其他Zookeeper、etcd、Consul 等做一致性协调。
 STATIC 静态是最简单的服务发现类型。配置明确指定了每个上游主机的解析网络名称（IP地址/端口、Unix域套接字等）。
-clusters: - name: oneops-syncds-v1 type: STATIC dns_lookup_family: V4_ONLY load_assignment: cluster_name: oneops-syncds-v1 endpoints: - lb_endpoints: - endpoint: address: socket_address: address: 192.168.0.1 port_value: 8080 STRICT_DNS clusters: - name: oneops-syncds-v1 type: STRICT_DNS dns_lookup_family: V4_ONLY load_assignment: cluster_name: oneops-syncds-v1 endpoints: - lb_endpoints: - endpoint: address: socket_address: address: example." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/networks/envoy/upstream/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2024-01-25T21:55:29+08:00" />
-<meta property="article:modified_time" content="2024-02-06T17:29:59+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="上游集群">
-<meta itemprop="description" content="简要概述 管理上游集群的配置，可以包含任意数量独立配置的上游集群，集群管理器处理了哪些主机可用和健康、负载平衡、线程本地存储上游连接数据、上游连接类型（TCP/IP、UDP）、上游协议在适用的情况下（HTTP/1.1、HTTP/2、HTTP/3）等所有复杂性。
+clusters: - name: oneops-syncds-v1 type: STATIC dns_lookup_family: V4_ONLY load_assignment: cluster_name: oneops-syncds-v1 endpoints: - lb_endpoints: - endpoint: address: socket_address: address: 192.168.0.1 port_value: 8080 STRICT_DNS clusters: - name: oneops-syncds-v1 type: STRICT_DNS dns_lookup_family: V4_ONLY load_assignment: cluster_name: oneops-syncds-v1 endpoints: - lb_endpoints: - endpoint: address: socket_address: address: example.com port_value: 80 注意需配合主机头，否则会出现 403 错误等。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-01-25T21:55:29+08:00">
+    <meta property="article:modified_time" content="2024-02-06T17:29:59+08:00">
+
+  <meta itemprop="name" content="上游集群">
+  <meta itemprop="description" content="简要概述 管理上游集群的配置，可以包含任意数量独立配置的上游集群，集群管理器处理了哪些主机可用和健康、负载平衡、线程本地存储上游连接数据、上游连接类型（TCP/IP、UDP）、上游协议在适用的情况下（HTTP/1.1、HTTP/2、HTTP/3）等所有复杂性。
 集群管理配置可支持：
 静态配置 集群发现服务（CDS）API 集群配置 静态配置 static_resources: listeners: - name: listener_0 ...... clusters: - name: oneops-syncds-v1 type: LOGICAL_DNS dns_lookup_family: V4_ONLY load_assignment: cluster_name: oneops-syncds-v1 endpoints: - lb_endpoints: - endpoint: address: socket_address: address: 192.168.0.1 port_value: 8080 服务发现 在配置中定义上游集群时，Envoy需要知道如何解析集群的成员。这被称为服务发现。
 在 envoy 上最佳案例是使用最终一致的服务发现以及主动健康检查（Envoy 显式地对上游集群成员进行健康检查）来确定集群健康，而不是类似其他Zookeeper、etcd、Consul 等做一致性协调。
 STATIC 静态是最简单的服务发现类型。配置明确指定了每个上游主机的解析网络名称（IP地址/端口、Unix域套接字等）。
-clusters: - name: oneops-syncds-v1 type: STATIC dns_lookup_family: V4_ONLY load_assignment: cluster_name: oneops-syncds-v1 endpoints: - lb_endpoints: - endpoint: address: socket_address: address: 192.168.0.1 port_value: 8080 STRICT_DNS clusters: - name: oneops-syncds-v1 type: STRICT_DNS dns_lookup_family: V4_ONLY load_assignment: cluster_name: oneops-syncds-v1 endpoints: - lb_endpoints: - endpoint: address: socket_address: address: example."><meta itemprop="datePublished" content="2024-01-25T21:55:29+08:00" />
-<meta itemprop="dateModified" content="2024-02-06T17:29:59+08:00" />
-<meta itemprop="wordCount" content="820">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="上游集群"/>
-<meta name="twitter:description" content="简要概述 管理上游集群的配置，可以包含任意数量独立配置的上游集群，集群管理器处理了哪些主机可用和健康、负载平衡、线程本地存储上游连接数据、上游连接类型（TCP/IP、UDP）、上游协议在适用的情况下（HTTP/1.1、HTTP/2、HTTP/3）等所有复杂性。
+clusters: - name: oneops-syncds-v1 type: STATIC dns_lookup_family: V4_ONLY load_assignment: cluster_name: oneops-syncds-v1 endpoints: - lb_endpoints: - endpoint: address: socket_address: address: 192.168.0.1 port_value: 8080 STRICT_DNS clusters: - name: oneops-syncds-v1 type: STRICT_DNS dns_lookup_family: V4_ONLY load_assignment: cluster_name: oneops-syncds-v1 endpoints: - lb_endpoints: - endpoint: address: socket_address: address: example.com port_value: 80 注意需配合主机头，否则会出现 403 错误等。">
+  <meta itemprop="datePublished" content="2024-01-25T21:55:29+08:00">
+  <meta itemprop="dateModified" content="2024-02-06T17:29:59+08:00">
+  <meta itemprop="wordCount" content="820">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="上游集群">
+  <meta name="twitter:description" content="简要概述 管理上游集群的配置，可以包含任意数量独立配置的上游集群，集群管理器处理了哪些主机可用和健康、负载平衡、线程本地存储上游连接数据、上游连接类型（TCP/IP、UDP）、上游协议在适用的情况下（HTTP/1.1、HTTP/2、HTTP/3）等所有复杂性。
 集群管理配置可支持：
 静态配置 集群发现服务（CDS）API 集群配置 静态配置 static_resources: listeners: - name: listener_0 ...... clusters: - name: oneops-syncds-v1 type: LOGICAL_DNS dns_lookup_family: V4_ONLY load_assignment: cluster_name: oneops-syncds-v1 endpoints: - lb_endpoints: - endpoint: address: socket_address: address: 192.168.0.1 port_value: 8080 服务发现 在配置中定义上游集群时，Envoy需要知道如何解析集群的成员。这被称为服务发现。
 在 envoy 上最佳案例是使用最终一致的服务发现以及主动健康检查（Envoy 显式地对上游集群成员进行健康检查）来确定集群健康，而不是类似其他Zookeeper、etcd、Consul 等做一致性协调。
 STATIC 静态是最简单的服务发现类型。配置明确指定了每个上游主机的解析网络名称（IP地址/端口、Unix域套接字等）。
-clusters: - name: oneops-syncds-v1 type: STATIC dns_lookup_family: V4_ONLY load_assignment: cluster_name: oneops-syncds-v1 endpoints: - lb_endpoints: - endpoint: address: socket_address: address: 192.168.0.1 port_value: 8080 STRICT_DNS clusters: - name: oneops-syncds-v1 type: STRICT_DNS dns_lookup_family: V4_ONLY load_assignment: cluster_name: oneops-syncds-v1 endpoints: - lb_endpoints: - endpoint: address: socket_address: address: example."/>
+clusters: - name: oneops-syncds-v1 type: STATIC dns_lookup_family: V4_ONLY load_assignment: cluster_name: oneops-syncds-v1 endpoints: - lb_endpoints: - endpoint: address: socket_address: address: 192.168.0.1 port_value: 8080 STRICT_DNS clusters: - name: oneops-syncds-v1 type: STRICT_DNS dns_lookup_family: V4_ONLY load_assignment: cluster_name: oneops-syncds-v1 endpoints: - lb_endpoints: - endpoint: address: socket_address: address: example.com port_value: 80 注意需配合主机头，否则会出现 403 错误等。">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1053,6 +1056,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3086,9 +3106,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3102,10 +3122,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3165,6 +3388,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4543,7 +4825,7 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">prefix_match</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;/ping&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><p>以上几种模式，均需注意下配置下 &ldquo;headers&rdquo; 过滤特定的健康检查请求，否则会把所有请求均人为健康探测流量被缓存，从而影响了业务流量。</p>
 <h2 id="异常值检测">异常值检测</h2>
-<p>它也称为被动健康检查，在 <a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/cluster/v3/outlier_detection.proto#">config.cluster.v3.OutlierDetection</a> 配置，区别于主动健康检查，在 <a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/health_check.proto#config-core-v3-healthcheck">config.core.v3.HealthCheck</a>，它们可以配合使用也可以单独使用。</p>
+<p>它也称为被动健康检查，在 <a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/cluster/v3/outlier_detection.proto">config.cluster.v3.OutlierDetection</a> 配置，区别于主动健康检查，在 <a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/health_check.proto#config-core-v3-healthcheck">config.core.v3.HealthCheck</a>，它们可以配合使用也可以单独使用。</p>
 <p>异常值检测是动态确定上游集群中某些主机的性能是否与其他主机不同，并将其从健康负载均衡集中移除的过程。常见的异常值包含：连续的故障、时间成功率、时间延迟等，它需要过滤器来报告数据，当前仅以下过滤器支持：[http router]，[tcp proxy]，[redis proxy]，[thrift proxy]</p>
 <p>检测错误分为两类：</p>
 <ol>
@@ -4621,7 +4903,7 @@ if (!doNotTrack) {
 </ol>
 <p>如果集群中多个主机具有不同的权重，负载均衡器将使用加权轮询调度表，在请求时动态调整权重，权重是在选择主机时使用以下公式计算的：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>weight = load_balancing_weight / (active_requests + 1)^active_request_bias.
-</span></span></code></pre></div><p><code>active_request_bias</code> 可以通过运行时进行配置，默认值为 1.0 且必须大于或等于 0.0。由公式知活动请求数越大，则相应的有效权重越低。同时 &ldquo;active_request_bias=0&rdquo; 时，等同于<a href="/docs/networks/envoy/upstream/#%E5%8A%A0%E6%9D%83%E8%BD%AE%E8%AF%A2">加权轮询</a>。</p>
+</span></span></code></pre></div><p><code>active_request_bias</code> 可以通过运行时进行配置，默认值为 1.0 且必须大于或等于 0.0。由公式知活动请求数越大，则相应的有效权重越低。同时 &ldquo;active_request_bias=0&rdquo; 时，等同于<a href="/docs/networks/envoy/upstream/#加权轮询">加权轮询</a>。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">clusters</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">oneops-syncds-v2</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">STATIC</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -4871,7 +5153,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

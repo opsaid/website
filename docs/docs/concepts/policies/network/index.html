@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -29,66 +29,69 @@ TODO;
 
 NetworkPolicy
 // …">
-<meta property="og:title" content="网络策略" />
-<meta property="og:description" content="简要概述 TODO;
+<meta property="og:url" content="/docs/concepts/policies/network/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="网络策略">
+  <meta property="og:description" content="简要概述 TODO;
 配置示例 见 K8S 原生安全 网络策略。
-数据结构 基于 &ldquo;kubernetes-1.26.11/staging/src/k8s.io/api/networking/v1/types.go&rdquo; 源文件。
-NetworkPolicy // NetworkPolicy describes what network traffic is allowed for a set of Pods type NetworkPolicy struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Standard object&#39;s metadata. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // Specification of the desired behavior for this NetworkPolicy. // &#43;optional Spec NetworkPolicySpec `json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;` // Status is the current state of the NetworkPolicy. // More info: https://git." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/concepts/policies/network/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-12-12T11:14:45+08:00" />
-<meta property="article:modified_time" content="2023-12-13T17:17:26+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="网络策略">
-<meta itemprop="description" content="简要概述 TODO;
+数据结构 基于 “kubernetes-1.26.11/staging/src/k8s.io/api/networking/v1/types.go” 源文件。
+NetworkPolicy // NetworkPolicy describes what network traffic is allowed for a set of Pods type NetworkPolicy struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Standard object&#39;s metadata. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // Specification of the desired behavior for this NetworkPolicy. // &#43;optional Spec NetworkPolicySpec `json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;` // Status is the current state of the NetworkPolicy. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status // &#43;optional Status NetworkPolicyStatus `json:&#34;status,omitempty&#34; protobuf:&#34;bytes,3,opt,name=status&#34;` } NetworkPolicySpec // NetworkPolicySpec provides the specification of a NetworkPolicy type NetworkPolicySpec struct { // Selects the pods to which this NetworkPolicy object applies. The array of // ingress rules is applied to any pods selected by this field. Multiple network // policies can select the same set of pods. In this case, the ingress rules for // each are combined additively. This field is NOT optional and follows standard // label selector semantics. An empty podSelector matches all pods in this // namespace. // 选择这个网络策略应用到哪些 Pod 上 // 空的 podSelector 选择名字空间下的所有 Pod PodSelector metav1.LabelSelector `json:&#34;podSelector&#34; protobuf:&#34;bytes,1,opt,name=podSelector&#34;` // List of ingress rules to be applied to the selected pods. Traffic is allowed to // a pod if there are no NetworkPolicies selecting the pod // (and cluster policy otherwise allows the traffic), OR if the traffic source is // the pod&#39;s local node, OR if the traffic matches at least one ingress rule // across all of the NetworkPolicy objects whose podSelector matches the pod. If // this field is empty then this NetworkPolicy does not allow any traffic (and serves // solely to ensure that the pods it selects are isolated by default) // &#43;optional // 白名单模式，入口网络流量隔离规则 Ingress []NetworkPolicyIngressRule `json:&#34;ingress,omitempty&#34; protobuf:&#34;bytes,2,rep,name=ingress&#34;` // List of egress rules to be applied to the selected pods. Outgoing traffic is // allowed if there are no NetworkPolicies selecting the pod (and cluster policy // otherwise allows the traffic), OR if the traffic matches at least one egress rule // across all of the NetworkPolicy objects whose podSelector matches the pod. If // this field is empty then this NetworkPolicy limits all outgoing traffic (and serves // solely to ensure that the pods it selects are isolated by default). // This field is beta-level in 1.8 // &#43;optional // 白名单模式，出口网络流量隔离规则 Egress []NetworkPolicyEgressRule `json:&#34;egress,omitempty&#34; protobuf:&#34;bytes,3,rep,name=egress&#34;` // List of rule types that the NetworkPolicy relates to. // Valid options are [&#34;Ingress&#34;], [&#34;Egress&#34;], or [&#34;Ingress&#34;, &#34;Egress&#34;]. // If this field is not specified, it will default based on the existence of Ingress or Egress rules; // policies that contain an Egress section are assumed to affect Egress, and all policies // (whether or not they contain an Ingress section) are assumed to affect Ingress. // If you want to write an egress-only policy, you must explicitly specify policyTypes [ &#34;Egress&#34; ]. // Likewise, if you want to write a policy that specifies that no egress is allowed, // you must specify a policyTypes value that include &#34;Egress&#34; (since such a policy would not include // an Egress section and would otherwise default to just [ &#34;Ingress&#34; ]). // This field is beta-level in 1.8 // &#43;optional // 哪种隔离规则生效，仅可组合为以下三种模式： // [&#34;Ingress&#34;] 应用于进入所选 Pod 的入站流量 // [&#34;Egress&#34;] 应用与所选 Pod 的出站流量 // [&#34;Ingress&#34;, &#34;Egress&#34;] 同时应用与 Pod 的进出流量 PolicyTypes []PolicyType `json:&#34;policyTypes,omitempty&#34; protobuf:&#34;bytes,4,rep,name=policyTypes,casttype=PolicyType&#34;` } metav1.LabelSelector 见 基础数据。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-12-12T11:14:45+08:00">
+    <meta property="article:modified_time" content="2023-12-13T17:17:26+08:00">
+
+  <meta itemprop="name" content="网络策略">
+  <meta itemprop="description" content="简要概述 TODO;
 配置示例 见 K8S 原生安全 网络策略。
-数据结构 基于 &ldquo;kubernetes-1.26.11/staging/src/k8s.io/api/networking/v1/types.go&rdquo; 源文件。
-NetworkPolicy // NetworkPolicy describes what network traffic is allowed for a set of Pods type NetworkPolicy struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Standard object&#39;s metadata. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // Specification of the desired behavior for this NetworkPolicy. // &#43;optional Spec NetworkPolicySpec `json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;` // Status is the current state of the NetworkPolicy. // More info: https://git."><meta itemprop="datePublished" content="2023-12-12T11:14:45+08:00" />
-<meta itemprop="dateModified" content="2023-12-13T17:17:26+08:00" />
-<meta itemprop="wordCount" content="1503">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="网络策略"/>
-<meta name="twitter:description" content="简要概述 TODO;
+数据结构 基于 “kubernetes-1.26.11/staging/src/k8s.io/api/networking/v1/types.go” 源文件。
+NetworkPolicy // NetworkPolicy describes what network traffic is allowed for a set of Pods type NetworkPolicy struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Standard object&#39;s metadata. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // Specification of the desired behavior for this NetworkPolicy. // &#43;optional Spec NetworkPolicySpec `json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;` // Status is the current state of the NetworkPolicy. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status // &#43;optional Status NetworkPolicyStatus `json:&#34;status,omitempty&#34; protobuf:&#34;bytes,3,opt,name=status&#34;` } NetworkPolicySpec // NetworkPolicySpec provides the specification of a NetworkPolicy type NetworkPolicySpec struct { // Selects the pods to which this NetworkPolicy object applies. The array of // ingress rules is applied to any pods selected by this field. Multiple network // policies can select the same set of pods. In this case, the ingress rules for // each are combined additively. This field is NOT optional and follows standard // label selector semantics. An empty podSelector matches all pods in this // namespace. // 选择这个网络策略应用到哪些 Pod 上 // 空的 podSelector 选择名字空间下的所有 Pod PodSelector metav1.LabelSelector `json:&#34;podSelector&#34; protobuf:&#34;bytes,1,opt,name=podSelector&#34;` // List of ingress rules to be applied to the selected pods. Traffic is allowed to // a pod if there are no NetworkPolicies selecting the pod // (and cluster policy otherwise allows the traffic), OR if the traffic source is // the pod&#39;s local node, OR if the traffic matches at least one ingress rule // across all of the NetworkPolicy objects whose podSelector matches the pod. If // this field is empty then this NetworkPolicy does not allow any traffic (and serves // solely to ensure that the pods it selects are isolated by default) // &#43;optional // 白名单模式，入口网络流量隔离规则 Ingress []NetworkPolicyIngressRule `json:&#34;ingress,omitempty&#34; protobuf:&#34;bytes,2,rep,name=ingress&#34;` // List of egress rules to be applied to the selected pods. Outgoing traffic is // allowed if there are no NetworkPolicies selecting the pod (and cluster policy // otherwise allows the traffic), OR if the traffic matches at least one egress rule // across all of the NetworkPolicy objects whose podSelector matches the pod. If // this field is empty then this NetworkPolicy limits all outgoing traffic (and serves // solely to ensure that the pods it selects are isolated by default). // This field is beta-level in 1.8 // &#43;optional // 白名单模式，出口网络流量隔离规则 Egress []NetworkPolicyEgressRule `json:&#34;egress,omitempty&#34; protobuf:&#34;bytes,3,rep,name=egress&#34;` // List of rule types that the NetworkPolicy relates to. // Valid options are [&#34;Ingress&#34;], [&#34;Egress&#34;], or [&#34;Ingress&#34;, &#34;Egress&#34;]. // If this field is not specified, it will default based on the existence of Ingress or Egress rules; // policies that contain an Egress section are assumed to affect Egress, and all policies // (whether or not they contain an Ingress section) are assumed to affect Ingress. // If you want to write an egress-only policy, you must explicitly specify policyTypes [ &#34;Egress&#34; ]. // Likewise, if you want to write a policy that specifies that no egress is allowed, // you must specify a policyTypes value that include &#34;Egress&#34; (since such a policy would not include // an Egress section and would otherwise default to just [ &#34;Ingress&#34; ]). // This field is beta-level in 1.8 // &#43;optional // 哪种隔离规则生效，仅可组合为以下三种模式： // [&#34;Ingress&#34;] 应用于进入所选 Pod 的入站流量 // [&#34;Egress&#34;] 应用与所选 Pod 的出站流量 // [&#34;Ingress&#34;, &#34;Egress&#34;] 同时应用与 Pod 的进出流量 PolicyTypes []PolicyType `json:&#34;policyTypes,omitempty&#34; protobuf:&#34;bytes,4,rep,name=policyTypes,casttype=PolicyType&#34;` } metav1.LabelSelector 见 基础数据。">
+  <meta itemprop="datePublished" content="2023-12-12T11:14:45+08:00">
+  <meta itemprop="dateModified" content="2023-12-13T17:17:26+08:00">
+  <meta itemprop="wordCount" content="1503">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="网络策略">
+  <meta name="twitter:description" content="简要概述 TODO;
 配置示例 见 K8S 原生安全 网络策略。
-数据结构 基于 &ldquo;kubernetes-1.26.11/staging/src/k8s.io/api/networking/v1/types.go&rdquo; 源文件。
-NetworkPolicy // NetworkPolicy describes what network traffic is allowed for a set of Pods type NetworkPolicy struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Standard object&#39;s metadata. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // Specification of the desired behavior for this NetworkPolicy. // &#43;optional Spec NetworkPolicySpec `json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;` // Status is the current state of the NetworkPolicy. // More info: https://git."/>
+数据结构 基于 “kubernetes-1.26.11/staging/src/k8s.io/api/networking/v1/types.go” 源文件。
+NetworkPolicy // NetworkPolicy describes what network traffic is allowed for a set of Pods type NetworkPolicy struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Standard object&#39;s metadata. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // Specification of the desired behavior for this NetworkPolicy. // &#43;optional Spec NetworkPolicySpec `json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;` // Status is the current state of the NetworkPolicy. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status // &#43;optional Status NetworkPolicyStatus `json:&#34;status,omitempty&#34; protobuf:&#34;bytes,3,opt,name=status&#34;` } NetworkPolicySpec // NetworkPolicySpec provides the specification of a NetworkPolicy type NetworkPolicySpec struct { // Selects the pods to which this NetworkPolicy object applies. The array of // ingress rules is applied to any pods selected by this field. Multiple network // policies can select the same set of pods. In this case, the ingress rules for // each are combined additively. This field is NOT optional and follows standard // label selector semantics. An empty podSelector matches all pods in this // namespace. // 选择这个网络策略应用到哪些 Pod 上 // 空的 podSelector 选择名字空间下的所有 Pod PodSelector metav1.LabelSelector `json:&#34;podSelector&#34; protobuf:&#34;bytes,1,opt,name=podSelector&#34;` // List of ingress rules to be applied to the selected pods. Traffic is allowed to // a pod if there are no NetworkPolicies selecting the pod // (and cluster policy otherwise allows the traffic), OR if the traffic source is // the pod&#39;s local node, OR if the traffic matches at least one ingress rule // across all of the NetworkPolicy objects whose podSelector matches the pod. If // this field is empty then this NetworkPolicy does not allow any traffic (and serves // solely to ensure that the pods it selects are isolated by default) // &#43;optional // 白名单模式，入口网络流量隔离规则 Ingress []NetworkPolicyIngressRule `json:&#34;ingress,omitempty&#34; protobuf:&#34;bytes,2,rep,name=ingress&#34;` // List of egress rules to be applied to the selected pods. Outgoing traffic is // allowed if there are no NetworkPolicies selecting the pod (and cluster policy // otherwise allows the traffic), OR if the traffic matches at least one egress rule // across all of the NetworkPolicy objects whose podSelector matches the pod. If // this field is empty then this NetworkPolicy limits all outgoing traffic (and serves // solely to ensure that the pods it selects are isolated by default). // This field is beta-level in 1.8 // &#43;optional // 白名单模式，出口网络流量隔离规则 Egress []NetworkPolicyEgressRule `json:&#34;egress,omitempty&#34; protobuf:&#34;bytes,3,rep,name=egress&#34;` // List of rule types that the NetworkPolicy relates to. // Valid options are [&#34;Ingress&#34;], [&#34;Egress&#34;], or [&#34;Ingress&#34;, &#34;Egress&#34;]. // If this field is not specified, it will default based on the existence of Ingress or Egress rules; // policies that contain an Egress section are assumed to affect Egress, and all policies // (whether or not they contain an Ingress section) are assumed to affect Ingress. // If you want to write an egress-only policy, you must explicitly specify policyTypes [ &#34;Egress&#34; ]. // Likewise, if you want to write a policy that specifies that no egress is allowed, // you must specify a policyTypes value that include &#34;Egress&#34; (since such a policy would not include // an Egress section and would otherwise default to just [ &#34;Ingress&#34; ]). // This field is beta-level in 1.8 // &#43;optional // 哪种隔离规则生效，仅可组合为以下三种模式： // [&#34;Ingress&#34;] 应用于进入所选 Pod 的入站流量 // [&#34;Egress&#34;] 应用与所选 Pod 的出站流量 // [&#34;Ingress&#34;, &#34;Egress&#34;] 同时应用与 Pod 的进出流量 PolicyTypes []PolicyType `json:&#34;policyTypes,omitempty&#34; protobuf:&#34;bytes,4,rep,name=policyTypes,casttype=PolicyType&#34;` } metav1.LabelSelector 见 基础数据。">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1051,6 +1054,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3084,9 +3104,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3100,10 +3120,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3163,6 +3386,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4484,7 +4766,7 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">IPBlock</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">IPBlock</span> <span style="color:#4e9a06">`json:&#34;ipBlock,omitempty&#34; protobuf:&#34;bytes,3,rep,name=ipBlock&#34;`</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><p>示例配置见 <a href="/docs/security/policies/network/#%E5%AE%9A%E4%BD%8D%E7%9B%AE%E6%A0%87%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%BB%84%E5%90%88">定位目标的四种组合</a>。</p>
+</span></span></code></pre></div><p>示例配置见 <a href="/docs/security/policies/network/#定位目标的四种组合">定位目标的四种组合</a>。</p>
 <h3 id="ipblock">IPBlock</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// IPBlock describes a particular CIDR (Ex. &#34;192.168.1.0/24&#34;,&#34;2001:db8::/64&#34;) that is allowed
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// to the pods matched by a NetworkPolicySpec&#39;s podSelector. The except entry describes CIDRs
@@ -4603,7 +4885,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

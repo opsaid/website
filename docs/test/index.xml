@@ -1,0 +1,474 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – 其他未归类</title>
+    <link>http://127.0.0.1:1313/test/</link>
+    <description>Recent content in 其他未归类 on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 28 Jan 2023 23:35:18 +0800</lastBuildDate>
+    
+	  <atom:link href="http://127.0.0.1:1313/test/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Gitlab</title>
+      <link>http://127.0.0.1:1313/docs/others/gitlab/</link>
+      <pubDate>Sat, 14 May 2022 22:22:22 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/docs/others/gitlab/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;deploy-k8s&#34;&gt;deploy k8s&lt;/h2&gt;
+&lt;p&gt;k8s生态组件过多，对新人入门并不友好，本项目在于结合当前生产集群维护经验，总结一套标准的部署模版，接入内部gitlab ci实现集群基础设施的自动化管理发布，同时也会不断迭代优化部署模版，以实现快速搭建一套生产可用的环境。&lt;/p&gt;
+&lt;p&gt;主要实现以下三个目标：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;基于gitlab实现对集群基础设施的管理&lt;/li&gt;
+&lt;li&gt;集群同类组件只选其一，不会给予多种选择&lt;/li&gt;
+&lt;li&gt;提供部署的标准化架构，之后个性化在各自仓库做定制&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;当前还在开发优化中&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;依赖环境&#34;&gt;依赖环境&lt;/h2&gt;
+&lt;p&gt;操作系统：centos7 2u4g&lt;/p&gt;
+&lt;h2 id=&#34;如何使用&#34;&gt;如何使用&lt;/h2&gt;
+&lt;h3 id=&#34;初始化部署脚本准备&#34;&gt;初始化部署脚本准备&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;拷贝部署代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git clone https://github.com/opsaid/deploy-k8s.git
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;里面包含环境所需的二进制文件（通过git lfs管理，所以客户端也需要支持该特性），下载可能需要点时间。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;清理git&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd deploy-k8s
+rm -rf .git
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;模版下载完成后，原先git的记录可以删除，因为之后会基于该模版导入各自内部仓库。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;更改变量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mv ansible/hosts_sample.ini ansible/hosts.ini
+mv ansible/group_vars/all_sample.yaml ansible/group_vars/all.yaml
+mv ansible/group_vars/control_sample.yaml ansible/group_vars/control.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中ansible/hosts.ini、ansible/group_vars/all.yaml之中的参数根据环境做更改。&lt;/p&gt;
+&lt;h3 id=&#34;通过gitlab执行&#34;&gt;通过gitlab执行&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;gitlab runner准备&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;导入内部gitlab仓库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git init
+git remote add origin http://{GIT_REPO}
+
+git add .
+git commit -m &amp;#34;Initial commit&amp;#34;
+git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;变量GIT_REPO，对应内部的gitlab仓库地址。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;查看部署过程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;登录gitlab CI/CD页面查看部署过程&lt;/p&gt;
+&lt;h3 id=&#34;通过本地手工执行&#34;&gt;通过本地手工执行&lt;/h3&gt;
+&lt;p&gt;确保本地可以ssh免密登录hosts.ini中登记的主机地址。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;生成证书&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ansible-playbook -i hosts.ini deploy.yaml -t pki
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;部署集群&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ansible-playbook -i hosts.ini deploy.yaml -t common,control,worker
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;验证集群&#34;&gt;验证集群&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;验证集群&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;登录node1节点&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kubectl get cs
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果存在不为&amp;quot;ok&amp;quot;的服务，则需检查，如果正常，则创建以下基础服务&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kubectl apply -f /usr/local/src/manifests/rbac.yaml
+kubectl apply -f /usr/local/src/manifests/psp.yaml
+kubectl apply -f /usr/local/src/manifests/metrics-server.yaml
+kubectl apply -f /usr/local/src/manifests/coredns.yaml
+kubectl apply -f /usr/local/src/manifests/calico.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;认证节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;登录node1节点&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;for i in $(kubectl get csr | grep -v NAME | awk &amp;#39;{ print $1 }&amp;#39;); do kubectl certificate approve $i; done
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;others&#34;&gt;Others&lt;/h2&gt;
+&lt;p&gt;debian11默认使用cgroup v2，会导致kubelet启动不了，这里降级使用cgroup v1版本&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/etc/default/grub
+
+GRUB_CMDLINE_LINUX=&amp;#34;systemd.unified_cgroup_hierarchy=0&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;grub-mkconfig -o /boot/grub/grub.cfg
+&lt;/code&gt;&lt;/pre&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Kubeadm</title>
+      <link>http://127.0.0.1:1313/docs/others/kubeadm/</link>
+      <pubDate>Sat, 14 May 2022 22:23:01 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/docs/others/kubeadm/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;指令&#34;&gt;指令&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;名称&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;certs&lt;/td&gt;
+          &lt;td&gt;TODO&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;certs&#34;&gt;certs&lt;/h3&gt;
+&lt;h2 id=&#34;kubeadm&#34;&gt;kubeadm&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;环境检查&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase preflight --config config.yaml --ignore-preflight-errors Swap
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;生成kubeconfig文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase kubeconfig admin --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase kubeconfig kubelet --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase kubeconfig scheduler --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase kubeconfig controller-manager --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;--bootstrap-kubeconfig&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/etc/kubernetes/kubelet.conf&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果kubeconfig指定的文件不存在，则使用bootstrap-kubeconfig指定的授权，请求服务端证书。&lt;/p&gt;
+&lt;p&gt;当使用静态pod时候，由于apiserver未启动，又导致kubelet启动不了，所以针对管理节点的kubelet，预先生成kubeconfig&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;启动kubelet&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase kubelet-start --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;控制平面静态POD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase control-plane apiserver --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase control-plane controller-manager --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase control-plane scheduler --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase etcd &lt;span style=&#34;color:#204a87&#34;&gt;local&lt;/span&gt; --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;上传配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase upload-config kubeadm --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase upload-config kubelet --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase upload-certs --upload-certs
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在kube-system命名空间下创建&amp;quot;kubeadm-certs&amp;quot;类型为Secret，包含一下关键证书:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ca.crt:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ca.key:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  etcd-ca.crt:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  etcd-ca.key: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  front-proxy-ca.crt:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  front-proxy-ca.key:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  sa.key:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  sa.pub:
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;设置标签&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase mark-control-plane --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase bootstrap-token --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;开启特性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase kubelet-finalize experimental-cert-rotation --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;创建addon&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase addon coredns --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm init phase addon kube-proxy --config config.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;join&#34;&gt;join&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm token list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; openssl rsa -pubin -outform der 2&amp;gt;/dev/null &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;   openssl dgst -sha256 -hex &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; sed &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;s/^.* //&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeadm join 192.168.30.188:6443 --token abcdef.0123456789abcdef --discovery-token-ca-cert-hash sha256:c89991b5c1af43e0306b6a3509b424d4920fad360f826ebdd1a8d05a50243b43
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;不使用kubeadm join，使用ansible -t worker代替&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;apiVersion: rbac.authorization.k8s.io/v1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kind: ClusterRoleBinding
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;metadata:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  name: system:kubelet-bootstrap
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;roleRef:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  apiGroup: rbac.authorization.k8s.io
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  kind: ClusterRole
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  name: system:node-bootstrapper
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;subjects:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- apiGroup: rbac.authorization.k8s.io
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  kind: Group
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  name: system:bootstrappers
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;workflow&#34;&gt;Workflow&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;preflight                    Run pre-flight checks
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;certs                        Certificate generation
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /ca                          Generate the self-signed Kubernetes CA to provision identities &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; other Kubernetes components
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /apiserver                   Generate the certificate &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; serving the Kubernetes API
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /apiserver-kubelet-client    Generate the certificate &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the API server to connect to kubelet
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /front-proxy-ca              Generate the self-signed CA to provision identities &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; front proxy
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /front-proxy-client          Generate the certificate &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the front proxy client
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /etcd-ca                     Generate the self-signed CA to provision identities &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; etcd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /etcd-server                 Generate the certificate &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; serving etcd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /etcd-peer                   Generate the certificate &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; etcd nodes to communicate with each other
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /etcd-healthcheck-client     Generate the certificate &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; liveness probes to healthcheck etcd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /apiserver-etcd-client       Generate the certificate the apiserver uses to access etcd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /sa                          Generate a private key &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; signing service account tokens along with its public key
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubeconfig                   Generate all kubeconfig files necessary to establish the control plane and the admin kubeconfig file
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /admin                       Generate a kubeconfig file &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the admin to use and &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; kubeadm itself
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /kubelet                     Generate a kubeconfig file &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the kubelet to use *only* &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; cluster bootstrapping purposes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /controller-manager          Generate a kubeconfig file &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the controller manager to use
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /scheduler                   Generate a kubeconfig file &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the scheduler to use
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubelet-start                Write kubelet settings and &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;re&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;start the kubelet
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;control-plane                Generate all static Pod manifest files necessary to establish the control plane
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /apiserver                   Generates the kube-apiserver static Pod manifest
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /controller-manager          Generates the kube-controller-manager static Pod manifest
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /scheduler                   Generates the kube-scheduler static Pod manifest
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;etcd                         Generate static Pod manifest file &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#204a87&#34;&gt;local&lt;/span&gt; etcd
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /local                       Generate the static Pod manifest file &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; a local, single-node &lt;span style=&#34;color:#204a87&#34;&gt;local&lt;/span&gt; etcd instance
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;upload-config                Upload the kubeadm and kubelet configuration to a ConfigMap
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /kubeadm                     Upload the kubeadm ClusterConfiguration to a ConfigMap
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /kubelet                     Upload the kubelet component config to a ConfigMap
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;upload-certs                 Upload certificates to kubeadm-certs
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mark-control-plane           Mark a node as a control-plane
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;bootstrap-token              Generates bootstrap tokens used to join a node to a cluster
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kubelet-finalize             Updates settings relevant to the kubelet after TLS bootstrap
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /experimental-cert-rotation  Enable kubelet client certificate rotation
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;addon                        Install required addons &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; passing conformance tests
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /coredns                     Install the CoreDNS addon to a Kubernetes cluster
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  /kube-proxy                  Install the kube-proxy addon to a Kubernetes cluster
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;xxxx&#34;&gt;xxxx&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;下载二进制文件&lt;/li&gt;
+&lt;li&gt;生成pki证书&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;创建控制平面
+添加工作节点%&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Ansible</title>
+      <link>http://127.0.0.1:1313/docs/others/ansible/</link>
+      <pubDate>Sun, 10 Apr 2022 20:19:49 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/docs/others/ansible/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;inventory&#34;&gt;Inventory&lt;/h2&gt;
+&lt;p&gt;这个 &amp;ldquo;hosts.ini&amp;rdquo; 文件包含5个组：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pki: 根据配置预先生成证书&lt;/li&gt;
+&lt;li&gt;binary: 根据配置预先下载二进制、镜像&lt;/li&gt;
+&lt;li&gt;etcd: kube集群连接的etcd&lt;/li&gt;
+&lt;li&gt;kube_control_plane: 控制平面几个组件（apiserver、scheduler、controller）&lt;/li&gt;
+&lt;li&gt;kube_node: 工作节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;配置说明&#34;&gt;配置说明&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 各节点首次部署需进行通用设置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;all&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node0 &lt;span style=&#34;color:#000&#34;&gt;ansible_connection&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;local&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node1 &lt;span style=&#34;color:#000&#34;&gt;ansible_host&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.31.201 &lt;span style=&#34;color:#000&#34;&gt;ansible_port&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;22&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node2 &lt;span style=&#34;color:#000&#34;&gt;ansible_host&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.31.202 &lt;span style=&#34;color:#000&#34;&gt;ansible_port&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;22&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node3 &lt;span style=&#34;color:#000&#34;&gt;ansible_host&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.31.203 &lt;span style=&#34;color:#000&#34;&gt;ansible_port&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;22&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;node4 &lt;span style=&#34;color:#000&#34;&gt;ansible_host&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.31.204 &lt;span style=&#34;color:#000&#34;&gt;ansible_port&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;22&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;建议配置好root用户的ssh key，控制端可以免密登录；&lt;/p&gt;
+&lt;p&gt;如果是通过sudo，可以参考一下配置，这里配置如何通过ansible连接目标主机&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;参数&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;ansible_connection&lt;/td&gt;
+          &lt;td&gt;local 表示在管理节点上运行&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;ansible_host&lt;/td&gt;
+          &lt;td&gt;目标主机ssh的ip地址&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;ansible_port&lt;/td&gt;
+          &lt;td&gt;目标主机ssh的端口号&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;ansible_ssh_user&lt;/td&gt;
+          &lt;td&gt;ssh目标主机的用户名&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;ansible_sudo_pass&lt;/td&gt;
+          &lt;td&gt;在sudo时使用的用户密码&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;ansible_become&lt;/td&gt;
+          &lt;td&gt;在目标主机执行指令是否进行sudo变更用户&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;ansible_become_user&lt;/td&gt;
+          &lt;td&gt;在目标主机执行指令sudo变更的用户名&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Labels</title>
+      <link>http://127.0.0.1:1313/docs/others/labels/</link>
+      <pubDate>Sat, 09 Apr 2022 11:44:00 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/docs/others/labels/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;标签名称&#34;&gt;标签名称&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;名称&lt;/th&gt;
+          &lt;th&gt;类型&lt;/th&gt;
+          &lt;th&gt;用途&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;kubeadm.kubernetes.io/etcd.advertise-client-urls&lt;/td&gt;
+          &lt;td&gt;annotation&lt;/td&gt;
+          &lt;td&gt;etcd.yaml&lt;/td&gt;
+          &lt;td&gt;xx&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;kubeadm.kubernetes.io/kube-apiserver.advertise-address.endpoint&lt;/td&gt;
+          &lt;td&gt;annotation&lt;/td&gt;
+          &lt;td&gt;kube-apiserver.yaml&lt;/td&gt;
+          &lt;td&gt;xx&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;kubernetes.io/cluster-service&lt;/td&gt;
+          &lt;td&gt;labels&lt;/td&gt;
+          &lt;td&gt;kubectl cluster-info&lt;/td&gt;
+          &lt;td&gt;设置true，可以看到&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;kubernetes.io/name&lt;/td&gt;
+          &lt;td&gt;labels&lt;/td&gt;
+          &lt;td&gt;kubectl cluster-info&lt;/td&gt;
+          &lt;td&gt;&amp;ldquo;CoreDNS&amp;rdquo;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;kubernetes.io/bootstrapping&lt;/td&gt;
+          &lt;td&gt;labels&lt;/td&gt;
+          &lt;td&gt;全局默认rbac规则&lt;/td&gt;
+          &lt;td&gt;一般由kube apiserver创建，这种标记的最好不要更改权限&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;rbac.authorization.kubernetes.io/autoupdate&lt;/td&gt;
+          &lt;td&gt;annotation&lt;/td&gt;
+          &lt;td&gt;每次启动时，API Server 都会更新默认 ClusterRole 所缺乏的各种权限&lt;/td&gt;
+          &lt;td&gt;xx&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;rbac.authorization.k8s.io/aggregate-to-view&lt;/td&gt;
+          &lt;td&gt;labels&lt;/td&gt;
+          &lt;td&gt;xx&lt;/td&gt;
+          &lt;td&gt;xx&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;app.kubernetes.io/name&lt;/td&gt;
+          &lt;td&gt;labels&lt;/td&gt;
+          &lt;td&gt;具体应用大类&lt;/td&gt;
+          &lt;td&gt;如：mysql&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;app.kubernetes.io/instance&lt;/td&gt;
+          &lt;td&gt;labels&lt;/td&gt;
+          &lt;td&gt;基于大类的具体实例名&lt;/td&gt;
+          &lt;td&gt;如：mysql-abcdefg&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;app.kubernetes.io/version&lt;/td&gt;
+          &lt;td&gt;labels&lt;/td&gt;
+          &lt;td&gt;具体实例的版本&lt;/td&gt;
+          &lt;td&gt;如：5.7.21&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;app.kubernetes.io/component&lt;/td&gt;
+          &lt;td&gt;labels&lt;/td&gt;
+          &lt;td&gt;当前组件的架构&lt;/td&gt;
+          &lt;td&gt;如：database&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;app.kubernetes.io/part-of&lt;/td&gt;
+          &lt;td&gt;labels&lt;/td&gt;
+          &lt;td&gt;当前组件上层应用&lt;/td&gt;
+          &lt;td&gt;如：wordpress&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;app.kubernetes.io/managed-by&lt;/td&gt;
+          &lt;td&gt;labels&lt;/td&gt;
+          &lt;td&gt;当前组件被哪种应用管理&lt;/td&gt;
+          &lt;td&gt;如：kustombiz&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;app.kubernetes.io/created-by&lt;/td&gt;
+          &lt;td&gt;labels&lt;/td&gt;
+          &lt;td&gt;当前组件由哪类资源创建&lt;/td&gt;
+          &lt;td&gt;如：controller-manager&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;a href=&#34;https://kubernetes.io/zh/docs/reference/access-authn-authz/rbac/&#34;&gt;https://kubernetes.io/zh/docs/reference/access-authn-authz/rbac/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/&#34;&gt;https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Networking</title>
+      <link>http://127.0.0.1:1313/docs/others/networking/</link>
+      <pubDate>Sun, 02 Jan 2022 12:21:56 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/docs/others/networking/</guid>
+      <description>
+        
+        
+        &lt;h1 id=&#34;集群网络&#34;&gt;集群网络&lt;/h1&gt;
+&lt;h2 id=&#34;网络插件network-plugins&#34;&gt;网络插件（Network Plugins）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;kubenet plugin&lt;/li&gt;
+&lt;li&gt;cni plugins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://kubernetes.io/docs/concepts/cluster-administration/networking/&#34;&gt;https://kubernetes.io/docs/concepts/cluster-administration/networking/&lt;/a&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

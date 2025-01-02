@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -25,8 +25,10 @@ SPIRE 旨在提供一个可靠的解决方案，用于在云原生环境中实�
 架构组件
 架构图
 SPIRE …">
-<meta property="og:title" content="SPIRE" />
-<meta property="og:description" content="简要概述 SPIRE 是 SPIFFE API 规范下的实现，可用于生产环境，执行节点和工作负载认证，以安全地向工作负载发布SVID，并基于预定义的一组条件验证其他工作负载的SVID。
+<meta property="og:url" content="/docs/security/zero-trust-model/spire/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="SPIRE">
+  <meta property="og:description" content="简要概述 SPIRE 是 SPIFFE API 规范下的实现，可用于生产环境，执行节点和工作负载认证，以安全地向工作负载发布SVID，并基于预定义的一组条件验证其他工作负载的SVID。
 SPIRE 旨在提供一个可靠的解决方案，用于在云原生环境中实现安全的身份验证和授权。
 架构组件 架构图 SPIRE 由 spire-server 和一个或多个 spire-agent 组成，服务端充当身份签发机构，通过 agent 向一组工作负载颁发身份，同时还维护一个工作负载身份的注册表以及必须验证的条件，以便颁发这些身份。代理在本地向工作负载公开 SPIFFE Sorkload API 并且必须安装在每个运行工作负载的节点上。
 spire-server 负责管理和颁发其配置的 SPIFFE 信任域中的所有身份，它存储注册条目（指定确定特定 SPIFFE ID 应在其下颁发的条件的选择器）和签名密钥，使用节点认证自动验证代理的身份，并在经过身份验证的代理请求时为工作负载创建 SVID。
@@ -38,14 +40,15 @@ Datastore Plugins 使用数据存储插件来存储、查询和更新各种信�
 默认情况下，它使用SQLite。
 Key manager Plugins 控制服务端存储用于签署 X.509-SVID 和 JWT-SVID 私钥的方式。
 Upstream authority Plugins 默认情况下，SPIRE 服务器充当自己的证书颁发机构。然而，您可以使用上游颁发机构插件来使用来自不同 PKI 系统的不同 CA。
-spire-agent 运行已识别工作负载的每个节点上运行。该代理：
-从服务器请求SVID，并将其缓存，直到工作负载请求其SVID。 向节点上的工作负载公开SPIFFE工作负载API，并对调用它的工作负载进行认证。 为已识别的工作负载提供其SVID。 SPIRE代理在工作负载的生命周期中充当关键的中介，协助在节点上颁发和管理SVID，并确保工作负载可以有效地获取其身份信息。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/security/zero-trust-model/spire/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-11-14T17:23:45+08:00" />
-<meta property="article:modified_time" content="2023-11-20T17:23:39+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="SPIRE">
-<meta itemprop="description" content="简要概述 SPIRE 是 SPIFFE API 规范下的实现，可用于生产环境，执行节点和工作负载认证，以安全地向工作负载发布SVID，并基于预定义的一组条件验证其他工作负载的SVID。
+spire-agent 运行已识别工作负载的每个节点上运行。该代理：">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-11-14T17:23:45+08:00">
+    <meta property="article:modified_time" content="2023-11-20T17:23:39+08:00">
+
+  <meta itemprop="name" content="SPIRE">
+  <meta itemprop="description" content="简要概述 SPIRE 是 SPIFFE API 规范下的实现，可用于生产环境，执行节点和工作负载认证，以安全地向工作负载发布SVID，并基于预定义的一组条件验证其他工作负载的SVID。
 SPIRE 旨在提供一个可靠的解决方案，用于在云原生环境中实现安全的身份验证和授权。
 架构组件 架构图 SPIRE 由 spire-server 和一个或多个 spire-agent 组成，服务端充当身份签发机构，通过 agent 向一组工作负载颁发身份，同时还维护一个工作负载身份的注册表以及必须验证的条件，以便颁发这些身份。代理在本地向工作负载公开 SPIFFE Sorkload API 并且必须安装在每个运行工作负载的节点上。
 spire-server 负责管理和颁发其配置的 SPIFFE 信任域中的所有身份，它存储注册条目（指定确定特定 SPIFFE ID 应在其下颁发的条件的选择器）和签名密钥，使用节点认证自动验证代理的身份，并在经过身份验证的代理请求时为工作负载创建 SVID。
@@ -57,13 +60,13 @@ Datastore Plugins 使用数据存储插件来存储、查询和更新各种信�
 默认情况下，它使用SQLite。
 Key manager Plugins 控制服务端存储用于签署 X.509-SVID 和 JWT-SVID 私钥的方式。
 Upstream authority Plugins 默认情况下，SPIRE 服务器充当自己的证书颁发机构。然而，您可以使用上游颁发机构插件来使用来自不同 PKI 系统的不同 CA。
-spire-agent 运行已识别工作负载的每个节点上运行。该代理：
-从服务器请求SVID，并将其缓存，直到工作负载请求其SVID。 向节点上的工作负载公开SPIFFE工作负载API，并对调用它的工作负载进行认证。 为已识别的工作负载提供其SVID。 SPIRE代理在工作负载的生命周期中充当关键的中介，协助在节点上颁发和管理SVID，并确保工作负载可以有效地获取其身份信息。"><meta itemprop="datePublished" content="2023-11-14T17:23:45+08:00" />
-<meta itemprop="dateModified" content="2023-11-20T17:23:39+08:00" />
-<meta itemprop="wordCount" content="73">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="SPIRE"/>
-<meta name="twitter:description" content="简要概述 SPIRE 是 SPIFFE API 规范下的实现，可用于生产环境，执行节点和工作负载认证，以安全地向工作负载发布SVID，并基于预定义的一组条件验证其他工作负载的SVID。
+spire-agent 运行已识别工作负载的每个节点上运行。该代理：">
+  <meta itemprop="datePublished" content="2023-11-14T17:23:45+08:00">
+  <meta itemprop="dateModified" content="2023-11-20T17:23:39+08:00">
+  <meta itemprop="wordCount" content="73">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SPIRE">
+  <meta name="twitter:description" content="简要概述 SPIRE 是 SPIFFE API 规范下的实现，可用于生产环境，执行节点和工作负载认证，以安全地向工作负载发布SVID，并基于预定义的一组条件验证其他工作负载的SVID。
 SPIRE 旨在提供一个可靠的解决方案，用于在云原生环境中实现安全的身份验证和授权。
 架构组件 架构图 SPIRE 由 spire-server 和一个或多个 spire-agent 组成，服务端充当身份签发机构，通过 agent 向一组工作负载颁发身份，同时还维护一个工作负载身份的注册表以及必须验证的条件，以便颁发这些身份。代理在本地向工作负载公开 SPIFFE Sorkload API 并且必须安装在每个运行工作负载的节点上。
 spire-server 负责管理和颁发其配置的 SPIFFE 信任域中的所有身份，它存储注册条目（指定确定特定 SPIFFE ID 应在其下颁发的条件的选择器）和签名密钥，使用节点认证自动验证代理的身份，并在经过身份验证的代理请求时为工作负载创建 SVID。
@@ -75,46 +78,43 @@ Datastore Plugins 使用数据存储插件来存储、查询和更新各种信�
 默认情况下，它使用SQLite。
 Key manager Plugins 控制服务端存储用于签署 X.509-SVID 和 JWT-SVID 私钥的方式。
 Upstream authority Plugins 默认情况下，SPIRE 服务器充当自己的证书颁发机构。然而，您可以使用上游颁发机构插件来使用来自不同 PKI 系统的不同 CA。
-spire-agent 运行已识别工作负载的每个节点上运行。该代理：
-从服务器请求SVID，并将其缓存，直到工作负载请求其SVID。 向节点上的工作负载公开SPIFFE工作负载API，并对调用它的工作负载进行认证。 为已识别的工作负载提供其SVID。 SPIRE代理在工作负载的生命周期中充当关键的中介，协助在节点上颁发和管理SVID，并确保工作负载可以有效地获取其身份信息。"/>
+spire-agent 运行已识别工作负载的每个节点上运行。该代理：">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1077,6 +1077,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3110,9 +3127,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3126,10 +3143,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3189,6 +3409,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4323,10 +4602,10 @@ if (!doNotTrack) {
 <h2 id="架构组件">架构组件</h2>
 <h3 id="架构图">架构图</h3>
 <p>SPIRE 由 <code>spire-server</code> 和一个或多个 <code>spire-agent</code> 组成，服务端充当身份签发机构，通过 agent 向一组工作负载颁发身份，同时还维护一个工作负载身份的注册表以及必须验证的条件，以便颁发这些身份。代理在本地向工作负载公开 SPIFFE Sorkload API 并且必须安装在每个运行工作负载的节点上。</p>
-<p><img src="https://spiffe.io/img/server_and_agent.png" alt="jpg"></p>
+<p><img alt="jpg" src="https://spiffe.io/img/server_and_agent.png"></p>
 <h3 id="spire-server">spire-server</h3>
 <p>负责管理和颁发其配置的 SPIFFE 信任域中的所有身份，它存储注册条目（指定确定特定 SPIFFE ID 应在其下颁发的条件的选择器）和签名密钥，使用节点认证自动验证代理的身份，并在经过身份验证的代理请求时为工作负载创建 SVID。</p>
-<p><img src="https://spiffe.io/img/server.png" alt="jpg"></p>
+<p><img alt="jpg" src="https://spiffe.io/img/server.png"></p>
 <p>服务端的行为是通过一系列插件确定的，默认内置了一些插件，但可以通过编写自定义插件以扩展 SPIRE 适应特定的用例，插件的类型包括：</p>
 <ul>
 <li>Node Attestor Plugins</li>
@@ -4358,7 +4637,7 @@ if (!doNotTrack) {
 <li>为已识别的工作负载提供其SVID。</li>
 </ol>
 <p>SPIRE代理在工作负载的生命周期中充当关键的中介，协助在节点上颁发和管理SVID，并确保工作负载可以有效地获取其身份信息。</p>
-<p><img src="https://spiffe.io/img/agent.png" alt="jpg"></p>
+<p><img alt="jpg" src="https://spiffe.io/img/agent.png"></p>
 
 	
 		<br /><hr />
@@ -4451,7 +4730,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

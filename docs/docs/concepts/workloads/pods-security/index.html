@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -25,60 +25,63 @@ TODO;
 PodSecurityContext
 // PodSecurityContext holds pod-level security attributes and common container settings.
 // Some fields are also …">
-<meta property="og:title" content="Pod Security" />
-<meta property="og:description" content="简要概述 TODO;
-数据结构 PodSecurityContext // PodSecurityContext holds pod-level security attributes and common container settings. // Some fields are also present in container.securityContext. Field values of // container.securityContext take precedence over field values of PodSecurityContext. type PodSecurityContext struct { // The SELinux context to be applied to all containers. // If unspecified, the container runtime will allocate a random SELinux context for each // container. May also be set in SecurityContext. If set in // both SecurityContext and PodSecurityContext, the value specified in SecurityContext // takes precedence for that container." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/concepts/workloads/pods-security/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-05-08T18:19:18+08:00" />
-<meta property="article:modified_time" content="2023-12-05T10:55:16+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Pod Security">
-<meta itemprop="description" content="简要概述 TODO;
-数据结构 PodSecurityContext // PodSecurityContext holds pod-level security attributes and common container settings. // Some fields are also present in container.securityContext. Field values of // container.securityContext take precedence over field values of PodSecurityContext. type PodSecurityContext struct { // The SELinux context to be applied to all containers. // If unspecified, the container runtime will allocate a random SELinux context for each // container. May also be set in SecurityContext. If set in // both SecurityContext and PodSecurityContext, the value specified in SecurityContext // takes precedence for that container."><meta itemprop="datePublished" content="2023-05-08T18:19:18+08:00" />
-<meta itemprop="dateModified" content="2023-12-05T10:55:16+08:00" />
-<meta itemprop="wordCount" content="1233">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Pod Security"/>
-<meta name="twitter:description" content="简要概述 TODO;
-数据结构 PodSecurityContext // PodSecurityContext holds pod-level security attributes and common container settings. // Some fields are also present in container.securityContext. Field values of // container.securityContext take precedence over field values of PodSecurityContext. type PodSecurityContext struct { // The SELinux context to be applied to all containers. // If unspecified, the container runtime will allocate a random SELinux context for each // container. May also be set in SecurityContext. If set in // both SecurityContext and PodSecurityContext, the value specified in SecurityContext // takes precedence for that container."/>
+<meta property="og:url" content="/docs/concepts/workloads/pods-security/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Pod Security">
+  <meta property="og:description" content="简要概述 TODO;
+数据结构 PodSecurityContext // PodSecurityContext holds pod-level security attributes and common container settings. // Some fields are also present in container.securityContext. Field values of // container.securityContext take precedence over field values of PodSecurityContext. type PodSecurityContext struct { // The SELinux context to be applied to all containers. // If unspecified, the container runtime will allocate a random SELinux context for each // container. May also be set in SecurityContext. If set in // both SecurityContext and PodSecurityContext, the value specified in SecurityContext // takes precedence for that container. // &#43;optional SELinuxOptions *SELinuxOptions `json:&#34;seLinuxOptions,omitempty&#34; protobuf:&#34;bytes,1,opt,name=seLinuxOptions&#34;` // The Windows specific settings applied to all containers. // If unspecified, the options within a container&#39;s SecurityContext will be used. // If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. // &#43;optional WindowsOptions *WindowsSecurityContextOptions `json:&#34;windowsOptions,omitempty&#34; protobuf:&#34;bytes,8,opt,name=windowsOptions&#34;` // The UID to run the entrypoint of the container process. // Defaults to user specified in image metadata if unspecified. // May also be set in SecurityContext. If set in both SecurityContext and // PodSecurityContext, the value specified in SecurityContext takes precedence // for that container. // &#43;optional RunAsUser *int64 `json:&#34;runAsUser,omitempty&#34; protobuf:&#34;varint,2,opt,name=runAsUser&#34;` // The GID to run the entrypoint of the container process. // Uses runtime default if unset. // May also be set in SecurityContext. If set in both SecurityContext and // PodSecurityContext, the value specified in SecurityContext takes precedence // for that container. // &#43;optional RunAsGroup *int64 `json:&#34;runAsGroup,omitempty&#34; protobuf:&#34;varint,6,opt,name=runAsGroup&#34;` // Indicates that the container must run as a non-root user. // If true, the Kubelet will validate the image at runtime to ensure that it // does not run as UID 0 (root) and fail to start the container if it does. // If unset or false, no such validation will be performed. // May also be set in SecurityContext. If set in both SecurityContext and // PodSecurityContext, the value specified in SecurityContext takes precedence. // &#43;optional RunAsNonRoot *bool `json:&#34;runAsNonRoot,omitempty&#34; protobuf:&#34;varint,3,opt,name=runAsNonRoot&#34;` // A list of groups applied to the first process run in each container, in addition // to the container&#39;s primary GID. If unspecified, no groups will be added to // any container. // &#43;optional SupplementalGroups []int64 `json:&#34;supplementalGroups,omitempty&#34; protobuf:&#34;varint,4,rep,name=supplementalGroups&#34;` // A special supplemental group that applies to all containers in a pod. // Some volume types allow the Kubelet to change the ownership of that volume // to be owned by the pod: // // 1. The owning GID will be the FSGroup // 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) // 3. The permission bits are OR&#39;d with rw-rw---- // // If unset, the Kubelet will not modify the ownership and permissions of any volume. // &#43;optional FSGroup *int64 `json:&#34;fsGroup,omitempty&#34; protobuf:&#34;varint,5,opt,name=fsGroup&#34;` // Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported // sysctls (by the container runtime) might fail to launch. // &#43;optional Sysctls []Sysctl `json:&#34;sysctls,omitempty&#34; protobuf:&#34;bytes,7,rep,name=sysctls&#34;` // fsGroupChangePolicy defines behavior of changing ownership and permission of the volume // before being exposed inside Pod. This field will only apply to // volume types which support fsGroup based ownership(and permissions). // It will have no effect on ephemeral volume types such as: secret, configmaps // and emptydir. // Valid values are &#34;OnRootMismatch&#34; and &#34;Always&#34;. If not specified, &#34;Always&#34; is used. // &#43;optional FSGroupChangePolicy *PodFSGroupChangePolicy `json:&#34;fsGroupChangePolicy,omitempty&#34; protobuf:&#34;bytes,9,opt,name=fsGroupChangePolicy&#34;` // The seccomp options to use by the containers in this pod. // &#43;optional SeccompProfile *SeccompProfile `json:&#34;seccompProfile,omitempty&#34; protobuf:&#34;bytes,10,opt,name=seccompProfile&#34;` } SELinuxOptions // SELinuxOptions are the labels to be applied to the container type SELinuxOptions struct { // User is a SELinux user label that applies to the container. // &#43;optional User string `json:&#34;user,omitempty&#34; protobuf:&#34;bytes,1,opt,name=user&#34;` // Role is a SELinux role label that applies to the container. // &#43;optional Role string `json:&#34;role,omitempty&#34; protobuf:&#34;bytes,2,opt,name=role&#34;` // Type is a SELinux type label that applies to the container. // &#43;optional Type string `json:&#34;type,omitempty&#34; protobuf:&#34;bytes,3,opt,name=type&#34;` // Level is SELinux level label that applies to the container. // &#43;optional Level string `json:&#34;level,omitempty&#34; protobuf:&#34;bytes,4,opt,name=level&#34;` } WindowsSecurityContextOptions // WindowsSecurityContextOptions contain Windows-specific options and credentials. type WindowsSecurityContextOptions struct { // GMSACredentialSpecName is the name of the GMSA credential spec to use. // &#43;optional GMSACredentialSpecName *string `json:&#34;gmsaCredentialSpecName,omitempty&#34; protobuf:&#34;bytes,1,opt,name=gmsaCredentialSpecName&#34;` // GMSACredentialSpec is where the GMSA admission webhook // (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the // GMSA credential spec named by the GMSACredentialSpecName field. // &#43;optional GMSACredentialSpec *string `json:&#34;gmsaCredentialSpec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=gmsaCredentialSpec&#34;` // The UserName in Windows to run the entrypoint of the container process. // Defaults to the user specified in image metadata if unspecified. // May also be set in PodSecurityContext. If set in both SecurityContext and // PodSecurityContext, the value specified in SecurityContext takes precedence. // &#43;optional RunAsUserName *string `json:&#34;runAsUserName,omitempty&#34; protobuf:&#34;bytes,3,opt,name=runAsUserName&#34;` // HostProcess determines if a container should be run as a &#39;Host Process&#39; container. // This field is alpha-level and will only be honored by components that enable the // WindowsHostProcessContainers feature flag. Setting this field without the feature // flag will result in errors when validating the Pod. All of a Pod&#39;s containers must // have the same effective HostProcess value (it is not allowed to have a mix of HostProcess // containers and non-HostProcess containers). In addition, if HostProcess is true // then HostNetwork must also be set to true. // &#43;optional HostProcess *bool `json:&#34;hostProcess,omitempty&#34; protobuf:&#34;bytes,4,opt,name=hostProcess&#34;` } Sysctl // Sysctl defines a kernel parameter to be set type Sysctl struct { // Name of a property to set Name string `json:&#34;name&#34; protobuf:&#34;bytes,1,opt,name=name&#34;` // Value of a property to set Value string `json:&#34;value&#34; protobuf:&#34;bytes,2,opt,name=value&#34;` } PodFSGroupChangePolicy // PodFSGroupChangePolicy holds policies that will be used for applying fsGroup to a volume // when volume is mounted. type PodFSGroupChangePolicy string const ( // FSGroupChangeOnRootMismatch indicates that volume&#39;s ownership and permissions will be changed // only when permission and ownership of root directory does not match with expected // permissions on the volume. This can help shorten the time it takes to change // ownership and permissions of a volume. FSGroupChangeOnRootMismatch PodFSGroupChangePolicy = &#34;OnRootMismatch&#34; // FSGroupChangeAlways indicates that volume&#39;s ownership and permissions // should always be changed whenever volume is mounted inside a Pod. This the default // behavior. FSGroupChangeAlways PodFSGroupChangePolicy = &#34;Always&#34; ) SeccompProfile // SeccompProfile defines a pod/container&#39;s seccomp profile settings. // Only one profile source may be set. // &#43;union type SeccompProfile struct { // type indicates which kind of seccomp profile will be applied. // Valid options are: // // Localhost - a profile defined in a file on the node should be used. // RuntimeDefault - the container runtime default profile should be used. // Unconfined - no profile should be applied. // &#43;unionDiscriminator Type SeccompProfileType `json:&#34;type&#34; protobuf:&#34;bytes,1,opt,name=type,casttype=SeccompProfileType&#34;` // localhostProfile indicates a profile defined in a file on the node should be used. // The profile must be preconfigured on the node to work. // Must be a descending path, relative to the kubelet&#39;s configured seccomp profile location. // Must only be set if type is &#34;Localhost&#34;. // &#43;optional LocalhostProfile *string `json:&#34;localhostProfile,omitempty&#34; protobuf:&#34;bytes,2,opt,name=localhostProfile&#34;` } // SeccompProfileType defines the supported seccomp profile types. type SeccompProfileType string const ( // SeccompProfileTypeUnconfined indicates no seccomp profile is applied (A.K.A. unconfined). SeccompProfileTypeUnconfined SeccompProfileType = &#34;Unconfined&#34; // SeccompProfileTypeRuntimeDefault represents the default container runtime seccomp profile. SeccompProfileTypeRuntimeDefault SeccompProfileType = &#34;RuntimeDefault&#34; // SeccompProfileTypeLocalhost indicates a profile defined in a file on the node should be used. // The file&#39;s location is based off the kubelet&#39;s deprecated flag --seccomp-profile-root. // Once the flag support is removed the location will be &lt;kubelet-root-dir&gt;/seccomp. SeccompProfileTypeLocalhost SeccompProfileType = &#34;Localhost&#34; )">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-05-08T18:19:18+08:00">
+    <meta property="article:modified_time" content="2023-12-05T10:55:16+08:00">
+
+  <meta itemprop="name" content="Pod Security">
+  <meta itemprop="description" content="简要概述 TODO;
+数据结构 PodSecurityContext // PodSecurityContext holds pod-level security attributes and common container settings. // Some fields are also present in container.securityContext. Field values of // container.securityContext take precedence over field values of PodSecurityContext. type PodSecurityContext struct { // The SELinux context to be applied to all containers. // If unspecified, the container runtime will allocate a random SELinux context for each // container. May also be set in SecurityContext. If set in // both SecurityContext and PodSecurityContext, the value specified in SecurityContext // takes precedence for that container. // &#43;optional SELinuxOptions *SELinuxOptions `json:&#34;seLinuxOptions,omitempty&#34; protobuf:&#34;bytes,1,opt,name=seLinuxOptions&#34;` // The Windows specific settings applied to all containers. // If unspecified, the options within a container&#39;s SecurityContext will be used. // If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. // &#43;optional WindowsOptions *WindowsSecurityContextOptions `json:&#34;windowsOptions,omitempty&#34; protobuf:&#34;bytes,8,opt,name=windowsOptions&#34;` // The UID to run the entrypoint of the container process. // Defaults to user specified in image metadata if unspecified. // May also be set in SecurityContext. If set in both SecurityContext and // PodSecurityContext, the value specified in SecurityContext takes precedence // for that container. // &#43;optional RunAsUser *int64 `json:&#34;runAsUser,omitempty&#34; protobuf:&#34;varint,2,opt,name=runAsUser&#34;` // The GID to run the entrypoint of the container process. // Uses runtime default if unset. // May also be set in SecurityContext. If set in both SecurityContext and // PodSecurityContext, the value specified in SecurityContext takes precedence // for that container. // &#43;optional RunAsGroup *int64 `json:&#34;runAsGroup,omitempty&#34; protobuf:&#34;varint,6,opt,name=runAsGroup&#34;` // Indicates that the container must run as a non-root user. // If true, the Kubelet will validate the image at runtime to ensure that it // does not run as UID 0 (root) and fail to start the container if it does. // If unset or false, no such validation will be performed. // May also be set in SecurityContext. If set in both SecurityContext and // PodSecurityContext, the value specified in SecurityContext takes precedence. // &#43;optional RunAsNonRoot *bool `json:&#34;runAsNonRoot,omitempty&#34; protobuf:&#34;varint,3,opt,name=runAsNonRoot&#34;` // A list of groups applied to the first process run in each container, in addition // to the container&#39;s primary GID. If unspecified, no groups will be added to // any container. // &#43;optional SupplementalGroups []int64 `json:&#34;supplementalGroups,omitempty&#34; protobuf:&#34;varint,4,rep,name=supplementalGroups&#34;` // A special supplemental group that applies to all containers in a pod. // Some volume types allow the Kubelet to change the ownership of that volume // to be owned by the pod: // // 1. The owning GID will be the FSGroup // 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) // 3. The permission bits are OR&#39;d with rw-rw---- // // If unset, the Kubelet will not modify the ownership and permissions of any volume. // &#43;optional FSGroup *int64 `json:&#34;fsGroup,omitempty&#34; protobuf:&#34;varint,5,opt,name=fsGroup&#34;` // Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported // sysctls (by the container runtime) might fail to launch. // &#43;optional Sysctls []Sysctl `json:&#34;sysctls,omitempty&#34; protobuf:&#34;bytes,7,rep,name=sysctls&#34;` // fsGroupChangePolicy defines behavior of changing ownership and permission of the volume // before being exposed inside Pod. This field will only apply to // volume types which support fsGroup based ownership(and permissions). // It will have no effect on ephemeral volume types such as: secret, configmaps // and emptydir. // Valid values are &#34;OnRootMismatch&#34; and &#34;Always&#34;. If not specified, &#34;Always&#34; is used. // &#43;optional FSGroupChangePolicy *PodFSGroupChangePolicy `json:&#34;fsGroupChangePolicy,omitempty&#34; protobuf:&#34;bytes,9,opt,name=fsGroupChangePolicy&#34;` // The seccomp options to use by the containers in this pod. // &#43;optional SeccompProfile *SeccompProfile `json:&#34;seccompProfile,omitempty&#34; protobuf:&#34;bytes,10,opt,name=seccompProfile&#34;` } SELinuxOptions // SELinuxOptions are the labels to be applied to the container type SELinuxOptions struct { // User is a SELinux user label that applies to the container. // &#43;optional User string `json:&#34;user,omitempty&#34; protobuf:&#34;bytes,1,opt,name=user&#34;` // Role is a SELinux role label that applies to the container. // &#43;optional Role string `json:&#34;role,omitempty&#34; protobuf:&#34;bytes,2,opt,name=role&#34;` // Type is a SELinux type label that applies to the container. // &#43;optional Type string `json:&#34;type,omitempty&#34; protobuf:&#34;bytes,3,opt,name=type&#34;` // Level is SELinux level label that applies to the container. // &#43;optional Level string `json:&#34;level,omitempty&#34; protobuf:&#34;bytes,4,opt,name=level&#34;` } WindowsSecurityContextOptions // WindowsSecurityContextOptions contain Windows-specific options and credentials. type WindowsSecurityContextOptions struct { // GMSACredentialSpecName is the name of the GMSA credential spec to use. // &#43;optional GMSACredentialSpecName *string `json:&#34;gmsaCredentialSpecName,omitempty&#34; protobuf:&#34;bytes,1,opt,name=gmsaCredentialSpecName&#34;` // GMSACredentialSpec is where the GMSA admission webhook // (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the // GMSA credential spec named by the GMSACredentialSpecName field. // &#43;optional GMSACredentialSpec *string `json:&#34;gmsaCredentialSpec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=gmsaCredentialSpec&#34;` // The UserName in Windows to run the entrypoint of the container process. // Defaults to the user specified in image metadata if unspecified. // May also be set in PodSecurityContext. If set in both SecurityContext and // PodSecurityContext, the value specified in SecurityContext takes precedence. // &#43;optional RunAsUserName *string `json:&#34;runAsUserName,omitempty&#34; protobuf:&#34;bytes,3,opt,name=runAsUserName&#34;` // HostProcess determines if a container should be run as a &#39;Host Process&#39; container. // This field is alpha-level and will only be honored by components that enable the // WindowsHostProcessContainers feature flag. Setting this field without the feature // flag will result in errors when validating the Pod. All of a Pod&#39;s containers must // have the same effective HostProcess value (it is not allowed to have a mix of HostProcess // containers and non-HostProcess containers). In addition, if HostProcess is true // then HostNetwork must also be set to true. // &#43;optional HostProcess *bool `json:&#34;hostProcess,omitempty&#34; protobuf:&#34;bytes,4,opt,name=hostProcess&#34;` } Sysctl // Sysctl defines a kernel parameter to be set type Sysctl struct { // Name of a property to set Name string `json:&#34;name&#34; protobuf:&#34;bytes,1,opt,name=name&#34;` // Value of a property to set Value string `json:&#34;value&#34; protobuf:&#34;bytes,2,opt,name=value&#34;` } PodFSGroupChangePolicy // PodFSGroupChangePolicy holds policies that will be used for applying fsGroup to a volume // when volume is mounted. type PodFSGroupChangePolicy string const ( // FSGroupChangeOnRootMismatch indicates that volume&#39;s ownership and permissions will be changed // only when permission and ownership of root directory does not match with expected // permissions on the volume. This can help shorten the time it takes to change // ownership and permissions of a volume. FSGroupChangeOnRootMismatch PodFSGroupChangePolicy = &#34;OnRootMismatch&#34; // FSGroupChangeAlways indicates that volume&#39;s ownership and permissions // should always be changed whenever volume is mounted inside a Pod. This the default // behavior. FSGroupChangeAlways PodFSGroupChangePolicy = &#34;Always&#34; ) SeccompProfile // SeccompProfile defines a pod/container&#39;s seccomp profile settings. // Only one profile source may be set. // &#43;union type SeccompProfile struct { // type indicates which kind of seccomp profile will be applied. // Valid options are: // // Localhost - a profile defined in a file on the node should be used. // RuntimeDefault - the container runtime default profile should be used. // Unconfined - no profile should be applied. // &#43;unionDiscriminator Type SeccompProfileType `json:&#34;type&#34; protobuf:&#34;bytes,1,opt,name=type,casttype=SeccompProfileType&#34;` // localhostProfile indicates a profile defined in a file on the node should be used. // The profile must be preconfigured on the node to work. // Must be a descending path, relative to the kubelet&#39;s configured seccomp profile location. // Must only be set if type is &#34;Localhost&#34;. // &#43;optional LocalhostProfile *string `json:&#34;localhostProfile,omitempty&#34; protobuf:&#34;bytes,2,opt,name=localhostProfile&#34;` } // SeccompProfileType defines the supported seccomp profile types. type SeccompProfileType string const ( // SeccompProfileTypeUnconfined indicates no seccomp profile is applied (A.K.A. unconfined). SeccompProfileTypeUnconfined SeccompProfileType = &#34;Unconfined&#34; // SeccompProfileTypeRuntimeDefault represents the default container runtime seccomp profile. SeccompProfileTypeRuntimeDefault SeccompProfileType = &#34;RuntimeDefault&#34; // SeccompProfileTypeLocalhost indicates a profile defined in a file on the node should be used. // The file&#39;s location is based off the kubelet&#39;s deprecated flag --seccomp-profile-root. // Once the flag support is removed the location will be &lt;kubelet-root-dir&gt;/seccomp. SeccompProfileTypeLocalhost SeccompProfileType = &#34;Localhost&#34; )">
+  <meta itemprop="datePublished" content="2023-05-08T18:19:18+08:00">
+  <meta itemprop="dateModified" content="2023-12-05T10:55:16+08:00">
+  <meta itemprop="wordCount" content="1233">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Pod Security">
+  <meta name="twitter:description" content="简要概述 TODO;
+数据结构 PodSecurityContext // PodSecurityContext holds pod-level security attributes and common container settings. // Some fields are also present in container.securityContext. Field values of // container.securityContext take precedence over field values of PodSecurityContext. type PodSecurityContext struct { // The SELinux context to be applied to all containers. // If unspecified, the container runtime will allocate a random SELinux context for each // container. May also be set in SecurityContext. If set in // both SecurityContext and PodSecurityContext, the value specified in SecurityContext // takes precedence for that container. // &#43;optional SELinuxOptions *SELinuxOptions `json:&#34;seLinuxOptions,omitempty&#34; protobuf:&#34;bytes,1,opt,name=seLinuxOptions&#34;` // The Windows specific settings applied to all containers. // If unspecified, the options within a container&#39;s SecurityContext will be used. // If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. // &#43;optional WindowsOptions *WindowsSecurityContextOptions `json:&#34;windowsOptions,omitempty&#34; protobuf:&#34;bytes,8,opt,name=windowsOptions&#34;` // The UID to run the entrypoint of the container process. // Defaults to user specified in image metadata if unspecified. // May also be set in SecurityContext. If set in both SecurityContext and // PodSecurityContext, the value specified in SecurityContext takes precedence // for that container. // &#43;optional RunAsUser *int64 `json:&#34;runAsUser,omitempty&#34; protobuf:&#34;varint,2,opt,name=runAsUser&#34;` // The GID to run the entrypoint of the container process. // Uses runtime default if unset. // May also be set in SecurityContext. If set in both SecurityContext and // PodSecurityContext, the value specified in SecurityContext takes precedence // for that container. // &#43;optional RunAsGroup *int64 `json:&#34;runAsGroup,omitempty&#34; protobuf:&#34;varint,6,opt,name=runAsGroup&#34;` // Indicates that the container must run as a non-root user. // If true, the Kubelet will validate the image at runtime to ensure that it // does not run as UID 0 (root) and fail to start the container if it does. // If unset or false, no such validation will be performed. // May also be set in SecurityContext. If set in both SecurityContext and // PodSecurityContext, the value specified in SecurityContext takes precedence. // &#43;optional RunAsNonRoot *bool `json:&#34;runAsNonRoot,omitempty&#34; protobuf:&#34;varint,3,opt,name=runAsNonRoot&#34;` // A list of groups applied to the first process run in each container, in addition // to the container&#39;s primary GID. If unspecified, no groups will be added to // any container. // &#43;optional SupplementalGroups []int64 `json:&#34;supplementalGroups,omitempty&#34; protobuf:&#34;varint,4,rep,name=supplementalGroups&#34;` // A special supplemental group that applies to all containers in a pod. // Some volume types allow the Kubelet to change the ownership of that volume // to be owned by the pod: // // 1. The owning GID will be the FSGroup // 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) // 3. The permission bits are OR&#39;d with rw-rw---- // // If unset, the Kubelet will not modify the ownership and permissions of any volume. // &#43;optional FSGroup *int64 `json:&#34;fsGroup,omitempty&#34; protobuf:&#34;varint,5,opt,name=fsGroup&#34;` // Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported // sysctls (by the container runtime) might fail to launch. // &#43;optional Sysctls []Sysctl `json:&#34;sysctls,omitempty&#34; protobuf:&#34;bytes,7,rep,name=sysctls&#34;` // fsGroupChangePolicy defines behavior of changing ownership and permission of the volume // before being exposed inside Pod. This field will only apply to // volume types which support fsGroup based ownership(and permissions). // It will have no effect on ephemeral volume types such as: secret, configmaps // and emptydir. // Valid values are &#34;OnRootMismatch&#34; and &#34;Always&#34;. If not specified, &#34;Always&#34; is used. // &#43;optional FSGroupChangePolicy *PodFSGroupChangePolicy `json:&#34;fsGroupChangePolicy,omitempty&#34; protobuf:&#34;bytes,9,opt,name=fsGroupChangePolicy&#34;` // The seccomp options to use by the containers in this pod. // &#43;optional SeccompProfile *SeccompProfile `json:&#34;seccompProfile,omitempty&#34; protobuf:&#34;bytes,10,opt,name=seccompProfile&#34;` } SELinuxOptions // SELinuxOptions are the labels to be applied to the container type SELinuxOptions struct { // User is a SELinux user label that applies to the container. // &#43;optional User string `json:&#34;user,omitempty&#34; protobuf:&#34;bytes,1,opt,name=user&#34;` // Role is a SELinux role label that applies to the container. // &#43;optional Role string `json:&#34;role,omitempty&#34; protobuf:&#34;bytes,2,opt,name=role&#34;` // Type is a SELinux type label that applies to the container. // &#43;optional Type string `json:&#34;type,omitempty&#34; protobuf:&#34;bytes,3,opt,name=type&#34;` // Level is SELinux level label that applies to the container. // &#43;optional Level string `json:&#34;level,omitempty&#34; protobuf:&#34;bytes,4,opt,name=level&#34;` } WindowsSecurityContextOptions // WindowsSecurityContextOptions contain Windows-specific options and credentials. type WindowsSecurityContextOptions struct { // GMSACredentialSpecName is the name of the GMSA credential spec to use. // &#43;optional GMSACredentialSpecName *string `json:&#34;gmsaCredentialSpecName,omitempty&#34; protobuf:&#34;bytes,1,opt,name=gmsaCredentialSpecName&#34;` // GMSACredentialSpec is where the GMSA admission webhook // (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the // GMSA credential spec named by the GMSACredentialSpecName field. // &#43;optional GMSACredentialSpec *string `json:&#34;gmsaCredentialSpec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=gmsaCredentialSpec&#34;` // The UserName in Windows to run the entrypoint of the container process. // Defaults to the user specified in image metadata if unspecified. // May also be set in PodSecurityContext. If set in both SecurityContext and // PodSecurityContext, the value specified in SecurityContext takes precedence. // &#43;optional RunAsUserName *string `json:&#34;runAsUserName,omitempty&#34; protobuf:&#34;bytes,3,opt,name=runAsUserName&#34;` // HostProcess determines if a container should be run as a &#39;Host Process&#39; container. // This field is alpha-level and will only be honored by components that enable the // WindowsHostProcessContainers feature flag. Setting this field without the feature // flag will result in errors when validating the Pod. All of a Pod&#39;s containers must // have the same effective HostProcess value (it is not allowed to have a mix of HostProcess // containers and non-HostProcess containers). In addition, if HostProcess is true // then HostNetwork must also be set to true. // &#43;optional HostProcess *bool `json:&#34;hostProcess,omitempty&#34; protobuf:&#34;bytes,4,opt,name=hostProcess&#34;` } Sysctl // Sysctl defines a kernel parameter to be set type Sysctl struct { // Name of a property to set Name string `json:&#34;name&#34; protobuf:&#34;bytes,1,opt,name=name&#34;` // Value of a property to set Value string `json:&#34;value&#34; protobuf:&#34;bytes,2,opt,name=value&#34;` } PodFSGroupChangePolicy // PodFSGroupChangePolicy holds policies that will be used for applying fsGroup to a volume // when volume is mounted. type PodFSGroupChangePolicy string const ( // FSGroupChangeOnRootMismatch indicates that volume&#39;s ownership and permissions will be changed // only when permission and ownership of root directory does not match with expected // permissions on the volume. This can help shorten the time it takes to change // ownership and permissions of a volume. FSGroupChangeOnRootMismatch PodFSGroupChangePolicy = &#34;OnRootMismatch&#34; // FSGroupChangeAlways indicates that volume&#39;s ownership and permissions // should always be changed whenever volume is mounted inside a Pod. This the default // behavior. FSGroupChangeAlways PodFSGroupChangePolicy = &#34;Always&#34; ) SeccompProfile // SeccompProfile defines a pod/container&#39;s seccomp profile settings. // Only one profile source may be set. // &#43;union type SeccompProfile struct { // type indicates which kind of seccomp profile will be applied. // Valid options are: // // Localhost - a profile defined in a file on the node should be used. // RuntimeDefault - the container runtime default profile should be used. // Unconfined - no profile should be applied. // &#43;unionDiscriminator Type SeccompProfileType `json:&#34;type&#34; protobuf:&#34;bytes,1,opt,name=type,casttype=SeccompProfileType&#34;` // localhostProfile indicates a profile defined in a file on the node should be used. // The profile must be preconfigured on the node to work. // Must be a descending path, relative to the kubelet&#39;s configured seccomp profile location. // Must only be set if type is &#34;Localhost&#34;. // &#43;optional LocalhostProfile *string `json:&#34;localhostProfile,omitempty&#34; protobuf:&#34;bytes,2,opt,name=localhostProfile&#34;` } // SeccompProfileType defines the supported seccomp profile types. type SeccompProfileType string const ( // SeccompProfileTypeUnconfined indicates no seccomp profile is applied (A.K.A. unconfined). SeccompProfileTypeUnconfined SeccompProfileType = &#34;Unconfined&#34; // SeccompProfileTypeRuntimeDefault represents the default container runtime seccomp profile. SeccompProfileTypeRuntimeDefault SeccompProfileType = &#34;RuntimeDefault&#34; // SeccompProfileTypeLocalhost indicates a profile defined in a file on the node should be used. // The file&#39;s location is based off the kubelet&#39;s deprecated flag --seccomp-profile-root. // Once the flag support is removed the location will be &lt;kubelet-root-dir&gt;/seccomp. SeccompProfileTypeLocalhost SeccompProfileType = &#34;Localhost&#34; )">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1041,6 +1044,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3074,9 +3094,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3090,10 +3110,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3153,6 +3376,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4554,7 +4836,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

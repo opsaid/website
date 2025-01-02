@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -27,57 +27,60 @@ Service
 // 一个抽象的服务组，配合coredns做服务发现，提供负载均衡与VIP，当仅可在集群内通讯
 type Service struct {
     // …">
-<meta property="og:title" content="Service" />
-<meta property="og:description" content="简要概述 staging/src/k8s.io/api/core/v1/types.go 配置示例 数据结构 Service // 一个抽象的服务组，配合coredns做服务发现，提供负载均衡与VIP，当仅可在集群内通讯 type Service struct { // 公共基础结构 metav1.TypeMeta `json:&#34;,inline&#34;` metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // 服务规范定义 Spec ServiceSpec `json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;` // 服务实际配置 Status ServiceStatus `json:&#34;status,omitempty&#34; protobuf:&#34;bytes,3,opt,name=status&#34;` } ServiceSpec // 用户声明期望的服务配置 type ServiceSpec struct { // 服务对外暴露的端口 Ports []ServicePort `json:&#34;ports,omitempty&#34; patchStrategy:&#34;merge&#34; patchMergeKey:&#34;port&#34; protobuf:&#34;bytes,1,rep,name=ports&#34;` // 根据这里配置的标签来决定具体路由流量至后端POD // 如果类型是：ExternalName 则会被忽略，仅为：ClusterIP, NodePort, and LoadBalancer 类型有效； Selector map[string]string `json:&#34;selector,omitempty&#34; protobuf:&#34;bytes,2,rep,name=selector&#34;` // 一个虚拟IP地址，如果未手工配置则自动生成，手工配置必须未被使用且在有效范围内 // 如果设置为 &#34;None&#34; 则不分配IP，也就是 &#34;headless service&#34;，一般配合有状态应用使用 // 如果 type=&#34;ExternalName&#34; 则不生效 // 仅当 type 为 ClusterIP, NodePort, and LoadBalancer 生效 ClusterIP string `json:&#34;clusterIP,omitempty&#34; protobuf:&#34;bytes,3,opt,name=clusterIP&#34;` // 功能同 ClusterIP，支持多个虚拟IP，如果同时配置了 ClusterIP，则必须与 ClusterIPs[0] 值相同 ClusterIPs []string `json:&#34;clusterIPs,omitempty&#34; protobuf:&#34;bytes,18,opt,name=clusterIPs&#34;` // 默认类型为：ClusterIP，支持类型：ExternalName, ClusterIP, NodePort, and LoadBalancer Type ServiceType `json:&#34;type,omitempty&#34; protobuf:&#34;bytes,4,opt,name=type,casttype=ServiceType&#34;` // TODO; 具体实现待验证 // 非K8S管理的外部IP，但用于接收这个服务的流量 ExternalIPs []string `json:&#34;externalIPs,omitempty&#34; protobuf:&#34;bytes,5,rep,name=externalIPs&#34;` // 会话的亲和性，支持：&#34;ClientIP&#34; and &#34;None&#34;，默认为 &#34;None&#34; SessionAffinity ServiceAffinity `json:&#34;sessionAffinity,omitempty&#34; protobuf:&#34;bytes,7,opt,name=sessionAffinity,casttype=ServiceAffinity&#34;` // 仅当服务类型为 &#34;LoadBalancer&#34; 生效，不支持双栈网络，依赖云服务提供商 LoadBalancerIP string `json:&#34;loadBalancerIP,omitempty&#34; protobuf:&#34;bytes,8,opt,name=loadBalancerIP&#34;` // TODO; https://kubernetes." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/concepts/network/service/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-11-18T17:46:05+08:00" />
-<meta property="article:modified_time" content="2024-05-06T14:15:46+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Service">
-<meta itemprop="description" content="简要概述 staging/src/k8s.io/api/core/v1/types.go 配置示例 数据结构 Service // 一个抽象的服务组，配合coredns做服务发现，提供负载均衡与VIP，当仅可在集群内通讯 type Service struct { // 公共基础结构 metav1.TypeMeta `json:&#34;,inline&#34;` metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // 服务规范定义 Spec ServiceSpec `json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;` // 服务实际配置 Status ServiceStatus `json:&#34;status,omitempty&#34; protobuf:&#34;bytes,3,opt,name=status&#34;` } ServiceSpec // 用户声明期望的服务配置 type ServiceSpec struct { // 服务对外暴露的端口 Ports []ServicePort `json:&#34;ports,omitempty&#34; patchStrategy:&#34;merge&#34; patchMergeKey:&#34;port&#34; protobuf:&#34;bytes,1,rep,name=ports&#34;` // 根据这里配置的标签来决定具体路由流量至后端POD // 如果类型是：ExternalName 则会被忽略，仅为：ClusterIP, NodePort, and LoadBalancer 类型有效； Selector map[string]string `json:&#34;selector,omitempty&#34; protobuf:&#34;bytes,2,rep,name=selector&#34;` // 一个虚拟IP地址，如果未手工配置则自动生成，手工配置必须未被使用且在有效范围内 // 如果设置为 &#34;None&#34; 则不分配IP，也就是 &#34;headless service&#34;，一般配合有状态应用使用 // 如果 type=&#34;ExternalName&#34; 则不生效 // 仅当 type 为 ClusterIP, NodePort, and LoadBalancer 生效 ClusterIP string `json:&#34;clusterIP,omitempty&#34; protobuf:&#34;bytes,3,opt,name=clusterIP&#34;` // 功能同 ClusterIP，支持多个虚拟IP，如果同时配置了 ClusterIP，则必须与 ClusterIPs[0] 值相同 ClusterIPs []string `json:&#34;clusterIPs,omitempty&#34; protobuf:&#34;bytes,18,opt,name=clusterIPs&#34;` // 默认类型为：ClusterIP，支持类型：ExternalName, ClusterIP, NodePort, and LoadBalancer Type ServiceType `json:&#34;type,omitempty&#34; protobuf:&#34;bytes,4,opt,name=type,casttype=ServiceType&#34;` // TODO; 具体实现待验证 // 非K8S管理的外部IP，但用于接收这个服务的流量 ExternalIPs []string `json:&#34;externalIPs,omitempty&#34; protobuf:&#34;bytes,5,rep,name=externalIPs&#34;` // 会话的亲和性，支持：&#34;ClientIP&#34; and &#34;None&#34;，默认为 &#34;None&#34; SessionAffinity ServiceAffinity `json:&#34;sessionAffinity,omitempty&#34; protobuf:&#34;bytes,7,opt,name=sessionAffinity,casttype=ServiceAffinity&#34;` // 仅当服务类型为 &#34;LoadBalancer&#34; 生效，不支持双栈网络，依赖云服务提供商 LoadBalancerIP string `json:&#34;loadBalancerIP,omitempty&#34; protobuf:&#34;bytes,8,opt,name=loadBalancerIP&#34;` // TODO; https://kubernetes."><meta itemprop="datePublished" content="2022-11-18T17:46:05+08:00" />
-<meta itemprop="dateModified" content="2024-05-06T14:15:46+08:00" />
-<meta itemprop="wordCount" content="902">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Service"/>
-<meta name="twitter:description" content="简要概述 staging/src/k8s.io/api/core/v1/types.go 配置示例 数据结构 Service // 一个抽象的服务组，配合coredns做服务发现，提供负载均衡与VIP，当仅可在集群内通讯 type Service struct { // 公共基础结构 metav1.TypeMeta `json:&#34;,inline&#34;` metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // 服务规范定义 Spec ServiceSpec `json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;` // 服务实际配置 Status ServiceStatus `json:&#34;status,omitempty&#34; protobuf:&#34;bytes,3,opt,name=status&#34;` } ServiceSpec // 用户声明期望的服务配置 type ServiceSpec struct { // 服务对外暴露的端口 Ports []ServicePort `json:&#34;ports,omitempty&#34; patchStrategy:&#34;merge&#34; patchMergeKey:&#34;port&#34; protobuf:&#34;bytes,1,rep,name=ports&#34;` // 根据这里配置的标签来决定具体路由流量至后端POD // 如果类型是：ExternalName 则会被忽略，仅为：ClusterIP, NodePort, and LoadBalancer 类型有效； Selector map[string]string `json:&#34;selector,omitempty&#34; protobuf:&#34;bytes,2,rep,name=selector&#34;` // 一个虚拟IP地址，如果未手工配置则自动生成，手工配置必须未被使用且在有效范围内 // 如果设置为 &#34;None&#34; 则不分配IP，也就是 &#34;headless service&#34;，一般配合有状态应用使用 // 如果 type=&#34;ExternalName&#34; 则不生效 // 仅当 type 为 ClusterIP, NodePort, and LoadBalancer 生效 ClusterIP string `json:&#34;clusterIP,omitempty&#34; protobuf:&#34;bytes,3,opt,name=clusterIP&#34;` // 功能同 ClusterIP，支持多个虚拟IP，如果同时配置了 ClusterIP，则必须与 ClusterIPs[0] 值相同 ClusterIPs []string `json:&#34;clusterIPs,omitempty&#34; protobuf:&#34;bytes,18,opt,name=clusterIPs&#34;` // 默认类型为：ClusterIP，支持类型：ExternalName, ClusterIP, NodePort, and LoadBalancer Type ServiceType `json:&#34;type,omitempty&#34; protobuf:&#34;bytes,4,opt,name=type,casttype=ServiceType&#34;` // TODO; 具体实现待验证 // 非K8S管理的外部IP，但用于接收这个服务的流量 ExternalIPs []string `json:&#34;externalIPs,omitempty&#34; protobuf:&#34;bytes,5,rep,name=externalIPs&#34;` // 会话的亲和性，支持：&#34;ClientIP&#34; and &#34;None&#34;，默认为 &#34;None&#34; SessionAffinity ServiceAffinity `json:&#34;sessionAffinity,omitempty&#34; protobuf:&#34;bytes,7,opt,name=sessionAffinity,casttype=ServiceAffinity&#34;` // 仅当服务类型为 &#34;LoadBalancer&#34; 生效，不支持双栈网络，依赖云服务提供商 LoadBalancerIP string `json:&#34;loadBalancerIP,omitempty&#34; protobuf:&#34;bytes,8,opt,name=loadBalancerIP&#34;` // TODO; https://kubernetes."/>
+<meta property="og:url" content="/docs/concepts/network/service/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Service">
+  <meta property="og:description" content="简要概述 staging/src/k8s.io/api/core/v1/types.go 配置示例 数据结构 Service // 一个抽象的服务组，配合coredns做服务发现，提供负载均衡与VIP，当仅可在集群内通讯 type Service struct { // 公共基础结构 metav1.TypeMeta `json:&#34;,inline&#34;` metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // 服务规范定义 Spec ServiceSpec `json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;` // 服务实际配置 Status ServiceStatus `json:&#34;status,omitempty&#34; protobuf:&#34;bytes,3,opt,name=status&#34;` } ServiceSpec // 用户声明期望的服务配置 type ServiceSpec struct { // 服务对外暴露的端口 Ports []ServicePort `json:&#34;ports,omitempty&#34; patchStrategy:&#34;merge&#34; patchMergeKey:&#34;port&#34; protobuf:&#34;bytes,1,rep,name=ports&#34;` // 根据这里配置的标签来决定具体路由流量至后端POD // 如果类型是：ExternalName 则会被忽略，仅为：ClusterIP, NodePort, and LoadBalancer 类型有效； Selector map[string]string `json:&#34;selector,omitempty&#34; protobuf:&#34;bytes,2,rep,name=selector&#34;` // 一个虚拟IP地址，如果未手工配置则自动生成，手工配置必须未被使用且在有效范围内 // 如果设置为 &#34;None&#34; 则不分配IP，也就是 &#34;headless service&#34;，一般配合有状态应用使用 // 如果 type=&#34;ExternalName&#34; 则不生效 // 仅当 type 为 ClusterIP, NodePort, and LoadBalancer 生效 ClusterIP string `json:&#34;clusterIP,omitempty&#34; protobuf:&#34;bytes,3,opt,name=clusterIP&#34;` // 功能同 ClusterIP，支持多个虚拟IP，如果同时配置了 ClusterIP，则必须与 ClusterIPs[0] 值相同 ClusterIPs []string `json:&#34;clusterIPs,omitempty&#34; protobuf:&#34;bytes,18,opt,name=clusterIPs&#34;` // 默认类型为：ClusterIP，支持类型：ExternalName, ClusterIP, NodePort, and LoadBalancer Type ServiceType `json:&#34;type,omitempty&#34; protobuf:&#34;bytes,4,opt,name=type,casttype=ServiceType&#34;` // TODO; 具体实现待验证 // 非K8S管理的外部IP，但用于接收这个服务的流量 ExternalIPs []string `json:&#34;externalIPs,omitempty&#34; protobuf:&#34;bytes,5,rep,name=externalIPs&#34;` // 会话的亲和性，支持：&#34;ClientIP&#34; and &#34;None&#34;，默认为 &#34;None&#34; SessionAffinity ServiceAffinity `json:&#34;sessionAffinity,omitempty&#34; protobuf:&#34;bytes,7,opt,name=sessionAffinity,casttype=ServiceAffinity&#34;` // 仅当服务类型为 &#34;LoadBalancer&#34; 生效，不支持双栈网络，依赖云服务提供商 LoadBalancerIP string `json:&#34;loadBalancerIP,omitempty&#34; protobuf:&#34;bytes,8,opt,name=loadBalancerIP&#34;` // TODO; https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/ LoadBalancerSourceRanges []string `json:&#34;loadBalancerSourceRanges,omitempty&#34; protobuf:&#34;bytes,9,opt,name=loadBalancerSourceRanges&#34;` // 设置为一个DNS地址，用于作为该服务的别名，同时 &#34;type&#34; 必须设置为 &#34;ExternalName&#34; ExternalName string `json:&#34;externalName,omitempty&#34; protobuf:&#34;bytes,10,opt,name=externalName&#34;` // 用于控制外部流量进入集群后如何路由到后端 Pod，影响 &#34;NodePort&#34; 或 &#34;LoadBalancer&#34; 类型服务 // 如果设置为 &#34;Local&#34;，当该节点上没有匹配的 Pod，则流量不会被转发到集群中的其他节点，这样则会保留源客户端源 IP // 如果设置为 &#34;Cluster&#34;，将采用集群内部的负载均衡机制，无论外部流量来自哪个节点，都可被路由到对应 Pod ExternalTrafficPolicy ServiceExternalTrafficPolicyType `json:&#34;externalTrafficPolicy,omitempty&#34; protobuf:&#34;bytes,11,opt,name=externalTrafficPolicy&#34;` // 用于健康检测，仅当类型为 &#34;LoadBalancer&#34; 且 &#34;externalTrafficPolicy=Local&#34; 时有效； HealthCheckNodePort int32 `json:&#34;healthCheckNodePort,omitempty&#34; protobuf:&#34;bytes,12,opt,name=healthCheckNodePort&#34;` // TODO; 用途未知 PublishNotReadyAddresses bool `json:&#34;publishNotReadyAddresses,omitempty&#34; protobuf:&#34;varint,13,opt,name=publishNotReadyAddresses&#34;` // 用于配置会话亲和性 SessionAffinityConfig *SessionAffinityConfig `json:&#34;sessionAffinityConfig,omitempty&#34; protobuf:&#34;bytes,14,opt,name=sessionAffinityConfig&#34;` // 服务IP版本，可取：IPv4, IPv6，仅当类型为：&#34;ClusterIP&#34;、&#34;NodePort&#34;、&#34;LoadBalancer&#34; IPFamilies []IPFamily `json:&#34;ipFamilies,omitempty&#34; protobuf:&#34;bytes,19,opt,name=ipFamilies,casttype=IPFamily&#34;` // 服务IP策略，是否支持双栈，可取值 &#34;SingleStack&#34;、&#34;PreferDualStack&#34;、&#34;RequireDualStack&#34; IPFamilyPolicy *IPFamilyPolicyType `json:&#34;ipFamilyPolicy,omitempty&#34; protobuf:&#34;bytes,17,opt,name=ipFamilyPolicy,casttype=IPFamilyPolicyType&#34;` // 当类型为 &#34;LoadBalancer&#34; 是否自动分配 &#34;NodePorts&#34; 端口，默认为 &#34;true&#34; AllocateLoadBalancerNodePorts *bool `json:&#34;allocateLoadBalancerNodePorts,omitempty&#34; protobuf:&#34;bytes,20,opt,name=allocateLoadBalancerNodePorts&#34;` // 当类型为 &#34;LoadBalancer&#34; 才有效 LoadBalancerClass *string `json:&#34;loadBalancerClass,omitempty&#34; protobuf:&#34;bytes,21,opt,name=loadBalancerClass&#34;` // InternalTrafficPolicy specifies if the cluster internal traffic // should be routed to all endpoints or node-local endpoints only. // &#34;Cluster&#34; routes internal traffic to a Service to all endpoints. // &#34;Local&#34; routes traffic to node-local endpoints only, traffic is // dropped if no node-local endpoints are ready. // The default value is &#34;Cluster&#34;. // &#43;featureGate=ServiceInternalTrafficPolicy // &#43;optional // 类似 externalTrafficPolicy 用于控制内部流量在集群内如何路由到后端 Pod InternalTrafficPolicy *ServiceInternalTrafficPolicyType `json:&#34;internalTrafficPolicy,omitempty&#34; protobuf:&#34;bytes,22,opt,name=internalTrafficPolicy&#34;` } ServicePort type ServicePort struct { // 各服务名称必须是唯一的 Name string `json:&#34;name,omitempty&#34; protobuf:&#34;bytes,1,opt,name=name&#34;` // 该端口协议，支持：&#34;TCP&#34;, &#34;UDP&#34;, and &#34;SCTP&#34;，默认为：&#34;TCP&#34; Protocol Protocol `json:&#34;protocol,omitempty&#34; protobuf:&#34;bytes,2,opt,name=protocol,casttype=Protocol&#34;` // TODO; 待确认 AppProtocol *string `json:&#34;appProtocol,omitempty&#34; protobuf:&#34;bytes,6,opt,name=appProtocol&#34;` // 提供外部连接使用的服务端口 Port int32 `json:&#34;port&#34; protobuf:&#34;varint,3,opt,name=port&#34;` // 后端容器端口或者端口关联的唯一名字，这个字段比较特殊，同时支持字符串与数字格式 // 如果数字格式，说明为端口，必须在 1 至 65535 范围内 // 如果是字符串格式，则说明为对应容器端口的名称 TargetPort intstr.IntOrString `json:&#34;targetPort,omitempty&#34; protobuf:&#34;bytes,4,opt,name=targetPort&#34;` // 当类型为 &#34;NodePort&#34; 或 &#34;LoadBalancer&#34; 用于在工作节点额外开启提供外部服务的端口 NodePort int32 `json:&#34;nodePort,omitempty&#34; protobuf:&#34;varint,5,opt,name=nodePort&#34;` } ServiceType // Service Type string describes ingress methods for a service type ServiceType string const ( // ServiceTypeClusterIP means a service will only be accessible inside the // cluster, via the cluster IP. ServiceTypeClusterIP ServiceType = &#34;ClusterIP&#34; // ServiceTypeNodePort means a service will be exposed on one port of // every node, in addition to &#39;ClusterIP&#39; type. ServiceTypeNodePort ServiceType = &#34;NodePort&#34; // ServiceTypeLoadBalancer means a service will be exposed via an // external load balancer (if the cloud provider supports it), in addition // to &#39;NodePort&#39; type. ServiceTypeLoadBalancer ServiceType = &#34;LoadBalancer&#34; // ServiceTypeExternalName means a service consists of only a reference to // an external name that kubedns or equivalent will return as a CNAME // record, with no exposing or proxying of any pods involved. ServiceTypeExternalName ServiceType = &#34;ExternalName&#34; ) ServiceAffinity // Session Affinity Type string type ServiceAffinity string const ( // ServiceAffinityClientIP is the Client IP based. ServiceAffinityClientIP ServiceAffinity = &#34;ClientIP&#34; // ServiceAffinityNone - no session affinity. ServiceAffinityNone ServiceAffinity = &#34;None&#34; ) ServiceExternalTrafficPolicyType // Service External Traffic Policy Type string type ServiceExternalTrafficPolicyType string const ( // ServiceExternalTrafficPolicyTypeLocal specifies node-local endpoints behavior. ServiceExternalTrafficPolicyTypeLocal ServiceExternalTrafficPolicyType = &#34;Local&#34; // ServiceExternalTrafficPolicyTypeCluster specifies node-global (legacy) behavior. ServiceExternalTrafficPolicyTypeCluster ServiceExternalTrafficPolicyType = &#34;Cluster&#34; ) SessionAffinityConfig // SessionAffinityConfig represents the configurations of session affinity. type SessionAffinityConfig struct { // clientIP contains the configurations of Client IP based session affinity. // &#43;optional ClientIP *ClientIPConfig `json:&#34;clientIP,omitempty&#34; protobuf:&#34;bytes,1,opt,name=clientIP&#34;` } // ClientIPConfig represents the configurations of Client IP based session affinity. type ClientIPConfig struct { // timeoutSeconds specifies the seconds of ClientIP type session sticky time. // The value must be &gt;0 &amp;&amp; &lt;=86400(for 1 day) if ServiceAffinity == &#34;ClientIP&#34;. // Default value is 10800(for 3 hours). // &#43;optional TimeoutSeconds *int32 `json:&#34;timeoutSeconds,omitempty&#34; protobuf:&#34;varint,1,opt,name=timeoutSeconds&#34;` } IPFamilyPolicyType // IPFamilyPolicyType represents the dual-stack-ness requested or required by a Service type IPFamilyPolicyType string const ( // IPFamilyPolicySingleStack indicates that this service is required to have a single IPFamily. // The IPFamily assigned is based on the default IPFamily used by the cluster // or as identified by service.spec.ipFamilies field IPFamilyPolicySingleStack IPFamilyPolicyType = &#34;SingleStack&#34; // IPFamilyPolicyPreferDualStack indicates that this service prefers dual-stack when // the cluster is configured for dual-stack. If the cluster is not configured // for dual-stack the service will be assigned a single IPFamily. If the IPFamily is not // set in service.spec.ipFamilies then the service will be assigned the default IPFamily // configured on the cluster IPFamilyPolicyPreferDualStack IPFamilyPolicyType = &#34;PreferDualStack&#34; // IPFamilyPolicyRequireDualStack indicates that this service requires dual-stack. Using // IPFamilyPolicyRequireDualStack on a single stack cluster will result in validation errors. The // IPFamilies (and their order) assigned to this service is based on service.spec.ipFamilies. If // service.spec.ipFamilies was not provided then it will be assigned according to how they are // configured on the cluster. If service.spec.ipFamilies has only one entry then the alternative // IPFamily will be added by apiserver IPFamilyPolicyRequireDualStack IPFamilyPolicyType = &#34;RequireDualStack&#34; ) ServiceInternalTrafficPolicyType // ServiceInternalTrafficPolicyType describes the type of traffic routing for // internal traffic type ServiceInternalTrafficPolicyType string const ( // ServiceInternalTrafficPolicyCluster routes traffic to all endpoints ServiceInternalTrafficPolicyCluster ServiceInternalTrafficPolicyType = &#34;Cluster&#34; // ServiceInternalTrafficPolicyLocal only routes to node-local // endpoints, otherwise drops the traffic ServiceInternalTrafficPolicyLocal ServiceInternalTrafficPolicyType = &#34;Local&#34; ) // Service External Traffic Policy Type string type ServiceExternalTrafficPolicyType string const ( // ServiceExternalTrafficPolicyTypeLocal specifies node-local endpoints behavior. ServiceExternalTrafficPolicyTypeLocal ServiceExternalTrafficPolicyType = &#34;Local&#34; // ServiceExternalTrafficPolicyTypeCluster specifies node-global (legacy) behavior. ServiceExternalTrafficPolicyTypeCluster ServiceExternalTrafficPolicyType = &#34;Cluster&#34; )">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-11-18T17:46:05+08:00">
+    <meta property="article:modified_time" content="2024-05-06T14:15:46+08:00">
+
+  <meta itemprop="name" content="Service">
+  <meta itemprop="description" content="简要概述 staging/src/k8s.io/api/core/v1/types.go 配置示例 数据结构 Service // 一个抽象的服务组，配合coredns做服务发现，提供负载均衡与VIP，当仅可在集群内通讯 type Service struct { // 公共基础结构 metav1.TypeMeta `json:&#34;,inline&#34;` metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // 服务规范定义 Spec ServiceSpec `json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;` // 服务实际配置 Status ServiceStatus `json:&#34;status,omitempty&#34; protobuf:&#34;bytes,3,opt,name=status&#34;` } ServiceSpec // 用户声明期望的服务配置 type ServiceSpec struct { // 服务对外暴露的端口 Ports []ServicePort `json:&#34;ports,omitempty&#34; patchStrategy:&#34;merge&#34; patchMergeKey:&#34;port&#34; protobuf:&#34;bytes,1,rep,name=ports&#34;` // 根据这里配置的标签来决定具体路由流量至后端POD // 如果类型是：ExternalName 则会被忽略，仅为：ClusterIP, NodePort, and LoadBalancer 类型有效； Selector map[string]string `json:&#34;selector,omitempty&#34; protobuf:&#34;bytes,2,rep,name=selector&#34;` // 一个虚拟IP地址，如果未手工配置则自动生成，手工配置必须未被使用且在有效范围内 // 如果设置为 &#34;None&#34; 则不分配IP，也就是 &#34;headless service&#34;，一般配合有状态应用使用 // 如果 type=&#34;ExternalName&#34; 则不生效 // 仅当 type 为 ClusterIP, NodePort, and LoadBalancer 生效 ClusterIP string `json:&#34;clusterIP,omitempty&#34; protobuf:&#34;bytes,3,opt,name=clusterIP&#34;` // 功能同 ClusterIP，支持多个虚拟IP，如果同时配置了 ClusterIP，则必须与 ClusterIPs[0] 值相同 ClusterIPs []string `json:&#34;clusterIPs,omitempty&#34; protobuf:&#34;bytes,18,opt,name=clusterIPs&#34;` // 默认类型为：ClusterIP，支持类型：ExternalName, ClusterIP, NodePort, and LoadBalancer Type ServiceType `json:&#34;type,omitempty&#34; protobuf:&#34;bytes,4,opt,name=type,casttype=ServiceType&#34;` // TODO; 具体实现待验证 // 非K8S管理的外部IP，但用于接收这个服务的流量 ExternalIPs []string `json:&#34;externalIPs,omitempty&#34; protobuf:&#34;bytes,5,rep,name=externalIPs&#34;` // 会话的亲和性，支持：&#34;ClientIP&#34; and &#34;None&#34;，默认为 &#34;None&#34; SessionAffinity ServiceAffinity `json:&#34;sessionAffinity,omitempty&#34; protobuf:&#34;bytes,7,opt,name=sessionAffinity,casttype=ServiceAffinity&#34;` // 仅当服务类型为 &#34;LoadBalancer&#34; 生效，不支持双栈网络，依赖云服务提供商 LoadBalancerIP string `json:&#34;loadBalancerIP,omitempty&#34; protobuf:&#34;bytes,8,opt,name=loadBalancerIP&#34;` // TODO; https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/ LoadBalancerSourceRanges []string `json:&#34;loadBalancerSourceRanges,omitempty&#34; protobuf:&#34;bytes,9,opt,name=loadBalancerSourceRanges&#34;` // 设置为一个DNS地址，用于作为该服务的别名，同时 &#34;type&#34; 必须设置为 &#34;ExternalName&#34; ExternalName string `json:&#34;externalName,omitempty&#34; protobuf:&#34;bytes,10,opt,name=externalName&#34;` // 用于控制外部流量进入集群后如何路由到后端 Pod，影响 &#34;NodePort&#34; 或 &#34;LoadBalancer&#34; 类型服务 // 如果设置为 &#34;Local&#34;，当该节点上没有匹配的 Pod，则流量不会被转发到集群中的其他节点，这样则会保留源客户端源 IP // 如果设置为 &#34;Cluster&#34;，将采用集群内部的负载均衡机制，无论外部流量来自哪个节点，都可被路由到对应 Pod ExternalTrafficPolicy ServiceExternalTrafficPolicyType `json:&#34;externalTrafficPolicy,omitempty&#34; protobuf:&#34;bytes,11,opt,name=externalTrafficPolicy&#34;` // 用于健康检测，仅当类型为 &#34;LoadBalancer&#34; 且 &#34;externalTrafficPolicy=Local&#34; 时有效； HealthCheckNodePort int32 `json:&#34;healthCheckNodePort,omitempty&#34; protobuf:&#34;bytes,12,opt,name=healthCheckNodePort&#34;` // TODO; 用途未知 PublishNotReadyAddresses bool `json:&#34;publishNotReadyAddresses,omitempty&#34; protobuf:&#34;varint,13,opt,name=publishNotReadyAddresses&#34;` // 用于配置会话亲和性 SessionAffinityConfig *SessionAffinityConfig `json:&#34;sessionAffinityConfig,omitempty&#34; protobuf:&#34;bytes,14,opt,name=sessionAffinityConfig&#34;` // 服务IP版本，可取：IPv4, IPv6，仅当类型为：&#34;ClusterIP&#34;、&#34;NodePort&#34;、&#34;LoadBalancer&#34; IPFamilies []IPFamily `json:&#34;ipFamilies,omitempty&#34; protobuf:&#34;bytes,19,opt,name=ipFamilies,casttype=IPFamily&#34;` // 服务IP策略，是否支持双栈，可取值 &#34;SingleStack&#34;、&#34;PreferDualStack&#34;、&#34;RequireDualStack&#34; IPFamilyPolicy *IPFamilyPolicyType `json:&#34;ipFamilyPolicy,omitempty&#34; protobuf:&#34;bytes,17,opt,name=ipFamilyPolicy,casttype=IPFamilyPolicyType&#34;` // 当类型为 &#34;LoadBalancer&#34; 是否自动分配 &#34;NodePorts&#34; 端口，默认为 &#34;true&#34; AllocateLoadBalancerNodePorts *bool `json:&#34;allocateLoadBalancerNodePorts,omitempty&#34; protobuf:&#34;bytes,20,opt,name=allocateLoadBalancerNodePorts&#34;` // 当类型为 &#34;LoadBalancer&#34; 才有效 LoadBalancerClass *string `json:&#34;loadBalancerClass,omitempty&#34; protobuf:&#34;bytes,21,opt,name=loadBalancerClass&#34;` // InternalTrafficPolicy specifies if the cluster internal traffic // should be routed to all endpoints or node-local endpoints only. // &#34;Cluster&#34; routes internal traffic to a Service to all endpoints. // &#34;Local&#34; routes traffic to node-local endpoints only, traffic is // dropped if no node-local endpoints are ready. // The default value is &#34;Cluster&#34;. // &#43;featureGate=ServiceInternalTrafficPolicy // &#43;optional // 类似 externalTrafficPolicy 用于控制内部流量在集群内如何路由到后端 Pod InternalTrafficPolicy *ServiceInternalTrafficPolicyType `json:&#34;internalTrafficPolicy,omitempty&#34; protobuf:&#34;bytes,22,opt,name=internalTrafficPolicy&#34;` } ServicePort type ServicePort struct { // 各服务名称必须是唯一的 Name string `json:&#34;name,omitempty&#34; protobuf:&#34;bytes,1,opt,name=name&#34;` // 该端口协议，支持：&#34;TCP&#34;, &#34;UDP&#34;, and &#34;SCTP&#34;，默认为：&#34;TCP&#34; Protocol Protocol `json:&#34;protocol,omitempty&#34; protobuf:&#34;bytes,2,opt,name=protocol,casttype=Protocol&#34;` // TODO; 待确认 AppProtocol *string `json:&#34;appProtocol,omitempty&#34; protobuf:&#34;bytes,6,opt,name=appProtocol&#34;` // 提供外部连接使用的服务端口 Port int32 `json:&#34;port&#34; protobuf:&#34;varint,3,opt,name=port&#34;` // 后端容器端口或者端口关联的唯一名字，这个字段比较特殊，同时支持字符串与数字格式 // 如果数字格式，说明为端口，必须在 1 至 65535 范围内 // 如果是字符串格式，则说明为对应容器端口的名称 TargetPort intstr.IntOrString `json:&#34;targetPort,omitempty&#34; protobuf:&#34;bytes,4,opt,name=targetPort&#34;` // 当类型为 &#34;NodePort&#34; 或 &#34;LoadBalancer&#34; 用于在工作节点额外开启提供外部服务的端口 NodePort int32 `json:&#34;nodePort,omitempty&#34; protobuf:&#34;varint,5,opt,name=nodePort&#34;` } ServiceType // Service Type string describes ingress methods for a service type ServiceType string const ( // ServiceTypeClusterIP means a service will only be accessible inside the // cluster, via the cluster IP. ServiceTypeClusterIP ServiceType = &#34;ClusterIP&#34; // ServiceTypeNodePort means a service will be exposed on one port of // every node, in addition to &#39;ClusterIP&#39; type. ServiceTypeNodePort ServiceType = &#34;NodePort&#34; // ServiceTypeLoadBalancer means a service will be exposed via an // external load balancer (if the cloud provider supports it), in addition // to &#39;NodePort&#39; type. ServiceTypeLoadBalancer ServiceType = &#34;LoadBalancer&#34; // ServiceTypeExternalName means a service consists of only a reference to // an external name that kubedns or equivalent will return as a CNAME // record, with no exposing or proxying of any pods involved. ServiceTypeExternalName ServiceType = &#34;ExternalName&#34; ) ServiceAffinity // Session Affinity Type string type ServiceAffinity string const ( // ServiceAffinityClientIP is the Client IP based. ServiceAffinityClientIP ServiceAffinity = &#34;ClientIP&#34; // ServiceAffinityNone - no session affinity. ServiceAffinityNone ServiceAffinity = &#34;None&#34; ) ServiceExternalTrafficPolicyType // Service External Traffic Policy Type string type ServiceExternalTrafficPolicyType string const ( // ServiceExternalTrafficPolicyTypeLocal specifies node-local endpoints behavior. ServiceExternalTrafficPolicyTypeLocal ServiceExternalTrafficPolicyType = &#34;Local&#34; // ServiceExternalTrafficPolicyTypeCluster specifies node-global (legacy) behavior. ServiceExternalTrafficPolicyTypeCluster ServiceExternalTrafficPolicyType = &#34;Cluster&#34; ) SessionAffinityConfig // SessionAffinityConfig represents the configurations of session affinity. type SessionAffinityConfig struct { // clientIP contains the configurations of Client IP based session affinity. // &#43;optional ClientIP *ClientIPConfig `json:&#34;clientIP,omitempty&#34; protobuf:&#34;bytes,1,opt,name=clientIP&#34;` } // ClientIPConfig represents the configurations of Client IP based session affinity. type ClientIPConfig struct { // timeoutSeconds specifies the seconds of ClientIP type session sticky time. // The value must be &gt;0 &amp;&amp; &lt;=86400(for 1 day) if ServiceAffinity == &#34;ClientIP&#34;. // Default value is 10800(for 3 hours). // &#43;optional TimeoutSeconds *int32 `json:&#34;timeoutSeconds,omitempty&#34; protobuf:&#34;varint,1,opt,name=timeoutSeconds&#34;` } IPFamilyPolicyType // IPFamilyPolicyType represents the dual-stack-ness requested or required by a Service type IPFamilyPolicyType string const ( // IPFamilyPolicySingleStack indicates that this service is required to have a single IPFamily. // The IPFamily assigned is based on the default IPFamily used by the cluster // or as identified by service.spec.ipFamilies field IPFamilyPolicySingleStack IPFamilyPolicyType = &#34;SingleStack&#34; // IPFamilyPolicyPreferDualStack indicates that this service prefers dual-stack when // the cluster is configured for dual-stack. If the cluster is not configured // for dual-stack the service will be assigned a single IPFamily. If the IPFamily is not // set in service.spec.ipFamilies then the service will be assigned the default IPFamily // configured on the cluster IPFamilyPolicyPreferDualStack IPFamilyPolicyType = &#34;PreferDualStack&#34; // IPFamilyPolicyRequireDualStack indicates that this service requires dual-stack. Using // IPFamilyPolicyRequireDualStack on a single stack cluster will result in validation errors. The // IPFamilies (and their order) assigned to this service is based on service.spec.ipFamilies. If // service.spec.ipFamilies was not provided then it will be assigned according to how they are // configured on the cluster. If service.spec.ipFamilies has only one entry then the alternative // IPFamily will be added by apiserver IPFamilyPolicyRequireDualStack IPFamilyPolicyType = &#34;RequireDualStack&#34; ) ServiceInternalTrafficPolicyType // ServiceInternalTrafficPolicyType describes the type of traffic routing for // internal traffic type ServiceInternalTrafficPolicyType string const ( // ServiceInternalTrafficPolicyCluster routes traffic to all endpoints ServiceInternalTrafficPolicyCluster ServiceInternalTrafficPolicyType = &#34;Cluster&#34; // ServiceInternalTrafficPolicyLocal only routes to node-local // endpoints, otherwise drops the traffic ServiceInternalTrafficPolicyLocal ServiceInternalTrafficPolicyType = &#34;Local&#34; ) // Service External Traffic Policy Type string type ServiceExternalTrafficPolicyType string const ( // ServiceExternalTrafficPolicyTypeLocal specifies node-local endpoints behavior. ServiceExternalTrafficPolicyTypeLocal ServiceExternalTrafficPolicyType = &#34;Local&#34; // ServiceExternalTrafficPolicyTypeCluster specifies node-global (legacy) behavior. ServiceExternalTrafficPolicyTypeCluster ServiceExternalTrafficPolicyType = &#34;Cluster&#34; )">
+  <meta itemprop="datePublished" content="2022-11-18T17:46:05+08:00">
+  <meta itemprop="dateModified" content="2024-05-06T14:15:46+08:00">
+  <meta itemprop="wordCount" content="902">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Service">
+  <meta name="twitter:description" content="简要概述 staging/src/k8s.io/api/core/v1/types.go 配置示例 数据结构 Service // 一个抽象的服务组，配合coredns做服务发现，提供负载均衡与VIP，当仅可在集群内通讯 type Service struct { // 公共基础结构 metav1.TypeMeta `json:&#34;,inline&#34;` metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // 服务规范定义 Spec ServiceSpec `json:&#34;spec,omitempty&#34; protobuf:&#34;bytes,2,opt,name=spec&#34;` // 服务实际配置 Status ServiceStatus `json:&#34;status,omitempty&#34; protobuf:&#34;bytes,3,opt,name=status&#34;` } ServiceSpec // 用户声明期望的服务配置 type ServiceSpec struct { // 服务对外暴露的端口 Ports []ServicePort `json:&#34;ports,omitempty&#34; patchStrategy:&#34;merge&#34; patchMergeKey:&#34;port&#34; protobuf:&#34;bytes,1,rep,name=ports&#34;` // 根据这里配置的标签来决定具体路由流量至后端POD // 如果类型是：ExternalName 则会被忽略，仅为：ClusterIP, NodePort, and LoadBalancer 类型有效； Selector map[string]string `json:&#34;selector,omitempty&#34; protobuf:&#34;bytes,2,rep,name=selector&#34;` // 一个虚拟IP地址，如果未手工配置则自动生成，手工配置必须未被使用且在有效范围内 // 如果设置为 &#34;None&#34; 则不分配IP，也就是 &#34;headless service&#34;，一般配合有状态应用使用 // 如果 type=&#34;ExternalName&#34; 则不生效 // 仅当 type 为 ClusterIP, NodePort, and LoadBalancer 生效 ClusterIP string `json:&#34;clusterIP,omitempty&#34; protobuf:&#34;bytes,3,opt,name=clusterIP&#34;` // 功能同 ClusterIP，支持多个虚拟IP，如果同时配置了 ClusterIP，则必须与 ClusterIPs[0] 值相同 ClusterIPs []string `json:&#34;clusterIPs,omitempty&#34; protobuf:&#34;bytes,18,opt,name=clusterIPs&#34;` // 默认类型为：ClusterIP，支持类型：ExternalName, ClusterIP, NodePort, and LoadBalancer Type ServiceType `json:&#34;type,omitempty&#34; protobuf:&#34;bytes,4,opt,name=type,casttype=ServiceType&#34;` // TODO; 具体实现待验证 // 非K8S管理的外部IP，但用于接收这个服务的流量 ExternalIPs []string `json:&#34;externalIPs,omitempty&#34; protobuf:&#34;bytes,5,rep,name=externalIPs&#34;` // 会话的亲和性，支持：&#34;ClientIP&#34; and &#34;None&#34;，默认为 &#34;None&#34; SessionAffinity ServiceAffinity `json:&#34;sessionAffinity,omitempty&#34; protobuf:&#34;bytes,7,opt,name=sessionAffinity,casttype=ServiceAffinity&#34;` // 仅当服务类型为 &#34;LoadBalancer&#34; 生效，不支持双栈网络，依赖云服务提供商 LoadBalancerIP string `json:&#34;loadBalancerIP,omitempty&#34; protobuf:&#34;bytes,8,opt,name=loadBalancerIP&#34;` // TODO; https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/ LoadBalancerSourceRanges []string `json:&#34;loadBalancerSourceRanges,omitempty&#34; protobuf:&#34;bytes,9,opt,name=loadBalancerSourceRanges&#34;` // 设置为一个DNS地址，用于作为该服务的别名，同时 &#34;type&#34; 必须设置为 &#34;ExternalName&#34; ExternalName string `json:&#34;externalName,omitempty&#34; protobuf:&#34;bytes,10,opt,name=externalName&#34;` // 用于控制外部流量进入集群后如何路由到后端 Pod，影响 &#34;NodePort&#34; 或 &#34;LoadBalancer&#34; 类型服务 // 如果设置为 &#34;Local&#34;，当该节点上没有匹配的 Pod，则流量不会被转发到集群中的其他节点，这样则会保留源客户端源 IP // 如果设置为 &#34;Cluster&#34;，将采用集群内部的负载均衡机制，无论外部流量来自哪个节点，都可被路由到对应 Pod ExternalTrafficPolicy ServiceExternalTrafficPolicyType `json:&#34;externalTrafficPolicy,omitempty&#34; protobuf:&#34;bytes,11,opt,name=externalTrafficPolicy&#34;` // 用于健康检测，仅当类型为 &#34;LoadBalancer&#34; 且 &#34;externalTrafficPolicy=Local&#34; 时有效； HealthCheckNodePort int32 `json:&#34;healthCheckNodePort,omitempty&#34; protobuf:&#34;bytes,12,opt,name=healthCheckNodePort&#34;` // TODO; 用途未知 PublishNotReadyAddresses bool `json:&#34;publishNotReadyAddresses,omitempty&#34; protobuf:&#34;varint,13,opt,name=publishNotReadyAddresses&#34;` // 用于配置会话亲和性 SessionAffinityConfig *SessionAffinityConfig `json:&#34;sessionAffinityConfig,omitempty&#34; protobuf:&#34;bytes,14,opt,name=sessionAffinityConfig&#34;` // 服务IP版本，可取：IPv4, IPv6，仅当类型为：&#34;ClusterIP&#34;、&#34;NodePort&#34;、&#34;LoadBalancer&#34; IPFamilies []IPFamily `json:&#34;ipFamilies,omitempty&#34; protobuf:&#34;bytes,19,opt,name=ipFamilies,casttype=IPFamily&#34;` // 服务IP策略，是否支持双栈，可取值 &#34;SingleStack&#34;、&#34;PreferDualStack&#34;、&#34;RequireDualStack&#34; IPFamilyPolicy *IPFamilyPolicyType `json:&#34;ipFamilyPolicy,omitempty&#34; protobuf:&#34;bytes,17,opt,name=ipFamilyPolicy,casttype=IPFamilyPolicyType&#34;` // 当类型为 &#34;LoadBalancer&#34; 是否自动分配 &#34;NodePorts&#34; 端口，默认为 &#34;true&#34; AllocateLoadBalancerNodePorts *bool `json:&#34;allocateLoadBalancerNodePorts,omitempty&#34; protobuf:&#34;bytes,20,opt,name=allocateLoadBalancerNodePorts&#34;` // 当类型为 &#34;LoadBalancer&#34; 才有效 LoadBalancerClass *string `json:&#34;loadBalancerClass,omitempty&#34; protobuf:&#34;bytes,21,opt,name=loadBalancerClass&#34;` // InternalTrafficPolicy specifies if the cluster internal traffic // should be routed to all endpoints or node-local endpoints only. // &#34;Cluster&#34; routes internal traffic to a Service to all endpoints. // &#34;Local&#34; routes traffic to node-local endpoints only, traffic is // dropped if no node-local endpoints are ready. // The default value is &#34;Cluster&#34;. // &#43;featureGate=ServiceInternalTrafficPolicy // &#43;optional // 类似 externalTrafficPolicy 用于控制内部流量在集群内如何路由到后端 Pod InternalTrafficPolicy *ServiceInternalTrafficPolicyType `json:&#34;internalTrafficPolicy,omitempty&#34; protobuf:&#34;bytes,22,opt,name=internalTrafficPolicy&#34;` } ServicePort type ServicePort struct { // 各服务名称必须是唯一的 Name string `json:&#34;name,omitempty&#34; protobuf:&#34;bytes,1,opt,name=name&#34;` // 该端口协议，支持：&#34;TCP&#34;, &#34;UDP&#34;, and &#34;SCTP&#34;，默认为：&#34;TCP&#34; Protocol Protocol `json:&#34;protocol,omitempty&#34; protobuf:&#34;bytes,2,opt,name=protocol,casttype=Protocol&#34;` // TODO; 待确认 AppProtocol *string `json:&#34;appProtocol,omitempty&#34; protobuf:&#34;bytes,6,opt,name=appProtocol&#34;` // 提供外部连接使用的服务端口 Port int32 `json:&#34;port&#34; protobuf:&#34;varint,3,opt,name=port&#34;` // 后端容器端口或者端口关联的唯一名字，这个字段比较特殊，同时支持字符串与数字格式 // 如果数字格式，说明为端口，必须在 1 至 65535 范围内 // 如果是字符串格式，则说明为对应容器端口的名称 TargetPort intstr.IntOrString `json:&#34;targetPort,omitempty&#34; protobuf:&#34;bytes,4,opt,name=targetPort&#34;` // 当类型为 &#34;NodePort&#34; 或 &#34;LoadBalancer&#34; 用于在工作节点额外开启提供外部服务的端口 NodePort int32 `json:&#34;nodePort,omitempty&#34; protobuf:&#34;varint,5,opt,name=nodePort&#34;` } ServiceType // Service Type string describes ingress methods for a service type ServiceType string const ( // ServiceTypeClusterIP means a service will only be accessible inside the // cluster, via the cluster IP. ServiceTypeClusterIP ServiceType = &#34;ClusterIP&#34; // ServiceTypeNodePort means a service will be exposed on one port of // every node, in addition to &#39;ClusterIP&#39; type. ServiceTypeNodePort ServiceType = &#34;NodePort&#34; // ServiceTypeLoadBalancer means a service will be exposed via an // external load balancer (if the cloud provider supports it), in addition // to &#39;NodePort&#39; type. ServiceTypeLoadBalancer ServiceType = &#34;LoadBalancer&#34; // ServiceTypeExternalName means a service consists of only a reference to // an external name that kubedns or equivalent will return as a CNAME // record, with no exposing or proxying of any pods involved. ServiceTypeExternalName ServiceType = &#34;ExternalName&#34; ) ServiceAffinity // Session Affinity Type string type ServiceAffinity string const ( // ServiceAffinityClientIP is the Client IP based. ServiceAffinityClientIP ServiceAffinity = &#34;ClientIP&#34; // ServiceAffinityNone - no session affinity. ServiceAffinityNone ServiceAffinity = &#34;None&#34; ) ServiceExternalTrafficPolicyType // Service External Traffic Policy Type string type ServiceExternalTrafficPolicyType string const ( // ServiceExternalTrafficPolicyTypeLocal specifies node-local endpoints behavior. ServiceExternalTrafficPolicyTypeLocal ServiceExternalTrafficPolicyType = &#34;Local&#34; // ServiceExternalTrafficPolicyTypeCluster specifies node-global (legacy) behavior. ServiceExternalTrafficPolicyTypeCluster ServiceExternalTrafficPolicyType = &#34;Cluster&#34; ) SessionAffinityConfig // SessionAffinityConfig represents the configurations of session affinity. type SessionAffinityConfig struct { // clientIP contains the configurations of Client IP based session affinity. // &#43;optional ClientIP *ClientIPConfig `json:&#34;clientIP,omitempty&#34; protobuf:&#34;bytes,1,opt,name=clientIP&#34;` } // ClientIPConfig represents the configurations of Client IP based session affinity. type ClientIPConfig struct { // timeoutSeconds specifies the seconds of ClientIP type session sticky time. // The value must be &gt;0 &amp;&amp; &lt;=86400(for 1 day) if ServiceAffinity == &#34;ClientIP&#34;. // Default value is 10800(for 3 hours). // &#43;optional TimeoutSeconds *int32 `json:&#34;timeoutSeconds,omitempty&#34; protobuf:&#34;varint,1,opt,name=timeoutSeconds&#34;` } IPFamilyPolicyType // IPFamilyPolicyType represents the dual-stack-ness requested or required by a Service type IPFamilyPolicyType string const ( // IPFamilyPolicySingleStack indicates that this service is required to have a single IPFamily. // The IPFamily assigned is based on the default IPFamily used by the cluster // or as identified by service.spec.ipFamilies field IPFamilyPolicySingleStack IPFamilyPolicyType = &#34;SingleStack&#34; // IPFamilyPolicyPreferDualStack indicates that this service prefers dual-stack when // the cluster is configured for dual-stack. If the cluster is not configured // for dual-stack the service will be assigned a single IPFamily. If the IPFamily is not // set in service.spec.ipFamilies then the service will be assigned the default IPFamily // configured on the cluster IPFamilyPolicyPreferDualStack IPFamilyPolicyType = &#34;PreferDualStack&#34; // IPFamilyPolicyRequireDualStack indicates that this service requires dual-stack. Using // IPFamilyPolicyRequireDualStack on a single stack cluster will result in validation errors. The // IPFamilies (and their order) assigned to this service is based on service.spec.ipFamilies. If // service.spec.ipFamilies was not provided then it will be assigned according to how they are // configured on the cluster. If service.spec.ipFamilies has only one entry then the alternative // IPFamily will be added by apiserver IPFamilyPolicyRequireDualStack IPFamilyPolicyType = &#34;RequireDualStack&#34; ) ServiceInternalTrafficPolicyType // ServiceInternalTrafficPolicyType describes the type of traffic routing for // internal traffic type ServiceInternalTrafficPolicyType string const ( // ServiceInternalTrafficPolicyCluster routes traffic to all endpoints ServiceInternalTrafficPolicyCluster ServiceInternalTrafficPolicyType = &#34;Cluster&#34; // ServiceInternalTrafficPolicyLocal only routes to node-local // endpoints, otherwise drops the traffic ServiceInternalTrafficPolicyLocal ServiceInternalTrafficPolicyType = &#34;Local&#34; ) // Service External Traffic Policy Type string type ServiceExternalTrafficPolicyType string const ( // ServiceExternalTrafficPolicyTypeLocal specifies node-local endpoints behavior. ServiceExternalTrafficPolicyTypeLocal ServiceExternalTrafficPolicyType = &#34;Local&#34; // ServiceExternalTrafficPolicyTypeCluster specifies node-global (legacy) behavior. ServiceExternalTrafficPolicyTypeCluster ServiceExternalTrafficPolicyType = &#34;Cluster&#34; )">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1040,6 +1043,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3073,9 +3093,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3089,10 +3109,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3152,6 +3375,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4599,7 +4881,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

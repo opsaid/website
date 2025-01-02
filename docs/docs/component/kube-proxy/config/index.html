@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -25,60 +25,61 @@
 apiVersion: kubeproxy.config.k8s.io/v1alpha1
 kind: KubeProxyConfiguration
 bindAddress: 0.0.0.0 …">
-<meta property="og:title" content="参数配置" />
-<meta property="og:description" content="简要概述 主要用于控制 iptables、ipvs 在宿主上的网络流量。
-配置示例 apiVersion: kubeproxy.config.k8s.io/v1alpha1 kind: KubeProxyConfiguration bindAddress: 0.0.0.0 bindAddressHardFail: false clientConnection: acceptContentTypes: &#34;&#34; burst: 10 contentType: application/vnd.kubernetes.protobuf kubeconfig: &#34;/var/lib/kube-proxy/kubeconfig.conf&#34; qps: 5 clusterCIDR: 192.168.201.0/24 configSyncPeriod: 15m0s conntrack: maxPerCore: 32768 min: 131072 tcpCloseWaitTimeout: 1h0m0s tcpEstablishedTimeout: 24h0m0s detectLocalMode: &#34;&#34; enableProfiling: false healthzBindAddress: 127.0.0.1:10256 hostnameOverride: &#34;&#34; iptables: masqueradeAll: false masqueradeBit: 14 minSyncPeriod: 1s syncPeriod: 30s ipvs: excludeCIDRs: null minSyncPeriod: 0s scheduler: rr strictARP: false syncPeriod: 30s tcpFinTimeout: 0s tcpTimeout: 0s udpTimeout: 0s metricsBindAddress: 127." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/component/kube-proxy/config/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="/docs/component/kube-proxy/config/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="参数配置">
+  <meta property="og:description" content="简要概述 主要用于控制 iptables、ipvs 在宿主上的网络流量。
+配置示例 apiVersion: kubeproxy.config.k8s.io/v1alpha1 kind: KubeProxyConfiguration bindAddress: 0.0.0.0 bindAddressHardFail: false clientConnection: acceptContentTypes: &#34;&#34; burst: 10 contentType: application/vnd.kubernetes.protobuf kubeconfig: &#34;/var/lib/kube-proxy/kubeconfig.conf&#34; qps: 5 clusterCIDR: 192.168.201.0/24 configSyncPeriod: 15m0s conntrack: maxPerCore: 32768 min: 131072 tcpCloseWaitTimeout: 1h0m0s tcpEstablishedTimeout: 24h0m0s detectLocalMode: &#34;&#34; enableProfiling: false healthzBindAddress: 127.0.0.1:10256 hostnameOverride: &#34;&#34; iptables: masqueradeAll: false masqueradeBit: 14 minSyncPeriod: 1s syncPeriod: 30s ipvs: excludeCIDRs: null minSyncPeriod: 0s scheduler: rr strictARP: false syncPeriod: 30s tcpFinTimeout: 0s tcpTimeout: 0s udpTimeout: 0s metricsBindAddress: 127.0.0.1:10249 mode: &#34;ipvs&#34; nodePortAddresses: - 192.168.201.0/24 oomScoreAdj: -999 portRange: &#34;&#34; showHiddenMetricsForVersion: &#34;&#34; udpIdleTimeout: 250ms winkernel: enableDSR: false networkName: &#34;&#34; sourceVip: &#34;&#34; 参数解析 除命令行参数：–config, –write-config-to, and –cleanup 外，其他均建议通过 KubeProxyConfiguration 配置。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:modified_time" content="2023-02-08T23:17:58+08:00">
 
-<meta property="article:modified_time" content="2023-02-08T23:17:58+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="参数配置">
-<meta itemprop="description" content="简要概述 主要用于控制 iptables、ipvs 在宿主上的网络流量。
-配置示例 apiVersion: kubeproxy.config.k8s.io/v1alpha1 kind: KubeProxyConfiguration bindAddress: 0.0.0.0 bindAddressHardFail: false clientConnection: acceptContentTypes: &#34;&#34; burst: 10 contentType: application/vnd.kubernetes.protobuf kubeconfig: &#34;/var/lib/kube-proxy/kubeconfig.conf&#34; qps: 5 clusterCIDR: 192.168.201.0/24 configSyncPeriod: 15m0s conntrack: maxPerCore: 32768 min: 131072 tcpCloseWaitTimeout: 1h0m0s tcpEstablishedTimeout: 24h0m0s detectLocalMode: &#34;&#34; enableProfiling: false healthzBindAddress: 127.0.0.1:10256 hostnameOverride: &#34;&#34; iptables: masqueradeAll: false masqueradeBit: 14 minSyncPeriod: 1s syncPeriod: 30s ipvs: excludeCIDRs: null minSyncPeriod: 0s scheduler: rr strictARP: false syncPeriod: 30s tcpFinTimeout: 0s tcpTimeout: 0s udpTimeout: 0s metricsBindAddress: 127.">
-<meta itemprop="dateModified" content="2023-02-08T23:17:58+08:00" />
-<meta itemprop="wordCount" content="1006">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="参数配置"/>
-<meta name="twitter:description" content="简要概述 主要用于控制 iptables、ipvs 在宿主上的网络流量。
-配置示例 apiVersion: kubeproxy.config.k8s.io/v1alpha1 kind: KubeProxyConfiguration bindAddress: 0.0.0.0 bindAddressHardFail: false clientConnection: acceptContentTypes: &#34;&#34; burst: 10 contentType: application/vnd.kubernetes.protobuf kubeconfig: &#34;/var/lib/kube-proxy/kubeconfig.conf&#34; qps: 5 clusterCIDR: 192.168.201.0/24 configSyncPeriod: 15m0s conntrack: maxPerCore: 32768 min: 131072 tcpCloseWaitTimeout: 1h0m0s tcpEstablishedTimeout: 24h0m0s detectLocalMode: &#34;&#34; enableProfiling: false healthzBindAddress: 127.0.0.1:10256 hostnameOverride: &#34;&#34; iptables: masqueradeAll: false masqueradeBit: 14 minSyncPeriod: 1s syncPeriod: 30s ipvs: excludeCIDRs: null minSyncPeriod: 0s scheduler: rr strictARP: false syncPeriod: 30s tcpFinTimeout: 0s tcpTimeout: 0s udpTimeout: 0s metricsBindAddress: 127."/>
+  <meta itemprop="name" content="参数配置">
+  <meta itemprop="description" content="简要概述 主要用于控制 iptables、ipvs 在宿主上的网络流量。
+配置示例 apiVersion: kubeproxy.config.k8s.io/v1alpha1 kind: KubeProxyConfiguration bindAddress: 0.0.0.0 bindAddressHardFail: false clientConnection: acceptContentTypes: &#34;&#34; burst: 10 contentType: application/vnd.kubernetes.protobuf kubeconfig: &#34;/var/lib/kube-proxy/kubeconfig.conf&#34; qps: 5 clusterCIDR: 192.168.201.0/24 configSyncPeriod: 15m0s conntrack: maxPerCore: 32768 min: 131072 tcpCloseWaitTimeout: 1h0m0s tcpEstablishedTimeout: 24h0m0s detectLocalMode: &#34;&#34; enableProfiling: false healthzBindAddress: 127.0.0.1:10256 hostnameOverride: &#34;&#34; iptables: masqueradeAll: false masqueradeBit: 14 minSyncPeriod: 1s syncPeriod: 30s ipvs: excludeCIDRs: null minSyncPeriod: 0s scheduler: rr strictARP: false syncPeriod: 30s tcpFinTimeout: 0s tcpTimeout: 0s udpTimeout: 0s metricsBindAddress: 127.0.0.1:10249 mode: &#34;ipvs&#34; nodePortAddresses: - 192.168.201.0/24 oomScoreAdj: -999 portRange: &#34;&#34; showHiddenMetricsForVersion: &#34;&#34; udpIdleTimeout: 250ms winkernel: enableDSR: false networkName: &#34;&#34; sourceVip: &#34;&#34; 参数解析 除命令行参数：–config, –write-config-to, and –cleanup 外，其他均建议通过 KubeProxyConfiguration 配置。">
+  <meta itemprop="dateModified" content="2023-02-08T23:17:58+08:00">
+  <meta itemprop="wordCount" content="1006">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="参数配置">
+  <meta name="twitter:description" content="简要概述 主要用于控制 iptables、ipvs 在宿主上的网络流量。
+配置示例 apiVersion: kubeproxy.config.k8s.io/v1alpha1 kind: KubeProxyConfiguration bindAddress: 0.0.0.0 bindAddressHardFail: false clientConnection: acceptContentTypes: &#34;&#34; burst: 10 contentType: application/vnd.kubernetes.protobuf kubeconfig: &#34;/var/lib/kube-proxy/kubeconfig.conf&#34; qps: 5 clusterCIDR: 192.168.201.0/24 configSyncPeriod: 15m0s conntrack: maxPerCore: 32768 min: 131072 tcpCloseWaitTimeout: 1h0m0s tcpEstablishedTimeout: 24h0m0s detectLocalMode: &#34;&#34; enableProfiling: false healthzBindAddress: 127.0.0.1:10256 hostnameOverride: &#34;&#34; iptables: masqueradeAll: false masqueradeBit: 14 minSyncPeriod: 1s syncPeriod: 30s ipvs: excludeCIDRs: null minSyncPeriod: 0s scheduler: rr strictARP: false syncPeriod: 30s tcpFinTimeout: 0s tcpTimeout: 0s udpTimeout: 0s metricsBindAddress: 127.0.0.1:10249 mode: &#34;ipvs&#34; nodePortAddresses: - 192.168.201.0/24 oomScoreAdj: -999 portRange: &#34;&#34; showHiddenMetricsForVersion: &#34;&#34; udpIdleTimeout: 250ms winkernel: enableDSR: false networkName: &#34;&#34; sourceVip: &#34;&#34; 参数解析 除命令行参数：–config, –write-config-to, and –cleanup 外，其他均建议通过 KubeProxyConfiguration 配置。">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1041,6 +1042,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3074,9 +3092,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3090,10 +3108,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3153,6 +3374,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4359,268 +4639,268 @@ if (!doNotTrack) {
 <li>内置组件</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>KubeProxyConfiguration</th>
-<th>默认值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>add-dir-header</td>
-<td>-</td>
-<td>false</td>
-<td>同 kubelet</td>
-</tr>
-<tr>
-<td>alsologtostderr</td>
-<td>-</td>
-<td>false</td>
-<td>同上</td>
-</tr>
-<tr>
-<td>bind-address</td>
-<td>bindAddress</td>
-<td>0.0.0.0</td>
-<td>服务端监听的地址</td>
-</tr>
-<tr>
-<td>bind-address-hard-fail</td>
-<td>bindAddressHardFail</td>
-<td>false</td>
-<td>如果无法绑定端口，则将视为致命错误并退出</td>
-</tr>
-<tr>
-<td>cleanup</td>
-<td>-</td>
-<td>false</td>
-<td>清除 iptabels 与 ipvs 规则后退出</td>
-</tr>
-<tr>
-<td>cluster-cidr</td>
-<td>clusterCIDR</td>
-<td>&quot;&quot;</td>
-<td>集群中 Pod 的 CIDR 范围，配置后将从该范围之外发送到集群 IP 的流量被伪装，从 Pod 发送到外部负载均衡器 IP 的流量将被重定向到相应的集群 IP</td>
-</tr>
-<tr>
-<td>config</td>
-<td>-</td>
-<td>&quot;&quot;</td>
-<td>配置 KubeProxyConfiguration 文件的路径</td>
-</tr>
-<tr>
-<td>config-sync-period</td>
-<td>configSyncPeriod</td>
-<td>15m0s</td>
-<td>TODO; 来自 apiserver 的配置的刷新频率</td>
-</tr>
-<tr>
-<td>conntrack-max-per-core</td>
-<td>conntrack.maxPerCore</td>
-<td>32768</td>
-<td>每个 CPU 核跟踪的最大 NAT 连接数（0 表示保留当前限制并忽略 conntrack-min 设置）</td>
-</tr>
-<tr>
-<td>conntrack-min</td>
-<td>conntrack.min</td>
-<td>131072</td>
-<td>无论上面设置为多少，要分配的 conntrack 条目的最小数量（将 conntrack-max-per-core 设置为 0 即可保持当前的限制）</td>
-</tr>
-<tr>
-<td>conntrack-tcp-timeout-close-wait</td>
-<td>conntrack.tcpCloseWaitTimeout</td>
-<td>1h0m0s</td>
-<td>TODO; 处于 CLOSE_WAIT 状态的 TCP 连接的 NAT 超时</td>
-</tr>
-<tr>
-<td>conntrack-tcp-timeout-established</td>
-<td>conntrack.tcpEstablishedTimeout</td>
-<td>24h0m0s</td>
-<td>TODO; 已建立的 TCP 连接的空闲超时（0 保持当前设置）</td>
-</tr>
-<tr>
-<td>detect-local-mode</td>
-<td>detectLocalMode</td>
-<td>&quot;&quot;</td>
-<td>TODO; 用于检测本地流量的模式，可配置：ClusterCIDR、NodeCIDR</td>
-</tr>
-<tr>
-<td>feature-gates</td>
-<td>-</td>
-<td>&quot;&quot;</td>
-<td>开启的特性</td>
-</tr>
-<tr>
-<td>healthz-bind-address</td>
-<td>healthzBindAddress</td>
-<td>0.0.0.0:10256</td>
-<td>服务健康状态检查的 IP 地址和端口，设置为空表示禁用</td>
-</tr>
-<tr>
-<td>hostname-override</td>
-<td>hostnameOverride</td>
-<td>&quot;&quot;</td>
-<td>如果非空，将使用此字符串而不是实际的主机名作为标识</td>
-</tr>
-<tr>
-<td>iptables-masquerade-bit</td>
-<td>iptables.masqueradeBit</td>
-<td>14</td>
-<td>TODO; 在使用纯 iptables 代理时，用来设置 fwmark 空间的 bit，标记需要 SNAT 的数据包。必须在 [0,31] 范围内。</td>
-</tr>
-<tr>
-<td>iptables-min-sync-period</td>
-<td>iptables.minSyncPeriod</td>
-<td>1s</td>
-<td>iptables 规则可以随着端点和服务的更改而刷新的最小间隔</td>
-</tr>
-<tr>
-<td>iptables-sync-period</td>
-<td>iptables.syncPeriod</td>
-<td>30s</td>
-<td>刷新 iptables 规则的最大间隔（例如 &lsquo;5s&rsquo;、&lsquo;1m&rsquo;、&lsquo;2h22m&rsquo;）。必须大于 0。</td>
-</tr>
-<tr>
-<td>ipvs-exclude-cidrs</td>
-<td>ipvs.excludeCIDRs</td>
-<td>&quot;&quot;</td>
-<td>逗号分隔的 CIDR 列表，ipvs 代理在清理 IPVS 规则时不会此列表中的地址范围。</td>
-</tr>
-<tr>
-<td>ipvs-min-sync-period</td>
-<td>ipvs.minSyncPeriod</td>
-<td>0s</td>
-<td>ipvs 规则可以随着端点和服务的更改而刷新的最小间隔</td>
-</tr>
-<tr>
-<td>ipvs-scheduler</td>
-<td>ipvs.scheduler</td>
-<td>&quot;&quot;</td>
-<td>ipvs 所选的调度器类型</td>
-</tr>
-<tr>
-<td>ipvs-strict-arp</td>
-<td>ipvs.strictARP</td>
-<td>false</td>
-<td>通过将 arp_ignore 设置为 1 并将 arp_announce 设置为 2 启用严格的 ARP</td>
-</tr>
-<tr>
-<td>ipvs-sync-period</td>
-<td>ipvs.syncPeriod</td>
-<td>30s</td>
-<td>刷新 ipvs 规则的最大间隔（例如 &lsquo;5s&rsquo;、&lsquo;1m&rsquo;、&lsquo;2h22m&rsquo;）。必须大于 0</td>
-</tr>
-<tr>
-<td>ipvs-tcp-timeout</td>
-<td>ipvs.tcpTimeout</td>
-<td>0s</td>
-<td>空闲 IPVS TCP 连接的超时时间，0 保持连接</td>
-</tr>
-<tr>
-<td>ipvs-tcpfin-timeout</td>
-<td>ipvs.tcpFinTimeout</td>
-<td>0s</td>
-<td>收到 FIN 数据包后，IPVS TCP 连接的超时，0 保持当前设置不变</td>
-</tr>
-<tr>
-<td>ipvs-udp-timeout</td>
-<td>ipvs.udpTimeout</td>
-<td>0s</td>
-<td>IPVS UDP 数据包的超时，0 保持当前设置不变</td>
-</tr>
-<tr>
-<td>kube-api-burst</td>
-<td>clientConnection.burst</td>
-<td>10</td>
-<td>与 kubernetes apiserver 通信的突发数量</td>
-</tr>
-<tr>
-<td>kube-api-content-type</td>
-<td>clientConnection.contentType</td>
-<td>application/vnd.kubernetes.protobuf</td>
-<td>发送到 apiserver 的请求的内容类型</td>
-</tr>
-<tr>
-<td>kube-api-qps</td>
-<td>clientConnection.qps</td>
-<td>5</td>
-<td>与 kubernetes apiserver 交互时使用的 QPS</td>
-</tr>
-<tr>
-<td>kubeconfig</td>
-<td>clientConnection.kubeconfig</td>
-<td>&quot;&quot;</td>
-<td>连接 apiserver 的鉴权文件</td>
-</tr>
-<tr>
-<td>masquerade-all</td>
-<td>iptabels.masqueradeAll</td>
-<td>false</td>
-<td>如果使用纯 iptables 代理，则对通过服务集群 IP 发送的所有流量进行 SNAT（通常不需要）</td>
-</tr>
-<tr>
-<td>master</td>
-<td>-</td>
-<td>&quot;&quot;</td>
-<td>Kubernetes API 服务器的地址，会覆盖 kubeconfig 中的值</td>
-</tr>
-<tr>
-<td>metrics-bind-address</td>
-<td>metricsBindAddress</td>
-<td>127.0.0.1:10249</td>
-<td>性能数据 /metrics 的地址</td>
-</tr>
-<tr>
-<td>nodeport-addresses</td>
-<td>nodePortAddresses</td>
-<td>&quot;&quot;</td>
-<td>指定用于 NodePort 服务的地址，一个有效的 CIDR 地址段</td>
-</tr>
-<tr>
-<td>oom-score-adj</td>
-<td>oomScoreAdj</td>
-<td>-999</td>
-<td>kube-proxy 进程中的 oom-score-adj 值，必须在 [-1000,1000] 范围内</td>
-</tr>
-<tr>
-<td>profiling</td>
-<td>enableProfiling</td>
-<td>false</td>
-<td>如果为 true，则通过 Web 接口 /debug/pprof 启用性能分析</td>
-</tr>
-<tr>
-<td>proxy-mode</td>
-<td>mode</td>
-<td>&quot;&quot;</td>
-<td>四种代理模式：userspace, iptables, ipvs, kernelspace，默认为 iptables</td>
-</tr>
-<tr>
-<td>proxy-port-range</td>
-<td>portRange</td>
-<td>0-0</td>
-<td>用来代理 nodePort 的主机端口范围，格式：beginPort-endPort，默认为 30000 - 32767</td>
-</tr>
-<tr>
-<td>show-hidden-metrics-for-version</td>
-<td>showHiddenMetricsForVersion</td>
-<td>&quot;&quot;</td>
-<td>要显示隐藏指标的先前版本，仅先前的次要版本有意义，不允许其他值，如：&ldquo;1.16&rdquo;</td>
-</tr>
-<tr>
-<td>udp-timeout</td>
-<td>udpIdleTimeout</td>
-<td>250ms</td>
-<td>空闲 UDP 连接将保持打开的时长，必须大于 0，仅适用于 proxy-mode=userspace</td>
-</tr>
-<tr>
-<td>write-config-to</td>
-<td>-</td>
-<td>-</td>
-<td>将默认配置信息写入此文件并退出</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>KubeProxyConfiguration</th>
+          <th>默认值</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>add-dir-header</td>
+          <td>-</td>
+          <td>false</td>
+          <td>同 kubelet</td>
+      </tr>
+      <tr>
+          <td>alsologtostderr</td>
+          <td>-</td>
+          <td>false</td>
+          <td>同上</td>
+      </tr>
+      <tr>
+          <td>bind-address</td>
+          <td>bindAddress</td>
+          <td>0.0.0.0</td>
+          <td>服务端监听的地址</td>
+      </tr>
+      <tr>
+          <td>bind-address-hard-fail</td>
+          <td>bindAddressHardFail</td>
+          <td>false</td>
+          <td>如果无法绑定端口，则将视为致命错误并退出</td>
+      </tr>
+      <tr>
+          <td>cleanup</td>
+          <td>-</td>
+          <td>false</td>
+          <td>清除 iptabels 与 ipvs 规则后退出</td>
+      </tr>
+      <tr>
+          <td>cluster-cidr</td>
+          <td>clusterCIDR</td>
+          <td>&quot;&quot;</td>
+          <td>集群中 Pod 的 CIDR 范围，配置后将从该范围之外发送到集群 IP 的流量被伪装，从 Pod 发送到外部负载均衡器 IP 的流量将被重定向到相应的集群 IP</td>
+      </tr>
+      <tr>
+          <td>config</td>
+          <td>-</td>
+          <td>&quot;&quot;</td>
+          <td>配置 KubeProxyConfiguration 文件的路径</td>
+      </tr>
+      <tr>
+          <td>config-sync-period</td>
+          <td>configSyncPeriod</td>
+          <td>15m0s</td>
+          <td>TODO; 来自 apiserver 的配置的刷新频率</td>
+      </tr>
+      <tr>
+          <td>conntrack-max-per-core</td>
+          <td>conntrack.maxPerCore</td>
+          <td>32768</td>
+          <td>每个 CPU 核跟踪的最大 NAT 连接数（0 表示保留当前限制并忽略 conntrack-min 设置）</td>
+      </tr>
+      <tr>
+          <td>conntrack-min</td>
+          <td>conntrack.min</td>
+          <td>131072</td>
+          <td>无论上面设置为多少，要分配的 conntrack 条目的最小数量（将 conntrack-max-per-core 设置为 0 即可保持当前的限制）</td>
+      </tr>
+      <tr>
+          <td>conntrack-tcp-timeout-close-wait</td>
+          <td>conntrack.tcpCloseWaitTimeout</td>
+          <td>1h0m0s</td>
+          <td>TODO; 处于 CLOSE_WAIT 状态的 TCP 连接的 NAT 超时</td>
+      </tr>
+      <tr>
+          <td>conntrack-tcp-timeout-established</td>
+          <td>conntrack.tcpEstablishedTimeout</td>
+          <td>24h0m0s</td>
+          <td>TODO; 已建立的 TCP 连接的空闲超时（0 保持当前设置）</td>
+      </tr>
+      <tr>
+          <td>detect-local-mode</td>
+          <td>detectLocalMode</td>
+          <td>&quot;&quot;</td>
+          <td>TODO; 用于检测本地流量的模式，可配置：ClusterCIDR、NodeCIDR</td>
+      </tr>
+      <tr>
+          <td>feature-gates</td>
+          <td>-</td>
+          <td>&quot;&quot;</td>
+          <td>开启的特性</td>
+      </tr>
+      <tr>
+          <td>healthz-bind-address</td>
+          <td>healthzBindAddress</td>
+          <td>0.0.0.0:10256</td>
+          <td>服务健康状态检查的 IP 地址和端口，设置为空表示禁用</td>
+      </tr>
+      <tr>
+          <td>hostname-override</td>
+          <td>hostnameOverride</td>
+          <td>&quot;&quot;</td>
+          <td>如果非空，将使用此字符串而不是实际的主机名作为标识</td>
+      </tr>
+      <tr>
+          <td>iptables-masquerade-bit</td>
+          <td>iptables.masqueradeBit</td>
+          <td>14</td>
+          <td>TODO; 在使用纯 iptables 代理时，用来设置 fwmark 空间的 bit，标记需要 SNAT 的数据包。必须在 [0,31] 范围内。</td>
+      </tr>
+      <tr>
+          <td>iptables-min-sync-period</td>
+          <td>iptables.minSyncPeriod</td>
+          <td>1s</td>
+          <td>iptables 规则可以随着端点和服务的更改而刷新的最小间隔</td>
+      </tr>
+      <tr>
+          <td>iptables-sync-period</td>
+          <td>iptables.syncPeriod</td>
+          <td>30s</td>
+          <td>刷新 iptables 规则的最大间隔（例如 &lsquo;5s&rsquo;、&lsquo;1m&rsquo;、&lsquo;2h22m&rsquo;）。必须大于 0。</td>
+      </tr>
+      <tr>
+          <td>ipvs-exclude-cidrs</td>
+          <td>ipvs.excludeCIDRs</td>
+          <td>&quot;&quot;</td>
+          <td>逗号分隔的 CIDR 列表，ipvs 代理在清理 IPVS 规则时不会此列表中的地址范围。</td>
+      </tr>
+      <tr>
+          <td>ipvs-min-sync-period</td>
+          <td>ipvs.minSyncPeriod</td>
+          <td>0s</td>
+          <td>ipvs 规则可以随着端点和服务的更改而刷新的最小间隔</td>
+      </tr>
+      <tr>
+          <td>ipvs-scheduler</td>
+          <td>ipvs.scheduler</td>
+          <td>&quot;&quot;</td>
+          <td>ipvs 所选的调度器类型</td>
+      </tr>
+      <tr>
+          <td>ipvs-strict-arp</td>
+          <td>ipvs.strictARP</td>
+          <td>false</td>
+          <td>通过将 arp_ignore 设置为 1 并将 arp_announce 设置为 2 启用严格的 ARP</td>
+      </tr>
+      <tr>
+          <td>ipvs-sync-period</td>
+          <td>ipvs.syncPeriod</td>
+          <td>30s</td>
+          <td>刷新 ipvs 规则的最大间隔（例如 &lsquo;5s&rsquo;、&lsquo;1m&rsquo;、&lsquo;2h22m&rsquo;）。必须大于 0</td>
+      </tr>
+      <tr>
+          <td>ipvs-tcp-timeout</td>
+          <td>ipvs.tcpTimeout</td>
+          <td>0s</td>
+          <td>空闲 IPVS TCP 连接的超时时间，0 保持连接</td>
+      </tr>
+      <tr>
+          <td>ipvs-tcpfin-timeout</td>
+          <td>ipvs.tcpFinTimeout</td>
+          <td>0s</td>
+          <td>收到 FIN 数据包后，IPVS TCP 连接的超时，0 保持当前设置不变</td>
+      </tr>
+      <tr>
+          <td>ipvs-udp-timeout</td>
+          <td>ipvs.udpTimeout</td>
+          <td>0s</td>
+          <td>IPVS UDP 数据包的超时，0 保持当前设置不变</td>
+      </tr>
+      <tr>
+          <td>kube-api-burst</td>
+          <td>clientConnection.burst</td>
+          <td>10</td>
+          <td>与 kubernetes apiserver 通信的突发数量</td>
+      </tr>
+      <tr>
+          <td>kube-api-content-type</td>
+          <td>clientConnection.contentType</td>
+          <td>application/vnd.kubernetes.protobuf</td>
+          <td>发送到 apiserver 的请求的内容类型</td>
+      </tr>
+      <tr>
+          <td>kube-api-qps</td>
+          <td>clientConnection.qps</td>
+          <td>5</td>
+          <td>与 kubernetes apiserver 交互时使用的 QPS</td>
+      </tr>
+      <tr>
+          <td>kubeconfig</td>
+          <td>clientConnection.kubeconfig</td>
+          <td>&quot;&quot;</td>
+          <td>连接 apiserver 的鉴权文件</td>
+      </tr>
+      <tr>
+          <td>masquerade-all</td>
+          <td>iptabels.masqueradeAll</td>
+          <td>false</td>
+          <td>如果使用纯 iptables 代理，则对通过服务集群 IP 发送的所有流量进行 SNAT（通常不需要）</td>
+      </tr>
+      <tr>
+          <td>master</td>
+          <td>-</td>
+          <td>&quot;&quot;</td>
+          <td>Kubernetes API 服务器的地址，会覆盖 kubeconfig 中的值</td>
+      </tr>
+      <tr>
+          <td>metrics-bind-address</td>
+          <td>metricsBindAddress</td>
+          <td>127.0.0.1:10249</td>
+          <td>性能数据 /metrics 的地址</td>
+      </tr>
+      <tr>
+          <td>nodeport-addresses</td>
+          <td>nodePortAddresses</td>
+          <td>&quot;&quot;</td>
+          <td>指定用于 NodePort 服务的地址，一个有效的 CIDR 地址段</td>
+      </tr>
+      <tr>
+          <td>oom-score-adj</td>
+          <td>oomScoreAdj</td>
+          <td>-999</td>
+          <td>kube-proxy 进程中的 oom-score-adj 值，必须在 [-1000,1000] 范围内</td>
+      </tr>
+      <tr>
+          <td>profiling</td>
+          <td>enableProfiling</td>
+          <td>false</td>
+          <td>如果为 true，则通过 Web 接口 /debug/pprof 启用性能分析</td>
+      </tr>
+      <tr>
+          <td>proxy-mode</td>
+          <td>mode</td>
+          <td>&quot;&quot;</td>
+          <td>四种代理模式：userspace, iptables, ipvs, kernelspace，默认为 iptables</td>
+      </tr>
+      <tr>
+          <td>proxy-port-range</td>
+          <td>portRange</td>
+          <td>0-0</td>
+          <td>用来代理 nodePort 的主机端口范围，格式：beginPort-endPort，默认为 30000 - 32767</td>
+      </tr>
+      <tr>
+          <td>show-hidden-metrics-for-version</td>
+          <td>showHiddenMetricsForVersion</td>
+          <td>&quot;&quot;</td>
+          <td>要显示隐藏指标的先前版本，仅先前的次要版本有意义，不允许其他值，如：&ldquo;1.16&rdquo;</td>
+      </tr>
+      <tr>
+          <td>udp-timeout</td>
+          <td>udpIdleTimeout</td>
+          <td>250ms</td>
+          <td>空闲 UDP 连接将保持打开的时长，必须大于 0，仅适用于 proxy-mode=userspace</td>
+      </tr>
+      <tr>
+          <td>write-config-to</td>
+          <td>-</td>
+          <td>-</td>
+          <td>将默认配置信息写入此文件并退出</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="数据结构">数据结构</h2>
 <h3 id="kubeproxyconfiguration">KubeProxyConfiguration</h3>
@@ -4799,7 +5079,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

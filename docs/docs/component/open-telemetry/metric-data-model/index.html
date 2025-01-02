@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -22,8 +22,10 @@
 <meta name="description" content="简要概述
 使用 OTLP 模型传输数据，然后导出到现有系统中，数据模型可以明确转换为 Prometheus Remote Write 协议，而不会丢失数据。
 主要有三种保留语义的数据转换，它们在构建指标收集系统时非常有用，可以控制成本、可靠性和资源分配。该模型在数据产生时可选择在 SDK 内转换，或 …">
-<meta property="og:title" content="指标模型" />
-<meta property="og:description" content="简要概述 使用 OTLP 模型传输数据，然后导出到现有系统中，数据模型可以明确转换为 Prometheus Remote Write 协议，而不会丢失数据。
+<meta property="og:url" content="/docs/component/open-telemetry/metric-data-model/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="指标模型">
+  <meta property="og:description" content="简要概述 使用 OTLP 模型传输数据，然后导出到现有系统中，数据模型可以明确转换为 Prometheus Remote Write 协议，而不会丢失数据。
 主要有三种保留语义的数据转换，它们在构建指标收集系统时非常有用，可以控制成本、可靠性和资源分配。该模型在数据产生时可选择在 SDK 内转换，或在 OTEL 收集器内处理数据转换，这三种转换分别为：
 时间重新聚合 将高频收集的指标重新聚合为更长的间隔，从而可预先计算或使用低分辨率时间序列来代替原始指标数据。
 空间重新聚合 对不需要的属性的指标可以重新聚合，以丢弃这些属性，降低存储空间。
@@ -38,14 +40,15 @@
 计数器（单调，累计）：Counter (Monotonic, Cumulative) 测量：Gauge 直方图：Histogram 指数直方图：Exponential Histogram 这个模型类似 Prometheus Remote Write 协议，但它并不是 OTLP 映射的唯一时间序列模型。
 数据传输 OpenTelemetry Protocol（OTLP）数据模型由指标数据流组成（由多个指标数据点组成）。指标数据流可以直接转换为时间序列。
 指标流被分组为各个度量对象，由以下各项标识：
-原始资源属性 Resource 检测范围（例如，检测库名称、版本）Scope 指标流的名称 name 包括名称在内，指标对象由以下属性定义：
-数据点类型：Sum, Gauge, Histogram ExponentialHistogram, Summary 指标流的单位：unit 指标流的描述：description 内在数据点属性，如适用：聚合临时性、单调性 数据点类型、指标流的单位和内在数据点属性被认为是可识别的，而指标流的描述在本质上显然不是可识别的。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/component/open-telemetry/metric-data-model/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-11-02T14:24:40+08:00" />
-<meta property="article:modified_time" content="2023-11-08T17:27:05+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="指标模型">
-<meta itemprop="description" content="简要概述 使用 OTLP 模型传输数据，然后导出到现有系统中，数据模型可以明确转换为 Prometheus Remote Write 协议，而不会丢失数据。
+原始资源属性 Resource 检测范围（例如，检测库名称、版本）Scope 指标流的名称 name 包括名称在内，指标对象由以下属性定义：">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-11-02T14:24:40+08:00">
+    <meta property="article:modified_time" content="2023-11-08T17:27:05+08:00">
+
+  <meta itemprop="name" content="指标模型">
+  <meta itemprop="description" content="简要概述 使用 OTLP 模型传输数据，然后导出到现有系统中，数据模型可以明确转换为 Prometheus Remote Write 协议，而不会丢失数据。
 主要有三种保留语义的数据转换，它们在构建指标收集系统时非常有用，可以控制成本、可靠性和资源分配。该模型在数据产生时可选择在 SDK 内转换，或在 OTEL 收集器内处理数据转换，这三种转换分别为：
 时间重新聚合 将高频收集的指标重新聚合为更长的间隔，从而可预先计算或使用低分辨率时间序列来代替原始指标数据。
 空间重新聚合 对不需要的属性的指标可以重新聚合，以丢弃这些属性，降低存储空间。
@@ -60,13 +63,13 @@
 计数器（单调，累计）：Counter (Monotonic, Cumulative) 测量：Gauge 直方图：Histogram 指数直方图：Exponential Histogram 这个模型类似 Prometheus Remote Write 协议，但它并不是 OTLP 映射的唯一时间序列模型。
 数据传输 OpenTelemetry Protocol（OTLP）数据模型由指标数据流组成（由多个指标数据点组成）。指标数据流可以直接转换为时间序列。
 指标流被分组为各个度量对象，由以下各项标识：
-原始资源属性 Resource 检测范围（例如，检测库名称、版本）Scope 指标流的名称 name 包括名称在内，指标对象由以下属性定义：
-数据点类型：Sum, Gauge, Histogram ExponentialHistogram, Summary 指标流的单位：unit 指标流的描述：description 内在数据点属性，如适用：聚合临时性、单调性 数据点类型、指标流的单位和内在数据点属性被认为是可识别的，而指标流的描述在本质上显然不是可识别的。"><meta itemprop="datePublished" content="2023-11-02T14:24:40+08:00" />
-<meta itemprop="dateModified" content="2023-11-08T17:27:05+08:00" />
-<meta itemprop="wordCount" content="233">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="指标模型"/>
-<meta name="twitter:description" content="简要概述 使用 OTLP 模型传输数据，然后导出到现有系统中，数据模型可以明确转换为 Prometheus Remote Write 协议，而不会丢失数据。
+原始资源属性 Resource 检测范围（例如，检测库名称、版本）Scope 指标流的名称 name 包括名称在内，指标对象由以下属性定义：">
+  <meta itemprop="datePublished" content="2023-11-02T14:24:40+08:00">
+  <meta itemprop="dateModified" content="2023-11-08T17:27:05+08:00">
+  <meta itemprop="wordCount" content="233">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="指标模型">
+  <meta name="twitter:description" content="简要概述 使用 OTLP 模型传输数据，然后导出到现有系统中，数据模型可以明确转换为 Prometheus Remote Write 协议，而不会丢失数据。
 主要有三种保留语义的数据转换，它们在构建指标收集系统时非常有用，可以控制成本、可靠性和资源分配。该模型在数据产生时可选择在 SDK 内转换，或在 OTEL 收集器内处理数据转换，这三种转换分别为：
 时间重新聚合 将高频收集的指标重新聚合为更长的间隔，从而可预先计算或使用低分辨率时间序列来代替原始指标数据。
 空间重新聚合 对不需要的属性的指标可以重新聚合，以丢弃这些属性，降低存储空间。
@@ -81,46 +84,43 @@
 计数器（单调，累计）：Counter (Monotonic, Cumulative) 测量：Gauge 直方图：Histogram 指数直方图：Exponential Histogram 这个模型类似 Prometheus Remote Write 协议，但它并不是 OTLP 映射的唯一时间序列模型。
 数据传输 OpenTelemetry Protocol（OTLP）数据模型由指标数据流组成（由多个指标数据点组成）。指标数据流可以直接转换为时间序列。
 指标流被分组为各个度量对象，由以下各项标识：
-原始资源属性 Resource 检测范围（例如，检测库名称、版本）Scope 指标流的名称 name 包括名称在内，指标对象由以下属性定义：
-数据点类型：Sum, Gauge, Histogram ExponentialHistogram, Summary 指标流的单位：unit 指标流的描述：description 内在数据点属性，如适用：聚合临时性、单调性 数据点类型、指标流的单位和内在数据点属性被认为是可识别的，而指标流的描述在本质上显然不是可识别的。"/>
+原始资源属性 Resource 检测范围（例如，检测库名称、版本）Scope 指标流的名称 name 包括名称在内，指标对象由以下属性定义：">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1083,6 +1083,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3116,9 +3133,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3132,10 +3149,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3195,6 +3415,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4360,7 +4639,7 @@ if (!doNotTrack) {
 <h2 id="模型详情">模型详情</h2>
 <h3 id="事件">事件</h3>
 <p>是记录数据的地方，它的基础是仪器（Instruments），主要数据是指标数据点（时间戳+值），用于通过事件记录观测数据，然后将这些原始事件发送到其他系统之前以某种方式进行转换。</p>
-<p><img src="https://opentelemetry.io/docs/specs/otel/metrics/img/model-event-layer.png" alt="jpg"></p>
+<p><img alt="jpg" src="https://opentelemetry.io/docs/specs/otel/metrics/img/model-event-layer.png"></p>
 <blockquote>
 <p>上图显示了仪器（Instruments）如何将事件转换为多种类型的指标流。</p>
 </blockquote>
@@ -4418,12 +4697,12 @@ if (!doNotTrack) {
 <ul>
 <li>对指标做临时增量（Delta）</li>
 </ul>
-<p><img src="https://opentelemetry.io/docs/specs/otel/metrics/img/model-delta-sum.png" alt="jpg"></p>
+<p><img alt="jpg" src="https://opentelemetry.io/docs/specs/otel/metrics/img/model-delta-sum.png"></p>
 <p>当聚合时间性是增量时（类似 prometheus rate 计算函数），指标流的时间窗口没有重叠，值不会出现负数。</p>
 <ul>
 <li>对指标做临时累积（Cumulative）</li>
 </ul>
-<p><img src="https://opentelemetry.io/docs/specs/otel/metrics/img/model-cumulative-sum.png" alt="jpg"></p>
+<p><img alt="jpg" src="https://opentelemetry.io/docs/specs/otel/metrics/img/model-cumulative-sum.png"></p>
 <p>当聚合时间性是累积时，计算自应用启动以来的时间窗口（起始，结束]）所有值的求和，值为单调递增，也就是当前值不会小于前一个。</p>
 <h3 id="gauge">Gauge</h3>
 <p>一组数据点，表示在给定时间的采样值，每个数据点包含一组独立的属性名称值对。</p>
@@ -4433,13 +4712,13 @@ if (!doNotTrack) {
 <li>对值进行采样时的时间戳（time_unix_ano）</li>
 <li>时间戳（start_time_unix_ano），它最能代表可以记录测量的第一个可能时刻。这通常设置为度量收集系统启动时的时间戳。</li>
 </ol>
-<p><img src="https://opentelemetry.io/docs/specs/otel/metrics/img/model-gauge.png" alt="jpg"></p>
+<p><img alt="jpg" src="https://opentelemetry.io/docs/specs/otel/metrics/img/model-gauge.png"></p>
 <p>使用 Gauge 进行采样的基本时间序列，在给定的时间间隔内进行多次采样，但只有最后一个值通过 OTLP 在指标流中报告。</p>
 <p>区别于 Sum 该不提供聚合语义，而是在执行时间窗口或调整精度等操作时使用“最后样本值”。</p>
 <p>可以通过转换为直方图或其他度量类型来聚合度量。默认情况下不会执行这些操作，并且需要直接的用户配置。</p>
 <h3 id="histogram">Histogram</h3>
 <p>直方图以压缩格式记录测量的总体，它将一组事件捆绑成具有总体事件计数和所有事件的总和。</p>
-<p><img src="https://opentelemetry.io/docs/specs/otel/metrics/img/model-delta-histogram.png" alt="jpg"></p>
+<p><img alt="jpg" src="https://opentelemetry.io/docs/specs/otel/metrics/img/model-delta-histogram.png"></p>
 <p>指标会自动压缩聚合，默认以 &ldquo;bucket&rdquo; &ldquo;sum&rdquo; &ldquo;count&rdquo; 三中类型组成：</p>
 <ol>
 <li>&ldquo;count&rdquo; 该指标被观测到的次数，计数累计值</li>
@@ -4597,7 +4876,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

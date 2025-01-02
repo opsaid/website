@@ -4,6 +4,7 @@
     <link>/docs/cloud-monitor/alert-rules/</link>
     <description>Recent content in 告警规则 on OPSaid</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
     
 	  <atom:link href="/docs/cloud-monitor/alert-rules/index.xml" rel="self" type="application/rss+xml" />
     
@@ -25,44 +26,44 @@
         &lt;h2 id=&#34;简要概述&#34;&gt;简要概述&lt;/h2&gt;
 &lt;p&gt;appid = &amp;ldquo;oneops&amp;rdquo;&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;指标名&lt;/th&gt;
-&lt;th&gt;类型&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;node_filesystem_avail_bytes&lt;/td&gt;
-&lt;td&gt;xx&lt;/td&gt;
-&lt;td&gt;分区还剩的空间&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;node_filesystem_size_bytes&lt;/td&gt;
-&lt;td&gt;xx&lt;/td&gt;
-&lt;td&gt;分区总的空间&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;指标名&lt;/th&gt;
+          &lt;th&gt;类型&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;node_filesystem_avail_bytes&lt;/td&gt;
+          &lt;td&gt;xx&lt;/td&gt;
+          &lt;td&gt;分区还剩的空间&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;node_filesystem_size_bytes&lt;/td&gt;
+          &lt;td&gt;xx&lt;/td&gt;
+          &lt;td&gt;分区总的空间&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;公共标签&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;标签名&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;api.opsaid.cn/fault-priority&lt;/td&gt;
-&lt;td&gt;P5&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;api.opsaid.cn/pm2-uuid&lt;/td&gt;
-&lt;td&gt;项目的UUID&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;标签名&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;api.opsaid.cn/fault-priority&lt;/td&gt;
+          &lt;td&gt;P5&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;api.opsaid.cn/pm2-uuid&lt;/td&gt;
+          &lt;td&gt;项目的UUID&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;全局默认告警规则&#34;&gt;全局默认告警规则&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;groups:

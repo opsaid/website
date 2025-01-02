@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -25,75 +25,78 @@
 
 可配置任意数量的访问日志模式；
 可自定义访问日志过滤器，将不同类型的请求和响应写入不同的访问日志。 …">
-<meta property="og:title" content="可观测性" />
-<meta property="og:description" content="简要概述 包含 envoy 的访问日志、性能数据、链路跟踪三类数据。
+<meta property="og:url" content="/docs/networks/envoy/observability/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="可观测性">
+  <meta property="og:description" content="简要概述 包含 envoy 的访问日志、性能数据、链路跟踪三类数据。
 其中 HTTP连接管理、TCP 代理、Thrift 代理还有以下特点：
 可配置任意数量的访问日志模式； 可自定义访问日志过滤器，将不同类型的请求和响应写入不同的访问日志。 访问日志配置 在监听器中使用 见 config.listener.v3.Listener 数据结构中以下几个参数：
 { ...... &#34;access_log&#34;: [], ...... } 配置示例：
 static_resources: listeners: - name: listener_0 access_log: - name: envoy.access_loggers.stdout typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog 访问示例：
 $ curl -vvv &#39;http://192.168.0.2:80&#39; $ curl -vvv &#39;http://192.168.0.2:80&#39; $ curl -vvv &#39;http://192.168.0.2:80&#39; $ telnet 192.168.0.2 80 输出示例：
-[2024-02-01T08:59:07.049Z] &#34;- - HTTP/1.1&#34; 0 - 74 201 32 - &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; [2024-02-01T08:59:08.175Z] &#34;- - HTTP/1." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/networks/envoy/observability/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2024-01-31T17:26:04+08:00" />
-<meta property="article:modified_time" content="2024-02-02T16:51:26+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="可观测性">
-<meta itemprop="description" content="简要概述 包含 envoy 的访问日志、性能数据、链路跟踪三类数据。
+[2024-02-01T08:59:07.049Z] &#34;- - HTTP/1.1&#34; 0 - 74 201 32 - &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; [2024-02-01T08:59:08.175Z] &#34;- - HTTP/1.1&#34; 0 - 74 200 3 - &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; [2024-02-01T08:59:08.868Z] &#34;- - HTTP/1.1&#34; 0 - 74 201 15 - &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; [2024-02-01T08:59:22.948Z] &#34;- - -&#34; 0 DPE 7 156 3131 - &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; 下游连接访问日志可以通过启用监听器访问日志来实现。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2024-01-31T17:26:04+08:00">
+    <meta property="article:modified_time" content="2024-02-02T16:51:26+08:00">
+
+  <meta itemprop="name" content="可观测性">
+  <meta itemprop="description" content="简要概述 包含 envoy 的访问日志、性能数据、链路跟踪三类数据。
 其中 HTTP连接管理、TCP 代理、Thrift 代理还有以下特点：
 可配置任意数量的访问日志模式； 可自定义访问日志过滤器，将不同类型的请求和响应写入不同的访问日志。 访问日志配置 在监听器中使用 见 config.listener.v3.Listener 数据结构中以下几个参数：
 { ...... &#34;access_log&#34;: [], ...... } 配置示例：
 static_resources: listeners: - name: listener_0 access_log: - name: envoy.access_loggers.stdout typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog 访问示例：
 $ curl -vvv &#39;http://192.168.0.2:80&#39; $ curl -vvv &#39;http://192.168.0.2:80&#39; $ curl -vvv &#39;http://192.168.0.2:80&#39; $ telnet 192.168.0.2 80 输出示例：
-[2024-02-01T08:59:07.049Z] &#34;- - HTTP/1.1&#34; 0 - 74 201 32 - &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; [2024-02-01T08:59:08.175Z] &#34;- - HTTP/1."><meta itemprop="datePublished" content="2024-01-31T17:26:04+08:00" />
-<meta itemprop="dateModified" content="2024-02-02T16:51:26+08:00" />
-<meta itemprop="wordCount" content="645">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="可观测性"/>
-<meta name="twitter:description" content="简要概述 包含 envoy 的访问日志、性能数据、链路跟踪三类数据。
+[2024-02-01T08:59:07.049Z] &#34;- - HTTP/1.1&#34; 0 - 74 201 32 - &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; [2024-02-01T08:59:08.175Z] &#34;- - HTTP/1.1&#34; 0 - 74 200 3 - &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; [2024-02-01T08:59:08.868Z] &#34;- - HTTP/1.1&#34; 0 - 74 201 15 - &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; [2024-02-01T08:59:22.948Z] &#34;- - -&#34; 0 DPE 7 156 3131 - &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; 下游连接访问日志可以通过启用监听器访问日志来实现。">
+  <meta itemprop="datePublished" content="2024-01-31T17:26:04+08:00">
+  <meta itemprop="dateModified" content="2024-02-02T16:51:26+08:00">
+  <meta itemprop="wordCount" content="645">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="可观测性">
+  <meta name="twitter:description" content="简要概述 包含 envoy 的访问日志、性能数据、链路跟踪三类数据。
 其中 HTTP连接管理、TCP 代理、Thrift 代理还有以下特点：
 可配置任意数量的访问日志模式； 可自定义访问日志过滤器，将不同类型的请求和响应写入不同的访问日志。 访问日志配置 在监听器中使用 见 config.listener.v3.Listener 数据结构中以下几个参数：
 { ...... &#34;access_log&#34;: [], ...... } 配置示例：
 static_resources: listeners: - name: listener_0 access_log: - name: envoy.access_loggers.stdout typed_config: &#34;@type&#34;: type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog 访问示例：
 $ curl -vvv &#39;http://192.168.0.2:80&#39; $ curl -vvv &#39;http://192.168.0.2:80&#39; $ curl -vvv &#39;http://192.168.0.2:80&#39; $ telnet 192.168.0.2 80 输出示例：
-[2024-02-01T08:59:07.049Z] &#34;- - HTTP/1.1&#34; 0 - 74 201 32 - &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; [2024-02-01T08:59:08.175Z] &#34;- - HTTP/1."/>
+[2024-02-01T08:59:07.049Z] &#34;- - HTTP/1.1&#34; 0 - 74 201 32 - &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; [2024-02-01T08:59:08.175Z] &#34;- - HTTP/1.1&#34; 0 - 74 200 3 - &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; [2024-02-01T08:59:08.868Z] &#34;- - HTTP/1.1&#34; 0 - 74 201 15 - &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; [2024-02-01T08:59:22.948Z] &#34;- - -&#34; 0 DPE 7 156 3131 - &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; &#34;-&#34; 下游连接访问日志可以通过启用监听器访问日志来实现。">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1056,6 +1059,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3089,9 +3109,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3105,10 +3125,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3168,6 +3391,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4428,269 +4710,269 @@ if (!doNotTrack) {
 <h2 id="访问日志格式">访问日志格式</h2>
 <h3 id="支持的变量">支持的变量</h3>
 <table>
-<thead>
-<tr>
-<th>字段</th>
-<th>HTTP</th>
-<th>TCP</th>
-<th>UDP</th>
-<th>THRIFT</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>%START_TIME%</td>
-<td>支持</td>
-<td>支持</td>
-<td>支持</td>
-<td>支持</td>
-</tr>
-<tr>
-<td>%EMIT_TIME%</td>
-<td>支持</td>
-<td>支持</td>
-<td>支持</td>
-<td>支持</td>
-</tr>
-<tr>
-<td>%REQUEST_HEADERS_BYTES%</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%BYTES_RECEIVED%</td>
-<td>支持</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%BYTES_RETRANSMITTED%</td>
-<td>HTTP3</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%PACKETS_RETRANSMITTED%</td>
-<td>HTTP3</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%PROTOCOL%</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%UPSTREAM_PROTOCOL%</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%RESPONSE_CODE%</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%RESPONSE_CODE_DETAILS%</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%CONNECTION_TERMINATION_DETAILS%</td>
-<td>支持</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%RESPONSE_HEADERS_BYTES%</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%RESPONSE_TRAILERS_BYTES%</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%BYTES_SENT%</td>
-<td>支持</td>
-<td>支持</td>
-<td>-</td>
-<td>支持</td>
-</tr>
-<tr>
-<td>%UPSTREAM_REQUEST_ATTEMPT_COUNT%</td>
-<td>支持</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%UPSTREAM_WIRE_BYTES_SENT%</td>
-<td>支持</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%UPSTREAM_WIRE_BYTES_RECEIVED%</td>
-<td>支持</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%UPSTREAM_HEADER_BYTES_SENT%</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%UPSTREAM_HEADER_BYTES_RECEIVED%</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%DOWNSTREAM_WIRE_BYTES_SENT%</td>
-<td>支持</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%DOWNSTREAM_WIRE_BYTES_RECEIVED%</td>
-<td>支持</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%DOWNSTREAM_HEADER_BYTES_SENT%</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%DOWNSTREAM_HEADER_BYTES_RECEIVED%</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%DURATION%</td>
-<td>支持</td>
-<td>支持</td>
-<td>-</td>
-<td>支持</td>
-</tr>
-<tr>
-<td>%REQUEST_DURATION%</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%REQUEST_TX_DURATION%</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%RESPONSE_DURATION%</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%ROUNDTRIP_DURATION%</td>
-<td>HTTP3</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%RESPONSE_TX_DURATION%</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%DOWNSTREAM_HANDSHAKE_DURATION%</td>
-<td>-</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%UPSTREAM_CONNECTION_POOL_READY_DURATION%</td>
-<td>支持</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%RESPONSE_FLAGS%</td>
-<td>支持</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%RESPONSE_FLAGS_LONG%</td>
-<td>支持</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%ROUTE_NAME%</td>
-<td>支持</td>
-<td>支持</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%VIRTUAL_CLUSTER_NAME%</td>
-<td>gRPC</td>
-<td>-</td>
-<td>-</td>
-<td>-</td>
-</tr>
-<tr>
-<td>%UPSTREAM_HOST%</td>
-<td>支持</td>
-<td>支持</td>
-<td>支持</td>
-<td>支持</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>字段</th>
+          <th>HTTP</th>
+          <th>TCP</th>
+          <th>UDP</th>
+          <th>THRIFT</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>%START_TIME%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>支持</td>
+      </tr>
+      <tr>
+          <td>%EMIT_TIME%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>支持</td>
+      </tr>
+      <tr>
+          <td>%REQUEST_HEADERS_BYTES%</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%BYTES_RECEIVED%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%BYTES_RETRANSMITTED%</td>
+          <td>HTTP3</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%PACKETS_RETRANSMITTED%</td>
+          <td>HTTP3</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%PROTOCOL%</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%UPSTREAM_PROTOCOL%</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%RESPONSE_CODE%</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%RESPONSE_CODE_DETAILS%</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%CONNECTION_TERMINATION_DETAILS%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%RESPONSE_HEADERS_BYTES%</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%RESPONSE_TRAILERS_BYTES%</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%BYTES_SENT%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>支持</td>
+      </tr>
+      <tr>
+          <td>%UPSTREAM_REQUEST_ATTEMPT_COUNT%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%UPSTREAM_WIRE_BYTES_SENT%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%UPSTREAM_WIRE_BYTES_RECEIVED%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%UPSTREAM_HEADER_BYTES_SENT%</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%UPSTREAM_HEADER_BYTES_RECEIVED%</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%DOWNSTREAM_WIRE_BYTES_SENT%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%DOWNSTREAM_WIRE_BYTES_RECEIVED%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%DOWNSTREAM_HEADER_BYTES_SENT%</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%DOWNSTREAM_HEADER_BYTES_RECEIVED%</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%DURATION%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>支持</td>
+      </tr>
+      <tr>
+          <td>%REQUEST_DURATION%</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%REQUEST_TX_DURATION%</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%RESPONSE_DURATION%</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%ROUNDTRIP_DURATION%</td>
+          <td>HTTP3</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%RESPONSE_TX_DURATION%</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%DOWNSTREAM_HANDSHAKE_DURATION%</td>
+          <td>-</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%UPSTREAM_CONNECTION_POOL_READY_DURATION%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%RESPONSE_FLAGS%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%RESPONSE_FLAGS_LONG%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%ROUTE_NAME%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%VIRTUAL_CLUSTER_NAME%</td>
+          <td>gRPC</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+      </tr>
+      <tr>
+          <td>%UPSTREAM_HOST%</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>支持</td>
+          <td>支持</td>
+      </tr>
+  </tbody>
 </table>
 <p>这里仅列出部分，更多参考官方 <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#command-operators">Command Operators</a>。</p>
 <h3 id="默认格式与自定义">默认格式与自定义</h3>
@@ -4857,7 +5139,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

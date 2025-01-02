@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -24,77 +24,74 @@
 参数解析
 命令行参数
 
+  
+      
+          名称
+          默认值
+          说明
+      
+  
+  
+      
+          alert.label-drop
+          - …">
+<meta property="og:url" content="/docs/component/thanos/rule/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Rule">
+  <meta property="og:description" content="Rule 组件 基于版本 thanos-0.27.0 说明
+参数解析 命令行参数 名称 默认值 说明 alert.label-drop - 发送至 alertmanager 组件需要丢弃的标签，一般用于丢弃多副本的标签，如：replica alert.query-url - 外部可访问的 Thanos Query URL 地址，以便在告警时可以在 ‘Source’ 字段中展示 alert.relabel-config - 功能同 ‘alert.relabel-config-file’，但这里直接添加YAML内容 alert.relabel-config-file - 同上 alertmanagers.config - 功能同 ‘alertmanagers.config-file’ alertmanagers.config-file - 连接的 alertmanager 组件配置 alertmanagers.sd-dns-interval 30s alertmanager 组件地址通过 dns 协议发现的刷新时间间隔 alertmanagers.send-timeout 10s 发送 alertmanager 组件超时时间 alertmanagers.url - alertmanager 组件地址，可支持协议：http、dns&#43;、dnssrv&#43; data-dir data/ TODO eval-interval 1m 默认告警规则评估时间间隔 grpc-address 0.0.0.0:10901 gRPC服务 StoreAPI 监听的地址 grpc-grace-period 2m gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 grpc-server-tls-cert &#34;&#34; 是否开启tls认证，为空表示禁用 grpc-server-tls-client-ca &#34;&#34; TLS CA，为空表示不对客户端验证 grpc-server-tls-key &#34;&#34; 是否开启tls认证，为空表示禁用 hash-func &#34;&#34; TODO; 如：&#34;&#34;, “SHA256” http-address 0.0.0.0:10902 监听 HTTP 服务地址 http-grace-period 2m HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 http.config &#34;&#34; TODO; http的配置，用于开启TLS、认证等 label &#34;&#34; 格式：=&#34;&#34;，植入标签，用于标识 log.format logfmt 日志格式，可取值：logfmt、json log.level info 日志级别 log.request.decision - 已被废弃 objstore.config &#34;&#34; 功能同 ‘objstore.config-file’ 对象存储地址 objstore.config-file &#34;&#34; 对象存储地址 query &#34;&#34; 用于查询指标的地址，可支持协议：http、dns&#43;、dnssrv&#43; query.config &#34;&#34; 功能同 ‘query’、‘query.config-file’，优先级最高 query.config-file &#34;&#34; 功能同 ‘query’、‘query.config’ query.http-method POST 查询请求的HTTP方法，支持：GET、POST query.sd-dns-interval 30s query 组件地址通过 dns 协议发现的刷新时间间隔 query.sd-files &#34;&#34; 基于文件形式的自动发现 query.sd-interval 5m 刷新基于文件形式的自动发现的时间间隔 remote-write.config &#34;&#34; 写入数据至远程，rule 组件本地不会存储任何数据 remote-write.config-file &#34;&#34; 功能同 ‘remote-write.config’ request.logging-config &#34;&#34; 请求日志配置 request.logging-config-file &#34;&#34; 功能同 ‘request.logging-config’ resend-delay 1m TODO; rule-file rules/ 告警规则目录 shipper.upload-compacted &#34;&#34; TODO; 一般用于迁移目的，首次开启后需关闭 tracing.config &#34;&#34; opentracing 组件配置 tracing.config-file &#34;&#34; 功能同 ’tracing.config’ tsdb.block-duration 2h TSDB 块时间 tsdb.no-lockfile &#34;&#34; 不创建tsdb lockfile 文件 tsdb.retention 48h tsdb 最大持久时间 tsdb.wal-compression &#34;&#34; 是否对 tsdb 的 WAL 文件压缩 web.disable-cors &#34;&#34; 是否禁止 CORS，默认允许 web.external-prefix &#34;&#34; HTML页面上添加的URL前缀，默认为 ‘/’ web.prefix-header &#34;&#34; TODO web.route-prefix &#34;&#34; API接口上添加的URL前缀，默认为’/’，一般同时更改 ‘web.external-prefix’">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-09-27T10:14:03+08:00">
+    <meta property="article:modified_time" content="2023-02-13T16:48:32+08:00">
+
+  <meta itemprop="name" content="Rule">
+  <meta itemprop="description" content="Rule 组件 基于版本 thanos-0.27.0 说明
+参数解析 命令行参数 名称 默认值 说明 alert.label-drop - 发送至 alertmanager 组件需要丢弃的标签，一般用于丢弃多副本的标签，如：replica alert.query-url - 外部可访问的 Thanos Query URL 地址，以便在告警时可以在 ‘Source’ 字段中展示 alert.relabel-config - 功能同 ‘alert.relabel-config-file’，但这里直接添加YAML内容 alert.relabel-config-file - 同上 alertmanagers.config - 功能同 ‘alertmanagers.config-file’ alertmanagers.config-file - 连接的 alertmanager 组件配置 alertmanagers.sd-dns-interval 30s alertmanager 组件地址通过 dns 协议发现的刷新时间间隔 alertmanagers.send-timeout 10s 发送 alertmanager 组件超时时间 alertmanagers.url - alertmanager 组件地址，可支持协议：http、dns&#43;、dnssrv&#43; data-dir data/ TODO eval-interval 1m 默认告警规则评估时间间隔 grpc-address 0.0.0.0:10901 gRPC服务 StoreAPI 监听的地址 grpc-grace-period 2m gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 grpc-server-tls-cert &#34;&#34; 是否开启tls认证，为空表示禁用 grpc-server-tls-client-ca &#34;&#34; TLS CA，为空表示不对客户端验证 grpc-server-tls-key &#34;&#34; 是否开启tls认证，为空表示禁用 hash-func &#34;&#34; TODO; 如：&#34;&#34;, “SHA256” http-address 0.0.0.0:10902 监听 HTTP 服务地址 http-grace-period 2m HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 http.config &#34;&#34; TODO; http的配置，用于开启TLS、认证等 label &#34;&#34; 格式：=&#34;&#34;，植入标签，用于标识 log.format logfmt 日志格式，可取值：logfmt、json log.level info 日志级别 log.request.decision - 已被废弃 objstore.config &#34;&#34; 功能同 ‘objstore.config-file’ 对象存储地址 objstore.config-file &#34;&#34; 对象存储地址 query &#34;&#34; 用于查询指标的地址，可支持协议：http、dns&#43;、dnssrv&#43; query.config &#34;&#34; 功能同 ‘query’、‘query.config-file’，优先级最高 query.config-file &#34;&#34; 功能同 ‘query’、‘query.config’ query.http-method POST 查询请求的HTTP方法，支持：GET、POST query.sd-dns-interval 30s query 组件地址通过 dns 协议发现的刷新时间间隔 query.sd-files &#34;&#34; 基于文件形式的自动发现 query.sd-interval 5m 刷新基于文件形式的自动发现的时间间隔 remote-write.config &#34;&#34; 写入数据至远程，rule 组件本地不会存储任何数据 remote-write.config-file &#34;&#34; 功能同 ‘remote-write.config’ request.logging-config &#34;&#34; 请求日志配置 request.logging-config-file &#34;&#34; 功能同 ‘request.logging-config’ resend-delay 1m TODO; rule-file rules/ 告警规则目录 shipper.upload-compacted &#34;&#34; TODO; 一般用于迁移目的，首次开启后需关闭 tracing.config &#34;&#34; opentracing 组件配置 tracing.config-file &#34;&#34; 功能同 ’tracing.config’ tsdb.block-duration 2h TSDB 块时间 tsdb.no-lockfile &#34;&#34; 不创建tsdb lockfile 文件 tsdb.retention 48h tsdb 最大持久时间 tsdb.wal-compression &#34;&#34; 是否对 tsdb 的 WAL 文件压缩 web.disable-cors &#34;&#34; 是否禁止 CORS，默认允许 web.external-prefix &#34;&#34; HTML页面上添加的URL前缀，默认为 ‘/’ web.prefix-header &#34;&#34; TODO web.route-prefix &#34;&#34; API接口上添加的URL前缀，默认为’/’，一般同时更改 ‘web.external-prefix’">
+  <meta itemprop="datePublished" content="2022-09-27T10:14:03+08:00">
+  <meta itemprop="dateModified" content="2023-02-13T16:48:32+08:00">
+  <meta itemprop="wordCount" content="214">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Rule">
+  <meta name="twitter:description" content="Rule 组件 基于版本 thanos-0.27.0 说明
+参数解析 命令行参数 名称 默认值 说明 alert.label-drop - 发送至 alertmanager 组件需要丢弃的标签，一般用于丢弃多副本的标签，如：replica alert.query-url - 外部可访问的 Thanos Query URL 地址，以便在告警时可以在 ‘Source’ 字段中展示 alert.relabel-config - 功能同 ‘alert.relabel-config-file’，但这里直接添加YAML内容 alert.relabel-config-file - 同上 alertmanagers.config - 功能同 ‘alertmanagers.config-file’ alertmanagers.config-file - 连接的 alertmanager 组件配置 alertmanagers.sd-dns-interval 30s alertmanager 组件地址通过 dns 协议发现的刷新时间间隔 alertmanagers.send-timeout 10s 发送 alertmanager 组件超时时间 alertmanagers.url - alertmanager 组件地址，可支持协议：http、dns&#43;、dnssrv&#43; data-dir data/ TODO eval-interval 1m 默认告警规则评估时间间隔 grpc-address 0.0.0.0:10901 gRPC服务 StoreAPI 监听的地址 grpc-grace-period 2m gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 grpc-server-tls-cert &#34;&#34; 是否开启tls认证，为空表示禁用 grpc-server-tls-client-ca &#34;&#34; TLS CA，为空表示不对客户端验证 grpc-server-tls-key &#34;&#34; 是否开启tls认证，为空表示禁用 hash-func &#34;&#34; TODO; 如：&#34;&#34;, “SHA256” http-address 0.0.0.0:10902 监听 HTTP 服务地址 http-grace-period 2m HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 http.config &#34;&#34; TODO; http的配置，用于开启TLS、认证等 label &#34;&#34; 格式：=&#34;&#34;，植入标签，用于标识 log.format logfmt 日志格式，可取值：logfmt、json log.level info 日志级别 log.request.decision - 已被废弃 objstore.config &#34;&#34; 功能同 ‘objstore.config-file’ 对象存储地址 objstore.config-file &#34;&#34; 对象存储地址 query &#34;&#34; 用于查询指标的地址，可支持协议：http、dns&#43;、dnssrv&#43; query.config &#34;&#34; 功能同 ‘query’、‘query.config-file’，优先级最高 query.config-file &#34;&#34; 功能同 ‘query’、‘query.config’ query.http-method POST 查询请求的HTTP方法，支持：GET、POST query.sd-dns-interval 30s query 组件地址通过 dns 协议发现的刷新时间间隔 query.sd-files &#34;&#34; 基于文件形式的自动发现 query.sd-interval 5m 刷新基于文件形式的自动发现的时间间隔 remote-write.config &#34;&#34; 写入数据至远程，rule 组件本地不会存储任何数据 remote-write.config-file &#34;&#34; 功能同 ‘remote-write.config’ request.logging-config &#34;&#34; 请求日志配置 request.logging-config-file &#34;&#34; 功能同 ‘request.logging-config’ resend-delay 1m TODO; rule-file rules/ 告警规则目录 shipper.upload-compacted &#34;&#34; TODO; 一般用于迁移目的，首次开启后需关闭 tracing.config &#34;&#34; opentracing 组件配置 tracing.config-file &#34;&#34; 功能同 ’tracing.config’ tsdb.block-duration 2h TSDB 块时间 tsdb.no-lockfile &#34;&#34; 不创建tsdb lockfile 文件 tsdb.retention 48h tsdb 最大持久时间 tsdb.wal-compression &#34;&#34; 是否对 tsdb 的 WAL 文件压缩 web.disable-cors &#34;&#34; 是否禁止 CORS，默认允许 web.external-prefix &#34;&#34; HTML页面上添加的URL前缀，默认为 ‘/’ web.prefix-header &#34;&#34; TODO web.route-prefix &#34;&#34; API接口上添加的URL前缀，默认为’/’，一般同时更改 ‘web.external-prefix’">
 
 
-名称
-默认值
-说明
 
 
-
-
-alert.label-drop
--
-发送至 alertmanager 组件需要丢弃的标签，一般用于丢弃多副本的标签，如：replica
-
-
-alert.query-url
--
-外部可 …">
-<meta property="og:title" content="Rule" />
-<meta property="og:description" content="Rule 组件 基于版本 thanos-0.27.0 说明
-参数解析 命令行参数 名称 默认值 说明 alert.label-drop - 发送至 alertmanager 组件需要丢弃的标签，一般用于丢弃多副本的标签，如：replica alert.query-url - 外部可访问的 Thanos Query URL 地址，以便在告警时可以在 &lsquo;Source&rsquo; 字段中展示 alert.relabel-config - 功能同 &lsquo;alert.relabel-config-file&rsquo;，但这里直接添加YAML内容 alert.relabel-config-file - 同上 alertmanagers.config - 功能同 &lsquo;alertmanagers.config-file&rsquo; alertmanagers.config-file - 连接的 alertmanager 组件配置 alertmanagers.sd-dns-interval 30s alertmanager 组件地址通过 dns 协议发现的刷新时间间隔 alertmanagers.send-timeout 10s 发送 alertmanager 组件超时时间 alertmanagers.url - alertmanager 组件地址，可支持协议：http、dns&#43;、dnssrv&#43; data-dir data/ TODO eval-interval 1m 默认告警规则评估时间间隔 grpc-address 0.0.0.0:10901 gRPC服务 StoreAPI 监听的地址 grpc-grace-period 2m gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 grpc-server-tls-cert &quot;&quot; 是否开启tls认证，为空表示禁用 grpc-server-tls-client-ca &quot;&quot; TLS CA，为空表示不对客户端验证 grpc-server-tls-key &quot;&quot; 是否开启tls认证，为空表示禁用 hash-func &quot;&quot; TODO; 如：&quot;&quot;, &ldquo;SHA256&rdquo; http-address 0." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/component/thanos/rule/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-09-27T10:14:03+08:00" />
-<meta property="article:modified_time" content="2023-02-13T16:48:32+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Rule">
-<meta itemprop="description" content="Rule 组件 基于版本 thanos-0.27.0 说明
-参数解析 命令行参数 名称 默认值 说明 alert.label-drop - 发送至 alertmanager 组件需要丢弃的标签，一般用于丢弃多副本的标签，如：replica alert.query-url - 外部可访问的 Thanos Query URL 地址，以便在告警时可以在 &lsquo;Source&rsquo; 字段中展示 alert.relabel-config - 功能同 &lsquo;alert.relabel-config-file&rsquo;，但这里直接添加YAML内容 alert.relabel-config-file - 同上 alertmanagers.config - 功能同 &lsquo;alertmanagers.config-file&rsquo; alertmanagers.config-file - 连接的 alertmanager 组件配置 alertmanagers.sd-dns-interval 30s alertmanager 组件地址通过 dns 协议发现的刷新时间间隔 alertmanagers.send-timeout 10s 发送 alertmanager 组件超时时间 alertmanagers.url - alertmanager 组件地址，可支持协议：http、dns&#43;、dnssrv&#43; data-dir data/ TODO eval-interval 1m 默认告警规则评估时间间隔 grpc-address 0.0.0.0:10901 gRPC服务 StoreAPI 监听的地址 grpc-grace-period 2m gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 grpc-server-tls-cert &quot;&quot; 是否开启tls认证，为空表示禁用 grpc-server-tls-client-ca &quot;&quot; TLS CA，为空表示不对客户端验证 grpc-server-tls-key &quot;&quot; 是否开启tls认证，为空表示禁用 hash-func &quot;&quot; TODO; 如：&quot;&quot;, &ldquo;SHA256&rdquo; http-address 0."><meta itemprop="datePublished" content="2022-09-27T10:14:03+08:00" />
-<meta itemprop="dateModified" content="2023-02-13T16:48:32+08:00" />
-<meta itemprop="wordCount" content="214">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Rule"/>
-<meta name="twitter:description" content="Rule 组件 基于版本 thanos-0.27.0 说明
-参数解析 命令行参数 名称 默认值 说明 alert.label-drop - 发送至 alertmanager 组件需要丢弃的标签，一般用于丢弃多副本的标签，如：replica alert.query-url - 外部可访问的 Thanos Query URL 地址，以便在告警时可以在 &lsquo;Source&rsquo; 字段中展示 alert.relabel-config - 功能同 &lsquo;alert.relabel-config-file&rsquo;，但这里直接添加YAML内容 alert.relabel-config-file - 同上 alertmanagers.config - 功能同 &lsquo;alertmanagers.config-file&rsquo; alertmanagers.config-file - 连接的 alertmanager 组件配置 alertmanagers.sd-dns-interval 30s alertmanager 组件地址通过 dns 协议发现的刷新时间间隔 alertmanagers.send-timeout 10s 发送 alertmanager 组件超时时间 alertmanagers.url - alertmanager 组件地址，可支持协议：http、dns&#43;、dnssrv&#43; data-dir data/ TODO eval-interval 1m 默认告警规则评估时间间隔 grpc-address 0.0.0.0:10901 gRPC服务 StoreAPI 监听的地址 grpc-grace-period 2m gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现 grpc-server-tls-cert &quot;&quot; 是否开启tls认证，为空表示禁用 grpc-server-tls-client-ca &quot;&quot; TLS CA，为空表示不对客户端验证 grpc-server-tls-key &quot;&quot; 是否开启tls认证，为空表示禁用 hash-func &quot;&quot; TODO; 如：&quot;&quot;, &ldquo;SHA256&rdquo; http-address 0."/>
-
-
-
-
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1057,6 +1054,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3090,9 +3104,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3106,10 +3120,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3169,6 +3386,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4300,265 +4576,265 @@ if (!doNotTrack) {
 <h2 id="参数解析">参数解析</h2>
 <h3 id="命令行参数">命令行参数</h3>
 <table>
-<thead>
-<tr>
-<th>名称</th>
-<th>默认值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>alert.label-drop</td>
-<td>-</td>
-<td>发送至 alertmanager 组件需要丢弃的标签，一般用于丢弃多副本的标签，如：replica</td>
-</tr>
-<tr>
-<td>alert.query-url</td>
-<td>-</td>
-<td>外部可访问的 Thanos Query URL 地址，以便在告警时可以在 &lsquo;Source&rsquo; 字段中展示</td>
-</tr>
-<tr>
-<td>alert.relabel-config</td>
-<td>-</td>
-<td>功能同 &lsquo;alert.relabel-config-file&rsquo;，但这里直接添加YAML内容</td>
-</tr>
-<tr>
-<td>alert.relabel-config-file</td>
-<td>-</td>
-<td>同上</td>
-</tr>
-<tr>
-<td>alertmanagers.config</td>
-<td>-</td>
-<td>功能同 &lsquo;alertmanagers.config-file&rsquo;</td>
-</tr>
-<tr>
-<td>alertmanagers.config-file</td>
-<td>-</td>
-<td>连接的 alertmanager 组件配置</td>
-</tr>
-<tr>
-<td>alertmanagers.sd-dns-interval</td>
-<td>30s</td>
-<td>alertmanager 组件地址通过 dns 协议发现的刷新时间间隔</td>
-</tr>
-<tr>
-<td>alertmanagers.send-timeout</td>
-<td>10s</td>
-<td>发送 alertmanager 组件超时时间</td>
-</tr>
-<tr>
-<td>alertmanagers.url</td>
-<td>-</td>
-<td>alertmanager 组件地址，可支持协议：http、dns+、dnssrv+</td>
-</tr>
-<tr>
-<td>data-dir</td>
-<td>data/</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>eval-interval</td>
-<td>1m</td>
-<td>默认告警规则评估时间间隔</td>
-</tr>
-<tr>
-<td>grpc-address</td>
-<td>0.0.0.0:10901</td>
-<td>gRPC服务 StoreAPI 监听的地址</td>
-</tr>
-<tr>
-<td>grpc-grace-period</td>
-<td>2m</td>
-<td>gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现</td>
-</tr>
-<tr>
-<td>grpc-server-tls-cert</td>
-<td>&quot;&quot;</td>
-<td>是否开启tls认证，为空表示禁用</td>
-</tr>
-<tr>
-<td>grpc-server-tls-client-ca</td>
-<td>&quot;&quot;</td>
-<td>TLS CA，为空表示不对客户端验证</td>
-</tr>
-<tr>
-<td>grpc-server-tls-key</td>
-<td>&quot;&quot;</td>
-<td>是否开启tls认证，为空表示禁用</td>
-</tr>
-<tr>
-<td>hash-func</td>
-<td>&quot;&quot;</td>
-<td>TODO; 如：&quot;&quot;, &ldquo;SHA256&rdquo;</td>
-</tr>
-<tr>
-<td>http-address</td>
-<td>0.0.0.0:10902</td>
-<td>监听 HTTP 服务地址</td>
-</tr>
-<tr>
-<td>http-grace-period</td>
-<td>2m</td>
-<td>HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现</td>
-</tr>
-<tr>
-<td>http.config</td>
-<td>&quot;&quot;</td>
-<td>TODO; http的配置，用于开启TLS、认证等</td>
-</tr>
-<tr>
-<td>label</td>
-<td>&quot;&quot;</td>
-<td>格式：<name>=&quot;<value>&quot;，植入标签，用于标识</td>
-</tr>
-<tr>
-<td>log.format</td>
-<td>logfmt</td>
-<td>日志格式，可取值：logfmt、json</td>
-</tr>
-<tr>
-<td>log.level</td>
-<td>info</td>
-<td>日志级别</td>
-</tr>
-<tr>
-<td>log.request.decision</td>
-<td>-</td>
-<td>已被废弃</td>
-</tr>
-<tr>
-<td>objstore.config</td>
-<td>&quot;&quot;</td>
-<td>功能同 &lsquo;objstore.config-file&rsquo; 对象存储地址</td>
-</tr>
-<tr>
-<td>objstore.config-file</td>
-<td>&quot;&quot;</td>
-<td>对象存储地址</td>
-</tr>
-<tr>
-<td>query</td>
-<td>&quot;&quot;</td>
-<td>用于查询指标的地址，可支持协议：http、dns+、dnssrv+</td>
-</tr>
-<tr>
-<td>query.config</td>
-<td>&quot;&quot;</td>
-<td>功能同 &lsquo;query&rsquo;、&lsquo;query.config-file&rsquo;，优先级最高</td>
-</tr>
-<tr>
-<td>query.config-file</td>
-<td>&quot;&quot;</td>
-<td>功能同 &lsquo;query&rsquo;、&lsquo;query.config&rsquo;</td>
-</tr>
-<tr>
-<td>query.http-method</td>
-<td>POST</td>
-<td>查询请求的HTTP方法，支持：GET、POST</td>
-</tr>
-<tr>
-<td>query.sd-dns-interval</td>
-<td>30s</td>
-<td>query 组件地址通过 dns 协议发现的刷新时间间隔</td>
-</tr>
-<tr>
-<td>query.sd-files</td>
-<td>&quot;&quot;</td>
-<td>基于文件形式的自动发现</td>
-</tr>
-<tr>
-<td>query.sd-interval</td>
-<td>5m</td>
-<td>刷新基于文件形式的自动发现的时间间隔</td>
-</tr>
-<tr>
-<td>remote-write.config</td>
-<td>&quot;&quot;</td>
-<td>写入数据至远程，rule 组件本地不会存储任何数据</td>
-</tr>
-<tr>
-<td>remote-write.config-file</td>
-<td>&quot;&quot;</td>
-<td>功能同 &lsquo;remote-write.config&rsquo;</td>
-</tr>
-<tr>
-<td>request.logging-config</td>
-<td>&quot;&quot;</td>
-<td>请求日志配置</td>
-</tr>
-<tr>
-<td>request.logging-config-file</td>
-<td>&quot;&quot;</td>
-<td>功能同 &lsquo;request.logging-config&rsquo;</td>
-</tr>
-<tr>
-<td>resend-delay</td>
-<td>1m</td>
-<td>TODO;</td>
-</tr>
-<tr>
-<td>rule-file</td>
-<td>rules/</td>
-<td>告警规则目录</td>
-</tr>
-<tr>
-<td>shipper.upload-compacted</td>
-<td>&quot;&quot;</td>
-<td>TODO; 一般用于迁移目的，首次开启后需关闭</td>
-</tr>
-<tr>
-<td>tracing.config</td>
-<td>&quot;&quot;</td>
-<td>opentracing 组件配置</td>
-</tr>
-<tr>
-<td>tracing.config-file</td>
-<td>&quot;&quot;</td>
-<td>功能同 &rsquo;tracing.config&rsquo;</td>
-</tr>
-<tr>
-<td>tsdb.block-duration</td>
-<td>2h</td>
-<td>TSDB 块时间</td>
-</tr>
-<tr>
-<td>tsdb.no-lockfile</td>
-<td>&quot;&quot;</td>
-<td>不创建tsdb lockfile 文件</td>
-</tr>
-<tr>
-<td>tsdb.retention</td>
-<td>48h</td>
-<td>tsdb 最大持久时间</td>
-</tr>
-<tr>
-<td>tsdb.wal-compression</td>
-<td>&quot;&quot;</td>
-<td>是否对 tsdb 的 WAL 文件压缩</td>
-</tr>
-<tr>
-<td>web.disable-cors</td>
-<td>&quot;&quot;</td>
-<td>是否禁止 CORS，默认允许</td>
-</tr>
-<tr>
-<td>web.external-prefix</td>
-<td>&quot;&quot;</td>
-<td>HTML页面上添加的URL前缀，默认为 &lsquo;/&rsquo;</td>
-</tr>
-<tr>
-<td>web.prefix-header</td>
-<td>&quot;&quot;</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>web.route-prefix</td>
-<td>&quot;&quot;</td>
-<td>API接口上添加的URL前缀，默认为&rsquo;/&rsquo;，一般同时更改 &lsquo;web.external-prefix&rsquo;</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>名称</th>
+          <th>默认值</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>alert.label-drop</td>
+          <td>-</td>
+          <td>发送至 alertmanager 组件需要丢弃的标签，一般用于丢弃多副本的标签，如：replica</td>
+      </tr>
+      <tr>
+          <td>alert.query-url</td>
+          <td>-</td>
+          <td>外部可访问的 Thanos Query URL 地址，以便在告警时可以在 &lsquo;Source&rsquo; 字段中展示</td>
+      </tr>
+      <tr>
+          <td>alert.relabel-config</td>
+          <td>-</td>
+          <td>功能同 &lsquo;alert.relabel-config-file&rsquo;，但这里直接添加YAML内容</td>
+      </tr>
+      <tr>
+          <td>alert.relabel-config-file</td>
+          <td>-</td>
+          <td>同上</td>
+      </tr>
+      <tr>
+          <td>alertmanagers.config</td>
+          <td>-</td>
+          <td>功能同 &lsquo;alertmanagers.config-file&rsquo;</td>
+      </tr>
+      <tr>
+          <td>alertmanagers.config-file</td>
+          <td>-</td>
+          <td>连接的 alertmanager 组件配置</td>
+      </tr>
+      <tr>
+          <td>alertmanagers.sd-dns-interval</td>
+          <td>30s</td>
+          <td>alertmanager 组件地址通过 dns 协议发现的刷新时间间隔</td>
+      </tr>
+      <tr>
+          <td>alertmanagers.send-timeout</td>
+          <td>10s</td>
+          <td>发送 alertmanager 组件超时时间</td>
+      </tr>
+      <tr>
+          <td>alertmanagers.url</td>
+          <td>-</td>
+          <td>alertmanager 组件地址，可支持协议：http、dns+、dnssrv+</td>
+      </tr>
+      <tr>
+          <td>data-dir</td>
+          <td>data/</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>eval-interval</td>
+          <td>1m</td>
+          <td>默认告警规则评估时间间隔</td>
+      </tr>
+      <tr>
+          <td>grpc-address</td>
+          <td>0.0.0.0:10901</td>
+          <td>gRPC服务 StoreAPI 监听的地址</td>
+      </tr>
+      <tr>
+          <td>grpc-grace-period</td>
+          <td>2m</td>
+          <td>gRPC服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现</td>
+      </tr>
+      <tr>
+          <td>grpc-server-tls-cert</td>
+          <td>&quot;&quot;</td>
+          <td>是否开启tls认证，为空表示禁用</td>
+      </tr>
+      <tr>
+          <td>grpc-server-tls-client-ca</td>
+          <td>&quot;&quot;</td>
+          <td>TLS CA，为空表示不对客户端验证</td>
+      </tr>
+      <tr>
+          <td>grpc-server-tls-key</td>
+          <td>&quot;&quot;</td>
+          <td>是否开启tls认证，为空表示禁用</td>
+      </tr>
+      <tr>
+          <td>hash-func</td>
+          <td>&quot;&quot;</td>
+          <td>TODO; 如：&quot;&quot;, &ldquo;SHA256&rdquo;</td>
+      </tr>
+      <tr>
+          <td>http-address</td>
+          <td>0.0.0.0:10902</td>
+          <td>监听 HTTP 服务地址</td>
+      </tr>
+      <tr>
+          <td>http-grace-period</td>
+          <td>2m</td>
+          <td>HTTP服务接收到停止需等待时间，通过配置 context.WithTimeout 的实现</td>
+      </tr>
+      <tr>
+          <td>http.config</td>
+          <td>&quot;&quot;</td>
+          <td>TODO; http的配置，用于开启TLS、认证等</td>
+      </tr>
+      <tr>
+          <td>label</td>
+          <td>&quot;&quot;</td>
+          <td>格式：<name>=&quot;<value>&quot;，植入标签，用于标识</td>
+      </tr>
+      <tr>
+          <td>log.format</td>
+          <td>logfmt</td>
+          <td>日志格式，可取值：logfmt、json</td>
+      </tr>
+      <tr>
+          <td>log.level</td>
+          <td>info</td>
+          <td>日志级别</td>
+      </tr>
+      <tr>
+          <td>log.request.decision</td>
+          <td>-</td>
+          <td>已被废弃</td>
+      </tr>
+      <tr>
+          <td>objstore.config</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 &lsquo;objstore.config-file&rsquo; 对象存储地址</td>
+      </tr>
+      <tr>
+          <td>objstore.config-file</td>
+          <td>&quot;&quot;</td>
+          <td>对象存储地址</td>
+      </tr>
+      <tr>
+          <td>query</td>
+          <td>&quot;&quot;</td>
+          <td>用于查询指标的地址，可支持协议：http、dns+、dnssrv+</td>
+      </tr>
+      <tr>
+          <td>query.config</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 &lsquo;query&rsquo;、&lsquo;query.config-file&rsquo;，优先级最高</td>
+      </tr>
+      <tr>
+          <td>query.config-file</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 &lsquo;query&rsquo;、&lsquo;query.config&rsquo;</td>
+      </tr>
+      <tr>
+          <td>query.http-method</td>
+          <td>POST</td>
+          <td>查询请求的HTTP方法，支持：GET、POST</td>
+      </tr>
+      <tr>
+          <td>query.sd-dns-interval</td>
+          <td>30s</td>
+          <td>query 组件地址通过 dns 协议发现的刷新时间间隔</td>
+      </tr>
+      <tr>
+          <td>query.sd-files</td>
+          <td>&quot;&quot;</td>
+          <td>基于文件形式的自动发现</td>
+      </tr>
+      <tr>
+          <td>query.sd-interval</td>
+          <td>5m</td>
+          <td>刷新基于文件形式的自动发现的时间间隔</td>
+      </tr>
+      <tr>
+          <td>remote-write.config</td>
+          <td>&quot;&quot;</td>
+          <td>写入数据至远程，rule 组件本地不会存储任何数据</td>
+      </tr>
+      <tr>
+          <td>remote-write.config-file</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 &lsquo;remote-write.config&rsquo;</td>
+      </tr>
+      <tr>
+          <td>request.logging-config</td>
+          <td>&quot;&quot;</td>
+          <td>请求日志配置</td>
+      </tr>
+      <tr>
+          <td>request.logging-config-file</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 &lsquo;request.logging-config&rsquo;</td>
+      </tr>
+      <tr>
+          <td>resend-delay</td>
+          <td>1m</td>
+          <td>TODO;</td>
+      </tr>
+      <tr>
+          <td>rule-file</td>
+          <td>rules/</td>
+          <td>告警规则目录</td>
+      </tr>
+      <tr>
+          <td>shipper.upload-compacted</td>
+          <td>&quot;&quot;</td>
+          <td>TODO; 一般用于迁移目的，首次开启后需关闭</td>
+      </tr>
+      <tr>
+          <td>tracing.config</td>
+          <td>&quot;&quot;</td>
+          <td>opentracing 组件配置</td>
+      </tr>
+      <tr>
+          <td>tracing.config-file</td>
+          <td>&quot;&quot;</td>
+          <td>功能同 &rsquo;tracing.config&rsquo;</td>
+      </tr>
+      <tr>
+          <td>tsdb.block-duration</td>
+          <td>2h</td>
+          <td>TSDB 块时间</td>
+      </tr>
+      <tr>
+          <td>tsdb.no-lockfile</td>
+          <td>&quot;&quot;</td>
+          <td>不创建tsdb lockfile 文件</td>
+      </tr>
+      <tr>
+          <td>tsdb.retention</td>
+          <td>48h</td>
+          <td>tsdb 最大持久时间</td>
+      </tr>
+      <tr>
+          <td>tsdb.wal-compression</td>
+          <td>&quot;&quot;</td>
+          <td>是否对 tsdb 的 WAL 文件压缩</td>
+      </tr>
+      <tr>
+          <td>web.disable-cors</td>
+          <td>&quot;&quot;</td>
+          <td>是否禁止 CORS，默认允许</td>
+      </tr>
+      <tr>
+          <td>web.external-prefix</td>
+          <td>&quot;&quot;</td>
+          <td>HTML页面上添加的URL前缀，默认为 &lsquo;/&rsquo;</td>
+      </tr>
+      <tr>
+          <td>web.prefix-header</td>
+          <td>&quot;&quot;</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>web.route-prefix</td>
+          <td>&quot;&quot;</td>
+          <td>API接口上添加的URL前缀，默认为&rsquo;/&rsquo;，一般同时更改 &lsquo;web.external-prefix&rsquo;</td>
+      </tr>
+  </tbody>
 </table>
 
 	
@@ -4652,7 +4928,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

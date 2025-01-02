@@ -4,6 +4,7 @@
     <link>/docs/dev-framework/ebpf/</link>
     <description>Recent content in eBPF 技术 on OPSaid</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
     <lastBuildDate>Tue, 02 Apr 2024 11:37:27 +0800</lastBuildDate>
     
 	  <atom:link href="/docs/dev-framework/ebpf/index.xml" rel="self" type="application/rss+xml" />
@@ -43,7 +44,7 @@
 &lt;h3 id=&#34;所需运行权限&#34;&gt;所需运行权限&lt;/h3&gt;
 &lt;p&gt;需要有 &lt;code&gt;CAP_NET_ADMIN&lt;/code&gt; 与 &lt;code&gt;CAP_BPF&lt;/code&gt; 能力，或者 &lt;code&gt;CAP_SYS_ADMIN&lt;/code&gt; 能力。&lt;/p&gt;
 &lt;p&gt;下图是 BPF 程序类型在网络堆栈的各个点上钩子：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://i.opsaid.net/dochub/dev-framework/ebpf/5e6b76e1-0642-4a92-b61d-52b19823b4d7.png&#34; alt=&#34;test&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;test&#34; src=&#34;https://i.opsaid.net/dochub/dev-framework/ebpf/5e6b76e1-0642-4a92-b61d-52b19823b4d7.png&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;特性socket&#34;&gt;特性：Socket&lt;/h3&gt;
 &lt;p&gt;TODO;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;BPF_PROG_TYPE_SOCKET_FILTER

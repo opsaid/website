@@ -4,6 +4,7 @@
     <link>/docs/devops/</link>
     <description>Recent content in 流程与自动化 on OPSaid</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
     <lastBuildDate>Thu, 06 Oct 2022 10:54:17 +0800</lastBuildDate>
     
 	  <atom:link href="/docs/devops/index.xml" rel="self" type="application/rss+xml" />
@@ -15,15 +16,63 @@
     
     
     <item>
-      <title>Docs: Gitlab</title>
-      <link>/docs/devops/gitlab/</link>
-      <pubDate>Fri, 09 Dec 2022 15:52:32 +0800</pubDate>
+      <title>Docs: Argo CD</title>
+      <link>/docs/devops/argo-cd/</link>
+      <pubDate>Tue, 16 May 2023 10:29:21 +0800</pubDate>
       
-      <guid>/docs/devops/gitlab/</guid>
+      <guid>/docs/devops/argo-cd/</guid>
       <description>
         
         
         
+
+&lt;div class=&#34;pageinfo pageinfo-primary&#34;&gt;
+&lt;p&gt;基于以下版本分析：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone --branch v2.11.3 --depth &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; https://github.com/argoproj/argo-cd.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Argo Events</title>
+      <link>/docs/devops/argo-events/</link>
+      <pubDate>Mon, 03 Jun 2024 15:48:16 +0800</pubDate>
+      
+      <guid>/docs/devops/argo-events/</guid>
+      <description>
+        
+        
+        
+
+&lt;div class=&#34;pageinfo pageinfo-primary&#34;&gt;
+&lt;p&gt;基于 argo-events/v1.9.1 版本分析。&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Argo Workflows</title>
+      <link>/docs/devops/argo-workflows/</link>
+      <pubDate>Tue, 16 May 2023 10:29:21 +0800</pubDate>
+      
+      <guid>/docs/devops/argo-workflows/</guid>
+      <description>
+        
+        
+        
+
+&lt;div class=&#34;pageinfo pageinfo-primary&#34;&gt;
+&lt;p&gt;基于 argo-workflows/v3.5.7 版本分析。&lt;/p&gt;
+
+&lt;/div&gt;
+
+
       </description>
     </item>
     
@@ -33,6 +82,19 @@
       <pubDate>Wed, 10 May 2023 23:51:27 +0800</pubDate>
       
       <guid>/docs/devops/kubeadm/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Gitlab</title>
+      <link>/docs/devops/gitlab/</link>
+      <pubDate>Fri, 09 Dec 2022 15:52:32 +0800</pubDate>
+      
+      <guid>/docs/devops/gitlab/</guid>
       <description>
         
         

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -25,66 +25,69 @@
 代码路径：
 staging/src/k8s.io/api/core/v1/types.go
 当一个 POD 发生重启时， …">
-<meta property="og:title" content="Endpoints" />
-<meta property="og:description" content="简要概述 属于组：&ldquo;corev1&rdquo;
+<meta property="og:url" content="/docs/concepts/network/endpoints/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Endpoints">
+  <meta property="og:description" content="简要概述 属于组：“corev1”
 {Group: corev1.GroupName, Kind: &#34;Endpoints&#34;} 代码路径：
 staging/src/k8s.io/api/core/v1/types.go 当一个 POD 发生重启时，如果是 Endpoint 资源，它在 etcd 中的结构是一整块数据，则需全量更新，如果是 EndpointSlice 资源，则仅更新其中一小块，因为它在 etcd 中是分成几块内容。
-配置示例 apiVersion: v1 kind: Endpoints metadata: name: platform-mysql namespace: biz-prod-qe2bu3 subsets: - addresses: - ip: 172.27.2.78 - ip: 172.27.2.79 - ip: 172.27.2.80 ports: - port: 6033 数据结构 Endpoints staging/src/k8s.io/api/core/v1/types.go // Endpoints is a collection of endpoints that implement the actual service. Example: // Name: &#34;mysvc&#34;, // Subsets: [ // { // Addresses: [{&#34;ip&#34;: &#34;10." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/concepts/network/endpoints/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-01-09T16:50:49+08:00" />
-<meta property="article:modified_time" content="2023-02-01T23:22:56+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Endpoints">
-<meta itemprop="description" content="简要概述 属于组：&ldquo;corev1&rdquo;
+配置示例 apiVersion: v1 kind: Endpoints metadata: name: platform-mysql namespace: biz-prod-qe2bu3 subsets: - addresses: - ip: 172.27.2.78 - ip: 172.27.2.79 - ip: 172.27.2.80 ports: - port: 6033 数据结构 Endpoints staging/src/k8s.io/api/core/v1/types.go // Endpoints is a collection of endpoints that implement the actual service. Example: // Name: &#34;mysvc&#34;, // Subsets: [ // { // Addresses: [{&#34;ip&#34;: &#34;10.10.1.1&#34;}, {&#34;ip&#34;: &#34;10.10.2.2&#34;}], // Ports: [{&#34;name&#34;: &#34;a&#34;, &#34;port&#34;: 8675}, {&#34;name&#34;: &#34;b&#34;, &#34;port&#34;: 309}] // }, // { // Addresses: [{&#34;ip&#34;: &#34;10.10.3.3&#34;}], // Ports: [{&#34;name&#34;: &#34;a&#34;, &#34;port&#34;: 93}, {&#34;name&#34;: &#34;b&#34;, &#34;port&#34;: 76}] // }, // ] type Endpoints struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Standard object&#39;s metadata. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // The set of all endpoints is the union of all subsets. Addresses are placed into // subsets according to the IPs they share. A single address with multiple ports, // some of which are ready and some of which are not (because they come from // different containers) will result in the address being displayed in different // subsets for the different ports. No address will appear in both Addresses and // NotReadyAddresses in the same subset. // Sets of addresses and ports that comprise a service. // &#43;optional Subsets []EndpointSubset `json:&#34;subsets,omitempty&#34; protobuf:&#34;bytes,2,rep,name=subsets&#34;` } EndpointSubset staging/src/k8s.io/api/core/v1/types.go // EndpointSubset is a group of addresses with a common set of ports. The // expanded set of endpoints is the Cartesian product of Addresses x Ports. // For example, given: // { // Addresses: [{&#34;ip&#34;: &#34;10.10.1.1&#34;}, {&#34;ip&#34;: &#34;10.10.2.2&#34;}], // Ports: [{&#34;name&#34;: &#34;a&#34;, &#34;port&#34;: 8675}, {&#34;name&#34;: &#34;b&#34;, &#34;port&#34;: 309}] // } // The resulting set of endpoints can be viewed as: // a: [ 10.10.1.1:8675, 10.10.2.2:8675 ], // b: [ 10.10.1.1:309, 10.10.2.2:309 ] type EndpointSubset struct { // IP addresses which offer the related ports that are marked as ready. These endpoints // should be considered safe for load balancers and clients to utilize. // &#43;optional Addresses []EndpointAddress `json:&#34;addresses,omitempty&#34; protobuf:&#34;bytes,1,rep,name=addresses&#34;` // IP addresses which offer the related ports but are not currently marked as ready // because they have not yet finished starting, have recently failed a readiness check, // or have recently failed a liveness check. // &#43;optional NotReadyAddresses []EndpointAddress `json:&#34;notReadyAddresses,omitempty&#34; protobuf:&#34;bytes,2,rep,name=notReadyAddresses&#34;` // Port numbers available on the related IP addresses. // &#43;optional Ports []EndpointPort `json:&#34;ports,omitempty&#34; protobuf:&#34;bytes,3,rep,name=ports&#34;` } EndpointAddress staging/src/k8s.io/api/core/v1/types.go // EndpointAddress is a tuple that describes single IP address. // &#43;structType=atomic type EndpointAddress struct { // The IP of this endpoint. // May not be loopback (127.0.0.0/8), link-local (169.254.0.0/16), // or link-local multicast ((224.0.0.0/24). // IPv6 is also accepted but not fully supported on all platforms. Also, certain // kubernetes components, like kube-proxy, are not IPv6 ready. // TODO: This should allow hostname or IP, See #4447. IP string `json:&#34;ip&#34; protobuf:&#34;bytes,1,opt,name=ip&#34;` // The Hostname of this endpoint // &#43;optional Hostname string `json:&#34;hostname,omitempty&#34; protobuf:&#34;bytes,3,opt,name=hostname&#34;` // Optional: Node hosting this endpoint. This can be used to determine endpoints local to a node. // &#43;optional NodeName *string `json:&#34;nodeName,omitempty&#34; protobuf:&#34;bytes,4,opt,name=nodeName&#34;` // Reference to object providing the endpoint. // &#43;optional TargetRef *ObjectReference `json:&#34;targetRef,omitempty&#34; protobuf:&#34;bytes,2,opt,name=targetRef&#34;` } EndpointPort staging/src/k8s.io/api/core/v1/types.go // EndpointPort is a tuple that describes a single port. // &#43;structType=atomic type EndpointPort struct { // The name of this port. This must match the &#39;name&#39; field in the // corresponding ServicePort. // Must be a DNS_LABEL. // Optional only if one port is defined. // &#43;optional Name string `json:&#34;name,omitempty&#34; protobuf:&#34;bytes,1,opt,name=name&#34;` // The port number of the endpoint. Port int32 `json:&#34;port&#34; protobuf:&#34;varint,2,opt,name=port&#34;` // The IP protocol for this port. // Must be UDP, TCP, or SCTP. // Default is TCP. // &#43;optional Protocol Protocol `json:&#34;protocol,omitempty&#34; protobuf:&#34;bytes,3,opt,name=protocol,casttype=Protocol&#34;` // The application protocol for this port. // This field follows standard Kubernetes label syntax. // Un-prefixed names are reserved for IANA standard service names (as per // RFC-6335 and http://www.iana.org/assignments/service-names). // Non-standard protocols should use prefixed names such as // mycompany.com/my-custom-protocol. // &#43;optional AppProtocol *string `json:&#34;appProtocol,omitempty&#34; protobuf:&#34;bytes,4,opt,name=appProtocol&#34;` } Protocol // Protocol defines network protocols supported for things like container ports. type Protocol string const ( // ProtocolTCP is the TCP protocol. ProtocolTCP Protocol = &#34;TCP&#34; // ProtocolUDP is the UDP protocol. ProtocolUDP Protocol = &#34;UDP&#34; // ProtocolSCTP is the SCTP protocol. ProtocolSCTP Protocol = &#34;SCTP&#34; ) ObjectReference // ObjectReference contains enough information to let you inspect or modify the referred object. // --- // New uses of this type are discouraged because of difficulty describing its usage when embedded in APIs. // 1. Ignored fields. It includes many fields which are not generally honored. For instance, ResourceVersion and FieldPath are both very rarely valid in actual usage. // 2. Invalid usage help. It is impossible to add specific help for individual usage. In most embedded usages, there are particular // restrictions like, &#34;must refer only to types A and B&#34; or &#34;UID not honored&#34; or &#34;name must be restricted&#34;. // Those cannot be well described when embedded. // 3. Inconsistent validation. Because the usages are different, the validation rules are different by usage, which makes it hard for users to predict what will happen. // 4. The fields are both imprecise and overly precise. Kind is not a precise mapping to a URL. This can produce ambiguity // during interpretation and require a REST mapping. In most cases, the dependency is on the group,resource tuple // and the version of the actual struct is irrelevant. // 5. We cannot easily change it. Because this type is embedded in many locations, updates to this type // will affect numerous schemas. Don&#39;t make new APIs embed an underspecified API type they do not control. // Instead of using this type, create a locally provided and used type that is well-focused on your reference. // For example, ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533 . // &#43;k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object // &#43;structType=atomic type ObjectReference struct { // Kind of the referent. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds // &#43;optional Kind string `json:&#34;kind,omitempty&#34; protobuf:&#34;bytes,1,opt,name=kind&#34;` // Namespace of the referent. // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ // &#43;optional Namespace string `json:&#34;namespace,omitempty&#34; protobuf:&#34;bytes,2,opt,name=namespace&#34;` // Name of the referent. // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names // &#43;optional Name string `json:&#34;name,omitempty&#34; protobuf:&#34;bytes,3,opt,name=name&#34;` // UID of the referent. // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids // &#43;optional UID types.UID `json:&#34;uid,omitempty&#34; protobuf:&#34;bytes,4,opt,name=uid,casttype=k8s.io/apimachinery/pkg/types.UID&#34;` // API version of the referent. // &#43;optional APIVersion string `json:&#34;apiVersion,omitempty&#34; protobuf:&#34;bytes,5,opt,name=apiVersion&#34;` // Specific resourceVersion to which this reference is made, if any. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency // &#43;optional ResourceVersion string `json:&#34;resourceVersion,omitempty&#34; protobuf:&#34;bytes,6,opt,name=resourceVersion&#34;` // If referring to a piece of an object instead of an entire object, this string // should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. // For example, if the object reference is to a container within a pod, this would take on a value like: // &#34;spec.containers{name}&#34; (where &#34;name&#34; refers to the name of the container that triggered // the event) or if no container name is specified &#34;spec.containers[2]&#34; (container with // index 2 in this pod). This syntax is chosen only to have some well-defined way of // referencing a part of an object. // TODO: this design is not final and this field is subject to change in the future. // &#43;optional FieldPath string `json:&#34;fieldPath,omitempty&#34; protobuf:&#34;bytes,7,opt,name=fieldPath&#34;` }">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-01-09T16:50:49+08:00">
+    <meta property="article:modified_time" content="2023-02-01T23:22:56+08:00">
+
+  <meta itemprop="name" content="Endpoints">
+  <meta itemprop="description" content="简要概述 属于组：“corev1”
 {Group: corev1.GroupName, Kind: &#34;Endpoints&#34;} 代码路径：
 staging/src/k8s.io/api/core/v1/types.go 当一个 POD 发生重启时，如果是 Endpoint 资源，它在 etcd 中的结构是一整块数据，则需全量更新，如果是 EndpointSlice 资源，则仅更新其中一小块，因为它在 etcd 中是分成几块内容。
-配置示例 apiVersion: v1 kind: Endpoints metadata: name: platform-mysql namespace: biz-prod-qe2bu3 subsets: - addresses: - ip: 172.27.2.78 - ip: 172.27.2.79 - ip: 172.27.2.80 ports: - port: 6033 数据结构 Endpoints staging/src/k8s.io/api/core/v1/types.go // Endpoints is a collection of endpoints that implement the actual service. Example: // Name: &#34;mysvc&#34;, // Subsets: [ // { // Addresses: [{&#34;ip&#34;: &#34;10."><meta itemprop="datePublished" content="2023-01-09T16:50:49+08:00" />
-<meta itemprop="dateModified" content="2023-02-01T23:22:56+08:00" />
-<meta itemprop="wordCount" content="1179">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Endpoints"/>
-<meta name="twitter:description" content="简要概述 属于组：&ldquo;corev1&rdquo;
+配置示例 apiVersion: v1 kind: Endpoints metadata: name: platform-mysql namespace: biz-prod-qe2bu3 subsets: - addresses: - ip: 172.27.2.78 - ip: 172.27.2.79 - ip: 172.27.2.80 ports: - port: 6033 数据结构 Endpoints staging/src/k8s.io/api/core/v1/types.go // Endpoints is a collection of endpoints that implement the actual service. Example: // Name: &#34;mysvc&#34;, // Subsets: [ // { // Addresses: [{&#34;ip&#34;: &#34;10.10.1.1&#34;}, {&#34;ip&#34;: &#34;10.10.2.2&#34;}], // Ports: [{&#34;name&#34;: &#34;a&#34;, &#34;port&#34;: 8675}, {&#34;name&#34;: &#34;b&#34;, &#34;port&#34;: 309}] // }, // { // Addresses: [{&#34;ip&#34;: &#34;10.10.3.3&#34;}], // Ports: [{&#34;name&#34;: &#34;a&#34;, &#34;port&#34;: 93}, {&#34;name&#34;: &#34;b&#34;, &#34;port&#34;: 76}] // }, // ] type Endpoints struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Standard object&#39;s metadata. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // The set of all endpoints is the union of all subsets. Addresses are placed into // subsets according to the IPs they share. A single address with multiple ports, // some of which are ready and some of which are not (because they come from // different containers) will result in the address being displayed in different // subsets for the different ports. No address will appear in both Addresses and // NotReadyAddresses in the same subset. // Sets of addresses and ports that comprise a service. // &#43;optional Subsets []EndpointSubset `json:&#34;subsets,omitempty&#34; protobuf:&#34;bytes,2,rep,name=subsets&#34;` } EndpointSubset staging/src/k8s.io/api/core/v1/types.go // EndpointSubset is a group of addresses with a common set of ports. The // expanded set of endpoints is the Cartesian product of Addresses x Ports. // For example, given: // { // Addresses: [{&#34;ip&#34;: &#34;10.10.1.1&#34;}, {&#34;ip&#34;: &#34;10.10.2.2&#34;}], // Ports: [{&#34;name&#34;: &#34;a&#34;, &#34;port&#34;: 8675}, {&#34;name&#34;: &#34;b&#34;, &#34;port&#34;: 309}] // } // The resulting set of endpoints can be viewed as: // a: [ 10.10.1.1:8675, 10.10.2.2:8675 ], // b: [ 10.10.1.1:309, 10.10.2.2:309 ] type EndpointSubset struct { // IP addresses which offer the related ports that are marked as ready. These endpoints // should be considered safe for load balancers and clients to utilize. // &#43;optional Addresses []EndpointAddress `json:&#34;addresses,omitempty&#34; protobuf:&#34;bytes,1,rep,name=addresses&#34;` // IP addresses which offer the related ports but are not currently marked as ready // because they have not yet finished starting, have recently failed a readiness check, // or have recently failed a liveness check. // &#43;optional NotReadyAddresses []EndpointAddress `json:&#34;notReadyAddresses,omitempty&#34; protobuf:&#34;bytes,2,rep,name=notReadyAddresses&#34;` // Port numbers available on the related IP addresses. // &#43;optional Ports []EndpointPort `json:&#34;ports,omitempty&#34; protobuf:&#34;bytes,3,rep,name=ports&#34;` } EndpointAddress staging/src/k8s.io/api/core/v1/types.go // EndpointAddress is a tuple that describes single IP address. // &#43;structType=atomic type EndpointAddress struct { // The IP of this endpoint. // May not be loopback (127.0.0.0/8), link-local (169.254.0.0/16), // or link-local multicast ((224.0.0.0/24). // IPv6 is also accepted but not fully supported on all platforms. Also, certain // kubernetes components, like kube-proxy, are not IPv6 ready. // TODO: This should allow hostname or IP, See #4447. IP string `json:&#34;ip&#34; protobuf:&#34;bytes,1,opt,name=ip&#34;` // The Hostname of this endpoint // &#43;optional Hostname string `json:&#34;hostname,omitempty&#34; protobuf:&#34;bytes,3,opt,name=hostname&#34;` // Optional: Node hosting this endpoint. This can be used to determine endpoints local to a node. // &#43;optional NodeName *string `json:&#34;nodeName,omitempty&#34; protobuf:&#34;bytes,4,opt,name=nodeName&#34;` // Reference to object providing the endpoint. // &#43;optional TargetRef *ObjectReference `json:&#34;targetRef,omitempty&#34; protobuf:&#34;bytes,2,opt,name=targetRef&#34;` } EndpointPort staging/src/k8s.io/api/core/v1/types.go // EndpointPort is a tuple that describes a single port. // &#43;structType=atomic type EndpointPort struct { // The name of this port. This must match the &#39;name&#39; field in the // corresponding ServicePort. // Must be a DNS_LABEL. // Optional only if one port is defined. // &#43;optional Name string `json:&#34;name,omitempty&#34; protobuf:&#34;bytes,1,opt,name=name&#34;` // The port number of the endpoint. Port int32 `json:&#34;port&#34; protobuf:&#34;varint,2,opt,name=port&#34;` // The IP protocol for this port. // Must be UDP, TCP, or SCTP. // Default is TCP. // &#43;optional Protocol Protocol `json:&#34;protocol,omitempty&#34; protobuf:&#34;bytes,3,opt,name=protocol,casttype=Protocol&#34;` // The application protocol for this port. // This field follows standard Kubernetes label syntax. // Un-prefixed names are reserved for IANA standard service names (as per // RFC-6335 and http://www.iana.org/assignments/service-names). // Non-standard protocols should use prefixed names such as // mycompany.com/my-custom-protocol. // &#43;optional AppProtocol *string `json:&#34;appProtocol,omitempty&#34; protobuf:&#34;bytes,4,opt,name=appProtocol&#34;` } Protocol // Protocol defines network protocols supported for things like container ports. type Protocol string const ( // ProtocolTCP is the TCP protocol. ProtocolTCP Protocol = &#34;TCP&#34; // ProtocolUDP is the UDP protocol. ProtocolUDP Protocol = &#34;UDP&#34; // ProtocolSCTP is the SCTP protocol. ProtocolSCTP Protocol = &#34;SCTP&#34; ) ObjectReference // ObjectReference contains enough information to let you inspect or modify the referred object. // --- // New uses of this type are discouraged because of difficulty describing its usage when embedded in APIs. // 1. Ignored fields. It includes many fields which are not generally honored. For instance, ResourceVersion and FieldPath are both very rarely valid in actual usage. // 2. Invalid usage help. It is impossible to add specific help for individual usage. In most embedded usages, there are particular // restrictions like, &#34;must refer only to types A and B&#34; or &#34;UID not honored&#34; or &#34;name must be restricted&#34;. // Those cannot be well described when embedded. // 3. Inconsistent validation. Because the usages are different, the validation rules are different by usage, which makes it hard for users to predict what will happen. // 4. The fields are both imprecise and overly precise. Kind is not a precise mapping to a URL. This can produce ambiguity // during interpretation and require a REST mapping. In most cases, the dependency is on the group,resource tuple // and the version of the actual struct is irrelevant. // 5. We cannot easily change it. Because this type is embedded in many locations, updates to this type // will affect numerous schemas. Don&#39;t make new APIs embed an underspecified API type they do not control. // Instead of using this type, create a locally provided and used type that is well-focused on your reference. // For example, ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533 . // &#43;k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object // &#43;structType=atomic type ObjectReference struct { // Kind of the referent. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds // &#43;optional Kind string `json:&#34;kind,omitempty&#34; protobuf:&#34;bytes,1,opt,name=kind&#34;` // Namespace of the referent. // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ // &#43;optional Namespace string `json:&#34;namespace,omitempty&#34; protobuf:&#34;bytes,2,opt,name=namespace&#34;` // Name of the referent. // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names // &#43;optional Name string `json:&#34;name,omitempty&#34; protobuf:&#34;bytes,3,opt,name=name&#34;` // UID of the referent. // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids // &#43;optional UID types.UID `json:&#34;uid,omitempty&#34; protobuf:&#34;bytes,4,opt,name=uid,casttype=k8s.io/apimachinery/pkg/types.UID&#34;` // API version of the referent. // &#43;optional APIVersion string `json:&#34;apiVersion,omitempty&#34; protobuf:&#34;bytes,5,opt,name=apiVersion&#34;` // Specific resourceVersion to which this reference is made, if any. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency // &#43;optional ResourceVersion string `json:&#34;resourceVersion,omitempty&#34; protobuf:&#34;bytes,6,opt,name=resourceVersion&#34;` // If referring to a piece of an object instead of an entire object, this string // should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. // For example, if the object reference is to a container within a pod, this would take on a value like: // &#34;spec.containers{name}&#34; (where &#34;name&#34; refers to the name of the container that triggered // the event) or if no container name is specified &#34;spec.containers[2]&#34; (container with // index 2 in this pod). This syntax is chosen only to have some well-defined way of // referencing a part of an object. // TODO: this design is not final and this field is subject to change in the future. // &#43;optional FieldPath string `json:&#34;fieldPath,omitempty&#34; protobuf:&#34;bytes,7,opt,name=fieldPath&#34;` }">
+  <meta itemprop="datePublished" content="2023-01-09T16:50:49+08:00">
+  <meta itemprop="dateModified" content="2023-02-01T23:22:56+08:00">
+  <meta itemprop="wordCount" content="1179">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Endpoints">
+  <meta name="twitter:description" content="简要概述 属于组：“corev1”
 {Group: corev1.GroupName, Kind: &#34;Endpoints&#34;} 代码路径：
 staging/src/k8s.io/api/core/v1/types.go 当一个 POD 发生重启时，如果是 Endpoint 资源，它在 etcd 中的结构是一整块数据，则需全量更新，如果是 EndpointSlice 资源，则仅更新其中一小块，因为它在 etcd 中是分成几块内容。
-配置示例 apiVersion: v1 kind: Endpoints metadata: name: platform-mysql namespace: biz-prod-qe2bu3 subsets: - addresses: - ip: 172.27.2.78 - ip: 172.27.2.79 - ip: 172.27.2.80 ports: - port: 6033 数据结构 Endpoints staging/src/k8s.io/api/core/v1/types.go // Endpoints is a collection of endpoints that implement the actual service. Example: // Name: &#34;mysvc&#34;, // Subsets: [ // { // Addresses: [{&#34;ip&#34;: &#34;10."/>
+配置示例 apiVersion: v1 kind: Endpoints metadata: name: platform-mysql namespace: biz-prod-qe2bu3 subsets: - addresses: - ip: 172.27.2.78 - ip: 172.27.2.79 - ip: 172.27.2.80 ports: - port: 6033 数据结构 Endpoints staging/src/k8s.io/api/core/v1/types.go // Endpoints is a collection of endpoints that implement the actual service. Example: // Name: &#34;mysvc&#34;, // Subsets: [ // { // Addresses: [{&#34;ip&#34;: &#34;10.10.1.1&#34;}, {&#34;ip&#34;: &#34;10.10.2.2&#34;}], // Ports: [{&#34;name&#34;: &#34;a&#34;, &#34;port&#34;: 8675}, {&#34;name&#34;: &#34;b&#34;, &#34;port&#34;: 309}] // }, // { // Addresses: [{&#34;ip&#34;: &#34;10.10.3.3&#34;}], // Ports: [{&#34;name&#34;: &#34;a&#34;, &#34;port&#34;: 93}, {&#34;name&#34;: &#34;b&#34;, &#34;port&#34;: 76}] // }, // ] type Endpoints struct { metav1.TypeMeta `json:&#34;,inline&#34;` // Standard object&#39;s metadata. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // The set of all endpoints is the union of all subsets. Addresses are placed into // subsets according to the IPs they share. A single address with multiple ports, // some of which are ready and some of which are not (because they come from // different containers) will result in the address being displayed in different // subsets for the different ports. No address will appear in both Addresses and // NotReadyAddresses in the same subset. // Sets of addresses and ports that comprise a service. // &#43;optional Subsets []EndpointSubset `json:&#34;subsets,omitempty&#34; protobuf:&#34;bytes,2,rep,name=subsets&#34;` } EndpointSubset staging/src/k8s.io/api/core/v1/types.go // EndpointSubset is a group of addresses with a common set of ports. The // expanded set of endpoints is the Cartesian product of Addresses x Ports. // For example, given: // { // Addresses: [{&#34;ip&#34;: &#34;10.10.1.1&#34;}, {&#34;ip&#34;: &#34;10.10.2.2&#34;}], // Ports: [{&#34;name&#34;: &#34;a&#34;, &#34;port&#34;: 8675}, {&#34;name&#34;: &#34;b&#34;, &#34;port&#34;: 309}] // } // The resulting set of endpoints can be viewed as: // a: [ 10.10.1.1:8675, 10.10.2.2:8675 ], // b: [ 10.10.1.1:309, 10.10.2.2:309 ] type EndpointSubset struct { // IP addresses which offer the related ports that are marked as ready. These endpoints // should be considered safe for load balancers and clients to utilize. // &#43;optional Addresses []EndpointAddress `json:&#34;addresses,omitempty&#34; protobuf:&#34;bytes,1,rep,name=addresses&#34;` // IP addresses which offer the related ports but are not currently marked as ready // because they have not yet finished starting, have recently failed a readiness check, // or have recently failed a liveness check. // &#43;optional NotReadyAddresses []EndpointAddress `json:&#34;notReadyAddresses,omitempty&#34; protobuf:&#34;bytes,2,rep,name=notReadyAddresses&#34;` // Port numbers available on the related IP addresses. // &#43;optional Ports []EndpointPort `json:&#34;ports,omitempty&#34; protobuf:&#34;bytes,3,rep,name=ports&#34;` } EndpointAddress staging/src/k8s.io/api/core/v1/types.go // EndpointAddress is a tuple that describes single IP address. // &#43;structType=atomic type EndpointAddress struct { // The IP of this endpoint. // May not be loopback (127.0.0.0/8), link-local (169.254.0.0/16), // or link-local multicast ((224.0.0.0/24). // IPv6 is also accepted but not fully supported on all platforms. Also, certain // kubernetes components, like kube-proxy, are not IPv6 ready. // TODO: This should allow hostname or IP, See #4447. IP string `json:&#34;ip&#34; protobuf:&#34;bytes,1,opt,name=ip&#34;` // The Hostname of this endpoint // &#43;optional Hostname string `json:&#34;hostname,omitempty&#34; protobuf:&#34;bytes,3,opt,name=hostname&#34;` // Optional: Node hosting this endpoint. This can be used to determine endpoints local to a node. // &#43;optional NodeName *string `json:&#34;nodeName,omitempty&#34; protobuf:&#34;bytes,4,opt,name=nodeName&#34;` // Reference to object providing the endpoint. // &#43;optional TargetRef *ObjectReference `json:&#34;targetRef,omitempty&#34; protobuf:&#34;bytes,2,opt,name=targetRef&#34;` } EndpointPort staging/src/k8s.io/api/core/v1/types.go // EndpointPort is a tuple that describes a single port. // &#43;structType=atomic type EndpointPort struct { // The name of this port. This must match the &#39;name&#39; field in the // corresponding ServicePort. // Must be a DNS_LABEL. // Optional only if one port is defined. // &#43;optional Name string `json:&#34;name,omitempty&#34; protobuf:&#34;bytes,1,opt,name=name&#34;` // The port number of the endpoint. Port int32 `json:&#34;port&#34; protobuf:&#34;varint,2,opt,name=port&#34;` // The IP protocol for this port. // Must be UDP, TCP, or SCTP. // Default is TCP. // &#43;optional Protocol Protocol `json:&#34;protocol,omitempty&#34; protobuf:&#34;bytes,3,opt,name=protocol,casttype=Protocol&#34;` // The application protocol for this port. // This field follows standard Kubernetes label syntax. // Un-prefixed names are reserved for IANA standard service names (as per // RFC-6335 and http://www.iana.org/assignments/service-names). // Non-standard protocols should use prefixed names such as // mycompany.com/my-custom-protocol. // &#43;optional AppProtocol *string `json:&#34;appProtocol,omitempty&#34; protobuf:&#34;bytes,4,opt,name=appProtocol&#34;` } Protocol // Protocol defines network protocols supported for things like container ports. type Protocol string const ( // ProtocolTCP is the TCP protocol. ProtocolTCP Protocol = &#34;TCP&#34; // ProtocolUDP is the UDP protocol. ProtocolUDP Protocol = &#34;UDP&#34; // ProtocolSCTP is the SCTP protocol. ProtocolSCTP Protocol = &#34;SCTP&#34; ) ObjectReference // ObjectReference contains enough information to let you inspect or modify the referred object. // --- // New uses of this type are discouraged because of difficulty describing its usage when embedded in APIs. // 1. Ignored fields. It includes many fields which are not generally honored. For instance, ResourceVersion and FieldPath are both very rarely valid in actual usage. // 2. Invalid usage help. It is impossible to add specific help for individual usage. In most embedded usages, there are particular // restrictions like, &#34;must refer only to types A and B&#34; or &#34;UID not honored&#34; or &#34;name must be restricted&#34;. // Those cannot be well described when embedded. // 3. Inconsistent validation. Because the usages are different, the validation rules are different by usage, which makes it hard for users to predict what will happen. // 4. The fields are both imprecise and overly precise. Kind is not a precise mapping to a URL. This can produce ambiguity // during interpretation and require a REST mapping. In most cases, the dependency is on the group,resource tuple // and the version of the actual struct is irrelevant. // 5. We cannot easily change it. Because this type is embedded in many locations, updates to this type // will affect numerous schemas. Don&#39;t make new APIs embed an underspecified API type they do not control. // Instead of using this type, create a locally provided and used type that is well-focused on your reference. // For example, ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533 . // &#43;k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object // &#43;structType=atomic type ObjectReference struct { // Kind of the referent. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds // &#43;optional Kind string `json:&#34;kind,omitempty&#34; protobuf:&#34;bytes,1,opt,name=kind&#34;` // Namespace of the referent. // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ // &#43;optional Namespace string `json:&#34;namespace,omitempty&#34; protobuf:&#34;bytes,2,opt,name=namespace&#34;` // Name of the referent. // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names // &#43;optional Name string `json:&#34;name,omitempty&#34; protobuf:&#34;bytes,3,opt,name=name&#34;` // UID of the referent. // More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids // &#43;optional UID types.UID `json:&#34;uid,omitempty&#34; protobuf:&#34;bytes,4,opt,name=uid,casttype=k8s.io/apimachinery/pkg/types.UID&#34;` // API version of the referent. // &#43;optional APIVersion string `json:&#34;apiVersion,omitempty&#34; protobuf:&#34;bytes,5,opt,name=apiVersion&#34;` // Specific resourceVersion to which this reference is made, if any. // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency // &#43;optional ResourceVersion string `json:&#34;resourceVersion,omitempty&#34; protobuf:&#34;bytes,6,opt,name=resourceVersion&#34;` // If referring to a piece of an object instead of an entire object, this string // should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. // For example, if the object reference is to a container within a pod, this would take on a value like: // &#34;spec.containers{name}&#34; (where &#34;name&#34; refers to the name of the container that triggered // the event) or if no container name is specified &#34;spec.containers[2]&#34; (container with // index 2 in this pod). This syntax is chosen only to have some well-defined way of // referencing a part of an object. // TODO: this design is not final and this field is subject to change in the future. // &#43;optional FieldPath string `json:&#34;fieldPath,omitempty&#34; protobuf:&#34;bytes,7,opt,name=fieldPath&#34;` }">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1047,6 +1050,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3080,9 +3100,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3096,10 +3116,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3159,6 +3382,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4578,7 +4860,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

@@ -4,6 +4,7 @@
     <link>/docs/security/zero-trust-model/</link>
     <description>Recent content in 零信任模型 on OPSaid</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
     <lastBuildDate>Tue, 14 Nov 2023 10:51:28 +0800</lastBuildDate>
     
 	  <atom:link href="/docs/security/zero-trust-model/index.xml" rel="self" type="application/rss+xml" />
@@ -100,10 +101,10 @@
 &lt;h2 id=&#34;架构组件&#34;&gt;架构组件&lt;/h2&gt;
 &lt;h3 id=&#34;架构图&#34;&gt;架构图&lt;/h3&gt;
 &lt;p&gt;SPIRE 由 &lt;code&gt;spire-server&lt;/code&gt; 和一个或多个 &lt;code&gt;spire-agent&lt;/code&gt; 组成，服务端充当身份签发机构，通过 agent 向一组工作负载颁发身份，同时还维护一个工作负载身份的注册表以及必须验证的条件，以便颁发这些身份。代理在本地向工作负载公开 SPIFFE Sorkload API 并且必须安装在每个运行工作负载的节点上。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://spiffe.io/img/server_and_agent.png&#34; alt=&#34;jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;jpg&#34; src=&#34;https://spiffe.io/img/server_and_agent.png&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;spire-server&#34;&gt;spire-server&lt;/h3&gt;
 &lt;p&gt;负责管理和颁发其配置的 SPIFFE 信任域中的所有身份，它存储注册条目（指定确定特定 SPIFFE ID 应在其下颁发的条件的选择器）和签名密钥，使用节点认证自动验证代理的身份，并在经过身份验证的代理请求时为工作负载创建 SVID。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://spiffe.io/img/server.png&#34; alt=&#34;jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;jpg&#34; src=&#34;https://spiffe.io/img/server.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;服务端的行为是通过一系列插件确定的，默认内置了一些插件，但可以通过编写自定义插件以扩展 SPIRE 适应特定的用例，插件的类型包括：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Node Attestor Plugins&lt;/li&gt;
@@ -135,7 +136,7 @@
 &lt;li&gt;为已识别的工作负载提供其SVID。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;SPIRE代理在工作负载的生命周期中充当关键的中介，协助在节点上颁发和管理SVID，并确保工作负载可以有效地获取其身份信息。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://spiffe.io/img/agent.png&#34; alt=&#34;jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;jpg&#34; src=&#34;https://spiffe.io/img/agent.png&#34;&gt;&lt;/p&gt;
 
       </description>
     </item>

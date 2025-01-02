@@ -1,0 +1,177 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OPSaid – Prometheus</title>
+    <link>http://127.0.0.1:1313/docs/component/prometheus/</link>
+    <description>Recent content in Prometheus on OPSaid</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 29 Sep 2022 17:26:40 +0800</lastBuildDate>
+    
+	  <atom:link href="http://127.0.0.1:1313/docs/component/prometheus/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Alertmanager</title>
+      <link>http://127.0.0.1:1313/docs/component/prometheus/alertmanager/</link>
+      <pubDate>Thu, 29 Sep 2022 17:26:51 +0800</pubDate>
+      
+      <guid>http://127.0.0.1:1313/docs/component/prometheus/alertmanager/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;简介说明&#34;&gt;简介说明&lt;/h2&gt;
+&lt;p&gt;基于版本 &lt;code&gt;alertmanager-0.24.0&lt;/code&gt; 说明。&lt;/p&gt;
+&lt;h2 id=&#34;参数解析&#34;&gt;参数解析&lt;/h2&gt;
+&lt;h3 id=&#34;命令行参数&#34;&gt;命令行参数&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;名称&lt;/th&gt;
+          &lt;th&gt;默认值&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;config.file&lt;/td&gt;
+          &lt;td&gt;alertmanager.yml&lt;/td&gt;
+          &lt;td&gt;配置文件&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;storage.path&lt;/td&gt;
+          &lt;td&gt;data/&lt;/td&gt;
+          &lt;td&gt;本地存储路径&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;data.retention&lt;/td&gt;
+          &lt;td&gt;120h&lt;/td&gt;
+          &lt;td&gt;本地保持数据时长&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;alerts.gc-interval&lt;/td&gt;
+          &lt;td&gt;30m&lt;/td&gt;
+          &lt;td&gt;TODO;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;web.config.file&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;TODO;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;web.external-url&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;TODO;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;web.route-prefix&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;TODO;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;web.listen-address&lt;/td&gt;
+          &lt;td&gt;:9093&lt;/td&gt;
+          &lt;td&gt;服务监听地址&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;web.get-concurrency&lt;/td&gt;
+          &lt;td&gt;0&lt;/td&gt;
+          &lt;td&gt;TODO;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;web.timeout&lt;/td&gt;
+          &lt;td&gt;0&lt;/td&gt;
+          &lt;td&gt;TODO;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cluster.listen-address&lt;/td&gt;
+          &lt;td&gt;0.0.0.0:9094&lt;/td&gt;
+          &lt;td&gt;开启高可用模式，用于集群间通讯&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cluster.advertise-address&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;TODO;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cluster.peer&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;TODO;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cluster.peer-timeout&lt;/td&gt;
+          &lt;td&gt;15s&lt;/td&gt;
+          &lt;td&gt;集群间通讯超时&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cluster.gossip-interval&lt;/td&gt;
+          &lt;td&gt;200ms&lt;/td&gt;
+          &lt;td&gt;集群间发送 gossip 消息的间隔，注意过于频繁增加带宽&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cluster.pushpull-interval&lt;/td&gt;
+          &lt;td&gt;1m0s&lt;/td&gt;
+          &lt;td&gt;集群间同步 gossip 状态，注意过于频繁增加带宽&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cluster.tcp-timeout&lt;/td&gt;
+          &lt;td&gt;10s&lt;/td&gt;
+          &lt;td&gt;TODO; 建议 stream 连接的超时时间&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cluster.probe-timeout&lt;/td&gt;
+          &lt;td&gt;500ms&lt;/td&gt;
+          &lt;td&gt;等待探测的 ack 数据包，多久未收到则认为不健康，建议取当前网络99%的RTT时间&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cluster.probe-interval&lt;/td&gt;
+          &lt;td&gt;1s&lt;/td&gt;
+          &lt;td&gt;TODO;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cluster.settle-timeout&lt;/td&gt;
+          &lt;td&gt;1m0s&lt;/td&gt;
+          &lt;td&gt;在评估通知之前等待群集连接稳定的最长时间&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cluster.reconnect-interval&lt;/td&gt;
+          &lt;td&gt;10s&lt;/td&gt;
+          &lt;td&gt;重新连接丢失的对端设备&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cluster.reconnect-timeout&lt;/td&gt;
+          &lt;td&gt;6h0m0s&lt;/td&gt;
+          &lt;td&gt;TODO;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cluster.tls-config&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;TODO;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;cluster.allow-insecure-public-advertise-address-discovery&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;TODO;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;log.level&lt;/td&gt;
+          &lt;td&gt;info&lt;/td&gt;
+          &lt;td&gt;可取：[debug, info, warn, error]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;log.format&lt;/td&gt;
+          &lt;td&gt;logfmt&lt;/td&gt;
+          &lt;td&gt;可取：[logfmt, json]&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

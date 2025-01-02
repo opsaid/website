@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -23,72 +23,75 @@
 在githbub官方地址：https://github.com/containerd/containerd/releases，选择需要的版本下载。
 
 containerd-{{ containerd_version }}、cri-containerd-{{ …">
-<meta property="og:title" content="Containerd" />
-<meta property="og:description" content="安装部署 在githbub官方地址：https://github.com/containerd/containerd/releases，选择需要的版本下载。
-containerd-{{ containerd_version }}、cri-containerd-{{ containerd_version }} 有以上两种二进制包，&ldquo;cri_containerd&quot;区别于&quot;containerd-&quot;，在于它集合了&quot;runc&quot;等工具。 &rdquo;{{ containerd_version }}&ldquo;是containerd版本，以下均以&quot;1.5.11&quot;为示例。
-下载二进制 https://github.com/containerd/containerd/releases/download/v{{ containerd_version }}/cri-containerd-cni-{{ containerd_version }}-linux-amd64.tar.gz 解压部署 tar xzvf cri-containerd-cni-{{ containerd_version }}-linux-amd64.tar.gz / 解压&rdquo;/&ldquo;目录，二进制路径“/usr/local/bin&rdquo;
-&ldquo;containerd-&ldquo;与&quot;cri-containerd-&ldquo;安装包内容 &ldquo;containerd-*&rdquo;
-bin/ bin/containerd-shim-runc-v2 bin/containerd-shim bin/ctr bin/containerd-shim-runc-v1 bin/containerd &ldquo;cri-containerd-*&rdquo;
-etc/ etc/cni/ etc/cni/net.d/ etc/cni/net.d/10-containerd-net.conflist etc/systemd/ etc/systemd/system/ etc/systemd/system/containerd.service etc/crictl.yaml usr/ usr/local/ usr/local/bin/ usr/local/bin/containerd-shim-runc-v2 usr/local/bin/containerd-shim usr/local/bin/crictl usr/local/bin/ctr usr/local/bin/containerd-shim-runc-v1 usr/local/bin/containerd usr/local/bin/ctd-decoder usr/local/bin/critest usr/local/bin/containerd-stress usr/local/sbin/ usr/local/sbin/runc opt/ opt/cni/ opt/cni/bin/ opt/cni/bin/tuning opt/cni/bin/vrf opt/cni/bin/flannel opt/cni/bin/loopback opt/cni/bin/portmap opt/cni/bin/ptp opt/cni/bin/ipvlan opt/cni/bin/host-device opt/cni/bin/macvlan opt/cni/bin/host-local opt/cni/bin/firewall opt/cni/bin/bandwidth opt/cni/bin/sbr opt/cni/bin/vlan opt/cni/bin/static opt/cni/bin/bridge opt/cni/bin/dhcp opt/containerd/ opt/containerd/cluster/ opt/containerd/cluster/version opt/containerd/cluster/gce/ opt/containerd/cluster/gce/cni." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/component/containers/containerd/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-05-22T15:05:21+08:00" />
-<meta property="article:modified_time" content="2023-10-09T17:54:36+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="Containerd">
-<meta itemprop="description" content="安装部署 在githbub官方地址：https://github.com/containerd/containerd/releases，选择需要的版本下载。
-containerd-{{ containerd_version }}、cri-containerd-{{ containerd_version }} 有以上两种二进制包，&ldquo;cri_containerd&quot;区别于&quot;containerd-&quot;，在于它集合了&quot;runc&quot;等工具。 &rdquo;{{ containerd_version }}&ldquo;是containerd版本，以下均以&quot;1.5.11&quot;为示例。
-下载二进制 https://github.com/containerd/containerd/releases/download/v{{ containerd_version }}/cri-containerd-cni-{{ containerd_version }}-linux-amd64.tar.gz 解压部署 tar xzvf cri-containerd-cni-{{ containerd_version }}-linux-amd64.tar.gz / 解压&rdquo;/&ldquo;目录，二进制路径“/usr/local/bin&rdquo;
-&ldquo;containerd-&ldquo;与&quot;cri-containerd-&ldquo;安装包内容 &ldquo;containerd-*&rdquo;
-bin/ bin/containerd-shim-runc-v2 bin/containerd-shim bin/ctr bin/containerd-shim-runc-v1 bin/containerd &ldquo;cri-containerd-*&rdquo;
-etc/ etc/cni/ etc/cni/net.d/ etc/cni/net.d/10-containerd-net.conflist etc/systemd/ etc/systemd/system/ etc/systemd/system/containerd.service etc/crictl.yaml usr/ usr/local/ usr/local/bin/ usr/local/bin/containerd-shim-runc-v2 usr/local/bin/containerd-shim usr/local/bin/crictl usr/local/bin/ctr usr/local/bin/containerd-shim-runc-v1 usr/local/bin/containerd usr/local/bin/ctd-decoder usr/local/bin/critest usr/local/bin/containerd-stress usr/local/sbin/ usr/local/sbin/runc opt/ opt/cni/ opt/cni/bin/ opt/cni/bin/tuning opt/cni/bin/vrf opt/cni/bin/flannel opt/cni/bin/loopback opt/cni/bin/portmap opt/cni/bin/ptp opt/cni/bin/ipvlan opt/cni/bin/host-device opt/cni/bin/macvlan opt/cni/bin/host-local opt/cni/bin/firewall opt/cni/bin/bandwidth opt/cni/bin/sbr opt/cni/bin/vlan opt/cni/bin/static opt/cni/bin/bridge opt/cni/bin/dhcp opt/containerd/ opt/containerd/cluster/ opt/containerd/cluster/version opt/containerd/cluster/gce/ opt/containerd/cluster/gce/cni."><meta itemprop="datePublished" content="2022-05-22T15:05:21+08:00" />
-<meta itemprop="dateModified" content="2023-10-09T17:54:36+08:00" />
-<meta itemprop="wordCount" content="2788">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Containerd"/>
-<meta name="twitter:description" content="安装部署 在githbub官方地址：https://github.com/containerd/containerd/releases，选择需要的版本下载。
-containerd-{{ containerd_version }}、cri-containerd-{{ containerd_version }} 有以上两种二进制包，&ldquo;cri_containerd&quot;区别于&quot;containerd-&quot;，在于它集合了&quot;runc&quot;等工具。 &rdquo;{{ containerd_version }}&ldquo;是containerd版本，以下均以&quot;1.5.11&quot;为示例。
-下载二进制 https://github.com/containerd/containerd/releases/download/v{{ containerd_version }}/cri-containerd-cni-{{ containerd_version }}-linux-amd64.tar.gz 解压部署 tar xzvf cri-containerd-cni-{{ containerd_version }}-linux-amd64.tar.gz / 解压&rdquo;/&ldquo;目录，二进制路径“/usr/local/bin&rdquo;
-&ldquo;containerd-&ldquo;与&quot;cri-containerd-&ldquo;安装包内容 &ldquo;containerd-*&rdquo;
-bin/ bin/containerd-shim-runc-v2 bin/containerd-shim bin/ctr bin/containerd-shim-runc-v1 bin/containerd &ldquo;cri-containerd-*&rdquo;
-etc/ etc/cni/ etc/cni/net.d/ etc/cni/net.d/10-containerd-net.conflist etc/systemd/ etc/systemd/system/ etc/systemd/system/containerd.service etc/crictl.yaml usr/ usr/local/ usr/local/bin/ usr/local/bin/containerd-shim-runc-v2 usr/local/bin/containerd-shim usr/local/bin/crictl usr/local/bin/ctr usr/local/bin/containerd-shim-runc-v1 usr/local/bin/containerd usr/local/bin/ctd-decoder usr/local/bin/critest usr/local/bin/containerd-stress usr/local/sbin/ usr/local/sbin/runc opt/ opt/cni/ opt/cni/bin/ opt/cni/bin/tuning opt/cni/bin/vrf opt/cni/bin/flannel opt/cni/bin/loopback opt/cni/bin/portmap opt/cni/bin/ptp opt/cni/bin/ipvlan opt/cni/bin/host-device opt/cni/bin/macvlan opt/cni/bin/host-local opt/cni/bin/firewall opt/cni/bin/bandwidth opt/cni/bin/sbr opt/cni/bin/vlan opt/cni/bin/static opt/cni/bin/bridge opt/cni/bin/dhcp opt/containerd/ opt/containerd/cluster/ opt/containerd/cluster/version opt/containerd/cluster/gce/ opt/containerd/cluster/gce/cni."/>
+<meta property="og:url" content="/docs/component/containers/containerd/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="Containerd">
+  <meta property="og:description" content="安装部署 在githbub官方地址：https://github.com/containerd/containerd/releases，选择需要的版本下载。
+containerd-{{ containerd_version }}、cri-containerd-{{ containerd_version }} 有以上两种二进制包，“cri_containerd&#34;区别于&#34;containerd-&#34;，在于它集合了&#34;runc&#34;等工具。 ”{{ containerd_version }}“是containerd版本，以下均以&#34;1.5.11&#34;为示例。
+下载二进制 https://github.com/containerd/containerd/releases/download/v{{ containerd_version }}/cri-containerd-cni-{{ containerd_version }}-linux-amd64.tar.gz 解压部署 tar xzvf cri-containerd-cni-{{ containerd_version }}-linux-amd64.tar.gz / 解压”/“目录，二进制路径“/usr/local/bin”
+“containerd-“与&#34;cri-containerd-“安装包内容 “containerd-*”
+bin/ bin/containerd-shim-runc-v2 bin/containerd-shim bin/ctr bin/containerd-shim-runc-v1 bin/containerd “cri-containerd-*”
+etc/ etc/cni/ etc/cni/net.d/ etc/cni/net.d/10-containerd-net.conflist etc/systemd/ etc/systemd/system/ etc/systemd/system/containerd.service etc/crictl.yaml usr/ usr/local/ usr/local/bin/ usr/local/bin/containerd-shim-runc-v2 usr/local/bin/containerd-shim usr/local/bin/crictl usr/local/bin/ctr usr/local/bin/containerd-shim-runc-v1 usr/local/bin/containerd usr/local/bin/ctd-decoder usr/local/bin/critest usr/local/bin/containerd-stress usr/local/sbin/ usr/local/sbin/runc opt/ opt/cni/ opt/cni/bin/ opt/cni/bin/tuning opt/cni/bin/vrf opt/cni/bin/flannel opt/cni/bin/loopback opt/cni/bin/portmap opt/cni/bin/ptp opt/cni/bin/ipvlan opt/cni/bin/host-device opt/cni/bin/macvlan opt/cni/bin/host-local opt/cni/bin/firewall opt/cni/bin/bandwidth opt/cni/bin/sbr opt/cni/bin/vlan opt/cni/bin/static opt/cni/bin/bridge opt/cni/bin/dhcp opt/containerd/ opt/containerd/cluster/ opt/containerd/cluster/version opt/containerd/cluster/gce/ opt/containerd/cluster/gce/cni.template opt/containerd/cluster/gce/configure.sh opt/containerd/cluster/gce/env opt/containerd/cluster/gce/cloud-init/ opt/containerd/cluster/gce/cloud-init/master.yaml opt/containerd/cluster/gce/cloud-init/node.yaml 示例配置 disabled_plugins = [ &#34;io.containerd.snapshotter.v1.aufs&#34;, &#34;io.containerd.snapshotter.v1.btrfs&#34;, &#34;io.containerd.snapshotter.v1.devmapper&#34;, &#34;io.containerd.snapshotter.v1.native&#34;, &#34;io.containerd.snapshotter.v1.zfs&#34; ] imports = [] oom_score = 0 plugin_dir = &#34;/data/containerd/plugins&#34; required_plugins = [] root = &#34;/data/containerd&#34; state = &#34;/run/containerd&#34; version = 2 [cgroup] path = &#34;&#34; [debug] address = &#34;/run/containerd/debug.sock&#34; format = &#34;&#34; gid = 0 level = &#34;&#34; uid = 0 [grpc] address = &#34;/var/run/containerd/containerd.sock&#34; gid = 0 max_recv_message_size = 16777216 max_send_message_size = 16777216 tcp_address = &#34;&#34; tcp_tls_cert = &#34;&#34; tcp_tls_key = &#34;&#34; uid = 0 [metrics] address = &#34;127.0.0.1:1338&#34; grpc_histogram = false [plugins] [plugins.&#34;io.containerd.gc.v1.scheduler&#34;] deletion_threshold = 0 mutation_threshold = 100 pause_threshold = 0.02 schedule_delay = &#34;0s&#34; startup_delay = &#34;100ms&#34; [plugins.&#34;io.containerd.grpc.v1.cri&#34;] disable_apparmor = false disable_cgroup = false disable_hugetlb_controller = true disable_proc_mount = false disable_tcp_service = true enable_selinux = false enable_tls_streaming = false ignore_image_defined_volumes = false max_concurrent_downloads = 3 max_container_log_line_size = 16384 netns_mounts_under_state_dir = false restrict_oom_score_adj = false sandbox_image = &#34;registry.cn-hangzhou.aliyuncs.com/kube-image-repo/pause:3.5-amd64&#34; selinux_category_range = 1024 stats_collect_period = 10 stream_idle_timeout = &#34;30m&#34; stream_server_address = &#34;127.0.0.1&#34; stream_server_port = &#34;1339&#34; tolerate_missing_hugetlb_controller = true unset_seccomp_profile = &#34;&#34; [plugins.&#34;io.containerd.grpc.v1.cri&#34;.cni] bin_dir = &#34;/opt/cni/bin&#34; conf_dir = &#34;/etc/cni/net.d&#34; max_conf_num = 1 [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd] default_runtime_name = &#34;runc&#34; disable_snapshot_annotations = true discard_unpacked_layers = false no_pivot = false snapshotter = &#34;overlayfs&#34; [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd.runtimes] [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd.runtimes.runc] base_runtime_spec = &#34;&#34; container_annotations = [] pod_annotations = [] privileged_without_host_devices = false runtime_type = &#34;io.containerd.runc.v2&#34; [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd.runtimes.runc.options] SystemdCgroup = true [plugins.&#34;io.containerd.grpc.v1.cri&#34;.image_decryption] key_model = &#34;node&#34; [plugins.&#34;io.containerd.grpc.v1.cri&#34;.registry] config_path = &#34;/etc/containerd/certs.d&#34; [plugins.&#34;io.containerd.internal.v1.opt&#34;] path = &#34;/opt/containerd&#34; [plugins.&#34;io.containerd.internal.v1.restart&#34;] interval = &#34;10s&#34; [plugins.&#34;io.containerd.metadata.v1.bolt&#34;] content_sharing_policy = &#34;shared&#34; [plugins.&#34;io.containerd.monitor.v1.cgroups&#34;] no_prometheus = false [plugins.&#34;io.containerd.runtime.v2.task&#34;] platforms = [&#34;linux/amd64&#34;] [plugins.&#34;io.containerd.service.v1.diff-service&#34;] default = [&#34;walking&#34;] [plugins.&#34;io.containerd.snapshotter.v1.overlayfs&#34;] root_path = &#34;&#34; [proxy_plugins] [stream_processors] [stream_processors.&#34;io.containerd.ocicrypt.decoder.v1.tar&#34;] accepts = [&#34;application/vnd.oci.image.layer.v1.tar&#43;encrypted&#34;] args = [&#34;--decryption-keys-path&#34;, &#34;/etc/containerd/ocicrypt/keys&#34;] env = [&#34;OCICRYPT_KEYPROVIDER_CONFIG=/etc/containerd/ocicrypt/ocicrypt_keyprovider.conf&#34;] path = &#34;ctd-decoder&#34; returns = &#34;application/vnd.oci.image.layer.v1.tar&#34; [stream_processors.&#34;io.containerd.ocicrypt.decoder.v1.tar.gzip&#34;] accepts = [&#34;application/vnd.oci.image.layer.v1.tar&#43;gzip&#43;encrypted&#34;] args = [&#34;--decryption-keys-path&#34;, &#34;/etc/containerd/ocicrypt/keys&#34;] env = [&#34;OCICRYPT_KEYPROVIDER_CONFIG=/etc/containerd/ocicrypt/ocicrypt_keyprovider.conf&#34;] path = &#34;ctd-decoder&#34; returns = &#34;application/vnd.oci.image.layer.v1.tar&#43;gzip&#34; [timeouts] &#34;io.containerd.timeout.shim.cleanup&#34; = &#34;5s&#34; &#34;io.containerd.timeout.shim.load&#34; = &#34;5s&#34; &#34;io.containerd.timeout.shim.shutdown&#34; = &#34;3s&#34; &#34;io.containerd.timeout.task.state&#34; = &#34;2s&#34; [ttrpc] address = &#34;/run/containerd/containerd.sock.ttrpc&#34; gid = 0 uid = 0 配置数据结构 github.com/containerd/containerd/services/server/config/config.go // 对应 &#34;/etc/containerd/config.toml&#34; 配置的数据结构 type Config struct { // 配置文件版本，使用版本2 Version int `toml:&#34;version&#34;` // 用于保存持久化数据的目录,包括content,snapshot,metadata和runtime Root string `toml:&#34;root&#34;` // 用于存放containerd的临时数据，如：套接字、PID、运行时状态、装入点和其他在重新启动之间不能持久存在的插件数据 State string `toml:&#34;state&#34;` // TODO; 插件存放路径 PluginDir string `toml:&#34;plugin_dir&#34;` // 配置containerd grpc服务监听地址、数据接收大小等 GRPC GRPCConfig `toml:&#34;grpc&#34;` // 一种适用于低内存环境的GRPC TTRPC TTRPCConfig `toml:&#34;ttrpc&#34;` // 开启pprof，配合 ctr pprof 使用 Debug Debug `toml:&#34;debug&#34;` // 开启 /v1/metrics 接口 Metrics MetricsConfig `toml:&#34;metrics&#34;` // 禁用某些插件，启动时不做初始化 DisabledPlugins []string `toml:&#34;disabled_plugins&#34;` // 必须加载成功的插件 RequiredPlugins []string `toml:&#34;required_plugins&#34;` // 各插件的配置 Plugins map[string]toml.Tree `toml:&#34;plugins&#34;` // 更改各个容器值 /proc/%d/oom_score_adj OOMScore int `toml:&#34;oom_score&#34;` // Cgroup specifies cgroup information for the containerd daemon process // TODO; Cgroup CgroupConfig `toml:&#34;cgroup&#34;` // ProxyPlugins configures plugins which are communicated to over GRPC // TODO; ProxyPlugins map[string]ProxyPlugin `toml:&#34;proxy_plugins&#34;` // 控制shim的几个超时设置 Timeouts map[string]string `toml:&#34;timeouts&#34;` // 其他路径的配置文件，一同合并至主配置 Imports []string `toml:&#34;imports&#34;` // TODO；用于镜像解密 // https://github.com/containerd/containerd/blob/main/docs/cri/decryption.md StreamProcessors map[string]StreamProcessor `toml:&#34;stream_processors&#34;` } type GRPCConfig struct { // 创建grpc在本地unix socket路径地址 Address string `toml:&#34;address&#34;` // 创建grpc在tcp监听的地址与tls配置 TCPAddress string `toml:&#34;tcp_address&#34;` TCPTLSCert string `toml:&#34;tcp_tls_cert&#34;` TCPTLSKey string `toml:&#34;tcp_tls_key&#34;` // 本地unix socket的用户与组id UID int `toml:&#34;uid&#34;` GID int `toml:&#34;gid&#34;` // 设置grpc服务最大接收与发送字节大小，默认16M MaxRecvMsgSize int `toml:&#34;max_recv_message_size&#34;` MaxSendMsgSize int `toml:&#34;max_send_message_size&#34;` } type TTRPCConfig struct { // 同GRPCConfig Address string `toml:&#34;address&#34;` UID int `toml:&#34;uid&#34;` GID int `toml:&#34;gid&#34;` } type Debug struct { // 支持unix socket地址或者ip:port格式 Address string `toml:&#34;address&#34;` UID int `toml:&#34;uid&#34;` GID int `toml:&#34;gid&#34;` Level string `toml:&#34;level&#34;` // Format represents the logging format Format string `toml:&#34;format&#34;` } type MetricsConfig struct { // 这里配置的是ip:port地址，非unix socket，默认使用：127.0.0.1:1338 Address string `toml:&#34;address&#34;` // 开启 grpc_prometheus.EnableHandlingTimeHistogram() 用于评估rpc的请求延迟 GRPCHistogram bool `toml:&#34;grpc_histogram&#34;` } // CgroupConfig provides cgroup configuration type CgroupConfig struct { Path string `toml:&#34;path&#34;` } // ProxyPlugin provides a proxy plugin configuration type ProxyPlugin struct { Type string `toml:&#34;type&#34;` Address string `toml:&#34;address&#34;` } 内置插件 github.com/containerd/containerd/plugin/plugin.go">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2022-05-22T15:05:21+08:00">
+    <meta property="article:modified_time" content="2023-10-09T17:54:36+08:00">
+
+  <meta itemprop="name" content="Containerd">
+  <meta itemprop="description" content="安装部署 在githbub官方地址：https://github.com/containerd/containerd/releases，选择需要的版本下载。
+containerd-{{ containerd_version }}、cri-containerd-{{ containerd_version }} 有以上两种二进制包，“cri_containerd&#34;区别于&#34;containerd-&#34;，在于它集合了&#34;runc&#34;等工具。 ”{{ containerd_version }}“是containerd版本，以下均以&#34;1.5.11&#34;为示例。
+下载二进制 https://github.com/containerd/containerd/releases/download/v{{ containerd_version }}/cri-containerd-cni-{{ containerd_version }}-linux-amd64.tar.gz 解压部署 tar xzvf cri-containerd-cni-{{ containerd_version }}-linux-amd64.tar.gz / 解压”/“目录，二进制路径“/usr/local/bin”
+“containerd-“与&#34;cri-containerd-“安装包内容 “containerd-*”
+bin/ bin/containerd-shim-runc-v2 bin/containerd-shim bin/ctr bin/containerd-shim-runc-v1 bin/containerd “cri-containerd-*”
+etc/ etc/cni/ etc/cni/net.d/ etc/cni/net.d/10-containerd-net.conflist etc/systemd/ etc/systemd/system/ etc/systemd/system/containerd.service etc/crictl.yaml usr/ usr/local/ usr/local/bin/ usr/local/bin/containerd-shim-runc-v2 usr/local/bin/containerd-shim usr/local/bin/crictl usr/local/bin/ctr usr/local/bin/containerd-shim-runc-v1 usr/local/bin/containerd usr/local/bin/ctd-decoder usr/local/bin/critest usr/local/bin/containerd-stress usr/local/sbin/ usr/local/sbin/runc opt/ opt/cni/ opt/cni/bin/ opt/cni/bin/tuning opt/cni/bin/vrf opt/cni/bin/flannel opt/cni/bin/loopback opt/cni/bin/portmap opt/cni/bin/ptp opt/cni/bin/ipvlan opt/cni/bin/host-device opt/cni/bin/macvlan opt/cni/bin/host-local opt/cni/bin/firewall opt/cni/bin/bandwidth opt/cni/bin/sbr opt/cni/bin/vlan opt/cni/bin/static opt/cni/bin/bridge opt/cni/bin/dhcp opt/containerd/ opt/containerd/cluster/ opt/containerd/cluster/version opt/containerd/cluster/gce/ opt/containerd/cluster/gce/cni.template opt/containerd/cluster/gce/configure.sh opt/containerd/cluster/gce/env opt/containerd/cluster/gce/cloud-init/ opt/containerd/cluster/gce/cloud-init/master.yaml opt/containerd/cluster/gce/cloud-init/node.yaml 示例配置 disabled_plugins = [ &#34;io.containerd.snapshotter.v1.aufs&#34;, &#34;io.containerd.snapshotter.v1.btrfs&#34;, &#34;io.containerd.snapshotter.v1.devmapper&#34;, &#34;io.containerd.snapshotter.v1.native&#34;, &#34;io.containerd.snapshotter.v1.zfs&#34; ] imports = [] oom_score = 0 plugin_dir = &#34;/data/containerd/plugins&#34; required_plugins = [] root = &#34;/data/containerd&#34; state = &#34;/run/containerd&#34; version = 2 [cgroup] path = &#34;&#34; [debug] address = &#34;/run/containerd/debug.sock&#34; format = &#34;&#34; gid = 0 level = &#34;&#34; uid = 0 [grpc] address = &#34;/var/run/containerd/containerd.sock&#34; gid = 0 max_recv_message_size = 16777216 max_send_message_size = 16777216 tcp_address = &#34;&#34; tcp_tls_cert = &#34;&#34; tcp_tls_key = &#34;&#34; uid = 0 [metrics] address = &#34;127.0.0.1:1338&#34; grpc_histogram = false [plugins] [plugins.&#34;io.containerd.gc.v1.scheduler&#34;] deletion_threshold = 0 mutation_threshold = 100 pause_threshold = 0.02 schedule_delay = &#34;0s&#34; startup_delay = &#34;100ms&#34; [plugins.&#34;io.containerd.grpc.v1.cri&#34;] disable_apparmor = false disable_cgroup = false disable_hugetlb_controller = true disable_proc_mount = false disable_tcp_service = true enable_selinux = false enable_tls_streaming = false ignore_image_defined_volumes = false max_concurrent_downloads = 3 max_container_log_line_size = 16384 netns_mounts_under_state_dir = false restrict_oom_score_adj = false sandbox_image = &#34;registry.cn-hangzhou.aliyuncs.com/kube-image-repo/pause:3.5-amd64&#34; selinux_category_range = 1024 stats_collect_period = 10 stream_idle_timeout = &#34;30m&#34; stream_server_address = &#34;127.0.0.1&#34; stream_server_port = &#34;1339&#34; tolerate_missing_hugetlb_controller = true unset_seccomp_profile = &#34;&#34; [plugins.&#34;io.containerd.grpc.v1.cri&#34;.cni] bin_dir = &#34;/opt/cni/bin&#34; conf_dir = &#34;/etc/cni/net.d&#34; max_conf_num = 1 [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd] default_runtime_name = &#34;runc&#34; disable_snapshot_annotations = true discard_unpacked_layers = false no_pivot = false snapshotter = &#34;overlayfs&#34; [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd.runtimes] [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd.runtimes.runc] base_runtime_spec = &#34;&#34; container_annotations = [] pod_annotations = [] privileged_without_host_devices = false runtime_type = &#34;io.containerd.runc.v2&#34; [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd.runtimes.runc.options] SystemdCgroup = true [plugins.&#34;io.containerd.grpc.v1.cri&#34;.image_decryption] key_model = &#34;node&#34; [plugins.&#34;io.containerd.grpc.v1.cri&#34;.registry] config_path = &#34;/etc/containerd/certs.d&#34; [plugins.&#34;io.containerd.internal.v1.opt&#34;] path = &#34;/opt/containerd&#34; [plugins.&#34;io.containerd.internal.v1.restart&#34;] interval = &#34;10s&#34; [plugins.&#34;io.containerd.metadata.v1.bolt&#34;] content_sharing_policy = &#34;shared&#34; [plugins.&#34;io.containerd.monitor.v1.cgroups&#34;] no_prometheus = false [plugins.&#34;io.containerd.runtime.v2.task&#34;] platforms = [&#34;linux/amd64&#34;] [plugins.&#34;io.containerd.service.v1.diff-service&#34;] default = [&#34;walking&#34;] [plugins.&#34;io.containerd.snapshotter.v1.overlayfs&#34;] root_path = &#34;&#34; [proxy_plugins] [stream_processors] [stream_processors.&#34;io.containerd.ocicrypt.decoder.v1.tar&#34;] accepts = [&#34;application/vnd.oci.image.layer.v1.tar&#43;encrypted&#34;] args = [&#34;--decryption-keys-path&#34;, &#34;/etc/containerd/ocicrypt/keys&#34;] env = [&#34;OCICRYPT_KEYPROVIDER_CONFIG=/etc/containerd/ocicrypt/ocicrypt_keyprovider.conf&#34;] path = &#34;ctd-decoder&#34; returns = &#34;application/vnd.oci.image.layer.v1.tar&#34; [stream_processors.&#34;io.containerd.ocicrypt.decoder.v1.tar.gzip&#34;] accepts = [&#34;application/vnd.oci.image.layer.v1.tar&#43;gzip&#43;encrypted&#34;] args = [&#34;--decryption-keys-path&#34;, &#34;/etc/containerd/ocicrypt/keys&#34;] env = [&#34;OCICRYPT_KEYPROVIDER_CONFIG=/etc/containerd/ocicrypt/ocicrypt_keyprovider.conf&#34;] path = &#34;ctd-decoder&#34; returns = &#34;application/vnd.oci.image.layer.v1.tar&#43;gzip&#34; [timeouts] &#34;io.containerd.timeout.shim.cleanup&#34; = &#34;5s&#34; &#34;io.containerd.timeout.shim.load&#34; = &#34;5s&#34; &#34;io.containerd.timeout.shim.shutdown&#34; = &#34;3s&#34; &#34;io.containerd.timeout.task.state&#34; = &#34;2s&#34; [ttrpc] address = &#34;/run/containerd/containerd.sock.ttrpc&#34; gid = 0 uid = 0 配置数据结构 github.com/containerd/containerd/services/server/config/config.go // 对应 &#34;/etc/containerd/config.toml&#34; 配置的数据结构 type Config struct { // 配置文件版本，使用版本2 Version int `toml:&#34;version&#34;` // 用于保存持久化数据的目录,包括content,snapshot,metadata和runtime Root string `toml:&#34;root&#34;` // 用于存放containerd的临时数据，如：套接字、PID、运行时状态、装入点和其他在重新启动之间不能持久存在的插件数据 State string `toml:&#34;state&#34;` // TODO; 插件存放路径 PluginDir string `toml:&#34;plugin_dir&#34;` // 配置containerd grpc服务监听地址、数据接收大小等 GRPC GRPCConfig `toml:&#34;grpc&#34;` // 一种适用于低内存环境的GRPC TTRPC TTRPCConfig `toml:&#34;ttrpc&#34;` // 开启pprof，配合 ctr pprof 使用 Debug Debug `toml:&#34;debug&#34;` // 开启 /v1/metrics 接口 Metrics MetricsConfig `toml:&#34;metrics&#34;` // 禁用某些插件，启动时不做初始化 DisabledPlugins []string `toml:&#34;disabled_plugins&#34;` // 必须加载成功的插件 RequiredPlugins []string `toml:&#34;required_plugins&#34;` // 各插件的配置 Plugins map[string]toml.Tree `toml:&#34;plugins&#34;` // 更改各个容器值 /proc/%d/oom_score_adj OOMScore int `toml:&#34;oom_score&#34;` // Cgroup specifies cgroup information for the containerd daemon process // TODO; Cgroup CgroupConfig `toml:&#34;cgroup&#34;` // ProxyPlugins configures plugins which are communicated to over GRPC // TODO; ProxyPlugins map[string]ProxyPlugin `toml:&#34;proxy_plugins&#34;` // 控制shim的几个超时设置 Timeouts map[string]string `toml:&#34;timeouts&#34;` // 其他路径的配置文件，一同合并至主配置 Imports []string `toml:&#34;imports&#34;` // TODO；用于镜像解密 // https://github.com/containerd/containerd/blob/main/docs/cri/decryption.md StreamProcessors map[string]StreamProcessor `toml:&#34;stream_processors&#34;` } type GRPCConfig struct { // 创建grpc在本地unix socket路径地址 Address string `toml:&#34;address&#34;` // 创建grpc在tcp监听的地址与tls配置 TCPAddress string `toml:&#34;tcp_address&#34;` TCPTLSCert string `toml:&#34;tcp_tls_cert&#34;` TCPTLSKey string `toml:&#34;tcp_tls_key&#34;` // 本地unix socket的用户与组id UID int `toml:&#34;uid&#34;` GID int `toml:&#34;gid&#34;` // 设置grpc服务最大接收与发送字节大小，默认16M MaxRecvMsgSize int `toml:&#34;max_recv_message_size&#34;` MaxSendMsgSize int `toml:&#34;max_send_message_size&#34;` } type TTRPCConfig struct { // 同GRPCConfig Address string `toml:&#34;address&#34;` UID int `toml:&#34;uid&#34;` GID int `toml:&#34;gid&#34;` } type Debug struct { // 支持unix socket地址或者ip:port格式 Address string `toml:&#34;address&#34;` UID int `toml:&#34;uid&#34;` GID int `toml:&#34;gid&#34;` Level string `toml:&#34;level&#34;` // Format represents the logging format Format string `toml:&#34;format&#34;` } type MetricsConfig struct { // 这里配置的是ip:port地址，非unix socket，默认使用：127.0.0.1:1338 Address string `toml:&#34;address&#34;` // 开启 grpc_prometheus.EnableHandlingTimeHistogram() 用于评估rpc的请求延迟 GRPCHistogram bool `toml:&#34;grpc_histogram&#34;` } // CgroupConfig provides cgroup configuration type CgroupConfig struct { Path string `toml:&#34;path&#34;` } // ProxyPlugin provides a proxy plugin configuration type ProxyPlugin struct { Type string `toml:&#34;type&#34;` Address string `toml:&#34;address&#34;` } 内置插件 github.com/containerd/containerd/plugin/plugin.go">
+  <meta itemprop="datePublished" content="2022-05-22T15:05:21+08:00">
+  <meta itemprop="dateModified" content="2023-10-09T17:54:36+08:00">
+  <meta itemprop="wordCount" content="2788">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Containerd">
+  <meta name="twitter:description" content="安装部署 在githbub官方地址：https://github.com/containerd/containerd/releases，选择需要的版本下载。
+containerd-{{ containerd_version }}、cri-containerd-{{ containerd_version }} 有以上两种二进制包，“cri_containerd&#34;区别于&#34;containerd-&#34;，在于它集合了&#34;runc&#34;等工具。 ”{{ containerd_version }}“是containerd版本，以下均以&#34;1.5.11&#34;为示例。
+下载二进制 https://github.com/containerd/containerd/releases/download/v{{ containerd_version }}/cri-containerd-cni-{{ containerd_version }}-linux-amd64.tar.gz 解压部署 tar xzvf cri-containerd-cni-{{ containerd_version }}-linux-amd64.tar.gz / 解压”/“目录，二进制路径“/usr/local/bin”
+“containerd-“与&#34;cri-containerd-“安装包内容 “containerd-*”
+bin/ bin/containerd-shim-runc-v2 bin/containerd-shim bin/ctr bin/containerd-shim-runc-v1 bin/containerd “cri-containerd-*”
+etc/ etc/cni/ etc/cni/net.d/ etc/cni/net.d/10-containerd-net.conflist etc/systemd/ etc/systemd/system/ etc/systemd/system/containerd.service etc/crictl.yaml usr/ usr/local/ usr/local/bin/ usr/local/bin/containerd-shim-runc-v2 usr/local/bin/containerd-shim usr/local/bin/crictl usr/local/bin/ctr usr/local/bin/containerd-shim-runc-v1 usr/local/bin/containerd usr/local/bin/ctd-decoder usr/local/bin/critest usr/local/bin/containerd-stress usr/local/sbin/ usr/local/sbin/runc opt/ opt/cni/ opt/cni/bin/ opt/cni/bin/tuning opt/cni/bin/vrf opt/cni/bin/flannel opt/cni/bin/loopback opt/cni/bin/portmap opt/cni/bin/ptp opt/cni/bin/ipvlan opt/cni/bin/host-device opt/cni/bin/macvlan opt/cni/bin/host-local opt/cni/bin/firewall opt/cni/bin/bandwidth opt/cni/bin/sbr opt/cni/bin/vlan opt/cni/bin/static opt/cni/bin/bridge opt/cni/bin/dhcp opt/containerd/ opt/containerd/cluster/ opt/containerd/cluster/version opt/containerd/cluster/gce/ opt/containerd/cluster/gce/cni.template opt/containerd/cluster/gce/configure.sh opt/containerd/cluster/gce/env opt/containerd/cluster/gce/cloud-init/ opt/containerd/cluster/gce/cloud-init/master.yaml opt/containerd/cluster/gce/cloud-init/node.yaml 示例配置 disabled_plugins = [ &#34;io.containerd.snapshotter.v1.aufs&#34;, &#34;io.containerd.snapshotter.v1.btrfs&#34;, &#34;io.containerd.snapshotter.v1.devmapper&#34;, &#34;io.containerd.snapshotter.v1.native&#34;, &#34;io.containerd.snapshotter.v1.zfs&#34; ] imports = [] oom_score = 0 plugin_dir = &#34;/data/containerd/plugins&#34; required_plugins = [] root = &#34;/data/containerd&#34; state = &#34;/run/containerd&#34; version = 2 [cgroup] path = &#34;&#34; [debug] address = &#34;/run/containerd/debug.sock&#34; format = &#34;&#34; gid = 0 level = &#34;&#34; uid = 0 [grpc] address = &#34;/var/run/containerd/containerd.sock&#34; gid = 0 max_recv_message_size = 16777216 max_send_message_size = 16777216 tcp_address = &#34;&#34; tcp_tls_cert = &#34;&#34; tcp_tls_key = &#34;&#34; uid = 0 [metrics] address = &#34;127.0.0.1:1338&#34; grpc_histogram = false [plugins] [plugins.&#34;io.containerd.gc.v1.scheduler&#34;] deletion_threshold = 0 mutation_threshold = 100 pause_threshold = 0.02 schedule_delay = &#34;0s&#34; startup_delay = &#34;100ms&#34; [plugins.&#34;io.containerd.grpc.v1.cri&#34;] disable_apparmor = false disable_cgroup = false disable_hugetlb_controller = true disable_proc_mount = false disable_tcp_service = true enable_selinux = false enable_tls_streaming = false ignore_image_defined_volumes = false max_concurrent_downloads = 3 max_container_log_line_size = 16384 netns_mounts_under_state_dir = false restrict_oom_score_adj = false sandbox_image = &#34;registry.cn-hangzhou.aliyuncs.com/kube-image-repo/pause:3.5-amd64&#34; selinux_category_range = 1024 stats_collect_period = 10 stream_idle_timeout = &#34;30m&#34; stream_server_address = &#34;127.0.0.1&#34; stream_server_port = &#34;1339&#34; tolerate_missing_hugetlb_controller = true unset_seccomp_profile = &#34;&#34; [plugins.&#34;io.containerd.grpc.v1.cri&#34;.cni] bin_dir = &#34;/opt/cni/bin&#34; conf_dir = &#34;/etc/cni/net.d&#34; max_conf_num = 1 [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd] default_runtime_name = &#34;runc&#34; disable_snapshot_annotations = true discard_unpacked_layers = false no_pivot = false snapshotter = &#34;overlayfs&#34; [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd.runtimes] [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd.runtimes.runc] base_runtime_spec = &#34;&#34; container_annotations = [] pod_annotations = [] privileged_without_host_devices = false runtime_type = &#34;io.containerd.runc.v2&#34; [plugins.&#34;io.containerd.grpc.v1.cri&#34;.containerd.runtimes.runc.options] SystemdCgroup = true [plugins.&#34;io.containerd.grpc.v1.cri&#34;.image_decryption] key_model = &#34;node&#34; [plugins.&#34;io.containerd.grpc.v1.cri&#34;.registry] config_path = &#34;/etc/containerd/certs.d&#34; [plugins.&#34;io.containerd.internal.v1.opt&#34;] path = &#34;/opt/containerd&#34; [plugins.&#34;io.containerd.internal.v1.restart&#34;] interval = &#34;10s&#34; [plugins.&#34;io.containerd.metadata.v1.bolt&#34;] content_sharing_policy = &#34;shared&#34; [plugins.&#34;io.containerd.monitor.v1.cgroups&#34;] no_prometheus = false [plugins.&#34;io.containerd.runtime.v2.task&#34;] platforms = [&#34;linux/amd64&#34;] [plugins.&#34;io.containerd.service.v1.diff-service&#34;] default = [&#34;walking&#34;] [plugins.&#34;io.containerd.snapshotter.v1.overlayfs&#34;] root_path = &#34;&#34; [proxy_plugins] [stream_processors] [stream_processors.&#34;io.containerd.ocicrypt.decoder.v1.tar&#34;] accepts = [&#34;application/vnd.oci.image.layer.v1.tar&#43;encrypted&#34;] args = [&#34;--decryption-keys-path&#34;, &#34;/etc/containerd/ocicrypt/keys&#34;] env = [&#34;OCICRYPT_KEYPROVIDER_CONFIG=/etc/containerd/ocicrypt/ocicrypt_keyprovider.conf&#34;] path = &#34;ctd-decoder&#34; returns = &#34;application/vnd.oci.image.layer.v1.tar&#34; [stream_processors.&#34;io.containerd.ocicrypt.decoder.v1.tar.gzip&#34;] accepts = [&#34;application/vnd.oci.image.layer.v1.tar&#43;gzip&#43;encrypted&#34;] args = [&#34;--decryption-keys-path&#34;, &#34;/etc/containerd/ocicrypt/keys&#34;] env = [&#34;OCICRYPT_KEYPROVIDER_CONFIG=/etc/containerd/ocicrypt/ocicrypt_keyprovider.conf&#34;] path = &#34;ctd-decoder&#34; returns = &#34;application/vnd.oci.image.layer.v1.tar&#43;gzip&#34; [timeouts] &#34;io.containerd.timeout.shim.cleanup&#34; = &#34;5s&#34; &#34;io.containerd.timeout.shim.load&#34; = &#34;5s&#34; &#34;io.containerd.timeout.shim.shutdown&#34; = &#34;3s&#34; &#34;io.containerd.timeout.task.state&#34; = &#34;2s&#34; [ttrpc] address = &#34;/run/containerd/containerd.sock.ttrpc&#34; gid = 0 uid = 0 配置数据结构 github.com/containerd/containerd/services/server/config/config.go // 对应 &#34;/etc/containerd/config.toml&#34; 配置的数据结构 type Config struct { // 配置文件版本，使用版本2 Version int `toml:&#34;version&#34;` // 用于保存持久化数据的目录,包括content,snapshot,metadata和runtime Root string `toml:&#34;root&#34;` // 用于存放containerd的临时数据，如：套接字、PID、运行时状态、装入点和其他在重新启动之间不能持久存在的插件数据 State string `toml:&#34;state&#34;` // TODO; 插件存放路径 PluginDir string `toml:&#34;plugin_dir&#34;` // 配置containerd grpc服务监听地址、数据接收大小等 GRPC GRPCConfig `toml:&#34;grpc&#34;` // 一种适用于低内存环境的GRPC TTRPC TTRPCConfig `toml:&#34;ttrpc&#34;` // 开启pprof，配合 ctr pprof 使用 Debug Debug `toml:&#34;debug&#34;` // 开启 /v1/metrics 接口 Metrics MetricsConfig `toml:&#34;metrics&#34;` // 禁用某些插件，启动时不做初始化 DisabledPlugins []string `toml:&#34;disabled_plugins&#34;` // 必须加载成功的插件 RequiredPlugins []string `toml:&#34;required_plugins&#34;` // 各插件的配置 Plugins map[string]toml.Tree `toml:&#34;plugins&#34;` // 更改各个容器值 /proc/%d/oom_score_adj OOMScore int `toml:&#34;oom_score&#34;` // Cgroup specifies cgroup information for the containerd daemon process // TODO; Cgroup CgroupConfig `toml:&#34;cgroup&#34;` // ProxyPlugins configures plugins which are communicated to over GRPC // TODO; ProxyPlugins map[string]ProxyPlugin `toml:&#34;proxy_plugins&#34;` // 控制shim的几个超时设置 Timeouts map[string]string `toml:&#34;timeouts&#34;` // 其他路径的配置文件，一同合并至主配置 Imports []string `toml:&#34;imports&#34;` // TODO；用于镜像解密 // https://github.com/containerd/containerd/blob/main/docs/cri/decryption.md StreamProcessors map[string]StreamProcessor `toml:&#34;stream_processors&#34;` } type GRPCConfig struct { // 创建grpc在本地unix socket路径地址 Address string `toml:&#34;address&#34;` // 创建grpc在tcp监听的地址与tls配置 TCPAddress string `toml:&#34;tcp_address&#34;` TCPTLSCert string `toml:&#34;tcp_tls_cert&#34;` TCPTLSKey string `toml:&#34;tcp_tls_key&#34;` // 本地unix socket的用户与组id UID int `toml:&#34;uid&#34;` GID int `toml:&#34;gid&#34;` // 设置grpc服务最大接收与发送字节大小，默认16M MaxRecvMsgSize int `toml:&#34;max_recv_message_size&#34;` MaxSendMsgSize int `toml:&#34;max_send_message_size&#34;` } type TTRPCConfig struct { // 同GRPCConfig Address string `toml:&#34;address&#34;` UID int `toml:&#34;uid&#34;` GID int `toml:&#34;gid&#34;` } type Debug struct { // 支持unix socket地址或者ip:port格式 Address string `toml:&#34;address&#34;` UID int `toml:&#34;uid&#34;` GID int `toml:&#34;gid&#34;` Level string `toml:&#34;level&#34;` // Format represents the logging format Format string `toml:&#34;format&#34;` } type MetricsConfig struct { // 这里配置的是ip:port地址，非unix socket，默认使用：127.0.0.1:1338 Address string `toml:&#34;address&#34;` // 开启 grpc_prometheus.EnableHandlingTimeHistogram() 用于评估rpc的请求延迟 GRPCHistogram bool `toml:&#34;grpc_histogram&#34;` } // CgroupConfig provides cgroup configuration type CgroupConfig struct { Path string `toml:&#34;path&#34;` } // ProxyPlugin provides a proxy plugin configuration type ProxyPlugin struct { Type string `toml:&#34;type&#34;` Address string `toml:&#34;address&#34;` } 内置插件 github.com/containerd/containerd/plugin/plugin.go">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1051,6 +1054,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3084,9 +3104,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3100,10 +3120,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3163,6 +3386,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4635,250 +4917,250 @@ type ProxyPlugin struct {
 <p>github.com/containerd/containerd/plugin/plugin.go</p>
 <p>这里 plugins 是一个 map[string]toml.Tree(或map[string]interface{})结构</p>
 <table>
-<thead>
-<tr>
-<th>类型</th>
-<th>ID</th>
-<th>代码路径</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>io.containerd.internal.v1</td>
-<td>restart</td>
-<td>runtime/restart/monitor/monitor.go</td>
-<td>根据&quot;config.interval&quot;配置定时检查存在配置了&quot;restart&quot;标签容器状态是否符合预期</td>
-</tr>
-<tr>
-<td>io.containerd.internal.v1</td>
-<td>opt</td>
-<td>services/opt/service.go</td>
-<td>创建&quot;config.path&quot;配置路径下&quot;bin&quot;与&quot;lib&quot;目录，同时把&quot;lib&quot;加入&quot;LD_LIBRARY_PATH&quot;变量</td>
-</tr>
-<tr>
-<td>io.containerd.runtime.v1</td>
-<td>linux</td>
-<td>runtime/v1/linux/runtime.go</td>
-<td>废弃！runtime配置，均使用&quot;runc.v2&quot;版本，由于代码存在依赖，该插件还是不能被禁用</td>
-</tr>
-<tr>
-<td>io.containerd.runtime.v2</td>
-<td>task</td>
-<td>runtime/v2/manager.go</td>
-<td>TODO; 数据均生成在&rdquo;/run/containerd&quot;路径下</td>
-</tr>
-<tr>
-<td>io.containerd.grpc.v1</td>
-<td>cri</td>
-<td>pkg/cri/cri.go</td>
-<td>TODO; 创建cri服务</td>
-</tr>
-<tr>
-<td>io.containerd.grpc.v1</td>
-<td>tasks</td>
-<td>services/tasks/service.go</td>
-<td>gRPC接口：api/services/tasks/v1，服务实例：tasks-service</td>
-</tr>
-<tr>
-<td>io.containerd.service.v1</td>
-<td>tasks-service</td>
-<td>services/tasks/local.go</td>
-<td>Tasks服务实现</td>
-</tr>
-<tr>
-<td>io.containerd.grpc.v1</td>
-<td>snapshots</td>
-<td>services/snapshots/service.go</td>
-<td>gRPC接口：api/services/snapshots/v1，服务实例：snapshots-service</td>
-</tr>
-<tr>
-<td>io.containerd.service.v1</td>
-<td>snapshots-service</td>
-<td>services/snapshots/snapshotters.go</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>io.containerd.grpc.v1</td>
-<td>images</td>
-<td>services/images/service.go</td>
-<td>gRPC接口：api/services/images/tasks/v1，服务实例：images-service</td>
-</tr>
-<tr>
-<td>io.containerd.service.v1</td>
-<td>images-service</td>
-<td>services/images/local.go</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>io.containerd.grpc.v1</td>
-<td>healthcheck</td>
-<td>services/healthcheck/service.go</td>
-<td>gRPC接口：google.golang.org/grpc/health</td>
-</tr>
-<tr>
-<td>io.containerd.grpc.v1</td>
-<td>content</td>
-<td>services/content/service.go</td>
-<td>gRPC接口：api/services/content/v1，服务实例：snapshots-service</td>
-</tr>
-<tr>
-<td>io.containerd.service.v1</td>
-<td>content-service</td>
-<td>services/content/store.go</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>io.containerd.grpc.v1</td>
-<td>diff</td>
-<td>services/diff/service.go</td>
-<td>api/services/diff/v1，服务实例：diff-service</td>
-</tr>
-<tr>
-<td>io.containerd.service.v1</td>
-<td>diff-service</td>
-<td>services/diff/local.go</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>io.containerd.grpc.v1</td>
-<td>introspection</td>
-<td>services/introspection/service.go</td>
-<td>gRPC接口：api/services/introspection/v1，服务实例：introspection-service</td>
-</tr>
-<tr>
-<td>io.containerd.service.v1</td>
-<td>introspection-service</td>
-<td>services/introspection/local.go</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>io.containerd.grpc.v1</td>
-<td>namespace</td>
-<td>services/namespace/service.go</td>
-<td>gRPC接口：api/services/namespace/v1，服务实例：namespace-service</td>
-</tr>
-<tr>
-<td>io.containerd.service.v1</td>
-<td>namespace-service</td>
-<td>services/namespace/local.go</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>io.containerd.grpc.v1</td>
-<td>leases</td>
-<td>services/leases/service.go</td>
-<td>gRPC接口：api/services/leases/v1，服务实例：leases-service</td>
-</tr>
-<tr>
-<td>io.containerd.service.v1</td>
-<td>leases-service</td>
-<td>services/leases/local.go</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>io.containerd.grpc.v1</td>
-<td>version</td>
-<td>services/version/service.go</td>
-<td>gRPC接口：api/services/version/v1，服务实例：leases-service</td>
-</tr>
-<tr>
-<td>io.containerd.grpc.v1</td>
-<td>containers</td>
-<td>services/containers/service.go</td>
-<td>gRPC接口：api/services/containers/v1，服务实例：containers-service</td>
-</tr>
-<tr>
-<td>io.containerd.service.v1</td>
-<td>containers-service</td>
-<td>services/containers/local.go</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>io.containerd.grpc.v1</td>
-<td>events</td>
-<td>services/events/service.go</td>
-<td>gRPC接口：api/services/events/v1</td>
-</tr>
-<tr>
-<td>io.containerd.snapshotter.v1</td>
-<td>btrfs</td>
-<td>snapshots/btrfs/plugin/plugin.go</td>
-<td>TDO</td>
-</tr>
-<tr>
-<td>io.containerd.snapshotter.v1</td>
-<td>native</td>
-<td>snapshots/native/plugin/plugin.go</td>
-<td>TDO</td>
-</tr>
-<tr>
-<td>io.containerd.snapshotter.v1</td>
-<td>windows-lcow</td>
-<td>snapshots/lcow/lcow.go</td>
-<td>TDO</td>
-</tr>
-<tr>
-<td>io.containerd.snapshotter.v1</td>
-<td>devmapper</td>
-<td>snapshots/devmapper/plugin/plugin.go</td>
-<td>TDO</td>
-</tr>
-<tr>
-<td>io.containerd.snapshotter.v1</td>
-<td>windows</td>
-<td>snapshots/windows/windows.go</td>
-<td>TDO</td>
-</tr>
-<tr>
-<td>io.containerd.snapshotter.v1</td>
-<td>overlayfs</td>
-<td>snapshots/overlay/plugin/plugin.go</td>
-<td>TDO</td>
-</tr>
-<tr>
-<td>io.containerd.monitor.v1</td>
-<td>cgroups</td>
-<td>metrics/cgroups/cgroups.go</td>
-<td>容器在cgroup中的性能数据暴露至配置的&quot;Metrics&quot;服务,否则仅有containerd的grpc调用数据</td>
-</tr>
-<tr>
-<td>io.containerd.differ.v1</td>
-<td>windows-lcow</td>
-<td>diff/lcow/lcow.go</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>io.containerd.differ.v1</td>
-<td>walking</td>
-<td>diff/walking/plugin/plugin.go</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>io.containerd.differ.v1</td>
-<td>windows</td>
-<td>diff/windows/windows.go</td>
-<td>TODO</td>
-</tr>
-<tr>
-<td>io.containerd.metadata.v1</td>
-<td>bolt</td>
-<td>services/server/server.go</td>
-<td>TODO; 管理meta.db文件</td>
-</tr>
-<tr>
-<td>io.containerd.content.v1</td>
-<td>content</td>
-<td>services/server/server.go</td>
-<td>TODO; 管理本地&quot;ingest&quot;存储</td>
-</tr>
-<tr>
-<td>io.containerd.gc.v1</td>
-<td>scheduler</td>
-<td>gc/scheduler/scheduler.go</td>
-<td>TODO;</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>类型</th>
+          <th>ID</th>
+          <th>代码路径</th>
+          <th>用途</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>io.containerd.internal.v1</td>
+          <td>restart</td>
+          <td>runtime/restart/monitor/monitor.go</td>
+          <td>根据&quot;config.interval&quot;配置定时检查存在配置了&quot;restart&quot;标签容器状态是否符合预期</td>
+      </tr>
+      <tr>
+          <td>io.containerd.internal.v1</td>
+          <td>opt</td>
+          <td>services/opt/service.go</td>
+          <td>创建&quot;config.path&quot;配置路径下&quot;bin&quot;与&quot;lib&quot;目录，同时把&quot;lib&quot;加入&quot;LD_LIBRARY_PATH&quot;变量</td>
+      </tr>
+      <tr>
+          <td>io.containerd.runtime.v1</td>
+          <td>linux</td>
+          <td>runtime/v1/linux/runtime.go</td>
+          <td>废弃！runtime配置，均使用&quot;runc.v2&quot;版本，由于代码存在依赖，该插件还是不能被禁用</td>
+      </tr>
+      <tr>
+          <td>io.containerd.runtime.v2</td>
+          <td>task</td>
+          <td>runtime/v2/manager.go</td>
+          <td>TODO; 数据均生成在&rdquo;/run/containerd&quot;路径下</td>
+      </tr>
+      <tr>
+          <td>io.containerd.grpc.v1</td>
+          <td>cri</td>
+          <td>pkg/cri/cri.go</td>
+          <td>TODO; 创建cri服务</td>
+      </tr>
+      <tr>
+          <td>io.containerd.grpc.v1</td>
+          <td>tasks</td>
+          <td>services/tasks/service.go</td>
+          <td>gRPC接口：api/services/tasks/v1，服务实例：tasks-service</td>
+      </tr>
+      <tr>
+          <td>io.containerd.service.v1</td>
+          <td>tasks-service</td>
+          <td>services/tasks/local.go</td>
+          <td>Tasks服务实现</td>
+      </tr>
+      <tr>
+          <td>io.containerd.grpc.v1</td>
+          <td>snapshots</td>
+          <td>services/snapshots/service.go</td>
+          <td>gRPC接口：api/services/snapshots/v1，服务实例：snapshots-service</td>
+      </tr>
+      <tr>
+          <td>io.containerd.service.v1</td>
+          <td>snapshots-service</td>
+          <td>services/snapshots/snapshotters.go</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.grpc.v1</td>
+          <td>images</td>
+          <td>services/images/service.go</td>
+          <td>gRPC接口：api/services/images/tasks/v1，服务实例：images-service</td>
+      </tr>
+      <tr>
+          <td>io.containerd.service.v1</td>
+          <td>images-service</td>
+          <td>services/images/local.go</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.grpc.v1</td>
+          <td>healthcheck</td>
+          <td>services/healthcheck/service.go</td>
+          <td>gRPC接口：google.golang.org/grpc/health</td>
+      </tr>
+      <tr>
+          <td>io.containerd.grpc.v1</td>
+          <td>content</td>
+          <td>services/content/service.go</td>
+          <td>gRPC接口：api/services/content/v1，服务实例：snapshots-service</td>
+      </tr>
+      <tr>
+          <td>io.containerd.service.v1</td>
+          <td>content-service</td>
+          <td>services/content/store.go</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.grpc.v1</td>
+          <td>diff</td>
+          <td>services/diff/service.go</td>
+          <td>api/services/diff/v1，服务实例：diff-service</td>
+      </tr>
+      <tr>
+          <td>io.containerd.service.v1</td>
+          <td>diff-service</td>
+          <td>services/diff/local.go</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.grpc.v1</td>
+          <td>introspection</td>
+          <td>services/introspection/service.go</td>
+          <td>gRPC接口：api/services/introspection/v1，服务实例：introspection-service</td>
+      </tr>
+      <tr>
+          <td>io.containerd.service.v1</td>
+          <td>introspection-service</td>
+          <td>services/introspection/local.go</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.grpc.v1</td>
+          <td>namespace</td>
+          <td>services/namespace/service.go</td>
+          <td>gRPC接口：api/services/namespace/v1，服务实例：namespace-service</td>
+      </tr>
+      <tr>
+          <td>io.containerd.service.v1</td>
+          <td>namespace-service</td>
+          <td>services/namespace/local.go</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.grpc.v1</td>
+          <td>leases</td>
+          <td>services/leases/service.go</td>
+          <td>gRPC接口：api/services/leases/v1，服务实例：leases-service</td>
+      </tr>
+      <tr>
+          <td>io.containerd.service.v1</td>
+          <td>leases-service</td>
+          <td>services/leases/local.go</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.grpc.v1</td>
+          <td>version</td>
+          <td>services/version/service.go</td>
+          <td>gRPC接口：api/services/version/v1，服务实例：leases-service</td>
+      </tr>
+      <tr>
+          <td>io.containerd.grpc.v1</td>
+          <td>containers</td>
+          <td>services/containers/service.go</td>
+          <td>gRPC接口：api/services/containers/v1，服务实例：containers-service</td>
+      </tr>
+      <tr>
+          <td>io.containerd.service.v1</td>
+          <td>containers-service</td>
+          <td>services/containers/local.go</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.grpc.v1</td>
+          <td>events</td>
+          <td>services/events/service.go</td>
+          <td>gRPC接口：api/services/events/v1</td>
+      </tr>
+      <tr>
+          <td>io.containerd.snapshotter.v1</td>
+          <td>btrfs</td>
+          <td>snapshots/btrfs/plugin/plugin.go</td>
+          <td>TDO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.snapshotter.v1</td>
+          <td>native</td>
+          <td>snapshots/native/plugin/plugin.go</td>
+          <td>TDO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.snapshotter.v1</td>
+          <td>windows-lcow</td>
+          <td>snapshots/lcow/lcow.go</td>
+          <td>TDO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.snapshotter.v1</td>
+          <td>devmapper</td>
+          <td>snapshots/devmapper/plugin/plugin.go</td>
+          <td>TDO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.snapshotter.v1</td>
+          <td>windows</td>
+          <td>snapshots/windows/windows.go</td>
+          <td>TDO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.snapshotter.v1</td>
+          <td>overlayfs</td>
+          <td>snapshots/overlay/plugin/plugin.go</td>
+          <td>TDO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.monitor.v1</td>
+          <td>cgroups</td>
+          <td>metrics/cgroups/cgroups.go</td>
+          <td>容器在cgroup中的性能数据暴露至配置的&quot;Metrics&quot;服务,否则仅有containerd的grpc调用数据</td>
+      </tr>
+      <tr>
+          <td>io.containerd.differ.v1</td>
+          <td>windows-lcow</td>
+          <td>diff/lcow/lcow.go</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.differ.v1</td>
+          <td>walking</td>
+          <td>diff/walking/plugin/plugin.go</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.differ.v1</td>
+          <td>windows</td>
+          <td>diff/windows/windows.go</td>
+          <td>TODO</td>
+      </tr>
+      <tr>
+          <td>io.containerd.metadata.v1</td>
+          <td>bolt</td>
+          <td>services/server/server.go</td>
+          <td>TODO; 管理meta.db文件</td>
+      </tr>
+      <tr>
+          <td>io.containerd.content.v1</td>
+          <td>content</td>
+          <td>services/server/server.go</td>
+          <td>TODO; 管理本地&quot;ingest&quot;存储</td>
+      </tr>
+      <tr>
+          <td>io.containerd.gc.v1</td>
+          <td>scheduler</td>
+          <td>gc/scheduler/scheduler.go</td>
+          <td>TODO;</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="iocontainerdinternalv1restart">io.containerd.internal.v1.restart</h3>
 <pre tabindex="0"><code>// Config for the restart monitor
@@ -5424,7 +5706,7 @@ type Config struct {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

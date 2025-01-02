@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -26,63 +26,66 @@ apiVersion: audit.k8s.io/v1
 kind: Policy
 rules:
   - level: Metadata …">
-<meta property="og:title" content="审计日志" />
-<meta property="og:description" content="简要概述 TODO;
-配置示例 apiVersion: audit.k8s.io/v1 kind: Policy rules: - level: Metadata 数据结构 基于 &ldquo;kubernetes-1.26.11/staging/src/k8s.io/apiserver/pkg/apis/audit/v1/types.go&rdquo; 源文件。
-Policy // Policy defines the configuration of audit logging, and the rules for how different request // categories are logged. type Policy struct { metav1.TypeMeta `json:&#34;,inline&#34;` // ObjectMeta is included for interoperability with API infrastructure. // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // Rules specify the audit Level a request should be recorded at. // A request may match multiple rules, in which case the FIRST matching rule is used." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/concepts/policies/audit/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-12-29T17:33:58+08:00" />
-<meta property="article:modified_time" content="2024-01-02T10:53:02+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="审计日志">
-<meta itemprop="description" content="简要概述 TODO;
-配置示例 apiVersion: audit.k8s.io/v1 kind: Policy rules: - level: Metadata 数据结构 基于 &ldquo;kubernetes-1.26.11/staging/src/k8s.io/apiserver/pkg/apis/audit/v1/types.go&rdquo; 源文件。
-Policy // Policy defines the configuration of audit logging, and the rules for how different request // categories are logged. type Policy struct { metav1.TypeMeta `json:&#34;,inline&#34;` // ObjectMeta is included for interoperability with API infrastructure. // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // Rules specify the audit Level a request should be recorded at. // A request may match multiple rules, in which case the FIRST matching rule is used."><meta itemprop="datePublished" content="2023-12-29T17:33:58+08:00" />
-<meta itemprop="dateModified" content="2024-01-02T10:53:02+08:00" />
-<meta itemprop="wordCount" content="1035">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="审计日志"/>
-<meta name="twitter:description" content="简要概述 TODO;
-配置示例 apiVersion: audit.k8s.io/v1 kind: Policy rules: - level: Metadata 数据结构 基于 &ldquo;kubernetes-1.26.11/staging/src/k8s.io/apiserver/pkg/apis/audit/v1/types.go&rdquo; 源文件。
-Policy // Policy defines the configuration of audit logging, and the rules for how different request // categories are logged. type Policy struct { metav1.TypeMeta `json:&#34;,inline&#34;` // ObjectMeta is included for interoperability with API infrastructure. // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // Rules specify the audit Level a request should be recorded at. // A request may match multiple rules, in which case the FIRST matching rule is used."/>
+<meta property="og:url" content="/docs/concepts/policies/audit/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="审计日志">
+  <meta property="og:description" content="简要概述 TODO;
+配置示例 apiVersion: audit.k8s.io/v1 kind: Policy rules: - level: Metadata 数据结构 基于 “kubernetes-1.26.11/staging/src/k8s.io/apiserver/pkg/apis/audit/v1/types.go” 源文件。
+Policy // Policy defines the configuration of audit logging, and the rules for how different request // categories are logged. type Policy struct { metav1.TypeMeta `json:&#34;,inline&#34;` // ObjectMeta is included for interoperability with API infrastructure. // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // Rules specify the audit Level a request should be recorded at. // A request may match multiple rules, in which case the FIRST matching rule is used. // The default audit level is None, but can be overridden by a catch-all rule at the end of the list. // PolicyRules are strictly ordered. Rules []PolicyRule `json:&#34;rules&#34; protobuf:&#34;bytes,2,rep,name=rules&#34;` // OmitStages is a list of stages for which no events are created. Note that this can also // be specified per rule in which case the union of both are omitted. // &#43;optional OmitStages []Stage `json:&#34;omitStages,omitempty&#34; protobuf:&#34;bytes,3,rep,name=omitStages&#34;` // OmitManagedFields indicates whether to omit the managed fields of the request // and response bodies from being written to the API audit log. // This is used as a global default - a value of &#39;true&#39; will omit the managed fileds, // otherwise the managed fields will be included in the API audit log. // Note that this can also be specified per rule in which case the value specified // in a rule will override the global default. // &#43;optional OmitManagedFields bool `json:&#34;omitManagedFields,omitempty&#34; protobuf:&#34;varint,4,opt,name=omitManagedFields&#34;` } PolicyRule // PolicyRule maps requests based off metadata to an audit Level. // Requests must match the rules of every field (an intersection of rules). type PolicyRule struct { // The Level that requests matching this rule are recorded at. Level Level `json:&#34;level&#34; protobuf:&#34;bytes,1,opt,name=level,casttype=Level&#34;` // The users (by authenticated user name) this rule applies to. // An empty list implies every user. // &#43;optional Users []string `json:&#34;users,omitempty&#34; protobuf:&#34;bytes,2,rep,name=users&#34;` // The user groups this rule applies to. A user is considered matching // if it is a member of any of the UserGroups. // An empty list implies every user group. // &#43;optional UserGroups []string `json:&#34;userGroups,omitempty&#34; protobuf:&#34;bytes,3,rep,name=userGroups&#34;` // The verbs that match this rule. // An empty list implies every verb. // &#43;optional Verbs []string `json:&#34;verbs,omitempty&#34; protobuf:&#34;bytes,4,rep,name=verbs&#34;` // Rules can apply to API resources (such as &#34;pods&#34; or &#34;secrets&#34;), // non-resource URL paths (such as &#34;/api&#34;), or neither, but not both. // If neither is specified, the rule is treated as a default for all URLs. // Resources that this rule matches. An empty list implies all kinds in all API groups. // &#43;optional Resources []GroupResources `json:&#34;resources,omitempty&#34; protobuf:&#34;bytes,5,rep,name=resources&#34;` // Namespaces that this rule matches. // The empty string &#34;&#34; matches non-namespaced resources. // An empty list implies every namespace. // &#43;optional Namespaces []string `json:&#34;namespaces,omitempty&#34; protobuf:&#34;bytes,6,rep,name=namespaces&#34;` // NonResourceURLs is a set of URL paths that should be audited. // *s are allowed, but only as the full, final step in the path. // Examples: // &#34;/metrics&#34; - Log requests for apiserver metrics // &#34;/healthz*&#34; - Log all health checks // &#43;optional NonResourceURLs []string `json:&#34;nonResourceURLs,omitempty&#34; protobuf:&#34;bytes,7,rep,name=nonResourceURLs&#34;` // OmitStages is a list of stages for which no events are created. Note that this can also // be specified policy wide in which case the union of both are omitted. // An empty list means no restrictions will apply. // &#43;optional OmitStages []Stage `json:&#34;omitStages,omitempty&#34; protobuf:&#34;bytes,8,rep,name=omitStages&#34;` // OmitManagedFields indicates whether to omit the managed fields of the request // and response bodies from being written to the API audit log. // - a value of &#39;true&#39; will drop the managed fields from the API audit log // - a value of &#39;false&#39; indicates that the managed fileds should be included // in the API audit log // Note that the value, if specified, in this rule will override the global default // If a value is not specified then the global default specified in // Policy.OmitManagedFields will stand. // &#43;optional OmitManagedFields *bool `json:&#34;omitManagedFields,omitempty&#34; protobuf:&#34;varint,9,opt,name=omitManagedFields&#34;` } Stage // Stage defines the stages in request handling that audit events may be generated. type Stage string // Valid audit stages. const ( // The stage for events generated as soon as the audit handler receives the request, and before it // is delegated down the handler chain. StageRequestReceived Stage = &#34;RequestReceived&#34; // The stage for events generated once the response headers are sent, but before the response body // is sent. This stage is only generated for long-running requests (e.g. watch). StageResponseStarted Stage = &#34;ResponseStarted&#34; // The stage for events generated once the response body has been completed, and no more bytes // will be sent. StageResponseComplete Stage = &#34;ResponseComplete&#34; // The stage for events generated when a panic occurred. StagePanic Stage = &#34;Panic&#34; ) Level // Level defines the amount of information logged during auditing type Level string // Valid audit levels const ( // LevelNone disables auditing LevelNone Level = &#34;None&#34; // LevelMetadata provides the basic level of auditing. LevelMetadata Level = &#34;Metadata&#34; // LevelRequest provides Metadata level of auditing, and additionally // logs the request object (does not apply for non-resource requests). LevelRequest Level = &#34;Request&#34; // LevelRequestResponse provides Request level of auditing, and additionally // logs the response object (does not apply for non-resource requests). LevelRequestResponse Level = &#34;RequestResponse&#34; ) GroupResources // GroupResources represents resource kinds in an API group. type GroupResources struct { // Group is the name of the API group that contains the resources. // The empty string represents the core API group. // &#43;optional Group string `json:&#34;group,omitempty&#34; protobuf:&#34;bytes,1,opt,name=group&#34;` // Resources is a list of resources this rule applies to. // // For example: // &#39;pods&#39; matches pods. // &#39;pods/log&#39; matches the log subresource of pods. // &#39;*&#39; matches all resources and their subresources. // &#39;pods/*&#39; matches all subresources of pods. // &#39;*/scale&#39; matches all scale subresources. // // If wildcard is present, the validation rule will ensure resources do not // overlap with each other. // // An empty list implies all resources and subresources in this API groups apply. // &#43;optional Resources []string `json:&#34;resources,omitempty&#34; protobuf:&#34;bytes,2,rep,name=resources&#34;` // ResourceNames is a list of resource instance names that the policy matches. // Using this field requires Resources to be specified. // An empty list implies that every instance of the resource is matched. // &#43;optional ResourceNames []string `json:&#34;resourceNames,omitempty&#34; protobuf:&#34;bytes,3,rep,name=resourceNames&#34;` } Event // Event captures all the information that can be included in an API audit log. type Event struct { metav1.TypeMeta `json:&#34;,inline&#34;` // AuditLevel at which event was generated Level Level `json:&#34;level&#34; protobuf:&#34;bytes,1,opt,name=level,casttype=Level&#34;` // Unique audit ID, generated for each request. AuditID types.UID `json:&#34;auditID&#34; protobuf:&#34;bytes,2,opt,name=auditID,casttype=k8s.io/apimachinery/pkg/types.UID&#34;` // Stage of the request handling when this event instance was generated. Stage Stage `json:&#34;stage&#34; protobuf:&#34;bytes,3,opt,name=stage,casttype=Stage&#34;` // RequestURI is the request URI as sent by the client to a server. RequestURI string `json:&#34;requestURI&#34; protobuf:&#34;bytes,4,opt,name=requestURI&#34;` // Verb is the kubernetes verb associated with the request. // For non-resource requests, this is the lower-cased HTTP method. Verb string `json:&#34;verb&#34; protobuf:&#34;bytes,5,opt,name=verb&#34;` // Authenticated user information. User authnv1.UserInfo `json:&#34;user&#34; protobuf:&#34;bytes,6,opt,name=user&#34;` // Impersonated user information. // &#43;optional ImpersonatedUser *authnv1.UserInfo `json:&#34;impersonatedUser,omitempty&#34; protobuf:&#34;bytes,7,opt,name=impersonatedUser&#34;` // Source IPs, from where the request originated and intermediate proxies. // The source IPs are listed from (in order): // 1. X-Forwarded-For request header IPs // 2. X-Real-Ip header, if not present in the X-Forwarded-For list // 3. The remote address for the connection, if it doesn&#39;t match the last // IP in the list up to here (X-Forwarded-For or X-Real-Ip). // Note: All but the last IP can be arbitrarily set by the client. // &#43;optional SourceIPs []string `json:&#34;sourceIPs,omitempty&#34; protobuf:&#34;bytes,8,rep,name=sourceIPs&#34;` // UserAgent records the user agent string reported by the client. // Note that the UserAgent is provided by the client, and must not be trusted. // &#43;optional UserAgent string `json:&#34;userAgent,omitempty&#34; protobuf:&#34;bytes,16,opt,name=userAgent&#34;` // Object reference this request is targeted at. // Does not apply for List-type requests, or non-resource requests. // &#43;optional ObjectRef *ObjectReference `json:&#34;objectRef,omitempty&#34; protobuf:&#34;bytes,9,opt,name=objectRef&#34;` // The response status, populated even when the ResponseObject is not a Status type. // For successful responses, this will only include the Code and StatusSuccess. // For non-status type error responses, this will be auto-populated with the error Message. // &#43;optional ResponseStatus *metav1.Status `json:&#34;responseStatus,omitempty&#34; protobuf:&#34;bytes,10,opt,name=responseStatus&#34;` // API object from the request, in JSON format. The RequestObject is recorded as-is in the request // (possibly re-encoded as JSON), prior to version conversion, defaulting, admission or // merging. It is an external versioned object type, and may not be a valid object on its own. // Omitted for non-resource requests. Only logged at Request Level and higher. // &#43;optional RequestObject *runtime.Unknown `json:&#34;requestObject,omitempty&#34; protobuf:&#34;bytes,11,opt,name=requestObject&#34;` // API object returned in the response, in JSON. The ResponseObject is recorded after conversion // to the external type, and serialized as JSON. Omitted for non-resource requests. Only logged // at Response Level. // &#43;optional ResponseObject *runtime.Unknown `json:&#34;responseObject,omitempty&#34; protobuf:&#34;bytes,12,opt,name=responseObject&#34;` // Time the request reached the apiserver. // &#43;optional RequestReceivedTimestamp metav1.MicroTime `json:&#34;requestReceivedTimestamp&#34; protobuf:&#34;bytes,13,opt,name=requestReceivedTimestamp&#34;` // Time the request reached current audit stage. // &#43;optional StageTimestamp metav1.MicroTime `json:&#34;stageTimestamp&#34; protobuf:&#34;bytes,14,opt,name=stageTimestamp&#34;` // Annotations is an unstructured key value map stored with an audit event that may be set by // plugins invoked in the request serving chain, including authentication, authorization and // admission plugins. Note that these annotations are for the audit event, and do not correspond // to the metadata.annotations of the submitted object. Keys should uniquely identify the informing // component to avoid name collisions (e.g. podsecuritypolicy.admission.k8s.io/policy). Values // should be short. Annotations are included in the Metadata level. // &#43;optional Annotations map[string]string `json:&#34;annotations,omitempty&#34; protobuf:&#34;bytes,15,rep,name=annotations&#34;` } authnv1.UserInfo k8s.io/api/authentication/v1/types.go">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-12-29T17:33:58+08:00">
+    <meta property="article:modified_time" content="2024-12-23T15:58:55+08:00">
+
+  <meta itemprop="name" content="审计日志">
+  <meta itemprop="description" content="简要概述 TODO;
+配置示例 apiVersion: audit.k8s.io/v1 kind: Policy rules: - level: Metadata 数据结构 基于 “kubernetes-1.26.11/staging/src/k8s.io/apiserver/pkg/apis/audit/v1/types.go” 源文件。
+Policy // Policy defines the configuration of audit logging, and the rules for how different request // categories are logged. type Policy struct { metav1.TypeMeta `json:&#34;,inline&#34;` // ObjectMeta is included for interoperability with API infrastructure. // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // Rules specify the audit Level a request should be recorded at. // A request may match multiple rules, in which case the FIRST matching rule is used. // The default audit level is None, but can be overridden by a catch-all rule at the end of the list. // PolicyRules are strictly ordered. Rules []PolicyRule `json:&#34;rules&#34; protobuf:&#34;bytes,2,rep,name=rules&#34;` // OmitStages is a list of stages for which no events are created. Note that this can also // be specified per rule in which case the union of both are omitted. // &#43;optional OmitStages []Stage `json:&#34;omitStages,omitempty&#34; protobuf:&#34;bytes,3,rep,name=omitStages&#34;` // OmitManagedFields indicates whether to omit the managed fields of the request // and response bodies from being written to the API audit log. // This is used as a global default - a value of &#39;true&#39; will omit the managed fileds, // otherwise the managed fields will be included in the API audit log. // Note that this can also be specified per rule in which case the value specified // in a rule will override the global default. // &#43;optional OmitManagedFields bool `json:&#34;omitManagedFields,omitempty&#34; protobuf:&#34;varint,4,opt,name=omitManagedFields&#34;` } PolicyRule // PolicyRule maps requests based off metadata to an audit Level. // Requests must match the rules of every field (an intersection of rules). type PolicyRule struct { // The Level that requests matching this rule are recorded at. Level Level `json:&#34;level&#34; protobuf:&#34;bytes,1,opt,name=level,casttype=Level&#34;` // The users (by authenticated user name) this rule applies to. // An empty list implies every user. // &#43;optional Users []string `json:&#34;users,omitempty&#34; protobuf:&#34;bytes,2,rep,name=users&#34;` // The user groups this rule applies to. A user is considered matching // if it is a member of any of the UserGroups. // An empty list implies every user group. // &#43;optional UserGroups []string `json:&#34;userGroups,omitempty&#34; protobuf:&#34;bytes,3,rep,name=userGroups&#34;` // The verbs that match this rule. // An empty list implies every verb. // &#43;optional Verbs []string `json:&#34;verbs,omitempty&#34; protobuf:&#34;bytes,4,rep,name=verbs&#34;` // Rules can apply to API resources (such as &#34;pods&#34; or &#34;secrets&#34;), // non-resource URL paths (such as &#34;/api&#34;), or neither, but not both. // If neither is specified, the rule is treated as a default for all URLs. // Resources that this rule matches. An empty list implies all kinds in all API groups. // &#43;optional Resources []GroupResources `json:&#34;resources,omitempty&#34; protobuf:&#34;bytes,5,rep,name=resources&#34;` // Namespaces that this rule matches. // The empty string &#34;&#34; matches non-namespaced resources. // An empty list implies every namespace. // &#43;optional Namespaces []string `json:&#34;namespaces,omitempty&#34; protobuf:&#34;bytes,6,rep,name=namespaces&#34;` // NonResourceURLs is a set of URL paths that should be audited. // *s are allowed, but only as the full, final step in the path. // Examples: // &#34;/metrics&#34; - Log requests for apiserver metrics // &#34;/healthz*&#34; - Log all health checks // &#43;optional NonResourceURLs []string `json:&#34;nonResourceURLs,omitempty&#34; protobuf:&#34;bytes,7,rep,name=nonResourceURLs&#34;` // OmitStages is a list of stages for which no events are created. Note that this can also // be specified policy wide in which case the union of both are omitted. // An empty list means no restrictions will apply. // &#43;optional OmitStages []Stage `json:&#34;omitStages,omitempty&#34; protobuf:&#34;bytes,8,rep,name=omitStages&#34;` // OmitManagedFields indicates whether to omit the managed fields of the request // and response bodies from being written to the API audit log. // - a value of &#39;true&#39; will drop the managed fields from the API audit log // - a value of &#39;false&#39; indicates that the managed fileds should be included // in the API audit log // Note that the value, if specified, in this rule will override the global default // If a value is not specified then the global default specified in // Policy.OmitManagedFields will stand. // &#43;optional OmitManagedFields *bool `json:&#34;omitManagedFields,omitempty&#34; protobuf:&#34;varint,9,opt,name=omitManagedFields&#34;` } Stage // Stage defines the stages in request handling that audit events may be generated. type Stage string // Valid audit stages. const ( // The stage for events generated as soon as the audit handler receives the request, and before it // is delegated down the handler chain. StageRequestReceived Stage = &#34;RequestReceived&#34; // The stage for events generated once the response headers are sent, but before the response body // is sent. This stage is only generated for long-running requests (e.g. watch). StageResponseStarted Stage = &#34;ResponseStarted&#34; // The stage for events generated once the response body has been completed, and no more bytes // will be sent. StageResponseComplete Stage = &#34;ResponseComplete&#34; // The stage for events generated when a panic occurred. StagePanic Stage = &#34;Panic&#34; ) Level // Level defines the amount of information logged during auditing type Level string // Valid audit levels const ( // LevelNone disables auditing LevelNone Level = &#34;None&#34; // LevelMetadata provides the basic level of auditing. LevelMetadata Level = &#34;Metadata&#34; // LevelRequest provides Metadata level of auditing, and additionally // logs the request object (does not apply for non-resource requests). LevelRequest Level = &#34;Request&#34; // LevelRequestResponse provides Request level of auditing, and additionally // logs the response object (does not apply for non-resource requests). LevelRequestResponse Level = &#34;RequestResponse&#34; ) GroupResources // GroupResources represents resource kinds in an API group. type GroupResources struct { // Group is the name of the API group that contains the resources. // The empty string represents the core API group. // &#43;optional Group string `json:&#34;group,omitempty&#34; protobuf:&#34;bytes,1,opt,name=group&#34;` // Resources is a list of resources this rule applies to. // // For example: // &#39;pods&#39; matches pods. // &#39;pods/log&#39; matches the log subresource of pods. // &#39;*&#39; matches all resources and their subresources. // &#39;pods/*&#39; matches all subresources of pods. // &#39;*/scale&#39; matches all scale subresources. // // If wildcard is present, the validation rule will ensure resources do not // overlap with each other. // // An empty list implies all resources and subresources in this API groups apply. // &#43;optional Resources []string `json:&#34;resources,omitempty&#34; protobuf:&#34;bytes,2,rep,name=resources&#34;` // ResourceNames is a list of resource instance names that the policy matches. // Using this field requires Resources to be specified. // An empty list implies that every instance of the resource is matched. // &#43;optional ResourceNames []string `json:&#34;resourceNames,omitempty&#34; protobuf:&#34;bytes,3,rep,name=resourceNames&#34;` } Event // Event captures all the information that can be included in an API audit log. type Event struct { metav1.TypeMeta `json:&#34;,inline&#34;` // AuditLevel at which event was generated Level Level `json:&#34;level&#34; protobuf:&#34;bytes,1,opt,name=level,casttype=Level&#34;` // Unique audit ID, generated for each request. AuditID types.UID `json:&#34;auditID&#34; protobuf:&#34;bytes,2,opt,name=auditID,casttype=k8s.io/apimachinery/pkg/types.UID&#34;` // Stage of the request handling when this event instance was generated. Stage Stage `json:&#34;stage&#34; protobuf:&#34;bytes,3,opt,name=stage,casttype=Stage&#34;` // RequestURI is the request URI as sent by the client to a server. RequestURI string `json:&#34;requestURI&#34; protobuf:&#34;bytes,4,opt,name=requestURI&#34;` // Verb is the kubernetes verb associated with the request. // For non-resource requests, this is the lower-cased HTTP method. Verb string `json:&#34;verb&#34; protobuf:&#34;bytes,5,opt,name=verb&#34;` // Authenticated user information. User authnv1.UserInfo `json:&#34;user&#34; protobuf:&#34;bytes,6,opt,name=user&#34;` // Impersonated user information. // &#43;optional ImpersonatedUser *authnv1.UserInfo `json:&#34;impersonatedUser,omitempty&#34; protobuf:&#34;bytes,7,opt,name=impersonatedUser&#34;` // Source IPs, from where the request originated and intermediate proxies. // The source IPs are listed from (in order): // 1. X-Forwarded-For request header IPs // 2. X-Real-Ip header, if not present in the X-Forwarded-For list // 3. The remote address for the connection, if it doesn&#39;t match the last // IP in the list up to here (X-Forwarded-For or X-Real-Ip). // Note: All but the last IP can be arbitrarily set by the client. // &#43;optional SourceIPs []string `json:&#34;sourceIPs,omitempty&#34; protobuf:&#34;bytes,8,rep,name=sourceIPs&#34;` // UserAgent records the user agent string reported by the client. // Note that the UserAgent is provided by the client, and must not be trusted. // &#43;optional UserAgent string `json:&#34;userAgent,omitempty&#34; protobuf:&#34;bytes,16,opt,name=userAgent&#34;` // Object reference this request is targeted at. // Does not apply for List-type requests, or non-resource requests. // &#43;optional ObjectRef *ObjectReference `json:&#34;objectRef,omitempty&#34; protobuf:&#34;bytes,9,opt,name=objectRef&#34;` // The response status, populated even when the ResponseObject is not a Status type. // For successful responses, this will only include the Code and StatusSuccess. // For non-status type error responses, this will be auto-populated with the error Message. // &#43;optional ResponseStatus *metav1.Status `json:&#34;responseStatus,omitempty&#34; protobuf:&#34;bytes,10,opt,name=responseStatus&#34;` // API object from the request, in JSON format. The RequestObject is recorded as-is in the request // (possibly re-encoded as JSON), prior to version conversion, defaulting, admission or // merging. It is an external versioned object type, and may not be a valid object on its own. // Omitted for non-resource requests. Only logged at Request Level and higher. // &#43;optional RequestObject *runtime.Unknown `json:&#34;requestObject,omitempty&#34; protobuf:&#34;bytes,11,opt,name=requestObject&#34;` // API object returned in the response, in JSON. The ResponseObject is recorded after conversion // to the external type, and serialized as JSON. Omitted for non-resource requests. Only logged // at Response Level. // &#43;optional ResponseObject *runtime.Unknown `json:&#34;responseObject,omitempty&#34; protobuf:&#34;bytes,12,opt,name=responseObject&#34;` // Time the request reached the apiserver. // &#43;optional RequestReceivedTimestamp metav1.MicroTime `json:&#34;requestReceivedTimestamp&#34; protobuf:&#34;bytes,13,opt,name=requestReceivedTimestamp&#34;` // Time the request reached current audit stage. // &#43;optional StageTimestamp metav1.MicroTime `json:&#34;stageTimestamp&#34; protobuf:&#34;bytes,14,opt,name=stageTimestamp&#34;` // Annotations is an unstructured key value map stored with an audit event that may be set by // plugins invoked in the request serving chain, including authentication, authorization and // admission plugins. Note that these annotations are for the audit event, and do not correspond // to the metadata.annotations of the submitted object. Keys should uniquely identify the informing // component to avoid name collisions (e.g. podsecuritypolicy.admission.k8s.io/policy). Values // should be short. Annotations are included in the Metadata level. // &#43;optional Annotations map[string]string `json:&#34;annotations,omitempty&#34; protobuf:&#34;bytes,15,rep,name=annotations&#34;` } authnv1.UserInfo k8s.io/api/authentication/v1/types.go">
+  <meta itemprop="datePublished" content="2023-12-29T17:33:58+08:00">
+  <meta itemprop="dateModified" content="2024-12-23T15:58:55+08:00">
+  <meta itemprop="wordCount" content="1684">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="审计日志">
+  <meta name="twitter:description" content="简要概述 TODO;
+配置示例 apiVersion: audit.k8s.io/v1 kind: Policy rules: - level: Metadata 数据结构 基于 “kubernetes-1.26.11/staging/src/k8s.io/apiserver/pkg/apis/audit/v1/types.go” 源文件。
+Policy // Policy defines the configuration of audit logging, and the rules for how different request // categories are logged. type Policy struct { metav1.TypeMeta `json:&#34;,inline&#34;` // ObjectMeta is included for interoperability with API infrastructure. // &#43;optional metav1.ObjectMeta `json:&#34;metadata,omitempty&#34; protobuf:&#34;bytes,1,opt,name=metadata&#34;` // Rules specify the audit Level a request should be recorded at. // A request may match multiple rules, in which case the FIRST matching rule is used. // The default audit level is None, but can be overridden by a catch-all rule at the end of the list. // PolicyRules are strictly ordered. Rules []PolicyRule `json:&#34;rules&#34; protobuf:&#34;bytes,2,rep,name=rules&#34;` // OmitStages is a list of stages for which no events are created. Note that this can also // be specified per rule in which case the union of both are omitted. // &#43;optional OmitStages []Stage `json:&#34;omitStages,omitempty&#34; protobuf:&#34;bytes,3,rep,name=omitStages&#34;` // OmitManagedFields indicates whether to omit the managed fields of the request // and response bodies from being written to the API audit log. // This is used as a global default - a value of &#39;true&#39; will omit the managed fileds, // otherwise the managed fields will be included in the API audit log. // Note that this can also be specified per rule in which case the value specified // in a rule will override the global default. // &#43;optional OmitManagedFields bool `json:&#34;omitManagedFields,omitempty&#34; protobuf:&#34;varint,4,opt,name=omitManagedFields&#34;` } PolicyRule // PolicyRule maps requests based off metadata to an audit Level. // Requests must match the rules of every field (an intersection of rules). type PolicyRule struct { // The Level that requests matching this rule are recorded at. Level Level `json:&#34;level&#34; protobuf:&#34;bytes,1,opt,name=level,casttype=Level&#34;` // The users (by authenticated user name) this rule applies to. // An empty list implies every user. // &#43;optional Users []string `json:&#34;users,omitempty&#34; protobuf:&#34;bytes,2,rep,name=users&#34;` // The user groups this rule applies to. A user is considered matching // if it is a member of any of the UserGroups. // An empty list implies every user group. // &#43;optional UserGroups []string `json:&#34;userGroups,omitempty&#34; protobuf:&#34;bytes,3,rep,name=userGroups&#34;` // The verbs that match this rule. // An empty list implies every verb. // &#43;optional Verbs []string `json:&#34;verbs,omitempty&#34; protobuf:&#34;bytes,4,rep,name=verbs&#34;` // Rules can apply to API resources (such as &#34;pods&#34; or &#34;secrets&#34;), // non-resource URL paths (such as &#34;/api&#34;), or neither, but not both. // If neither is specified, the rule is treated as a default for all URLs. // Resources that this rule matches. An empty list implies all kinds in all API groups. // &#43;optional Resources []GroupResources `json:&#34;resources,omitempty&#34; protobuf:&#34;bytes,5,rep,name=resources&#34;` // Namespaces that this rule matches. // The empty string &#34;&#34; matches non-namespaced resources. // An empty list implies every namespace. // &#43;optional Namespaces []string `json:&#34;namespaces,omitempty&#34; protobuf:&#34;bytes,6,rep,name=namespaces&#34;` // NonResourceURLs is a set of URL paths that should be audited. // *s are allowed, but only as the full, final step in the path. // Examples: // &#34;/metrics&#34; - Log requests for apiserver metrics // &#34;/healthz*&#34; - Log all health checks // &#43;optional NonResourceURLs []string `json:&#34;nonResourceURLs,omitempty&#34; protobuf:&#34;bytes,7,rep,name=nonResourceURLs&#34;` // OmitStages is a list of stages for which no events are created. Note that this can also // be specified policy wide in which case the union of both are omitted. // An empty list means no restrictions will apply. // &#43;optional OmitStages []Stage `json:&#34;omitStages,omitempty&#34; protobuf:&#34;bytes,8,rep,name=omitStages&#34;` // OmitManagedFields indicates whether to omit the managed fields of the request // and response bodies from being written to the API audit log. // - a value of &#39;true&#39; will drop the managed fields from the API audit log // - a value of &#39;false&#39; indicates that the managed fileds should be included // in the API audit log // Note that the value, if specified, in this rule will override the global default // If a value is not specified then the global default specified in // Policy.OmitManagedFields will stand. // &#43;optional OmitManagedFields *bool `json:&#34;omitManagedFields,omitempty&#34; protobuf:&#34;varint,9,opt,name=omitManagedFields&#34;` } Stage // Stage defines the stages in request handling that audit events may be generated. type Stage string // Valid audit stages. const ( // The stage for events generated as soon as the audit handler receives the request, and before it // is delegated down the handler chain. StageRequestReceived Stage = &#34;RequestReceived&#34; // The stage for events generated once the response headers are sent, but before the response body // is sent. This stage is only generated for long-running requests (e.g. watch). StageResponseStarted Stage = &#34;ResponseStarted&#34; // The stage for events generated once the response body has been completed, and no more bytes // will be sent. StageResponseComplete Stage = &#34;ResponseComplete&#34; // The stage for events generated when a panic occurred. StagePanic Stage = &#34;Panic&#34; ) Level // Level defines the amount of information logged during auditing type Level string // Valid audit levels const ( // LevelNone disables auditing LevelNone Level = &#34;None&#34; // LevelMetadata provides the basic level of auditing. LevelMetadata Level = &#34;Metadata&#34; // LevelRequest provides Metadata level of auditing, and additionally // logs the request object (does not apply for non-resource requests). LevelRequest Level = &#34;Request&#34; // LevelRequestResponse provides Request level of auditing, and additionally // logs the response object (does not apply for non-resource requests). LevelRequestResponse Level = &#34;RequestResponse&#34; ) GroupResources // GroupResources represents resource kinds in an API group. type GroupResources struct { // Group is the name of the API group that contains the resources. // The empty string represents the core API group. // &#43;optional Group string `json:&#34;group,omitempty&#34; protobuf:&#34;bytes,1,opt,name=group&#34;` // Resources is a list of resources this rule applies to. // // For example: // &#39;pods&#39; matches pods. // &#39;pods/log&#39; matches the log subresource of pods. // &#39;*&#39; matches all resources and their subresources. // &#39;pods/*&#39; matches all subresources of pods. // &#39;*/scale&#39; matches all scale subresources. // // If wildcard is present, the validation rule will ensure resources do not // overlap with each other. // // An empty list implies all resources and subresources in this API groups apply. // &#43;optional Resources []string `json:&#34;resources,omitempty&#34; protobuf:&#34;bytes,2,rep,name=resources&#34;` // ResourceNames is a list of resource instance names that the policy matches. // Using this field requires Resources to be specified. // An empty list implies that every instance of the resource is matched. // &#43;optional ResourceNames []string `json:&#34;resourceNames,omitempty&#34; protobuf:&#34;bytes,3,rep,name=resourceNames&#34;` } Event // Event captures all the information that can be included in an API audit log. type Event struct { metav1.TypeMeta `json:&#34;,inline&#34;` // AuditLevel at which event was generated Level Level `json:&#34;level&#34; protobuf:&#34;bytes,1,opt,name=level,casttype=Level&#34;` // Unique audit ID, generated for each request. AuditID types.UID `json:&#34;auditID&#34; protobuf:&#34;bytes,2,opt,name=auditID,casttype=k8s.io/apimachinery/pkg/types.UID&#34;` // Stage of the request handling when this event instance was generated. Stage Stage `json:&#34;stage&#34; protobuf:&#34;bytes,3,opt,name=stage,casttype=Stage&#34;` // RequestURI is the request URI as sent by the client to a server. RequestURI string `json:&#34;requestURI&#34; protobuf:&#34;bytes,4,opt,name=requestURI&#34;` // Verb is the kubernetes verb associated with the request. // For non-resource requests, this is the lower-cased HTTP method. Verb string `json:&#34;verb&#34; protobuf:&#34;bytes,5,opt,name=verb&#34;` // Authenticated user information. User authnv1.UserInfo `json:&#34;user&#34; protobuf:&#34;bytes,6,opt,name=user&#34;` // Impersonated user information. // &#43;optional ImpersonatedUser *authnv1.UserInfo `json:&#34;impersonatedUser,omitempty&#34; protobuf:&#34;bytes,7,opt,name=impersonatedUser&#34;` // Source IPs, from where the request originated and intermediate proxies. // The source IPs are listed from (in order): // 1. X-Forwarded-For request header IPs // 2. X-Real-Ip header, if not present in the X-Forwarded-For list // 3. The remote address for the connection, if it doesn&#39;t match the last // IP in the list up to here (X-Forwarded-For or X-Real-Ip). // Note: All but the last IP can be arbitrarily set by the client. // &#43;optional SourceIPs []string `json:&#34;sourceIPs,omitempty&#34; protobuf:&#34;bytes,8,rep,name=sourceIPs&#34;` // UserAgent records the user agent string reported by the client. // Note that the UserAgent is provided by the client, and must not be trusted. // &#43;optional UserAgent string `json:&#34;userAgent,omitempty&#34; protobuf:&#34;bytes,16,opt,name=userAgent&#34;` // Object reference this request is targeted at. // Does not apply for List-type requests, or non-resource requests. // &#43;optional ObjectRef *ObjectReference `json:&#34;objectRef,omitempty&#34; protobuf:&#34;bytes,9,opt,name=objectRef&#34;` // The response status, populated even when the ResponseObject is not a Status type. // For successful responses, this will only include the Code and StatusSuccess. // For non-status type error responses, this will be auto-populated with the error Message. // &#43;optional ResponseStatus *metav1.Status `json:&#34;responseStatus,omitempty&#34; protobuf:&#34;bytes,10,opt,name=responseStatus&#34;` // API object from the request, in JSON format. The RequestObject is recorded as-is in the request // (possibly re-encoded as JSON), prior to version conversion, defaulting, admission or // merging. It is an external versioned object type, and may not be a valid object on its own. // Omitted for non-resource requests. Only logged at Request Level and higher. // &#43;optional RequestObject *runtime.Unknown `json:&#34;requestObject,omitempty&#34; protobuf:&#34;bytes,11,opt,name=requestObject&#34;` // API object returned in the response, in JSON. The ResponseObject is recorded after conversion // to the external type, and serialized as JSON. Omitted for non-resource requests. Only logged // at Response Level. // &#43;optional ResponseObject *runtime.Unknown `json:&#34;responseObject,omitempty&#34; protobuf:&#34;bytes,12,opt,name=responseObject&#34;` // Time the request reached the apiserver. // &#43;optional RequestReceivedTimestamp metav1.MicroTime `json:&#34;requestReceivedTimestamp&#34; protobuf:&#34;bytes,13,opt,name=requestReceivedTimestamp&#34;` // Time the request reached current audit stage. // &#43;optional StageTimestamp metav1.MicroTime `json:&#34;stageTimestamp&#34; protobuf:&#34;bytes,14,opt,name=stageTimestamp&#34;` // Annotations is an unstructured key value map stored with an audit event that may be set by // plugins invoked in the request serving chain, including authentication, authorization and // admission plugins. Note that these annotations are for the audit event, and do not correspond // to the metadata.annotations of the submitted object. Keys should uniquely identify the informing // component to avoid name collisions (e.g. podsecuritypolicy.admission.k8s.io/policy). Values // should be short. Annotations are included in the Metadata level. // &#43;optional Annotations map[string]string `json:&#34;annotations,omitempty&#34; protobuf:&#34;bytes,15,rep,name=annotations&#34;` } authnv1.UserInfo k8s.io/api/authentication/v1/types.go">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1045,6 +1048,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3078,9 +3098,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3094,10 +3114,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3157,6 +3380,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4211,6 +4493,8 @@ if (!doNotTrack) {
         <li><a href="#stage">Stage</a></li>
         <li><a href="#level">Level</a></li>
         <li><a href="#groupresources">GroupResources</a></li>
+        <li><a href="#event">Event</a></li>
+        <li><a href="#authnv1userinfo">authnv1.UserInfo</a></li>
       </ul>
     </li>
   </ul>
@@ -4284,7 +4568,7 @@ if (!doNotTrack) {
 			
 		
 		
-			<p class="reading-time"><i class="fa fa-clock" aria-hidden="true"></i>&nbsp; 5 分钟阅读 &nbsp;</p>
+			<p class="reading-time"><i class="fa fa-clock" aria-hidden="true"></i>&nbsp; 8 分钟阅读 &nbsp;</p>
 
 		
 	</header>    
@@ -4451,6 +4735,107 @@ if (!doNotTrack) {
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ResourceNames</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;resourceNames,omitempty&#34; protobuf:&#34;bytes,3,rep,name=resourceNames&#34;`</span>
 </span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="event">Event</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// Event captures all the information that can be included in an API audit log.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">Event</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">TypeMeta</span> <span style="color:#4e9a06">`json:&#34;,inline&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// AuditLevel at which event was generated
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Level</span> <span style="color:#000">Level</span> <span style="color:#4e9a06">`json:&#34;level&#34; protobuf:&#34;bytes,1,opt,name=level,casttype=Level&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Unique audit ID, generated for each request.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">AuditID</span> <span style="color:#000">types</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">UID</span> <span style="color:#4e9a06">`json:&#34;auditID&#34; protobuf:&#34;bytes,2,opt,name=auditID,casttype=k8s.io/apimachinery/pkg/types.UID&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Stage of the request handling when this event instance was generated.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Stage</span> <span style="color:#000">Stage</span> <span style="color:#4e9a06">`json:&#34;stage&#34; protobuf:&#34;bytes,3,opt,name=stage,casttype=Stage&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// RequestURI is the request URI as sent by the client to a server.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">RequestURI</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;requestURI&#34; protobuf:&#34;bytes,4,opt,name=requestURI&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Verb is the kubernetes verb associated with the request.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// For non-resource requests, this is the lower-cased HTTP method.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Verb</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;verb&#34; protobuf:&#34;bytes,5,opt,name=verb&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Authenticated user information.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">User</span> <span style="color:#000">authnv1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">UserInfo</span> <span style="color:#4e9a06">`json:&#34;user&#34; protobuf:&#34;bytes,6,opt,name=user&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Impersonated user information.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ImpersonatedUser</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">authnv1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">UserInfo</span> <span style="color:#4e9a06">`json:&#34;impersonatedUser,omitempty&#34; protobuf:&#34;bytes,7,opt,name=impersonatedUser&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Source IPs, from where the request originated and intermediate proxies.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// The source IPs are listed from (in order):
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// 1. X-Forwarded-For request header IPs
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// 2. X-Real-Ip header, if not present in the X-Forwarded-For list
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// 3. The remote address for the connection, if it doesn&#39;t match the last
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">//    IP in the list up to here (X-Forwarded-For or X-Real-Ip).
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Note: All but the last IP can be arbitrarily set by the client.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">SourceIPs</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;sourceIPs,omitempty&#34; protobuf:&#34;bytes,8,rep,name=sourceIPs&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// UserAgent records the user agent string reported by the client.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Note that the UserAgent is provided by the client, and must not be trusted.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">UserAgent</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;userAgent,omitempty&#34; protobuf:&#34;bytes,16,opt,name=userAgent&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Object reference this request is targeted at.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Does not apply for List-type requests, or non-resource requests.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ObjectRef</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">ObjectReference</span> <span style="color:#4e9a06">`json:&#34;objectRef,omitempty&#34; protobuf:&#34;bytes,9,opt,name=objectRef&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// The response status, populated even when the ResponseObject is not a Status type.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// For successful responses, this will only include the Code and StatusSuccess.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// For non-status type error responses, this will be auto-populated with the error Message.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ResponseStatus</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Status</span> <span style="color:#4e9a06">`json:&#34;responseStatus,omitempty&#34; protobuf:&#34;bytes,10,opt,name=responseStatus&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// API object from the request, in JSON format. The RequestObject is recorded as-is in the request
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// (possibly re-encoded as JSON), prior to version conversion, defaulting, admission or
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// merging. It is an external versioned object type, and may not be a valid object on its own.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// Omitted for non-resource requests.  Only logged at Request Level and higher.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">RequestObject</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">runtime</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Unknown</span> <span style="color:#4e9a06">`json:&#34;requestObject,omitempty&#34; protobuf:&#34;bytes,11,opt,name=requestObject&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// API object returned in the response, in JSON. The ResponseObject is recorded after conversion
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// to the external type, and serialized as JSON.  Omitted for non-resource requests.  Only logged
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// at Response Level.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">ResponseObject</span> <span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#000">runtime</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Unknown</span> <span style="color:#4e9a06">`json:&#34;responseObject,omitempty&#34; protobuf:&#34;bytes,12,opt,name=responseObject&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Time the request reached the apiserver.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">RequestReceivedTimestamp</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">MicroTime</span> <span style="color:#4e9a06">`json:&#34;requestReceivedTimestamp&#34; protobuf:&#34;bytes,13,opt,name=requestReceivedTimestamp&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Time the request reached current audit stage.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">StageTimestamp</span> <span style="color:#000">metav1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">MicroTime</span> <span style="color:#4e9a06">`json:&#34;stageTimestamp&#34; protobuf:&#34;bytes,14,opt,name=stageTimestamp&#34;`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Annotations is an unstructured key value map stored with an audit event that may be set by
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// plugins invoked in the request serving chain, including authentication, authorization and
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// admission plugins. Note that these annotations are for the audit event, and do not correspond
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// to the metadata.annotations of the submitted object. Keys should uniquely identify the informing
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// component to avoid name collisions (e.g. podsecuritypolicy.admission.k8s.io/policy). Values
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// should be short. Annotations are included in the Metadata level.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Annotations</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">]</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;annotations,omitempty&#34; protobuf:&#34;bytes,15,rep,name=annotations&#34;`</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="authnv1userinfo">authnv1.UserInfo</h3>
+<blockquote>
+<blockquote>
+<p>k8s.io/api/authentication/v1/types.go</p>
+</blockquote>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// UserInfo holds the information about the user needed to implement the
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// user.Info interface.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">UserInfo</span> <span style="color:#204a87;font-weight:bold">struct</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// The name that uniquely identifies this user among all active users.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Username</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;username,omitempty&#34; protobuf:&#34;bytes,1,opt,name=username&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// A unique value that identifies this user across time. If this user is
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// deleted and another user by the same name is added, they will have
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// different UIDs.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">UID</span> <span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;uid,omitempty&#34; protobuf:&#34;bytes,2,opt,name=uid&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// The names of groups this user is a part of.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Groups</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#204a87;font-weight:bold">string</span> <span style="color:#4e9a06">`json:&#34;groups,omitempty&#34; protobuf:&#34;bytes,3,rep,name=groups&#34;`</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic">// Any additional information provided by the authenticator.
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#8f5902;font-style:italic">// +optional
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span>    <span style="color:#000">Extra</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">]</span><span style="color:#000">ExtraValue</span> <span style="color:#4e9a06">`json:&#34;extra,omitempty&#34; protobuf:&#34;bytes,4,rep,name=extra&#34;`</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// ExtraValue masks the value so protobuf can generate
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// +protobuf.nullable=true
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// +protobuf.options.(gogoproto.goproto_stringer)=false
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">type</span> <span style="color:#000">ExtraValue</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#204a87;font-weight:bold">string</span>
 </span></span></code></pre></div>
 	
 		<br /><hr />
@@ -4520,7 +4905,7 @@ if (!doNotTrack) {
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  最后修改 2024.01.02: <a href="https://github.com/opsaid/website/commit/94e2d99761722f01515e774b549c46d1ab6f83bc">docs: add audit (94e2d99)</a>
+  最后修改 2024.12.23: <a href="https://github.com/opsaid/website/commit/bfc10647491bcf975ff83dec5e9d3e242ca0de6e">docs: add k8s audit event (bfc1064)</a>
 </div>
 
 </div>
@@ -4543,7 +4928,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

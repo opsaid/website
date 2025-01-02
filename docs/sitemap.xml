@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/docs/devops/argo-events/overview/</loc>
+    <lastmod>2024-06-07T17:34:34+08:00</lastmod>
+  </url><url>
     <loc>/docs/questions/control-plane/</loc>
     <lastmod>2024-04-23T17:51:09+08:00</lastmod>
   </url><url>
@@ -10,6 +13,9 @@
   </url><url>
     <loc>/docs/dev-framework/ebpf/program-types/</loc>
     <lastmod>2024-04-08T18:00:22+08:00</lastmod>
+  </url><url>
+    <loc>/docs/data-store/clickhouse/overview/</loc>
+    <lastmod>2024-03-21T15:47:35+08:00</lastmod>
   </url><url>
     <loc>/docs/networks/envoy/overview/</loc>
     <lastmod>2024-01-31T17:25:30+08:00</lastmod>
@@ -21,10 +27,10 @@
     <lastmod>2024-01-22T09:41:58+08:00</lastmod>
   </url><url>
     <loc>/docs/concepts/policies/rbac/</loc>
-    <lastmod>2024-01-02T15:59:58+08:00</lastmod>
+    <lastmod>2024-11-26T18:39:32+08:00</lastmod>
   </url><url>
     <loc>/docs/concepts/policies/audit/</loc>
-    <lastmod>2024-01-02T10:53:02+08:00</lastmod>
+    <lastmod>2024-12-23T15:58:55+08:00</lastmod>
   </url><url>
     <loc>/docs/security/scanning/vulnerability/</loc>
     <lastmod>2024-01-05T14:43:12+08:00</lastmod>
@@ -36,7 +42,7 @@
     <lastmod>2023-12-14T10:33:15+08:00</lastmod>
   </url><url>
     <loc>/docs/concepts/commons/metadata/</loc>
-    <lastmod>2023-12-28T16:58:21+08:00</lastmod>
+    <lastmod>2024-06-14T17:41:54+08:00</lastmod>
   </url><url>
     <loc>/docs/concepts/commons/</loc>
     <lastmod>2023-12-13T16:29:57+08:00</lastmod>
@@ -76,6 +82,9 @@
   </url><url>
     <loc>/docs/dev-framework/go/grpc-kit/</loc>
     <lastmod>2023-05-16T10:59:01+08:00</lastmod>
+  </url><url>
+    <loc>/docs/devops/argo-cd/overview/</loc>
+    <lastmod>2024-09-05T19:02:00+08:00</lastmod>
   </url><url>
     <loc>/docs/component/open-telemetry/collector/</loc>
     <lastmod>2023-11-02T14:23:01+08:00</lastmod>
@@ -158,8 +167,17 @@
     <loc>/docs/concepts/workloads/pods-affinity/</loc>
     <lastmod>2023-05-08T18:41:22+08:00</lastmod>
   </url><url>
+    <loc>/docs/devops/argo-cd/concepts/</loc>
+    <lastmod>2024-06-18T15:41:23+08:00</lastmod>
+  </url><url>
+    <loc>/docs/devops/argo-cd/datatype/</loc>
+    <lastmod>2024-06-18T15:41:23+08:00</lastmod>
+  </url><url>
+    <loc>/docs/devops/argo-events/data-type/</loc>
+    <lastmod>2024-06-07T17:34:34+08:00</lastmod>
+  </url><url>
     <loc>/docs/questions/control-plane/kube-apiserver/</loc>
-    <lastmod>2024-05-06T14:15:46+08:00</lastmod>
+    <lastmod>2024-06-18T15:42:48+08:00</lastmod>
   </url><url>
     <loc>/docs/dev-framework/ebpf/</loc>
     <lastmod>2024-04-02T15:57:31+08:00</lastmod>
@@ -196,6 +214,12 @@
   </url><url>
     <loc>/docs/component/cortex/server/</loc>
     <lastmod>2023-06-18T12:08:32+08:00</lastmod>
+  </url><url>
+    <loc>/docs/devops/argo-workflows/overview/</loc>
+    <lastmod>2024-11-12T17:54:31+08:00</lastmod>
+  </url><url>
+    <loc>/docs/devops/argo-cd/</loc>
+    <lastmod>2024-06-14T17:41:54+08:00</lastmod>
   </url><url>
     <loc>/docs/concepts/configuration/secrets/</loc>
     <lastmod>2023-05-12T14:56:40+08:00</lastmod>
@@ -242,8 +266,14 @@
     <loc>/docs/concepts/kubeadm/join/</loc>
     <lastmod>2023-01-28T23:55:24+08:00</lastmod>
   </url><url>
+    <loc>/docs/devops/argo-events/</loc>
+    <lastmod>2024-06-07T15:03:44+08:00</lastmod>
+  </url><url>
     <loc>/docs/networks/cilium/kube-proxy/</loc>
     <lastmod>2024-05-06T14:15:46+08:00</lastmod>
+  </url><url>
+    <loc>/docs/data-store/clickhouse/merge-tree/</loc>
+    <lastmod>2024-04-02T15:57:31+08:00</lastmod>
   </url><url>
     <loc>/docs/networks/envoy/listeners/</loc>
     <lastmod>2024-01-30T18:02:54+08:00</lastmod>
@@ -266,6 +296,9 @@
     <loc>/docs/component/cortex/distributor/</loc>
     <lastmod>2023-07-06T22:38:07+08:00</lastmod>
   </url><url>
+    <loc>/docs/devops/argo-workflows/data-type/</loc>
+    <lastmod>2024-11-19T17:55:58+08:00</lastmod>
+  </url><url>
     <loc>/docs/concepts/configuration/</loc>
     <lastmod>2023-05-12T14:56:40+08:00</lastmod>
   </url><url>
@@ -274,9 +307,6 @@
   </url><url>
     <loc>/docs/concepts/network/endpoints/</loc>
     <lastmod>2023-02-01T23:22:56+08:00</lastmod>
-  </url><url>
-    <loc>/docs/devops/gitlab/</loc>
-    <lastmod>2023-05-16T10:58:08+08:00</lastmod>
   </url><url>
     <loc>/docs/devops/packages/fpm/</loc>
     <lastmod>2023-05-11T15:53:45+08:00</lastmod>
@@ -295,6 +325,9 @@
   </url><url>
     <loc>/docs/cloud-monitor/alert-rules/</loc>
     <lastmod>2022-02-13T14:37:36+08:00</lastmod>
+  </url><url>
+    <loc>/docs/devops/argo-workflows/controller-config/</loc>
+    <lastmod>2024-11-19T17:55:58+08:00</lastmod>
   </url><url>
     <loc>/docs/networks/envoy/http/</loc>
     <lastmod>2024-01-30T18:02:54+08:00</lastmod>
@@ -319,6 +352,9 @@
   </url><url>
     <loc>/docs/component/cortex/ingester/</loc>
     <lastmod>2023-06-19T10:30:12+08:00</lastmod>
+  </url><url>
+    <loc>/docs/devops/argo-workflows/</loc>
+    <lastmod>2024-06-07T17:34:34+08:00</lastmod>
   </url><url>
     <loc>/docs/concepts/workloads/statefulsets/</loc>
     <lastmod>2023-05-08T11:44:33+08:00</lastmod>
@@ -356,6 +392,9 @@
     <loc>/docs/concepts/workloads/daemonsets/</loc>
     <lastmod>2023-05-08T18:41:22+08:00</lastmod>
   </url><url>
+    <loc>/docs/devops/gitlab/</loc>
+    <lastmod>2024-06-07T17:34:34+08:00</lastmod>
+  </url><url>
     <loc>/docs/component/kubelet/</loc>
     <lastmod>2023-02-08T23:17:58+08:00</lastmod>
   </url><url>
@@ -388,6 +427,9 @@
   </url><url>
     <loc>/docs/data-store/object-storage/list-objects-v2/</loc>
     <lastmod>2023-07-06T22:38:07+08:00</lastmod>
+  </url><url>
+    <loc>/docs/concepts/kubeadm/kubectl/</loc>
+    <lastmod>2024-11-19T17:55:58+08:00</lastmod>
   </url><url>
     <loc>/docs/networks/envoy/observability/</loc>
     <lastmod>2024-02-02T16:51:26+08:00</lastmod>
@@ -435,7 +477,7 @@
     <lastmod>2024-04-16T17:14:55+08:00</lastmod>
   </url><url>
     <loc>/docs/networks/envoy/security/</loc>
-    <lastmod>2024-03-20T11:25:06+08:00</lastmod>
+    <lastmod>2024-05-22T09:33:26+08:00</lastmod>
   </url><url>
     <loc>/docs/security/runtime/</loc>
     <lastmod>2024-01-05T14:43:12+08:00</lastmod>
@@ -456,7 +498,7 @@
     <lastmod>2024-01-08T10:03:02+08:00</lastmod>
   </url><url>
     <loc>/docs/questions/</loc>
-    <lastmod>2024-05-06T14:15:46+08:00</lastmod>
+    <lastmod>2024-05-06T16:38:11+08:00</lastmod>
   </url><url>
     <loc>/docs/component/cortex/ruler/</loc>
     <lastmod>2023-07-06T22:38:07+08:00</lastmod>

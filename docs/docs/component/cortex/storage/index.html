@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.110.0">
+<meta name="generator" content="Hugo 0.136.5">
 <meta name="robots" content="index, follow">
 
 
@@ -29,60 +29,63 @@ blocks_storage:
   bucket_store:
     sync_dir: ./data/cortex/tsdb-sync
   backend: …">
-<meta property="og:title" content="数据存储" />
-<meta property="og:description" content="简要概述 对 cortex 数据存储配置。
-配置示列 最小化 blocks_storage: tsdb: dir: ./data/cortex/tsdb bucket_store: sync_dir: ./data/cortex/tsdb-sync backend: filesystem 默认值 storage: engine: blocks blocks_storage: backend: filesystem s3: endpoint: &#34;&#34; region: &#34;&#34; bucket_name: &#34;&#34; secret_access_key: &#34;&#34; access_key_id: &#34;&#34; insecure: false signature_version: v4 bucket_lookup_type: auto sse: type: &#34;&#34; kms_key_id: &#34;&#34; kms_encryption_context: &#34;&#34; http: idle_conn_timeout: 1m30s response_header_timeout: 2m0s insecure_skip_verify: false tls_handshake_timeout: 10s expect_continue_timeout: 1s max_idle_connections: 100 max_idle_connections_per_host: 100 max_connections_per_host: 0 gcs: ... azure: ... swift: ... filesystem: dir: ." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/component/cortex/storage/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-06-18T12:51:46+08:00" />
-<meta property="article:modified_time" content="2023-08-08T15:39:13+08:00" /><meta property="og:site_name" content="OPSaid" />
-<meta itemprop="name" content="数据存储">
-<meta itemprop="description" content="简要概述 对 cortex 数据存储配置。
-配置示列 最小化 blocks_storage: tsdb: dir: ./data/cortex/tsdb bucket_store: sync_dir: ./data/cortex/tsdb-sync backend: filesystem 默认值 storage: engine: blocks blocks_storage: backend: filesystem s3: endpoint: &#34;&#34; region: &#34;&#34; bucket_name: &#34;&#34; secret_access_key: &#34;&#34; access_key_id: &#34;&#34; insecure: false signature_version: v4 bucket_lookup_type: auto sse: type: &#34;&#34; kms_key_id: &#34;&#34; kms_encryption_context: &#34;&#34; http: idle_conn_timeout: 1m30s response_header_timeout: 2m0s insecure_skip_verify: false tls_handshake_timeout: 10s expect_continue_timeout: 1s max_idle_connections: 100 max_idle_connections_per_host: 100 max_connections_per_host: 0 gcs: ... azure: ... swift: ... filesystem: dir: ."><meta itemprop="datePublished" content="2023-06-18T12:51:46+08:00" />
-<meta itemprop="dateModified" content="2023-08-08T15:39:13+08:00" />
-<meta itemprop="wordCount" content="934">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="数据存储"/>
-<meta name="twitter:description" content="简要概述 对 cortex 数据存储配置。
-配置示列 最小化 blocks_storage: tsdb: dir: ./data/cortex/tsdb bucket_store: sync_dir: ./data/cortex/tsdb-sync backend: filesystem 默认值 storage: engine: blocks blocks_storage: backend: filesystem s3: endpoint: &#34;&#34; region: &#34;&#34; bucket_name: &#34;&#34; secret_access_key: &#34;&#34; access_key_id: &#34;&#34; insecure: false signature_version: v4 bucket_lookup_type: auto sse: type: &#34;&#34; kms_key_id: &#34;&#34; kms_encryption_context: &#34;&#34; http: idle_conn_timeout: 1m30s response_header_timeout: 2m0s insecure_skip_verify: false tls_handshake_timeout: 10s expect_continue_timeout: 1s max_idle_connections: 100 max_idle_connections_per_host: 100 max_connections_per_host: 0 gcs: ... azure: ... swift: ... filesystem: dir: ."/>
+<meta property="og:url" content="/docs/component/cortex/storage/">
+  <meta property="og:site_name" content="OPSaid">
+  <meta property="og:title" content="数据存储">
+  <meta property="og:description" content="简要概述 对 cortex 数据存储配置。
+配置示列 最小化 blocks_storage: tsdb: dir: ./data/cortex/tsdb bucket_store: sync_dir: ./data/cortex/tsdb-sync backend: filesystem 默认值 storage: engine: blocks blocks_storage: backend: filesystem s3: endpoint: &#34;&#34; region: &#34;&#34; bucket_name: &#34;&#34; secret_access_key: &#34;&#34; access_key_id: &#34;&#34; insecure: false signature_version: v4 bucket_lookup_type: auto sse: type: &#34;&#34; kms_key_id: &#34;&#34; kms_encryption_context: &#34;&#34; http: idle_conn_timeout: 1m30s response_header_timeout: 2m0s insecure_skip_verify: false tls_handshake_timeout: 10s expect_continue_timeout: 1s max_idle_connections: 100 max_idle_connections_per_host: 100 max_connections_per_host: 0 gcs: ... azure: ... swift: ... filesystem: dir: ./data/tsdb bucket_store: sync_dir: ./data/cortex/tsdb-sync sync_interval: 15m0s max_concurrent: 100 tenant_sync_concurrency: 10 block_sync_concurrency: 20 meta_sync_concurrency: 20 consistency_delay: 0s index_cache: backend: inmemory inmemory: max_size_bytes: 1073741824 memcached: addresses: &#34;&#34; timeout: 100ms max_idle_connections: 16 max_async_concurrency: 50 max_async_buffer_size: 10000 max_get_multi_concurrency: 100 max_get_multi_batch_size: 0 max_item_size: 1048576 auto_discovery: false chunks_cache: backend: &#34;&#34; memcached: addresses: &#34;&#34; timeout: 100ms max_idle_connections: 16 max_async_concurrency: 50 max_async_buffer_size: 10000 max_get_multi_concurrency: 100 max_get_multi_batch_size: 0 max_item_size: 1048576 auto_discovery: false subrange_size: 16000 max_get_range_requests: 3 attributes_ttl: 168h0m0s subrange_ttl: 24h0m0s metadata_cache: backend: &#34;&#34; memcached: addresses: &#34;&#34; timeout: 100ms max_idle_connections: 16 max_async_concurrency: 50 max_async_buffer_size: 10000 max_get_multi_concurrency: 100 max_get_multi_batch_size: 0 max_item_size: 1048576 auto_discovery: false tenants_list_ttl: 15m0s tenant_blocks_list_ttl: 5m0s chunks_list_ttl: 24h0m0s metafile_exists_ttl: 2h0m0s metafile_doesnt_exist_ttl: 5m0s metafile_content_ttl: 24h0m0s metafile_max_size_bytes: 1048576 metafile_attributes_ttl: 168h0m0s block_index_attributes_ttl: 168h0m0s bucket_index_content_ttl: 5m0s bucket_index_max_size_bytes: 1048576 ignore_deletion_mark_delay: 6h0m0s bucket_index: enabled: false update_on_error_interval: 1m0s idle_timeout: 1h0m0s max_stale_period: 1h0m0s max_chunk_pool_bytes: 2147483648 chunk_pool_min_bucket_size_bytes: 16000 chunk_pool_max_bucket_size_bytes: 50000000 index_header_lazy_loading_enabled: false index_header_lazy_loading_idle_timeout: 20m0s partitioner_max_gap_bytes: 524288 postings_offsets_in_mem_sampling: 32 tsdb: dir: ./data/cortex/tsdb block_ranges_period: - 2h0m0s retention_period: 6h0m0s ship_interval: 1m0s ship_concurrency: 10 head_compaction_interval: 1m0s head_compaction_concurrency: 5 head_compaction_idle_timeout: 1h0m0s head_chunks_write_buffer_size_bytes: 4194304 stripe_size: 16384 wal_compression_enabled: false wal_segment_size_bytes: 134217728 flush_blocks_on_shutdown: false close_idle_tsdb_timeout: 0s max_tsdb_opening_concurrency_on_startup: 10 max_exemplars: 0 数据结构 Config github.com/cortexproject/cortex/pkg/storage/tsdb/config.go">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-06-18T12:51:46+08:00">
+    <meta property="article:modified_time" content="2023-08-08T15:39:13+08:00">
+
+  <meta itemprop="name" content="数据存储">
+  <meta itemprop="description" content="简要概述 对 cortex 数据存储配置。
+配置示列 最小化 blocks_storage: tsdb: dir: ./data/cortex/tsdb bucket_store: sync_dir: ./data/cortex/tsdb-sync backend: filesystem 默认值 storage: engine: blocks blocks_storage: backend: filesystem s3: endpoint: &#34;&#34; region: &#34;&#34; bucket_name: &#34;&#34; secret_access_key: &#34;&#34; access_key_id: &#34;&#34; insecure: false signature_version: v4 bucket_lookup_type: auto sse: type: &#34;&#34; kms_key_id: &#34;&#34; kms_encryption_context: &#34;&#34; http: idle_conn_timeout: 1m30s response_header_timeout: 2m0s insecure_skip_verify: false tls_handshake_timeout: 10s expect_continue_timeout: 1s max_idle_connections: 100 max_idle_connections_per_host: 100 max_connections_per_host: 0 gcs: ... azure: ... swift: ... filesystem: dir: ./data/tsdb bucket_store: sync_dir: ./data/cortex/tsdb-sync sync_interval: 15m0s max_concurrent: 100 tenant_sync_concurrency: 10 block_sync_concurrency: 20 meta_sync_concurrency: 20 consistency_delay: 0s index_cache: backend: inmemory inmemory: max_size_bytes: 1073741824 memcached: addresses: &#34;&#34; timeout: 100ms max_idle_connections: 16 max_async_concurrency: 50 max_async_buffer_size: 10000 max_get_multi_concurrency: 100 max_get_multi_batch_size: 0 max_item_size: 1048576 auto_discovery: false chunks_cache: backend: &#34;&#34; memcached: addresses: &#34;&#34; timeout: 100ms max_idle_connections: 16 max_async_concurrency: 50 max_async_buffer_size: 10000 max_get_multi_concurrency: 100 max_get_multi_batch_size: 0 max_item_size: 1048576 auto_discovery: false subrange_size: 16000 max_get_range_requests: 3 attributes_ttl: 168h0m0s subrange_ttl: 24h0m0s metadata_cache: backend: &#34;&#34; memcached: addresses: &#34;&#34; timeout: 100ms max_idle_connections: 16 max_async_concurrency: 50 max_async_buffer_size: 10000 max_get_multi_concurrency: 100 max_get_multi_batch_size: 0 max_item_size: 1048576 auto_discovery: false tenants_list_ttl: 15m0s tenant_blocks_list_ttl: 5m0s chunks_list_ttl: 24h0m0s metafile_exists_ttl: 2h0m0s metafile_doesnt_exist_ttl: 5m0s metafile_content_ttl: 24h0m0s metafile_max_size_bytes: 1048576 metafile_attributes_ttl: 168h0m0s block_index_attributes_ttl: 168h0m0s bucket_index_content_ttl: 5m0s bucket_index_max_size_bytes: 1048576 ignore_deletion_mark_delay: 6h0m0s bucket_index: enabled: false update_on_error_interval: 1m0s idle_timeout: 1h0m0s max_stale_period: 1h0m0s max_chunk_pool_bytes: 2147483648 chunk_pool_min_bucket_size_bytes: 16000 chunk_pool_max_bucket_size_bytes: 50000000 index_header_lazy_loading_enabled: false index_header_lazy_loading_idle_timeout: 20m0s partitioner_max_gap_bytes: 524288 postings_offsets_in_mem_sampling: 32 tsdb: dir: ./data/cortex/tsdb block_ranges_period: - 2h0m0s retention_period: 6h0m0s ship_interval: 1m0s ship_concurrency: 10 head_compaction_interval: 1m0s head_compaction_concurrency: 5 head_compaction_idle_timeout: 1h0m0s head_chunks_write_buffer_size_bytes: 4194304 stripe_size: 16384 wal_compression_enabled: false wal_segment_size_bytes: 134217728 flush_blocks_on_shutdown: false close_idle_tsdb_timeout: 0s max_tsdb_opening_concurrency_on_startup: 10 max_exemplars: 0 数据结构 Config github.com/cortexproject/cortex/pkg/storage/tsdb/config.go">
+  <meta itemprop="datePublished" content="2023-06-18T12:51:46+08:00">
+  <meta itemprop="dateModified" content="2023-08-08T15:39:13+08:00">
+  <meta itemprop="wordCount" content="934">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="数据存储">
+  <meta name="twitter:description" content="简要概述 对 cortex 数据存储配置。
+配置示列 最小化 blocks_storage: tsdb: dir: ./data/cortex/tsdb bucket_store: sync_dir: ./data/cortex/tsdb-sync backend: filesystem 默认值 storage: engine: blocks blocks_storage: backend: filesystem s3: endpoint: &#34;&#34; region: &#34;&#34; bucket_name: &#34;&#34; secret_access_key: &#34;&#34; access_key_id: &#34;&#34; insecure: false signature_version: v4 bucket_lookup_type: auto sse: type: &#34;&#34; kms_key_id: &#34;&#34; kms_encryption_context: &#34;&#34; http: idle_conn_timeout: 1m30s response_header_timeout: 2m0s insecure_skip_verify: false tls_handshake_timeout: 10s expect_continue_timeout: 1s max_idle_connections: 100 max_idle_connections_per_host: 100 max_connections_per_host: 0 gcs: ... azure: ... swift: ... filesystem: dir: ./data/tsdb bucket_store: sync_dir: ./data/cortex/tsdb-sync sync_interval: 15m0s max_concurrent: 100 tenant_sync_concurrency: 10 block_sync_concurrency: 20 meta_sync_concurrency: 20 consistency_delay: 0s index_cache: backend: inmemory inmemory: max_size_bytes: 1073741824 memcached: addresses: &#34;&#34; timeout: 100ms max_idle_connections: 16 max_async_concurrency: 50 max_async_buffer_size: 10000 max_get_multi_concurrency: 100 max_get_multi_batch_size: 0 max_item_size: 1048576 auto_discovery: false chunks_cache: backend: &#34;&#34; memcached: addresses: &#34;&#34; timeout: 100ms max_idle_connections: 16 max_async_concurrency: 50 max_async_buffer_size: 10000 max_get_multi_concurrency: 100 max_get_multi_batch_size: 0 max_item_size: 1048576 auto_discovery: false subrange_size: 16000 max_get_range_requests: 3 attributes_ttl: 168h0m0s subrange_ttl: 24h0m0s metadata_cache: backend: &#34;&#34; memcached: addresses: &#34;&#34; timeout: 100ms max_idle_connections: 16 max_async_concurrency: 50 max_async_buffer_size: 10000 max_get_multi_concurrency: 100 max_get_multi_batch_size: 0 max_item_size: 1048576 auto_discovery: false tenants_list_ttl: 15m0s tenant_blocks_list_ttl: 5m0s chunks_list_ttl: 24h0m0s metafile_exists_ttl: 2h0m0s metafile_doesnt_exist_ttl: 5m0s metafile_content_ttl: 24h0m0s metafile_max_size_bytes: 1048576 metafile_attributes_ttl: 168h0m0s block_index_attributes_ttl: 168h0m0s bucket_index_content_ttl: 5m0s bucket_index_max_size_bytes: 1048576 ignore_deletion_mark_delay: 6h0m0s bucket_index: enabled: false update_on_error_interval: 1m0s idle_timeout: 1h0m0s max_stale_period: 1h0m0s max_chunk_pool_bytes: 2147483648 chunk_pool_min_bucket_size_bytes: 16000 chunk_pool_max_bucket_size_bytes: 50000000 index_header_lazy_loading_enabled: false index_header_lazy_loading_idle_timeout: 20m0s partitioner_max_gap_bytes: 524288 postings_offsets_in_mem_sampling: 32 tsdb: dir: ./data/cortex/tsdb block_ranges_period: - 2h0m0s retention_period: 6h0m0s ship_interval: 1m0s ship_concurrency: 10 head_compaction_interval: 1m0s head_compaction_concurrency: 5 head_compaction_idle_timeout: 1h0m0s head_chunks_write_buffer_size_bytes: 4194304 stripe_size: 16384 wal_compression_enabled: false wal_segment_size_bytes: 134217728 flush_blocks_on_shutdown: false close_idle_tsdb_timeout: 0s max_tsdb_opening_concurrency_on_startup: 10 max_exemplars: 0 数据结构 Config github.com/cortexproject/cortex/pkg/storage/tsdb/config.go">
 
 
 
 
-<link rel="preload" href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" as="style">
-<link href="/scss/main.min.d9b2999c72c4c8075f66361035985c5d23565e53e1bc846e62d4563503c1b23d.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" as="style">
+<link href="/scss/main.min.8a734cb0e5eb9d3566a94ec29cabad810674aef135be16c4d6185681d594cc11.css" rel="stylesheet" integrity="">
 
 <script
   src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"
   integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
   crossorigin="anonymous"></script>
 
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFF7X9XZ');</script>
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SG6KNH7GMM"></script>
 <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?29e809336f76b78232deae2a6d1857ba";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SG6KNH7GMM');
 </script>
 
-
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-168659370-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body class="td-page">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFF7X9XZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -1045,6 +1048,23 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkube-proxy-a" href="/docs/concepts/kubeadm/kube-proxy/">Kube Proxy</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsconceptskubeadmkubectl">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptskubeadmkubectl-a" href="/docs/concepts/kubeadm/kubectl/">Kubectl</a>
                     
                   </span>
                   
@@ -3078,9 +3098,9 @@ if (!doNotTrack) {
 
 
   
-    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
-      <input type="checkbox" id="docsdevopsgitlab-check"/>
-      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-cd">
+      <input type="checkbox" id="docsdevopsargo-cd-check"/>
+      <label for="docsdevopsargo-cd-check" ><a href="/docs/devops/argo-cd/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo CD</a></label>
       
         
         
@@ -3094,10 +3114,213 @@ if (!doNotTrack) {
               
               
               
-                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdoverview">
                   <span >
                     
-                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdoverview-a" href="/docs/devops/argo-cd/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cdconcepts">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cdconcepts-a" href="/docs/devops/argo-cd/concepts/">核心概念</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-cddatatype">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-cddatatype-a" href="/docs/devops/argo-cd/datatype/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-events">
+      <input type="checkbox" id="docsdevopsargo-events-check"/>
+      <label for="docsdevopsargo-events-check" ><a href="/docs/devops/argo-events/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Events</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsoverview-a" href="/docs/devops/argo-events/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-eventsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-eventsdata-type-a" href="/docs/devops/argo-events/data-type/">数据结构</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsargo-workflows">
+      <input type="checkbox" id="docsdevopsargo-workflows-check"/>
+      <label for="docsdevopsargo-workflows-check" ><a href="/docs/devops/argo-workflows/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Argo Workflows</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsoverview">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsoverview-a" href="/docs/devops/argo-workflows/overview/">快速开始</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowsdata-type">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowsdata-type-a" href="/docs/devops/argo-workflows/data-type/">接口定义</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsargo-workflowscontroller-config">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsargo-workflowscontroller-config-a" href="/docs/devops/argo-workflows/controller-config/">启动配置</a>
                     
                   </span>
                   
@@ -3157,6 +3380,65 @@ if (!doNotTrack) {
                   <span >
                     
                       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopskubeadmetcd-a" href="/docs/devops/kubeadm/etcd/">Etcd</a>
+                    
+                  </span>
+                  
+                </li>
+            
+          
+        
+
+      </ul>
+    </li>
+  
+
+            
+          
+        
+          
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <li class="section td-sidebar-nav__section-title td-sidebar-nav__section with-sib collapsed" id="docsdevopsgitlab">
+      <input type="checkbox" id="docsdevopsgitlab-check"/>
+      <label for="docsdevopsgitlab-check" ><a href="/docs/devops/gitlab/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Gitlab</a></label>
+      
+        
+        
+      
+      <ul class="ul-3 collapsed">
+
+        
+          
+            
+              
+              
+              
+              
+                <li class="without-sib collapsed" id="m-docsdevopsgitlabgiltab-ci">
+                  <span >
+                    
+                      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsdevopsgitlabgiltab-ci-a" href="/docs/devops/gitlab/giltab-ci/">Runner</a>
                     
                   </span>
                   
@@ -4704,7 +4986,7 @@ if (!doNotTrack) {
       </div>
       <div class="col- col-sm-12 text-center py-2 order-sm-2">
         <p class="mt-2">
-          <small class="text-white">&copy; 2024 The OPSaid Authors. 保留所有权利</small>
+          <small class="text-white">&copy; 2025 The OPSaid Authors. 保留所有权利</small>
           <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">隐私政策</a></small>
 
 	

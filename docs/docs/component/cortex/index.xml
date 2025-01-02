@@ -4,6 +4,7 @@
     <link>/docs/component/cortex/</link>
     <description>Recent content in cortex on OPSaid</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
     <lastBuildDate>Mon, 29 May 2023 14:11:56 +0800</lastBuildDate>
     
 	  <atom:link href="/docs/component/cortex/index.xml" rel="self" type="application/rss+xml" />
@@ -229,12 +230,12 @@
 &lt;blockquote&gt;
 &lt;p&gt;github.com/cortexproject/cortex/pkg/distributor/distributor.go&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/distributor/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#34;&gt;Distributor&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/distributor/#数据结构&#34;&gt;Distributor&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;querierconfig&#34;&gt;querier.Config&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;github.com/cortexproject/cortex/pkg/querier/querier.go&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/querier/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#34;&gt;Querier&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/querier/#数据结构&#34;&gt;Querier&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;clientconfig&#34;&gt;client.Config&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;github.com/cortexproject/cortex/pkg/ingester/client/client.go&lt;/p&gt;
@@ -280,7 +281,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;github.com/cortexproject/cortex/pkg/frontend/config.go&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/frontend/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#34;&gt;Frontend&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/frontend/#数据结构&#34;&gt;Frontend&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;queryrangeconfig&#34;&gt;queryrange.Config&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;github.com/cortexproject/cortex/pkg/querier/tripperware/queryrange/query_range_middlewares.go&lt;/p&gt;
@@ -302,17 +303,17 @@
 &lt;blockquote&gt;
 &lt;p&gt;github.com/cortexproject/cortex/pkg/storage/tsdb/config.go&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/storage/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#34;&gt;数据存储&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/storage/#数据结构&#34;&gt;数据存储&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;compactorconfig&#34;&gt;compactor.Config&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;github.com/cortexproject/cortex/pkg/compactor/compactor.go&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/compactor/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#34;&gt;Compactor&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/compactor/#数据结构&#34;&gt;Compactor&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;storegatewayconfig&#34;&gt;storegateway.Config&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;github.com/cortexproject/cortex/pkg/storegateway/&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/store-gateway/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#34;&gt;Store Gateway&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/store-gateway/#数据结构&#34;&gt;Store Gateway&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;tenantfederationconfig&#34;&gt;tenantfederation.Config&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;github.com/cortexproject/cortex/pkg/querier/tenantfederation/tenant_federation.go&lt;/p&gt;
@@ -325,12 +326,12 @@
 &lt;blockquote&gt;
 &lt;p&gt;github.com/cortexproject/cortex/pkg/ruler/ruler.go&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/ruler/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#34;&gt;Ruler&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/ruler/#数据结构&#34;&gt;Ruler&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;rulestoreconfig&#34;&gt;rulestore.Config&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;github.com/cortexproject/cortex/pkg/ruler/rulestore/config.go&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/ruler/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#34;&gt;Ruler&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/ruler/#数据结构&#34;&gt;Ruler&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;configsconfig&#34;&gt;configs.Config&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;github.com/cortexproject/cortex/pkg/configs/config.go&lt;/p&gt;
@@ -344,7 +345,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;github.com/cortexproject/cortex/pkg/alertmanager/multitenant.go&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/alertmanager/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#34;&gt;Alertmanager&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;见&lt;a href=&#34;/docs/component/cortex/alertmanager/#数据结构&#34;&gt;Alertmanager&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;alertstoreconfig&#34;&gt;alertstore.Config&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;github.com/cortexproject/cortex/pkg/alertmanager/alertstore/config.go&lt;/p&gt;
@@ -459,13 +460,15 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;参数解析&#34;&gt;参数解析&lt;/h2&gt;
 &lt;h3 id=&#34;命令行参数&#34;&gt;命令行参数&lt;/h3&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;名称&lt;/th&gt;
-&lt;th&gt;默认值&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;名称&lt;/th&gt;
+          &lt;th&gt;默认值&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;数据结构&#34;&gt;数据结构&lt;/h2&gt;
 &lt;h3 id=&#34;config&#34;&gt;Config&lt;/h3&gt;
@@ -1604,7 +1607,7 @@
 &lt;/ol&gt;
 &lt;p&gt;垂直压缩将同一时间范围（默认为2小时）内由输入者上传的租户的所有块合并为一个块，并且通过去重复样本将原本写入 N 个块（由于复制而产生）。这一步将每个租户在单个2小时时间范围内的块数从 #(输入者的数量) 减少到1。&lt;/p&gt;
 &lt;p&gt;水平压缩在垂直压缩之后触发，将相邻的两个2小时时间范围内的多个块压缩为一个更大的块。尽管此压缩后块块块的总大小不会改变，但它仍然可以显著减少存储网关在内存中保留的索引和索引头的大小。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cortexmetrics.io/images/blocks-storage/compactor-horizontal-and-vertical-compaction.png&#34; alt=&#34;jpg1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;jpg1&#34; src=&#34;https://cortexmetrics.io/images/blocks-storage/compactor-horizontal-and-vertical-compaction.png&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;分片支持&#34;&gt;分片支持&lt;/h2&gt;
 &lt;p&gt;启用分片后，多个实例可以协作，通过租户对块进行分片和分配工作负载。在任何给定时间，一个租户的所有块由单个块压缩器实例处理，但不同租户的压缩可以同时在不同的块压缩器实例上运行。&lt;/p&gt;
 &lt;p&gt;每当块压缩器池增加或减少时（例如扩容或缩容），租户将在可用的块压缩器实例之间进行重新分片，无需手动干预。&lt;/p&gt;

@@ -4,6 +4,7 @@
     <link>/docs/component/open-telemetry/</link>
     <description>Recent content in OpenTelemetry on OPSaid</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
     <lastBuildDate>Sun, 14 May 2023 11:32:08 +0800</lastBuildDate>
     
 	  <atom:link href="/docs/component/open-telemetry/index.xml" rel="self" type="application/rss+xml" />
@@ -240,7 +241,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;github.com/open-telemetry/opentelemetry-collector/connector&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;用于连接 &lt;a href=&#34;&#34;&gt;Receivers&lt;/a&gt; 与 &lt;a href=&#34;&#34;&gt;Exporters&lt;/a&gt; 两个组件且作为其中的管道，起点用于接收 &lt;a href=&#34;&#34;&gt;Receivers&lt;/a&gt; 数据，终点用于 &lt;a href=&#34;&#34;&gt;Exporters&lt;/a&gt; 导出数据。&lt;/p&gt;
+&lt;p&gt;用于连接 &lt;a href=&#34;/&#34;&gt;Receivers&lt;/a&gt; 与 &lt;a href=&#34;/&#34;&gt;Exporters&lt;/a&gt; 两个组件且作为其中的管道，起点用于接收 &lt;a href=&#34;/&#34;&gt;Receivers&lt;/a&gt; 数据，终点用于 &lt;a href=&#34;/&#34;&gt;Exporters&lt;/a&gt; 导出数据。&lt;/p&gt;
 &lt;p&gt;它可以消费和发出相同数据类型或不同数据类型的数据，连接器可以生成并发送数据来汇总消耗的数据，也可以简单地复制或路由数据。&lt;/p&gt;
 &lt;p&gt;根据 &lt;a href=&#34;/docs/component/open-telemetry/collector/#config&#34;&gt;Config&lt;/a&gt; 转换 yaml 配置如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;connectors&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -293,7 +294,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;service&#34;&gt;Service&lt;/h3&gt;
 &lt;p&gt;由 telemetry、extensions、pipelines 三部分组成。&lt;/p&gt;
-&lt;p&gt;其中 telemetry 用于自身进程的遥感配置，而 extensions、pipelines 用于根据 &lt;a href=&#34;/docs/component/open-telemetry/collector/#receivers&#34;&gt;Receivers&lt;/a&gt;、&lt;a href=&#34;&#34;&gt;Processors&lt;/a&gt;、&lt;a href=&#34;/docs/component/open-telemetry/collector/#exporters&#34;&gt;Exporters&lt;/a&gt;、&lt;a href=&#34;&#34;&gt;Extensions&lt;/a&gt; 部分中的配置启用的组件，如果组件已配置，但未在这里定义，则不会启用该组件。&lt;/p&gt;
+&lt;p&gt;其中 telemetry 用于自身进程的遥感配置，而 extensions、pipelines 用于根据 &lt;a href=&#34;/docs/component/open-telemetry/collector/#receivers&#34;&gt;Receivers&lt;/a&gt;、&lt;a href=&#34;/&#34;&gt;Processors&lt;/a&gt;、&lt;a href=&#34;/docs/component/open-telemetry/collector/#exporters&#34;&gt;Exporters&lt;/a&gt;、&lt;a href=&#34;/&#34;&gt;Extensions&lt;/a&gt; 部分中的配置启用的组件，如果组件已配置，但未在这里定义，则不会启用该组件。&lt;/p&gt;
 &lt;p&gt;配置示例：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;service&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;telemetry&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -713,35 +714,35 @@
 &lt;p&gt;在应用程序使用 sdk &lt;a href=&#34;https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider&#34;&gt;go.opentelemetry.io/otel/sdk/trace&lt;/a&gt; 设置采集频率。&lt;/p&gt;
 &lt;h2 id=&#34;采样频率&#34;&gt;采样频率&lt;/h2&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;方法&lt;/th&gt;
-&lt;th&gt;示例&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;AlwaysSample()&lt;/td&gt;
-&lt;td&gt;-&lt;/td&gt;
-&lt;td&gt;总是采集不会遗漏任何 Span，也等于 TraceIDRatioBased(1)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;NeverSample()&lt;/td&gt;
-&lt;td&gt;-&lt;/td&gt;
-&lt;td&gt;关闭采集不会上报任何 Span，也等于 TraceIDRatioBased(0)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;TraceIDRatioBased(fraction float64)&lt;/td&gt;
-&lt;td&gt;0.5&lt;/td&gt;
-&lt;td&gt;给定一个 0 至 1 之间的分数决定采样频率&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;ParentBased(root Sampler) Sampler&lt;/td&gt;
-&lt;td&gt;-&lt;/td&gt;
-&lt;td&gt;复合采样器&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;方法&lt;/th&gt;
+          &lt;th&gt;示例&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;AlwaysSample()&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;总是采集不会遗漏任何 Span，也等于 TraceIDRatioBased(1)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;NeverSample()&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;关闭采集不会上报任何 Span，也等于 TraceIDRatioBased(0)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;TraceIDRatioBased(fraction float64)&lt;/td&gt;
+          &lt;td&gt;0.5&lt;/td&gt;
+          &lt;td&gt;给定一个 0 至 1 之间的分数决定采样频率&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;ParentBased(root Sampler) Sampler&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+          &lt;td&gt;复合采样器&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;应用场景&#34;&gt;应用场景&lt;/h2&gt;
 &lt;h3 id=&#34;对所有请求进行采样&#34;&gt;对所有请求进行采样&lt;/h3&gt;
@@ -822,7 +823,7 @@
 &lt;h2 id=&#34;模型详情&#34;&gt;模型详情&lt;/h2&gt;
 &lt;h3 id=&#34;事件&#34;&gt;事件&lt;/h3&gt;
 &lt;p&gt;是记录数据的地方，它的基础是仪器（Instruments），主要数据是指标数据点（时间戳+值），用于通过事件记录观测数据，然后将这些原始事件发送到其他系统之前以某种方式进行转换。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://opentelemetry.io/docs/specs/otel/metrics/img/model-event-layer.png&#34; alt=&#34;jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;jpg&#34; src=&#34;https://opentelemetry.io/docs/specs/otel/metrics/img/model-event-layer.png&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;上图显示了仪器（Instruments）如何将事件转换为多种类型的指标流。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -880,12 +881,12 @@
 &lt;ul&gt;
 &lt;li&gt;对指标做临时增量（Delta）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://opentelemetry.io/docs/specs/otel/metrics/img/model-delta-sum.png&#34; alt=&#34;jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;jpg&#34; src=&#34;https://opentelemetry.io/docs/specs/otel/metrics/img/model-delta-sum.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;当聚合时间性是增量时（类似 prometheus rate 计算函数），指标流的时间窗口没有重叠，值不会出现负数。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;对指标做临时累积（Cumulative）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://opentelemetry.io/docs/specs/otel/metrics/img/model-cumulative-sum.png&#34; alt=&#34;jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;jpg&#34; src=&#34;https://opentelemetry.io/docs/specs/otel/metrics/img/model-cumulative-sum.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;当聚合时间性是累积时，计算自应用启动以来的时间窗口（起始，结束]）所有值的求和，值为单调递增，也就是当前值不会小于前一个。&lt;/p&gt;
 &lt;h3 id=&#34;gauge&#34;&gt;Gauge&lt;/h3&gt;
 &lt;p&gt;一组数据点，表示在给定时间的采样值，每个数据点包含一组独立的属性名称值对。&lt;/p&gt;
@@ -895,13 +896,13 @@
 &lt;li&gt;对值进行采样时的时间戳（time_unix_ano）&lt;/li&gt;
 &lt;li&gt;时间戳（start_time_unix_ano），它最能代表可以记录测量的第一个可能时刻。这通常设置为度量收集系统启动时的时间戳。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://opentelemetry.io/docs/specs/otel/metrics/img/model-gauge.png&#34; alt=&#34;jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;jpg&#34; src=&#34;https://opentelemetry.io/docs/specs/otel/metrics/img/model-gauge.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;使用 Gauge 进行采样的基本时间序列，在给定的时间间隔内进行多次采样，但只有最后一个值通过 OTLP 在指标流中报告。&lt;/p&gt;
 &lt;p&gt;区别于 Sum 该不提供聚合语义，而是在执行时间窗口或调整精度等操作时使用“最后样本值”。&lt;/p&gt;
 &lt;p&gt;可以通过转换为直方图或其他度量类型来聚合度量。默认情况下不会执行这些操作，并且需要直接的用户配置。&lt;/p&gt;
 &lt;h3 id=&#34;histogram&#34;&gt;Histogram&lt;/h3&gt;
 &lt;p&gt;直方图以压缩格式记录测量的总体，它将一组事件捆绑成具有总体事件计数和所有事件的总和。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://opentelemetry.io/docs/specs/otel/metrics/img/model-delta-histogram.png&#34; alt=&#34;jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;jpg&#34; src=&#34;https://opentelemetry.io/docs/specs/otel/metrics/img/model-delta-histogram.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;指标会自动压缩聚合，默认以 &amp;ldquo;bucket&amp;rdquo; &amp;ldquo;sum&amp;rdquo; &amp;ldquo;count&amp;rdquo; 三中类型组成：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&amp;ldquo;count&amp;rdquo; 该指标被观测到的次数，计数累计值&lt;/li&gt;
