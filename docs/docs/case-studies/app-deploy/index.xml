@@ -1,6 +1,0 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OPSaid – 服务部署</title><link>https://opsaid.net/docs/case-studies/app-deploy/</link><description>Recent content in 服务部署 on OPSaid</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 15 Feb 2023 15:08:31 +0800</lastBuildDate><atom:link href="https://opsaid.net/docs/case-studies/app-deploy/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: PHP 在 K8S 上</title><link>https://opsaid.net/docs/case-studies/app-deploy/php-on-k8s/</link><pubDate>Wed, 15 Feb 2023 15:21:55 +0800</pubDate><guid>https://opsaid.net/docs/case-studies/app-deploy/php-on-k8s/</guid><description>
-&lt;h2 id="简要概述">简要概述&lt;/h2>
-&lt;p>描述 php 应用在 k8s 上的编排。&lt;/p>
-&lt;h2 id="基础镜像">基础镜像&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="服务编排">服务编排&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

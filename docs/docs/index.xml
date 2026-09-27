@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OPSaid – Documentation</title><link>https://opsaid.net/docs/</link><description>Recent content in Documentation on OPSaid</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://opsaid.net/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 协议规范</title><link>https://opsaid.net/docs/component/open-telemetry/protocol/</link><pubDate>Fri, 22 Aug 2025 10:57:59 +0800</pubDate><guid>https://opsaid.net/docs/component/open-telemetry/protocol/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OPSaid – 文档中心</title><link>https://opsaid.net/docs/</link><description>Recent content in 文档中心 on OPSaid</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://opsaid.net/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: 协议规范</title><link>https://opsaid.net/docs/observability/opentelemetry/protocol/</link><pubDate>Fri, 22 Aug 2025 10:57:59 +0800</pubDate><guid>https://opsaid.net/docs/observability/opentelemetry/protocol/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>OpenTelemetry是由&lt;strong>两个重要的开源观测性项目合并而成&lt;/strong>：&lt;/p>
 &lt;ol>
@@ -171,7 +171,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">post&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">/v1/traces&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">body&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;*&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="服务端响应-1">服务端响应&lt;/h3>
-&lt;p>TODO;&lt;/p></description></item><item><title>Docs: Volume</title><link>https://opsaid.net/docs/concepts/storage/volume/</link><pubDate>Mon, 20 Jan 2025 14:17:30 +0800</pubDate><guid>https://opsaid.net/docs/concepts/storage/volume/</guid><description>
+&lt;p>TODO;&lt;/p></description></item><item><title>Docs: Volume</title><link>https://opsaid.net/docs/cloud-native/kubernetes/resources/volume/</link><pubDate>Mon, 20 Jan 2025 14:17:30 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/resources/volume/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>存储卷。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>kubernetes-1.26.11/staging/src/k8s.io/api/core/v1/types.go
@@ -248,7 +248,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">NodeAffinity&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">*&lt;/span>&lt;span style="color:#000">VolumeNodeAffinity&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;nodeAffinity,omitempty&amp;#34; protobuf:&amp;#34;bytes,9,opt,name=nodeAffinity&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="resourcelist">ResourceList&lt;/h3>
-&lt;p>见 &lt;a href="https://opsaid.net/docs/concepts/workloads/pods/#resourcelist">Pod/ResourceList&lt;/a>。&lt;/p>
+&lt;p>见 &lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/resources/pods/#resourcelist">Pod/ResourceList&lt;/a>。&lt;/p>
 &lt;h3 id="persistentvolumesource">PersistentVolumeSource&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-go" data-lang="go">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// PersistentVolumeSource is similar to VolumeSource but meant for the
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// administrator who creates PVs. Exactly one of its members must be set.
@@ -335,7 +335,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// +optional
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">CSI&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">*&lt;/span>&lt;span style="color:#000">CSIPersistentVolumeSource&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;csi,omitempty&amp;#34; protobuf:&amp;#34;bytes,22,opt,name=csi&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>具体各 VolumeSource 见 &lt;a href="https://opsaid.net/docs/concepts/workloads/pods-volume/#%E5%B8%B8%E8%A7%81%E5%AD%98%E5%82%A8%E5%8D%B7">Pod/常见存储卷&lt;/a>&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>具体各 VolumeSource 见 &lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-volume/#%E5%B8%B8%E8%A7%81%E5%AD%98%E5%82%A8%E5%8D%B7">Pod/常见存储卷&lt;/a>&lt;/p>
 &lt;h3 id="persistentvolumeaccessmode">PersistentVolumeAccessMode&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-go" data-lang="go">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// +enum
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">type&lt;/span> &lt;span style="color:#000">PersistentVolumeAccessMode&lt;/span> &lt;span style="color:#204a87;font-weight:bold">string&lt;/span>
@@ -439,7 +439,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">NodeSelectorOpGt&lt;/span> &lt;span style="color:#000">NodeSelectorOperator&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Gt&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">NodeSelectorOpLt&lt;/span> &lt;span style="color:#000">NodeSelectorOperator&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Lt&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 快速开始</title><link>https://opsaid.net/docs/devops/argo-events/overview/</link><pubDate>Mon, 03 Jun 2024 13:49:09 +0800</pubDate><guid>https://opsaid.net/docs/devops/argo-events/overview/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 快速开始</title><link>https://opsaid.net/docs/platform-engineering/workflows/argo-events/overview/</link><pubDate>Mon, 03 Jun 2024 13:49:09 +0800</pubDate><guid>https://opsaid.net/docs/platform-engineering/workflows/argo-events/overview/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>通过监控事件然后触发工作流，以实现基于事件驱动的自动化系统。&lt;/p>
 &lt;h3 id="消息总线">消息总线&lt;/h3>
@@ -462,7 +462,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;li>Jetstream&lt;/li>
 &lt;li>Kafka&lt;/li>
 &lt;/ol>
-&lt;p>数据结构定义见 &lt;a href="https://opsaid.net/docs/devops/argo-events/data-type/#eventbus">EventBus&lt;/a>。&lt;/p>
+&lt;p>数据结构定义见 &lt;a href="https://opsaid.net/docs/platform-engineering/workflows/argo-events/data-type/#eventbus">EventBus&lt;/a>。&lt;/p>
 &lt;h3 id="事件源">事件源&lt;/h3>
 &lt;p>它主要把第三方公有服务产生的事件进一步将转换为基于 &lt;a href="https://github.com/cloudevents/spec">cloudevents&lt;/a> 标准化的格式，并将它们发送到消息总线，资源定义为：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">apiVersion&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">argoproj.io/v1alpha1&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
@@ -515,7 +515,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">sftp&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>{}&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">gerrit&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>{}&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>以上如果需混合多个事件源，则它们必须是相同类型的，相同类型是指：主从模式、双主模式。&lt;/p>
-&lt;p>数据结构定义见 &lt;a href="https://opsaid.net/docs/devops/argo-events/data-type/#eventsource">EventSource&lt;/a>。&lt;/p>
+&lt;p>数据结构定义见 &lt;a href="https://opsaid.net/docs/platform-engineering/workflows/argo-events/data-type/#eventsource">EventSource&lt;/a>。&lt;/p>
 &lt;h3 id="传感器">传感器&lt;/h3>
 &lt;p>它监听消息总线上的事件，如果来自匹配到的事件时触发执行相应触发器，资源定义为：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">apiVersion&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">argoproj.io/v1alpha1&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
@@ -524,7 +524,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">name&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">sensor-test&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">spec&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">...&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>数据结构定义见 &lt;a href="https://opsaid.net/docs/devops/argo-events/data-type/#sensor">Sensor&lt;/a>。&lt;/p>
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>数据结构定义见 &lt;a href="https://opsaid.net/docs/platform-engineering/workflows/argo-events/data-type/#sensor">Sensor&lt;/a>。&lt;/p>
 &lt;h3 id="触发器">触发器&lt;/h3>
 &lt;p>根据不同事件执行具体动作，资源定义为：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">apiVersion&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">argoproj.io/v1alpha1&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
@@ -577,7 +577,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>- &lt;span style="color:#204a87;font-weight:bold">template&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#8f5902;font-style:italic"># 作为生产者发送消息至 email 服务&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">email&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>{}&lt;span style="color:#f8f8f8;text-decoration:underline">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>数据结构定义见 &lt;a href="https://opsaid.net/docs/devops/argo-events/data-type/#trigger">Trigger&lt;/a>。&lt;/p>
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>数据结构定义见 &lt;a href="https://opsaid.net/docs/platform-engineering/workflows/argo-events/data-type/#trigger">Trigger&lt;/a>。&lt;/p>
 &lt;h2 id="安装部署">安装部署&lt;/h2>
 &lt;p>见：https://argoproj.github.io/argo-events/quick_start/&lt;/p>
 &lt;h2 id="消息总线-1">消息总线&lt;/h2>
@@ -643,7 +643,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">name&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">kafka-cred&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">consumerGroup&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">groupName&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">uptime&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>以上可配置参数说明可参考数据结构&lt;a href="https://opsaid.net/docs/devops/argo-events/data-type/#kafkaeventsource">KafkaEventSource&lt;/a> 或者 &lt;a href="https://github.com/argoproj/argo-events/blob/master/api/event-bus.md#kafkabus">KafkaBus&lt;/a>。&lt;/p>
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>以上可配置参数说明可参考数据结构&lt;a href="https://opsaid.net/docs/platform-engineering/workflows/argo-events/data-type/#kafkaeventsource">KafkaEventSource&lt;/a> 或者 &lt;a href="https://github.com/argoproj/argo-events/blob/master/api/event-bus.md#kafkabus">KafkaBus&lt;/a>。&lt;/p>
 &lt;ul>
 &lt;li>集群至少满足 acl 权限&lt;/li>
 &lt;/ul>
@@ -653,7 +653,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;h2 id="传感器-1">传感器&lt;/h2>
 &lt;p>TODO;&lt;/p>
 &lt;h2 id="触发器-1">触发器&lt;/h2>
-&lt;p>TODO;&lt;/p></description></item><item><title>Docs: 阿里云</title><link>https://opsaid.net/docs/deploy-k8s/cloud-provider/alibaba-cloud/</link><pubDate>Tue, 16 Apr 2024 10:20:22 +0800</pubDate><guid>https://opsaid.net/docs/deploy-k8s/cloud-provider/alibaba-cloud/</guid><description>
+&lt;p>TODO;&lt;/p></description></item><item><title>Docs: 阿里云</title><link>https://opsaid.net/docs/cloud-native/kubernetes/cluster-deployment/alibaba-cloud/</link><pubDate>Tue, 16 Apr 2024 10:20:22 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/cluster-deployment/alibaba-cloud/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>本文主要介绍如何使用&lt;a href="https://www.aliyun.com/product/ecs">云服务器ECS&lt;/a> 自建 K8S 集群，相比&lt;a href="https://help.aliyun.com/zh/ack/">官方 ACK 产品&lt;/a>有以下优势：&lt;/p>
 &lt;ol>
@@ -744,7 +744,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在 VPC 上添加路由有以下两种方式：&lt;/p>
 &lt;ol>
 &lt;li>规划后集群大小后，在阿里云后台 &amp;ldquo;专有网络/路由表&amp;rdquo; 中手动添加；&lt;/li>
-&lt;li>配合&lt;a href="https://opsaid.net/docs/deploy-k8s/cloud-provider/alibaba-cloud/#%E4%BA%91%E6%8E%A7%E5%88%B6%E5%99%A8">云控制器&lt;/a> 阿里云 &lt;a href="https://help.aliyun.com/zh/ack/product-overview/cloud-controller-manager">CCM 组件&lt;/a>自动添加发布主机路由至 VPC。&lt;/li>
+&lt;li>配合&lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/cluster-deployment/alibaba-cloud/#%E4%BA%91%E6%8E%A7%E5%88%B6%E5%99%A8">云控制器&lt;/a> 阿里云 &lt;a href="https://help.aliyun.com/zh/ack/product-overview/cloud-controller-manager">CCM 组件&lt;/a>自动添加发布主机路由至 VPC。&lt;/li>
 &lt;/ol>
 &lt;h3 id="方案二独立-vpc-子网">方案二：独立 VPC 子网&lt;/h3>
 &lt;p>既在阿里云上创建单独的 VPC 字网用于 POD 网段。&lt;/p>
@@ -781,7 +781,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>topology.kubernetes.io/zone
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>topology.kubernetes.io/region
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 程序类型</title><link>https://opsaid.net/docs/dev-framework/ebpf/program-types/</link><pubDate>Tue, 02 Apr 2024 11:38:14 +0800</pubDate><guid>https://opsaid.net/docs/dev-framework/ebpf/program-types/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 程序类型</title><link>https://opsaid.net/docs/cloud-native/ebpf/program-types/</link><pubDate>Tue, 02 Apr 2024 11:38:14 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/ebpf/program-types/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>eBPF 程序类型大体上被分为两类：&lt;/p>
 &lt;ol>
@@ -828,7 +828,9 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;h3 id="特性cgroups">特性：Cgroups&lt;/h3>
 &lt;p>TODO;&lt;/p>
 &lt;h3 id="特性infrared-controllers">特性：Infrared Controllers&lt;/h3>
-&lt;p>TODO;&lt;/p></description></item><item><title>Docs: 架构</title><link>https://opsaid.net/docs/networks/envoy/overview/</link><pubDate>Tue, 16 Jan 2024 16:34:31 +0800</pubDate><guid>https://opsaid.net/docs/networks/envoy/overview/</guid><description>
+&lt;p>TODO;&lt;/p></description></item><item><title>Docs: Overview</title><link>https://opsaid.net/docs/data-storage/olap/clickhouse/overview/</link><pubDate>Wed, 20 Mar 2024 13:35:28 +0800</pubDate><guid>https://opsaid.net/docs/data-storage/olap/clickhouse/overview/</guid><description>
+&lt;h2 id="简要概述">简要概述&lt;/h2>
+&lt;p>TODO;&lt;/p></description></item><item><title>Docs: 架构</title><link>https://opsaid.net/docs/cloud-native/networking/envoy/overview/</link><pubDate>Tue, 16 Jan 2024 16:34:31 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/networking/envoy/overview/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>Envoy 是为面向服务架构（SOA）设计的 L7 层代理，主要围绕解决以下核心思想：&lt;/p>
 &lt;blockquote>
@@ -1006,7 +1008,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">clusters&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">...&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Overview</title><link>https://opsaid.net/docs/networks/cilium/overview/</link><pubDate>Mon, 08 Jan 2024 09:52:32 +0800</pubDate><guid>https://opsaid.net/docs/networks/cilium/overview/</guid><description>
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Overview</title><link>https://opsaid.net/docs/cloud-native/networking/cilium/overview/</link><pubDate>Mon, 08 Jan 2024 09:52:32 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/networking/cilium/overview/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>Cilium 的基础是一种名为 eBPF 的新 Linux 内核技术，它使得在 Linux 内核内部动态插入强大的安全可见性和控制逻辑成为可能。由于 eBPF 运行在 Linux 内核内部，因此可以在不修改应用程序代码或容器配置的情况下应用和更新 Cilium 安全策略。&lt;/p>
 &lt;p>Hubble 是一个完全分布式的网络和安全可观察性平台，它构建在 Cilium 和 eBPF 之上，以实现对服务通信和行为以及网络基础设施的深度可见性，完全透明地实现这一目标。&lt;/p>
@@ -1213,7 +1215,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;h3 id="cni-plugin">CNI Plugin&lt;/h3>
 &lt;p>当 Pod 被调度或从宿主上移除时，&lt;code>cilium-cni&lt;/code> 将会被 k8s 启动，它跟 cilium api 交互，以便更新网络、负载均衡、安全策略等。&lt;/p>
 &lt;h3 id="hubble-server">hubble server&lt;/h3>
-&lt;p>Hubble 服务端已内嵌到 &lt;a href="https://opsaid.net/docs/networks/cilium/overview/#cilium-agent">cilium-agent&lt;/a> 以实现高性能和低开销，它对 eBPF 提供可见性，并提供了 gRPC 服务用于检索数据流跟 Prometheus 标准的性能数据，相关配置如下：&lt;/p>
+&lt;p>Hubble 服务端已内嵌到 &lt;a href="https://opsaid.net/docs/cloud-native/networking/cilium/overview/#cilium-agent">cilium-agent&lt;/a> 以实现高性能和低开销，它对 eBPF 提供可见性，并提供了 gRPC 服务用于检索数据流跟 Prometheus 标准的性能数据，相关配置如下：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#8f5902;font-style:italic"># An additional address for Hubble server to listen to (e.g. &amp;#34;:4244&amp;#34;).&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">hubble-listen-address&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;:4244&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">hubble-disable-tls&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#4e9a06">&amp;#34;true&amp;#34;&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
@@ -1371,7 +1373,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;p>与容器或 Pod 相关联的并非所有标签在推导身份时都是有意义的。标签可能用于存储元数据，例如容器启动的时间戳。Cilium 需要知道哪些标签是有意义的，并在推导身份时将其考虑在内。为此，用户需要指定一个有意义的标签字符串前缀列表。标准行为是包括所有以 id. 前缀开头的标签，例如 id.service1、id.service2、id.groupA.service44。在启动代理时可以指定有意义的标签前缀列表。&lt;/p>
 &lt;p>TODO;&lt;/p>
 &lt;h3 id="node">Node&lt;/h3>
-&lt;p>Cilium 将节点称为集群的一个个体成员，每个节点必须运行 &lt;code>cilium-agent&lt;/code>，并且将以大多数自治的方式运行。为了简化和提高可伸缩性，不同节点上运行的 cilium-agent 之间的状态同步被保持到最小。它仅通过键值存储或数据包元数据进行。&lt;/p></description></item><item><title>Docs: 访问控制</title><link>https://opsaid.net/docs/concepts/policies/rbac/</link><pubDate>Tue, 02 Jan 2024 14:19:20 +0800</pubDate><guid>https://opsaid.net/docs/concepts/policies/rbac/</guid><description>
+&lt;p>Cilium 将节点称为集群的一个个体成员，每个节点必须运行 &lt;code>cilium-agent&lt;/code>，并且将以大多数自治的方式运行。为了简化和提高可伸缩性，不同节点上运行的 cilium-agent 之间的状态同步被保持到最小。它仅通过键值存储或数据包元数据进行。&lt;/p></description></item><item><title>Docs: 访问控制</title><link>https://opsaid.net/docs/identity-security/authorization/kubernetes-rbac/</link><pubDate>Tue, 02 Jan 2024 14:19:20 +0800</pubDate><guid>https://opsaid.net/docs/identity-security/authorization/kubernetes-rbac/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>集群包含多种访问控制，具体可看&lt;a href="https://kubernetes.io/zh-cn/docs/reference/access-authn-authz/">官方文档&lt;/a>，以下侧重说明使用 RBAC 鉴权相关的数据结构。&lt;/p>
 &lt;h2 id="配置示例">配置示例&lt;/h2>
@@ -1623,7 +1625,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">ClusterRoleSelectors&lt;/span> &lt;span style="color:#000;font-weight:bold">[]&lt;/span>&lt;span style="color:#000">metav1&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">LabelSelector&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;clusterRoleSelectors,omitempty&amp;#34; protobuf:&amp;#34;bytes,1,rep,name=clusterRoleSelectors&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="metav1labelselector">metav1.LabelSelector&lt;/h3>
-&lt;p>见 &lt;a href="https://opsaid.net/docs/concepts/commons/metadata/#labelselector">基础数据&lt;/a>。&lt;/p>
+&lt;p>见 &lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/resources/metadata/#labelselector">基础数据&lt;/a>。&lt;/p>
 &lt;h3 id="serviceaccount">ServiceAccount&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-golang" data-lang="golang">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// ServiceAccount binds together:
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// * a name, understood by users, and perhaps by peripheral systems, for an identity
@@ -1658,7 +1660,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// +optional
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">AutomountServiceAccountToken&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">*&lt;/span>&lt;span style="color:#204a87;font-weight:bold">bool&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;automountServiceAccountToken,omitempty&amp;#34; protobuf:&amp;#34;varint,4,opt,name=automountServiceAccountToken&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 审计日志</title><link>https://opsaid.net/docs/concepts/policies/audit/</link><pubDate>Fri, 29 Dec 2023 17:33:58 +0800</pubDate><guid>https://opsaid.net/docs/concepts/policies/audit/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 审计日志</title><link>https://opsaid.net/docs/identity-security/kubernetes-security/audit/</link><pubDate>Fri, 29 Dec 2023 17:33:58 +0800</pubDate><guid>https://opsaid.net/docs/identity-security/kubernetes-security/audit/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>TODO;&lt;/p>
 &lt;h2 id="配置示例">配置示例&lt;/h2>
@@ -1923,7 +1925,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// +protobuf.nullable=true
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// +protobuf.options.(gogoproto.goproto_stringer)=false
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">type&lt;/span> &lt;span style="color:#000">ExtraValue&lt;/span> &lt;span style="color:#000;font-weight:bold">[]&lt;/span>&lt;span style="color:#204a87;font-weight:bold">string&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 漏洞数据</title><link>https://opsaid.net/docs/security/scanning/vulnerability/</link><pubDate>Mon, 18 Dec 2023 11:23:23 +0800</pubDate><guid>https://opsaid.net/docs/security/scanning/vulnerability/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 漏洞数据</title><link>https://opsaid.net/docs/identity-security/supply-chain-security/vulnerability-scanning/vulnerability/</link><pubDate>Mon, 18 Dec 2023 11:23:23 +0800</pubDate><guid>https://opsaid.net/docs/identity-security/supply-chain-security/vulnerability-scanning/vulnerability/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>漏洞数据的来源，数据库的下载与制作。&lt;/p>
 &lt;h2 id="数据库下载">数据库下载&lt;/h2>
@@ -2269,7 +2271,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">&amp;#34;Name&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Official Kubernetes CVE Feed&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">&amp;#34;URL&amp;#34;&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;https://kubernetes.io/docs/reference/issues-security/official-cve-feed/index.json&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 漏洞扫描</title><link>https://opsaid.net/docs/security/scanning/scanner/</link><pubDate>Fri, 15 Dec 2023 10:40:52 +0800</pubDate><guid>https://opsaid.net/docs/security/scanning/scanner/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 漏洞扫描</title><link>https://opsaid.net/docs/identity-security/supply-chain-security/vulnerability-scanning/scanner/</link><pubDate>Fri, 15 Dec 2023 10:40:52 +0800</pubDate><guid>https://opsaid.net/docs/identity-security/supply-chain-security/vulnerability-scanning/scanner/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>通过开源漏洞库，实现对镜像、文件系统、代码仓库、K8S 配置清单等进行扫描以提前发现问题。&lt;/p>
 &lt;h2 id="配置参数">配置参数&lt;/h2>
@@ -2599,9 +2601,9 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="业务开发代码仓库">业务开发代码仓库&lt;/h3>
 &lt;p>TODO;&lt;/p>
 &lt;h3 id="基础设施既代码">基础设施既代码&lt;/h3>
-&lt;p>TODO;&lt;/p></description></item><item><title>Docs: 网络策略</title><link>https://opsaid.net/docs/security/policies/network/</link><pubDate>Wed, 13 Dec 2023 10:26:01 +0800</pubDate><guid>https://opsaid.net/docs/security/policies/network/</guid><description>
+&lt;p>TODO;&lt;/p></description></item><item><title>Docs: 网络策略</title><link>https://opsaid.net/docs/identity-security/kubernetes-security/network-policy/</link><pubDate>Wed, 13 Dec 2023 10:26:01 +0800</pubDate><guid>https://opsaid.net/docs/identity-security/kubernetes-security/network-policy/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
-&lt;p>使用 K8S 原生网络策略，既接口组 &amp;ldquo;networking.k8s.io/v1&amp;rdquo; 下服务，数据结构可参考 &lt;a href="https://opsaid.net/docs/concepts/policies/network/">NetworkPolicy&lt;/a>，以下提供一些有用地址：&lt;/p>
+&lt;p>使用 K8S 原生网络策略，既接口组 &amp;ldquo;networking.k8s.io/v1&amp;rdquo; 下服务，数据结构可参考 &lt;a href="https://opsaid.net/docs/identity-security/kubernetes-security/network/">NetworkPolicy&lt;/a>，以下提供一些有用地址：&lt;/p>
 &lt;ol>
 &lt;li>&lt;a href="https://kubernetes.io/zh-cn/docs/concepts/services-networking/network-policies/">官方概念手册&lt;/a>；&lt;/li>
 &lt;li>&lt;a href="https://editor.networkpolicy.io/">在线生成工具&lt;/a>&lt;/li>
@@ -2772,7 +2774,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">policyTypes&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>- &lt;span style="color:#000">Ingress&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>- &lt;span style="color:#000">Egress&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>拒绝 &amp;ldquo;default&amp;rdquo; 命名空间下的所以 Pod 流量进出。&lt;/p></description></item><item><title>Docs: Metadata</title><link>https://opsaid.net/docs/concepts/commons/metadata/</link><pubDate>Tue, 12 Dec 2023 11:40:58 +0800</pubDate><guid>https://opsaid.net/docs/concepts/commons/metadata/</guid><description>
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>拒绝 &amp;ldquo;default&amp;rdquo; 命名空间下的所以 Pod 流量进出。&lt;/p></description></item><item><title>Docs: Metadata</title><link>https://opsaid.net/docs/cloud-native/kubernetes/resources/metadata/</link><pubDate>Tue, 12 Dec 2023 11:40:58 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/resources/metadata/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>TODO;&lt;/p>
 &lt;h2 id="数据结构">数据结构&lt;/h2>
@@ -3346,11 +3348,11 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">Group&lt;/span> &lt;span style="color:#204a87;font-weight:bold">string&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;group&amp;#34; protobuf:&amp;#34;bytes,1,opt,name=group&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">Kind&lt;/span> &lt;span style="color:#204a87;font-weight:bold">string&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;kind&amp;#34; protobuf:&amp;#34;bytes,2,opt,name=kind&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 网络策略</title><link>https://opsaid.net/docs/concepts/policies/network/</link><pubDate>Tue, 12 Dec 2023 11:14:45 +0800</pubDate><guid>https://opsaid.net/docs/concepts/policies/network/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 网络策略</title><link>https://opsaid.net/docs/identity-security/kubernetes-security/network/</link><pubDate>Tue, 12 Dec 2023 11:14:45 +0800</pubDate><guid>https://opsaid.net/docs/identity-security/kubernetes-security/network/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>TODO;&lt;/p>
 &lt;h2 id="配置示例">配置示例&lt;/h2>
-&lt;p>见 &lt;a href="https://opsaid.net/docs/security/policies/network/">K8S 原生安全 网络策略&lt;/a>。&lt;/p>
+&lt;p>见 &lt;a href="https://opsaid.net/docs/identity-security/kubernetes-security/network-policy/">K8S 原生安全 网络策略&lt;/a>。&lt;/p>
 &lt;h2 id="数据结构">数据结构&lt;/h2>
 &lt;blockquote>
 &lt;p>基于 &amp;ldquo;kubernetes-1.26.11/staging/src/k8s.io/api/networking/v1/types.go&amp;rdquo; 源文件。&lt;/p>
@@ -3426,7 +3428,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">PolicyTypes&lt;/span> &lt;span style="color:#000;font-weight:bold">[]&lt;/span>&lt;span style="color:#000">PolicyType&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;policyTypes,omitempty&amp;#34; protobuf:&amp;#34;bytes,4,rep,name=policyTypes,casttype=PolicyType&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="metav1labelselector">metav1.LabelSelector&lt;/h3>
-&lt;p>见 &lt;a href="https://opsaid.net/docs/concepts/commons/metadata/#labelselector">基础数据&lt;/a>。&lt;/p>
+&lt;p>见 &lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/resources/metadata/#labelselector">基础数据&lt;/a>。&lt;/p>
 &lt;h3 id="networkpolicyingressrule">NetworkPolicyIngressRule&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-golang" data-lang="golang">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// NetworkPolicyIngressRule describes a particular set of traffic that is allowed to the pods
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// matched by a NetworkPolicySpec&amp;#39;s podSelector. The traffic must match both ports and from.
@@ -3532,7 +3534,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// +optional
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">IPBlock&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">*&lt;/span>&lt;span style="color:#000">IPBlock&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;ipBlock,omitempty&amp;#34; protobuf:&amp;#34;bytes,3,rep,name=ipBlock&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>示例配置见 &lt;a href="https://opsaid.net/docs/security/policies/network/#%E5%AE%9A%E4%BD%8D%E7%9B%AE%E6%A0%87%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%BB%84%E5%90%88">定位目标的四种组合&lt;/a>。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>示例配置见 &lt;a href="https://opsaid.net/docs/identity-security/kubernetes-security/network-policy/#%E5%AE%9A%E4%BD%8D%E7%9B%AE%E6%A0%87%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%BB%84%E5%90%88">定位目标的四种组合&lt;/a>。&lt;/p>
 &lt;h3 id="ipblock">IPBlock&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-golang" data-lang="golang">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// IPBlock describes a particular CIDR (Ex. &amp;#34;192.168.1.0/24&amp;#34;,&amp;#34;2001:db8::/64&amp;#34;) that is allowed
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// to the pods matched by a NetworkPolicySpec&amp;#39;s podSelector. The except entry describes CIDRs
@@ -3559,7 +3561,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// +listMapKey=type
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">Conditions&lt;/span> &lt;span style="color:#000;font-weight:bold">[]&lt;/span>&lt;span style="color:#000">metav1&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Condition&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;conditions,omitempty&amp;#34; patchStrategy:&amp;#34;merge&amp;#34; patchMergeKey:&amp;#34;type&amp;#34; protobuf:&amp;#34;bytes,1,rep,name=conditions&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: AppArmor</title><link>https://opsaid.net/docs/security/kernel-monitor/apparmor/</link><pubDate>Mon, 04 Dec 2023 14:10:28 +0800</pubDate><guid>https://opsaid.net/docs/security/kernel-monitor/apparmor/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: AppArmor</title><link>https://opsaid.net/docs/identity-security/runtime-security/apparmor/</link><pubDate>Mon, 04 Dec 2023 14:10:28 +0800</pubDate><guid>https://opsaid.net/docs/identity-security/runtime-security/apparmor/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>AppArmor 是一个 Linux 内核安全模块，用于补充系统用户和组的权限，将程序限制在一组有限的资源中。&lt;/p>
 &lt;p>它通过调整配置文件以允许特定程序或容器所需的访问，如 Linux 权能字、网络访问、文件权限等。每个配置文件都可以在强制（enforcing）模式（阻止访问不允许的资源）或 投诉（complain）模式（仅报告冲突）下运行。&lt;/p>
@@ -3657,7 +3659,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>EOF
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这个规则说明禁止往 &amp;ldquo;/root/*&amp;rdquo; 目录下写文件。&lt;/p>
 &lt;h3 id="生效规则-1">生效规则&lt;/h3>
-&lt;p>第一部分同 &lt;a href="https://opsaid.net/docs/security/kernel-monitor/apparmor/#%E7%94%9F%E6%95%88%E8%A7%84%E5%88%99">限制本地应用测试 / 生效规则&lt;/a>；&lt;/p>
+&lt;p>第一部分同 &lt;a href="https://opsaid.net/docs/identity-security/runtime-security/apparmor/#%E7%94%9F%E6%95%88%E8%A7%84%E5%88%99">限制本地应用测试 / 生效规则&lt;/a>；&lt;/p>
 &lt;p>第二部分为启用的 Pod 添加注解，格式为：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>container.apparmor.security.beta.kubernetes.io/&amp;lt;container_name&amp;gt;: &amp;lt;value&amp;gt;
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>其中 &amp;ldquo;&amp;lt;container_name&amp;gt;&amp;rdquo; 对应 Pod 内需要启用的容器名，如有多个可单独配置，&amp;ldquo;value&amp;rdquo; 可配置以下三个值：&lt;/p>
@@ -3723,7 +3725,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> /usr/bin/kube-controllers &lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>56874&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> cri-containerd.apparmor.d
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> /usr/local/bin/kube-scheduler &lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>62513&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> cri-containerd.apparmor.d
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> /usr/local/bin/etcd &lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>64804&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> cri-containerd.apparmor.d
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>或者使用 &lt;code>ps&lt;/code> 添加 -Z 标志，以显示每个进程的安全配置文件。&lt;/p></description></item><item><title>Docs: SPIFFE</title><link>https://opsaid.net/docs/security/zero-trust-model/spiffe/</link><pubDate>Tue, 14 Nov 2023 10:53:54 +0800</pubDate><guid>https://opsaid.net/docs/security/zero-trust-model/spiffe/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>或者使用 &lt;code>ps&lt;/code> 添加 -Z 标志，以显示每个进程的安全配置文件。&lt;/p></description></item><item><title>Docs: SPIFFE</title><link>https://opsaid.net/docs/identity-security/zero-trust/spiffe/</link><pubDate>Tue, 14 Nov 2023 10:53:54 +0800</pubDate><guid>https://opsaid.net/docs/identity-security/zero-trust/spiffe/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>&lt;a href="https://spiffe.io/docs/latest/spiffe-about/spiffe-concepts/">SPIFFE&lt;/a>（Secure Production Identity Framework for Everyone），是一个软件身份标识的开源标准，以组织和平台无关的方式实现身份标识，是云原生身份认证的“基础设施”。&lt;/p>
 &lt;p>它定义了以全自动方式获取和验证加密身份所需的接口，是语言、技术栈无关的，为构建分布式系统的通用身份的控制平面提供了标准的支撑。&lt;/p>
@@ -3781,7 +3783,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;h3 id="trust-bundle">Trust Bundle&lt;/h3>
 &lt;p>当使用 X.509-SVID 时，目标工作负载使用信任捆绑来验证源工作负载的身份，信任捆绑是一组一个或多个证书颁发机构（CA）根证书，工作负载应该将其视为可信任的，它包含 X.509 和 JWT-SVID 的公钥材料。&lt;/p>
 &lt;p>用于验证 X.509 SVID 的公钥材料是一组证书，用于验证 JWT 的公钥材料是原始公钥，信任捆绑的内容经常进行轮换，当工作负载调用工作负载 API 时，它会检索信任捆绑。&lt;/p>
-&lt;p>信任包中不会包含除公钥以外的其他敏感内容，可以被随意传播。&lt;/p></description></item><item><title>Docs: 控制平面</title><link>https://opsaid.net/docs/security/cis-benchmark/control-plane/</link><pubDate>Fri, 06 Oct 2023 11:02:45 +0800</pubDate><guid>https://opsaid.net/docs/security/cis-benchmark/control-plane/</guid><description>
+&lt;p>信任包中不会包含除公钥以外的其他敏感内容，可以被随意传播。&lt;/p></description></item><item><title>Docs: 控制平面</title><link>https://opsaid.net/docs/identity-security/kubernetes-security/cis-benchmark/control-plane/</link><pubDate>Fri, 06 Oct 2023 11:02:45 +0800</pubDate><guid>https://opsaid.net/docs/identity-security/kubernetes-security/cis-benchmark/control-plane/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>主要关于控制平面相关的安全配置建议。&lt;/p>
 &lt;h2 id="配置文件">配置文件&lt;/h2>
@@ -3955,7 +3957,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;p>具体流程可参考: &lt;a href="https://kubernetes.io/zh-cn/docs/tasks/tls/certificate-rotation/">https://kubernetes.io/zh-cn/docs/tasks/tls/certificate-rotation/&lt;/a>。&lt;/p>
 &lt;h2 id="kube-scheduler">kube-scheduler&lt;/h2>
 &lt;h3 id="确保关闭性能调试信息-2">确保关闭性能调试信息&lt;/h3>
-&lt;p>同 &lt;code>kube-apiserver&lt;/code> 组件。&lt;/p></description></item><item><title>Docs: etcd</title><link>https://opsaid.net/docs/questions/control-plane/etcd/</link><pubDate>Thu, 03 Aug 2023 09:42:05 +0800</pubDate><guid>https://opsaid.net/docs/questions/control-plane/etcd/</guid><description>
+&lt;p>同 &lt;code>kube-apiserver&lt;/code> 组件。&lt;/p></description></item><item><title>Docs: etcd</title><link>https://opsaid.net/docs/operations-practice/troubleshooting/kubernetes/etcd/</link><pubDate>Thu, 03 Aug 2023 09:42:05 +0800</pubDate><guid>https://opsaid.net/docs/operations-practice/troubleshooting/kubernetes/etcd/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>记录 etcd 相关的场景问题。&lt;/p>
 &lt;h2 id="无法启动类">无法启动类&lt;/h2>
@@ -4035,7 +4037,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>更改为
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>--initial-cluster-state&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>existing
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 配置结构</title><link>https://opsaid.net/docs/component/cortex/config/</link><pubDate>Sun, 18 Jun 2023 12:08:57 +0800</pubDate><guid>https://opsaid.net/docs/component/cortex/config/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 配置结构</title><link>https://opsaid.net/docs/observability/metrics/cortex/config/</link><pubDate>Sun, 18 Jun 2023 12:08:57 +0800</pubDate><guid>https://opsaid.net/docs/observability/metrics/cortex/config/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>主要展示 cortex 可配置结构。&lt;/p>
 &lt;p>查看所有模块：&lt;/p>
@@ -4237,27 +4239,27 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;blockquote>
 &lt;p>github.com/weaveworks/common/server&lt;/p>
 &lt;/blockquote>
-&lt;p>见&lt;a href="https://opsaid.net/docs/component/cortex/server/">服务监听&lt;/a>&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/observability/metrics/cortex/server/">服务监听&lt;/a>&lt;/p>
 &lt;h3 id="distributorconfig">distributor.Config&lt;/h3>
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/distributor/distributor.go&lt;/p>
 &lt;/blockquote>
-&lt;p>见&lt;a href="https://opsaid.net/docs/component/cortex/distributor/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Distributor&lt;/a>&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/observability/metrics/cortex/distributor/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Distributor&lt;/a>&lt;/p>
 &lt;h3 id="querierconfig">querier.Config&lt;/h3>
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/querier/querier.go&lt;/p>
 &lt;/blockquote>
-&lt;p>见&lt;a href="https://opsaid.net/docs/component/cortex/querier/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Querier&lt;/a>&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/observability/metrics/cortex/querier/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Querier&lt;/a>&lt;/p>
 &lt;h3 id="clientconfig">client.Config&lt;/h3>
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/ingester/client/client.go&lt;/p>
 &lt;/blockquote>
-&lt;p>见&lt;a href="https://opsaid.net/docs/component/cortex/ingester/#clientconfig">Ingester&lt;/a>&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/observability/metrics/cortex/ingester/#clientconfig">Ingester&lt;/a>&lt;/p>
 &lt;h3 id="ingesterconfig">ingester.Config&lt;/h3>
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/ingester/ingester.go&lt;/p>
 &lt;/blockquote>
-&lt;p>见&lt;a href="https://opsaid.net/docs/component/cortex/ingester/#config">Ingester&lt;/a>&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/observability/metrics/cortex/ingester/#config">Ingester&lt;/a>&lt;/p>
 &lt;h3 id="flusherconfig">flusher.Config&lt;/h3>
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/flusher/flusher.go&lt;/p>
@@ -4269,7 +4271,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/util/validation/limits.go&lt;/p>
 &lt;/blockquote>
-&lt;p>见&lt;a href="https://opsaid.net/docs/component/cortex/limits/#limits">资源限制&lt;/a>&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/observability/metrics/cortex/limits/#limits">资源限制&lt;/a>&lt;/p>
 &lt;h3 id="cortexpbpreallocconfig">cortexpb.PreallocConfig&lt;/h3>
 &lt;p>TODO;&lt;/p>
 &lt;h3 id="querier_workerconfig">querier_worker.Config&lt;/h3>
@@ -4293,7 +4295,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/frontend/config.go&lt;/p>
 &lt;/blockquote>
-&lt;p>见&lt;a href="https://opsaid.net/docs/component/cortex/frontend/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Frontend&lt;/a>&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/observability/metrics/cortex/frontend/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Frontend&lt;/a>&lt;/p>
 &lt;h3 id="queryrangeconfig">queryrange.Config&lt;/h3>
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/querier/tripperware/queryrange/query_range_middlewares.go&lt;/p>
@@ -4315,17 +4317,17 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/storage/tsdb/config.go&lt;/p>
 &lt;/blockquote>
-&lt;p>见&lt;a href="https://opsaid.net/docs/component/cortex/storage/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据存储&lt;/a>&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/observability/metrics/cortex/storage/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据存储&lt;/a>&lt;/p>
 &lt;h3 id="compactorconfig">compactor.Config&lt;/h3>
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/compactor/compactor.go&lt;/p>
 &lt;/blockquote>
-&lt;p>见&lt;a href="https://opsaid.net/docs/component/cortex/compactor/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Compactor&lt;/a>&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/observability/metrics/cortex/compactor/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Compactor&lt;/a>&lt;/p>
 &lt;h3 id="storegatewayconfig">storegateway.Config&lt;/h3>
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/storegateway/&lt;/p>
 &lt;/blockquote>
-&lt;p>见&lt;a href="https://opsaid.net/docs/component/cortex/store-gateway/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Store Gateway&lt;/a>&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/observability/metrics/cortex/store-gateway/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Store Gateway&lt;/a>&lt;/p>
 &lt;h3 id="tenantfederationconfig">tenantfederation.Config&lt;/h3>
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/querier/tenantfederation/tenant_federation.go&lt;/p>
@@ -4338,12 +4340,12 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/ruler/ruler.go&lt;/p>
 &lt;/blockquote>
-&lt;p>见&lt;a href="https://opsaid.net/docs/component/cortex/ruler/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Ruler&lt;/a>&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/observability/metrics/cortex/ruler/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Ruler&lt;/a>&lt;/p>
 &lt;h3 id="rulestoreconfig">rulestore.Config&lt;/h3>
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/ruler/rulestore/config.go&lt;/p>
 &lt;/blockquote>
-&lt;p>见&lt;a href="https://opsaid.net/docs/component/cortex/ruler/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Ruler&lt;/a>&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/observability/metrics/cortex/ruler/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Ruler&lt;/a>&lt;/p>
 &lt;h3 id="configsconfig">configs.Config&lt;/h3>
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/configs/config.go&lt;/p>
@@ -4357,12 +4359,12 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/alertmanager/multitenant.go&lt;/p>
 &lt;/blockquote>
-&lt;p>见&lt;a href="https://opsaid.net/docs/component/cortex/alertmanager/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Alertmanager&lt;/a>&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/observability/metrics/cortex/alertmanager/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Alertmanager&lt;/a>&lt;/p>
 &lt;h3 id="alertstoreconfig">alertstore.Config&lt;/h3>
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/alertmanager/alertstore/config.go&lt;/p>
 &lt;/blockquote>
-&lt;p>见&lt;a href="https://opsaid.net/docs/component/cortex/alertmanager/#alertstoreconfig">Alertmanager&lt;/a>&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/observability/metrics/cortex/alertmanager/#alertstoreconfig">Alertmanager&lt;/a>&lt;/p>
 &lt;h3 id="runtimeconfigconfig">runtimeconfig.Config&lt;/h3>
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/util/runtimeconfig/manager.go&lt;/p>
@@ -4380,7 +4382,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/ring/kv/memberlist/&lt;/p>
 &lt;/blockquote>
-&lt;p>见&lt;a href="https://opsaid.net/docs/component/cortex/distributor/#memberlistkvconfig">Distributor memberlist.KVConfig&lt;/a>。&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/observability/metrics/cortex/distributor/#memberlistkvconfig">Distributor memberlist.KVConfig&lt;/a>。&lt;/p>
 &lt;h3 id="schedulerconfig">scheduler.Config&lt;/h3>
 &lt;blockquote>
 &lt;p>github.com/cortexproject/cortex/pkg/scheduler/scheduler.go&lt;/p>
@@ -4408,7 +4410,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">TLS&lt;/span> &lt;span style="color:#000">tls&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">ClientConfig&lt;/span> &lt;span style="color:#4e9a06">`yaml:&amp;#34;tls&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">ExtraDetectors&lt;/span> &lt;span style="color:#000;font-weight:bold">[]&lt;/span>&lt;span style="color:#000">resource&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Detector&lt;/span> &lt;span style="color:#4e9a06">`yaml:&amp;#34;-&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 关键术语</title><link>https://opsaid.net/docs/data-store/object-storage/key-terms/</link><pubDate>Wed, 14 Jun 2023 10:53:20 +0800</pubDate><guid>https://opsaid.net/docs/data-store/object-storage/key-terms/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 关键术语</title><link>https://opsaid.net/docs/data-storage/object-storage/key-terms/</link><pubDate>Wed, 14 Jun 2023 10:53:20 +0800</pubDate><guid>https://opsaid.net/docs/data-storage/object-storage/key-terms/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>主要对对象存储一些基本概念做个介绍。&lt;/p>
 &lt;h2 id="关键术语">关键术语&lt;/h2>
@@ -4589,27 +4591,27 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/data-store/object-storage/create-bucket/">CreateBucket&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/data-storage/object-storage/create-bucket/">CreateBucket&lt;/a>&lt;/td>
 &lt;td>PUT {bucket}.{endpoint}/&lt;/td>
 &lt;td>创建存储桶&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/data-store/object-storage/head-bucket/">HeadBucket&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/data-storage/object-storage/head-bucket/">HeadBucket&lt;/a>&lt;/td>
 &lt;td>HEAD {bucket}.{endpoint}/&lt;/td>
 &lt;td>验证存储桶是否存在或是否有权限&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/data-store/object-storage/delete-bucket">DeleteBucket&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/data-storage/object-storage/delete-bucket">DeleteBucket&lt;/a>&lt;/td>
 &lt;td>DELETE {bucket}.{endpoint}/&lt;/td>
 &lt;td>删除存储桶&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/data-store/object-storage/list-buckets/">ListBuckets&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/data-storage/object-storage/list-buckets/">ListBuckets&lt;/a>&lt;/td>
 &lt;td>GET {endpoint}/&lt;/td>
 &lt;td>列出有权限的存储桶&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/data-store/object-storage/get-bucket-location">GetBucketLocation&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/data-storage/object-storage/get-bucket-location">GetBucketLocation&lt;/a>&lt;/td>
 &lt;td>GET /?location&lt;/td>
 &lt;td>查询当前 bucket 所在区域&lt;/td>
 &lt;/tr>
@@ -4626,42 +4628,42 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/data-store/object-storage/copy-object/">CopyObject&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/data-storage/object-storage/copy-object/">CopyObject&lt;/a>&lt;/td>
 &lt;td>PUT {bucket}.{endpoint}/{object_key}&lt;/td>
 &lt;td>拷贝对象&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/data-store/object-storage/delete-object/">DeleteObject&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/data-storage/object-storage/delete-object/">DeleteObject&lt;/a>&lt;/td>
 &lt;td>DELETE {bucket}.{endpoint}/{object_key}&lt;/td>
 &lt;td>删除对象&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/data-store/object-storage/delete-objects/">DeleteObjects&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/data-storage/object-storage/delete-objects/">DeleteObjects&lt;/a>&lt;/td>
 &lt;td>POST {bucket}.{endpoint}/?delete&lt;/td>
 &lt;td>批量删除&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/data-store/object-storage/get-object/">GetObject&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/data-storage/object-storage/get-object/">GetObject&lt;/a>&lt;/td>
 &lt;td>GET {bucket}.{endpoint}/{object_key}&lt;/td>
 &lt;td>获取对象&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/data-store/object-storage/head-object/">HeadObject&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/data-storage/object-storage/head-object/">HeadObject&lt;/a>&lt;/td>
 &lt;td>GET {bucket}.{endpoint}/{object_key}&lt;/td>
 &lt;td>查询对象&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/data-store/object-storage/list-objects/">ListObjects&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/data-storage/object-storage/list-objects/">ListObjects&lt;/a>&lt;/td>
 &lt;td>GET {bucket}.{endpoint}/?delimiter=&lt;/td>
 &lt;td>列出对象&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/data-store/object-storage/list-objects-v2/">ListObjectsV2&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/data-storage/object-storage/list-objects-v2/">ListObjectsV2&lt;/a>&lt;/td>
 &lt;td>GET {bucket}.{endpoint}/?list-type=2&lt;/td>
 &lt;td>列出对象&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/data-store/object-storage/put-object/">PutObject&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/data-storage/object-storage/put-object/">PutObject&lt;/a>&lt;/td>
 &lt;td>PUT {bucket}.{endpoint}/{object_key}&lt;/td>
 &lt;td>创建对象&lt;/td>
 &lt;/tr>
@@ -4713,9 +4715,9 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;td>xx&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description></item><item><title>Docs: gRPC Kit</title><link>https://opsaid.net/docs/dev-framework/go/grpc-kit/</link><pubDate>Tue, 16 May 2023 10:50:32 +0800</pubDate><guid>https://opsaid.net/docs/dev-framework/go/grpc-kit/</guid><description>
+&lt;/table></description></item><item><title>Docs: gRPC Kit</title><link>https://opsaid.net/docs/platform-engineering/developer-experience/grpc-kit/</link><pubDate>Tue, 16 May 2023 10:50:32 +0800</pubDate><guid>https://opsaid.net/docs/platform-engineering/developer-experience/grpc-kit/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
-&lt;p>使用 go 语言开发，更多信息参考站点 &lt;a href="https://grpc-kit.com/docs">grpc-kit&lt;/a>。&lt;/p></description></item><item><title>Docs: 快速开始</title><link>https://opsaid.net/docs/devops/argo-cd/overview/</link><pubDate>Tue, 16 May 2023 10:34:53 +0800</pubDate><guid>https://opsaid.net/docs/devops/argo-cd/overview/</guid><description>
+&lt;p>使用 go 语言开发，更多信息参考站点 &lt;a href="https://grpc-kit.com/docs">grpc-kit&lt;/a>。&lt;/p></description></item><item><title>Docs: 快速开始</title><link>https://opsaid.net/docs/platform-engineering/gitops/argo-cd/overview/</link><pubDate>Tue, 16 May 2023 10:34:53 +0800</pubDate><guid>https://opsaid.net/docs/platform-engineering/gitops/argo-cd/overview/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>基于 gitops 理念管理 k8s 资源。&lt;/p>
 &lt;h2 id="安装部署">安装部署&lt;/h2>
@@ -4811,7 +4813,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">config&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>{&lt;span style="color:#000">base64 config}&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">name&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">YzIuazhzLjE3M29wcy5jb20=&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">server&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">aHR0cHM6Ly9jMi5rOHMuMTczb3BzLmNvbTo2NDQz&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Collector</title><link>https://opsaid.net/docs/component/open-telemetry/collector/</link><pubDate>Sun, 14 May 2023 11:33:11 +0800</pubDate><guid>https://opsaid.net/docs/component/open-telemetry/collector/</guid><description>
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Collector</title><link>https://opsaid.net/docs/observability/opentelemetry/collector/</link><pubDate>Sun, 14 May 2023 11:33:11 +0800</pubDate><guid>https://opsaid.net/docs/observability/opentelemetry/collector/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>OpenTelemetry 支持追踪（Tracing）、指标（Metrics）、跨域传递（Baggage）、日志（Logging）和 Profiles 这五种独立的信号类型，&lt;/p>
 &lt;p>每种类型均由四个核心组件构成：&lt;/p>
@@ -5064,7 +5066,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;blockquote>
 &lt;p>github.com/open-telemetry/opentelemetry-collector/exporter&lt;/p>
 &lt;/blockquote>
-&lt;p>根据 &lt;a href="https://opsaid.net/docs/component/open-telemetry/collector/#config">Config&lt;/a> 转换 yaml 配置如下：&lt;/p>
+&lt;p>根据 &lt;a href="https://opsaid.net/docs/observability/opentelemetry/collector/#config">Config&lt;/a> 转换 yaml 配置如下：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">exporters&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">${component.ID}:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">${component.Config}&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
@@ -5110,13 +5112,13 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;blockquote>
 &lt;p>github.com/open-telemetry/opentelemetry-collector/processor&lt;/p>
 &lt;/blockquote>
-&lt;p>用于在组件 &lt;a href="https://opsaid.net/docs/component/open-telemetry/collector/#receivers">Receivers&lt;/a> 接收数据和 &lt;a href="https://opsaid.net/docs/component/open-telemetry/collector/#exporters">Exporters&lt;/a> 导出数据之间运行，该部分是可选的，但建议根据实际情况使用一些。&lt;/p>
-&lt;p>同样的仅在这里配置是不会启用它，也需要在 &lt;a href="https://opsaid.net/docs/component/open-telemetry/collector/#service">Service&lt;/a> 中配置 &lt;code>pipelines&lt;/code> 来启用。&lt;/p>
+&lt;p>用于在组件 &lt;a href="https://opsaid.net/docs/observability/opentelemetry/collector/#receivers">Receivers&lt;/a> 接收数据和 &lt;a href="https://opsaid.net/docs/observability/opentelemetry/collector/#exporters">Exporters&lt;/a> 导出数据之间运行，该部分是可选的，但建议根据实际情况使用一些。&lt;/p>
+&lt;p>同样的仅在这里配置是不会启用它，也需要在 &lt;a href="https://opsaid.net/docs/observability/opentelemetry/collector/#service">Service&lt;/a> 中配置 &lt;code>pipelines&lt;/code> 来启用。&lt;/p>
 &lt;p>存在以下几个内置的 processor&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>processor/batchprocessor
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>processor/memorylimiterprocessor
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>还有大量第三方组件见 &lt;a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor">opentelemetry-collector-contrib&lt;/a> 仓库。&lt;/p>
-&lt;p>根据 &lt;a href="https://opsaid.net/docs/component/open-telemetry/collector/#config">Config&lt;/a> 转换 yaml 配置如下：&lt;/p>
+&lt;p>根据 &lt;a href="https://opsaid.net/docs/observability/opentelemetry/collector/#config">Config&lt;/a> 转换 yaml 配置如下：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">processors&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">${component.ID}:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">${component.Config}&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
@@ -5205,7 +5207,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/blockquote>
 &lt;p>用于连接 &lt;a href="">Receivers&lt;/a> 与 &lt;a href="">Exporters&lt;/a> 两个组件且作为其中的管道，起点用于接收 &lt;a href="">Receivers&lt;/a> 数据，终点用于 &lt;a href="">Exporters&lt;/a> 导出数据。&lt;/p>
 &lt;p>它可以消费和发出相同数据类型或不同数据类型的数据，连接器可以生成并发送数据来汇总消耗的数据，也可以简单地复制或路由数据。&lt;/p>
-&lt;p>根据 &lt;a href="https://opsaid.net/docs/component/open-telemetry/collector/#config">Config&lt;/a> 转换 yaml 配置如下：&lt;/p>
+&lt;p>根据 &lt;a href="https://opsaid.net/docs/observability/opentelemetry/collector/#config">Config&lt;/a> 转换 yaml 配置如下：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">connectors&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">${component.ID}:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">${component.Config}&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
@@ -5221,8 +5223,8 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>TODO;&lt;/p>
 &lt;h3 id="extensions">Extensions&lt;/h3>
 &lt;p>可选部分，主要用于不涉及处理遥测数据的任务，如：运行状况监视、服务发现和数据转发等。&lt;/p>
-&lt;p>同样的仅在这里配置是不会启用它，也需要在 &lt;a href="https://opsaid.net/docs/component/open-telemetry/collector/#service">Service&lt;/a> 中配置 &lt;code>pipelines&lt;/code> 来启用。&lt;/p>
-&lt;p>根据 &lt;a href="https://opsaid.net/docs/component/open-telemetry/collector/#config">Config&lt;/a> 转换 yaml 配置如下：&lt;/p>
+&lt;p>同样的仅在这里配置是不会启用它，也需要在 &lt;a href="https://opsaid.net/docs/observability/opentelemetry/collector/#service">Service&lt;/a> 中配置 &lt;code>pipelines&lt;/code> 来启用。&lt;/p>
+&lt;p>根据 &lt;a href="https://opsaid.net/docs/observability/opentelemetry/collector/#config">Config&lt;/a> 转换 yaml 配置如下：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">extensions&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">${component.ID}:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">${component.Config}&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
@@ -5256,7 +5258,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="service">Service&lt;/h3>
 &lt;p>由 telemetry、extensions、pipelines 三部分组成。&lt;/p>
-&lt;p>其中 telemetry 用于自身进程的遥感配置，而 extensions、pipelines 用于根据 &lt;a href="https://opsaid.net/docs/component/open-telemetry/collector/#receivers">Receivers&lt;/a>、&lt;a href="">Processors&lt;/a>、&lt;a href="https://opsaid.net/docs/component/open-telemetry/collector/#exporters">Exporters&lt;/a>、&lt;a href="">Extensions&lt;/a> 部分中的配置启用的组件，如果组件已配置，但未在这里定义，则不会启用该组件。&lt;/p>
+&lt;p>其中 telemetry 用于自身进程的遥感配置，而 extensions、pipelines 用于根据 &lt;a href="https://opsaid.net/docs/observability/opentelemetry/collector/#receivers">Receivers&lt;/a>、&lt;a href="">Processors&lt;/a>、&lt;a href="https://opsaid.net/docs/observability/opentelemetry/collector/#exporters">Exporters&lt;/a>、&lt;a href="">Extensions&lt;/a> 部分中的配置启用的组件，如果组件已配置，但未在这里定义，则不会启用该组件。&lt;/p>
 &lt;p>配置示例：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">service&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">telemetry&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
@@ -5657,7 +5659,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;li>traces&lt;/li>
 &lt;li>metrics&lt;/li>
 &lt;li>logs&lt;/li>
-&lt;/ol></description></item><item><title>Docs: ConfigMap</title><link>https://opsaid.net/docs/concepts/configuration/configmaps/</link><pubDate>Fri, 12 May 2023 14:23:32 +0800</pubDate><guid>https://opsaid.net/docs/concepts/configuration/configmaps/</guid><description>
+&lt;/ol></description></item><item><title>Docs: ConfigMap</title><link>https://opsaid.net/docs/cloud-native/kubernetes/resources/configmaps/</link><pubDate>Fri, 12 May 2023 14:23:32 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/resources/configmaps/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>属于组：“corev1”&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">{&lt;/span>Group: corev1.GroupName, Kind: &lt;span style="color:#4e9a06">&amp;#34;ConfigMap&amp;#34;&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">}&lt;/span>
@@ -5704,7 +5706,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// +optional
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">BinaryData&lt;/span> &lt;span style="color:#204a87;font-weight:bold">map&lt;/span>&lt;span style="color:#000;font-weight:bold">[&lt;/span>&lt;span style="color:#204a87;font-weight:bold">string&lt;/span>&lt;span style="color:#000;font-weight:bold">][]&lt;/span>&lt;span style="color:#204a87;font-weight:bold">byte&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;binaryData,omitempty&amp;#34; protobuf:&amp;#34;bytes,3,rep,name=binaryData&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Kaniko</title><link>https://opsaid.net/docs/devops/packages/kaniko/</link><pubDate>Wed, 22 Mar 2023 11:10:14 +0800</pubDate><guid>https://opsaid.net/docs/devops/packages/kaniko/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Kaniko</title><link>https://opsaid.net/docs/platform-engineering/build-release/kaniko/</link><pubDate>Wed, 22 Mar 2023 11:10:14 +0800</pubDate><guid>https://opsaid.net/docs/platform-engineering/build-release/kaniko/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>需要在容器里面构建镜像，一般有以下 3 中方式：&lt;/p>
 &lt;ol>
@@ -6008,12 +6010,12 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>挂载至 kaniko 容器内 &amp;ldquo;/kaniko/.docker/config.json&amp;rdquo; 地址。如果您更改了 &amp;ldquo;kaniko&amp;rdquo; 镜像，导致变量 &amp;ldquo;$HOME&amp;rdquo; 非 “/kaniko&amp;quot;，则需要更改挂载的配置，否则 &amp;ldquo;/kaniko/executer&amp;rdquo; 会无法正确读取授权文件。&lt;/p></description></item><item><title>Docs: PHP 在 K8S 上</title><link>https://opsaid.net/docs/case-studies/app-deploy/php-on-k8s/</link><pubDate>Wed, 15 Feb 2023 15:21:55 +0800</pubDate><guid>https://opsaid.net/docs/case-studies/app-deploy/php-on-k8s/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>挂载至 kaniko 容器内 &amp;ldquo;/kaniko/.docker/config.json&amp;rdquo; 地址。如果您更改了 &amp;ldquo;kaniko&amp;rdquo; 镜像，导致变量 &amp;ldquo;$HOME&amp;rdquo; 非 “/kaniko&amp;quot;，则需要更改挂载的配置，否则 &amp;ldquo;/kaniko/executer&amp;rdquo; 会无法正确读取授权文件。&lt;/p></description></item><item><title>Docs: PHP 在 K8S 上</title><link>https://opsaid.net/docs/operations-practice/architecture-cases/php-on-k8s/</link><pubDate>Wed, 15 Feb 2023 15:21:55 +0800</pubDate><guid>https://opsaid.net/docs/operations-practice/architecture-cases/php-on-k8s/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>描述 php 应用在 k8s 上的编排。&lt;/p>
 &lt;h2 id="基础镜像">基础镜像&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="服务编排">服务编排&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: kube-apiserver 配置</title><link>https://opsaid.net/docs/component/control-plane/kube-apiserver-config/</link><pubDate>Mon, 19 Dec 2022 11:34:43 +0800</pubDate><guid>https://opsaid.net/docs/component/control-plane/kube-apiserver-config/</guid><description>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: kube-apiserver 配置</title><link>https://opsaid.net/docs/cloud-native/kubernetes/control-plane/kube-apiserver-config/</link><pubDate>Mon, 19 Dec 2022 11:34:43 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/control-plane/kube-apiserver-config/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>一些关键参数说明。&lt;/p>
 &lt;h2 id="参数解析">参数解析&lt;/h2>
@@ -6065,7 +6067,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> runtimeClasses: []
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> namespaces: [kube-system]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>EOF
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这里使用 &lt;a href="https://opsaid.net/docs/concepts/policies/admission/">AdmissionConfiguration&lt;/a> 配置了一个静态的 PodSecurity 准入控制器。说明如果违反 &amp;ldquo;baseline&amp;rdquo; 则不允许创建 Pod，如果违反 &amp;ldquo;restricted&amp;rdquo; 模式，则记录审计日志并在终端输出警告。具体配置可参考 &lt;a href="https://kubernetes.io/zh-cn/docs/concepts/security/pod-security-standards/">Pod 安全标准&lt;/a>。&lt;/p></description></item><item><title>Docs: kube-controller-manager 配置</title><link>https://opsaid.net/docs/component/control-plane/kube-controller-manager-config/</link><pubDate>Mon, 19 Dec 2022 11:34:43 +0800</pubDate><guid>https://opsaid.net/docs/component/control-plane/kube-controller-manager-config/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这里使用 &lt;a href="https://opsaid.net/docs/identity-security/kubernetes-security/admission/">AdmissionConfiguration&lt;/a> 配置了一个静态的 PodSecurity 准入控制器。说明如果违反 &amp;ldquo;baseline&amp;rdquo; 则不允许创建 Pod，如果违反 &amp;ldquo;restricted&amp;rdquo; 模式，则记录审计日志并在终端输出警告。具体配置可参考 &lt;a href="https://kubernetes.io/zh-cn/docs/concepts/security/pod-security-standards/">Pod 安全标准&lt;/a>。&lt;/p></description></item><item><title>Docs: kube-controller-manager 配置</title><link>https://opsaid.net/docs/cloud-native/kubernetes/control-plane/kube-controller-manager-config/</link><pubDate>Mon, 19 Dec 2022 11:34:43 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/control-plane/kube-controller-manager-config/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>TODO;&lt;/p>
 &lt;h2 id="参数解析">参数解析&lt;/h2>
@@ -6095,7 +6097,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>metadata:
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> name: 192.168.0.2
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>spec: &lt;span style="color:#ce5c00;font-weight:bold">{}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>针对不同的 cni 实现不一定需要开启该功能，如使用 &amp;ldquo;cilium&amp;rdquo; 的 &amp;ldquo;ipam=kubernetes&amp;rdquo; 则需要开启。&lt;/p></description></item><item><title>Docs: 参数配置</title><link>https://opsaid.net/docs/component/kubelet/config/</link><pubDate>Mon, 19 Dec 2022 11:34:43 +0800</pubDate><guid>https://opsaid.net/docs/component/kubelet/config/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>针对不同的 cni 实现不一定需要开启该功能，如使用 &amp;ldquo;cilium&amp;rdquo; 的 &amp;ldquo;ipam=kubernetes&amp;rdquo; 则需要开启。&lt;/p></description></item><item><title>Docs: 参数配置</title><link>https://opsaid.net/docs/cloud-native/kubernetes/node-components/kubelet-config/</link><pubDate>Mon, 19 Dec 2022 11:34:43 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/node-components/kubelet-config/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;h2 id="参数解析">参数解析&lt;/h2>
 &lt;h3 id="命令行参数">命令行参数&lt;/h3>
@@ -7567,7 +7569,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// +optional
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">MemoryThrottlingFactor&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">*&lt;/span>&lt;span style="color:#204a87;font-weight:bold">float64&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Runner</title><link>https://opsaid.net/docs/devops/gitlab/giltab-ci/</link><pubDate>Fri, 09 Dec 2022 15:53:27 +0800</pubDate><guid>https://opsaid.net/docs/devops/gitlab/giltab-ci/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Runner</title><link>https://opsaid.net/docs/platform-engineering/ci-cd/gitlab/gitlab-ci/</link><pubDate>Fri, 09 Dec 2022 15:53:27 +0800</pubDate><guid>https://opsaid.net/docs/platform-engineering/ci-cd/gitlab/gitlab-ci/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>基于 gitlab 方案实现的自动化部署&lt;/p>
 &lt;p>官方代码仓库：https://gitlab.com/gitlab-org/gitlab-runner&lt;/p>
@@ -8105,16 +8107,16 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">InstanceOperationTimeBuckets&lt;/span> &lt;span style="color:#000;font-weight:bold">[]&lt;/span>&lt;span style="color:#204a87;font-weight:bold">float64&lt;/span> &lt;span style="color:#4e9a06">`toml:&amp;#34;instance_operation_time_buckets,omitempty&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Pod</title><link>https://opsaid.net/docs/concepts/workloads/pods/</link><pubDate>Mon, 05 Dec 2022 18:54:45 +0800</pubDate><guid>https://opsaid.net/docs/concepts/workloads/pods/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Pod</title><link>https://opsaid.net/docs/cloud-native/kubernetes/resources/pods/</link><pubDate>Mon, 05 Dec 2022 18:54:45 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/resources/pods/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>staging/src/k8s.io/api/core/v1/types.go
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;a href="https://kubernetes.io/zh-cn/docs/concepts/workloads/pods/">查看官方介绍&lt;/a>&lt;/p>
 &lt;p>其中数据结构主要由以下四部分组成：&lt;/p>
 &lt;ol>
-&lt;li>存储卷 &lt;a href="https://opsaid.net/docs/concepts/workloads/pods-volume/">Pod Volume&lt;/a>&lt;/li>
-&lt;li>容器组 &lt;a href="https://opsaid.net/docs/concepts/workloads/pods-container/">Pod Container&lt;/a>&lt;/li>
-&lt;li>容器安全 &lt;a href="https://opsaid.net/docs/concepts/workloads/pods-security/">Pod Security&lt;/a>&lt;/li>
-&lt;li>亲和性与污点 &lt;a href="https://opsaid.net/docs/concepts/workloads/pods-affinity/">Pod Affinity&lt;/a>&lt;/li>
+&lt;li>存储卷 &lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-volume/">Pod Volume&lt;/a>&lt;/li>
+&lt;li>容器组 &lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-container/">Pod Container&lt;/a>&lt;/li>
+&lt;li>容器安全 &lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-security/">Pod Security&lt;/a>&lt;/li>
+&lt;li>亲和性与污点 &lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-affinity/">Pod Affinity&lt;/a>&lt;/li>
 &lt;/ol>
 &lt;h2 id="常用指令">常用指令&lt;/h2>
 &lt;p>TODO;&lt;/p>
@@ -8404,9 +8406,9 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">SetHostnameAsFQDN&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">*&lt;/span>&lt;span style="color:#204a87;font-weight:bold">bool&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;setHostnameAsFQDN,omitempty&amp;#34; protobuf:&amp;#34;varint,35,opt,name=setHostnameAsFQDN&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="volume">Volume&lt;/h3>
-&lt;p>参考 &lt;a href="https://opsaid.net/docs/concepts/workloads/pods-volume/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Pod Volume&lt;/a> 数据结构。&lt;/p>
+&lt;p>参考 &lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-volume/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Pod Volume&lt;/a> 数据结构。&lt;/p>
 &lt;h3 id="container">Container&lt;/h3>
-&lt;p>参考 &lt;a href="https://opsaid.net/docs/concepts/workloads/pods-container/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Pod Container&lt;/a> 数据结构。&lt;/p>
+&lt;p>参考 &lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-container/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Pod Container&lt;/a> 数据结构。&lt;/p>
 &lt;h3 id="ephemeralcontainer">EphemeralContainer&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-golang" data-lang="golang">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// An EphemeralContainer is a container that may be added temporarily to an existing pod for
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// user-initiated activities such as debugging. Ephemeral containers have no resource or
@@ -8468,7 +8470,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">DNSNone&lt;/span> &lt;span style="color:#000">DNSPolicy&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;None&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="podsecuritycontext">PodSecurityContext&lt;/h3>
-&lt;p>参考 &lt;a href="https://opsaid.net/docs/concepts/workloads/pods-security/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Pod Security&lt;/a> 数据结构。&lt;/p>
+&lt;p>参考 &lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-security/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Pod Security&lt;/a> 数据结构。&lt;/p>
 &lt;h3 id="localobjectreference">LocalObjectReference&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-golang" data-lang="golang">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// LocalObjectReference contains enough information to let you locate the
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// referenced object inside the same namespace.
@@ -8481,9 +8483,9 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">Name&lt;/span> &lt;span style="color:#204a87;font-weight:bold">string&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;name,omitempty&amp;#34; protobuf:&amp;#34;bytes,1,opt,name=name&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="affinity">Affinity&lt;/h3>
-&lt;p>参考 &lt;a href="https://opsaid.net/docs/concepts/workloads/pods-affinity/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Pod Affinity&lt;/a> 数据结构。&lt;/p>
+&lt;p>参考 &lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-affinity/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Pod Affinity&lt;/a> 数据结构。&lt;/p>
 &lt;h3 id="toleration">Toleration&lt;/h3>
-&lt;p>参考 &lt;a href="https://opsaid.net/docs/concepts/workloads/pods-affinity/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Pod Affinity&lt;/a> 数据结构。&lt;/p>
+&lt;p>参考 &lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-affinity/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">Pod Affinity&lt;/a> 数据结构。&lt;/p>
 &lt;h3 id="hostalias">HostAlias&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-golang" data-lang="golang">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// pod&amp;#39;s hosts file.
@@ -8924,7 +8926,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// +optional
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">Spec&lt;/span> &lt;span style="color:#000">PodSpec&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;spec,omitempty&amp;#34; protobuf:&amp;#34;bytes,2,opt,name=spec&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Init</title><link>https://opsaid.net/docs/concepts/kubeadm/init/</link><pubDate>Fri, 02 Dec 2022 15:04:36 +0800</pubDate><guid>https://opsaid.net/docs/concepts/kubeadm/init/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Init</title><link>https://opsaid.net/docs/cloud-native/kubernetes/cluster-deployment/init/</link><pubDate>Fri, 02 Dec 2022 15:04:36 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/cluster-deployment/init/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">apiVersion&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">kubeadm.k8s.io/v1beta3&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">kind&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#000">InitConfiguration&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
@@ -9064,7 +9066,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// +optional
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">BindPort&lt;/span> &lt;span style="color:#204a87;font-weight:bold">int32&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;bindPort,omitempty&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Ingress</title><link>https://opsaid.net/docs/concepts/network/ingress/</link><pubDate>Thu, 17 Nov 2022 15:36:12 +0800</pubDate><guid>https://opsaid.net/docs/concepts/network/ingress/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Ingress</title><link>https://opsaid.net/docs/cloud-native/kubernetes/resources/ingress/</link><pubDate>Thu, 17 Nov 2022 15:36:12 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/resources/ingress/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>Ingress 是对集群中服务的外部访问进行管理的 API 对象，典型的访问方式是 HTTP。&lt;/p>
 &lt;p>它不会公开任意端口或协议，一般只将 HTTP 和 HTTPS 以外的服务公开到网络时，如果是其他协议服务，使用 Service.Type=NodePort 或 Service.Type=LoadBalancer 类型的 Service&lt;/p>
@@ -9504,7 +9506,7 @@ J -->|Kafka| O[后端系统 5&lt;br>消息队列/数据湖]
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// +optional
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">Number&lt;/span> &lt;span style="color:#204a87;font-weight:bold">int32&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;number,omitempty&amp;#34; protobuf:&amp;#34;bytes,2,opt,name=number&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Etcd</title><link>https://opsaid.net/docs/devops/kubeadm/etcd/</link><pubDate>Thu, 06 Oct 2022 10:54:31 +0800</pubDate><guid>https://opsaid.net/docs/devops/kubeadm/etcd/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Etcd</title><link>https://opsaid.net/docs/cloud-native/kubernetes/cluster-deployment/kubeadm-etcd/</link><pubDate>Thu, 06 Oct 2022 10:54:31 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/cluster-deployment/kubeadm-etcd/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>通过 kubeadm 工具创建高可用 etcd 集群。&lt;/p>
 &lt;h2 id="执行步骤">执行步骤&lt;/h2>
@@ -9653,7 +9655,7 @@ systemctl restart kubelet
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --cacert /etc/kubernetes/pki/etcd/ca.crt &lt;span style="color:#4e9a06">\
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --endpoints https://192.168.30.201:2379 &lt;span style="color:#4e9a06">\
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> endpoint health --cluster
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: User guide</title><link>https://opsaid.net/docs/component/ingress-nginx/user-guide/</link><pubDate>Sun, 11 Sep 2022 11:13:40 +0800</pubDate><guid>https://opsaid.net/docs/component/ingress-nginx/user-guide/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: User guide</title><link>https://opsaid.net/docs/cloud-native/networking/ingress-nginx/user-guide/</link><pubDate>Sun, 11 Sep 2022 11:13:40 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/networking/ingress-nginx/user-guide/</guid><description>
 &lt;h2 id="版本信息">版本信息&lt;/h2>
 &lt;p>以下配置说明均基于官方版本 1.31 做说明。&lt;/p>
 &lt;h3 id="support-versions-table">Support Versions table&lt;/h3>
@@ -11789,7 +11791,7 @@ nginx.StreamPort,
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>......
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">{{&lt;/span> end &lt;span style="color:#ce5c00;font-weight:bold">}}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Containerd</title><link>https://opsaid.net/docs/component/containers/containerd/</link><pubDate>Sun, 22 May 2022 15:05:21 +0800</pubDate><guid>https://opsaid.net/docs/component/containers/containerd/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Containerd</title><link>https://opsaid.net/docs/cloud-native/container-runtime/containerd/</link><pubDate>Sun, 22 May 2022 15:05:21 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/container-runtime/containerd/</guid><description>
 &lt;h2 id="安装部署">安装部署&lt;/h2>
 &lt;p>在githbub官方地址：https://github.com/containerd/containerd/releases，选择需要的版本下载。&lt;/p>
 &lt;blockquote>
@@ -12736,7 +12738,7 @@ NoPrometheus bool `toml:&amp;#34;no_prometheus&amp;#34;`
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>首先需要明白go1.8新增的plugin特性，&lt;/p>
 &lt;h2 id="faqs">FAQs&lt;/h2>
 &lt;pre tabindex="0">&lt;code>ctr --namespace k8s.io images pull --hosts-dir /etc/containerd/certs.d/ registry.cn-hangzhou.aliyuncs.com/kube-image-repo/pause:3.5-amd64 --http-dump
-&lt;/code>&lt;/pre></description></item><item><title>Docs: Node Exporter</title><link>https://opsaid.net/docs/cloud-monitor/alert-rules/node-exporter/</link><pubDate>Mon, 24 Jan 2022 10:43:37 +0800</pubDate><guid>https://opsaid.net/docs/cloud-monitor/alert-rules/node-exporter/</guid><description>
+&lt;/code>&lt;/pre></description></item><item><title>Docs: Node Exporter</title><link>https://opsaid.net/docs/observability/alerting/node-exporter/</link><pubDate>Mon, 24 Jan 2022 10:43:37 +0800</pubDate><guid>https://opsaid.net/docs/observability/alerting/node-exporter/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>appid = &amp;ldquo;oneops&amp;rdquo;&lt;/p>
 &lt;table>
@@ -13036,7 +13038,7 @@ NoPrometheus bool `toml:&amp;#34;no_prometheus&amp;#34;`
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ops_internal_17173_com_pm2_uuid: 99feafb5-bed6-4daf-927a-69a2ab80c485
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> annotations:
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> summary: 2分钟检测一次,持续6分钟,出流量大于1000Mbps&lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>当前值:&lt;span style="color:#ce5c00;font-weight:bold">{{&lt;/span>&lt;span style="color:#000">$value&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">}}&lt;/span>Mbps&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Node Exporter</title><link>https://opsaid.net/docs/cloud-monitor/preset-metrics/node-exporter/</link><pubDate>Mon, 24 Jan 2022 10:43:37 +0800</pubDate><guid>https://opsaid.net/docs/cloud-monitor/preset-metrics/node-exporter/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Node Exporter</title><link>https://opsaid.net/docs/observability/metrics/exporters/node-exporter/</link><pubDate>Mon, 24 Jan 2022 10:43:37 +0800</pubDate><guid>https://opsaid.net/docs/observability/metrics/exporters/node-exporter/</guid><description>
 &lt;h2 id="common-labels">Common Labels&lt;/h2>
 &lt;table>
 &lt;thead>
@@ -18738,7 +18740,7 @@ NoPrometheus bool `toml:&amp;#34;no_prometheus&amp;#34;`
 &lt;/tbody>
 &lt;/table>
 &lt;hr>
-&lt;p>&lt;em>Code generated by &lt;a href="https://github.com/opsaid/agent">opsaid-agent&lt;/a>.&lt;/em>&lt;/p></description></item><item><title>Docs: 快速开始</title><link>https://opsaid.net/docs/deploy-k8s/quickstart/</link><pubDate>Wed, 22 Dec 2021 16:46:49 +0800</pubDate><guid>https://opsaid.net/docs/deploy-k8s/quickstart/</guid><description>
+&lt;p>&lt;em>Code generated by &lt;a href="https://github.com/opsaid/agent">opsaid-agent&lt;/a>.&lt;/em>&lt;/p></description></item><item><title>Docs: 快速开始</title><link>https://opsaid.net/docs/cloud-native/kubernetes/cluster-deployment/quickstart/</link><pubDate>Wed, 22 Dec 2021 16:46:49 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/cluster-deployment/quickstart/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>k8s生态组件过多，对新人入门并不友好，本项目在于结合当前生产集群维护经验，总结一套标准的部署模版，接入内部gitlab ci实现集群基础设施的自动化管理，同时也会不断迭代优化，以实现快速搭建一套生产可用的环境。&lt;/p>
 &lt;h2 id="前置说明">前置说明&lt;/h2>
@@ -18760,25 +18762,25 @@ NoPrometheus bool `toml:&amp;#34;no_prometheus&amp;#34;`
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/deploy-k8s/quickstart/#ansible%E4%B8%AD%E6%8E%A7">ansible中控&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/cluster-deployment/quickstart/#ansible%E4%B8%AD%E6%8E%A7">ansible中控&lt;/a>&lt;/td>
 &lt;td>1&lt;/td>
 &lt;td>amd64&lt;/td>
 &lt;td>192.168.31.200&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/deploy-k8s/quickstart/#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8">负载均衡器&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/cluster-deployment/quickstart/#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8">负载均衡器&lt;/a>&lt;/td>
 &lt;td>至少1&lt;/td>
 &lt;td>amd64&lt;/td>
 &lt;td>192.168.31.200&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/deploy-k8s/quickstart/#%E9%83%A8%E7%BD%B2%E6%8E%A7%E5%88%B6%E5%B9%B3%E9%9D%A2">k8s控制节点&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/cluster-deployment/quickstart/#%E9%83%A8%E7%BD%B2%E6%8E%A7%E5%88%B6%E5%B9%B3%E9%9D%A2">k8s控制节点&lt;/a>&lt;/td>
 &lt;td>1、3、5&lt;/td>
 &lt;td>amd64&lt;/td>
 &lt;td>192.168.31.201/202/203&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td>&lt;a href="https://opsaid.net/docs/deploy-k8s/quickstart/#%E6%96%B0%E5%A2%9E%E5%B7%A5%E4%BD%9C%E8%8A%82%E7%82%B9">k8s工作节点&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/cluster-deployment/quickstart/#%E6%96%B0%E5%A2%9E%E5%B7%A5%E4%BD%9C%E8%8A%82%E7%82%B9">k8s工作节点&lt;/a>&lt;/td>
 &lt;td>至少1&lt;/td>
 &lt;td>amd64&lt;/td>
 &lt;td>192.168.31.204&lt;/td>
@@ -18823,7 +18825,7 @@ NoPrometheus bool `toml:&amp;#34;no_prometheus&amp;#34;`
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>ansible/group_vars/cloud-provider/private.yaml
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ansible/group_vars/cloud-provider/alibaba-cloud.yaml
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>根据目标主机&lt;a href="https://opsaid.net/docs/deploy-k8s/cloud-provider/">提供商&lt;/a>上，按需更改相应参数。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>根据目标主机&lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/cluster-deployment/">提供商&lt;/a>上，按需更改相应参数。&lt;/p>
 &lt;h3 id="步骤2下载依赖的镜像包">步骤2：下载依赖的镜像包&lt;/h3>
 &lt;p>方式1：预先下载安装包（推荐）&lt;/p>
 &lt;p>二进制文件包与镜像包&lt;/p>
@@ -18927,7 +18929,7 @@ NoPrometheus bool `toml:&amp;#34;no_prometheus&amp;#34;`
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ca.crt
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ca.key
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="步骤9控制平面相关维护">步骤9：控制平面相关维护&lt;/h3>
-&lt;p>见&lt;a href="https://opsaid.net/docs/questions/control-plane/">常见问题&lt;/a>。&lt;/p>
+&lt;p>见&lt;a href="https://opsaid.net/docs/operations-practice/troubleshooting/kubernetes/">常见问题&lt;/a>。&lt;/p>
 &lt;h2 id="新增工作节点">新增工作节点&lt;/h2>
 &lt;h3 id="步骤1在ansible的hostini中添加节点">步骤1：在ansible的&lt;code>host.ini&lt;/code>中添加节点&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>all&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>
@@ -18971,7 +18973,7 @@ NoPrometheus bool `toml:&amp;#34;no_prometheus&amp;#34;`
 &lt;/ul>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>kustomize build /etc/kubernetes/addons/ingress-nginx/ &lt;span style="color:#000;font-weight:bold">|&lt;/span> kubectl apply -f -
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>kustomize build /etc/kubernetes/addons/kube-proxy/ &lt;span style="color:#000;font-weight:bold">|&lt;/span> kubectl apply -f -
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: kube-scheduler 配置</title><link>https://opsaid.net/docs/component/control-plane/kube-scheduler-config/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://opsaid.net/docs/component/control-plane/kube-scheduler-config/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: kube-scheduler 配置</title><link>https://opsaid.net/docs/cloud-native/kubernetes/control-plane/kube-scheduler-config/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/control-plane/kube-scheduler-config/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>kube-scheduler 主要配置已经均迁移至 &lt;a href="https://kubernetes.io/docs/reference/config-api/kube-scheduler-config.v1/">KubeSchedulerConfiguration&lt;/a> 不建议在启动命令行上配置。&lt;/p>
 &lt;h2 id="kubeschedulerconfiguration">KubeSchedulerConfiguration&lt;/h2>
@@ -19031,7 +19033,7 @@ NoPrometheus bool `toml:&amp;#34;no_prometheus&amp;#34;`
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// +listType=set
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">Extenders&lt;/span> &lt;span style="color:#000;font-weight:bold">[]&lt;/span>&lt;span style="color:#000">Extender&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;extenders,omitempty&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="默认scheduler配置">默认scheduler配置&lt;/h2></description></item><item><title>Docs: 参数配置</title><link>https://opsaid.net/docs/component/kube-proxy/config/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://opsaid.net/docs/component/kube-proxy/config/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="默认scheduler配置">默认scheduler配置&lt;/h2></description></item><item><title>Docs: 参数配置</title><link>https://opsaid.net/docs/cloud-native/kubernetes/node-components/kube-proxy-config/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/node-components/kube-proxy-config/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>主要用于控制 iptables、ipvs 在宿主上的网络流量。&lt;/p>
 &lt;h2 id="配置示例">配置示例&lt;/h2>
@@ -19451,7 +19453,7 @@ NoPrometheus bool `toml:&amp;#34;no_prometheus&amp;#34;`
 &lt;ul>
 &lt;li>超时限制&lt;/li>
 &lt;/ul>
-&lt;p>其中 net.netfilter.nf_conntrack_tcp_timeout_close_wait 等待时间是让被动关闭方把该传的数据传完。如果程序写得不好，这里抛了未捕捉的异常，也许就走不到发 FIN 那步了，一直停在这里&lt;/p></description></item><item><title>Docs: 参数配置</title><link>https://opsaid.net/docs/component/oauth2-proxy/config/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://opsaid.net/docs/component/oauth2-proxy/config/</guid><description>
+&lt;p>其中 net.netfilter.nf_conntrack_tcp_timeout_close_wait 等待时间是让被动关闭方把该传的数据传完。如果程序写得不好，这里抛了未捕捉的异常，也许就走不到发 FIN 那步了，一直停在这里&lt;/p></description></item><item><title>Docs: 参数配置</title><link>https://opsaid.net/docs/identity-security/authentication/oauth2-proxy/config/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://opsaid.net/docs/identity-security/authentication/oauth2-proxy/config/</guid><description>
 &lt;h2 id="认证代理">认证代理&lt;/h2>
 &lt;p>用于代理OIDC认证&lt;/p>
 &lt;h2 id="启动参数">启动参数&lt;/h2>
@@ -20195,7 +20197,7 @@ NoPrometheus bool `toml:&amp;#34;no_prometheus&amp;#34;`
 &lt;td>允许认证过后转发的域名列表&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description></item><item><title>Docs: Pod Volume</title><link>https://opsaid.net/docs/concepts/workloads/pods-volume/</link><pubDate>Mon, 08 May 2023 16:56:42 +0800</pubDate><guid>https://opsaid.net/docs/concepts/workloads/pods-volume/</guid><description>
+&lt;/table></description></item><item><title>Docs: Pod Volume</title><link>https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-volume/</link><pubDate>Mon, 08 May 2023 16:56:42 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-volume/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>TODO;&lt;/p>
 &lt;p>关键站点：&lt;/p>
@@ -20753,7 +20755,7 @@ NoPrometheus bool `toml:&amp;#34;no_prometheus&amp;#34;`
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// +optional
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">DataSourceRef&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">*&lt;/span>&lt;span style="color:#000">TypedLocalObjectReference&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;dataSourceRef,omitempty&amp;#34; protobuf:&amp;#34;bytes,8,opt,name=dataSourceRef&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Pod Container</title><link>https://opsaid.net/docs/concepts/workloads/pods-container/</link><pubDate>Mon, 08 May 2023 16:56:48 +0800</pubDate><guid>https://opsaid.net/docs/concepts/workloads/pods-container/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Pod Container</title><link>https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-container/</link><pubDate>Mon, 08 May 2023 16:56:48 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-container/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>TODO;&lt;/p>
 &lt;h2 id="数据结构">数据结构&lt;/h2>
@@ -21273,7 +21275,7 @@ NoPrometheus bool `toml:&amp;#34;no_prometheus&amp;#34;`
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">SeccompProfile&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">*&lt;/span>&lt;span style="color:#000">SeccompProfile&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;seccompProfile,omitempty&amp;#34; protobuf:&amp;#34;bytes,11,opt,name=seccompProfile&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="resourcelist">ResourceList&lt;/h3>
-&lt;p>TODO;&lt;/p></description></item><item><title>Docs: Pod Security</title><link>https://opsaid.net/docs/concepts/workloads/pods-security/</link><pubDate>Mon, 08 May 2023 18:19:18 +0800</pubDate><guid>https://opsaid.net/docs/concepts/workloads/pods-security/</guid><description>
+&lt;p>TODO;&lt;/p></description></item><item><title>Docs: Pod Security</title><link>https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-security/</link><pubDate>Mon, 08 May 2023 18:19:18 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-security/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>TODO;&lt;/p>
 &lt;h2 id="数据结构">数据结构&lt;/h2>
@@ -21452,7 +21454,7 @@ NoPrometheus bool `toml:&amp;#34;no_prometheus&amp;#34;`
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// Once the flag support is removed the location will be &amp;lt;kubelet-root-dir&amp;gt;/seccomp.
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">SeccompProfileTypeLocalhost&lt;/span> &lt;span style="color:#000">SeccompProfileType&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Localhost&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Pod Affinity</title><link>https://opsaid.net/docs/concepts/workloads/pods-affinity/</link><pubDate>Mon, 08 May 2023 18:19:26 +0800</pubDate><guid>https://opsaid.net/docs/concepts/workloads/pods-affinity/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Pod Affinity</title><link>https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-affinity/</link><pubDate>Mon, 08 May 2023 18:19:26 +0800</pubDate><guid>https://opsaid.net/docs/cloud-native/kubernetes/resources/pods-affinity/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>TODO;&lt;/p>
 &lt;h2 id="数据结构">数据结构&lt;/h2>
@@ -21606,7 +21608,7 @@ NoPrometheus bool `toml:&amp;#34;no_prometheus&amp;#34;`
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">TolerationOpExists&lt;/span> &lt;span style="color:#000">TolerationOperator&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Exists&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">TolerationOpEqual&lt;/span> &lt;span style="color:#000">TolerationOperator&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;Equal&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 核心概念</title><link>https://opsaid.net/docs/devops/argo-cd/concepts/</link><pubDate>Fri, 14 Jun 2024 11:47:31 +0800</pubDate><guid>https://opsaid.net/docs/devops/argo-cd/concepts/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 核心概念</title><link>https://opsaid.net/docs/platform-engineering/gitops/argo-cd/concepts/</link><pubDate>Fri, 14 Jun 2024 11:47:31 +0800</pubDate><guid>https://opsaid.net/docs/platform-engineering/gitops/argo-cd/concepts/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>Argo CD 配置均支持使用 k8s yaml 以声明方式定义，通过 kubectl apply 进行创建、更新，而无需依赖 argocd 命令行工具。&lt;/p>
 &lt;h2 id="配置列表">配置列表&lt;/h2>
@@ -21692,7 +21694,7 @@ NoPrometheus bool `toml:&amp;#34;no_prometheus&amp;#34;`
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">prune&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">true&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">selfHeal&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">true&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">allowEmpty&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline"> &lt;/span>&lt;span style="color:#204a87;font-weight:bold">true&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>默认仅支持在 &amp;ldquo;argocd&amp;rdquo; 命名空间下监听资源，所有可配置项参考 &lt;a href="https://opsaid.net/docs/devops/argo-cd/datatype/#%E8%B5%84%E6%BA%90-applications-%E7%BB%93%E6%9E%84">Application&lt;/a> 数据结构。&lt;/p>
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>默认仅支持在 &amp;ldquo;argocd&amp;rdquo; 命名空间下监听资源，所有可配置项参考 &lt;a href="https://opsaid.net/docs/platform-engineering/gitops/argo-cd/datatype/#%E8%B5%84%E6%BA%90-applications-%E7%BB%93%E6%9E%84">Application&lt;/a> 数据结构。&lt;/p>
 &lt;h3 id="用途说明">用途说明&lt;/h3>
 &lt;p>是自定义&lt;a href="https://github.com/argoproj/argo-cd/blob/v2.11.3/manifests/crds/application-crd.yaml">CRD 资源&lt;/a>，对应控制器为 &amp;ldquo;argocd-application-controller&amp;rdquo;，它持续监视运行中的应用程序，并将当前的实际状态与期望的目标状态（在存储库中指定）进行比较。它会检测到不同步的应用程序状态，并可选择采取纠正措施。它负责调用任何用户定义的生命周期事件钩子（PreSync、Sync、PostSync）。&lt;/p>
 &lt;h2 id="项目appproject">项目（AppProject）&lt;/h2>
@@ -21946,7 +21948,7 @@ secretToRepository&lt;/p>
 &lt;td>-&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description></item><item><title>Docs: 数据结构</title><link>https://opsaid.net/docs/devops/argo-cd/datatype/</link><pubDate>Thu, 13 Jun 2024 13:27:25 +0800</pubDate><guid>https://opsaid.net/docs/devops/argo-cd/datatype/</guid><description>
+&lt;/table></description></item><item><title>Docs: 数据结构</title><link>https://opsaid.net/docs/platform-engineering/gitops/argo-cd/datatype/</link><pubDate>Thu, 13 Jun 2024 13:27:25 +0800</pubDate><guid>https://opsaid.net/docs/platform-engineering/gitops/argo-cd/datatype/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>TODO;&lt;/p>
 &lt;p>基于 &amp;ldquo;github.com/argoproj/argo-cd&amp;rdquo; &amp;ldquo;v2.11.3&amp;rdquo; 版本分析。&lt;/p>
@@ -21971,7 +21973,7 @@ secretToRepository&lt;/p>
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"> connectors:
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"> - type: github
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"> id: github&lt;/span>&lt;span style="color:#f8f8f8;text-decoration:underline">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>该 ConfigMap 资源可配置的所有属性见 &lt;a href="https://opsaid.net/docs/devops/argo-cd/datatype/#updatesettingsfromconfigmap">updateSettingsFromConfigMap&lt;/a> 列表，完整示例见 &lt;a href="https://github.com/argoproj/argo-cd/blob/v2.11.3/docs/operator-manual/argocd-cm.yaml">argocd-cm.yaml&lt;/a>&lt;/p>
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>该 ConfigMap 资源可配置的所有属性见 &lt;a href="https://opsaid.net/docs/platform-engineering/gitops/argo-cd/datatype/#updatesettingsfromconfigmap">updateSettingsFromConfigMap&lt;/a> 列表，完整示例见 &lt;a href="https://github.com/argoproj/argo-cd/blob/v2.11.3/docs/operator-manual/argocd-cm.yaml">argocd-cm.yaml&lt;/a>&lt;/p>
 &lt;h3 id="updatesettingsfromconfigmap">updateSettingsFromConfigMap&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-go" data-lang="go">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">const&lt;/span> &lt;span style="color:#000;font-weight:bold">(&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8f5902;font-style:italic">// settingServerSignatureKey designates the key for a server secret key inside a Kubernetes secret.
@@ -22096,7 +22098,7 @@ secretToRepository&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">RespectRBACValueStrict&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;strict&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">RespectRBACValueNormal&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#4e9a06">&amp;#34;normal&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>对 ConfigMap 资源转换为 &lt;a href="https://opsaid.net/docs/devops/argo-cd/datatype/#argocdsettings">ArgoCDSettings&lt;/a> 数据结构方法：&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>对 ConfigMap 资源转换为 &lt;a href="https://opsaid.net/docs/platform-engineering/gitops/argo-cd/datatype/#argocdsettings">ArgoCDSettings&lt;/a> 数据结构方法：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-go" data-lang="go">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// updateSettingsFromConfigMap transfers settings from a Kubernetes configmap into an ArgoCDSettings struct.
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">func&lt;/span> &lt;span style="color:#000">updateSettingsFromConfigMap&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#000">settings&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">*&lt;/span>&lt;span style="color:#000">ArgoCDSettings&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span> &lt;span style="color:#000">argoCDCM&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">*&lt;/span>&lt;span style="color:#000">apiv1&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">ConfigMap&lt;/span>&lt;span style="color:#000;font-weight:bold">)&lt;/span> &lt;span style="color:#000;font-weight:bold">{&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">settings&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">DexConfig&lt;/span> &lt;span style="color:#000;font-weight:bold">=&lt;/span> &lt;span style="color:#000">argoCDCM&lt;/span>&lt;span style="color:#000;font-weight:bold">.&lt;/span>&lt;span style="color:#000">Data&lt;/span>&lt;span style="color:#000;font-weight:bold">[&lt;/span>&lt;span style="color:#000">settingDexConfigKey&lt;/span>&lt;span style="color:#000;font-weight:bold">]&lt;/span>
@@ -22612,7 +22614,7 @@ secretToRepository&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">ID&lt;/span> &lt;span style="color:#204a87;font-weight:bold">string&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;id,omitempty&amp;#34; protobuf:&amp;#34;bytes,3,opt,name=id&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="metav1groupkind">metav1.GroupKind&lt;/h3>
-&lt;p>见 &lt;a href="https://opsaid.net/docs/concepts/commons/metadata/#groupkind">GroupKind&lt;/a>。&lt;/p>
+&lt;p>见 &lt;a href="https://opsaid.net/docs/cloud-native/kubernetes/resources/metadata/#groupkind">GroupKind&lt;/a>。&lt;/p>
 &lt;h3 id="orphanedresourcesmonitorsettings">OrphanedResourcesMonitorSettings&lt;/h3>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-go" data-lang="go">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">// OrphanedResourcesMonitorSettings holds settings of orphaned resources monitoring
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span>&lt;span style="color:#204a87;font-weight:bold">type&lt;/span> &lt;span style="color:#000">OrphanedResourcesMonitorSettings&lt;/span> &lt;span style="color:#204a87;font-weight:bold">struct&lt;/span> &lt;span style="color:#000;font-weight:bold">{&lt;/span>
@@ -23074,7 +23076,7 @@ secretToRepository&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000;font-weight:bold">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#204a87;font-weight:bold">return&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">&amp;amp;&lt;/span>&lt;span style="color:#000">cluster&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span> &lt;span style="color:#204a87;font-weight:bold">nil&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 数据结构</title><link>https://opsaid.net/docs/devops/argo-events/data-type/</link><pubDate>Mon, 03 Jun 2024 15:51:35 +0800</pubDate><guid>https://opsaid.net/docs/devops/argo-events/data-type/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: 数据结构</title><link>https://opsaid.net/docs/platform-engineering/workflows/argo-events/data-type/</link><pubDate>Mon, 03 Jun 2024 15:51:35 +0800</pubDate><guid>https://opsaid.net/docs/platform-engineering/workflows/argo-events/data-type/</guid><description>
 &lt;h2 id="简要概述">简要概述&lt;/h2>
 &lt;p>TODO;&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>github.com/argoproj/argo-events/pkg/apis/eventsource/v1alpha1
@@ -24211,127 +24213,4 @@ secretToRepository&lt;/p>
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#8f5902;font-style:italic">// +optional
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">&lt;/span> &lt;span style="color:#000">Body&lt;/span> &lt;span style="color:#204a87;font-weight:bold">string&lt;/span> &lt;span style="color:#4e9a06">`json:&amp;#34;body,omitempty&amp;#34; protobuf:&amp;#34;bytes,9,opt,name=body&amp;#34;`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000;font-weight:bold">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: kube-apiserver</title><link>https://opsaid.net/docs/questions/control-plane/kube-apiserver/</link><pubDate>Mon, 06 May 2024 14:05:48 +0800</pubDate><guid>https://opsaid.net/docs/questions/control-plane/kube-apiserver/</guid><description>
-&lt;h2 id="简要概述">简要概述&lt;/h2>
-&lt;p>记录 kube-apiserver 相关问题。&lt;/p>
-&lt;h2 id="无法启动类">无法启动类&lt;/h2>
-&lt;h3 id="dial-tcp-1270018080-connect-connection-refused">&amp;ldquo;dial tcp 127.0.0.1:8080: connect: connection refused&amp;rdquo;&lt;/h3>
-&lt;ul>
-&lt;li>关键日志&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>root@k8s/etc/kubernetes/manifests# kubectl get nodes
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>E0803 10:01:41.668372 &lt;span style="color:#0000cf;font-weight:bold">300010&lt;/span> memcache.go:265&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span> couldn&lt;span style="color:#4e9a06">&amp;#39;t get current server API group list: Get &amp;#34;http://localhost:8080/api?timeout=32s&amp;#34;: dial tcp 127.0.0.1:8080: connect: connection refused
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">E0803 10:01:41.669287 300010 memcache.go:265] couldn&amp;#39;&lt;/span>t get current server API group list: Get &lt;span style="color:#4e9a06">&amp;#34;http://localhost:8080/api?timeout=32s&amp;#34;&lt;/span>: dial tcp 127.0.0.1:8080: connect: connection refused
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>E0803 10:01:41.671326 &lt;span style="color:#0000cf;font-weight:bold">300010&lt;/span> memcache.go:265&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span> couldn&lt;span style="color:#4e9a06">&amp;#39;t get current server API group list: Get &amp;#34;http://localhost:8080/api?timeout=32s&amp;#34;: dial tcp 127.0.0.1:8080: connect: connection refused
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">E0803 10:01:41.672078 300010 memcache.go:265] couldn&amp;#39;&lt;/span>t get current server API group list: Get &lt;span style="color:#4e9a06">&amp;#34;http://localhost:8080/api?timeout=32s&amp;#34;&lt;/span>: dial tcp 127.0.0.1:8080: connect: connection refused
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>E0803 10:01:41.674043 &lt;span style="color:#0000cf;font-weight:bold">300010&lt;/span> memcache.go:265&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span> couldn&lt;span style="color:#a40000">&amp;#39;&lt;/span>t get current server API group list: Get &lt;span style="color:#4e9a06">&amp;#34;http://localhost:8080/api?timeout=32s&amp;#34;&lt;/span>: dial tcp 127.0.0.1:8080: connect: connection refused
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>The connection to the server localhost:8080 was refused - did you specify the right host or port?
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>root@k8s/etc/kubernetes/manifests#
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>问题原因&lt;/li>
-&lt;/ul>
-&lt;p>新版不在开放本地的 &amp;ldquo;127.0.0.1:8080&amp;rdquo; 端口，需配置下 kubeconfig 路径，如：$HOME/.kube/config&lt;/p>
-&lt;h3 id="failed-to-verify-certificate-x509">&amp;ldquo;failed to verify certificate: x509&amp;rdquo;&lt;/h3>
-&lt;ul>
-&lt;li>关键日志&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>root@k8s/etc/kubernetes/manifests# kubectl get nodes
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>E0803 10:27:46.079494 &lt;span style="color:#0000cf;font-weight:bold">300470&lt;/span> memcache.go:265&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span> couldn&lt;span style="color:#4e9a06">&amp;#39;t get current server API group list: Get &amp;#34;https://10.49.2.108:6443/api?timeout=32s&amp;#34;: tls: failed to verify certificate: x509: certificate signed by unknown authority
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">E0803 10:27:46.094227 300470 memcache.go:265] couldn&amp;#39;&lt;/span>t get current server API group list: Get &lt;span style="color:#4e9a06">&amp;#34;https://10.49.2.108:6443/api?timeout=32s&amp;#34;&lt;/span>: tls: failed to verify certificate: x509: certificate signed by unknown authority
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>E0803 10:27:46.105654 &lt;span style="color:#0000cf;font-weight:bold">300470&lt;/span> memcache.go:265&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span> couldn&lt;span style="color:#4e9a06">&amp;#39;t get current server API group list: Get &amp;#34;https://10.49.2.108:6443/api?timeout=32s&amp;#34;: tls: failed to verify certificate: x509: certificate signed by unknown authority
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">E0803 10:27:46.117784 300470 memcache.go:265] couldn&amp;#39;&lt;/span>t get current server API group list: Get &lt;span style="color:#4e9a06">&amp;#34;https://10.49.2.108:6443/api?timeout=32s&amp;#34;&lt;/span>: tls: failed to verify certificate: x509: certificate signed by unknown authority
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>E0803 10:27:46.127952 &lt;span style="color:#0000cf;font-weight:bold">300470&lt;/span> memcache.go:265&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span> couldn&lt;span style="color:#a40000">&amp;#39;&lt;/span>t get current server API group list: Get &lt;span style="color:#4e9a06">&amp;#34;https://10.49.2.108:6443/api?timeout=32s&amp;#34;&lt;/span>: tls: failed to verify certificate: x509: certificate signed by unknown authority
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Unable to connect to the server: tls: failed to verify certificate: x509: certificate signed by unknown authority
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>root@k8s/etc/kubernetes/manifests#
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>问题原因&lt;/li>
-&lt;/ul>
-&lt;p>在 &amp;ldquo;$HOME/.kube/config&amp;rdquo; 中内嵌的 ca 证书不对，检查方式：&lt;/p>
-&lt;ol>
-&lt;li>获取 &amp;ldquo;$HOME/.kube/config&amp;rdquo; 中 &amp;ldquo;certificate-authority-data&amp;rdquo; 内容，使用 &lt;code>base64&lt;/code> 反解：&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">echo&lt;/span> -n &lt;span style="color:#4e9a06">&amp;#39;${certificate-authority-data}&amp;#39;&lt;/span> &lt;span style="color:#000;font-weight:bold">|&lt;/span> base64 -d
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="资源无法释放">资源无法释放&lt;/h2>
-&lt;h3 id="命名空间无法删除">命名空间无法删除&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>NAME STATUS AGE
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>argo Active 3d21h
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>argo-events Terminating 6d
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>argocd Active 3d22h
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>命名空间 &amp;ldquo;argo-events&amp;rdquo; 无法删除，持续处于 &amp;ldquo;Terminating&amp;rdquo; 状态，这种情况一般是因为相关的 crd 资源没有删除干净，此时通过查询 etcd 中键值。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">ETCDCTL_API&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">3&lt;/span> etcdctl &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --endpoints https://127.0.0.1:2379 &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --cacert&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>/etc/kubernetes/pki/etcd/ca.crt &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --cert&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>/etc/kubernetes/pki/etcd/server.crt &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> --key&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>/etc/kubernetes/pki/etcd/server.key &lt;span style="color:#4e9a06">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#4e9a06">&lt;/span> get / --prefix --keys-only &lt;span style="color:#000;font-weight:bold">|&lt;/span> grep argo-events
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>/kubernetes/fake/registry/argoproj.io/eventbus/argo-events/default
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/kubernetes/fake/registry/argoproj.io/eventsources/argo-events/oneops-syncmi-v1
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/kubernetes/fake/registry/argoproj.io/sensors/argo-events/log
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/kubernetes/fake/registry/clusterrolebindings/argo-events-binding
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/kubernetes/fake/registry/clusterrolebindings/argo-events-webhook-binding
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/kubernetes/fake/registry/clusterroles/argo-events-aggregate-to-admin
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/kubernetes/fake/registry/clusterroles/argo-events-aggregate-to-edit
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/kubernetes/fake/registry/clusterroles/argo-events-aggregate-to-view
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/kubernetes/fake/registry/clusterroles/argo-events-role
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/kubernetes/fake/registry/clusterroles/argo-events-webhook
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/kubernetes/fake/registry/namespaces/argo-events
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过键值可知还有哪些资源存在，此时只要把以下自定义资源移除，命名空间也就自动删除了。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span># /kubernetes/fake/registry/argoproj.io/sensors/argo-events/log
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># /kubernetes/fake/registry/argoproj.io/eventsources/argo-events/oneops-syncmi-v1
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># /kubernetes/fake/registry/argoproj.io/eventbus/argo-events/default
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ETCDCTL_API=3 etcdctl \
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> --endpoints https://127.0.0.1:2379 \
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> --cacert=/etc/kubernetes/pki/etcd/ca.crt \
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> --cert=/etc/kubernetes/pki/etcd/server.crt \
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> --key=/etc/kubernetes/pki/etcd/server.key \
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> del /kubernetes/fake/registry/argoproj.io/eventbus/argo-events/default
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="基础配置更改">基础配置更改&lt;/h2>
-&lt;h3 id="更换-apiservercrt-证书">更换 apiserver.crt 证书&lt;/h3>
-&lt;p>因需更换 vip 等原因，需要对证书重新签发更换，可通过以下步骤。&lt;/p>
-&lt;ul>
-&lt;li>进入部署仓库&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87">cd&lt;/span> ./ansible
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>变更 vip 为新地址&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>vim group_vars/all.yaml
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>......
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># 集群南北流量高可用的ip地址
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># 一般为vip，没有则设置为控制平面任意一个实际的ip地址
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>#apiserver_haip: 192.168.17.139
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>apiserver_haip: 10.155.17.139
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>......
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>备份旧证书&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>mv roles/pki/files/apiserver/apiserver.crt roles/pki/files/apiserver/apiserver.crt.bak
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mv roles/pki/files/apiserver/apiserver.key roles/pki/files/apiserver/apiserver.key.bak
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>重新生成证书&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>ansible-playbook -i hosts.ini deploy.yaml -t pki
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>检查证书是否符合期望&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>openssl x509 -in roles/pki/files/apiserver/apiserver.crt -noout -text &lt;span style="color:#000;font-weight:bold">|&lt;/span> less
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>循环切换节点使用新证书&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>ansible-playbook -i hosts.ini deploy.yaml -t control,worker
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>是否 /etc/hosts 绑定了域名&lt;/li>
-&lt;/ul>
-&lt;p>确认各节点上 /etc/hosts 是否静态配置了 vip ，如果有手工更改为最新地址下。&lt;/p>
-&lt;ul>
-&lt;li>重启 kube-apiserver 与各 kubelet 服务&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">for&lt;/span> i in &lt;span style="color:#204a87;font-weight:bold">$(&lt;/span>kubectl get pods -n kube-system &lt;span style="color:#000;font-weight:bold">|&lt;/span> grep kube-apiserver &lt;span style="color:#000;font-weight:bold">|&lt;/span> awk &lt;span style="color:#4e9a06">&amp;#39;{ print $1 }&amp;#39;&lt;/span>&lt;span style="color:#204a87;font-weight:bold">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">do&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> kubectl delete pod &lt;span style="color:#000">$i&lt;/span> -n kube-system
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#204a87;font-weight:bold">done&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>ansible kube_control_plane,kube_node -i hosts.ini -m shell -a &lt;span style="color:#4e9a06">&amp;#34;systemctl restart kubelet&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>验证证书情况&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>kubeadm certs check-expiration
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
