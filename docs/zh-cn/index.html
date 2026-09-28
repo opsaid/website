@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="OPSaid 将运维工程知识沉淀为可靠系统、可复用实践与面向智能体的工作流。">
+  <meta name="theme-color" content="#071018">
+  <link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/site.css">
+  <title>OPSaid — 面向可靠运维的系统与知识</title>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="/zh-cn/" aria-label="OPSaid 首页"><img src="/brand/opsaid-logo-dark.svg" alt="OPSaid"></a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#directions">建设方向</a>
+        <a href="#knowledge">知识地图</a>
+        <a href="/docs/zh-cn/">文档</a>
+        <a href="https://github.com/opsaid">GitHub</a>
+        <a class="language" href="/" data-language="en" lang="en">EN</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">开放运维工程</p>
+          <h1>让复杂运维，<span class="gradient-text">变得清晰可控。</span></h1>
+          <p class="hero-copy">OPSaid 是面向运维工程的产品与知识平台，致力于把基础设施信号、工程实践和 AI 智能体组合为可靠、可复用的运维系统。</p>
+          <div class="actions">
+            <a class="button button-primary" href="/docs/zh-cn/">进入文档</a>
+            <a class="button button-secondary" href="https://github.com/opsaid">查看开源项目</a>
+          </div>
+        </div>
+
+        <aside class="signal-card" aria-label="运维系统示意图">
+          <div class="signal-head"><span>系统信号</span><span>OPS / 01</span></div>
+          <div class="signal-visual" aria-hidden="true">
+            <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+            <div class="core"><img src="/brand/opsaid-mark.svg" alt=""></div>
+            <span class="dot dot-a"></span><span class="dot dot-b"></span><span class="dot dot-c"></span>
+          </div>
+          <div class="signal-foot"><div><div class="signal-number">8 个领域</div><div class="signal-label">一套运维知识体系</div></div><div class="signal-label">感知 · 交付 · 自动化</div></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="directions">
+      <div class="shell">
+        <div class="section-heading">
+          <h2>服务于可靠系统背后的工程工作。</h2>
+          <p>主页作为产品入口，文档作为独立的知识系统。未来新增工具或产品时，无需再次改变文档结构和既有多语言 URL。</p>
+        </div>
+        <div class="direction-grid">
+          <article class="direction-card"><span class="index">01 / KNOW</span><h3>工程知识</h3><p>把架构、实现细节、生产经验和决策背景组织为可持续维护、可检索的知识体系。</p></article>
+          <article class="direction-card"><span class="index">02 / OPERATE</span><h3>运维实践</h3><p>将标准流程、排障路径与治理方法沉淀为团队可以复用的运维资产。</p></article>
+          <article class="direction-card"><span class="index">03 / AUGMENT</span><h3>智能体运维</h3><p>为 AI 智能体准备可靠上下文和工具接口，辅助分析、自动化执行与运维决策。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="knowledge">
+      <div class="shell">
+        <div class="section-heading">
+          <h2>从基础设施到生产实践的一张地图。</h2>
+          <p>文档保持既定认知顺序：运行基础、工程交付、状态感知、数据支撑、安全治理、智能扩展、物理设备与实践沉淀。</p>
+        </div>
+        <div class="map-grid">
+          <a class="map-item" href="/docs/zh-cn/cloud-native/"><small>01</small><strong>云原生</strong></a>
+          <a class="map-item" href="/docs/zh-cn/platform-engineering/"><small>02</small><strong>平台工程</strong></a>
+          <a class="map-item" href="/docs/zh-cn/observability/"><small>03</small><strong>可观测</strong></a>
+          <a class="map-item" href="/docs/zh-cn/data-storage/"><small>04</small><strong>数据与存储</strong></a>
+          <a class="map-item" href="/docs/zh-cn/identity-security/"><small>05</small><strong>身份与安全</strong></a>
+          <a class="map-item" href="/docs/zh-cn/ai-agent/"><small>06</small><strong>AI 与智能体</strong></a>
+          <a class="map-item" href="/docs/zh-cn/hardware/"><small>07</small><strong>硬件设备</strong></a>
+          <a class="map-item" href="/docs/zh-cn/operations-practice/"><small>08</small><strong>运维实践</strong></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="products">
+      <div class="shell product-panel">
+        <div><p class="eyebrow">产品基础</p><h2>为正在形成的产品预留清晰入口。</h2><p>OPSaid 自研产品成熟后，将在此展示入口、能力与状态；文档继续稳定运行在 <code>/docs/</code> 多语言命名空间内。</p></div>
+        <a class="button button-secondary" href="/docs/zh-cn/">浏览文档</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-row"><span>© OPSAid Authors</span><span>面向可靠运维的系统与知识。</span></div></footer>
+  <script src="/assets/site.js" defer></script>
+</body>
+</html>

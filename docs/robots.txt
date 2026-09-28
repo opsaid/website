@@ -1,1 +1,4 @@
 User-agent: *
+Allow: /
+
+Sitemap: https://opsaid.net/docs/sitemap.xml
