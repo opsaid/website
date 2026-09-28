@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
   <title id="title">OPSaid 标志</title>
-  <desc id="desc">由运维闭环、三个遥测节点和终端执行箭头构成</desc>
-  <g fill="none" stroke-linecap="round" stroke-width="14">
-    <path d="M73.15 20.96A44 44 0 0 1 105.85 77.6" stroke="#18BDF2"/>
-    <path d="M96.7 93.44A44 44 0 0 1 31.3 93.44" stroke="#3157D5"/>
-    <path d="M22.15 77.6A44 44 0 0 1 54.85 20.96" stroke="#071A3D"/>
+  <desc id="desc">连续运维闭环由三个遥测节点划分为三个区域，中心为终端执行箭头</desc>
+  <g fill="none" stroke-linecap="round" stroke-width="10">
+    <path d="M64 20A44 44 0 0 1 102.1 86" stroke="#18BDF2"/>
+    <path d="M102.1 86A44 44 0 0 1 25.9 86" stroke="#3157D5"/>
+    <path d="M25.9 86A44 44 0 0 1 64 20" stroke="#071A3D"/>
   </g>
-  <circle cx="64" cy="20" r="7" fill="#18BDF2"/>
-  <circle cx="102.1" cy="86" r="7" fill="#3157D5"/>
-  <circle cx="25.9" cy="86" r="7" fill="#071A3D"/>
-  <path d="m50 44 22 20-22 20" fill="none" stroke="#071A3D" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+  <circle cx="64" cy="20" r="9" fill="#18BDF2"/>
+  <circle cx="102.1" cy="86" r="9" fill="#3157D5"/>
+  <circle cx="25.9" cy="86" r="9" fill="#071A3D"/>
+  <path d="m49 43 23 21-23 21" fill="none" stroke="#071A3D" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
 </svg>
